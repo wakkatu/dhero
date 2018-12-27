@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1547971343">
+<link rel="stylesheet" href="../star.css?1547971343">
+<link rel="stylesheet" href="../unit.css?1547971343">
+<title>Disney Heroes: Battle Mode</title>
+<script src="../util.js?1547971343"></script>
+<script>
+var filter = null;
+
+function filterBy(params)
+{
+  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+      .getElementsByClassName("section");
+
+  for (const heroObj of heroObjs)
+  {
+    let display = "";
+
+    for (const p of params)
+    {
+      if (p[1] === "_")
+      {
+        continue;
+      }
+
+      if (-1 === [].indexOf.call(heroObj.classList, "unit-"+p[0]+"-"+p[1]))
+      {
+        display = "none";
+        break;
+      }
+    }
+
+    heroObj.style.display = display;
+  }
+
+  return params;
+}
+
+function init()
+{
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .unit-brief-list"));
+
+  filter = new UrlForm(document.getElementById("unit-filter"), filterBy);
+  filter.init();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">ヒーロー</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">フレンド</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">アイテム</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    言語を選ぶ
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/hero_list.htm">Deutsche</a>
+        <a href="../en/hero_list.htm">English</a>
+        <a href="../es/hero_list.htm">Español</a>
+        <a href="../fr/hero_list.htm">Français</a>
+        <a href="../it/hero_list.htm">Italiano</a>
+        <a href="../ja/hero_list.htm">日本語</a>
+        <a href="../ko/hero_list.htm">한국어</a>
+        <a href="../pt/hero_list.htm">Português</a>
+        <a href="../ru/hero_list.htm">русский</a>
+        <a href="../zh-Hans/hero_list.htm">简体中文</a>
+        <a href="../zh-Hant/hero_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+<div class="section">
+  <form id="unit-filter">
+  <div>
+    <input type="radio" name="role" value="_" id="unit-role-all" onchange="filter.update()" checked><label for="unit-role-all">すべて</label>
+    <input type="radio" name="role" value="tank" id="unit-role-tank" onchange="filter.update()"><label for="unit-role-tank">タンク</label>
+    <input type="radio" name="role" value="damage" id="unit-role-damage" onchange="filter.update()"><label for="unit-role-damage">ダメージ</label>
+    <input type="radio" name="role" value="support" id="unit-role-support" onchange="filter.update()"><label for="unit-role-support">サポート</label>
+    <input type="radio" name="role" value="control" id="unit-role-control" onchange="filter.update()"><label for="unit-role-control">コントロール</label>
+  </div>
+  <div>
+    <input type="radio" name="position" value="_" id="unit-position-all" onchange="filter.update()" checked><label for="unit-position-all">すべて</label>
+    <input type="radio" name="position" value="front" id="unit-position-front" onchange="filter.update()"><label for="unit-position-front">前</label>
+    <input type="radio" name="position" value="central" id="unit-position-central" onchange="filter.update()"><label for="unit-position-central">中</label>
+    <input type="radio" name="position" value="back" id="unit-position-back" onchange="filter.update()"><label for="unit-position-back">後</label>
+  </div>
+  <div>
+    <input type="radio" name="team" value="_" id="unit-team-all" onchange="filter.update()" checked><label for="unit-team-all">すべて</label>
+    <input type="radio" name="team" value="red" id="unit-team-red" onchange="filter.update()"><label for="unit-team-red">赤</label>
+    <input type="radio" name="team" value="yellow" id="unit-team-yellow" onchange="filter.update()"><label for="unit-team-yellow">黄</label>
+    <input type="radio" name="team" value="blue" id="unit-team-blue" onchange="filter.update()"><label for="unit-team-blue">青</label>
+  </div>
+  </form>
+</div>
+
+<div class="unit-brief-list"><!-- unit-brief-list { -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/ALADDIN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="アラジン" src="ALADDIN.png">
+      </div>
+      <h1>アラジン</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/BAYMAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ベイマックス" src="BAYMAX.png">
+      </div>
+      <h1>ベイマックス</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/BUZZ.htm"><div>
+      <div class="unit-avatar">
+        <img alt="バズ・ライトイヤー" src="BUZZ.png">
+      </div>
+      <h1>バズ・ライトイヤー</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/CALHOUN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="カルホーン" src="CALHOUN.png">
+      </div>
+      <h1>カルホーン</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/CHIEF_BOGO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ボゴ署長" src="CHIEF_BOGO.png">
+      </div>
+      <h1>ボゴ署長</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/DASH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ダッシュ" src="DASH.png">
+      </div>
+      <h1>ダッシュ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>中</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/ELASTIGIRL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="イラスティガール" src="ELASTIGIRL.png">
+      </div>
+      <h1>イラスティガール</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>中</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/ELSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Elsa" src="ELSA.png">
+      </div>
+      <h1>Elsa</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-blue">
+    <a href="./hero/EMPEROR_ZURG.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ザーグ皇帝" src="EMPEROR_ZURG.png">
+      </div>
+      <h1>ザーグ皇帝</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>中</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/EVE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="イヴ" src="EVE.png">
+      </div>
+      <h1>イヴ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/FELIX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="フェリックス" src="FELIX.png">
+      </div>
+      <h1>フェリックス</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-yellow">
+    <a href="./hero/FINNICK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="フィニック" src="FINNICK.png">
+      </div>
+      <h1>フィニック</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>中</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-red">
+    <a href="./hero/FROZONE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="フロゾン" src="FROZONE.png">
+      </div>
+      <h1>フロゾン</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/GENIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ジーニー" src="GENIE.png">
+      </div>
+      <h1>ジーニー</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>中</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-central unit-team-blue">
+    <a href="./hero/HADES.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ハデス" src="HADES.png">
+      </div>
+      <h1>ハデス</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>中</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/HECTOR_BARBOSSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ヘクター・バルボッサ" src="HECTOR_BARBOSSA.png">
+      </div>
+      <h1>ヘクター・バルボッサ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/HIRO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ヒロ・ハマダ" src="HIRO.png">
+      </div>
+      <h1>ヒロ・ハマダ</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>中</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/JACK_JACK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ジャック・ジャック" src="JACK_JACK.png">
+      </div>
+      <h1>ジャック・ジャック</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/JACK_SKELLINGTON.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Jack Skellington" src="JACK_SKELLINGTON.png">
+      </div>
+      <h1>Jack Skellington</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+    <a href="./hero/JACK_SPARROW.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ジャック・スパロウ" src="JACK_SPARROW.png">
+      </div>
+      <h1>ジャック・スパロウ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/JESSIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ジェシー" src="JESSIE.png">
+      </div>
+      <h1>ジェシー</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-yellow">
+    <a href="./hero/JUDY_HOPPS.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ジュディ・ホップス" src="JUDY_HOPPS.png">
+      </div>
+      <h1>ジュディ・ホップス</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>中</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/KEVIN_FLYNN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ケヴィン・フリン" src="KEVIN_FLYNN.png">
+      </div>
+      <h1>ケヴィン・フリン</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/MALEFICENT.htm"><div>
+      <div class="unit-avatar">
+        <img alt="マレフィセント" src="MALEFICENT.png">
+      </div>
+      <h1>マレフィセント</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/MAUI.htm"><div>
+      <div class="unit-avatar">
+        <img alt="マウイ" src="MAUI.png">
+      </div>
+      <h1>マウイ</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/MERIDA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="メリダ" src="MERIDA.png">
+      </div>
+      <h1>メリダ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/MICKEY_MOUSE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ミッキーマウス" src="MICKEY_MOUSE.png">
+      </div>
+      <h1>ミッキーマウス</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>後</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/MIGUEL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ミゲル・リヴェラ" src="MIGUEL.png">
+      </div>
+      <h1>ミゲル・リヴェラ</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/MIKE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="マイク・ワゾウスキ" src="MIKE.png">
+      </div>
+      <h1>マイク・ワゾウスキ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+    <a href="./hero/MOANA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="モアナ" src="MOANA.png">
+      </div>
+      <h1>モアナ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>中</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/MR_INCREDIBLE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Mr.インクレディブル" src="MR_INCREDIBLE.png">
+      </div>
+      <h1>Mr.インクレディブル</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/NICK_WILDE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ニック・ワイルド" src="NICK_WILDE.png">
+      </div>
+      <h1>ニック・ワイルド</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/OLAF.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Olaf" src="OLAF.png">
+      </div>
+      <h1>Olaf</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/QUORRA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="クオラ" src="QUORRA.png">
+      </div>
+      <h1>クオラ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/RALPH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ラルフ" src="RALPH.png">
+      </div>
+      <h1>ラルフ</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/REX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="レックス" src="REX.png">
+      </div>
+      <h1>レックス</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SALLY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Sally" src="SALLY.png">
+      </div>
+      <h1>Sally</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/SCAR.htm"><div>
+      <div class="unit-avatar">
+        <img alt="スカー" src="SCAR.png">
+      </div>
+      <h1>スカー</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/SHANK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Shank" src="SHANK.png">
+      </div>
+      <h1>Shank</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>前</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/STITCH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="スティッチ" src="STITCH.png">
+      </div>
+      <h1>スティッチ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SULLEY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="サリーとブー" src="SULLEY.png">
+      </div>
+      <h1>サリーとブー</h1>
+    </div></a>
+    <div>
+        <span>タンク</span>,
+        <span>前</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/TIA_DALMA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ティア・ダルマ" src="TIA_DALMA.png">
+      </div>
+      <h1>ティア・ダルマ</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/URSULA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="アースラ" src="URSULA.png">
+      </div>
+      <h1>アースラ</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>中</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/VANELLOPE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ヴァネロペ" src="VANELLOPE.png">
+      </div>
+      <h1>ヴァネロペ</h1>
+    </div></a>
+    <div>
+        <span>ダメージ</span>,
+        <span>後</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-red">
+    <a href="./hero/VIOLET.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ヴァイオレット" src="VIOLET.png">
+      </div>
+      <h1>ヴァイオレット</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>中</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/WALL_E.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ウォーリー" src="WALL_E.png">
+      </div>
+      <h1>ウォーリー</h1>
+    </div></a>
+    <div>
+        <span>コントロール</span>,
+        <span>中</span>,
+        <span>赤</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-blue">
+    <a href="./hero/WOODY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ウッディ" src="WOODY.png">
+      </div>
+      <h1>ウッディ</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>中</span>,
+        <span>青</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/YAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ヤックス" src="YAX.png">
+      </div>
+      <h1>ヤックス</h1>
+    </div></a>
+    <div>
+        <span>サポート</span>,
+        <span>後</span>,
+        <span>黄</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+</div><!-- unit-brief-list } -->
+</div><!-- container } -->
+</body>
+</html>

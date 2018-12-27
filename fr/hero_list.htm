@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1547971343">
+<link rel="stylesheet" href="../star.css?1547971343">
+<link rel="stylesheet" href="../unit.css?1547971343">
+<title>Disney Heroes: Battle Mode</title>
+<script src="../util.js?1547971343"></script>
+<script>
+var filter = null;
+
+function filterBy(params)
+{
+  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+      .getElementsByClassName("section");
+
+  for (const heroObj of heroObjs)
+  {
+    let display = "";
+
+    for (const p of params)
+    {
+      if (p[1] === "_")
+      {
+        continue;
+      }
+
+      if (-1 === [].indexOf.call(heroObj.classList, "unit-"+p[0]+"-"+p[1]))
+      {
+        display = "none";
+        break;
+      }
+    }
+
+    heroObj.style.display = display;
+  }
+
+  return params;
+}
+
+function init()
+{
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .unit-brief-list"));
+
+  filter = new UrlForm(document.getElementById("unit-filter"), filterBy);
+  filter.init();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">Héros</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">Amis</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">Objets</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Choix de la langue
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/hero_list.htm">Deutsche</a>
+        <a href="../en/hero_list.htm">English</a>
+        <a href="../es/hero_list.htm">Español</a>
+        <a href="../fr/hero_list.htm">Français</a>
+        <a href="../it/hero_list.htm">Italiano</a>
+        <a href="../ja/hero_list.htm">日本語</a>
+        <a href="../ko/hero_list.htm">한국어</a>
+        <a href="../pt/hero_list.htm">Português</a>
+        <a href="../ru/hero_list.htm">русский</a>
+        <a href="../zh-Hans/hero_list.htm">简体中文</a>
+        <a href="../zh-Hant/hero_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+<div class="section">
+  <form id="unit-filter">
+  <div>
+    <input type="radio" name="role" value="_" id="unit-role-all" onchange="filter.update()" checked><label for="unit-role-all">Tous</label>
+    <input type="radio" name="role" value="tank" id="unit-role-tank" onchange="filter.update()"><label for="unit-role-tank">Protecteur</label>
+    <input type="radio" name="role" value="damage" id="unit-role-damage" onchange="filter.update()"><label for="unit-role-damage">Ravageur</label>
+    <input type="radio" name="role" value="support" id="unit-role-support" onchange="filter.update()"><label for="unit-role-support">Soigneur</label>
+    <input type="radio" name="role" value="control" id="unit-role-control" onchange="filter.update()"><label for="unit-role-control">Subjugueur</label>
+  </div>
+  <div>
+    <input type="radio" name="position" value="_" id="unit-position-all" onchange="filter.update()" checked><label for="unit-position-all">Tous</label>
+    <input type="radio" name="position" value="front" id="unit-position-front" onchange="filter.update()"><label for="unit-position-front">Devant</label>
+    <input type="radio" name="position" value="central" id="unit-position-central" onchange="filter.update()"><label for="unit-position-central">Milieu</label>
+    <input type="radio" name="position" value="back" id="unit-position-back" onchange="filter.update()"><label for="unit-position-back">Arrière</label>
+  </div>
+  <div>
+    <input type="radio" name="team" value="_" id="unit-team-all" onchange="filter.update()" checked><label for="unit-team-all">Tous</label>
+    <input type="radio" name="team" value="red" id="unit-team-red" onchange="filter.update()"><label for="unit-team-red">Rouge</label>
+    <input type="radio" name="team" value="yellow" id="unit-team-yellow" onchange="filter.update()"><label for="unit-team-yellow">Jaune</label>
+    <input type="radio" name="team" value="blue" id="unit-team-blue" onchange="filter.update()"><label for="unit-team-blue">Bleu</label>
+  </div>
+  </form>
+</div>
+
+<div class="unit-brief-list"><!-- unit-brief-list { -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/ALADDIN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Aladdin" src="ALADDIN.png">
+      </div>
+      <h1>Aladdin</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/BAYMAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Baymax" src="BAYMAX.png">
+      </div>
+      <h1>Baymax</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/BUZZ.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Buzz l&#39;Éclair" src="BUZZ.png">
+      </div>
+      <h1>Buzz l&#39;Éclair</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/CALHOUN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Calhoun" src="CALHOUN.png">
+      </div>
+      <h1>Calhoun</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/CHIEF_BOGO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Chef Bogo" src="CHIEF_BOGO.png">
+      </div>
+      <h1>Chef Bogo</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/DASH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Flèche" src="DASH.png">
+      </div>
+      <h1>Flèche</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Milieu</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/ELASTIGIRL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Elastigirl" src="ELASTIGIRL.png">
+      </div>
+      <h1>Elastigirl</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Milieu</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/ELSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Elsa" src="ELSA.png">
+      </div>
+      <h1>Elsa</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-blue">
+    <a href="./hero/EMPEROR_ZURG.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Empereur Zurg" src="EMPEROR_ZURG.png">
+      </div>
+      <h1>Empereur Zurg</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Milieu</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/EVE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="EVE" src="EVE.png">
+      </div>
+      <h1>EVE</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/FELIX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Felix" src="FELIX.png">
+      </div>
+      <h1>Felix</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-yellow">
+    <a href="./hero/FINNICK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Finnick" src="FINNICK.png">
+      </div>
+      <h1>Finnick</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Milieu</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-red">
+    <a href="./hero/FROZONE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Frozone" src="FROZONE.png">
+      </div>
+      <h1>Frozone</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/GENIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Génie" src="GENIE.png">
+      </div>
+      <h1>Génie</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Milieu</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-central unit-team-blue">
+    <a href="./hero/HADES.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Hadès" src="HADES.png">
+      </div>
+      <h1>Hadès</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Milieu</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/HECTOR_BARBOSSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Hector Barbossa" src="HECTOR_BARBOSSA.png">
+      </div>
+      <h1>Hector Barbossa</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/HIRO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Hiro Hamada" src="HIRO.png">
+      </div>
+      <h1>Hiro Hamada</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Milieu</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/JACK_JACK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Jack-Jack" src="JACK_JACK.png">
+      </div>
+      <h1>Jack-Jack</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/JACK_SKELLINGTON.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Jack Skellington" src="JACK_SKELLINGTON.png">
+      </div>
+      <h1>Jack Skellington</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+    <a href="./hero/JACK_SPARROW.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Jack Sparrow" src="JACK_SPARROW.png">
+      </div>
+      <h1>Jack Sparrow</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/JESSIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Jessie" src="JESSIE.png">
+      </div>
+      <h1>Jessie</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-yellow">
+    <a href="./hero/JUDY_HOPPS.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Judy Hopps" src="JUDY_HOPPS.png">
+      </div>
+      <h1>Judy Hopps</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Milieu</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/KEVIN_FLYNN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Kevin Flynn" src="KEVIN_FLYNN.png">
+      </div>
+      <h1>Kevin Flynn</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/MALEFICENT.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Maléfique" src="MALEFICENT.png">
+      </div>
+      <h1>Maléfique</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/MAUI.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Maui" src="MAUI.png">
+      </div>
+      <h1>Maui</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/MERIDA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Mérida" src="MERIDA.png">
+      </div>
+      <h1>Mérida</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/MICKEY_MOUSE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Mickey Mouse" src="MICKEY_MOUSE.png">
+      </div>
+      <h1>Mickey Mouse</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Arrière</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/MIGUEL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Miguel Rivera" src="MIGUEL.png">
+      </div>
+      <h1>Miguel Rivera</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/MIKE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Bob Rasowski" src="MIKE.png">
+      </div>
+      <h1>Bob Rasowski</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+    <a href="./hero/MOANA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Vaiana" src="MOANA.png">
+      </div>
+      <h1>Vaiana</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Milieu</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/MR_INCREDIBLE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="M. Indestructible" src="MR_INCREDIBLE.png">
+      </div>
+      <h1>M. Indestructible</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/NICK_WILDE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Nick Wilde" src="NICK_WILDE.png">
+      </div>
+      <h1>Nick Wilde</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/OLAF.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Olaf" src="OLAF.png">
+      </div>
+      <h1>Olaf</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/QUORRA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Quorra" src="QUORRA.png">
+      </div>
+      <h1>Quorra</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/RALPH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Ralph" src="RALPH.png">
+      </div>
+      <h1>Ralph</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/REX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Rex" src="REX.png">
+      </div>
+      <h1>Rex</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SALLY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Sally" src="SALLY.png">
+      </div>
+      <h1>Sally</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/SCAR.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Scar" src="SCAR.png">
+      </div>
+      <h1>Scar</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/SHANK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Shank" src="SHANK.png">
+      </div>
+      <h1>Shank</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Devant</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/STITCH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Stitch" src="STITCH.png">
+      </div>
+      <h1>Stitch</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SULLEY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Sulli et Bouh" src="SULLEY.png">
+      </div>
+      <h1>Sulli et Bouh</h1>
+    </div></a>
+    <div>
+        <span>Protecteur</span>,
+        <span>Devant</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/TIA_DALMA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Tia Dalma" src="TIA_DALMA.png">
+      </div>
+      <h1>Tia Dalma</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/URSULA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Ursula" src="URSULA.png">
+      </div>
+      <h1>Ursula</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Milieu</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/VANELLOPE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Vanellope" src="VANELLOPE.png">
+      </div>
+      <h1>Vanellope</h1>
+    </div></a>
+    <div>
+        <span>Ravageur</span>,
+        <span>Arrière</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-red">
+    <a href="./hero/VIOLET.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Violette" src="VIOLET.png">
+      </div>
+      <h1>Violette</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Milieu</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/WALL_E.htm"><div>
+      <div class="unit-avatar">
+        <img alt="WALL-E" src="WALL_E.png">
+      </div>
+      <h1>WALL-E</h1>
+    </div></a>
+    <div>
+        <span>Subjugueur</span>,
+        <span>Milieu</span>,
+        <span>Rouge</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-blue">
+    <a href="./hero/WOODY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Woody" src="WOODY.png">
+      </div>
+      <h1>Woody</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Milieu</span>,
+        <span>Bleu</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/YAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Yax" src="YAX.png">
+      </div>
+      <h1>Yax</h1>
+    </div></a>
+    <div>
+        <span>Soigneur</span>,
+        <span>Arrière</span>,
+        <span>Jaune</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+</div><!-- unit-brief-list } -->
+</div><!-- container } -->
+</body>
+</html>

@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1547971355">
+<link rel="stylesheet" href="../star.css?1547971355">
+<link rel="stylesheet" href="../unit.css?1547971355">
+<title>Disney Heroes: Battle Mode - Friends</title>
+<script src="../util.js?1547971355"></script>
+<script src="../unit.js?1547971355"></script>
+<script>
+var calculator= null;
+
+function calculateBy(params)
+{
+  calcForm(this.objForm);
+  return params;
+}
+
+function init()
+{
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .section:nth-child(2)"));
+
+  calculator = new UrlForm(
+    document.getElementById("unit-disk"),
+    calculateBy);
+  calculator.init();
+}
+</script>
+
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">Heroes</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">Friends</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">Items</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/disk_list.htm">Deutsche</a>
+        <a href="../en/disk_list.htm">English</a>
+        <a href="../es/disk_list.htm">Español</a>
+        <a href="../fr/disk_list.htm">Français</a>
+        <a href="../it/disk_list.htm">Italiano</a>
+        <a href="../ja/disk_list.htm">日本語</a>
+        <a href="../ko/disk_list.htm">한국어</a>
+        <a href="../pt/disk_list.htm">Português</a>
+        <a href="../ru/disk_list.htm">русский</a>
+        <a href="../zh-Hans/disk_list.htm">简体中文</a>
+        <a href="../zh-Hant/disk_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+  <div class="section">
+    <form id="unit-disk" onchange="calculator.update()">
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name"><label for="unit-disk-eval">Use<label></span>
+      <span class="unit-pair-val">
+        <input name="eval" id="unit-disk-eval" type="checkbox">
+      </span>
+      <span class="unit-pair-name">Level</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="60" value="60">
+      </span>
+      <span class="unit-pair-name">Stars</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    </form>
+  </div>
+
+  <table class="section">
+    <tr>
+      <th>Heroes</th>
+      <th>Friends</th>
+      <th>Level</th>
+      <th>Disk</th>
+    </tr>
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/RALPH.htm">Ralph</a>
+      </td>
+      <td>
+        <a href="./hero/VANELLOPE.htm">Vanellope</a>
+      </td>
+      <td>20</td>
+      <td>
+        <a id="RALPH_LONGER_STUNS"><p>Piece of Cake</p></a>
+        <blockquote>Boosts Stuns</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="9k" data-format="None" data-checkbox="eval" form="unit-disk">9k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Stun Length</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ELASTIGIRL.htm">Elastigirl</a>
+      </td>
+      <td>
+        <a href="./hero/VANELLOPE.htm">Vanellope</a>
+      </td>
+      <td>27</td>
+      <td>
+        <a id="ELASTIGIRL_BACKLINE"><p>Tough Cookie</p></a>
+        <blockquote>&#34;Iron Fist&#34; Skill Hits Backline Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="60k" data-format="None" data-checkbox="eval" form="unit-disk">60k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/ELASTIGIRL.htm#WHITE" class="rarity-white">Iron Fist</a><span>&#34; now targets furthest enemy.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Energy Gain</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="6s" data-format="None" data-checkbox="eval" form="unit-disk">6s</output></span><span> </span><span class="unit-expr-misc">Reality Negation</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/YAX.htm">Yax</a>
+      </td>
+      <td>
+        <a href="./hero/FROZONE.htm">Frozone</a>
+      </td>
+      <td>29</td>
+      <td>
+        <a id="YAX_DAMAGE"><p>Chill Yax</p></a>
+        <blockquote>Boosts Team Damage</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/YAX.htm#WHITE" class="rarity-white">Natural Healing</a><span>&#34; gives whole team +</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> basic damage, stacking with each use.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Conservation</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/VANELLOPE.htm">Vanellope</a>
+      </td>
+      <td>
+        <a href="./hero/DASH.htm">Dash</a>
+      </td>
+      <td>31</td>
+      <td>
+        <a id="VANELLOPE_SLOW"><p>Pulled A Fast One</p></a>
+        <blockquote>Boosts damage vs. Slowed Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span class="unit-expr-s"><output for="s k bd sp" data-formula="12s%" data-format="%.1" data-checkbox="eval" form="unit-disk">12s%</output></span><span> more damage to slowed enemies.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ELASTIGIRL.htm">Elastigirl</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_JACK.htm">Jack-Jack</a>
+      </td>
+      <td>33</td>
+      <td>
+        <a id="ELASTIGIRL_DEBUFF"><p>Drool&#39;s Errand</p></a>
+        <blockquote>Lowers Reality on Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="60k" data-format="None" data-checkbox="eval" form="unit-disk">60k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Enemies damaged lose </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="19s%" data-format="%" data-checkbox="eval" form="unit-disk">19s%</output></span><span> Reality for </span><span class="unit-expr-misc">20</span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/YAX.htm">Yax</a>
+      </td>
+      <td>
+        <a href="./hero/FINNICK.htm">Finnick</a>
+      </td>
+      <td>35</td>
+      <td>
+        <a id="YAX_SLOW"><p>Musk Yax</p></a>
+        <blockquote>Boosts &#34;Chill Vibes&#34; Skill</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="10k" data-format="None" data-checkbox="eval" form="unit-disk">10k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/YAX.htm#PURPLE" class="rarity-purple">Chill Vibes</a><span>&#34; lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1.5s" data-format=".1" data-checkbox="eval" form="unit-disk">1.5s</output></span><span> seconds longer.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/VIOLET.htm">Violet</a>
+      </td>
+      <td>
+        <a href="./hero/RALPH.htm">Ralph</a>
+      </td>
+      <td>37</td>
+      <td>
+        <a id="VIOLET_STUN"><p>Wrecking Ball</p></a>
+        <blockquote>Shields Stun Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>When Violet&#39;s shields expire they stun enemies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.4s" data-format=".1" data-checkbox="eval" form="unit-disk">0.4s</output></span><span> seconds.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>splash</dt><dd>500</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FROZONE.htm">Frozone</a>
+      </td>
+      <td>
+        <a href="./hero/MR_INCREDIBLE.htm">Mr. Incredible</a>
+      </td>
+      <td>39</td>
+      <td>
+        <a id="FROZONE_TANKS"><p>Bowling Night</p></a>
+        <blockquote>Give Bonus to Tank Allies</blockquote>
+        <ul>
+          <li><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span> heroes on team gain </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Armor</span><span>.</span></li>
+          <li><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span> heroes on team gain </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">All Damage Done</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FELIX.htm">Felix</a>
+      </td>
+      <td>
+        <a href="./hero/RALPH.htm">Ralph</a>
+      </td>
+      <td>41</td>
+      <td>
+        <a id="FELIX_ANGER"><p>Rapid Fire Fixin&#39;</p></a>
+        <blockquote>Boosts Healing</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>Gains </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1.5s%" data-format="%.1" data-checkbox="eval" form="unit-disk">1.5s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span><span> for each 10% missing HP.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/NICK_WILDE.htm">Nick Wilde</a>
+      </td>
+      <td>
+        <a href="./hero/YAX.htm">Yax</a>
+      </td>
+      <td>43</td>
+      <td>
+        <a id="NICK_WILDE_CHARM"><p>Wild Flamingo Chase</p></a>
+        <blockquote>Boosts Charm</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>This hero&#39;s charm lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="6s%" data-format="%" data-checkbox="eval" form="unit-disk">6s%</output></span><span> longer.</span></li>
+          <li><span>&#34;</span><a href="./hero/NICK_WILDE.htm#BLUE" class="rarity-blue">Charming Fox</a><span>&#34; has </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="6s%" data-format="%" data-checkbox="eval" form="unit-disk">6s%</output></span><span> shorter cooldown.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FELIX.htm">Felix</a>
+      </td>
+      <td>
+        <a href="./hero/FROZONE.htm">Frozone</a>
+      </td>
+      <td>45</td>
+      <td>
+        <a id="FELIX_FREEZE"><p>Golden Snow Cone</p></a>
+        <blockquote>Freezes Foes</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format="None" data-checkbox="eval" form="unit-disk">30k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Every </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="7-s" data-format="None" data-checkbox="eval" form="unit-disk">7-s</output></span><span> basic attacks, Felix freezes the closest enemy for </span><span class="unit-expr-misc">3.5</span><span> seconds.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>splash</dt><dd>500</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MR_INCREDIBLE.htm">Mr. Incredible</a>
+      </td>
+      <td>
+        <a href="./hero/ELASTIGIRL.htm">Elastigirl</a>
+      </td>
+      <td>46</td>
+      <td>
+        <a id="MR_INCREDIBLE_ARMOR_SHREAD"><p>Date Night</p></a>
+        <blockquote>Shreds Enemy Armor</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>Basic attacks reduce armor by </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span>. Stacks up to </span><span class="unit-expr-misc">3</span><span> times.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/CALHOUN.htm">Calhoun</a>
+      </td>
+      <td>
+        <a href="./hero/VIOLET.htm">Violet</a>
+      </td>
+      <td>47</td>
+      <td>
+        <a id="CALHOUN_SHIELDS"><p>Another Castle</p></a>
+        <blockquote>Shields Allies</blockquote>
+        <ul>
+          <li><span class="unit-expr-k"><output for="s k bd sp" data-formula="450k" data-format="None" data-checkbox="eval" form="unit-disk">450k</output></span><span> HP shield to allies at start of each wave. </span></li>
+          <li><span> Shield lasts for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10+5s" data-format="None" data-checkbox="eval" form="unit-disk">10+5s</output></span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/DASH.htm">Dash</a>
+      </td>
+      <td>
+        <a href="./hero/FINNICK.htm">Finnick</a>
+      </td>
+      <td>48</td>
+      <td>
+        <a id="DASH_ENERGY"><p>Stray Stereo</p></a>
+        <blockquote>Drains Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Removes </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="2s" data-format="None" data-checkbox="eval" form="unit-disk">2s</output></span><span> energy from an enemy when damaging them.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_JACK.htm">Jack-Jack</a>
+      </td>
+      <td>
+        <a href="./hero/VIOLET.htm">Violet</a>
+      </td>
+      <td>49</td>
+      <td>
+        <a id="JACK_JACK_HEALING_COUNTER"><p>Babe with the Fire Power</p></a>
+        <blockquote>Attacks Faster</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-format="None" data-checkbox="eval" form="unit-disk">50k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FINNICK.htm">Finnick</a>
+      </td>
+      <td>
+        <a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a>
+      </td>
+      <td>50</td>
+      <td>
+        <a id="FINNICK_ENERGY"><p>Final Hustle</p></a>
+        <blockquote>Drains Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Basic attacks remove </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="25s" data-format="None" data-checkbox="eval" form="unit-disk">25s</output></span><span> energy from enemy.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/DASH.htm">Dash</a>
+      </td>
+      <td>
+        <a href="./hero/VIOLET.htm">Violet</a>
+      </td>
+      <td>51</td>
+      <td>
+        <a id="DASH_SHIELD_COUNTER"><p>Homeward Bound</p></a>
+        <blockquote>More Damage to Shielded Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50s%" data-format="%" data-checkbox="eval" form="unit-disk">50s%</output></span><span> more damage to shielded enemies.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a>
+      </td>
+      <td>
+        <a href="./hero/FELIX.htm">Felix</a>
+      </td>
+      <td>52</td>
+      <td>
+        <a id="JUDY_HOPPS_SUPPORT"><p>Deputy Junior</p></a>
+        <blockquote>Boosts &#34;Deputize&#34; Skill</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="100s%" data-format="%" data-checkbox="eval" form="unit-disk">100s%</output></span><span> Basic damage from her Inspire buff per support hero on her team.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/NICK_WILDE.htm">Nick Wilde</a>
+      </td>
+      <td>
+        <a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a>
+      </td>
+      <td>53</td>
+      <td>
+        <a id="NICK_WILDE_SHIELD"><p>Street Art Shuffle</p></a>
+        <blockquote>Shields Allies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Shields first ally for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="12s%" data-format="%" data-checkbox="eval" form="unit-disk">12s%</output></span><span> of Nick&#39;s HP at start of each wave.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/CALHOUN.htm">Calhoun</a>
+      </td>
+      <td>
+        <a href="./hero/FELIX.htm">Felix</a>
+      </td>
+      <td>54</td>
+      <td>
+        <a id="CALHOUN_ENERGY"><p>Power of Love</p></a>
+        <blockquote>Grants Energy on Enemy Defeat</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="80k" data-format="None" data-checkbox="eval" form="unit-disk">80k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="12s%" data-format="%" data-checkbox="eval" form="unit-disk">12s%</output></span><span> </span><span class="unit-expr-misc">Energy Gain</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/CHIEF_BOGO.htm">Chief Bogo</a>
+      </td>
+      <td>
+        <a href="./hero/CALHOUN.htm">Calhoun</a>
+      </td>
+      <td>55</td>
+      <td>
+        <a id="CHIEF_BOGO_CHARGE"><p>Chief Inspector</p></a>
+        <blockquote>Boosts Damage and &#34;Criminal Charge&#34; Skill</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="5k" data-format=".1" data-checkbox="eval" form="unit-disk">5k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>&#34;</span><a href="./hero/CHIEF_BOGO.htm#GREEN" class="rarity-green">Criminal Charge</a><span>&#34; hits multiple enemies, does </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> more damage, and knocks them back farther with each star level.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>knockbackrangeincrease</dt><dd>50s</dd>
+              <dt>splash</dt><dd>100</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FINNICK.htm">Finnick</a>
+      </td>
+      <td>
+        <a href="./hero/NICK_WILDE.htm">Nick Wilde</a>
+      </td>
+      <td>56</td>
+      <td>
+        <a id="FINNICK_VAN"><p>Fight Clubbing</p></a>
+        <blockquote>Boosts &#34;Remote Controller&#34; Skill</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/FINNICK.htm#WHITE" class="rarity-white">Remote Controller</a><span>&#34; does </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="10k" data-format="None" data-checkbox="eval" form="unit-disk">10k</output></span><span> more damage.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="100s" data-format="None" data-checkbox="eval" form="unit-disk">100s</output></span><span> </span><span class="unit-expr-misc">Starting Energy</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="9s%" data-format="%" data-checkbox="eval" form="unit-disk">9s%</output></span><span> </span><span class="unit-expr-misc">Conservation</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_JACK.htm">Jack-Jack</a>
+      </td>
+      <td>
+        <a href="./hero/CHIEF_BOGO.htm">Chief Bogo</a>
+      </td>
+      <td>57</td>
+      <td>
+        <a id="JACK_JACK_AOE_STUN"><p>Bogo Buddies</p></a>
+        <blockquote>&#34;Rock A Bye&#34; Skill Adds AOE Damage and Stun</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="15k" data-format="None" data-checkbox="eval" form="unit-disk">15k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/JACK_JACK.htm#BLUE" class="rarity-blue">Rock A Bye</a><span>&#34; now hits multiple enemies and stuns them for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.1s" data-format=".1" data-checkbox="eval" form="unit-disk">0.1s</output></span><span> second(s).</span>
+            <div><dl class="unit-note inline-list">
+              <dt>splashrange</dt><dd>150</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MR_INCREDIBLE.htm">Mr. Incredible</a>
+      </td>
+      <td>
+        <a href="./hero/DASH.htm">Dash</a>
+      </td>
+      <td>58</td>
+      <td>
+        <a id="MR_INCREDIBLE_WEAK_ALLIES"><p>Training Montage</p></a>
+        <blockquote>Gets Stronger</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>Take </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s%" data-format="%" data-checkbox="eval" form="unit-disk">1s%</output></span><span> less damage for each ally below </span><span class="unit-expr-misc">50%</span><span> HP.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a>
+      </td>
+      <td>
+        <a href="./hero/CHIEF_BOGO.htm">Chief Bogo</a>
+      </td>
+      <td>59</td>
+      <td>
+        <a id="JUDY_HOPPS_REVIVE"><p>Carrot Caper</p></a>
+        <blockquote>Boosts &#34;Play Dead&#34; Skill</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="300k" data-format="None" data-checkbox="eval" form="unit-disk">300k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="60k" data-format="None" data-checkbox="eval" form="unit-disk">60k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>&#34;</span><a href="./hero/JUDY_HOPPS.htm#PURPLE" class="rarity-purple">Play Dead</a><span>&#34; heals an extra </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="500k" data-format="None" data-checkbox="eval" form="unit-disk">500k</output></span><span> HP.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s" data-format="None" data-checkbox="eval" form="unit-disk">1s</output></span><span> second(s) of Invincibility after &#34;</span><a href="./hero/JUDY_HOPPS.htm#PURPLE" class="rarity-purple">Play Dead</a><span>&#34;.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/CHIEF_BOGO.htm">Chief Bogo</a>
+      </td>
+      <td>
+        <a href="./hero/MR_INCREDIBLE.htm">Mr. Incredible</a>
+      </td>
+      <td>60</td>
+      <td>
+        <a id="CHIEF_BOGO_HEALS"><p>Vigilante Justice</p></a>
+        <blockquote>&#34;Serve and Protect&#34; Skill Heals Bogo</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="500k" data-format="None" data-checkbox="eval" form="unit-disk">500k</output></span><span> </span><span class="unit-expr-misc">Shield HP</span></li>
+          <li><span>&#34;</span><a href="./hero/CHIEF_BOGO.htm#WHITE" class="rarity-white">Serve and Protect</a><span>&#34; shield also heals for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="19s%" data-format="%" data-checkbox="eval" form="unit-disk">19s%</output></span><span> of damage taken.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Shield Length</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/WOODY.htm">Woody</a>
+      </td>
+      <td>
+        <a href="./hero/BUZZ.htm">Buzz Lightyear</a>
+      </td>
+      <td>60</td>
+      <td>
+        <a id="WOODY_FAST_ENERGY"><p>Batteries Included</p></a>
+        <blockquote>More Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="100s" data-format="None" data-checkbox="eval" form="unit-disk">100s</output></span><span> Energy when a Bullseyed enemy is KO&#39;d</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JESSIE.htm">Jessie</a>
+      </td>
+      <td>
+        <a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a>
+      </td>
+      <td>61</td>
+      <td>
+        <a id="JESSIE_DODGE"><p>Boot Scoot</p></a>
+        <blockquote>Chance to Dodge</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="250k" data-format="None" data-checkbox="eval" form="unit-disk">250k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>Jessie has a </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> chance to dodge enemy attacks.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/BUZZ.htm">Buzz Lightyear</a>
+      </td>
+      <td>
+        <a href="./hero/EMPEROR_ZURG.htm">Emperor Zurg</a>
+      </td>
+      <td>62</td>
+      <td>
+        <a id="BUZZ_ATTACK_SPEED"><p>World&#39;s Greatest Minion</p></a>
+        <blockquote>More Lasers</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>Gains </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s%" data-format="%" data-checkbox="eval" form="unit-disk">30s%</output></span><span> attack speed each time he uses his &#34;</span><a href="./hero/BUZZ.htm#PURPLE" class="rarity-purple">Power Up</a><span>&#34; Skill. Max </span><span class="unit-expr-misc">3</span><span> times.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SULLEY.htm">Sulley &amp; Boo</a>
+      </td>
+      <td>
+        <a href="./hero/RALPH.htm">Ralph</a>
+      </td>
+      <td>64</td>
+      <td>
+        <a id="SULLEY_STUN_COUNTER"><p>Wreck and Repair</p></a>
+        <blockquote>Counters Stuns With Healing</blockquote>
+        <ul>
+          <li><span>Heals </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="25k" data-format="None" data-checkbox="eval" form="unit-disk">25k</output></span><span> HP when Sulley avoids a stun. </span></li>
+          <li><span> </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> chance to avoid stuns.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a>
+      </td>
+      <td>
+        <a href="./hero/NICK_WILDE.htm">Nick Wilde</a>
+      </td>
+      <td>64</td>
+      <td>
+        <a id="JACK_SPARROW_NORMAL_DAMAGE"><p>One Wilde Night</p></a>
+        <blockquote>&#34;Pirate Code&#34; Increases Team Basic Attack</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/JACK_SPARROW.htm#BLUE" class="rarity-blue">Pirate Code</a><span>&#34; also grants allies </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="81.25k" data-format="None" data-checkbox="eval" form="unit-disk">81.25k</output></span><span> Basic Damage.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3s" data-format="None" data-checkbox="eval" form="unit-disk">3s</output></span><span> </span><span class="unit-expr-misc">Armor Negation</span><span> to allies</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s%" data-format="%" data-checkbox="eval" form="unit-disk">1s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/EVE.htm">EVE</a>
+      </td>
+      <td>
+        <a href="./hero/WALL_E.htm">WALL-E</a>
+      </td>
+      <td>65</td>
+      <td>
+        <a id="EVE_TWO"><p>It Takes Two</p></a>
+        <blockquote>&#34;Shield Directive&#34; Heals and Targets Two Allies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> </span><span class="unit-expr-misc">Shield HP</span></li>
+          <li><span>&#34;</span><a href="./hero/EVE.htm#GREEN" class="rarity-green">Shield Directive</a><span>&#34; shields also heal </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="60k" data-format="None" data-checkbox="eval" form="unit-disk">60k</output></span><span> every second. </span></li>
+          <li><span> </span><a href="./hero/EVE.htm#GREEN" class="rarity-green">Shield Directive</a><span> now shields a 2nd ally for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> of the first shield</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/REX.htm">Rex</a>
+      </td>
+      <td>
+        <a href="./hero/WOODY.htm">Woody</a>
+      </td>
+      <td>66</td>
+      <td>
+        <a id="REX_SHIELD_COUNTER"><p>Partysaurus</p></a>
+        <blockquote>Allies More Effective Against Shields</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span></li>
+          <li><span>Rex&#39;s allies do </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> extra damage to shielded enemies.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/WALL_E.htm">WALL-E</a>
+      </td>
+      <td>
+        <a href="./hero/DASH.htm">Dash</a>
+      </td>
+      <td>67</td>
+      <td>
+        <a id="WALL_E_DISABLES"><p>Rusty Sidekick</p></a>
+        <blockquote>Longer Disables</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="2.5s%" data-format="%.1" data-checkbox="eval" form="unit-disk">2.5s%</output></span><span> </span><span class="unit-expr-misc">Disable Length</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/EMPEROR_ZURG.htm">Emperor Zurg</a>
+      </td>
+      <td>
+        <a href="./hero/REX.htm">Rex</a>
+      </td>
+      <td>68</td>
+      <td>
+        <a id="EMPEROR_ZURG_TANK_COUNTER"><p>#1 Fan</p></a>
+        <blockquote>Stronger Against Tanks</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50s%" data-format="%.1" data-checkbox="eval" form="unit-disk">50s%</output></span><span> more damage to </span><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span> enemies.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MIKE.htm">Mike Wazowski</a>
+      </td>
+      <td>
+        <a href="./hero/SULLEY.htm">Sulley &amp; Boo</a>
+      </td>
+      <td>69</td>
+      <td>
+        <a id="MIKE_STUNS"><p>Top Scarer</p></a>
+        <blockquote>Energy From Stunned Enemies</blockquote>
+        <ul>
+          <li><span>Gain </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s" data-format="None" data-checkbox="eval" form="unit-disk">30s</output></span><span> energy when damaging a stunned enemy.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s%" data-format="%" data-checkbox="eval" form="unit-disk">30s%</output></span><span> </span><span class="unit-expr-misc">Stun Length</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/RALPH.htm">Ralph</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a>
+      </td>
+      <td>71</td>
+      <td>
+        <a id="RALPH_HEALING"><p>Hero&#39;s Duty</p></a>
+        <blockquote>Heals on Stun</blockquote>
+        <ul>
+          <li><span>Heal </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> HP every time an enemy is stunned.</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Improved Healing</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/WOODY.htm">Woody</a>
+      </td>
+      <td>
+        <a href="./hero/JESSIE.htm">Jessie</a>
+      </td>
+      <td>72</td>
+      <td>
+        <a id="WOODY_LASSO_EARLY"><p>My Favorite Deputy</p></a>
+        <blockquote>Uses &#34;Lasso&#34; at the Beginning of Combat</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/WOODY.htm#GREEN" class="rarity-green">Lasso</a><span>&#34; will be used first.</span></li>
+          <li><span>&#34;</span><a href="./hero/WOODY.htm#GREEN" class="rarity-green">Lasso</a><span>&#34; also stuns for for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.75s" data-format=".2" data-checkbox="eval" form="unit-disk">0.75s</output></span><span> seconds</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JESSIE.htm">Jessie</a>
+      </td>
+      <td>
+        <a href="./hero/BUZZ.htm">Buzz Lightyear</a>
+      </td>
+      <td>72</td>
+      <td>
+        <a id="JESSIE_JUMP_EARLY"><p>Falling With Style</p></a>
+        <blockquote>Start Combat With Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="200s" data-format="None" data-checkbox="eval" form="unit-disk">200s</output></span><span> </span><span class="unit-expr-misc">Starting Energy</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/REX.htm">Rex</a>
+      </td>
+      <td>
+        <a href="./hero/MIKE.htm">Mike Wazowski</a>
+      </td>
+      <td>73</td>
+      <td>
+        <a id="REX_DPS_SYNERGY"><p>Ship Shape</p></a>
+        <blockquote>Takes Less Damage for Each Damage Ally</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="500k" data-format="None" data-checkbox="eval" form="unit-disk">500k</output></span><span> </span><span class="unit-expr-misc">Max HP</span><span> per ally whose role is &#34;</span><a href="./hero_list.htm?role=damage" class="unit-expr-misc">Damage</a><span>&#34;</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s%" data-format="%" data-checkbox="eval" form="unit-disk">1s%</output></span><span> </span><span class="unit-expr-misc">Damage Reduction</span><span> per ally whose role is &#34;</span><a href="./hero_list.htm?role=damage" class="unit-expr-misc">Damage</a><span>&#34;</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SULLEY.htm">Sulley &amp; Boo</a>
+      </td>
+      <td>
+        <a href="./hero/WOODY.htm">Woody</a>
+      </td>
+      <td>74</td>
+      <td>
+        <a id="SULLEY_TEAM_HEAL"><p>Play Together</p></a>
+        <blockquote>&#34;Healing Laughter&#34; Heals Allies</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/SULLEY.htm#GREEN" class="rarity-green">Healing Laughter</a><span>&#34; also heals allies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> of amount Sulley heals.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="80k" data-format="None" data-checkbox="eval" form="unit-disk">80k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/EVE.htm">EVE</a>
+      </td>
+      <td>
+        <a href="./hero/CALHOUN.htm">Calhoun</a>
+      </td>
+      <td>74</td>
+      <td>
+        <a id="EVE_DISABLE_SPREAD"><p>Gift from the Heart</p></a>
+        <blockquote>EVE Spreads Disables</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-format="None" data-checkbox="eval" form="unit-disk">50k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/EVE.htm#BLUE" class="rarity-blue">Ion Shock</a><span>&#34; stuns for an extra </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s" data-format="None" data-checkbox="eval" form="unit-disk">1s</output></span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MIKE.htm">Mike Wazowski</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_JACK.htm">Jack-Jack</a>
+      </td>
+      <td>74</td>
+      <td>
+        <a id="MIKE_FANTASTIC_DAMAGE"><p>Peel of Laughter</p></a>
+        <blockquote>Basic Attack Does Fantastic Damage</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> </span><span class="unit-expr-misc">Attack Speed</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/FROZONE.htm">Frozone</a>
+      </td>
+      <td>
+        <a href="./hero/EVE.htm">EVE</a>
+      </td>
+      <td>75</td>
+      <td>
+        <a id="FROZONE_HEALS"><p>Cool as Ice</p></a>
+        <blockquote>&#34;Stay Frosty&#34; Heals Allies</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/FROZONE.htm#WHITE" class="rarity-white">Stay Frosty</a><span>&#34; now also freezes allies below </span><span class="unit-expr-misc">50%</span><span> HP, healing them for </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="650k" data-format="None" data-checkbox="eval" form="unit-disk">650k</output></span><span> HP over </span><span class="unit-expr-misc">2</span><span> second(s).</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="4s" data-format="None" data-checkbox="eval" form="unit-disk">4s</output></span><span> </span><span class="unit-expr-misc">Reality Negation</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/TIA_DALMA.htm">Tia Dalma</a>
+      </td>
+      <td>
+        <a href="./hero/YAX.htm">Yax</a>
+      </td>
+      <td>76</td>
+      <td>
+        <a id="TIA_DALMA_SILENCE"><p>Elephant in the Room</p></a>
+        <blockquote>Silences Damage Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Silence Length</span><span> to allies</span></li>
+          <li><span>Any silenced enemy takes </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format="None" data-checkbox="eval" form="unit-disk">30k</output></span><span> fantastic damage per second</span>
+            <div><dl class="unit-note inline-list">
+              <dt>damagetype</dt><dd>Fantastic</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MERIDA.htm">Merida</a>
+      </td>
+      <td>
+        <a href="./hero/ELASTIGIRL.htm">Elastigirl</a>
+      </td>
+      <td>76</td>
+      <td>
+        <a id="MERIDA_ICE"><p>Junior Super</p></a>
+        <blockquote>Ice Arrows</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Every 3rd arrow Freezes enemies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1 + 0.6s" data-format=".1" data-checkbox="eval" form="unit-disk">1 + 0.6s</output></span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a>
+      </td>
+      <td>
+        <a href="./hero/HECTOR_BARBOSSA.htm">Hector Barbossa</a>
+      </td>
+      <td>77</td>
+      <td>
+        <a id="JACK_SPARROW_HP"><p>Pirated Music</p></a>
+        <blockquote>Increases Max HP, &#34;Avast!&#34; Heals</blockquote>
+        <ul>
+          <li><span>Heals for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="9s%" data-format="%" data-checkbox="eval" form="unit-disk">9s%</output></span><span> of damage done by &#34;</span><a href="./hero/JACK_SPARROW.htm#WHITE" class="rarity-white">Avast!</a><span>&#34;.</span></li>
+          <li><span>&#34;</span><a href="./hero/JACK_SPARROW.htm#GREEN" class="rarity-green">Acting Dodgy</a><span>&#34; has </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="9s%" data-format="%" data-checkbox="eval" form="unit-disk">9s%</output></span><span> shorter cooldown.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="140k" data-format="None" data-checkbox="eval" form="unit-disk">140k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/QUORRA.htm">Quorra</a>
+      </td>
+      <td>
+        <a href="./hero/EVE.htm">EVE</a>
+      </td>
+      <td>77</td>
+      <td>
+        <a id="QUORRA_CRIT"><p>Well Read</p></a>
+        <blockquote>Heal on Crit</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="2s" data-format="None" data-checkbox="eval" form="unit-disk">2s</output></span><span> </span><span class="unit-expr-misc">Normal Crit</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="2s" data-format="None" data-checkbox="eval" form="unit-disk">2s</output></span><span> </span><span class="unit-expr-misc">Fantastic Crit</span></li>
+          <li><span>Heals </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="135k" data-format="None" data-checkbox="eval" form="unit-disk">135k</output></span><span> HP every time this hero Crits.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/WALL_E.htm">WALL-E</a>
+      </td>
+      <td>
+        <a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a>
+      </td>
+      <td>78</td>
+      <td>
+        <a id="WALL_E_MAX_ENERGY"><p>Legacy Hardware</p></a>
+        <blockquote>More Team Energy Storage</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="200s" data-format="None" data-checkbox="eval" form="unit-disk">200s</output></span><span> </span><span class="unit-expr-misc">Max Energy</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/TIA_DALMA.htm">Tia Dalma</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a>
+      </td>
+      <td>78</td>
+      <td>
+        <a id="TIA_DALMA_CHARM"><p>Mystic Mixture</p></a>
+        <blockquote>Charm Damages</blockquote>
+        <ul>
+          <li><span>This hero&#39;s charm lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> longer.</span></li>
+          <li><span>&#34;</span><a href="./hero/TIA_DALMA.htm#GREEN" class="rarity-green">Mystic Charm</a><span>&#34; deals </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> fantastic damage per second to enemies near charmed enemy.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>damagetype</dt><dd>Fantastic</dd>
+              <dt>splash</dt><dd>150</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/BUZZ.htm">Buzz Lightyear</a>
+      </td>
+      <td>
+        <a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a>
+      </td>
+      <td>79</td>
+      <td>
+        <a id="BUZZ_SHIELD_ALLY"><p>Grid Energy</p></a>
+        <blockquote>Shields Allies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/BUZZ.htm#GREEN" class="rarity-green">Anti-Gravity Cage</a><span>&#34; will instead Shield an ally for </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="1100k" data-format="None" data-checkbox="eval" form="unit-disk">1100k</output></span><span> HP if below </span><span class="unit-expr-misc">50%</span><span> HP.</span></li>
+          <li><span>&#34;</span><a href="./hero/BUZZ.htm#GREEN" class="rarity-green">Anti-Gravity Cage</a><span>&#34; has </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> shorter cooldown.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HECTOR_BARBOSSA.htm">Hector Barbossa</a>
+      </td>
+      <td>
+        <a href="./hero/TIA_DALMA.htm">Tia Dalma</a>
+      </td>
+      <td>79</td>
+      <td>
+        <a id="HECTOR_BARBOSSA_STUDY"><p>Hold Court</p></a>
+        <blockquote>Study at Combat Start</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="5k" data-format=".1" data-checkbox="eval" form="unit-disk">5k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>Studies enemies at the start of combat for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s" data-format="None" data-checkbox="eval" form="unit-disk">1s</output></span><span> seconds</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/QUORRA.htm">Quorra</a>
+      </td>
+      <td>
+        <a href="./hero/BUZZ.htm">Buzz Lightyear</a>
+      </td>
+      <td>80</td>
+      <td>
+        <a id="QUORRA_SHIELD"><p>Surge Protector</p></a>
+        <blockquote>Start of Combat Shield</blockquote>
+        <ul>
+          <li><span>Quorra gains a shield equal to </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="40s%" data-format="%" data-checkbox="eval" form="unit-disk">40s%</output></span><span> of the damage done by </span><a href="./hero/QUORRA.htm#GREEN" class="rarity-green">Light Cycle</a><span> for </span><span class="unit-expr-misc">20</span><span> seconds.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a>
+      </td>
+      <td>
+        <a href="./hero/QUORRA.htm">Quorra</a>
+      </td>
+      <td>80</td>
+      <td>
+        <a id="KEVIN_FLYNN_SHIELD"><p>Sweet Glitch</p></a>
+        <blockquote>Better Shields</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="40s%" data-format="%" data-checkbox="eval" form="unit-disk">40s%</output></span><span> </span><span class="unit-expr-misc">Shield HP</span></li>
+          <li><span>&#34;</span><a href="./hero/KEVIN_FLYNN.htm#BLUE" class="rarity-blue">Data Shield</a><span>&#34; grants a </span><span class="unit-expr-misc">20%</span><span> chance to avoid disables</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/VANELLOPE.htm">Vanellope</a>
+      </td>
+      <td>
+        <a href="./hero/MERIDA.htm">Merida</a>
+      </td>
+      <td>82</td>
+      <td>
+        <a id="VANELLOPE_BACKLINE"><p>Ultimate Princess</p></a>
+        <blockquote>&#34;Minty Fresh&#34; More Damage; Shorter Cooldown</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval" form="unit-disk">20k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/VANELLOPE.htm#BLUE" class="rarity-blue">Minty Fresh</a><span>&#34; does </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> more damage for each 10% HP target is missing.</span></li>
+          <li><span>&#34;</span><a href="./hero/VANELLOPE.htm#BLUE" class="rarity-blue">Minty Fresh</a><span>&#34; has </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> shorter cooldown.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/VIOLET.htm">Violet</a>
+      </td>
+      <td>
+        <a href="./hero/MERIDA.htm">Merida</a>
+      </td>
+      <td>83</td>
+      <td>
+        <a id="VIOLET_SHIELDS"><p>Investigative Journalism</p></a>
+        <blockquote>Increased Shield Length and HP</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="12s%" data-format="%" data-checkbox="eval" form="unit-disk">12s%</output></span><span> </span><span class="unit-expr-misc">Shield HP</span><span> to allies</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="12s%" data-format="%" data-checkbox="eval" form="unit-disk">12s%</output></span><span> </span><span class="unit-expr-misc">Shield Length</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MERIDA.htm">Merida</a>
+      </td>
+      <td>
+        <a href="./hero/CHIEF_BOGO.htm">Chief Bogo</a>
+      </td>
+      <td>83</td>
+      <td>
+        <a id="MERIDA_FIRE"><p>Bullheaded Redhead</p></a>
+        <blockquote>Fire Arrows</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s" data-format="None" data-checkbox="eval" form="unit-disk">5s</output></span><span> </span><span class="unit-expr-misc">Normal Crit</span></li>
+          <li><span>Every 3rd arrow burns enemies for </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="400k" data-format="None" data-checkbox="eval" form="unit-disk">400k</output></span><span> damage over 3 seconds.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>damagetype</dt><dd>Normal</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HECTOR_BARBOSSA.htm">Hector Barbossa</a>
+      </td>
+      <td>
+        <a href="./hero/STITCH.htm">Stitch</a>
+      </td>
+      <td>84</td>
+      <td>
+        <a id="HECTOR_BARBOSSA_SLOW"><p>Stowaway</p></a>
+        <blockquote>More Chain Shot</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Now every 2nd and 3rd shot is a chain shot ; &#34;</span><a href="./hero/HECTOR_BARBOSSA.htm#BLUE" class="rarity-blue">Chain Shot</a><span>&#34; slow lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="100s%" data-format="%" data-checkbox="eval" form="unit-disk">100s%</output></span><span> longer</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MAUI.htm">Maui</a>
+      </td>
+      <td>
+        <a href="./hero/MOANA.htm">Moana</a>
+      </td>
+      <td>84</td>
+      <td>
+        <a id="MAUI_HP"><p>Master Navigator</p></a>
+        <blockquote>More HP For Every Tank</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="125k" data-format="None" data-checkbox="eval" form="unit-disk">125k</output></span><span> </span><span class="unit-expr-misc">Max HP</span><span> per ally whose role is &#34;</span><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span>&#34;</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1.25s%" data-format="%.2" data-checkbox="eval" form="unit-disk">1.25s%</output></span><span> </span><span class="unit-expr-misc">Max HP</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/STITCH.htm">Stitch</a>
+      </td>
+      <td>
+        <a href="./hero/MAUI.htm">Maui</a>
+      </td>
+      <td>85</td>
+      <td>
+        <a id="STITCH_SLOW"><p>Anchor&#39;s Away!</p></a>
+        <blockquote>Stronger Slow</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/STITCH.htm#GREEN" class="rarity-green">Slobber</a><span>&#34; slows </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="14s%" data-format="%" data-checkbox="eval" form="unit-disk">14s%</output></span><span> more.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MOANA.htm">Moana</a>
+      </td>
+      <td>
+        <a href="./hero/MERIDA.htm">Merida</a>
+      </td>
+      <td>85</td>
+      <td>
+        <a id="MOANA_JUMP"><p>Friends of a Feather</p></a>
+        <blockquote>Jump Earlier, Farther</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>&#34;</span><a href="./hero/MOANA.htm#GREEN" class="rarity-green">Into the Fray</a><span>&#34; jumps at furthest enemy. ; &#34;</span><a href="./hero/MOANA.htm#GREEN" class="rarity-green">Into the Fray</a><span>&#34; triggers when below </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50 + 5s%" data-format="%" data-checkbox="eval" form="unit-disk">50 + 5s%</output></span><span> HP.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ALADDIN.htm">Aladdin</a>
+      </td>
+      <td>
+        <a href="./hero/GENIE.htm">Genie</a>
+      </td>
+      <td>86</td>
+      <td>
+        <a id="ALADDIN_REGEN"><p>When You Wish</p></a>
+        <blockquote>Health Regeneration Once Per Fight</blockquote>
+        <ul>
+          <li><span>Aladdin regenerates </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> HP per second when he reaches </span><span class="unit-expr-misc">40%</span><span> of his max HP for </span><span class="unit-expr-misc">5</span><span> seconds </span></li>
+          <li><span> Aladdin becomes invincible for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.5s" data-format=".1" data-checkbox="eval" form="unit-disk">0.5s</output></span><span> seconds when he reaches </span><span class="unit-expr-misc">40%</span><span> of his max HP. ; This effect can only occur once per battle.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/BAYMAX.htm">Baymax</a>
+      </td>
+      <td>
+        <a href="./hero/WALL_E.htm">WALL-E</a>
+      </td>
+      <td>87</td>
+      <td>
+        <a id="BAYMAX_SHIELD"><p>Happy Go Lucky</p></a>
+        <blockquote>Shields Give Armor; Better Shields</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Shield HP</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Shield Length</span></li>
+          <li><span>&#34;</span><a href="./hero/BAYMAX.htm#PURPLE" class="rarity-purple">Optimized Armor</a><span>&#34; also grants allies </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> Armor.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/EMPEROR_ZURG.htm">Emperor Zurg</a>
+      </td>
+      <td>
+        <a href="./hero/HIRO.htm">Hiro Hamada</a>
+      </td>
+      <td>88</td>
+      <td>
+        <a id="EMPEROR_ZURG_ENERGY_TO_ALLY"><p>Tools of Conquest</p></a>
+        <blockquote>Share Energy With Ally</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="12k" data-format="None" data-checkbox="eval" form="unit-disk">12k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span><span> to allies</span></li>
+          <li><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval" form="unit-disk">5s%</output></span><span> of Energy Gain is also given to an ally.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/GENIE.htm">Genie</a>
+      </td>
+      <td>
+        <a href="./hero/MIKE.htm">Mike Wazowski</a>
+      </td>
+      <td>88</td>
+      <td>
+        <a id="GENIE_SHIELD"><p>Strike Rich</p></a>
+        <blockquote>First Wish Grants Shield</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="145k" data-format="None" data-checkbox="eval" form="unit-disk">145k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>The first wish of &#34;</span><a href="./hero/GENIE.htm#WHITE" class="rarity-white">Three Wishes</a><span>&#34; also grants a shield equal to </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="150s%" data-format="%" data-checkbox="eval" form="unit-disk">150s%</output></span><span> of Genie&#39;s Skill Power that lasts </span><span class="unit-expr-misc">20</span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a>
+      </td>
+      <td>
+        <a href="./hero/BAYMAX.htm">Baymax</a>
+      </td>
+      <td>89</td>
+      <td>
+        <a id="KEVIN_FLYNN_HEAL"><p>Old School Diagnostic</p></a>
+        <blockquote>&#34;Power Cleanse&#34; Heals Allies</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/KEVIN_FLYNN.htm#WHITE" class="rarity-white">Power Cleanse</a><span>&#34; Heals </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="125k" data-format="None" data-checkbox="eval" form="unit-disk">125k</output></span><span> HP over </span><span class="unit-expr-misc">6</span><span> seconds</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50s" data-format="None" data-checkbox="eval" form="unit-disk">50s</output></span><span> </span><span class="unit-expr-misc">Starting Energy</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HIRO.htm">Hiro Hamada</a>
+      </td>
+      <td>
+        <a href="./hero/BAYMAX.htm">Baymax</a>
+      </td>
+      <td>89</td>
+      <td>
+        <a id="HIRO_SUMMON"><p>Robot Mods</p></a>
+        <blockquote>Megabot Shield</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="70s" data-format="None" data-checkbox="eval" form="unit-disk">70s</output></span><span> </span><span class="unit-expr-misc">Starting Energy</span></li>
+          <li><span>Hiro&#39;s Megabot starts with a </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> HP Shield that lasts </span><span class="unit-expr-misc">10</span><span> seconds </span></li>
+          <li><span> Hiro&#39;s Megabot gets +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s%" data-format="%" data-checkbox="eval" form="unit-disk">30s%</output></span><span> Attack Speed while shielded from any source.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MAUI.htm">Maui</a>
+      </td>
+      <td>
+        <a href="./hero/GENIE.htm">Genie</a>
+      </td>
+      <td>90</td>
+      <td>
+        <a id="MAUI_BITE"><p>World&#39;s Stage</p></a>
+        <blockquote>Bite Steals Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="200k" data-format="None" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/MAUI.htm#WHITE" class="rarity-white">Shark Bite</a><span>&#34; steals </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> of the target&#39;s energy.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MIGUEL.htm">Miguel Rivera</a>
+      </td>
+      <td>
+        <a href="./hero/JESSIE.htm">Jessie</a>
+      </td>
+      <td>90</td>
+      <td>
+        <a id="MIGUEL_HEAL"><p>Lost Dog Found</p></a>
+        <blockquote>&#34;Serenade&#34; Grants Attack Speed</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/MIGUEL.htm#PURPLE" class="rarity-purple">Serenade</a><span>&#34; also grants +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> attack speed per Note in the battle.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="15k" data-format="None" data-checkbox="eval" form="unit-disk">15k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HADES.htm">Hades</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a>
+      </td>
+      <td>91</td>
+      <td>
+        <a id="HADES_TANK"><p>Crossbones</p></a>
+        <blockquote>Bonus HP to Tank Allies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="310k" data-format="None" data-checkbox="eval" form="unit-disk">310k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span> heroes on team gain </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="7s%" data-format="%" data-checkbox="eval" form="unit-disk">7s%</output></span><span> </span><span class="unit-expr-misc">Max HP</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MICKEY_MOUSE.htm">Mickey Mouse</a>
+      </td>
+      <td>
+        <a href="./hero/SULLEY.htm">Sulley &amp; Boo</a>
+      </td>
+      <td>91</td>
+      <td>
+        <a id="MICKEY_MOUSE_HEALING"><p>Lettermouse Jacket</p></a>
+        <blockquote>Improved Healing</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> </span><span class="unit-expr-misc">Improved Healing</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MOANA.htm">Moana</a>
+      </td>
+      <td>
+        <a href="./hero/MICKEY_MOUSE.htm">Mickey Mouse</a>
+      </td>
+      <td>92</td>
+      <td>
+        <a id="MOANA_SHIELD"><p>Day at the Beach</p></a>
+        <blockquote>&#34;Oceanic Shield&#34; Also Shields Ally</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>&#34;</span><a href="./hero/MOANA.htm#WHITE" class="rarity-white">Oceanic Shield</a><span>&#34; also grants the shield to weakest ally that has </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20 + 10s%" data-format="%" data-checkbox="eval" form="unit-disk">20 + 10s%</output></span><span> HP of the first shield.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MALEFICENT.htm">Maleficent</a>
+      </td>
+      <td>
+        <a href="./hero/URSULA.htm">Ursula</a>
+      </td>
+      <td>92</td>
+      <td>
+        <a id="MALEFICENT_DRAIN"><p>Shell Game</p></a>
+        <blockquote>&#34;Fog of Doom&#34; Drains Energy</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/MALEFICENT.htm#BLUE" class="rarity-blue">Fog of Doom</a><span>&#34; also removes </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50s" data-format="None" data-checkbox="eval" form="unit-disk">50s</output></span><span> energy from enemies</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MICKEY_MOUSE.htm">Mickey Mouse</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a>
+      </td>
+      <td>92</td>
+      <td>
+        <a id="MICKEY_MOUSE_DPS"><p>Dark Chocolate</p></a>
+        <blockquote>Damage Allies Get Bonuses</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><a href="./hero_list.htm?role=damage" class="unit-expr-misc">Damage</a><span> heroes on team gain </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-format="None" data-checkbox="eval" form="unit-disk">100k</output></span><span> </span><span class="unit-expr-misc">Max HP</span><span>.</span></li>
+          <li><span>Damage role Allies receive +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> Bonus Damage and Regen from &#34;</span><a href="./hero/MICKEY_MOUSE.htm#WHITE" class="rarity-white">Team Cheer</a><span>&#34; and &#34;</span><a href="./hero/MICKEY_MOUSE.htm#PURPLE" class="rarity-purple">Oh Boy!</a><span>&#34;</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SCAR.htm">Scar</a>
+      </td>
+      <td>
+        <a href="./hero/MALEFICENT.htm">Maleficent</a>
+      </td>
+      <td>93</td>
+      <td>
+        <a id="SCAR_INVIS"><p>A Thorn By Any Other Name</p></a>
+        <blockquote>Invisibility at Low Health</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="80k" data-format="None" data-checkbox="eval" form="unit-disk">80k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>Scar activates &#34;</span><a href="./hero/SCAR.htm#BLUE" class="rarity-blue">Be Prepared</a><span>&#34; and Prowls one additional time per wave when he reaches </span><span class="unit-expr-misc">25%</span><span> of his max HP. ; This Prowl lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3 + 1.5s" data-format=".1" data-checkbox="eval" form="unit-disk">3 + 1.5s</output></span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/URSULA.htm">Ursula</a>
+      </td>
+      <td>
+        <a href="./hero/HADES.htm">Hades</a>
+      </td>
+      <td>94</td>
+      <td>
+        <a id="URSULA_ENERGY"><p>Signing Bonus</p></a>
+        <blockquote>&#34;Something For Nothing&#34; Gives Allies Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-format="None" data-checkbox="eval" form="unit-disk">50k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span class="unit-expr-s"><output for="s k bd sp" data-formula="40s%" data-format="%" data-checkbox="eval" form="unit-disk">40s%</output></span><span> of energy blocked by &#34;</span><a href="./hero/URSULA.htm#PURPLE" class="rarity-purple">Something For Nothing</a><span>&#34; is distributed to Ursula&#39;s allies.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ALADDIN.htm">Aladdin</a>
+      </td>
+      <td>
+        <a href="./hero/SHANK.htm">Shank</a>
+      </td>
+      <td>95</td>
+      <td>
+        <a id="ALADDIN_SPEED"><p>Need for Speed</p></a>
+        <blockquote>&#34;Sabre Slash&#34; Increases Attack Speed</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="70k" data-format="None" data-checkbox="eval" form="unit-disk">70k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>&#34;</span><a href="./hero/ALADDIN.htm#WHITE" class="rarity-white">Sabre Slash</a><span>&#34; causes Aladdin&#39;s attack speed to increase by </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s%" data-format="%" data-checkbox="eval" form="unit-disk">30s%</output></span><span> for </span><span class="unit-expr-misc">6</span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/URSULA.htm">Ursula</a>
+      </td>
+      <td>
+        <a href="./hero/TIA_DALMA.htm">Tia Dalma</a>
+      </td>
+      <td>95</td>
+      <td>
+        <a id="URSULA_CONTROL"><p>Crab Mentality</p></a>
+        <blockquote>Starting Energy Per Control Ally</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="40s" data-format="None" data-checkbox="eval" form="unit-disk">40s</output></span><span> energy on the first wave of combat for every &#34;</span><a href="./hero_list.htm?role=control" class="unit-expr-misc">Control</a><span>&#34; ally.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SHANK.htm">Shank</a>
+      </td>
+      <td>
+        <a href="./hero/ELASTIGIRL.htm">Elastigirl</a>
+      </td>
+      <td>95</td>
+      <td>
+        <a id="SHANK_ENERGY"><p>Lockdown</p></a>
+        <blockquote>Build-up More Energy</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="7s%" data-format="%" data-checkbox="eval" form="unit-disk">7s%</output></span><span> </span><span class="unit-expr-misc">Energy Gain</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="120k" data-format="None" data-checkbox="eval" form="unit-disk">120k</output></span><span> more Damage negated by </span><a href="./hero/SHANK.htm#WHITE" class="rarity-white">Final Lap</a><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MIGUEL.htm">Miguel Rivera</a>
+      </td>
+      <td>
+        <a href="./hero/ELSA.htm">Elsa</a>
+      </td>
+      <td>96</td>
+      <td>
+        <a id="MIGUEL_FREEZE"><p>Frozen Melody</p></a>
+        <blockquote>&#34;Flatten&#34; Freezes; Frozen Enemies Lose Armor</blockquote>
+        <ul>
+          <li><span>All frozen enemies lose </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="175k" data-format="None" data-checkbox="eval" form="unit-disk">175k</output></span><span> Armor. </span></li>
+          <li><span> Instead of stunning, &#34;</span><a href="./hero/MIGUEL.htm#BLUE" class="rarity-blue">Flatten</a><span>&#34; freezes enemies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="7 + 1s" data-format=".1" data-checkbox="eval" form="unit-disk">7 + 1s</output></span><span> seconds per note.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-format="None" data-checkbox="eval" form="unit-disk">50k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SHANK.htm">Shank</a>
+      </td>
+      <td>
+        <a href="./hero/VANELLOPE.htm">Vanellope</a>
+      </td>
+      <td>97</td>
+      <td>
+        <a id="SHANK_ARMOR"><p>Get In Gear</p></a>
+        <blockquote>Allies Share Armor</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="130k" data-format="None" data-checkbox="eval" form="unit-disk">130k</output></span><span> </span><span class="unit-expr-misc">Armor</span></li>
+          <li><span>Allies gain Armor equal to </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="8s%" data-format="%" data-checkbox="eval" form="unit-disk">8s%</output></span><span> of Shank&#39;s Armor</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/OLAF.htm">Olaf</a>
+      </td>
+      <td>
+        <a href="./hero/FELIX.htm">Felix</a>
+      </td>
+      <td>97</td>
+      <td>
+        <a id="OLAF_ENERGY"><p>Tool of the Trade</p></a>
+        <blockquote>Evade Debuffs</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span class="unit-expr-s"><output for="s k bd sp" data-formula="15s%" data-format="%" data-checkbox="eval" form="unit-disk">15s%</output></span><span> chance to avoid all negative status effects; +</span><span class="unit-expr-misc">50</span><span> Energy gained from avoiding negative status effects</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ELSA.htm">Elsa</a>
+      </td>
+      <td>
+        <a href="./hero/FROZONE.htm">Frozone</a>
+      </td>
+      <td>98</td>
+      <td>
+        <a id="ELSA_FREEZE"><p>Trail-Breakers</p></a>
+        <blockquote>Longer Freezes</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Freezes from any source freeze Control role enemies </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> longer.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/BAYMAX.htm">Baymax</a>
+      </td>
+      <td>
+        <a href="./hero/OLAF.htm">Olaf</a>
+      </td>
+      <td>99</td>
+      <td>
+        <a id="BAYMAX_FREEZE"><p>Snow Day</p></a>
+        <blockquote>&#34;Blast Off&#34; Freezes Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="55k" data-format="None" data-checkbox="eval" form="unit-disk">55k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/BAYMAX.htm#GREEN" class="rarity-green">Blast Off</a><span>&#34; also freezes enemies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.5 + 0.4s" data-format=".1" data-checkbox="eval" form="unit-disk">0.5 + 0.4s</output></span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/MALEFICENT.htm">Maleficent</a>
+      </td>
+      <td>
+        <a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a>
+      </td>
+      <td>99</td>
+      <td>
+        <a id="MALEFICENT_AOE"><p>Drake-O-Lantern</p></a>
+        <blockquote>Deadlier Thorns</blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/MALEFICENT.htm#GREEN" class="rarity-green">Forest of Thorns</a><span>&#34; does </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="120k" data-format="None" data-checkbox="eval" form="unit-disk">120k</output></span><span> more damage. </span></li>
+          <li><span> Nearby enemies also take damage from &#34;</span><a href="./hero/MALEFICENT.htm#GREEN" class="rarity-green">Forest of Thorns</a><span>&#34; and have a chance to be Cursed by &#34;</span><a href="./hero/MALEFICENT.htm#PURPLE" class="rarity-purple">Mistress of All Evil</a><span>.&#34; ; &#34;</span><a href="./hero/MALEFICENT.htm#GREEN" class="rarity-green">Forest of Thorns</a><span>&#34; stuns for an extra </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.8s" data-format=".1" data-checkbox="eval" form="unit-disk">0.8s</output></span><span> seconds longer.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>range</dt><dd>250</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a>
+      </td>
+      <td>
+        <a href="./hero/SALLY.htm">Sally</a>
+      </td>
+      <td>99</td>
+      <td>
+        <a id="JACK_SKELLINGTON_DOT"><p>A Lovely Brew</p></a>
+        <blockquote>Better Burning</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="80k" data-format="None" data-checkbox="eval" form="unit-disk">80k</output></span><span> damage per second to </span><a href="./hero/JACK_SKELLINGTON.htm#WHITE" class="rarity-white">Master of Fright</a></li>
+          <li><span>Jack now targets enemies who are not being damaged over time by </span><a href="./hero/JACK_SKELLINGTON.htm#WHITE" class="rarity-white">Master of Fright</a><span> ; The damage over time from </span><a href="./hero/JACK_SKELLINGTON.htm#WHITE" class="rarity-white">Master of Fright</a><span> lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s" data-format="None" data-checkbox="eval" form="unit-disk">1s</output></span><span> seconds longer</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/ELSA.htm">Elsa</a>
+      </td>
+      <td>
+        <a href="./hero/OLAF.htm">Olaf</a>
+      </td>
+      <td>99</td>
+      <td>
+        <a id="ELSA_SHIELD"><p>Cold Comfort</p></a>
+        <blockquote>Shield Tanks</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="70k" data-format="None" data-checkbox="eval" form="unit-disk">70k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span class="unit-expr-k"><output for="s k bd sp" data-formula="900k" data-format="None" data-checkbox="eval" form="unit-disk">900k</output></span><span> HP Shield for Tank role allies at the start of each wave</span></li>
+          <li><span>Shield lasts </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="4 + 3s" data-format="None" data-checkbox="eval" form="unit-disk">4 + 3s</output></span><span> seconds</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SALLY.htm">Sally</a>
+      </td>
+      <td>
+        <a href="./hero/YAX.htm">Yax</a>
+      </td>
+      <td>99</td>
+      <td>
+        <a id="SALLY_REALITY"><p>Corpse Flower</p></a>
+        <blockquote>Tanks Get Reality</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="65k" data-format="None" data-checkbox="eval" form="unit-disk">65k</output></span><span> </span><span class="unit-expr-misc">Reality</span><span> to allies</span></li>
+          <li><a href="./hero_list.htm?role=tank" class="unit-expr-misc">Tank</a><span> heroes on team gain </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="6s%" data-format="%.1" data-checkbox="eval" form="unit-disk">6s%</output></span><span> </span><span class="unit-expr-misc">Reality</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/GENIE.htm">Genie</a>
+      </td>
+      <td>
+        <a href="./hero/ELSA.htm">Elsa</a>
+      </td>
+      <td>100</td>
+      <td>
+        <a id="GENIE_FREEZE"><p>Break the Ice</p></a>
+        <blockquote>Basic Attacks Can Freeze</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="146k" data-format="None" data-checkbox="eval" form="unit-disk">146k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>Genie&#39;s Basic Attack targets 2 enemies. </span></li>
+          <li><span> Genie&#39;s Basic Attacks have a </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="8s%" data-format="%" data-checkbox="eval" form="unit-disk">8s%</output></span><span> chance to freeze enemies for </span><span class="unit-expr-misc">4</span><span> seconds.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SALLY.htm">Sally</a>
+      </td>
+      <td>
+        <a href="./hero/TIA_DALMA.htm">Tia Dalma</a>
+      </td>
+      <td>100</td>
+      <td>
+        <a id="SALLY_POISON"><p>Trouble Brewing</p></a>
+        <blockquote>Poison is Permanent</blockquote>
+        <ul>
+          <li><a href="./hero/SALLY.htm#WHITE" class="rarity-white">Deadly Nightshade</a><span> deals </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k+0.2sp" data-format="None" data-checkbox="eval" form="unit-disk">150k+0.2sp</output></span><span> bonus damage when activated per stack of &#34;Poison&#34;</span></li>
+          <li><span>&#34;Poison&#34; stacks do not expire and can be stacked without limit ; Sally applies </span><span class="unit-expr-misc">2</span><span> stacks of &#34;Poison&#34; every </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="6-1s" data-format="None" data-checkbox="eval" form="unit-disk">6-1s</output></span><span> Basic Attacks</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/OLAF.htm">Olaf</a>
+      </td>
+      <td>
+        <a href="./hero/MOANA.htm">Moana</a>
+      </td>
+      <td>100</td>
+      <td>
+        <a id="OLAF_FREEZE"><p>Really Cool Shades</p></a>
+        <blockquote>Freezing Twice Does Big Damage</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-format="None" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+          <li><span>Enemies affected by this memory can take a Max of </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="300k" data-format="None" data-checkbox="eval" form="unit-disk">300k</output></span><span> Damage.</span></li>
+          <li><span>Enemies that are Frozen while already Frozen take </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="4s%" data-format="%" data-checkbox="eval" form="unit-disk">4s%</output></span><span> of their max HP as fantastic damage.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/STITCH.htm">Stitch</a>
+      </td>
+      <td>???</td>
+      <td>???</td>
+      <td>
+        <a id="STITCH_BITE"><p>Highly Caffeinated</p></a>
+        <blockquote>Bite More Enemies</blockquote>
+        <ul>
+          <li><span>Stitch bites all enemies with &#34;</span><a href="./hero/STITCH.htm#BLUE" class="rarity-blue">626 Scuffle</a><span>&#34; ; Subsequent bites deal </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="200k" data-format="None" data-checkbox="eval" form="unit-disk">200k</output></span><span> damage.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>damagetype</dt><dd>True</dd>
+            </dl></div>
+          </li>
+          <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="20s%" data-format="%" data-checkbox="eval" form="unit-disk">20s%</output></span><span> </span><span class="unit-expr-misc">Improved Healing</span><span> to allies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HIRO.htm">Hiro Hamada</a>
+      </td>
+      <td>???</td>
+      <td>???</td>
+      <td>
+        <a id="HIRO_STUN"><p>Gadgets and Gizmos</p></a>
+        <blockquote>Microbot Stun Affects Multiple Enemies</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="90k" data-format="None" data-checkbox="eval" form="unit-disk">90k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>&#34;</span><a href="./hero/HIRO.htm#BLUE" class="rarity-blue">Microbot Stun</a><span>&#34; also stuns nearby enemies for </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="1s" data-format="None" data-checkbox="eval" form="unit-disk">1s</output></span><span> seconds.</span>
+            <div><dl class="unit-note inline-list">
+              <dt>splashrange</dt><dd>300</dd>
+            </dl></div>
+          </li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/HADES.htm">Hades</a>
+      </td>
+      <td>???</td>
+      <td>???</td>
+      <td>
+        <a id="HADES_DOT"><p>Death Paddle</p></a>
+        <blockquote>Boosts Team&#39;s Damage Over Time Skills</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="75k" data-format="None" data-checkbox="eval" form="unit-disk">75k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Hades&#39; team&#39;s damage over time skills do </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%.1" data-checkbox="eval" form="unit-disk">10s%</output></span><span> more damage.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/SCAR.htm">Scar</a>
+      </td>
+      <td>???</td>
+      <td>???</td>
+      <td>
+        <a id="SCAR_SPEED"><p>Hedge-emony</p></a>
+        <blockquote>Attack Speed on Ally KO</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format="None" data-checkbox="eval" form="unit-disk">40k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+          <li><span>Scar gains </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> attack speed for the rest of the wave whenever an ally is KO&#39;d.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr>
+      <td>
+        <a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a>
+      </td>
+      <td>???</td>
+      <td>???</td>
+      <td>
+        <a id="JACK_SKELLINGTON_DUCK"><p>All Ducked Out</p></a>
+        <blockquote>More Ducks</blockquote>
+        <ul>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="45k" data-format="None" data-checkbox="eval" form="unit-disk">45k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+          <li><span>Jack throws </span><span class="unit-expr-misc">3</span><span> toy ducks with </span><a href="./hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">What&#39;s This?!</a><span> ; </span><a href="./hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">What&#39;s This?!</a><span> does </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="15s%" data-format="%" data-checkbox="eval" form="unit-disk">15s%</output></span><span> more damage to Damage role enemies</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  </table>
+</div><!--  container } -->
+</body>
+</html>

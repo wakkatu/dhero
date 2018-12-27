@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1547887722">
+<link rel="stylesheet" href="../../star.css?1547887722">
+<link rel="stylesheet" href="../../unit.css?1547887722">
+<title>Disney Heroes: Battle Mode - マイク・ワゾウスキ</title>
+<script src="../../util.js?1547887722"></script>
+<script src="../../unit.js?1547887722"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">ヒーロー</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">フレンド</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">アイテム</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    言語を選ぶ
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/MIKE.htm">Deutsche</a>
+        <a href="../../en/hero/MIKE.htm">English</a>
+        <a href="../../es/hero/MIKE.htm">Español</a>
+        <a href="../../fr/hero/MIKE.htm">Français</a>
+        <a href="../../it/hero/MIKE.htm">Italiano</a>
+        <a href="../../ja/hero/MIKE.htm">日本語</a>
+        <a href="../../ko/hero/MIKE.htm">한국어</a>
+        <a href="../../pt/hero/MIKE.htm">Português</a>
+        <a href="../../ru/hero/MIKE.htm">русский</a>
+        <a href="../../zh-Hans/hero/MIKE.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/MIKE.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar">
+      <img alt="マイク・ワゾウスキ" src="MIKE.png">
+    </div>
+    <h1>マイク・ワゾウスキ</h1>
+    <p>マイク・ワゾウスキはバトルで芸人としてのスキルを使う1つ目のモンスターだ。</p>
+    <blockquote>「テレビ映り良くて、ごめんね！」</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">役割</span>
+      <span class="unit-pair-val">ダメージ</span>
+      <span class="unit-pair-name">配置</span>
+      <span class="unit-pair-val">後</span>
+      <span class="unit-pair-name">トライアルチーム</span>
+      <span class="unit-pair-val">黄</span>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>コアのステータス</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">最大HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        300.7 + 24.82g
+      </span>
+      <span class="unit-pair-name">通常ダメージ</span>
+      <span class="unit-pair-val unit-expr-g">
+        40.7 + 3.36g
+      </span>
+      <span class="unit-pair-name">スキルパワー</span>
+      <span class="unit-pair-val unit-expr-g">
+        66.7 + 5.5g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1 class="undertest">詳細ステータス</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">レベル</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="100" value="100">
+      </span>
+      <span class="unit-pair-name">レア度</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="2.65" selected>ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">星</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">シュガー・ラッシュ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>125</dd>
+            <dt>通常クリティカル</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">シュガー・ラッシュ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b2" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>125</dd>
+            <dt>通常クリティカル</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">巧みなキツネ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b3" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>100</dd>
+            <dt>HP回復</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">錆びた剣</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b4" data-skill_power="20" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=NUMBER_ONE_DIME#NUMBER_ONE_DIME" class="rarity-white">最高の10セント硬貨</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b5" data-normal_crit="15" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常クリティカル</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">手品のコイン</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b6" data-hp_max="150" data-armor="30" data-r_ctl="1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>150</dd>
+            <dt>アーマー</dt><dd>30</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_hp_max" class="hidden" data-formula="500" data-r_ctl="1.1"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="31" data-r_ctl="1.1"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="100" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="20" data-r_ctl="1.1"></output>
+        <output name="b_armor" class="hidden" data-formula="30" data-r_ctl="1.1"></output>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=MULTIPURPOSE_FRYING_PAN#MULTIPURPOSE_FRYING_PAN" class="rarity-green">フライパン</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b1" data-normal_crit="12" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常クリティカル</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">サニーサイド</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b2" data-armor="45" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>アーマー</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">お姫様の朝食</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b3" data-skill_power="30" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=BLUEBIRD_OF_HAPPINESS#BLUEBIRD_OF_HAPPINESS" class="rarity-white">幸せの青い鳥</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b4" data-basic_damage="45" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=CRAB_CAKE#CRAB_CAKE" class="rarity-green">シャイニーなカニ玉</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b5" data-hp_max="100" data-basic_damage="50" data-normal_crit="10" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>100</dd>
+            <dt>通常ダメージ</dt><dd>50</dd>
+            <dt>通常クリティカル</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">ヌルヌルなのに何故か満足</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b6" data-hp_max="50" data-basic_damage="8" data-skill_power="8" data-r_ctl="1.1" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>50</dd>
+            <dt>通常ダメージ</dt><dd>8</dd>
+            <dt>スキルパワー</dt><dd>8</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="650" data-r_ctl="1.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="53" data-r_ctl="1.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="100" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="58" data-r_ctl="1.2"></output>
+        <output name="b_armor" class="hidden" data-formula="75" data-r_ctl="1.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="103" data-r_ctl="1.2"></output>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GIGANTIC_PEACH#GIGANTIC_PEACH" class="rarity-blue">ジャイアント・ピーチ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b1" data-fantastic_crit="25" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>特殊クリティカル</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">何の変哲もないリンゴ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b2" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>55</dd>
+            <dt>エネルギー回復</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇妙なキノコ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b3" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>300</dd>
+            <dt>HP回復</dt><dd>100</dd>
+            <dt>アーマー</dt><dd>90</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">サンフランシスコのピザ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b4" data-hp_max="200" data-basic_damage="40" data-skill_power="40" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>200</dd>
+            <dt>通常ダメージ</dt><dd>40</dd>
+            <dt>スキルパワー</dt><dd>40</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">お姫様の朝食</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b5" data-skill_power="30" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">ヌルヌルなのに何故か満足</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b6" data-hp_max="50" data-basic_damage="8" data-skill_power="8" data-r_ctl="1.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>50</dd>
+            <dt>通常ダメージ</dt><dd>8</dd>
+            <dt>スキルパワー</dt><dd>8</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1200" data-r_ctl="1.3"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="53" data-r_ctl="1.3"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="200" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="191" data-r_ctl="1.3"></output>
+        <output name="b_armor" class="hidden" data-formula="165" data-r_ctl="1.3"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="151" data-r_ctl="1.3"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="25" data-r_ctl="1.3"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="20" data-r_ctl="1.3"></output>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=POCKET_TREE#POCKET_TREE" class="rarity-blue">ポケットサイズの木</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b1" data-reality_negation="24" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>リアリティ否定</dt><dd>24</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=FLYAWAY_UMBRELLA#FLYAWAY_UMBRELLA" class="rarity-green">空飛ぶ傘</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b2" data-basic_damage="60" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=WIG_A_LA_MODE#WIG_A_LA_MODE" class="rarity-blue">ウィグ・ア・ラ・モード</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b3" data-skill_power="25" data-fantastic_crit="15" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>25</dd>
+            <dt>特殊クリティカル</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">何の変哲もないリンゴ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b4" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>55</dd>
+            <dt>エネルギー回復</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">ミーコのビスケット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b5" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>30</dd>
+            <dt>HP回復</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=ACE_OF_SPADES#ACE_OF_SPADES" class="rarity-white">スペードのエース</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b6" data-basic_damage="10" data-r_ctl="1.3" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>10</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1200" data-r_ctl="1.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="53" data-r_ctl="1.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="250" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="301" data-r_ctl="1.4"></output>
+        <output name="b_armor" class="hidden" data-formula="165" data-r_ctl="1.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="221" data-r_ctl="1.4"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="40" data-r_ctl="1.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="40" data-r_ctl="1.4"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="24" data-r_ctl="1.4"></output>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=GLOW_BUG#GLOW_BUG" class="rarity-blue">光る虫</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b1" data-skill_power="100" data-reality="300" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>100</dd>
+            <dt>リアリティ</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=PROUD_UNICORN#PROUD_UNICORN" class="rarity-blue">誇らしげなユニコーン</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b2" data-skill_power="88" data-fantastic_crit="22" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>88</dd>
+            <dt>特殊クリティカル</dt><dd>22</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">アニモニモネ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b3" data-hp_max="128" data-armor="96" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>128</dd>
+            <dt>アーマー</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">実用性のない手錠</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b4" data-hp_max="100" data-basic_damage="50" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>100</dd>
+            <dt>通常ダメージ</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=BADGE_OF_MOTIVATION#BADGE_OF_MOTIVATION" class="rarity-blue">やる気バッジ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b5" data-skill_power="50" data-reality_negation="15" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>50</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=BADGE_OF_MOTIVATION#BADGE_OF_MOTIVATION" class="rarity-blue">やる気バッジ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b6" data-skill_power="50" data-reality_negation="15" data-r_ctl="1.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>50</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1428" data-r_ctl="1.5"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="53" data-r_ctl="1.5"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="250" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="589" data-r_ctl="1.5"></output>
+        <output name="b_armor" class="hidden" data-formula="261" data-r_ctl="1.5"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="271" data-r_ctl="1.5"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="62" data-r_ctl="1.5"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="40" data-r_ctl="1.5"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="54" data-r_ctl="1.5"></output>
+        <output name="b_reality" class="hidden" data-formula="300" data-r_ctl="1.5"></output>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">美しいランプ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b1" data-hp_max="800" data-basic_damage="100" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>800</dd>
+            <dt>通常ダメージ</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">豚の貯金箱</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b2" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>40</dd>
+            <dt>HP回復</dt><dd>100</dd>
+            <dt>エネルギー回復</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">実用性のない手錠</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b3" data-hp_max="100" data-basic_damage="50" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>100</dd>
+            <dt>通常ダメージ</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">謎めいた苗</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b4" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>40</dd>
+            <dt>通常クリティカル</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BOOS_ROOM_KEY#BOOS_ROOM_KEY" class="rarity-blue">一筋の希望</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b5" data-reality_negation="30" data-fantastic_crit="15" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>リアリティ否定</dt><dd>30</dd>
+            <dt>特殊クリティカル</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=EMBRITTLEMENT_PERFUME#EMBRITTLEMENT_PERFUME" class="rarity-green">金属軟化パフューム</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b6" data-normal_crit="12" data-r_ctl="1.5" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常クリティカル</dt><dd>12</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_hp_max" class="hidden" data-formula="2328" data-r_ctl="1.6"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="77" data-r_ctl="1.6"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="350" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="669" data-r_ctl="1.6"></output>
+        <output name="b_armor" class="hidden" data-formula="261" data-r_ctl="1.6"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="421" data-r_ctl="1.6"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="77" data-r_ctl="1.6"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="90" data-r_ctl="1.6"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="84" data-r_ctl="1.6"></output>
+        <output name="b_reality" class="hidden" data-formula="300" data-r_ctl="1.6"></output>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">スペアミント</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b1" data-hp_max="230" data-basic_damage="230" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>230</dd>
+            <dt>通常ダメージ</dt><dd>230</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=GLASS_SLIPPERS#GLASS_SLIPPERS" class="rarity-green">ガラスの靴</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b2" data-hp_regen="27" data-armor="27" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP回復</dt><dd>27</dd>
+            <dt>アーマー</dt><dd>27</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">トナカイの意欲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b3" data-hp_max="300" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">何の変哲もないリンゴ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b4" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>55</dd>
+            <dt>エネルギー回復</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=FAMILY_HEIRLOOM#FAMILY_HEIRLOOM" class="rarity-purple">目指すは金</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b5" data-basic_damage="225" data-reality="325" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>225</dd>
+            <dt>リアリティ</dt><dd>325</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=SUPER_DUPER_GLUE#SUPER_DUPER_GLUE" class="rarity-green">超強力接着剤</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b6" data-hp_max="220" data-hp_regen="50" data-energy_regen="12" data-r_ctl="1.6" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>220</dd>
+            <dt>HP回復</dt><dd>50</dd>
+            <dt>エネルギー回復</dt><dd>12</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3078" data-r_ctl="1.7"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="77" data-r_ctl="1.7"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="427" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="724" data-r_ctl="1.7"></output>
+        <output name="b_armor" class="hidden" data-formula="288" data-r_ctl="1.7"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="876" data-r_ctl="1.7"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="77" data-r_ctl="1.7"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="122" data-r_ctl="1.7"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="84" data-r_ctl="1.7"></output>
+        <output name="b_reality" class="hidden" data-formula="625" data-r_ctl="1.7"></output>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=OOZMA_KAPPA_CHEER_KIT#OOZMA_KAPPA_CHEER_KIT" class="rarity-purple">ウーズマ・カッパの儀式セット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b1" data-basic_damage="277" data-skill_power="277" data-reality_negation="15" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>277</dd>
+            <dt>スキルパワー</dt><dd>277</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=WIG_A_LA_MODE#WIG_A_LA_MODE" class="rarity-blue">ウィグ・ア・ラ・モード</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b2" data-skill_power="25" data-fantastic_crit="15" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>25</dd>
+            <dt>特殊クリティカル</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=PASSIVE_AGGRESSIVE_ELLIPSIS#PASSIVE_AGGRESSIVE_ELLIPSIS" class="rarity-purple">意味深な沈黙</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b3" data-skill_power="400" data-reality_negation="15" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>400</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=BADGE_OF_GIRTH#BADGE_OF_GIRTH" class="rarity-green">腹帯バッジ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b4" data-skill_power="40" data-energy_regen="50" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>40</dd>
+            <dt>エネルギー回復</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=GIGANTIC_PEACH#GIGANTIC_PEACH" class="rarity-blue">ジャイアント・ピーチ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b5" data-fantastic_crit="25" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>特殊クリティカル</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">盛り上がる曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3528" data-r_ctl="1.8"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="77" data-r_ctl="1.8"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="427" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1466" data-r_ctl="1.8"></output>
+        <output name="b_armor" class="hidden" data-formula="288" data-r_ctl="1.8"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1153" data-r_ctl="1.8"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="117" data-r_ctl="1.8"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="172" data-r_ctl="1.8"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="114" data-r_ctl="1.8"></output>
+        <output name="b_reality" class="hidden" data-formula="625" data-r_ctl="1.8"></output>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=KIMMUNICATOR#KIMMUNICATOR" class="rarity-purple">キムニケーター</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b1" data-hp_max="1600" data-basic_damage="160" data-normal_crit="5" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>1600</dd>
+            <dt>通常ダメージ</dt><dd>160</dd>
+            <dt>通常クリティカル</dt><dd>5</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">置き場を間違えた尻尾</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b2" data-hp_max="400" data-reality="225" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>400</dd>
+            <dt>リアリティ</dt><dd>225</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=UNBIRTHDAY_HAT#UNBIRTHDAY_HAT" class="rarity-purple">誕生日じゃない日の帽子</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b3" data-hp_regen="1500" data-armor="257" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP回復</dt><dd>1500</dd>
+            <dt>アーマー</dt><dd>257</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">捨てたティアラ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b4" data-skill_power="100" data-armor="300" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>100</dd>
+            <dt>アーマー</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">金のティーポット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b5" data-hp_regen="65" data-reality="155" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP回復</dt><dd>65</dd>
+            <dt>リアリティ</dt><dd>155</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">盛り上がる曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_hp_max" class="hidden" data-formula="5978" data-r_ctl="1.9"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="82" data-r_ctl="1.9"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="1992" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1566" data-r_ctl="1.9"></output>
+        <output name="b_armor" class="hidden" data-formula="845" data-r_ctl="1.9"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1313" data-r_ctl="1.9"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="117" data-r_ctl="1.9"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="172" data-r_ctl="1.9"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="114" data-r_ctl="1.9"></output>
+        <output name="b_reality" class="hidden" data-formula="1005" data-r_ctl="1.9"></output>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROCKET_PACK_PATCH_KIT#ROCKET_PACK_PATCH_KIT" class="rarity-purple">ロケットパック修理セット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b1" data-hp_max="3333" data-armor="333" data-reality="333" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>3333</dd>
+            <dt>アーマー</dt><dd>333</dd>
+            <dt>リアリティ</dt><dd>333</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ARAIGNEE_NOIRE#ARAIGNEE_NOIRE" class="rarity-purple">クモ探偵</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b2" data-hp_max="400" data-energy_regen="100" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>400</dd>
+            <dt>エネルギー回復</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=PASSIVE_AGGRESSIVE_ELLIPSIS#PASSIVE_AGGRESSIVE_ELLIPSIS" class="rarity-purple">意味深な沈黙</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b3" data-skill_power="400" data-reality_negation="15" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>400</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">ミーコのビスケット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b4" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>30</dd>
+            <dt>HP回復</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=CALAMARI#CALAMARI" class="rarity-purple">クリスタル・ベル</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b5" data-hp_max="999" data-normal_crit="9" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>999</dd>
+            <dt>通常クリティカル</dt><dd>9</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">盛り上がる曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="11160" data-r_ctl="2.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="91" data-r_ctl="2.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2042" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1996" data-r_ctl="2.05"></output>
+        <output name="b_armor" class="hidden" data-formula="1178" data-r_ctl="2.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1313" data-r_ctl="2.05"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="117" data-r_ctl="2.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="272" data-r_ctl="2.05"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="129" data-r_ctl="2.05"></output>
+        <output name="b_reality" class="hidden" data-formula="1338" data-r_ctl="2.05"></output>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=JAR_OF_HUNNY#JAR_OF_HUNNY" class="rarity-orange">蜂蜜ポット</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b1" data-hp_max="3000" data-armor="1000" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>3000</dd>
+            <dt>アーマー</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇妙なキノコ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b2" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>300</dd>
+            <dt>HP回復</dt><dd>100</dd>
+            <dt>アーマー</dt><dd>90</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=DUCKY_MOMO#DUCKY_MOMO" class="rarity-purple">ダッキーモモ！</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b3" data-armor="250" data-reality="250" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>アーマー</dt><dd>250</dd>
+            <dt>リアリティ</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=TRITONS_TRIDENT#TRITONS_TRIDENT" class="rarity-purple">トリトンの槍</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b4" data-hp_max="1337" data-armor="137" data-reality="137" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>1337</dd>
+            <dt>アーマー</dt><dd>137</dd>
+            <dt>リアリティ</dt><dd>137</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=ROCK_PUNCH#ROCK_PUNCH" class="rarity-purple">グーパンチ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b5" data-basic_damage="100" data-reality="400" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>100</dd>
+            <dt>リアリティ</dt><dd>400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">高級クラブのバッジ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b6" data-hp_max="3500" data-basic_damage="250" data-skill_power="250" data-r_ctl="2.05" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>3500</dd>
+            <dt>通常ダメージ</dt><dd>250</dd>
+            <dt>スキルパワー</dt><dd>250</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="19297" data-r_ctl="2.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="91" data-r_ctl="2.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2142" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2246" data-r_ctl="2.2"></output>
+        <output name="b_armor" class="hidden" data-formula="2655" data-r_ctl="2.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1663" data-r_ctl="2.2"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="117" data-r_ctl="2.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="272" data-r_ctl="2.2"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="129" data-r_ctl="2.2"></output>
+        <output name="b_reality" class="hidden" data-formula="2125" data-r_ctl="2.2"></output>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=VITAL_INFORMATION#VITAL_INFORMATION" class="rarity-orange">重要な情報</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b1" data-armor="1200" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>アーマー</dt><dd>1200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=GUMMIBEARY_JUICE#GUMMIBEARY_JUICE" class="rarity-orange">グミベアー・ジュース</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b2" data-hp_max="8000" data-basic_damage="800" data-hp_regen="8000" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>8000</dd>
+            <dt>通常ダメージ</dt><dd>800</dd>
+            <dt>HP回復</dt><dd>8000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=PIXIE_DUST#PIXIE_DUST" class="rarity-purple">妖精の粉</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b3" data-basic_damage="550" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>550</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=PASSIVE_AGGRESSIVE_ELLIPSIS#PASSIVE_AGGRESSIVE_ELLIPSIS" class="rarity-purple">意味深な沈黙</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b4" data-skill_power="400" data-reality_negation="15" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>400</dd>
+            <dt>リアリティ否定</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LOST_NECKLACE#LOST_NECKLACE" class="rarity-purple">アトランティスの宝石</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b5" data-skill_power="175" data-energy_regen="75" data-normal_crit="5" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>175</dd>
+            <dt>エネルギー回復</dt><dd>75</dd>
+            <dt>通常クリティカル</dt><dd>5</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">ハンサムな王子</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>555</dd>
+            <dt>アーマー</dt><dd>777</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="27297" data-r_ctl="2.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="96" data-r_ctl="2.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="10142" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3376" data-r_ctl="2.4"></output>
+        <output name="b_armor" class="hidden" data-formula="4632" data-r_ctl="2.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3013" data-r_ctl="2.4"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="117" data-r_ctl="2.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="347" data-r_ctl="2.4"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="144" data-r_ctl="2.4"></output>
+        <output name="b_reality" class="hidden" data-formula="2125" data-r_ctl="2.4"></output>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">Diablo Piedra</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b1" data-hp_max="600" data-normal_crit="10" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>600</dd>
+            <dt>通常クリティカル</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=BADGE_OF_TOMORROW#BADGE_OF_TOMORROW" class="rarity-purple">Badge of Tomorrow</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b2" data-skill_power="125" data-reality_negation="10" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>125</dd>
+            <dt>リアリティ否定</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=CROQUET_BALL#CROQUET_BALL" class="rarity-purple">Croquet Ball</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b3" data-armor="1000" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>アーマー</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">犬の朝食</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b4" data-hp_max="1000" data-armor="2000" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>1000</dd>
+            <dt>アーマー</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=LEANING_TOWER_OF_CHEEZ_A#LEANING_TOWER_OF_CHEEZ_A" class="rarity-purple">チーズの斜塔</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b5" data-hp_max="550" data-skill_power="100" data-reality_negation="12" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>550</dd>
+            <dt>スキルパワー</dt><dd>100</dd>
+            <dt>リアリティ否定</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=GRAPPLING_HOOK#GRAPPLING_HOOK" class="rarity-purple">引っ掛けフック</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b6" data-basic_damage="377" data-normal_crit="17" data-fantastic_crit="17" data-r_ctl="2.4" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>377</dd>
+            <dt>通常クリティカル</dt><dd>17</dd>
+            <dt>特殊クリティカル</dt><dd>17</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_hp_max" class="hidden" data-formula="29447" data-r_ctl="2.65"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="123" data-r_ctl="2.65"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="10142" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3601" data-r_ctl="2.65"></output>
+        <output name="b_armor" class="hidden" data-formula="7632" data-r_ctl="2.65"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3390" data-r_ctl="2.65"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="134" data-r_ctl="2.65"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="347" data-r_ctl="2.65"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="166" data-r_ctl="2.65"></output>
+        <output name="b_reality" class="hidden" data-formula="2125" data-r_ctl="2.65"></output>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOVE_POTION#LOVE_POTION" class="rarity-orange">Love Potion</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b1" data-skill_power="125" data-reality_negation="10" data-fantastic_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>125</dd>
+            <dt>リアリティ否定</dt><dd>10</dd>
+            <dt>特殊クリティカル</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">液状の朝食</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b2" data-hp_max="1000" data-reality="2000" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>1000</dd>
+            <dt>リアリティ</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">Customer of the Year</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b3" data-hp_max="1000" data-basic_damage="125" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大HP</dt><dd>1000</dd>
+            <dt>通常ダメージ</dt><dd>125</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=TRUST_IN_ME#TRUST_IN_ME" class="rarity-purple">Trust in Me</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b4" data-basic_damage="100" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">1000の世界のボーナス</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>通常ダメージ</dt><dd>150</dd>
+            <dt>通常クリティカル</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">ファ家の剣</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b6" data-skill_power="450" data-r_ctl="2.65" disabled>
+            <option value="-1">該当なし</option>
+            <option value="0" selected>装備</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>スキルパワー</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 24.82g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="40.7 + 3.36g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="66.7 + 5.5g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">通常ダメージ</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">スキルパワー</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">最大HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-name">HP回復</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_regen" for="core_hp_regen b_hp_regen func:badge_inc,calcBadge,badge_param" data-formula="core_hp_regen + b_hp_regen + badge_inc" data-badge_param="hp_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">エネルギー回復</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="energy_regen" for="core_energy_regen b_energy_regen func:badge_inc,calcBadge,badge_param" data-formula="core_energy_regen + b_energy_regen + badge_inc" data-badge_param="energy_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">アーマー</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor" for="core_armor b_armor func:badge_inc,calcBadge,badge_param" data-formula="core_armor + b_armor + badge_inc" data-badge_param="armor|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">リアリティ</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality" for="core_reality b_reality func:badge_inc,calcBadge,badge_param" data-formula="core_reality + b_reality + badge_inc" data-badge_param="reality|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">リアリティ否定</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality_negation" for="core_reality_negation b_reality_negation func:badge_inc,calcBadge,badge_param" data-formula="core_reality_negation + b_reality_negation + badge_inc" data-badge_param="reality_negation|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">通常クリティカル</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="normal_crit" for="core_normal_crit b_normal_crit func:badge_inc,calcBadge,badge_param" data-formula="core_normal_crit + b_normal_crit + badge_inc" data-badge_param="normal_crit|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">特殊クリティカル</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="fantastic_crit" for="core_fantastic_crit b_fantastic_crit func:badge_inc,calcBadge,badge_param" data-formula="core_fantastic_crit + b_fantastic_crit + badge_inc" data-badge_param="fantastic_crit|S*(B&gt;0)"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">スキル</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden">
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
+    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <h2 class="rarity-white"><a id="WHITE">ソニックゲップ</a></h2>
+    <p><span>マイクがマイクを食べてゲップをし、全敵に </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="142k + 1sp" data-format="None" data-checkbox="eval">142k + 1sp</output></span><span> ダメージ与える。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>1</dd>
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>dmg</dt><dd>142k + 1sp</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><a id="GREEN">ボンベトス</a></h2>
+    <p><span>マイクが悲鳴ボンベを一番近い敵に投げ、その敵と近くにいる敵全てを </span><span class="unit-expr-misc">8</span><span> 秒間怖がらせる。特殊ダメージを与える攻撃が、怖がっている敵に対して必ずクリティカルヒットになる。</span></p>
+    <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> より上の敵の場合は怖がらせに失敗する可能性がある。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>splash</dt><dd>200</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>priority</dt><dd>2</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>splash</dt><dd>enemy | within(200)</dd>
+        <dt>scareduration</dt><dd>8</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><a id="BLUE">絶好調</a></h2>
+    <p><span>マイクがバトルフィールドを転がりながら全敵に </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 0.35sp" data-format="None" data-checkbox="eval">50k + 0.35sp</output></span><span> ダメージ与える。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>cooldown</dt><dd>15</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>15</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>dmg</dt><dd>50k + 0.35sp</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><a id="PURPLE">闘争か逃走</a></h2>
+    <p><span>マイクが怖がっている敵にダメージを与える時、その敵を </span><span class="unit-expr-misc">3</span><span> 秒間スタンさせる。</span></p>
+    <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> より上の敵の場合はスタンに失敗する可能性がある。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple">...</label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>stunduration</dt><dd>3</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">フレンド</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden">
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">レベル</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="60" value="60">
+      </span>
+      <span class="unit-pair-name">星</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/SULLEY.htm">サリーとブー</a> <small>(69)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#MIKE_STUNS">最高の怖がらせ屋</a>
+    </p>
+    <blockquote>スタンした敵からエネルギー</blockquote>
+    <ul>
+      <li><span>スタンした敵にダメージを与える時にエネルギーが </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s" data-format="None" data-checkbox="eval">30s</output></span><span> 増える。</span></li>
+      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval">20k</output></span></li>
+      <li><span class="unit-expr-misc">スタンの持続時間</span><span> +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="30s%" data-format="%" data-checkbox="eval">30s%</output></span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/JACK_JACK.htm">ジャック・ジャック</a> <small>(74)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#MIKE_FANTASTIC_DAMAGE">大きな笑い声</a>
+    </p>
+    <blockquote>通常攻撃で特殊ダメージ</blockquote>
+    <ul>
+      <li><span class="unit-expr-misc">通常ダメージ</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval">20k</output></span></li>
+      <li><span class="unit-expr-misc">攻撃速度</span><span> +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval">5s%</output></span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>フレンド</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/REX.htm">レックス</a> <small>(73)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#REX_DPS_SYNERGY">整理整頓</a>
+    </p>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/GENIE.htm">ジーニー</a> <small>(88)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#GENIE_SHIELD">大儲け</a>
+    </p>
+    <!-- Disk } -->
+  </div>
+  <!-- Friends 2 } -->
+
+</div><!--  container } -->
+</body>
+</html>

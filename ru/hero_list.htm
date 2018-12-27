@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1547971343">
+<link rel="stylesheet" href="../star.css?1547971343">
+<link rel="stylesheet" href="../unit.css?1547971343">
+<title>Disney Heroes: Battle Mode</title>
+<script src="../util.js?1547971343"></script>
+<script>
+var filter = null;
+
+function filterBy(params)
+{
+  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+      .getElementsByClassName("section");
+
+  for (const heroObj of heroObjs)
+  {
+    let display = "";
+
+    for (const p of params)
+    {
+      if (p[1] === "_")
+      {
+        continue;
+      }
+
+      if (-1 === [].indexOf.call(heroObj.classList, "unit-"+p[0]+"-"+p[1]))
+      {
+        display = "none";
+        break;
+      }
+    }
+
+    heroObj.style.display = display;
+  }
+
+  return params;
+}
+
+function init()
+{
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .unit-brief-list"));
+
+  filter = new UrlForm(document.getElementById("unit-filter"), filterBy);
+  filter.init();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">Герои</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">Друзья</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">Предметы</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Выбрать язык
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/hero_list.htm">Deutsche</a>
+        <a href="../en/hero_list.htm">English</a>
+        <a href="../es/hero_list.htm">Español</a>
+        <a href="../fr/hero_list.htm">Français</a>
+        <a href="../it/hero_list.htm">Italiano</a>
+        <a href="../ja/hero_list.htm">日本語</a>
+        <a href="../ko/hero_list.htm">한국어</a>
+        <a href="../pt/hero_list.htm">Português</a>
+        <a href="../ru/hero_list.htm">русский</a>
+        <a href="../zh-Hans/hero_list.htm">简体中文</a>
+        <a href="../zh-Hant/hero_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+<div class="section">
+  <form id="unit-filter">
+  <div>
+    <input type="radio" name="role" value="_" id="unit-role-all" onchange="filter.update()" checked><label for="unit-role-all">Все</label>
+    <input type="radio" name="role" value="tank" id="unit-role-tank" onchange="filter.update()"><label for="unit-role-tank">Танк</label>
+    <input type="radio" name="role" value="damage" id="unit-role-damage" onchange="filter.update()"><label for="unit-role-damage">Урон</label>
+    <input type="radio" name="role" value="support" id="unit-role-support" onchange="filter.update()"><label for="unit-role-support">Поддержка</label>
+    <input type="radio" name="role" value="control" id="unit-role-control" onchange="filter.update()"><label for="unit-role-control">Контроль</label>
+  </div>
+  <div>
+    <input type="radio" name="position" value="_" id="unit-position-all" onchange="filter.update()" checked><label for="unit-position-all">Все</label>
+    <input type="radio" name="position" value="front" id="unit-position-front" onchange="filter.update()"><label for="unit-position-front">Впереди</label>
+    <input type="radio" name="position" value="central" id="unit-position-central" onchange="filter.update()"><label for="unit-position-central">По центру</label>
+    <input type="radio" name="position" value="back" id="unit-position-back" onchange="filter.update()"><label for="unit-position-back">Сзади</label>
+  </div>
+  <div>
+    <input type="radio" name="team" value="_" id="unit-team-all" onchange="filter.update()" checked><label for="unit-team-all">Все</label>
+    <input type="radio" name="team" value="red" id="unit-team-red" onchange="filter.update()"><label for="unit-team-red">Красный</label>
+    <input type="radio" name="team" value="yellow" id="unit-team-yellow" onchange="filter.update()"><label for="unit-team-yellow">Желтый</label>
+    <input type="radio" name="team" value="blue" id="unit-team-blue" onchange="filter.update()"><label for="unit-team-blue">Синий</label>
+  </div>
+  </form>
+</div>
+
+<div class="unit-brief-list"><!-- unit-brief-list { -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/ALADDIN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Аладдин" src="ALADDIN.png">
+      </div>
+      <h1>Аладдин</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/BAYMAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Бэймакс" src="BAYMAX.png">
+      </div>
+      <h1>Бэймакс</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/BUZZ.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Базз Лайтер" src="BUZZ.png">
+      </div>
+      <h1>Базз Лайтер</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/CALHOUN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Калхун" src="CALHOUN.png">
+      </div>
+      <h1>Калхун</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/CHIEF_BOGO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Капитан Буйволсон" src="CHIEF_BOGO.png">
+      </div>
+      <h1>Капитан Буйволсон</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/DASH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Шастик" src="DASH.png">
+      </div>
+      <h1>Шастик</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>По центру</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-red">
+    <a href="./hero/ELASTIGIRL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Эластика" src="ELASTIGIRL.png">
+      </div>
+      <h1>Эластика</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>По центру</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/ELSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Эльза" src="ELSA.png">
+      </div>
+      <h1>Эльза</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-blue">
+    <a href="./hero/EMPEROR_ZURG.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Император Зург" src="EMPEROR_ZURG.png">
+      </div>
+      <h1>Император Зург</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>По центру</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/EVE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ЕВА" src="EVE.png">
+      </div>
+      <h1>ЕВА</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/FELIX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Феликс" src="FELIX.png">
+      </div>
+      <h1>Феликс</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-yellow">
+    <a href="./hero/FINNICK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Фенек" src="FINNICK.png">
+      </div>
+      <h1>Фенек</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>По центру</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-red">
+    <a href="./hero/FROZONE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Фреон" src="FROZONE.png">
+      </div>
+      <h1>Фреон</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/GENIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джин" src="GENIE.png">
+      </div>
+      <h1>Джин</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>По центру</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-central unit-team-blue">
+    <a href="./hero/HADES.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Аид" src="HADES.png">
+      </div>
+      <h1>Аид</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>По центру</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/HECTOR_BARBOSSA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Гектор Барбосса" src="HECTOR_BARBOSSA.png">
+      </div>
+      <h1>Гектор Барбосса</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/HIRO.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Хиро Хамада" src="HIRO.png">
+      </div>
+      <h1>Хиро Хамада</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>По центру</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/JACK_JACK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джек-Джек" src="JACK_JACK.png">
+      </div>
+      <h1>Джек-Джек</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/JACK_SKELLINGTON.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джек Скеллингтон" src="JACK_SKELLINGTON.png">
+      </div>
+      <h1>Джек Скеллингтон</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+    <a href="./hero/JACK_SPARROW.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джек Воробей" src="JACK_SPARROW.png">
+      </div>
+      <h1>Джек Воробей</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/JESSIE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джесси" src="JESSIE.png">
+      </div>
+      <h1>Джесси</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-yellow">
+    <a href="./hero/JUDY_HOPPS.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Джуди Хопс" src="JUDY_HOPPS.png">
+      </div>
+      <h1>Джуди Хопс</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>По центру</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/KEVIN_FLYNN.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Кевин Флинн" src="KEVIN_FLYNN.png">
+      </div>
+      <h1>Кевин Флинн</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/MALEFICENT.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Малефисента" src="MALEFICENT.png">
+      </div>
+      <h1>Малефисента</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/MAUI.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Мауи" src="MAUI.png">
+      </div>
+      <h1>Мауи</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-red">
+    <a href="./hero/MERIDA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Мерида" src="MERIDA.png">
+      </div>
+      <h1>Мерида</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-red">
+    <a href="./hero/MICKEY_MOUSE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Микки Маус" src="MICKEY_MOUSE.png">
+      </div>
+      <h1>Микки Маус</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>Сзади</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/MIGUEL.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Мигель Ривера" src="MIGUEL.png">
+      </div>
+      <h1>Мигель Ривера</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/MIKE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Майк Вазовски" src="MIKE.png">
+      </div>
+      <h1>Майк Вазовски</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+    <a href="./hero/MOANA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Моана" src="MOANA.png">
+      </div>
+      <h1>Моана</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>По центру</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-red">
+    <a href="./hero/MR_INCREDIBLE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="М-р Исключительный" src="MR_INCREDIBLE.png">
+      </div>
+      <h1>М-р Исключительный</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+    <a href="./hero/NICK_WILDE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Ник Уайлд" src="NICK_WILDE.png">
+      </div>
+      <h1>Ник Уайлд</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/OLAF.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Олаф" src="OLAF.png">
+      </div>
+      <h1>Олаф</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/QUORRA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Кворра" src="QUORRA.png">
+      </div>
+      <h1>Кворра</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/RALPH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Ральф" src="RALPH.png">
+      </div>
+      <h1>Ральф</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-blue">
+    <a href="./hero/REX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Рекс" src="REX.png">
+      </div>
+      <h1>Рекс</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SALLY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Салли" src="SALLY.png">
+      </div>
+      <h1>Салли</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-red">
+    <a href="./hero/SCAR.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Шрам" src="SCAR.png">
+      </div>
+      <h1>Шрам</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-front unit-team-blue">
+    <a href="./hero/SHANK.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Шэнк" src="SHANK.png">
+      </div>
+      <h1>Шэнк</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Впереди</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/STITCH.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Стич" src="STITCH.png">
+      </div>
+      <h1>Стич</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+    <a href="./hero/SULLEY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Салли и Бу" src="SULLEY.png">
+      </div>
+      <h1>Салли и Бу</h1>
+    </div></a>
+    <div>
+        <span>Танк</span>,
+        <span>Впереди</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-back unit-team-yellow">
+    <a href="./hero/TIA_DALMA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Тиа Дальма" src="TIA_DALMA.png">
+      </div>
+      <h1>Тиа Дальма</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-blue">
+    <a href="./hero/URSULA.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Урсула" src="URSULA.png">
+      </div>
+      <h1>Урсула</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>По центру</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-damage unit-position-back unit-team-blue">
+    <a href="./hero/VANELLOPE.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Ванилопа" src="VANELLOPE.png">
+      </div>
+      <h1>Ванилопа</h1>
+    </div></a>
+    <div>
+        <span>Урон</span>,
+        <span>Сзади</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-red">
+    <a href="./hero/VIOLET.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Фиалка" src="VIOLET.png">
+      </div>
+      <h1>Фиалка</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>По центру</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-control unit-position-central unit-team-red">
+    <a href="./hero/WALL_E.htm"><div>
+      <div class="unit-avatar">
+        <img alt="ВАЛЛ-И" src="WALL_E.png">
+      </div>
+      <h1>ВАЛЛ-И</h1>
+    </div></a>
+    <div>
+        <span>Контроль</span>,
+        <span>По центру</span>,
+        <span>Красный</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-central unit-team-blue">
+    <a href="./hero/WOODY.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Вуди" src="WOODY.png">
+      </div>
+      <h1>Вуди</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>По центру</span>,
+        <span>Синий</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+  <!-- Hero { -->
+  <div class="section unit-role-support unit-position-back unit-team-yellow">
+    <a href="./hero/YAX.htm"><div>
+      <div class="unit-avatar">
+        <img alt="Якс" src="YAX.png">
+      </div>
+      <h1>Якс</h1>
+    </div></a>
+    <div>
+        <span>Поддержка</span>,
+        <span>Сзади</span>,
+        <span>Желтый</span>
+    </div>
+  </div>
+  <!-- Hero } -->
+</div><!-- unit-brief-list } -->
+</div><!-- container } -->
+</body>
+</html>

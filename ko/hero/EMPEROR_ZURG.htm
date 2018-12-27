@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1547887722">
+<link rel="stylesheet" href="../../star.css?1547887722">
+<link rel="stylesheet" href="../../unit.css?1547887722">
+<title>Disney Heroes: Battle Mode - 저그 황제</title>
+<script src="../../util.js?1547887722"></script>
+<script src="../../unit.js?1547887722"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">영웅</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">친구들</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">아이템</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    언어 선택하기
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/EMPEROR_ZURG.htm">Deutsche</a>
+        <a href="../../en/hero/EMPEROR_ZURG.htm">English</a>
+        <a href="../../es/hero/EMPEROR_ZURG.htm">Español</a>
+        <a href="../../fr/hero/EMPEROR_ZURG.htm">Français</a>
+        <a href="../../it/hero/EMPEROR_ZURG.htm">Italiano</a>
+        <a href="../../ja/hero/EMPEROR_ZURG.htm">日本語</a>
+        <a href="../../ko/hero/EMPEROR_ZURG.htm">한국어</a>
+        <a href="../../pt/hero/EMPEROR_ZURG.htm">Português</a>
+        <a href="../../ru/hero/EMPEROR_ZURG.htm">русский</a>
+        <a href="../../zh-Hans/hero/EMPEROR_ZURG.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/EMPEROR_ZURG.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar">
+      <img alt="저그 황제" src="EMPEROR_ZURG.png">
+    </div>
+    <h1>저그 황제</h1>
+    <p>저그 황제는 이온 블래스터로 적을 날려버리고 악마같은 웃음으로 위협합니다.</p>
+    <blockquote>&#34;다시 만났구나, 버즈 라이트이어, 이번이 마지막이 될 것이다!&#34;</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">역할</span>
+      <span class="unit-pair-val">데미지</span>
+      <span class="unit-pair-name">포지션</span>
+      <span class="unit-pair-val">중간</span>
+      <span class="unit-pair-name">도전 팀</span>
+      <span class="unit-pair-val">블루</span>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>핵심 통계</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">최대 HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        300.7 + 24.82g
+      </span>
+      <span class="unit-pair-name">기본 데미지</span>
+      <span class="unit-pair-val unit-expr-g">
+        40.7 + 3.36g
+      </span>
+      <span class="unit-pair-name">스킬 파워</span>
+      <span class="unit-pair-val unit-expr-g">
+        66.7 + 5.5g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1 class="undertest">상세 능력치</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">레벨</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="100" value="100">
+      </span>
+      <span class="unit-pair-name">희귀도</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="2.65" selected>ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">별</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">아름다운 밤</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b1" data-hp_max="100" data-skill_power="10" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>100</dd>
+            <dt>스킬 파워</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">아름다운 밤</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b2" data-hp_max="100" data-skill_power="10" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>100</dd>
+            <dt>스킬 파워</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">슈가 러쉬</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b3" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>125</dd>
+            <dt>일반 크리티컬</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">영리한 여우</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b4" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>100</dd>
+            <dt>HP 재생</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">무딘 검</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b5" data-skill_power="20" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">무딘 검</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b6" data-skill_power="20" data-r_ctl="1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>20</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_hp_max" class="hidden" data-formula="425" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="60" data-r_ctl="1.1"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="8" data-r_ctl="1.1"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="100" data-r_ctl="1.1"></output>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">미코의 비스킷</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b1" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>30</dd>
+            <dt>HP 재생</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">폭죽 묶음</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b2" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>20</dd>
+            <dt>스킬 파워</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=BLUEBIRD_OF_HAPPINESS#BLUEBIRD_OF_HAPPINESS" class="rarity-white">행복의 파랑새</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b3" data-basic_damage="45" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=BADGE_OF_FRIENDSHIP#BADGE_OF_FRIENDSHIP" class="rarity-white">우정의 배지</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b4" data-energy_regen="25" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>에너지 재생</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">파티 렉스</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b5" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>25</dd>
+            <dt>일반 크리티컬</dt><dd>11</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">물컹하지만 즐거운</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b6" data-hp_max="50" data-basic_damage="8" data-skill_power="8" data-r_ctl="1.1" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>50</dd>
+            <dt>기본 데미지</dt><dd>8</dd>
+            <dt>스킬 파워</dt><dd>8</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="475" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="118" data-r_ctl="1.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="19" data-r_ctl="1.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="150" data-r_ctl="1.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="98" data-r_ctl="1.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="25" data-r_ctl="1.2"></output>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=IMAGINATION_SHIP#IMAGINATION_SHIP" class="rarity-blue">상상의 선박</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b1" data-hp_max="400" data-hp_regen="200" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>HP 재생</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">완벽한 낚시</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b2" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>20</dd>
+            <dt>HP 재생</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">공주의 아침 식사</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b3" data-skill_power="30" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=PAPER_AIRPLANE#PAPER_AIRPLANE" class="rarity-white">종이 비행기</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b4" data-basic_damage="5" data-normal_crit="8" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>5</dd>
+            <dt>일반 크리티컬</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=CRAB_CAKE#CRAB_CAKE" class="rarity-green">빛나는 크랩 케이크</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b5" data-hp_max="100" data-basic_damage="50" data-normal_crit="10" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>100</dd>
+            <dt>기본 데미지</dt><dd>50</dd>
+            <dt>일반 크리티컬</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">물컹하지만 즐거운</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b6" data-hp_max="50" data-basic_damage="8" data-skill_power="8" data-r_ctl="1.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>50</dd>
+            <dt>기본 데미지</dt><dd>8</dd>
+            <dt>스킬 파워</dt><dd>8</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1025" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="156" data-r_ctl="1.3"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="37" data-r_ctl="1.3"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="400" data-r_ctl="1.3"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="181" data-r_ctl="1.3"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="25" data-r_ctl="1.3"></output>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCOGNITO_MODE#INCOGNITO_MODE" class="rarity-blue">익명 모드</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b1" data-hp_max="300" data-skill_power="45" data-armor_negation="7" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>300</dd>
+            <dt>스킬 파워</dt><dd>45</dd>
+            <dt>방어 무시</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=NOTRE_DINNER_BELL#NOTRE_DINNER_BELL" class="rarity-green">노트르 디너 벨</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b2" data-hp_max="300" data-armor_negation="9" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>300</dd>
+            <dt>방어 무시</dt><dd>9</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">평범한 사과</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b3" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>55</dd>
+            <dt>에너지 재생</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=MRS_NESBITTS_CHAPEAU#MRS_NESBITTS_CHAPEAU" class="rarity-blue">네즈빗 부인의 모자</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b4" data-armor_negation="20" data-normal_crit="12" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>방어 무시</dt><dd>20</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=PRINCESS_FINDER#PRINCESS_FINDER" class="rarity-blue">공주 탐지기</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b5" data-armor_negation="20" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>방어 무시</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">공주의 아침 식사</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b6" data-skill_power="30" data-r_ctl="1.3" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>30</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1625" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="286" data-r_ctl="1.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="49" data-r_ctl="1.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="400" data-r_ctl="1.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="181" data-r_ctl="1.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="45" data-r_ctl="1.4"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="56" data-r_ctl="1.4"></output>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">황야 탐험가</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b1" data-skill_power="120" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>120</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=TREASURE_MAP#TREASURE_MAP" class="rarity-green">보물 지도</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b2" data-skill_power="40" data-energy_regen="50" data-normal_crit="12" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>40</dd>
+            <dt>에너지 재생</dt><dd>50</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">돼지 저금통</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b3" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>40</dd>
+            <dt>HP 재생</dt><dd>100</dd>
+            <dt>에너지 재생</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">샌프란시스코 피자</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b4" data-hp_max="200" data-basic_damage="40" data-skill_power="40" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>200</dd>
+            <dt>기본 데미지</dt><dd>40</dd>
+            <dt>스킬 파워</dt><dd>40</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=YZMAS_ANTI_AGING_CREAM#YZMAS_ANTI_AGING_CREAM" class="rarity-blue">이즈마의 노후 방지 크림</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b5" data-basic_damage="90" data-energy_regen="50" data-armor_negation="7" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>90</dd>
+            <dt>에너지 재생</dt><dd>50</dd>
+            <dt>방어 무시</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">돼지 저금통</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b6" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>40</dd>
+            <dt>HP 재생</dt><dd>100</dd>
+            <dt>에너지 재생</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1825" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="566" data-r_ctl="1.5"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="61" data-r_ctl="1.5"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="600" data-r_ctl="1.5"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="311" data-r_ctl="1.5"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="245" data-r_ctl="1.5"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="63" data-r_ctl="1.5"></output>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=ARAIGNEE_NOIRE#ARAIGNEE_NOIRE" class="rarity-purple">거미 누아르</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b1" data-hp_max="400" data-energy_regen="100" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>에너지 재생</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=TIME_SINK#TIME_SINK" class="rarity-green">타임 싱크</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b2" data-hp_max="300" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=PIGASUS#PIGASUS" class="rarity-blue">피그아수스</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b3" data-hp_max="500" data-basic_damage="175" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>500</dd>
+            <dt>기본 데미지</dt><dd>175</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">러브 버그</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b4" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>180</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BASKETBALL_JERSEY#BASKETBALL_JERSEY" class="rarity-blue">농구복</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b5" data-basic_damage="90" data-armor_negation="7" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>90</dd>
+            <dt>방어 무시</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">구조 토큰</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b6" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.5" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>60</dd>
+            <dt>에너지 재생</dt><dd>60</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3025" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="626" data-r_ctl="1.6"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="73" data-r_ctl="1.6"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="600" data-r_ctl="1.6"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="756" data-r_ctl="1.6"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="405" data-r_ctl="1.6"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="70" data-r_ctl="1.6"></output>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=LAST_RESORT#LAST_RESORT" class="rarity-purple">최후의 수단</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b1" data-skill_power="125" data-armor_negation="7" data-normal_crit="7" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>125</dd>
+            <dt>방어 무시</dt><dd>7</dd>
+            <dt>일반 크리티컬</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=NOTRE_DINNER_BELL#NOTRE_DINNER_BELL" class="rarity-green">노트르 디너 벨</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b2" data-hp_max="300" data-armor_negation="9" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>300</dd>
+            <dt>방어 무시</dt><dd>9</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">아름다운 램프</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b3" data-hp_max="800" data-basic_damage="100" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>800</dd>
+            <dt>기본 데미지</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=EMBRITTLEMENT_PERFUME#EMBRITTLEMENT_PERFUME" class="rarity-green">연약한 향수</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b4" data-normal_crit="12" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=HEARTY_BREAKFAST#HEARTY_BREAKFAST" class="rarity-white">든든한 아침식사</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b5" data-skill_power="15" data-energy_regen="10" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>15</dd>
+            <dt>에너지 재생</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=ARAIGNEE_NOIRE#ARAIGNEE_NOIRE" class="rarity-purple">거미 누아르</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b6" data-hp_max="400" data-energy_regen="100" data-r_ctl="1.6" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>에너지 재생</dt><dd>100</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_hp_max" class="hidden" data-formula="4525" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="766" data-r_ctl="1.7"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="92" data-r_ctl="1.7"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="600" data-r_ctl="1.7"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="856" data-r_ctl="1.7"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="1.7"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="86" data-r_ctl="1.7"></output>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">파 가문 가위</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b1" data-skill_power="450" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=EXTRACT_OF_LLAMA#EXTRACT_OF_LLAMA" class="rarity-blue">라마 엑기스</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b2" data-hp_regen="2000" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP 재생</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">러브 버그</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b3" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>180</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=DOCTORS_TOP_HAT#DOCTORS_TOP_HAT" class="rarity-blue">의사의 탑 햇</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b4" data-armor_negation="42" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>방어 무시</dt><dd>42</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">자파의 커프링크스</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b5" data-hp_max="2000" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_hp_max" class="hidden" data-formula="6975" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1216" data-r_ctl="1.8"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="104" data-r_ctl="1.8"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2600" data-r_ctl="1.8"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1036" data-r_ctl="1.8"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="1.8"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="128" data-r_ctl="1.8"></output>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">석조 수호신</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b1" data-hp_max="525" data-basic_damage="225" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>525</dd>
+            <dt>기본 데미지</dt><dd>225</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">화성이 담긴 병</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b2" data-hp_max="400" data-basic_damage="60" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>기본 데미지</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">황야 탐험가</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b3" data-skill_power="120" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>120</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=IMAGINATION_SHIP#IMAGINATION_SHIP" class="rarity-blue">상상의 선박</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b4" data-hp_max="400" data-hp_regen="200" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>HP 재생</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">러브 버그</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b5" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>180</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_hp_max" class="hidden" data-formula="8750" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1336" data-r_ctl="1.9"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="116" data-r_ctl="1.9"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2800" data-r_ctl="1.9"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1501" data-r_ctl="1.9"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="1.9"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="128" data-r_ctl="1.9"></output>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=HANKS_HOT_SAUCE#HANKS_HOT_SAUCE" class="rarity-purple">행크의 핫소스</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b1" data-hp_max="525" data-basic_damage="125" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>525</dd>
+            <dt>기본 데미지</dt><dd>125</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">화성이 담긴 병</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b2" data-hp_max="400" data-basic_damage="60" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>400</dd>
+            <dt>기본 데미지</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">파 가문 가위</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b3" data-skill_power="450" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=CONSPICUOUS_APPLE#CONSPICUOUS_APPLE" class="rarity-blue">튀는 사과</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b4" data-skill_power="55" data-armor_negation="20" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>55</dd>
+            <dt>방어 무시</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=PIRATES_COMPASS#PIRATES_COMPASS" class="rarity-green">해적의 나침반</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b5" data-hp_max="250" data-hp_regen="50" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>250</dd>
+            <dt>HP 재생</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="10375" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1841" data-r_ctl="2.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="116" data-r_ctl="2.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2850" data-r_ctl="2.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1686" data-r_ctl="2.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="2.05"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="148" data-r_ctl="2.05"></output>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">위니프레드의 마법서</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b1" data-skill_power="500" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=CUTEING_STAR#CUTEING_STAR" class="rarity-purple">귀염별</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b2" data-basic_damage="150" data-skill_power="150" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>150</dd>
+            <dt>스킬 파워</dt><dd>150</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">신비의 묘목</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b3" data-skill_power="40" data-normal_crit="12" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>40</dd>
+            <dt>일반 크리티컬</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">석조 수호신</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b4" data-hp_max="525" data-basic_damage="225" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>525</dd>
+            <dt>기본 데미지</dt><dd>225</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=BELLWEATHERS_MUG#BELLWEATHERS_MUG" class="rarity-purple">벨웨더의 머그컵</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b5" data-skill_power="195" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>195</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">상류클럽 배지</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b6" data-hp_max="3500" data-basic_damage="250" data-skill_power="250" data-r_ctl="2.05" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>3500</dd>
+            <dt>기본 데미지</dt><dd>250</dd>
+            <dt>스킬 파워</dt><dd>250</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="14400" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2976" data-r_ctl="2.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="128" data-r_ctl="2.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2850" data-r_ctl="2.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2311" data-r_ctl="2.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="2.2"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="148" data-r_ctl="2.2"></output>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">액체 아침 식사</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b1" data-hp_max="1000" data-reality="2000" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>1000</dd>
+            <dt>현실</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=OO_DE_LALLY_ARROWS#OO_DE_LALLY_ARROWS" class="rarity-purple">우드랄리 류트</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b2" data-hp_max="999" data-reality="999" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>999</dd>
+            <dt>현실</dt><dd>999</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=BELLWEATHERS_MUG#BELLWEATHERS_MUG" class="rarity-purple">벨웨더의 머그컵</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b3" data-skill_power="195" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>195</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">아름다운 램프</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b4" data-hp_max="800" data-basic_damage="100" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>800</dd>
+            <dt>기본 데미지</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=PIED_SANDPIPER#PIED_SANDPIPER" class="rarity-purple">얼룩 무늬의 도요새</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b5" data-hp_regen="500" data-reality="650" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP 재생</dt><dd>500</dd>
+            <dt>현실</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">늠름한 왕자</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>555</dd>
+            <dt>방어</dt><dd>777</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="17199" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3726" data-r_ctl="2.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="128" data-r_ctl="2.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3350" data-r_ctl="2.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2411" data-r_ctl="2.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="2.4"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="148" data-r_ctl="2.4"></output>
+        <output name="b_reality" class="hidden" data-formula="3649" data-r_ctl="2.4"></output>
+        <output name="b_armor" class="hidden" data-formula="777" data-r_ctl="2.4"></output>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">Mathematically Delicious</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b1" data-hp_max="1000" data-basic_damage="125" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>1000</dd>
+            <dt>기본 데미지</dt><dd>125</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TOUGH_PETAL#TOUGH_PETAL" class="rarity-purple">Tough Petal</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b2" data-basic_damage="125" data-armor_negation="10" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>125</dd>
+            <dt>방어 무시</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TOKEN_OF_RADITUDE#TOKEN_OF_RADITUDE" class="rarity-purple">Token of Raditude</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b3" data-skill_power="200" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>스킬 파워</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=PIRATE_HIDEOUT#PIRATE_HIDEOUT" class="rarity-orange">Pirate Hideout</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b4" data-basic_damage="200" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=PILOTS_CAP#PILOTS_CAP" class="rarity-purple">윌버의 예비 야구모자</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b5" data-hp_max="650" data-skill_power="150" data-conservation="0.1" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>650</dd>
+            <dt>스킬 파워</dt><dd>150</dd>
+            <dt>보존</dt><dd>0.1</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">악마의 립스틱</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b6" data-basic_damage="190" data-r_ctl="2.4" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>190</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_hp_max" class="hidden" data-formula="18849" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4076" data-r_ctl="2.65"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="128" data-r_ctl="2.65"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3350" data-r_ctl="2.65"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3051" data-r_ctl="2.65"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="515" data-r_ctl="2.65"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="158" data-r_ctl="2.65"></output>
+        <output name="b_reality" class="hidden" data-formula="3649" data-r_ctl="2.65"></output>
+        <output name="b_armor" class="hidden" data-formula="777" data-r_ctl="2.65"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.65"></output>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=GONNA_GET_A_LITTLE_WEIRD#GONNA_GET_A_LITTLE_WEIRD" class="rarity-orange">Gonna get a Little Weird</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b1" data-basic_damage="125" data-armor_negation="10" data-normal_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>125</dd>
+            <dt>방어 무시</dt><dd>10</dd>
+            <dt>일반 크리티컬</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">액체 아침 식사</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b2" data-hp_max="1000" data-reality="2000" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>1000</dd>
+            <dt>현실</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">Customer of the Year</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b3" data-hp_max="1000" data-basic_damage="125" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>1000</dd>
+            <dt>기본 데미지</dt><dd>125</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=TIN_TOY#TIN_TOY" class="rarity-purple">Tin Toy</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b4" data-hp_regen="650" data-energy_regen="75" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>HP 재생</dt><dd>650</dd>
+            <dt>에너지 재생</dt><dd>75</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">천개의 세계의 전리품</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>기본 데미지</dt><dd>150</dd>
+            <dt>일반 크리티컬</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=CALAMARI#CALAMARI" class="rarity-purple">수정 벨</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b6" data-hp_max="999" data-normal_crit="9" data-r_ctl="2.65" disabled>
+            <option value="-1">해당 없음</option>
+            <option value="0" selected>장착</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>최대 HP</dt><dd>999</dd>
+            <dt>일반 크리티컬</dt><dd>9</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 24.82g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="40.7 + 3.36g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="66.7 + 5.5g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">기본 데미지</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">스킬 파워</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">최대 HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-name">HP 재생</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_regen" for="core_hp_regen b_hp_regen func:badge_inc,calcBadge,badge_param" data-formula="core_hp_regen + b_hp_regen + badge_inc" data-badge_param="hp_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">에너지 재생</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="energy_regen" for="core_energy_regen b_energy_regen func:badge_inc,calcBadge,badge_param" data-formula="core_energy_regen + b_energy_regen + badge_inc" data-badge_param="energy_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">방어</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor" for="core_armor b_armor func:badge_inc,calcBadge,badge_param" data-formula="core_armor + b_armor + badge_inc" data-badge_param="armor|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">현실</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality" for="core_reality b_reality func:badge_inc,calcBadge,badge_param" data-formula="core_reality + b_reality + badge_inc" data-badge_param="reality|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">방어 무시</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor_negation" for="core_armor_negation b_armor_negation func:badge_inc,calcBadge,badge_param" data-formula="core_armor_negation + b_armor_negation + badge_inc" data-badge_param="armor_negation|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">일반 크리티컬</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="normal_crit" for="core_normal_crit b_normal_crit func:badge_inc,calcBadge,badge_param" data-formula="core_normal_crit + b_normal_crit + badge_inc" data-badge_param="normal_crit|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">보존</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="conservation" for="core_conservation b_conservation func:badge_inc,calcBadge,badge_param" data-formula="core_conservation + b_conservation + badge_inc" data-format="%" data-badge_param="conservation|ceil(100*B*0.35)*S/100"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">스킬</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden">
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
+    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <h2 class="rarity-white"><a id="WHITE">이온 블래스터</a></h2>
+    <p><span>저그는 자신의 이온 블래스터를 에너지가 없어질 때까지 여러 번 발사합니다.이온 블래스터를 발사할 때마다 모든 적에게 각 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k+0.25sp" data-format="None" data-checkbox="eval">50k+0.25sp</output></span><span> 데미지를 입힙니다.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>1</dd>
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>furthestPrefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>closestPrefFacing &lt; enemy | sourceFacingTarget</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>energypershot</dt><dd>100</dd>
+        <dt>dmg</dt><dd>50k+0.25sp</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><a id="GREEN">저그 분노</a></h2>
+    <p><span>저그가 고함을 쳐 </span><span class="unit-expr-misc">7</span><span>초간 적에게 겁을 줍니다. 판타스틱 데미지를 입히는 공격은 항상 겁먹은 적에게 크리티컬 데미지를 입힙니다.</span></p>
+    <p><span>이는 레벨 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>(을)를 넘는 적에게는 실패할 확률이 있습니다.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>cooldown</dt><dd>10</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>10</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closestPrefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>closestPrefFacing &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>scareduration</dt><dd>7</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><a id="BLUE">에너지 강탈</a></h2>
+    <p><span>저그는 각 적으로부터 </span><span class="unit-expr-misc">60</span><span> 에너지를 훔칩니다.</span></p>
+    <p><span>이는 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 레벨이 넘는 적에게는 실패할 확률이 있습니다.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>cooldown</dt><dd>12</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>priority</dt><dd>2</dd>
+        <dt>trigger</dt><dd>closestPrefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>closestPrefFacing &lt; enemy | sourceFacingTarget</dd>
+        <dt>splash</dt><dd>enemy | sourceFacingTarget</dd>
+        <dt>amt</dt><dd>60</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><a id="PURPLE">천재 악당</a></h2>
+    <p><span>저그는 레벨 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 이하의 적에게 데미지를 입히거나, 겁을 주거나, 에너지를 훔칠 때마다 </span><span class="unit-expr-misc">20</span><span> 에너지를 획득합니다.</span></p>
+    <p><span>이는 레벨 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>(을)를 넘는 적과 맞설 때는 효과가 감소합니다.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple">...</label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>energygain</dt><dd>20</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">친구들</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden">
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">레벨</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="60" value="60">
+      </span>
+      <span class="unit-pair-name">별</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/REX.htm">렉스</a> <small>(68)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#EMPEROR_ZURG_TANK_COUNTER">최고의 팬</a>
+    </p>
+    <blockquote>탱크 대항 시 더욱 강력</blockquote>
+    <ul>
+      <li><a href="../hero_list.htm?role=tank" class="unit-expr-misc">탱커</a><span> 적에게 +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="50s%" data-format="%.1" data-checkbox="eval">50s%</output></span><span> 추가 데미지.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-format="None" data-checkbox="eval">20k</output></span><span> </span><span class="unit-expr-misc">기본 데미지</span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/HIRO.htm">히로 아르마다</a> <small>(88)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#EMPEROR_ZURG_ENERGY_TO_ALLY">정복의 도구</a>
+    </p>
+    <blockquote>아군과의 에너지 공유</blockquote>
+    <ul>
+      <li><span>동료들에게 +</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="12k" data-format="None" data-checkbox="eval">12k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
+      <li><span>팀원도 획득하는 에너지 </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval">5s%</output></span><span>을 획득합니다.</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>친구들</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/BUZZ.htm">버즈 라이트이어</a> <small>(62)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#BUZZ_ATTACK_SPEED">세상에서 가장 훌륭한 부하</a>
+    </p>
+    <!-- Disk } -->
+  </div>
+  <!-- Friends 2 } -->
+
+</div><!--  container } -->
+</body>
+</html>
