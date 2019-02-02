@@ -17,6 +17,8 @@ function evalFormula(formula, data, internal)
         return "Math.exp";
       else if (k === "ceil")
         return "Math.ceil";
+      else if (k === "bonus_basic_damage") // TODO
+        return 0;
       return k;
     }));
 
@@ -166,6 +168,11 @@ function calcOutput(obj)
     {
       data.set(k, calcControl(obj, k));
     }
+  }
+
+  if (obj.dataset.debug)
+  {
+    console.log(data);
   }
 
   if (data.size == 0)
