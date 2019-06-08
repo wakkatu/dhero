@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1560018866">
+<link rel="stylesheet" href="../star.css?1560018866">
+<link rel="stylesheet" href="../unit.css?1560018866">
+<title>Colecciones - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Las Colecciones son grupos de héroes que tienen algo en común. Los héroes de una Colección pueden compartir las mismas características: rol de combate, mecánica, tema, o ser de la misma película de Disney-Pixar.">
+<script src="../util.js?1560018866"></script>
+<script src="../unit.js?1560018866"></script>
+<script>
+var calculator= null;
+
+function calculateBy(params)
+{
+  calcForm(this.objForm);
+  return params;
+}
+
+function init()
+{
+/*
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .section:nth-child(2)"));
+*/
+
+  calculator = new UrlForm(
+    document.getElementById("unit-collect"),
+    calculateBy);
+  calculator.init();
+}
+</script>
+
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">Héroes</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">Amigos</div>
+  </a>
+  <a href="./collect_list.htm">
+    <div class="section undertest">Colecciones</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">Objetos</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Elegir idioma / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/collect_list.htm">Deutsche</a>
+        <a href="../en/collect_list.htm">English</a>
+        <a href="../es/collect_list.htm">Español</a>
+        <a href="../fr/collect_list.htm">Français</a>
+        <a href="../it/collect_list.htm">Italiano</a>
+        <a href="../ja/collect_list.htm">日本語</a>
+        <a href="../ko/collect_list.htm">한국어</a>
+        <a href="../pt/collect_list.htm">Português</a>
+        <a href="../ru/collect_list.htm">русский</a>
+        <a href="../zh-Hans/collect_list.htm">简体中文</a>
+        <a href="../zh-Hant/collect_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  -->
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+  <div class="section">
+    <form id="unit-collect" onchange="calculator.update()">
+
+    <div class="unit-pair-list">
+<div class="hidden">
+      <span class="unit-pair-name"><label for="unit-collect-eval">Usar<label></span>
+      <span class="unit-pair-val">
+        <input name="eval" id="unit-collect-eval" type="checkbox" checked>
+      </span>
+</div>
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+    </form>
+  </div>
+
+  <table class="section">
+    <tr>
+      <th>Nivel</th>
+      <th>Colecciones</th>
+      <th>Héroes</th>
+    </tr>
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 4
+      </td>
+      <td>
+        <a id="ALICE_IN_WONDERLAND"><p>Alicia en el país de las maravillas</p></a>
+        <blockquote>Posibilidad de aturdir</blockquote>
+        <ul>
+          <li><span>Los personajes de esta colección tienen un </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="2.25k" data-format=".3" data-checkbox="eval" form="unit-collect">2.25k</output></span><span>% de posibilidad de aturdir con sus ataques básicos.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(3 de héroes)</p>
+        <ul>
+          <li><a href="./hero/ALICE.htm">Alicia</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">El Sombrerero</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">La Reina de Corazones</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="CHARM"><p>Hechizo</p></a>
+        <blockquote>Poder de habilidad adicional</blockquote>
+        <ul>
+          <li><span>Los personajes de esta colección obtienen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="5k" data-format=".3" data-checkbox="eval" form="unit-collect">5k</output></span><span> de poder de habilidad.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6 de héroes)</p>
+        <ul>
+          <li><a href="./hero/GASTON.htm">Gastón</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">El Sombrerero</a></li>
+          <li><a href="./hero/MEGARA.htm">Megara</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Nick Wilde</a></li>
+          <li><a href="./hero/TIA_DALMA.htm">Tia Dalma</a></li>
+          <li><a href="./hero/WOODY.htm">Woody</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="CONTROL"><p>Control</p></a>
+        <blockquote>Reducción de obtención de energía del enemigo</blockquote>
+        <ul>
+          <li><span>El equipo enemigo obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.002k" data-format=".3" data-checkbox="eval" form="unit-collect">0.002k</output></span><span>% menos de energía por cada personaje de la colección en tu equipo.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(11 de héroes)</p>
+        <ul>
+          <li><a href="./hero/FINNICK.htm">Finnick</a></li>
+          <li><a href="./hero/FROZONE.htm">Frozono</a></li>
+          <li><a href="./hero/WALL_E.htm">WALL-E</a></li>
+          <li><a href="./hero/TIA_DALMA.htm">Tia Dalma</a></li>
+          <li><a href="./hero/GENIE.htm">Genio</a></li>
+          <li><a href="./hero/HIRO.htm">Hiro Hamada</a></li>
+          <li><a href="./hero/MALEFICENT.htm">Maléfica</a></li>
+          <li><a href="./hero/URSULA.htm">Úrsula</a></li>
+          <li><a href="./hero/GASTON.htm">Gastón</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">El Sombrerero</a></li>
+          <li><a href="./hero/MERLIN.htm">Merlín</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="DAMAGE"><p>Daño</p></a>
+        <blockquote>Daño adicional</blockquote>
+        <ul>
+          <li><span>Los personajes de daño hacen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.4k" data-format=".3" data-checkbox="eval" form="unit-collect">0.4k</output></span><span>% más de daño a otros personajes de daño.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(24 de héroes)</p>
+        <ul>
+          <li><a href="./hero/CALHOUN.htm">Calhoun</a></li>
+          <li><a href="./hero/VANELLOPE.htm">Vanellope</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Nick Wilde</a></li>
+          <li><a href="./hero/ELASTIGIRL.htm">Elastigirl</a></li>
+          <li><a href="./hero/DASH.htm">Dash</a></li>
+          <li><a href="./hero/JACK_JACK.htm">Jack-Jack</a></li>
+          <li><a href="./hero/BUZZ.htm">Buzz Lightyear</a></li>
+          <li><a href="./hero/EMPEROR_ZURG.htm">Emperador Zurg</a></li>
+          <li><a href="./hero/JESSIE.htm">Jessie</a></li>
+          <li><a href="./hero/MIKE.htm">Mike Wazowski</a></li>
+          <li><a href="./hero/EVE.htm">EVA</a></li>
+          <li><a href="./hero/JACK_SPARROW.htm">Jack Sparrow</a></li>
+          <li><a href="./hero/HECTOR_BARBOSSA.htm">Héctor Barbossa</a></li>
+          <li><a href="./hero/QUORRA.htm">Quorra</a></li>
+          <li><a href="./hero/MERIDA.htm">Mérida</a></li>
+          <li><a href="./hero/STITCH.htm">Stitch</a></li>
+          <li><a href="./hero/MOANA.htm">Moana</a></li>
+          <li><a href="./hero/ALADDIN.htm">Aladdín</a></li>
+          <li><a href="./hero/SCAR.htm">Scar</a></li>
+          <li><a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a></li>
+          <li><a href="./hero/ELSA.htm">Elsa</a></li>
+          <li><a href="./hero/DARKWING_DUCK.htm">El Pato Darkwing</a></li>
+          <li><a href="./hero/ROBIN_HOOD.htm">Robin Hood</a></li>
+          <li><a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="INCREDIBLES"><p>Los Increíbles</p></a>
+        <blockquote>PV adicionales</blockquote>
+        <ul>
+          <li><span>Los personajes de esta colección obtienen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format=".3" data-checkbox="eval" form="unit-collect">30k</output></span><span> PV.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6 de héroes)</p>
+        <ul>
+          <li><a href="./hero/DASH.htm">Dash</a></li>
+          <li><a href="./hero/ELASTIGIRL.htm">Elastigirl</a></li>
+          <li><a href="./hero/FROZONE.htm">Frozono</a></li>
+          <li><a href="./hero/JACK_JACK.htm">Jack-Jack</a></li>
+          <li><a href="./hero/MR_INCREDIBLE.htm">Mr. Increíble</a></li>
+          <li><a href="./hero/VIOLET.htm">Violeta</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="SHIELDS"><p>Escudos</p></a>
+        <blockquote>Reducción del daño</blockquote>
+        <ul>
+          <li><span>Los escudos reducen el daño recibido un </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.75k" data-format=".3" data-checkbox="eval" form="unit-collect">0.75k</output></span><span>%.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6 de héroes)</p>
+        <ul>
+          <li><a href="./hero/BAYMAX.htm">Baymax</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Jefe Bogo</a></li>
+          <li><a href="./hero/EVE.htm">EVA</a></li>
+          <li><a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a></li>
+          <li><a href="./hero/MOANA.htm">Moana</a></li>
+          <li><a href="./hero/VIOLET.htm">Violeta</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="STUN"><p>Aturdimiento</p></a>
+        <blockquote>Sanar al estar aturdido</blockquote>
+        <ul>
+          <li><span>Sana el </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.5k" data-format=".3" data-checkbox="eval" form="unit-collect">0.5k</output></span><span>% de PV perdidos al estar aturdido.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(17 de héroes)</p>
+        <ul>
+          <li><a href="./hero/BUZZ.htm">Buzz Lightyear</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Jefe Bogo</a></li>
+          <li><a href="./hero/DARKWING_DUCK.htm">El Pato Darkwing</a></li>
+          <li><a href="./hero/EVE.htm">EVA</a></li>
+          <li><a href="./hero/FELIX.htm">Félix</a></li>
+          <li><a href="./hero/GASTON.htm">Gastón</a></li>
+          <li><a href="./hero/GENIE.htm">Genio</a></li>
+          <li><a href="./hero/HERCULES.htm">Hércules</a></li>
+          <li><a href="./hero/HIRO.htm">Hiro Hamada</a></li>
+          <li><a href="./hero/JACK_SKELLINGTON.htm">Jack Skellington</a></li>
+          <li><a href="./hero/MALEFICENT.htm">Maléfica</a></li>
+          <li><a href="./hero/MIKE.htm">Mike Wazowski</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">La Reina de Corazones</a></li>
+          <li><a href="./hero/RALPH.htm">Ralph</a></li>
+          <li><a href="./hero/ROBIN_HOOD.htm">Robin Hood</a></li>
+          <li><a href="./hero/STITCH.htm">Stitch</a></li>
+          <li><a href="./hero/URSULA.htm">Úrsula</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="SUPPORT"><p>Apoyo</p></a>
+        <blockquote>Energía inicial</blockquote>
+        <ul>
+          <li><span>El equipo inicia con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="4k" data-format=".3" data-checkbox="eval" form="unit-collect">4k</output></span><span> de energía adicional por cada héroe de apoyo en tu equipo.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(9 de héroes)</p>
+        <ul>
+          <li><a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a></li>
+          <li><a href="./hero/YAX.htm">Yax</a></li>
+          <li><a href="./hero/VIOLET.htm">Violeta</a></li>
+          <li><a href="./hero/WOODY.htm">Woody</a></li>
+          <li><a href="./hero/KEVIN_FLYNN.htm">Kevin Flynn</a></li>
+          <li><a href="./hero/MIGUEL.htm">Miguel Rivera</a></li>
+          <li><a href="./hero/MICKEY_MOUSE.htm">Mickey Mouse</a></li>
+          <li><a href="./hero/ALICE.htm">Alicia</a></li>
+          <li><a href="./hero/MEGARA.htm">Megara</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="TANK"><p>Tanque</p></a>
+        <blockquote>Armadura adicional</blockquote>
+        <ul>
+          <li><span>El equipo recibe </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.12k" data-format=".3" data-checkbox="eval" form="unit-collect">0.12k</output></span><span> de armadura por cada héroe tanque en tu equipo.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(15 de héroes)</p>
+        <ul>
+          <li><a href="./hero/RALPH.htm">Ralph</a></li>
+          <li><a href="./hero/FELIX.htm">Félix</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Jefe Bogo</a></li>
+          <li><a href="./hero/MR_INCREDIBLE.htm">Mr. Increíble</a></li>
+          <li><a href="./hero/REX.htm">Rex</a></li>
+          <li><a href="./hero/SULLEY.htm">Sulley y Boo</a></li>
+          <li><a href="./hero/MAUI.htm">Maui</a></li>
+          <li><a href="./hero/BAYMAX.htm">Baymax</a></li>
+          <li><a href="./hero/HADES.htm">Hades</a></li>
+          <li><a href="./hero/SALLY.htm">Sally</a></li>
+          <li><a href="./hero/SHANK.htm">Shank</a></li>
+          <li><a href="./hero/OLAF.htm">Olaf</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">La Reina de Corazones</a></li>
+          <li><a href="./hero/HERCULES.htm">Hércules</a></li>
+          <li><a href="./hero/GOOFY.htm">Goofy</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="TOY_STORY"><p>Toy Story</p></a>
+        <blockquote>Daño básico adicional</blockquote>
+        <ul>
+          <li><span>Los personajes de la colección obtienen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="4.5k" data-format=".3" data-checkbox="eval" form="unit-collect">4.5k</output></span><span> de daño básico.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(5 de héroes)</p>
+        <ul>
+          <li><a href="./hero/BUZZ.htm">Buzz Lightyear</a></li>
+          <li><a href="./hero/EMPEROR_ZURG.htm">Emperador Zurg</a></li>
+          <li><a href="./hero/JESSIE.htm">Jessie</a></li>
+          <li><a href="./hero/REX.htm">Rex</a></li>
+          <li><a href="./hero/WOODY.htm">Woody</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="ZOOTOPIA"><p>Zootopia</p></a>
+        <blockquote>Realidad adicional</blockquote>
+        <ul>
+          <li><span>Los personajes de la colección obtienen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="3k" data-format=".3" data-checkbox="eval" form="unit-collect">3k</output></span><span> de realidad.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(5 de héroes)</p>
+        <ul>
+          <li><a href="./hero/CHIEF_BOGO.htm">Jefe Bogo</a></li>
+          <li><a href="./hero/FINNICK.htm">Finnick</a></li>
+          <li><a href="./hero/JUDY_HOPPS.htm">Judy Hopps</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Nick Wilde</a></li>
+          <li><a href="./hero/YAX.htm">Yax</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  </table>
+</div><!--  container } -->
+</body>
+</html>

@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1559350317">
-<link rel="stylesheet" href="../../star.css?1559350317">
-<link rel="stylesheet" href="../../unit.css?1559350317">
+<link rel="stylesheet" href="../../main.css?1560018866">
+<link rel="stylesheet" href="../../star.css?1560018866">
+<link rel="stylesheet" href="../../unit.css?1560018866">
 <title>ボゴ署長 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="警察の中で最もタフなアフリカスイギュウ、ボゴ署長は、大きな暴徒用の盾を使って仲間を守り戦う。">
-<script src="../../util.js?1559350317"></script>
-<script src="../../unit.js?1559350317"></script>
+<script src="../../util.js?1560018866"></script>
+<script src="../../unit.js?1560018866"></script>
 <script>
 var calculator= null;
 
@@ -55,6 +55,7 @@ function init()
     paramsWrapper);
   calculator.init();
   document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
 }
 </script>
 </head>
@@ -66,6 +67,9 @@ function init()
   </a>
   <a href="../disk_list.htm">
     <div class="section">フレンド</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">コレクション</div>
   </a>
   <a href="../item_list.htm">
     <div class="section">アイテム</div>
@@ -2400,6 +2404,65 @@ function init()
     <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">コレクション</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">レベル</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#SHIELDS">シールド</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>ダメージ減少</blockquote>
+    <ul>
+      <li><span>シールドが受けたダメージを</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.75k" data-format=".3" data-checkbox="eval">0.75k</output></span><span>%減らす。</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#STUN">スタン</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>スタン時に回復</blockquote>
+    <ul>
+      <li><span>スタンされると失ったHPの</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.5k" data-format=".3" data-checkbox="eval">0.5k</output></span><span>%が回復する。</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#TANK">タンク</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>追加アーマー</blockquote>
+    <ul>
+      <li><span>チームにタンク系が1人いるごとに、チームのアーマーが</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.12k" data-format=".3" data-checkbox="eval">0.12k</output></span><span>%増える。</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#ZOOTOPIA">ズートピア</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>追加リアリティ</blockquote>
+    <ul>
+      <li><span>このコレクションのキャラクターのリアリティが</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="3k" data-format=".3" data-checkbox="eval">3k</output></span><span>増える。</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
 
 </div><!--  container } -->
 </body>

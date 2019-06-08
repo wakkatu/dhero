@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1559350317">
-<link rel="stylesheet" href="../../star.css?1559350317">
-<link rel="stylesheet" href="../../unit.css?1559350317">
+<link rel="stylesheet" href="../../main.css?1560018866">
+<link rel="stylesheet" href="../../star.css?1560018866">
+<link rel="stylesheet" href="../../unit.css?1560018866">
 <title>Siberius - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Lucius Best (Siberius) è un supereroe capace di ragionare a mente fredda. Tiene a bada i nemici con i suoi versatili attacchi di ghiaccio.">
-<script src="../../util.js?1559350317"></script>
-<script src="../../unit.js?1559350317"></script>
+<script src="../../util.js?1560018866"></script>
+<script src="../../unit.js?1560018866"></script>
 <script>
 var calculator= null;
 
@@ -55,6 +55,7 @@ function init()
     paramsWrapper);
   calculator.init();
   document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
 }
 </script>
 </head>
@@ -66,6 +67,9 @@ function init()
   </a>
   <a href="../disk_list.htm">
     <div class="section">Amici</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Collezioni</div>
   </a>
   <a href="../item_list.htm">
     <div class="section">Oggetti</div>
@@ -2430,6 +2434,45 @@ function init()
     <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Collezioni</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#CONTROL">Controllo</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Riduzione guadagno di energia nemico</blockquote>
+    <ul>
+      <li><span>Il team nemico guadagna il </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.002k" data-format=".3" data-checkbox="eval">0.002k</output></span><span>% di energia in meno per ciascun personaggio in questa collezione del tuo team.</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#INCREDIBLES">Incredibili</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>PS extra</blockquote>
+    <ul>
+      <li><span>I personaggi in questa collezione ottengono </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format=".3" data-checkbox="eval">30k</output></span><span> PS.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
 
 </div><!--  container } -->
 </body>

@@ -25,7 +25,7 @@ function evalFormula(formula, data, internal)
   if (percent)
     r /= 100;
   else
-    r = Math.round(r * 100) / 100;
+    r = Math.round(r * 1000) / 1000;
 
   return r;
 }

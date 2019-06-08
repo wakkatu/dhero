@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../main.css?1560018866">
+<link rel="stylesheet" href="../star.css?1560018866">
+<link rel="stylesheet" href="../unit.css?1560018866">
+<title>Коллекции - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Коллекции - это группы героев, у которых есть что-либо общее. У героев в коллекции может быть одинаковая роль, механика игры, тема, либо они могут быть из одного и того же мультфильма студий Disney или Pixar.">
+<script src="../util.js?1560018866"></script>
+<script src="../unit.js?1560018866"></script>
+<script>
+var calculator= null;
+
+function calculateBy(params)
+{
+  calcForm(this.objForm);
+  return params;
+}
+
+function init()
+{
+/*
+  stickElement(
+    document.querySelector(".container .section:first-child"),
+    document.querySelector(".container .section:nth-child(2)"));
+*/
+
+  calculator = new UrlForm(
+    document.getElementById("unit-collect"),
+    calculateBy);
+  calculator.init();
+}
+</script>
+
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="./hero_list.htm">
+    <div class="section">Герои</div>
+  </a>
+  <a href="./disk_list.htm">
+    <div class="section">Друзья</div>
+  </a>
+  <a href="./collect_list.htm">
+    <div class="section undertest">Коллекции</div>
+  </a>
+  <a href="./item_list.htm">
+    <div class="section">Предметы</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Выбрать язык / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../de/collect_list.htm">Deutsche</a>
+        <a href="../en/collect_list.htm">English</a>
+        <a href="../es/collect_list.htm">Español</a>
+        <a href="../fr/collect_list.htm">Français</a>
+        <a href="../it/collect_list.htm">Italiano</a>
+        <a href="../ja/collect_list.htm">日本語</a>
+        <a href="../ko/collect_list.htm">한국어</a>
+        <a href="../pt/collect_list.htm">Português</a>
+        <a href="../ru/collect_list.htm">русский</a>
+        <a href="../zh-Hans/collect_list.htm">简体中文</a>
+        <a href="../zh-Hant/collect_list.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  -->
+</div><!--  container } -->
+
+<div class="container"><!-- container { -->
+  <div class="section">
+    <form id="unit-collect" onchange="calculator.update()">
+
+    <div class="unit-pair-list">
+<div class="hidden">
+      <span class="unit-pair-name"><label for="unit-collect-eval">Использовать<label></span>
+      <span class="unit-pair-val">
+        <input name="eval" id="unit-collect-eval" type="checkbox" checked>
+      </span>
+</div>
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+    </form>
+  </div>
+
+  <table class="section">
+    <tr>
+      <th>Уровень</th>
+      <th>Коллекции</th>
+      <th>Герои</th>
+    </tr>
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 4
+      </td>
+      <td>
+        <a id="ALICE_IN_WONDERLAND"><p>Алиса в Стране Чудес</p></a>
+        <blockquote>Шанс оглушения</blockquote>
+        <ul>
+          <li><span>Герои в коллекции получают шанс в </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="2.25k" data-format=".3" data-checkbox="eval" form="unit-collect">2.25k</output></span><span>% на оглушение при проведении базовых атак.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(3)</p>
+        <ul>
+          <li><a href="./hero/ALICE.htm">Алиса</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">Безумный Шляпник</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">Королева червей</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="CHARM"><p>Очарование</p></a>
+        <blockquote>Доп. сила навыка</blockquote>
+        <ul>
+          <li><span>Герои из этой коллекции получают </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="5k" data-format=".3" data-checkbox="eval" form="unit-collect">5k</output></span><span> силы навыка.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6)</p>
+        <ul>
+          <li><a href="./hero/GASTON.htm">Гастон</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">Безумный Шляпник</a></li>
+          <li><a href="./hero/MEGARA.htm">Мегара</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Ник Уайлд</a></li>
+          <li><a href="./hero/TIA_DALMA.htm">Тиа Дальма</a></li>
+          <li><a href="./hero/WOODY.htm">Вуди</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="CONTROL"><p>Контроль</p></a>
+        <blockquote>Уменьшение получаемой врагами энергии</blockquote>
+        <ul>
+          <li><span>Вражеская команда получает на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.002k" data-format=".3" data-checkbox="eval" form="unit-collect">0.002k</output></span><span>% меньше энергии с каждым героем из этой коллекции, которого вы берете в команду.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(11)</p>
+        <ul>
+          <li><a href="./hero/FINNICK.htm">Фенек</a></li>
+          <li><a href="./hero/FROZONE.htm">Фреон</a></li>
+          <li><a href="./hero/WALL_E.htm">ВАЛЛ-И</a></li>
+          <li><a href="./hero/TIA_DALMA.htm">Тиа Дальма</a></li>
+          <li><a href="./hero/GENIE.htm">Джинн</a></li>
+          <li><a href="./hero/HIRO.htm">Хиро Хамада</a></li>
+          <li><a href="./hero/MALEFICENT.htm">Малефисента</a></li>
+          <li><a href="./hero/URSULA.htm">Урсула</a></li>
+          <li><a href="./hero/GASTON.htm">Гастон</a></li>
+          <li><a href="./hero/MAD_HATTER.htm">Безумный Шляпник</a></li>
+          <li><a href="./hero/MERLIN.htm">Мерлин</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="DAMAGE"><p>Урон</p></a>
+        <blockquote>Доп. урон</blockquote>
+        <ul>
+          <li><span>Разящие герои наносят на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.4k" data-format=".3" data-checkbox="eval" form="unit-collect">0.4k</output></span><span>% больше урона другим разящим героям.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(24)</p>
+        <ul>
+          <li><a href="./hero/CALHOUN.htm">Калхун</a></li>
+          <li><a href="./hero/VANELLOPE.htm">Ванилопа</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Ник Уайлд</a></li>
+          <li><a href="./hero/ELASTIGIRL.htm">Эластика</a></li>
+          <li><a href="./hero/DASH.htm">Шастик</a></li>
+          <li><a href="./hero/JACK_JACK.htm">Джек-Джек</a></li>
+          <li><a href="./hero/BUZZ.htm">Базз Лайтер</a></li>
+          <li><a href="./hero/EMPEROR_ZURG.htm">Император Зург</a></li>
+          <li><a href="./hero/JESSIE.htm">Джесси</a></li>
+          <li><a href="./hero/MIKE.htm">Майк Вазовски</a></li>
+          <li><a href="./hero/EVE.htm">ЕВА</a></li>
+          <li><a href="./hero/JACK_SPARROW.htm">Джек Воробей</a></li>
+          <li><a href="./hero/HECTOR_BARBOSSA.htm">Гектор Барбосса</a></li>
+          <li><a href="./hero/QUORRA.htm">Кворра</a></li>
+          <li><a href="./hero/MERIDA.htm">Мерида</a></li>
+          <li><a href="./hero/STITCH.htm">Стич</a></li>
+          <li><a href="./hero/MOANA.htm">Моана</a></li>
+          <li><a href="./hero/ALADDIN.htm">Аладдин</a></li>
+          <li><a href="./hero/SCAR.htm">Шрам</a></li>
+          <li><a href="./hero/JACK_SKELLINGTON.htm">Джек Скеллингтон</a></li>
+          <li><a href="./hero/ELSA.htm">Эльза</a></li>
+          <li><a href="./hero/DARKWING_DUCK.htm">Черный Плащ</a></li>
+          <li><a href="./hero/ROBIN_HOOD.htm">Робин Гуд</a></li>
+          <li><a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="INCREDIBLES"><p>Суперсемейка</p></a>
+        <blockquote>Доп. HP</blockquote>
+        <ul>
+          <li><span>Герои из этой коллекции получают </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format=".3" data-checkbox="eval" form="unit-collect">30k</output></span><span> HP.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6)</p>
+        <ul>
+          <li><a href="./hero/DASH.htm">Шастик</a></li>
+          <li><a href="./hero/ELASTIGIRL.htm">Эластика</a></li>
+          <li><a href="./hero/FROZONE.htm">Фреон</a></li>
+          <li><a href="./hero/JACK_JACK.htm">Джек-Джек</a></li>
+          <li><a href="./hero/MR_INCREDIBLE.htm">М-р Исключительный</a></li>
+          <li><a href="./hero/VIOLET.htm">Фиалка</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="SHIELDS"><p>Щиты</p></a>
+        <blockquote>Уменьшение урона</blockquote>
+        <ul>
+          <li><span>Щиты уменьшают понесенный урон на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.75k" data-format=".3" data-checkbox="eval" form="unit-collect">0.75k</output></span><span>%.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(6)</p>
+        <ul>
+          <li><a href="./hero/BAYMAX.htm">Бэймакс</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Капитан Буйволсон</a></li>
+          <li><a href="./hero/EVE.htm">ЕВА</a></li>
+          <li><a href="./hero/KEVIN_FLYNN.htm">Кевин Флинн</a></li>
+          <li><a href="./hero/MOANA.htm">Моана</a></li>
+          <li><a href="./hero/VIOLET.htm">Фиалка</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="STUN"><p>Оглушение</p></a>
+        <blockquote>Лечение при оглушении</blockquote>
+        <ul>
+          <li><span>Излечение на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.5k" data-format=".3" data-checkbox="eval" form="unit-collect">0.5k</output></span><span>% недостающих HP при оглушении.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(17)</p>
+        <ul>
+          <li><a href="./hero/BUZZ.htm">Базз Лайтер</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Капитан Буйволсон</a></li>
+          <li><a href="./hero/DARKWING_DUCK.htm">Черный Плащ</a></li>
+          <li><a href="./hero/EVE.htm">ЕВА</a></li>
+          <li><a href="./hero/FELIX.htm">Феликс</a></li>
+          <li><a href="./hero/GASTON.htm">Гастон</a></li>
+          <li><a href="./hero/GENIE.htm">Джинн</a></li>
+          <li><a href="./hero/HERCULES.htm">Геркулес</a></li>
+          <li><a href="./hero/HIRO.htm">Хиро Хамада</a></li>
+          <li><a href="./hero/JACK_SKELLINGTON.htm">Джек Скеллингтон</a></li>
+          <li><a href="./hero/MALEFICENT.htm">Малефисента</a></li>
+          <li><a href="./hero/MIKE.htm">Майк Вазовски</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">Королева червей</a></li>
+          <li><a href="./hero/RALPH.htm">Ральф</a></li>
+          <li><a href="./hero/ROBIN_HOOD.htm">Робин Гуд</a></li>
+          <li><a href="./hero/STITCH.htm">Стич</a></li>
+          <li><a href="./hero/URSULA.htm">Урсула</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="SUPPORT"><p>Поддержка</p></a>
+        <blockquote>Начальная энергия</blockquote>
+        <ul>
+          <li><span>Команда начинает с </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="4k" data-format=".3" data-checkbox="eval" form="unit-collect">4k</output></span><span> ед. доп. энергии за каждого героя поддержки в команде.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(9)</p>
+        <ul>
+          <li><a href="./hero/JUDY_HOPPS.htm">Джуди Хопс</a></li>
+          <li><a href="./hero/YAX.htm">Якс</a></li>
+          <li><a href="./hero/VIOLET.htm">Фиалка</a></li>
+          <li><a href="./hero/WOODY.htm">Вуди</a></li>
+          <li><a href="./hero/KEVIN_FLYNN.htm">Кевин Флинн</a></li>
+          <li><a href="./hero/MIGUEL.htm">Мигель Ривера</a></li>
+          <li><a href="./hero/MICKEY_MOUSE.htm">Микки Маус</a></li>
+          <li><a href="./hero/ALICE.htm">Алиса</a></li>
+          <li><a href="./hero/MEGARA.htm">Мегара</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="TANK"><p>Танк</p></a>
+        <blockquote>Доп. броня</blockquote>
+        <ul>
+          <li><span>Команда получает </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.12k" data-format=".3" data-checkbox="eval" form="unit-collect">0.12k</output></span><span> ед. брони за каждого танка в команде.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(15)</p>
+        <ul>
+          <li><a href="./hero/RALPH.htm">Ральф</a></li>
+          <li><a href="./hero/FELIX.htm">Феликс</a></li>
+          <li><a href="./hero/CHIEF_BOGO.htm">Капитан Буйволсон</a></li>
+          <li><a href="./hero/MR_INCREDIBLE.htm">М-р Исключительный</a></li>
+          <li><a href="./hero/REX.htm">Рекс</a></li>
+          <li><a href="./hero/SULLEY.htm">Салли и Бу</a></li>
+          <li><a href="./hero/MAUI.htm">Мауи</a></li>
+          <li><a href="./hero/BAYMAX.htm">Бэймакс</a></li>
+          <li><a href="./hero/HADES.htm">Аид</a></li>
+          <li><a href="./hero/SALLY.htm">Салли</a></li>
+          <li><a href="./hero/SHANK.htm">Шэнк</a></li>
+          <li><a href="./hero/OLAF.htm">Олаф</a></li>
+          <li><a href="./hero/QUEEN_OF_HEARTS.htm">Королева червей</a></li>
+          <li><a href="./hero/HERCULES.htm">Геркулес</a></li>
+          <li><a href="./hero/GOOFY.htm">Гуфи</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="TOY_STORY"><p>История игрушек</p></a>
+        <blockquote>Доп. базовый урон</blockquote>
+        <ul>
+          <li><span>Герои из этой коллекции наносят на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="4.5k" data-format=".3" data-checkbox="eval" form="unit-collect">4.5k</output></span><span> ед. базового урона больше.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(5)</p>
+        <ul>
+          <li><a href="./hero/BUZZ.htm">Базз Лайтер</a></li>
+          <li><a href="./hero/EMPEROR_ZURG.htm">Император Зург</a></li>
+          <li><a href="./hero/JESSIE.htm">Джесси</a></li>
+          <li><a href="./hero/REX.htm">Рекс</a></li>
+          <li><a href="./hero/WOODY.htm">Вуди</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  <!-- Collection { -->
+    <tr>
+      <td>
+        <output for="k" data-formula="k" form="unit-collect"></output> / 8
+      </td>
+      <td>
+        <a id="ZOOTOPIA"><p>Зверополис</p></a>
+        <blockquote>Доп. реальность</blockquote>
+        <ul>
+          <li><span>Герои из этой коллекции получают </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="3k" data-format=".3" data-checkbox="eval" form="unit-collect">3k</output></span><span> ед. реальности.</span></li>
+        </ul>
+      </td>
+      <td style="white-space: nowrap;">
+        <p>(5)</p>
+        <ul>
+          <li><a href="./hero/CHIEF_BOGO.htm">Капитан Буйволсон</a></li>
+          <li><a href="./hero/FINNICK.htm">Фенек</a></li>
+          <li><a href="./hero/JUDY_HOPPS.htm">Джуди Хопс</a></li>
+          <li><a href="./hero/NICK_WILDE.htm">Ник Уайлд</a></li>
+          <li><a href="./hero/YAX.htm">Якс</a></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Collection } -->
+  </table>
+</div><!--  container } -->
+</body>
+</html>

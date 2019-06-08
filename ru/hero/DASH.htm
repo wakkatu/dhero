@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1559350317">
-<link rel="stylesheet" href="../../star.css?1559350317">
-<link rel="stylesheet" href="../../unit.css?1559350317">
+<link rel="stylesheet" href="../../main.css?1560018866">
+<link rel="stylesheet" href="../../star.css?1560018866">
+<link rel="stylesheet" href="../../unit.css?1560018866">
 <title>Шастик - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Шастик Парр использует сверхскорость, чтобы нанести врагу несколько точных ударов, прежде чем тот поймет, что он тут.">
-<script src="../../util.js?1559350317"></script>
-<script src="../../unit.js?1559350317"></script>
+<script src="../../util.js?1560018866"></script>
+<script src="../../unit.js?1560018866"></script>
 <script>
 var calculator= null;
 
@@ -55,6 +55,7 @@ function init()
     paramsWrapper);
   calculator.init();
   document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
 }
 </script>
 </head>
@@ -66,6 +67,9 @@ function init()
   </a>
   <a href="../disk_list.htm">
     <div class="section">Друзья</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Коллекции</div>
   </a>
   <a href="../item_list.htm">
     <div class="section">Предметы</div>
@@ -2364,6 +2368,45 @@ function init()
     <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Коллекции</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#DAMAGE">Урон</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Доп. урон</blockquote>
+    <ul>
+      <li><span>Разящие герои наносят на </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.4k" data-format=".3" data-checkbox="eval">0.4k</output></span><span>% больше урона другим разящим героям.</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#INCREDIBLES">Суперсемейка</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Доп. HP</blockquote>
+    <ul>
+      <li><span>Герои из этой коллекции получают </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="30k" data-format=".3" data-checkbox="eval">30k</output></span><span> HP.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
 
 </div><!--  container } -->
 </body>

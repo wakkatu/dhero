@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1559350317">
-<link rel="stylesheet" href="../../star.css?1559350317">
-<link rel="stylesheet" href="../../unit.css?1559350317">
+<link rel="stylesheet" href="../../main.css?1560018866">
+<link rel="stylesheet" href="../../star.css?1560018866">
+<link rel="stylesheet" href="../../unit.css?1560018866">
 <title>雪宝 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="尽管没有骨头，却非常愿意为别人提供帮助和支持，通过雪宝，我们知道了有些人值得为其融化......即使他们是用雪做的！">
-<script src="../../util.js?1559350317"></script>
-<script src="../../unit.js?1559350317"></script>
+<script src="../../util.js?1560018866"></script>
+<script src="../../unit.js?1560018866"></script>
 <script>
 var calculator= null;
 
@@ -55,6 +55,7 @@ function init()
     paramsWrapper);
   calculator.init();
   document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
 }
 </script>
 </head>
@@ -66,6 +67,9 @@ function init()
   </a>
   <a href="../disk_list.htm">
     <div class="section">好友</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">收藏</div>
   </a>
   <a href="../item_list.htm">
     <div class="section">物品</div>
@@ -2395,6 +2399,35 @@ function init()
     <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">收藏</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#TANK">肉盾</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>额外盔甲</blockquote>
+    <ul>
+      <li><span>针对队伍中的肉盾型英雄数量，队伍获得 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.12k" data-format=".3" data-checkbox="eval">0.12k</output></span><span> 点盔甲值。</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
 
 </div><!--  container } -->
 </body>

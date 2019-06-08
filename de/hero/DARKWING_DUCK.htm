@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1559350317">
-<link rel="stylesheet" href="../../star.css?1559350317">
-<link rel="stylesheet" href="../../unit.css?1559350317">
+<link rel="stylesheet" href="../../main.css?1560018866">
+<link rel="stylesheet" href="../../star.css?1560018866">
+<link rel="stylesheet" href="../../unit.css?1560018866">
 <title>Darkwing Duck - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Darkwing Duck ist ein außergewöhnlicher Verbrechensbekämpfer, der seine fantastischen Gadgets verwendet, um Feinde zu kontrollieren, und sie mit der Kunst des Quack Fu überwältigt.">
-<script src="../../util.js?1559350317"></script>
-<script src="../../unit.js?1559350317"></script>
+<script src="../../util.js?1560018866"></script>
+<script src="../../unit.js?1560018866"></script>
 <script>
 var calculator= null;
 
@@ -55,6 +55,7 @@ function init()
     paramsWrapper);
   calculator.init();
   document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
 }
 </script>
 </head>
@@ -66,6 +67,9 @@ function init()
   </a>
   <a href="../disk_list.htm">
     <div class="section">Freunde</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Sammlungen</div>
   </a>
   <a href="../item_list.htm">
     <div class="section">Gegenstände</div>
@@ -2400,6 +2404,45 @@ function init()
     <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Sammlungen</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Stufe</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#DAMAGE">Schaden</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Extraschaden</blockquote>
+    <ul>
+      <li><span>Schadenscharaktere fügen anderen Schadenscharakteren </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.4k" data-format=".3" data-checkbox="eval">0.4k</output></span><span> % mehr Schaden zu.</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#STUN">Betäuben</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Heilen, wenn betäubt</blockquote>
+    <ul>
+      <li><span>Heilt </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.5k" data-format=".3" data-checkbox="eval">0.5k</output></span><span> % der fehlenden LP heilen, wenn betäubt.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
 
 </div><!--  container } -->
 </body>
