@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Shank - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Shank ha sobrevivido al peligro más intenso que el juego Slaughter Race puede ofrecer, y utiliza su gran habilidad de conducción para aplastar a sus enemigos en el campo de batalla.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2212,13 +2212,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Vuelta final</a></h2>
-    <p><span>Pasiva: Shank rechaza hasta </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.1sp" data-checkbox="eval">20k + 0.1sp</output></span><span> de daño de cada ataque contra ella y almacena un </span><span class="unit-expr-misc">50%</span><span> del daño rechazado. Puede almacenar un máximo de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="200k + 1.5sp" data-checkbox="eval">200k + 1.5sp</output></span><span> de daño.</span></p>
-    <p><span>Activa: Shank llama a su auto y se abalanza contra sus enemigos, lo que causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="70k + 0.6sp" data-checkbox="eval">70k + 0.6sp</output></span><span> de daño sumado a todo el daño almacenado de su pasiva. Esto reinicia su almacenamiento de daño.</span></p>
+    <p><span>Pasiva: Shank rechaza hasta </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.1sp" data-checkbox="eval">20k + 0.1sp</output></span><span> de da�o de cada ataque contra ella y almacena un </span><span class="unit-expr-misc">50%</span><span> del da�o rechazado. Puede almacenar un m�ximo de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="200k + 1.5sp" data-checkbox="eval">200k + 1.5sp</output></span><span> de da�o.</span></p>
+    <p><span>Activa: Shank llama a su auto y se abalanza contra sus enemigos, lo que causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="70k + 0.6sp" data-checkbox="eval">70k + 0.6sp</output></span><span> de da�o sumado a todo el da�o almacenado de su pasiva. Esto reinicia su almacenamiento de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2239,7 +2260,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Fortalecer</a></h2>
-    <p><span>Cuando Shank llega al </span><span class="unit-expr-misc">50%</span><span> de puntos de vida máximos, les otorga a sus compañeros de equipo </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="95k" data-checkbox="eval">95k</output></span><span> de poder de habilidad adicional para el resto de la ola.</span></p>
+    <p><span>Cuando Shank llega al </span><span class="unit-expr-misc">50%</span><span> de puntos de vida m�ximos, les otorga a sus compa�eros de equipo </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="95k" data-checkbox="eval">95k</output></span><span> de poder de habilidad adicional para el resto de la ola.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
@@ -2252,8 +2273,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Golpe de pistón</a></h2>
-    <p><span>Shank sacude a sus enemigos con un codazo y les causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="125k + 1.25sp" data-checkbox="eval">125k + 1.25sp</output></span><span> de daño durante </span><span class="unit-expr-misc">2</span><span> segundos. Shank también se cura un </span><span class="unit-expr-misc">50%</span><span> del daño provocado por </span><a href="../hero/SHANK.htm#BLUE" class="rarity-blue">Golpe de pistón</a><span>.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Golpe de pist�n</a></h2>
+    <p><span>Shank sacude a sus enemigos con un codazo y les causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="125k + 1.25sp" data-checkbox="eval">125k + 1.25sp</output></span><span> de da�o durante </span><span class="unit-expr-misc">2</span><span> segundos. Shank tambi�n se cura un </span><span class="unit-expr-misc">50%</span><span> del da�o provocado por </span><a href="../hero/SHANK.htm#BLUE" class="rarity-blue">Golpe de pist�n</a><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>

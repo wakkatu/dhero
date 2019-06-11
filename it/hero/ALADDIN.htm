@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Aladdin - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Questo diamante grezzo usa la sua furbizia per far mangiare la polvere ai nemici.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2216,10 +2216,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Sciabolata</a></h2>
     <p><span>Aladdin sferra 3 affondi con la sua scimitarra, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="40.5k+0.72sp" data-checkbox="eval">40.5k+0.72sp</output></span><span> danni a ogni colpo.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2241,7 +2262,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Furto di energia</a></h2>
-    <p><span>Aladdin schiva un attacco di mischia e contrattacca infliggendo </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="100k + 1.5bd" data-checkbox="eval">100k + 1.5bd</output></span><span> danni al suo aggressore e sottraendogli </span><span class="unit-expr-misc">150</span><span> energia. Aladdin può contrattaccare solo una volta ogni </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <p><span>Aladdin schiva un attacco di mischia e contrattacca infliggendo </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="100k + 1.5bd" data-checkbox="eval">100k + 1.5bd</output></span><span> danni al suo aggressore e sottraendogli </span><span class="unit-expr-misc">150</span><span> energia. Aladdin pu� contrattaccare solo una volta ogni </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2263,8 +2284,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Balzo avanti</a></h2>
-    <p><span>Aladdin ha un </span><span class="unit-expr-misc">25%</span><span> di probabilità di schivare gli attacchi dei nemici di livello pari o inferiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
-    <p><span>La probabilità si riduce contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Aladdin ha un </span><span class="unit-expr-misc">25%</span><span> di probabilit� di schivare gli attacchi dei nemici di livello pari o inferiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>La probabilit� si riduce contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>

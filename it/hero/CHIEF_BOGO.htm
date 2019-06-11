@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Capitano Bogo - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Il bufalo nero più tosto della polizia, il Capitano Bogo serve e protegge i suoi alleati grazie al suo pesante scudo antisommossa.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2231,10 +2231,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Servire e proteggere</a></h2>
     <p><span>Ottiene uno scudo che blocca </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="600k + 4sp" data-checkbox="eval">600k + 4sp</output></span><span> danni.</span></p>
     <p><span>Lo scudo svanisce dopo </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
@@ -2252,7 +2273,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Carica anticriminale</a></h2>
     <p><span>All&#39;inizio del combattimento, il Capitano Bogo effettua una carica contro il nemico in prima linea, infliggendogli </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni e stordendolo per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
-    <p><span>Lo stordimento può non avere effetto sui nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Lo stordimento pu� non avere effetto sui nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2268,7 +2289,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Giustizia accecante</a></h2>
     <p><span>Lancia una granata stordente, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> danni ai nemici colpiti e accecandoli per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
-    <p><span>L&#39;accecamento può mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>L&#39;accecamento pu� mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>

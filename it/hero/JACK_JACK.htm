@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Jack-Jack - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Non lasciarti ingannare dalle apparenze. I poteri di Jack-Jack sono davvero strabilianti.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2231,13 +2231,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Bimbo rimbalzante</a></h2>
     <p><span>Jack-Jack si trasforma in una palla di cannone, rimbalzando tra i nemici </span><span class="unit-expr-misc">4</span><span> volte e infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> danni a ciascun nemico colpito.</span></p>
-    <p><span>Devono esserci più nemici l&#39;uno vicino all&#39;altro perché Jack-Jack possa rimbalzare.</span></p>
+    <p><span>Devono esserci pi� nemici l&#39;uno vicino all&#39;altro perch� Jack-Jack possa rimbalzare.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2303,7 +2324,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Fuoco e fiamme</a></h2>
-    <p><span>&#34;</span><a href="../hero/JACK_JACK.htm#WHITE" class="rarity-white">Bimbo rimbalzante</a><span>&#34; e &#34;</span><a href="../hero/JACK_JACK.htm#GREEN" class="rarity-green">Pausa merenda</a><span>&#34; di Jack-Jack ora danno alle fiamme i nemici, infliggendo loro </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="25k + 0.175sp" data-checkbox="eval">25k + 0.175sp</output></span><span> danni in </span><span class="unit-expr-misc">5</span><span> secondi. Se erano già in preda alle fiamme, subiscono </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> danni extra.</span></p>
+    <p><span>&#34;</span><a href="../hero/JACK_JACK.htm#WHITE" class="rarity-white">Bimbo rimbalzante</a><span>&#34; e &#34;</span><a href="../hero/JACK_JACK.htm#GREEN" class="rarity-green">Pausa merenda</a><span>&#34; di Jack-Jack ora danno alle fiamme i nemici, infliggendo loro </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="25k + 0.175sp" data-checkbox="eval">25k + 0.175sp</output></span><span> danni in </span><span class="unit-expr-misc">5</span><span> secondi. Se erano gi� in preda alle fiamme, subiscono </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> danni extra.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>

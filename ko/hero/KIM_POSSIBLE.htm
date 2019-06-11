@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>킴 파서블 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="매일 밤 숙제를 하기 전에 세상을 구하는 평범한 여학생인 킴 파서블은 각종 기기를 사용해 적을 통제합니다. 호출하거나 삑 소리를 울리면 바로 나타나죠!">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2208,10 +2208,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">레벨</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">기본 데미지</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">스킬 파워</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">문제가 뭔데?</a></h2>
     <p><span>플레이어는 &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">문제가 뭔데?</a><span>&#34; 스킬이 활성화되면 킴 파서블이 할 수 있는 3가지 행동 중 하나를 선택할 수 있습니다. 킴 파서블이 키뮤니케이터를 사용해 모든 적을 </span><span class="unit-expr-misc">15</span><span>초 동안 연구하거나, 킴 파서블이 가장 앞에 있는 적을 걷어차서 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="370k + 3bd" data-checkbox="eval">370k + 3bd</output></span><span>의 데미지를 주고 밀쳐내거나, 킴 파서블이 모든 아군의 HP를 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k + 1.5sp" data-checkbox="eval">280k + 1.5sp</output></span><span>씩 회복합니다.</span></p>
     <p><span>자동 전투일 때는 &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">문제가 뭔데?</a><span>&#34; 스킬을 처음 사용하면 적을 연구하고, 다음으로 사용하면 가장 앞에 있는 적을 걷어차고, 다음으로 사용하면 아군들을 치유합니다. 웨이브가 끝날 때까지 이 순환이 반복됩니다.</span></p>
@@ -2260,7 +2281,7 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">응원단</a></h2>
+    <h2 class="rarity-blue"><a id="BLUE">정신 차려</a></h2>
     <p><span>킴 파서블이 &#34;감시 장치&#34;를 부착한 적이 획득하는 에너지의 </span><span class="unit-expr-misc">50%</span><span>를 훔칩니다.</span></p>
     <p><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 레벨 이상의 적과 맞설 때는 효과가 감소합니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2273,7 +2294,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">다용도 벨트</a></h2>
     <p><span>&#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">문제가 뭔데?</a><span>&#34; 스킬 활성화 시 다음의 보너스 효과를 얻습니다. </span></p>
-    <p><span>킴이 연구했던 적들이 </span><span class="unit-expr-misc">15</span><span>초 동안 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span>의 데미지를 받습니다.</span></p>
+    <p><span>적을 연구한 후 킴의 기본 공격이 </span><span class="unit-expr-misc">15</span><span>초 동안 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span>의 방사 데미지를 줍니다.</span></p>
     <p><span>킴이 적을 걷어찬 후 </span><span class="unit-expr-misc">15</span><span>초 동안 킴의 기본 데미지가 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="275k" data-checkbox="eval">275k</output></span><span> 증가하고 공격 속도는 </span><span class="unit-expr-misc">150%</span><span> 증가합니다.</span></p>
     <p><span>킴이 아군을 치유한 후 </span><span class="unit-expr-misc">15</span><span>초 동안 공격 시에 </span><span class="unit-expr-misc">75%</span><span>의 생명 훔치기 효과를 받습니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2284,7 +2305,7 @@ function init()
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>aoedmg</dt><dd>165k + 0.75bd</dd>
-        <dt>aoedmgduration</dt><dd>15</dd>
+        <dt>aoeduration</dt><dd>15</dd>
         <dt>aoerange</dt><dd>325</dd>
         <dt>dmgbuff</dt><dd>275k</dd>
         <dt>attackspeed</dt><dd>1.5[%]</dd>
@@ -2365,6 +2386,14 @@ function init()
   <!-- Friends 2 { -->
   <div class="section">
     <h1>친구들</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/DUKE_CABOOM.htm">듀크 카붐</a> <small>(119)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#DUKE_CABOOM_CONTROL">스턴트 팀</a>
+    </p>
+    <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
 

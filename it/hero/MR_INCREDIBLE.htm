@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Mr. Incredible - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Bob Parr (Mr. Incredibile) può contare sulla sua super forza per sconfiggere il male e proteggere gli innocenti.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2233,10 +2233,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Tuffo incredibile</a></h2>
     <p><span>Mr. Incredibile salta in alto e si tuffa al centro della formazione nemica, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 0.8sp" data-checkbox="eval">150k + 0.8sp</output></span><span> danni. L&#39;impatto sbalza i nemici all&#39;indietro.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2283,8 +2304,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Più che super</a></h2>
-    <p><span>Quando Mr. Incredibile scende al di sotto di </span><span class="unit-expr-misc">50%</span><span> PS, la sua velocità d&#39;attacco aumenta di </span><span class="unit-expr-misc">400%</span><span> e i suoi attacchi base infliggono </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format=".1" data-checkbox="eval">40k</output></span><span> danni extra.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Pi� che super</a></h2>
+    <p><span>Quando Mr. Incredibile scende al di sotto di </span><span class="unit-expr-misc">50%</span><span> PS, la sua velocit� d&#39;attacco aumenta di </span><span class="unit-expr-misc">400%</span><span> e i suoi attacchi base infliggono </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format=".1" data-checkbox="eval">40k</output></span><span> danni extra.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>

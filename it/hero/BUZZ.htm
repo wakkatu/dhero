@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Buzz Lightyear - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Buzz Lightyear è un eroico Space Ranger con un vero laser, capace di volare... ehm, cadere con stile. Sul campo di battaglia, tiene a bada i nemici con i suoi campi antigravità.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2189,10 +2189,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Sparare con stile</a></h2>
     <p><span>Buzz si alza in volo e usa il suo laser, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni a tutti i nemici.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2212,9 +2233,9 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">Campo antigravità</a></h2>
-    <p><span>Buzz rinchiude un nemico in un campo antigravità, stordendolo per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
-    <p><span>Lo stordimento può non avere effetto sui nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">Campo antigravit�</a></h2>
+    <p><span>Buzz rinchiude un nemico in un campo antigravit�, stordendolo per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <p><span>Lo stordimento pu� non avere effetto sui nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3.75</dd>
@@ -2234,7 +2255,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Spinta pulsar</a></h2>
-    <p><span>Buzz usa il suo campo antigravità per respingere un nemico, infliggendogli anche </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> danni.</span></p>
+    <p><span>Buzz usa il suo campo antigravit� per respingere un nemico, infliggendogli anche </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> danni.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2332,8 +2353,8 @@ function init()
     <blockquote><span>Protegge gli alleati</span></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-checkbox="eval">40k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
-      <li><span>&#34;</span><a href="../hero/BUZZ.htm#GREEN" class="rarity-green">Campo antigravità</a><span>&#34; proteggerà invece un alleato con uno scudo per </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="1100k" data-checkbox="eval">1100k</output></span><span> PS se inferiore a </span><span class="unit-expr-misc">50%</span><span> PS.</span></li>
-      <li><span>&#34;</span><a href="../hero/BUZZ.htm#GREEN" class="rarity-green">Campo antigravità</a><span>&#34; ha un tempo ricarica più breve del </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>.</span></li>
+      <li><span>&#34;</span><a href="../hero/BUZZ.htm#GREEN" class="rarity-green">Campo antigravit�</a><span>&#34; proteggerà invece un alleato con uno scudo per </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="1100k" data-checkbox="eval">1100k</output></span><span> PS se inferiore a </span><span class="unit-expr-misc">50%</span><span> PS.</span></li>
+      <li><span>&#34;</span><a href="../hero/BUZZ.htm#GREEN" class="rarity-green">Campo antigravit�</a><span>&#34; ha un tempo ricarica più breve del </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

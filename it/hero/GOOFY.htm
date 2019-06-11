@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Pippo - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Essere incline agli incidenti non impedisce al gioviale Pippo di mostrare i suoi passi di danza lasciando nel frattempo una scia di danni.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2244,13 +2244,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Prendi il ritmo</a></h2>
-    <p><span>Pippo segue il ritmo e una palla da discoteca cala sul campo di battaglia, accecando i nemici per </span><span class="unit-expr-misc">13</span><span> secondi e aumentando la velocità di attacco degli alleati del </span><span class="unit-expr-misc">150%</span><span> per </span><span class="unit-expr-misc">10</span><span> secondi.</span></p>
-    <p><span>L&#39;accecamento può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Pippo segue il ritmo e una palla da discoteca cala sul campo di battaglia, accecando i nemici per </span><span class="unit-expr-misc">13</span><span> secondi e aumentando la velocit� di attacco degli alleati del </span><span class="unit-expr-misc">150%</span><span> per </span><span class="unit-expr-misc">10</span><span> secondi.</span></p>
+    <p><span>L&#39;accecamento pu� fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -2268,7 +2289,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Due piedi sinistri</a></h2>
-    <p><span>Pippo schiva l&#39;attacco successivo e risponde con una mossa di ballo, infliggendo </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="250k + 2bd" data-checkbox="eval">250k + 2bd</output></span><span> danni. Pippo può rispondere a un attacco una volta ogni </span><span class="unit-expr-misc">8</span><span> secondi.</span></p>
+    <p><span>Pippo schiva l&#39;attacco successivo e risponde con una mossa di ballo, infliggendo </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="250k + 2bd" data-checkbox="eval">250k + 2bd</output></span><span> danni. Pippo pu� rispondere a un attacco una volta ogni </span><span class="unit-expr-misc">8</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2290,7 +2311,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Fai come Pippo</a></h2>
-    <p><span>Pippo balla, garantendosi uno scudo per </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="480k+4.5sp" data-checkbox="eval">480k+4.5sp</output></span><span> PS che dura </span><span class="unit-expr-misc">18</span><span> secondi e gli dà </span><span class="unit-expr-misc">30</span><span> tenacia, </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="345k" data-checkbox="eval">345k</output></span><span> armatura e </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> realtà.</span></p>
+    <p><span>Pippo balla, garantendosi uno scudo per </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="480k+4.5sp" data-checkbox="eval">480k+4.5sp</output></span><span> PS che dura </span><span class="unit-expr-misc">18</span><span> secondi e gli d� </span><span class="unit-expr-misc">30</span><span> tenacia, </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="345k" data-checkbox="eval">345k</output></span><span> armatura e </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> realt�.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>
@@ -2312,7 +2333,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Senti che ritmo</a></h2>
-    <p><span>Ogni volta che Pippo risponde con &#34;</span><a href="../hero/GOOFY.htm#GREEN" class="rarity-green">Due piedi sinistri</a><span>&#34;, ottiene un cumulo di &#34;Groovy&#34;. Ogni volta che Pippo usa &#34;</span><a href="../hero/GOOFY.htm#WHITE" class="rarity-white">Prendi il ritmo</a><span>&#34; guarisce sé stesso per </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k+4sp" data-checkbox="eval">280k+4sp</output></span><span> PS per ogni catasta di &#34;Groovy&#34;.</span></p>
+    <p><span>Ogni volta che Pippo risponde con &#34;</span><a href="../hero/GOOFY.htm#GREEN" class="rarity-green">Due piedi sinistri</a><span>&#34;, ottiene un cumulo di &#34;Groovy&#34;. Ogni volta che Pippo usa &#34;</span><a href="../hero/GOOFY.htm#WHITE" class="rarity-white">Prendi il ritmo</a><span>&#34; guarisce s� stesso per </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k+4sp" data-checkbox="eval">280k+4sp</output></span><span> PS per ogni catasta di &#34;Groovy&#34;.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
@@ -2367,7 +2388,7 @@ function init()
     <blockquote><span>&#34;Fai come Pippo&#34; protegge gli alleati dall&#39;inattivazione</span></blockquote>
     <ul>
       <li><span>&#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">Fai come Pippo</a><span>&#34; dà agli alleati uno scudo con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> PS</span></li>
-      <li><span>Gli Alleati schermati da &#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">Fai come Pippo</a><span>&#34; resistono all&#39;inattivazione; invece di essere inattivati, gli alleati sono guariti del </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3s%" data-format="%" data-checkbox="eval">3s%</output></span><span> dei PS massimi di Pippo</span></li>
+      <li><span>Gli alleati schermati da &#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">Fai come Pippo</a><span>&#34; resistono all&#39;inattivazione; Invece di essere inattivati, gli alleati sono guariti del </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3s%" data-format="%" data-checkbox="eval">3s%</output></span><span> dei PS massimi di Pippo</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -2409,6 +2430,16 @@ function init()
     </div>
 
     <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#SHIELDS">Scudi</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Riduzione dei danni</blockquote>
+    <ul>
+      <li><span>Gli scudi riducono i danni subiti del </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.75k" data-format=".3" data-checkbox="eval">0.75k</output></span><span>%.</span></li>
+    </ul>
+    <!-- Collection } -->
     <!-- Collection { -->
     <h2>
       <a href="../collect_list.htm#TANK">Tank</a>

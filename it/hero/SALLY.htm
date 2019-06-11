@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Sally - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Speziale diligente e prudente, amica gentile, Sally è sempre pronta a dare una mano agli altri... a volte letteralmente.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2226,13 +2226,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Belladonna</a></h2>
-    <p><span>Passiva: gli attacchi base di Sally applicano un livello &#34;Veleno&#34; ai nemici colpiti. Ogni livello infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="10k+0.07sp+0.07bd" data-format=".1" data-checkbox="eval">10k+0.07sp+0.07bd</output></span><span> danni al secondo per </span><span class="unit-expr-misc">10</span><span> secondi prima di venir rimosso ed è cumulabile fino a </span><span class="unit-expr-misc">3</span><span> volte.</span></p>
-    <p><span>Attiva: Sally utilizza tutti i livelli &#34;Veleno&#34; accumulati, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="160k+0.7sp" data-checkbox="eval">160k+0.7sp</output></span><span> danni in più per ciascun livello &#34;Veleno&#34; inflitto ai nemici.</span></p>
+    <p><span>Passiva: gli attacchi base di Sally applicano un livello &#34;Veleno&#34; ai nemici colpiti. Ogni livello infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="10k+0.07sp+0.07bd" data-format=".1" data-checkbox="eval">10k+0.07sp+0.07bd</output></span><span> danni al secondo per </span><span class="unit-expr-misc">10</span><span> secondi prima di venir rimosso ed � cumulabile fino a </span><span class="unit-expr-misc">3</span><span> volte.</span></p>
+    <p><span>Attiva: Sally utilizza tutti i livelli &#34;Veleno&#34; accumulati, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="160k+0.7sp" data-checkbox="eval">160k+0.7sp</output></span><span> danni in pi� per ciascun livello &#34;Veleno&#34; inflitto ai nemici.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2251,7 +2272,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Alito di rana</a></h2>
-    <p><span>Sally lancia un recipiente al nemico più distante, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="80k+0.7sp" data-checkbox="eval">80k+0.7sp</output></span><span> danni e </span><span class="unit-expr-misc">2</span><span> livelli &#34;Veleno&#34; a tutti i nemici entro l&#39;area.</span></p>
+    <p><span>Sally lancia un recipiente al nemico pi� distante, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="80k+0.7sp" data-checkbox="eval">80k+0.7sp</output></span><span> danni e </span><span class="unit-expr-misc">2</span><span> livelli &#34;Veleno&#34; a tutti i nemici entro l&#39;area.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2290,7 +2311,7 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Ne ferisce più l&#39;ago</a></h2>
+    <h2 class="rarity-purple"><a id="PURPLE">Ne ferisce pi� l&#39;ago</a></h2>
     <p><span>Sally ottiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="700k" data-checkbox="eval">700k</output></span><span> PS massimi aggiuntivi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

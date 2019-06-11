@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Nick Wilde - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Nick Wilde usa su conocimiento callejero y su encanto para controlar y atacar a los enemigos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2201,12 +2201,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Avalancha de lemmings</a></h2>
-    <p><span>Nick invoca a un lemming con una popsipatita que hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="49.5k + 0.5475sp" data-checkbox="eval">49.5k + 0.5475sp</output></span><span> de daño a todos los enemigos. Cada vez que hace esto, invoca a otro lemming, hasta un máx. de </span><span class="unit-expr-misc">5</span><span>. Cada uno hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="16.5k + 0.1825sp" data-checkbox="eval">16.5k + 0.1825sp</output></span><span> de daño a todos los enemigos.</span></p>
+    <p><span>Nick invoca a un lemming con una popsipatita que hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="49.5k + 0.5475sp" data-checkbox="eval">49.5k + 0.5475sp</output></span><span> de da�o a todos los enemigos. Cada vez que hace esto, invoca a otro lemming, hasta un m�x. de </span><span class="unit-expr-misc">5</span><span>. Cada uno hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="16.5k + 0.1825sp" data-checkbox="eval">16.5k + 0.1825sp</output></span><span> de da�o a todos los enemigos.</span></p>
     <p><span>Nick conserva a sus lemmings entre las oleadas de un combate.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -2228,7 +2249,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Shuriken-paletas</a></h2>
-    <p><span>Nick saca algunas popsipatitas de reserva, arroja tres de ellas a los enemigos más cercanos y les hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.75sp" data-checkbox="eval">75k + 0.75sp</output></span><span> de daño con cada golpe.</span></p>
+    <p><span>Nick saca algunas popsipatitas de reserva, arroja tres de ellas a los enemigos m�s cercanos y les hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.75sp" data-checkbox="eval">75k + 0.75sp</output></span><span> de da�o con cada golpe.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2251,7 +2272,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Zorro cautivador</a></h2>
-    <p><span>Nick usa sus habilidades de persuasión para cautivar al enemigo más cercano y convencerlo de combatir a su lado por </span><span class="unit-expr-misc">7</span><span> segundos. Los ataques básicos del objetivo cautivado hacen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-checkbox="eval">20k</output></span><span> de daño adicional.</span></p>
+    <p><span>Nick usa sus habilidades de persuasi�n para cautivar al enemigo m�s cercano y convencerlo de combatir a su lado por </span><span class="unit-expr-misc">7</span><span> segundos. Los ataques b�sicos del objetivo cautivado hacen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="20k" data-checkbox="eval">20k</output></span><span> de da�o adicional.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3.75</dd>
@@ -2272,7 +2293,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Buenos refuerzos</a></h2>
-    <p><span>Nick obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-checkbox="eval">50k</output></span><span> de poder de habilidad por cada aliado con vida, incluidos los oponentes cautivados. También obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-checkbox="eval">50k</output></span><span> de poder de habilidad por cada lemming que su &#34;</span><a href="../hero/NICK_WILDE.htm#WHITE" class="rarity-white">Avalancha de lemmings</a><span>&#34; haya acumulado.</span></p>
+    <p><span>Nick obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-checkbox="eval">50k</output></span><span> de poder de habilidad por cada aliado con vida, incluidos los oponentes cautivados. Tambi�n obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="50k" data-checkbox="eval">50k</output></span><span> de poder de habilidad por cada lemming que su &#34;</span><a href="../hero/NICK_WILDE.htm#WHITE" class="rarity-white">Avalancha de lemmings</a><span>&#34; haya acumulado.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

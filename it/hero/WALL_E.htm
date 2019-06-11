@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>WALL-E - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="WALL-E è un robot che adora raccogliere cose a caso e gettarle contro i nemici.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2222,13 +2222,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Estintore</a></h2>
     <p><span>WALL-E fa strage di nemici con un estintore. I nemici subiscono </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 0.35sp" data-checkbox="eval">50k + 0.35sp</output></span><span> danni per </span><span class="unit-expr-misc">3</span><span> secondi, e possono rimanere congelati per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
-    <p><span>Il congelamento può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Il congelamento pu� fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2250,7 +2271,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Potenza solare</a></h2>
     <p><span>WALL-E usa il suo pannello solare per assegnare agli alleati </span><span class="unit-expr-misc">240</span><span> energia e accecare i nemici per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
-    <p><span>L&#39;accecamento può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>L&#39;accecamento pu� fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3.75</dd>
@@ -2269,7 +2290,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Compressore</a></h2>
-    <p><span>WALL-E crea un cubo di rifiuti e lo getta contro il nemico più vicino, facendolo cadere e infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni.</span></p>
+    <p><span>WALL-E crea un cubo di rifiuti e lo getta contro il nemico pi� vicino, facendolo cadere e infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2293,8 +2314,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Tazza d&#39;energia</a></h2>
-    <p><span>All&#39;inizio della prima ondata, WALL-E dà agli alleati </span><span class="unit-expr-misc">120</span><span> energia.</span></p>
-    <p><span>L&#39;effetto è ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>All&#39;inizio della prima ondata, WALL-E d� agli alleati </span><span class="unit-expr-misc">120</span><span> energia.</span></p>
+    <p><span>L&#39;effetto � ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

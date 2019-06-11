@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Mérida - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Mérida es una princesa aventurera con habilidades de arquería incomparables.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2175,12 +2175,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Vóley galés</a></h2>
-    <p><span>Mérida dispara </span><span class="unit-expr-misc">8</span><span> flechas a los enemigos y les provoca </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="68k + 1.35bd" data-checkbox="eval">68k + 1.35bd</output></span><span> de daño con cada flecha.</span></p>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">V�ley gal�s</a></h2>
+    <p><span>M�rida dispara </span><span class="unit-expr-misc">8</span><span> flechas a los enemigos y les provoca </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="68k + 1.35bd" data-checkbox="eval">68k + 1.35bd</output></span><span> de da�o con cada flecha.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2199,7 +2220,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">En el blanco</a></h2>
-    <p><span>Mérida orienta un fuerte disparo que causa </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="200k + 3bd" data-checkbox="eval">200k + 3bd</output></span><span> de daño a cada enemigo alcanzado.</span></p>
+    <p><span>M�rida orienta un fuerte disparo que causa </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="200k + 3bd" data-checkbox="eval">200k + 3bd</output></span><span> de da�o a cada enemigo alcanzado.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2221,7 +2242,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Orgullo del clan</a></h2>
-    <p><span>Cuando la salud de Mérida disminuye a menos de la mitad, obtiene </span><span class="unit-expr-misc">200%</span><span> de velocidad de ataque aumentada y </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k+1.5sp" data-checkbox="eval">30k+1.5sp</output></span><span> de daño básico.</span></p>
+    <p><span>Cuando la salud de M�rida disminuye a menos de la mitad, obtiene </span><span class="unit-expr-misc">200%</span><span> de velocidad de ataque aumentada y </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k+1.5sp" data-checkbox="eval">30k+1.5sp</output></span><span> de da�o b�sico.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
@@ -2234,9 +2255,9 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Concentración</a></h2>
-    <p><span>Las flechas de Mérida desgarran la armadura de su objetivo, lo que la reduce en </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.125sp" data-format=".1" data-checkbox="eval">20k + 0.125sp</output></span><span> durante </span><span class="unit-expr-misc">20</span><span> segundos. Este efecto puede acumularse hasta </span><span class="unit-expr-misc">4</span><span> veces.</span></p>
-    <p><span>Cada </span><span class="unit-expr-misc">3</span><span> veces que la armadura de un enemigo disminuya de alguna manera, Mérida gana </span><span class="unit-expr-misc">1</span><span> flecha adicional para usarla durante &#34;</span><a href="../hero/MERIDA.htm#WHITE" class="rarity-white">Vóley galés</a><span>&#34;. Puede disparar hasta </span><span class="unit-expr-misc">16</span><span> en total durante &#34;</span><a href="../hero/MERIDA.htm#WHITE" class="rarity-white">Vóley galés</a><span>&#34;.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">Concentraci�n</a></h2>
+    <p><span>Las flechas de M�rida desgarran la armadura de su objetivo, lo que la reduce en </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.125sp" data-format=".1" data-checkbox="eval">20k + 0.125sp</output></span><span> durante </span><span class="unit-expr-misc">20</span><span> segundos. Este efecto puede acumularse hasta </span><span class="unit-expr-misc">4</span><span> veces.</span></p>
+    <p><span>Cada </span><span class="unit-expr-misc">3</span><span> veces que la armadura de un enemigo disminuya de alguna manera, M�rida gana </span><span class="unit-expr-misc">1</span><span> flecha adicional para usarla durante &#34;</span><a href="../hero/MERIDA.htm#WHITE" class="rarity-white">V�ley gal�s</a><span>&#34;. Puede disparar hasta </span><span class="unit-expr-misc">16</span><span> en total durante &#34;</span><a href="../hero/MERIDA.htm#WHITE" class="rarity-white">V�ley gal�s</a><span>&#34;.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

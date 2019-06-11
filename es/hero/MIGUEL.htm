@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Miguel Rivera - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Miguel es un músico talentoso que usa su música para ayudar a sus aliados y controlar a sus enemigos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2175,13 +2175,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Crescendo</a></h2>
-    <p><span>Pasiva: en vez ataques básicos, Miguel pone notas de recuperación sobre sus aliados. Cada nota cura </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="bd+bonus_basic_damage" data-checkbox="eval">bd+bonus_basic_damage</output></span><span> cada seg. Además, Miguel no puede ser hechizado.</span></p>
-    <p><span>Activa: Miguel rasga su guitarra y borra todas sus notas. Sus notas de recuperación curan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="160k + 1.6sp + 500" data-checkbox="eval">160k + 1.6sp + 500</output></span><span> al ser borradas.</span></p>
+    <p><span>Pasiva: en vez ataques b�sicos, Miguel pone notas de recuperaci�n sobre sus aliados. Cada nota cura </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="bd+bonus_basic_damage" data-checkbox="eval">bd+bonus_basic_damage</output></span><span> cada seg. Adem�s, Miguel no puede ser hechizado.</span></p>
+    <p><span>Activa: Miguel rasga su guitarra y borra todas sus notas. Sus notas de recuperaci�n curan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="160k + 1.6sp + 500" data-checkbox="eval">160k + 1.6sp + 500</output></span><span> al ser borradas.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -2195,7 +2216,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Nota sostenida</a></h2>
-    <p><span>Miguel pone una nota sostenida sobre un aliado aleatorio y le otorga </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k + .2sp" data-checkbox="eval">30k + .2sp</output></span><span> de poder de habilidad. Cuando Miguel usa &#34;</span><a href="../hero/MIGUEL.htm#WHITE" class="rarity-white">Crescendo</a><span>&#34;, la nota sostenida se borra y el aliado obtiene </span><span class="unit-expr-misc">300</span><span> de energía.</span></p>
+    <p><span>Miguel pone una nota sostenida sobre un aliado aleatorio y le otorga </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k + .2sp" data-checkbox="eval">30k + .2sp</output></span><span> de poder de habilidad. Cuando Miguel usa &#34;</span><a href="../hero/MIGUEL.htm#WHITE" class="rarity-white">Crescendo</a><span>&#34;, la nota sostenida se borra y el aliado obtiene </span><span class="unit-expr-misc">300</span><span> de energ�a.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>2.5</dd>
@@ -2216,7 +2237,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Nota en bemol</a></h2>
-    <p><span>Miguel pone una nota en bemol sobre la cabeza de un enemigo, reduciéndole la armadura un </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 0.8sp" data-format=".1" data-checkbox="eval">50k + 0.8sp</output></span><span> y ralentizándolo un </span><span class="unit-expr-misc">60%</span><span>. Cuando Miguel usa &#34;</span><a href="../hero/MIGUEL.htm#WHITE" class="rarity-white">Crescendo</a><span>&#34;, la nota en bemol se borra y el enemigo queda aturdido por </span><span class="unit-expr-misc">6</span><span> seg.</span></p>
+    <p><span>Miguel pone una nota en bemol sobre la cabeza de un enemigo, reduci�ndole la armadura un </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 0.8sp" data-format=".1" data-checkbox="eval">50k + 0.8sp</output></span><span> y ralentiz�ndolo un </span><span class="unit-expr-misc">60%</span><span>. Cuando Miguel usa &#34;</span><a href="../hero/MIGUEL.htm#WHITE" class="rarity-white">Crescendo</a><span>&#34;, la nota en bemol se borra y el enemigo queda aturdido por </span><span class="unit-expr-misc">6</span><span> seg.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>

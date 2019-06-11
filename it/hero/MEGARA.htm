@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Megara - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Esperta dell&#39;arte del sarcasmo, Megara dà supporto agli alleati sul campo con fascino e intelletto.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2175,14 +2175,35 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Risposta arguta</a></h2>
-    <p><span>Passiva: al posto di un attacco base, all&#39;inizio della battaglia il giocatore sceglie un alleato per Megara. Quando la battaglia è in automatico, Megara sceglie l&#39;alleato in testa nel momento di attivazione del collegamento.</span></p>
+    <p><span>Passiva: al posto di un attacco base, all&#39;inizio della battaglia il giocatore sceglie un alleato per Megara. Quando la battaglia � in automatico, Megara sceglie l&#39;alleato in testa nel momento di attivazione del collegamento.</span></p>
     <p><span>Megara devia </span><span class="unit-expr-misc">25%</span><span> dei danni totali subiti dall&#39;alleato stretto a se stessa e i suoi PS non possono scendere sotto a 1 quando Megara combatte.</span></p>
-    <p><span>Attiva: Megara incanta i </span><span class="unit-expr-misc">3</span><span> nemici più vicini per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
+    <p><span>Attiva: Megara incanta i </span><span class="unit-expr-misc">3</span><span> nemici pi� vicini per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
     <p><span>Gli incantesimi possono mancare i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
@@ -2218,8 +2239,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Il silenzio è oro</a></h2>
-    <p><span>Megara infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="210k + 0.9sp" data-checkbox="eval">210k + 0.9sp</output></span><span> danni al nemico con più potenza abilità e lo fa tacere per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Il silenzio � oro</a></h2>
+    <p><span>Megara infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="210k + 0.9sp" data-checkbox="eval">210k + 0.9sp</output></span><span> danni al nemico con pi� potenza abilit� e lo fa tacere per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2242,8 +2263,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Legame profondo</a></h2>
-    <p><span>Megara dà al suo alleato collegato </span><span class="unit-expr-misc">50%</span><span> del suo danno base e potenza abilità.</span></p>
-    <p><span>L&#39;effetto è ridotto quando il livello dell&#39;alleato è maggiore di </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Megara d� al suo alleato collegato </span><span class="unit-expr-misc">50%</span><span> del suo danno base e potenza abilit�.</span></p>
+    <p><span>L&#39;effetto � ridotto quando il livello dell&#39;alleato � maggiore di </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

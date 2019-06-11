@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Goofy - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Ser propenso a los accidentes no impide que este torpe amante de la diversión se eche un bailecito mientras hace destrozos a su paso.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2244,11 +2244,32 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Échate un bailecito</a></h2>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">�chate un bailecito</a></h2>
     <p><span>Goofy se echa un baile y una bola de discoteca desciende sobre el campo de batalla, cegando a los enemigos durante </span><span class="unit-expr-misc">13</span><span> segundos y aumentando la velocidad de ataque de los aliados en </span><span class="unit-expr-misc">150%</span><span> durante </span><span class="unit-expr-misc">10</span><span> segundos.</span></p>
     <p><span>El poder de enceguecer puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2268,7 +2289,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Pata dura</a></h2>
-    <p><span>Goofy esquiva el siguiente ataque y contraataca con un movimiento de baile, lo que inflige </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="250k + 2bd" data-checkbox="eval">250k + 2bd</output></span><span> de daño. Goofy puede responder con un contraataque cada </span><span class="unit-expr-misc">8</span><span> segundos.</span></p>
+    <p><span>Goofy esquiva el siguiente ataque y contraataca con un movimiento de baile, lo que inflige </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="250k + 2bd" data-checkbox="eval">250k + 2bd</output></span><span> de da�o. Goofy puede responder con un contraataque cada </span><span class="unit-expr-misc">8</span><span> segundos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2289,8 +2310,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Cómo hacerse el Goofy</a></h2>
-    <p><span>Goofy baila, otorgándose a sí mismo un escudo de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="480k+4.5sp" data-checkbox="eval">480k+4.5sp</output></span><span> PV que dura </span><span class="unit-expr-misc">18</span><span> segundos y le da </span><span class="unit-expr-misc">30</span><span> de tenacidad, </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="345k" data-checkbox="eval">345k</output></span><span> de armadura y </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> de realidad.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">C�mo hacerse el Goofy</a></h2>
+    <p><span>Goofy baila, otorg�ndose a s� mismo un escudo de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="480k+4.5sp" data-checkbox="eval">480k+4.5sp</output></span><span> PV que dura </span><span class="unit-expr-misc">18</span><span> segundos y le da </span><span class="unit-expr-misc">30</span><span> de tenacidad, </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="345k" data-checkbox="eval">345k</output></span><span> de armadura y </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> de realidad.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>
@@ -2312,7 +2333,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Ritmo pegadizo</a></h2>
-    <p><span>Cada vez que Goofy contraataca con &#34;</span><a href="../hero/GOOFY.htm#GREEN" class="rarity-green">Pata dura</a><span>&#34;, obtiene una acumulación de Ritmo. Cada vez que Goofy usa &#34;</span><a href="../hero/GOOFY.htm#WHITE" class="rarity-white">Échate un bailecito</a><span>&#34;, se cura </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k+4sp" data-checkbox="eval">280k+4sp</output></span><span> PV por cada nivel de Ritmo.</span></p>
+    <p><span>Cada vez que Goofy contraataca con &#34;</span><a href="../hero/GOOFY.htm#GREEN" class="rarity-green">Pata dura</a><span>&#34;, obtiene una acumulaci�n de Ritmo. Cada vez que Goofy usa &#34;</span><a href="../hero/GOOFY.htm#WHITE" class="rarity-white">�chate un bailecito</a><span>&#34;, se cura </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k+4sp" data-checkbox="eval">280k+4sp</output></span><span> PV por cada nivel de Ritmo.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
@@ -2366,8 +2387,8 @@ function init()
     </p>
     <blockquote><span>&#34;Cómo hacerse el Goofy&#34; protege a los aliados de incapacitaciones</span></blockquote>
     <ul>
-      <li><span>&#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">Cómo hacerse el Goofy</a><span>&#34; otorga a los aliados un escudo con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> PV</span></li>
-      <li><span>Los aliados protegidos por &#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">Cómo hacerse el Goofy</a><span>&#34; resisten incapacitaciones; en vez de quedar incapacitados, los aliados se curan por un </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3s%" data-format="%" data-checkbox="eval">3s%</output></span><span> de los PV máximos de Goofy</span></li>
+      <li><span>&#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">C�mo hacerse el Goofy</a><span>&#34; otorga a los aliados un escudo con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="330k" data-checkbox="eval">330k</output></span><span> PV</span></li>
+      <li><span>Los aliados protegidos por &#34;</span><a href="../hero/GOOFY.htm#BLUE" class="rarity-blue">C�mo hacerse el Goofy</a><span>&#34; resisten incapacitaciones; en vez de quedar incapacitados, los aliados son sanados por un </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="3s%" data-format="%" data-checkbox="eval">3s%</output></span><span> de los PV máximos de Goofy.</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -2409,6 +2430,16 @@ function init()
     </div>
 
     <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#SHIELDS">Escudos</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>Reducción del daño</blockquote>
+    <ul>
+      <li><span>Los escudos reducen el daño recibido un </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.75k" data-format=".3" data-checkbox="eval">0.75k</output></span><span>%.</span></li>
+    </ul>
+    <!-- Collection } -->
     <!-- Collection { -->
     <h2>
       <a href="../collect_list.htm#TANK">Tanque</a>

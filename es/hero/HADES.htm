@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Hades - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Hades, Dios de los Muertos, siempre sintió que se llevaba la peor parte en comparación con su hermano, Zeus. Hades quema a sus enemigos con su fogoso temperamento.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2266,12 +2266,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Ira abrasadora</a></h2>
-    <p><span>Hades, furioso, lanza llamas que cruzan el campo de batalla, provocando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="55k + 0.5sp" data-checkbox="eval">55k + 0.5sp</output></span><span> de daño de inmediato, así como </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 1sp" data-checkbox="eval">50k + 1sp</output></span><span> de daño con el tiempo durante </span><span class="unit-expr-misc">5</span><span> segundos a todos los enemigos.</span></p>
+    <p><span>Hades, furioso, lanza llamas que cruzan el campo de batalla, provocando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="55k + 0.5sp" data-checkbox="eval">55k + 0.5sp</output></span><span> de da�o de inmediato, as� como </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k + 1sp" data-checkbox="eval">50k + 1sp</output></span><span> de da�o con el tiempo durante </span><span class="unit-expr-misc">5</span><span> segundos a todos los enemigos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2288,8 +2309,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">Pequeño es el inframundo</a></h2>
-    <p><span>Hades redirige a sí mismo un </span><span class="unit-expr-misc">15%</span><span> de todo el daño que reciben sus aliados.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">Peque�o es el inframundo</a></h2>
+    <p><span>Hades redirige a s� mismo un </span><span class="unit-expr-misc">15%</span><span> de todo el da�o que reciben sus aliados.</span></p>
     <p><span>Esta habilidad puede fallar contra enemigos de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green">...</label>
@@ -2299,8 +2320,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Daño funesto</a></h2>
-    <p><span>Hades provoca </span><span class="unit-expr-misc">1.5%</span><span> más de daño por cada </span><span class="unit-expr-misc">1%</span><span> de salud que le falte.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Da�o funesto</a></h2>
+    <p><span>Hades provoca </span><span class="unit-expr-misc">1.5%</span><span> m�s de da�o por cada </span><span class="unit-expr-misc">1%</span><span> de salud que le falte.</span></p>
     <p><span>Este efecto se reduce contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
@@ -2311,8 +2332,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Señor de los Muertos</a></h2>
-    <p><span>Una vez por combate, cuando Hades llega a 0 de salud, revive y se cura a sí mismo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="1000k + 15sp" data-checkbox="eval">1000k + 15sp</output></span><span> de salud. Después, Hades asusta al equipo enemigo durante </span><span class="unit-expr-misc">10</span><span> segundos.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">Se�or de los Muertos</a></h2>
+    <p><span>Una vez por combate, cuando Hades llega a 0 de salud, revive y se cura a s� mismo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="1000k + 15sp" data-checkbox="eval">1000k + 15sp</output></span><span> de salud. Despu�s, Hades asusta al equipo enemigo durante </span><span class="unit-expr-misc">10</span><span> segundos.</span></p>
     <p><span>El susto puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

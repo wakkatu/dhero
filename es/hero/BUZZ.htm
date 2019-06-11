@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Buzz Lightyear - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Buzz Lightyear es un heroico patrullero espacial con láseres reales y habilidad para vol... volver con estilo. Controla a los enemigos con sus burbujas anti-gravedad.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2189,12 +2189,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Acción láser</a></h2>
-    <p><span>Buzz se lanza a volar y dispara su láser, y provoca </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de daño a todos los enemigos.</span></p>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">Acci�n l�ser</a></h2>
+    <p><span>Buzz se lanza a volar y dispara su l�ser, y provoca </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de da�o a todos los enemigos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2233,8 +2254,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Impulso púlsar</a></h2>
-    <p><span>Buzz usa su burbuja antigravedad para bloquear al enemigo y también provoca un daño de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> al enemigo.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Impulso p�lsar</a></h2>
+    <p><span>Buzz usa su burbuja antigravedad para bloquear al enemigo y tambi�n provoca un da�o de </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> al enemigo.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2258,7 +2279,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Aumento de poder</a></h2>
-    <p><span>Cada 3 ataques básicos, el láser de Buzz perfora su objetivo y golpea a cualquier enemigo adicional detrás del primer objetivo. Cada enemigo adicional recibe un daño de </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="75k + 1bd" data-checkbox="eval">75k + 1bd</output></span><span>.</span></p>
+    <p><span>Cada 3 ataques b�sicos, el l�ser de Buzz perfora su objetivo y golpea a cualquier enemigo adicional detr�s del primer objetivo. Cada enemigo adicional recibe un da�o de </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="75k + 1bd" data-checkbox="eval">75k + 1bd</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>

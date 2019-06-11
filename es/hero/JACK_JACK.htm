@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Jack-Jack - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="No dejes que esa carita tierna te engañe. Los poderes de Jack-Jack hacen destrozos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2231,12 +2231,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Bebé saltarín</a></h2>
-    <p><span>Jack-Jack se convierte en una bola de cañón. Rebota entre los enemigos </span><span class="unit-expr-misc">4</span><span> veces y hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de daño a cada enemigo golpeado.</span></p>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">Beb� saltar�n</a></h2>
+    <p><span>Jack-Jack se convierte en una bola de ca��n. Rebota entre los enemigos </span><span class="unit-expr-misc">4</span><span> veces y hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de da�o a cada enemigo golpeado.</span></p>
     <p><span>Debe haber varios enemigos juntos para que Jack-Jack pueda rebotar.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -2258,7 +2279,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Descanso para comer</a></h2>
-    <p><span>Jack-Jack bebe de su biberón y obtiene </span><span class="unit-expr-misc">300</span><span> energía. Luego, arroja el biberón a un enemigo y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> de daño.</span></p>
+    <p><span>Jack-Jack bebe de su biber�n y obtiene </span><span class="unit-expr-misc">300</span><span> energ�a. Luego, arroja el biber�n a un enemigo y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2280,8 +2301,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Canción de cuna</a></h2>
-    <p><span>Jack-Jack se transforma en metal sólido y se teletransporta sobre el enemigo con menor vida. Luego, le cae sobre la cabeza y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de daño.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Canci�n de cuna</a></h2>
+    <p><span>Jack-Jack se transforma en metal s�lido y se teletransporta sobre el enemigo con menor vida. Luego, le cae sobre la cabeza y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2303,7 +2324,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Jack-Jack al ataque</a></h2>
-    <p><span>Las habilidades &#34;</span><a href="../hero/JACK_JACK.htm#WHITE" class="rarity-white">Bebé saltarín</a><span>&#34; y &#34;</span><a href="../hero/JACK_JACK.htm#GREEN" class="rarity-green">Descanso para comer</a><span>&#34; de Jack-Jack incineran a los enemigos y hacen que reciban </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="25k + 0.175sp" data-checkbox="eval">25k + 0.175sp</output></span><span> de daño durante </span><span class="unit-expr-misc">5</span><span> segundos. Si ya están incinerados, reciben </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de daño adicional.</span></p>
+    <p><span>Las habilidades &#34;</span><a href="../hero/JACK_JACK.htm#WHITE" class="rarity-white">Beb� saltar�n</a><span>&#34; y &#34;</span><a href="../hero/JACK_JACK.htm#GREEN" class="rarity-green">Descanso para comer</a><span>&#34; de Jack-Jack incineran a los enemigos y hacen que reciban </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="25k + 0.175sp" data-checkbox="eval">25k + 0.175sp</output></span><span> de da�o durante </span><span class="unit-expr-misc">5</span><span> segundos. Si ya est�n incinerados, reciben </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de da�o adicional.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2376,7 +2397,7 @@ function init()
     <blockquote><span>La habilidad &#34;Canción de cuna&#34; añade daño y aturdimiento AOE</span></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="15k" data-checkbox="eval">15k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidad</span></li>
-      <li><span>&#34;</span><a href="../hero/JACK_JACK.htm#BLUE" class="rarity-blue">Canción de cuna</a><span>&#34; ahora golpea a múltiples enemigos y los aturde durante </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.1s" data-format=".1" data-checkbox="eval">0.1s</output></span><span> segundo(s).</span>
+      <li><span>&#34;</span><a href="../hero/JACK_JACK.htm#BLUE" class="rarity-blue">Canci�n de cuna</a><span>&#34; ahora golpea a múltiples enemigos y los aturde durante </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="0.1s" data-format=".1" data-checkbox="eval">0.1s</output></span><span> segundo(s).</span>
         <div><dl class="unit-note inline-list">
           <dt>splashrange</dt><dd>150</dd>
         </dl></div>

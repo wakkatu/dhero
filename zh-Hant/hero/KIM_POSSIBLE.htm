@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>麻辣女孩 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="只是一個平凡到不行的女孩，每晚拯救完世界再開始寫回家功課。麻辣女孩善於利用手邊的小工具來控制敵人，打通電話或吹聲哨子就能請她幫忙！">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2208,10 +2208,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等級</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">基本傷害</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">技能威力</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">什麼情況？</a></h2>
     <p><span>玩家從三種行動中選出一種讓麻辣女孩在啟動「</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">什麼情況？</a><span>」時執行：麻辣女孩用她的麻辣通訊器觀察全體敵人長達 </span><span class="unit-expr-misc">15</span><span> 秒，她會飛踢站在最前線的敵人，給予 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="370k + 3bd" data-checkbox="eval">370k + 3bd</output></span><span> 傷害並將其擊退，或是為全體盟友治療 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k + 1.5sp" data-checkbox="eval">280k + 1.5sp</output></span><span> 生命值。</span></p>
     <p><span>採取自動戰鬥模式時，第一次使用「</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">什麼情況？</a><span>」會觀察敵人，第二次會飛踢站在最前線的敵人，第三次會治療盟友，然後在該波攻擊結束前重複這個循環。</span></p>
@@ -2260,7 +2281,7 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">啦啦隊長</a></h2>
+    <h2 class="rarity-blue"><a id="BLUE">掌控情勢</a></h2>
     <p><span>麻辣女孩可從裝有「監視裝置」的敵人身上竊取所獲能量的 </span><span class="unit-expr-misc">50%</span><span>。</span></p>
     <p><span>面對等級高於 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 的敵人時，效果會比較差。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2273,7 +2294,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">多功能腰帶</a></h2>
     <p><span>「</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">什麼情況？</a><span>」啟動時可獲得以下加成效果：</span></p>
-    <p><span>受到金姆觀察的敵人受到 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span> 傷害，持續 </span><span class="unit-expr-misc">15</span><span> 秒。</span></p>
+    <p><span> 在觀察敵人後，金姆的基本攻擊造成 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span> 濺射傷害，持續 </span><span class="unit-expr-misc">15</span><span> 秒。</span></p>
     <p><span> 金姆飛踢敵人後獲得 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="275k" data-checkbox="eval">275k</output></span><span> 基本傷害且攻擊速度提高 </span><span class="unit-expr-misc">150%</span><span>，持續 </span><span class="unit-expr-misc">15</span><span> 秒。</span></p>
     <p><span> 治療盟友後，金姆可在攻擊時竊取 </span><span class="unit-expr-misc">75%</span><span> 生命值，持續 </span><span class="unit-expr-misc">15</span><span> 秒。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2284,7 +2305,7 @@ function init()
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>aoedmg</dt><dd>165k + 0.75bd</dd>
-        <dt>aoedmgduration</dt><dd>15</dd>
+        <dt>aoeduration</dt><dd>15</dd>
         <dt>aoerange</dt><dd>325</dd>
         <dt>dmgbuff</dt><dd>275k</dd>
         <dt>attackspeed</dt><dd>1.5[%]</dd>
@@ -2365,6 +2386,14 @@ function init()
   <!-- Friends 2 { -->
   <div class="section">
     <h1>友誼</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/DUKE_CABOOM.htm">卡蹦公爵</a> <small>(119)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#DUKE_CABOOM_CONTROL">特技團隊</a>
+    </p>
+    <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
 

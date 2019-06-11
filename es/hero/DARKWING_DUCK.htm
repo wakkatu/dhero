@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>El Pato Darkwing - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="El Pato Darkwing, extraordinario paladín de la justicia, usa sus fantásticos artefactos para controlar a enemigos mientras los somete con el arte del Cuac Fu.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2234,12 +2234,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Disparatado</a></h2>
-    <p><span>El Pato Darkwing se balancea por el campo de batalla para causar </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="124.68k + 0.86sp" data-checkbox="eval">124.68k + 0.86sp</output></span><span> de daño a los enemigos más lejanos.</span></p>
+    <p><span>El Pato Darkwing se balancea por el campo de batalla para causar </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="124.68k + 0.86sp" data-checkbox="eval">124.68k + 0.86sp</output></span><span> de da�o a los enemigos m�s lejanos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2258,8 +2279,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">Acechador sombrío</a></h2>
-    <p><span>Antes de recibir el ataque crítico de un enemigo, Darkwing se hace invisible por </span><span class="unit-expr-misc">5</span><span> segundos y evita el daño. Al ser invisible, no puede ser un objetivo. Puede volverse invisible una vez cada </span><span class="unit-expr-misc">13</span><span> segundos.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">Acechador sombr�o</a></h2>
+    <p><span>Antes de recibir el ataque cr�tico de un enemigo, Darkwing se hace invisible por </span><span class="unit-expr-misc">5</span><span> segundos y evita el da�o. Al ser invisible, no puede ser un objetivo. Puede volverse invisible una vez cada </span><span class="unit-expr-misc">13</span><span> segundos.</span></p>
     <p><span>Esto puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2278,7 +2299,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Adormecidos</a></h2>
-    <p><span>El Pato Darkwing arroja una lata de gas adormecedor a sus pies, lo que aturde a los enemigos cercanos por </span><span class="unit-expr-misc">3</span><span> segundos y les causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de daño.</span></p>
+    <p><span>El Pato Darkwing arroja una lata de gas adormecedor a sus pies, lo que aturde a los enemigos cercanos por </span><span class="unit-expr-misc">3</span><span> segundos y les causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2302,8 +2323,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Velocidad sombría</a></h2>
-    <p><span>Cada vez que el Pato Darkwing se vuelve invisible, su velocidad de ataque aumenta un </span><span class="unit-expr-misc">15%</span><span>, y su daño básico, un </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="35k + .15sp" data-checkbox="eval">35k + .15sp</output></span><span> hasta el final de la ola. Esto se puede acumular hasta </span><span class="unit-expr-misc">3</span><span> veces.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">Velocidad sombr�a</a></h2>
+    <p><span>Cada vez que el Pato Darkwing se vuelve invisible, su velocidad de ataque aumenta un </span><span class="unit-expr-misc">15%</span><span>, y su da�o b�sico, un </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="35k + .15sp" data-checkbox="eval">35k + .15sp</output></span><span> hasta el final de la ola. Esto se puede acumular hasta </span><span class="unit-expr-misc">3</span><span> veces.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

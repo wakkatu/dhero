@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Frozono - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Lucio Best (alias &#34;Frozono&#34;) mantiene la cabeza fría y controla a sus enemigos con sus ataques de hielo versátiles.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2158,7 +2158,7 @@ function init()
           </select>
           <dl class="inline-list unit-note">
             <dt>Daño básico</dt><dd>199</dd>
-            <dt>Disable Evasion</dt><dd>145</dd>
+            <dt>Evasión</dt><dd>145</dd>
           </dl>
         </span>
         <span class="unit-pair-name" data-r_blk="3.87">
@@ -2240,7 +2240,7 @@ function init()
       <span class="unit-pair-val unit-expr-g">
         <output name="crit_damage" for="core_crit_damage b_crit_damage func:badge_inc,calcBadge,badge_param" data-formula="core_crit_damage + b_crit_damage + badge_inc" data-badge_param="crit_damage|S*(B&gt;0)"></output>
       </span>
-      <span class="unit-pair-name">Disable Evasion</span>
+      <span class="unit-pair-name">Evasión</span>
       <span class="unit-pair-val unit-expr-g">
         <output name="evasion" for="core_evasion b_evasion func:badge_inc,calcBadge,badge_param" data-formula="core_evasion + b_evasion + badge_inc" data-badge_param="evasion|S*(B&gt;0)"></output>
       </span>
@@ -2261,11 +2261,32 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Quedarás escarchado</a></h2>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">Quedar�s escarchado</a></h2>
     <p><span>Frozono arroja hielo a los enemigos y los congela durante </span><span class="unit-expr-misc">4</span><span> segundos.</span></p>
     <p><span>El congelamiento tiene una posibilidad de durar solo </span><span class="unit-expr-misc">1</span><span> segundo(s) en los enemigos de nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2283,7 +2304,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Frente helado</a></h2>
-    <p><span>Dispara una onda gélida al enemigo más cercano y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de daño.</span></p>
+    <p><span>Dispara una onda g�lida al enemigo m�s cercano y le hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2304,8 +2325,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Escalofrío ártico</a></h2>
-    <p><span>Choca contra el enemigo más cercano y lo congela durante </span><span class="unit-expr-misc">8</span><span> segundos.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Escalofr�o �rtico</a></h2>
+    <p><span>Choca contra el enemigo m�s cercano y lo congela durante </span><span class="unit-expr-misc">8</span><span> segundos.</span></p>
     <p><span>El congelamiento tiene una posibilidad de durar solo </span><span class="unit-expr-misc">2</span><span> segundo(s) en los enemigos de nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
@@ -2326,8 +2347,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Frío quemante</a></h2>
-    <p><span>Los enemigos que Frozono congela reciben </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="9k + 0.15sp" data-checkbox="eval">9k + 0.15sp</output></span><span> de daño por segundo mientras estén congelados.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">Fr�o quemante</a></h2>
+    <p><span>Los enemigos que Frozono congela reciben </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="9k + 0.15sp" data-checkbox="eval">9k + 0.15sp</output></span><span> de da�o por segundo mientras est�n congelados.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2397,7 +2418,7 @@ function init()
     </p>
     <blockquote><span>&#34;Quedarás escarchado&#34; sana a los aliados</span></blockquote>
     <ul>
-      <li><span>&#34;</span><a href="../hero/FROZONE.htm#WHITE" class="rarity-white">Quedarás escarchado</a><span>&#34; ahora también congela a los aliados por debajo de </span><span class="unit-expr-misc">50%</span><span> puntos de vida, recuperando </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="650k" data-checkbox="eval">650k</output></span><span> puntos de vida durante </span><span class="unit-expr-misc">2</span><span> segundo(s).</span></li>
+      <li><span>&#34;</span><a href="../hero/FROZONE.htm#WHITE" class="rarity-white">Quedar�s escarchado</a><span>&#34; ahora también congela a los aliados por debajo de </span><span class="unit-expr-misc">50%</span><span> puntos de vida, recuperando </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="650k" data-checkbox="eval">650k</output></span><span> puntos de vida durante </span><span class="unit-expr-misc">2</span><span> segundo(s).</span></li>
       <li><span>+</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="4s" data-checkbox="eval">4s</output></span><span> </span><span class="unit-expr-misc">Anulación de realidad</span></li>
     </ul>
     <!-- Disk } -->

@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Jack Skellington - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Jack Skellington, el Rey Calabaza de la Ciudad Halloween, es la encarnación no viviente de los escalofríos y las emociones de Halloween. Ataca a sus enemigos con calabazas y regalos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2237,12 +2237,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Amo del terror</a></h2>
-    <p><span>Pasiva: Jack prende fuego sus calabazas, lo que hace que sus ataques básicos hagan daño fantástico mientras causan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k+0.3sp+0.2bd" data-format=".1" data-checkbox="eval">30k+0.3sp+0.2bd</output></span><span> de daño adicional por más de </span><span class="unit-expr-misc">3</span><span> segundos.</span></p>
+    <p><span>Pasiva: Jack prende fuego sus calabazas, lo que hace que sus ataques b�sicos hagan da�o fant�stico mientras causan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="30k+0.3sp+0.2bd" data-format=".1" data-checkbox="eval">30k+0.3sp+0.2bd</output></span><span> de da�o adicional por m�s de </span><span class="unit-expr-misc">3</span><span> segundos.</span></p>
     <p><span>Activa: Jack retuerce su cara de forma horrible, asusta a sus enemigos durante </span><span class="unit-expr-misc">6</span><span> segundos y los aturde durante </span><span class="unit-expr-misc">2</span><span> segundos.</span></p>
     <p><span>El susto y el aturdimiento pueden fallar contra enemigos que superen el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2262,8 +2283,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">¡¿Qué es esto?!</a></h2>
-    <p><span>Jack arroja un regalo al enemigo más lejano, un pato maníaco de juguete aparece y asusta a los enemigos cercanos por </span><span class="unit-expr-misc">5</span><span> segundos. Luego vuelve hacia Jack y causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k+0.5sp" data-checkbox="eval">50k+0.5sp</output></span><span> de daño a todos los enemigos atacados.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">��Qu� es esto?!</a></h2>
+    <p><span>Jack arroja un regalo al enemigo m�s lejano, un pato man�aco de juguete aparece y asusta a los enemigos cercanos por </span><span class="unit-expr-misc">5</span><span> segundos. Luego vuelve hacia Jack y causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="50k+0.5sp" data-checkbox="eval">50k+0.5sp</output></span><span> de da�o a todos los enemigos atacados.</span></p>
     <p><span>El susto puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2288,7 +2309,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Calabazas de Halloween</a></h2>
-    <p><span>Jack se cubre en llamas por </span><span class="unit-expr-misc">10</span><span> segundos, lo que hace que sus ataques básicos salpiquen y causen daño a varios enemigos.</span></p>
+    <p><span>Jack se cubre en llamas por </span><span class="unit-expr-misc">10</span><span> segundos, lo que hace que sus ataques b�sicos salpiquen y causen da�o a varios enemigos.</span></p>
     <p><span>La salpicadura puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
@@ -2308,7 +2329,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Truco o trato</a></h2>
-    <p><span>Jack y sus aliados recuperan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.2sp" data-checkbox="eval">20k + 0.2sp</output></span><span> puntos de vida cada vez que dañan a un enemigo asustado.</span></p>
+    <p><span>Jack y sus aliados recuperan </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k + 0.2sp" data-checkbox="eval">20k + 0.2sp</output></span><span> puntos de vida cada vez que da�an a un enemigo asustado.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
@@ -2376,7 +2397,7 @@ function init()
     <blockquote><span>Más patos</span></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="45k" data-checkbox="eval">45k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidad</span></li>
-      <li><span>Jack arroja </span><span class="unit-expr-misc">3</span><span> patos de juguete con &#34;</span><a href="../hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">¡¿Qué es esto?!</a><span>&#34;; &#34;</span><a href="../hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">¡¿Qué es esto?!</a><span>&#34; hace un </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="15s%" data-format="%" data-checkbox="eval">15s%</output></span><span> más de daño a enemigos en rol de daño</span></li>
+      <li><span>Jack arroja </span><span class="unit-expr-misc">3</span><span> patos de juguete con &#34;</span><a href="../hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">��Qu� es esto?!</a><span>&#34;; &#34;</span><a href="../hero/JACK_SKELLINGTON.htm#GREEN" class="rarity-green">��Qu� es esto?!</a><span>&#34; hace un </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="15s%" data-format="%" data-checkbox="eval">15s%</output></span><span> más de daño a enemigos en rol de daño</span></li>
     </ul>
     <!-- Disk } -->
     </form>

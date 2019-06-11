@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Sulley y Boo - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="James P. Sullivan es el monstruo más capacitado en Monsters, Inc. Boo es una pequeña niña en un disfraz de monstruo. ¡Juntos, aterrorizan a sus adversarios en el campo de batalla!">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2278,12 +2278,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Asustarse es preocuparse</a></h2>
-    <p><span>Sulley ruge, provocando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de daño a todos los enemigos y asustándolos durante </span><span class="unit-expr-misc">10</span><span> segundos. Los ataques que provocan daño fantástico siempre hacen daño crítico a los enemigos aterrorizados.</span></p>
+    <p><span>Sulley ruge, provocando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> de da�o a todos los enemigos y asust�ndolos durante </span><span class="unit-expr-misc">10</span><span> segundos. Los ataques que provocan da�o fant�stico siempre hacen da�o cr�tico a los enemigos aterrorizados.</span></p>
     <p><span>El susto puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -2304,7 +2325,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Risa curativa</a></h2>
-    <p><span>Boo se ríe y cura </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="270k + 5.4sp" data-checkbox="eval">270k + 5.4sp</output></span><span> de puntos de vida a Sulley. Esta habilidad también se activa al final de cada etapa, y también durante el combate.</span></p>
+    <p><span>Boo se r�e y cura </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="270k + 5.4sp" data-checkbox="eval">270k + 5.4sp</output></span><span> de puntos de vida a Sulley. Esta habilidad tambi�n se activa al final de cada etapa, y tambi�n durante el combate.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>2.5</dd>
@@ -2322,7 +2343,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Rabieta de juguetes</a></h2>
-    <p><span>Boo lanza juguetes a los tres enemigos más cercanos. Cada juguete provoca </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 1sp" data-checkbox="eval">75k + 1sp</output></span><span> de daño.</span></p>
+    <p><span>Boo lanza juguetes a los tres enemigos m�s cercanos. Cada juguete provoca </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 1sp" data-checkbox="eval">75k + 1sp</output></span><span> de da�o.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>

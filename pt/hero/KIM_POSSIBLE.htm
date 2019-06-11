@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Kim Possible - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="É a garota básica de sempre que salva o mundo toda noite antes de fazer o dever de casa. Kim Possible usa seus ótimos acessórios para controlar inimigos. Ela está a uma chamada ou bipe de distância!">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2208,10 +2208,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Qual é o problema?</a></h2>
     <p><span>O jogador escolhe uma ação para Kim Possible quando &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">Qual é o problema?</a><span>&#34; for ativada: Kim Possible usa o Comunicador da Kim para estudar todos os inimigos por </span><span class="unit-expr-misc">15</span><span> segundos; Kim Possible dá um chute no inimigo mais à frente, causando </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="370k + 3bd" data-checkbox="eval">370k + 3bd</output></span><span> de dano e o derrubando ou Kim Possible cura todos os aliados em </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k + 1.5sp" data-checkbox="eval">280k + 1.5sp</output></span><span> PV.</span></p>
     <p><span>Enquanto a batalha estiver no automático, o primeiro uso de &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">Qual é o problema?</a><span>&#34; estuda os inimigos, o seguinte dá um chute no inimigo mais próximo e o seguinte cura os aliados, repetindo o ciclo até o final da onda.</span></p>
@@ -2260,7 +2281,7 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Líder de torcida</a></h2>
+    <h2 class="rarity-blue"><a id="BLUE">Segurando</a></h2>
     <p><span>Kim Possible rouba </span><span class="unit-expr-misc">50%</span><span> de toda a energia ganha por um inimigo com o &#34;Dispositivo de Monitoramento&#34; preso a ele.</span></p>
     <p><span>O efeito é reduzido contra inimigos de nível acima de </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2273,7 +2294,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Cinto utilitário</a></h2>
     <p><span>&#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">Qual é o problema?</a><span>&#34; ganha o seguinte na ativação:</span></p>
-    <p><span>Inimigos estudados por Kim recebem </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span> de dano por </span><span class="unit-expr-misc">15</span><span> segundos</span></p>
+    <p><span>Após estudar inimigos, os ataques básicos de Kim causam </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="165k + 0.75bd" data-checkbox="eval">165k + 0.75bd</output></span><span> de dano em área por </span><span class="unit-expr-misc">15</span><span> segundos.</span></p>
     <p><span>Após chutar um inimigo, Kim ganha </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="275k" data-checkbox="eval">275k</output></span><span> dano básico e sua velocidade de ataque aumenta em </span><span class="unit-expr-misc">150%</span><span> por </span><span class="unit-expr-misc">15</span><span> segundos.</span></p>
     <p><span>Após curar aliados, Kim ganha </span><span class="unit-expr-misc">75%</span><span> de roubo de vida em ataques por </span><span class="unit-expr-misc">15</span><span> segundos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2284,7 +2305,7 @@ function init()
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>aoedmg</dt><dd>165k + 0.75bd</dd>
-        <dt>aoedmgduration</dt><dd>15</dd>
+        <dt>aoeduration</dt><dd>15</dd>
         <dt>aoerange</dt><dd>325</dd>
         <dt>dmgbuff</dt><dd>275k</dd>
         <dt>attackspeed</dt><dd>1.5[%]</dd>
@@ -2365,6 +2386,14 @@ function init()
   <!-- Friends 2 { -->
   <div class="section">
     <h1>Amigos</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/DUKE_CABOOM.htm">Duke Caboom</a> <small>(119)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#DUKE_CABOOM_CONTROL">Equipe de Dublês</a>
+    </p>
+    <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
 

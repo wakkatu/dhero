@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Megara - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Bien versada en el arte del sarcasmo, Megara apoya a sus aliados en el campo con su ingenio y encanto.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2175,14 +2175,35 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
-    <h2 class="rarity-white"><a id="WHITE">Réplica ingeniosa</a></h2>
-    <p><span>Pasiva: En vez de hacer un ataque básico, el jugador elige un aliado para vincularlo con Megara al inicio del combate. En automático, Megara elige el aliado más al frente al activar el vínculo.</span></p>
-    <p><span>Megara desvía hacia ella un </span><span class="unit-expr-misc">25%</span><span> de todo el daño que recibe el aliado vinculado, y este no puede tener menos de 1 de PV mientras Megara esté en combate.</span></p>
-    <p><span>Activa: Megara hechiza a los </span><span class="unit-expr-misc">3</span><span> enemigos más cercanos durante </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">R�plica ingeniosa</a></h2>
+    <p><span>Pasiva: En vez de hacer un ataque b�sico, el jugador elige un aliado para vincularlo con Megara al inicio del combate. En autom�tico, Megara elige el aliado m�s al frente al activar el v�nculo.</span></p>
+    <p><span>Megara desv�a hacia ella un </span><span class="unit-expr-misc">25%</span><span> de todo el da�o que recibe el aliado vinculado, y este no puede tener menos de 1 de PV mientras Megara est� en combate.</span></p>
+    <p><span>Activa: Megara hechiza a los </span><span class="unit-expr-misc">3</span><span> enemigos m�s cercanos durante </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
     <p><span>Los hechizos pueden fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
@@ -2201,7 +2222,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Autosuficiente</a></h2>
-    <p><span>Megara se sana </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="220k + 1sp" data-checkbox="eval">220k + 1sp</output></span><span> de puntos de vida a sí misma.</span></p>
+    <p><span>Megara se sana </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="220k + 1sp" data-checkbox="eval">220k + 1sp</output></span><span> de puntos de vida a s� misma.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>6</dd>
@@ -2219,7 +2240,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">El silencio es oro</a></h2>
-    <p><span>Megara causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="210k + 0.9sp" data-checkbox="eval">210k + 0.9sp</output></span><span> de daño al enemigo con más poder de habilidad y lo silencia durante </span><span class="unit-expr-misc">7</span><span> segundos.</span></p>
+    <p><span>Megara causa </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="210k + 0.9sp" data-checkbox="eval">210k + 0.9sp</output></span><span> de da�o al enemigo con m�s poder de habilidad y lo silencia durante </span><span class="unit-expr-misc">7</span><span> segundos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2241,8 +2262,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Vínculo profundo</a></h2>
-    <p><span>Megara otorga un </span><span class="unit-expr-misc">50%</span><span> de su daño básico y poder de habilidad al aliado con el que está vinculada.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">V�nculo profundo</a></h2>
+    <p><span>Megara otorga un </span><span class="unit-expr-misc">50%</span><span> de su da�o b�sico y poder de habilidad al aliado con el que est� vinculada.</span></p>
     <p><span>Esta habilidad es menos eficaz cuando el nivel del aliado supera el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

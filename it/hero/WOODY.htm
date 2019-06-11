@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Woody - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Woody è il più super mega cowboy del selvaggio West! Acciuffa i nemici con il suo lazo e potenzia gli alleati con le sue abilità da leader.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2197,12 +2197,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Carica!</a></h2>
-    <p><span>Woody incita i suoi alleati dandogli </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="5k [.1] + 0.05sp" data-checkbox="eval">5k [.1] + 0.05sp</output></span><span> danni base e </span><span class="unit-expr-misc">100%</span><span> velocità d&#39;attacco per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
+    <p><span>Woody incita i suoi alleati dandogli </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="5k [.1] + 0.05sp" data-checkbox="eval">5k [.1] + 0.05sp</output></span><span> danni base e </span><span class="unit-expr-misc">100%</span><span> velocit� d&#39;attacco per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -2220,8 +2241,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Lazo</a></h2>
-    <p><span>Woody prende al lazo il nemico più distante, tirandolo a sé.</span></p>
-    <p><span>Il Lazo può mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Woody prende al lazo il nemico pi� distante, tirandolo a s�.</span></p>
+    <p><span>Il Lazo pu� mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>5</dd>
@@ -2242,8 +2263,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Vicesceriffo preferito</a></h2>
-    <p><span>Woody offre una carica al nemico con la Potenza abilità più alta, convincendolo a combattere per lui per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
-    <p><span>L&#39;incantesimo può mancare i bersagli di livello </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> o superiore.</span></p>
+    <p><span>Woody offre una carica al nemico con la Potenza abilit� pi� alta, convincendolo a combattere per lui per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
+    <p><span>L&#39;incantesimo pu� mancare i bersagli di livello </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> o superiore.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3.75</dd>
@@ -2357,6 +2378,14 @@ function init()
     </h2>
     <p>
       <a href="../disk_list.htm#SULLEY_TEAM_HEAL">Giocare insieme</a>
+    </p>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/DUKE_CABOOM.htm">Duke Caboom</a> <small>(115)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#DUKE_CABOOM_HEAL">Spilla dell&#39;audacia</a>
     </p>
     <!-- Disk } -->
   </div>

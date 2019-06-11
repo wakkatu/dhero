@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Maui - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Maui è un semidio ed eroe degli uomini (e delle donne) che usa l&#39;uncino per trasformarsi in quello che gli passa per la testa.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2254,15 +2254,36 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Morso di squalo</a></h2>
     <p><span>Passiva: Maui subisce </span><span class="unit-expr-misc">25%</span><span> danni in meno quando ha energia piena.</span></p>
     <p><span>Attiva: Quando i nemici nel raggio della mischia di Maui hanno meno di </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="390k + 2.6sp" data-checkbox="eval">390k + 2.6sp</output></span><span> PS, Maui diventa uno squalo e li morde, infliggendo loro </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="390k + 2.6sp" data-checkbox="eval">390k + 2.6sp</output></span><span> danni reali.</span></p>
-    <p><span>Maui non usa questa abilità finché non può mettere KO un nemico.</span></p>
-    <p><span>Il danno reale ignora armatura e realtà.</span></p>
+    <p><span>Maui non usa questa abilit� finch� non pu� mettere KO un nemico.</span></p>
+    <p><span>Il danno reale ignora armatura e realt�.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>True</dd>
@@ -2282,7 +2303,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Turbine del falco</a></h2>
-    <p><span>Maui si trasforma in un falco e lancia delle raffiche di vento contro i nemici. I due nemici più vicini subiscono </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="112.5k + 0.75sp" data-checkbox="eval">112.5k + 0.75sp</output></span><span> danni e vengono spinti all&#39;indietro.</span></p>
+    <p><span>Maui si trasforma in un falco e lancia delle raffiche di vento contro i nemici. I due nemici pi� vicini subiscono </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="112.5k + 0.75sp" data-checkbox="eval">112.5k + 0.75sp</output></span><span> danni e vengono spinti all&#39;indietro.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2307,8 +2328,8 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Danza rinvigorente</a></h2>
     <p><span>Maui danza all&#39;inizio dello scontro e infonde Coraggio agli alleati, che aumenta l&#39;energia ottenuta subendo danni di un </span><span class="unit-expr-misc">80%</span><span>. Per ogni cumulo di Coraggio attivo nel suo team, Maui guarisce </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="20k+0.05sp" data-checkbox="eval">20k+0.05sp</output></span><span> PS al secondo.</span></p>
-    <p><span>Il Coraggio rimane attivo sugli alleati finché non usano la propria abilità attiva.</span></p>
-    <p><span>L&#39;effetto è ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Il Coraggio rimane attivo sugli alleati finch� non usano la propria abilit� attiva.</span></p>
+    <p><span>L&#39;effetto � ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
@@ -2324,8 +2345,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Presi all&#39;amo</a></h2>
-    <p><span>Il Coraggio da </span><a href="../hero/MAUI.htm#BLUE" class="rarity-blue">Danza rinvigorente</a><span> riduce anche l&#39;Armatura e la Realtà dei nemici del </span><span class="unit-expr-misc">60%</span><span>.</span></p>
-    <p><span>L&#39;effetto è ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Il Coraggio da </span><a href="../hero/MAUI.htm#BLUE" class="rarity-blue">Danza rinvigorente</a><span> riduce anche l&#39;Armatura e la Realt� dei nemici del </span><span class="unit-expr-misc">60%</span><span>.</span></p>
+    <p><span>L&#39;effetto � ridotto per gli alleati di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Darkwing Duck - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Darkwing Duck, nemico del crimine di fama mondiale, usa i suoi fantastici gadget per controllare i nemici e neutralizzarli con il Quack Fu.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2234,12 +2234,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Simpatica mitraglia</a></h2>
-    <p><span>Darkwing Duck volteggia sul campo di battaglia e infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="124.68k + 0.86sp" data-checkbox="eval">124.68k + 0.86sp</output></span><span> danni ai nemici più distanti.</span></p>
+    <p><span>Darkwing Duck volteggia sul campo di battaglia e infligge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="124.68k + 0.86sp" data-checkbox="eval">124.68k + 0.86sp</output></span><span> danni ai nemici pi� distanti.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2259,8 +2280,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Cacciatore nell&#39;ombra</a></h2>
-    <p><span>Prima che Darkwing Duck possa subire un colpo critico, diventa invisibile per </span><span class="unit-expr-misc">5</span><span> secondi ed evita i danni. Mentre è invisibile, non può essere preso di mira. Può diventare invisibile solo ogni </span><span class="unit-expr-misc">13</span><span> secondi.</span></p>
-    <p><span>L&#39;incantesimo può mancare i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Prima che Darkwing Duck possa subire un colpo critico, diventa invisibile per </span><span class="unit-expr-misc">5</span><span> secondi ed evita i danni. Mentre � invisibile, non pu� essere preso di mira. Pu� diventare invisibile solo ogni </span><span class="unit-expr-misc">13</span><span> secondi.</span></p>
+    <p><span>L&#39;incantesimo pu� mancare i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>initcooldown</dt><dd>0</dd>
@@ -2302,8 +2323,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">Velocità ombra</a></h2>
-    <p><span>Ogni volta che Darkwing Duck diventa invisibile, la sua velocità d&#39;attacco aumenta di </span><span class="unit-expr-misc">15%</span><span> e i suoi danni base di </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="35k + .15sp" data-checkbox="eval">35k + .15sp</output></span><span> fino alla fine dell&#39;ondata. Quest&#39;effetto è cumulabile fino a </span><span class="unit-expr-misc">3</span><span> volte.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">Velocit� ombra</a></h2>
+    <p><span>Ogni volta che Darkwing Duck diventa invisibile, la sua velocit� d&#39;attacco aumenta di </span><span class="unit-expr-misc">15%</span><span> e i suoi danni base di </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="35k + .15sp" data-checkbox="eval">35k + .15sp</output></span><span> fino alla fine dell&#39;ondata. Quest&#39;effetto � cumulabile fino a </span><span class="unit-expr-misc">3</span><span> volte.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Robin des Bois - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Le vaillant Robin des Bois utilise ses talents d&#39;archer pour voler aux riches et donner aux pauvres.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2216,10 +2216,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Niveau</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Dégâts de base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Puissance de compétence</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Aumônes</a></h2>
     <p><span>Robin des Bois tire une flèche qui vole </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> PV à l&#39;ennemi en ayant le plus, et les donne à l&#39;allié en ayant le moins, lui rendant </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> PV.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2239,7 +2260,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Cœur de cible</a></h2>
-    <p><span>Robin des Bois marque l&#39;ennemi le plus éloigné, l&#39;étudiant pendant </span><span class="unit-expr-misc">12</span><span> et lui volant </span><span class="unit-expr-misc">200</span><span> pts d&#39;énergie.</span></p>
+    <p><span>Robin des Bois marque l&#39;ennemi le plus éloigné, l&#39;étudiant pendant </span><span class="unit-expr-misc">12</span><span> secondes et lui volant </span><span class="unit-expr-misc">200</span><span> pts d&#39;énergie.</span></p>
     <p><span>La quantité d&#39;énergie volée est réduite lorsque l&#39;ennemi est de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2285,7 +2306,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Arc renforcé</a></h2>
-    <p><span>Robin des Bois gagne </span><span class="unit-expr-misc">&lt;critDmgBuff&gt;</span><span> pts de dégâts critiques. Les dégâts critiques augmentent les dégâts infligés lors d&#39;un coup critique.</span></p>
+    <p><span>Robin des Bois gagne </span><span class="unit-expr-misc">40 + v</span><span> pts de dégâts critiques. Les dégâts critiques augmentent les dégâts infligés lors d&#39;un coup critique.</span></p>
     <p><span>Le bonus de dégâts critiques est réduit contre les ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

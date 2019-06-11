@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Finnick - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Un fennec di dimensioni ridotte con una pazienza altrettanto ridotta, Finnick affronta i suoi nemici con il suo ghiacciolo Jumbo e il suo adorato furgone.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2216,10 +2216,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Controllo remoto</a></h2>
     <p><span>Finnick controlla il suo amato furgone a distanza, travolgendo tutti i nemici, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="130k + 1.105sp" data-checkbox="eval">130k + 1.105sp</output></span><span> danni e sbalzandoli all&#39;indietro.</span></p>
     <p><span>Quando Finnick danneggia i nemici rallentati con il suo furgone, rimangono anche storditi per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
@@ -2244,7 +2265,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Lancio appiccicoso</a></h2>
-    <p><span>Finnick lancia un ghiacciolo Jumbo sciolto al bersaglio più vicino, infliggendo a lui e ai nemici accanto </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="80k + 0.8sp" data-checkbox="eval">80k + 0.8sp</output></span><span> danni.</span></p>
+    <p><span>Finnick lancia un ghiacciolo Jumbo sciolto al bersaglio pi� vicino, infliggendo a lui e ai nemici accanto </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="80k + 0.8sp" data-checkbox="eval">80k + 0.8sp</output></span><span> danni.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2292,8 +2313,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Situazione appiccicosa</a></h2>
-    <p><span>Finnick sparge il ghiacciolo Jumbo sciolto, rallentando i suoi attacchi base, &#34;</span><a href="../hero/FINNICK.htm#GREEN" class="rarity-green">Lancio appiccicoso</a><span>&#34; e &#34;</span><a href="../hero/FINNICK.htm#BLUE" class="rarity-blue">Colpo Jumbo</a><span>&#34;. I nemici rallentano, subendo una riduzione della velocità di movimento di </span><span class="unit-expr-misc">40%</span><span> e della velocità d&#39;attacco di </span><span class="unit-expr-misc">40%</span><span> per </span><span class="unit-expr-misc">12</span><span> secondi.</span></p>
-    <p><span>Il rallentamento può mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Finnick sparge il ghiacciolo Jumbo sciolto, rallentando i suoi attacchi base, &#34;</span><a href="../hero/FINNICK.htm#GREEN" class="rarity-green">Lancio appiccicoso</a><span>&#34; e &#34;</span><a href="../hero/FINNICK.htm#BLUE" class="rarity-blue">Colpo Jumbo</a><span>&#34;. I nemici rallentano, subendo una riduzione della velocit� di movimento di </span><span class="unit-expr-misc">40%</span><span> e della velocit� d&#39;attacco di </span><span class="unit-expr-misc">40%</span><span> per </span><span class="unit-expr-misc">12</span><span> secondi.</span></p>
+    <p><span>Il rallentamento pu� mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

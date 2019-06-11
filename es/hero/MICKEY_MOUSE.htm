@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Mickey Mouse - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Mickey Mouse ha entretenido a niños de todas las edades por más de 90 años. ¡Mickey es un excelente actor y un amigo bondadoso e inteligente que siempre estará para salvar el día!">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2207,12 +2207,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Animando al equipo</a></h2>
-    <p><span>Mickey usa &#34;Puesta a punto&#34; en todos los aliados por </span><span class="unit-expr-misc">10</span><span> segundos y les da un aumento del </span><span class="unit-expr-misc">50%</span><span> de daño a todos.</span></p>
+    <p><span>Mickey usa &#34;Puesta a punto&#34; en todos los aliados por </span><span class="unit-expr-misc">10</span><span> segundos y les da un aumento del </span><span class="unit-expr-misc">50%</span><span> de da�o a todos.</span></p>
     <p><span>Esto puede fallar en aliados de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
@@ -2226,8 +2247,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">Sinfonía absurda</a></h2>
-    <p><span>Mickey conduce a los aliados con lo mínimo de energía, lo que les da </span><span class="unit-expr-misc">300</span><span> de energía.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">Sinfon�a absurda</a></h2>
+    <p><span>Mickey conduce a los aliados con lo m�nimo de energ�a, lo que les da </span><span class="unit-expr-misc">300</span><span> de energ�a.</span></p>
     <p><span>Esto tiene un efecto reducido en aliados de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2247,7 +2268,7 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Brujería de aprendiz</a></h2>
+    <h2 class="rarity-blue"><a id="BLUE">Brujer�a de aprendiz</a></h2>
     <p><span>Mickey lanza un hechizo sobre el aliado con menos puntos de vida, quien recupera </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="250k+2.5sp" data-checkbox="eval">250k+2.5sp</output></span><span> puntos de vida.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
@@ -2267,8 +2288,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-purple"><a id="PURPLE">¡Vaya!</a></h2>
-    <p><span>Los aliados con &#34;Puesta a punto&#34; regeneran </span><span class="unit-expr-misc">30%</span><span> de sus puntos de vida máximos, hasta que la &#34;Puesta a punto&#34; finaliza.</span></p>
+    <h2 class="rarity-purple"><a id="PURPLE">�Vaya!</a></h2>
+    <p><span>Los aliados con &#34;Puesta a punto&#34; regeneran </span><span class="unit-expr-misc">30%</span><span> de sus puntos de vida m�ximos, hasta que la &#34;Puesta a punto&#34; finaliza.</span></p>
     <p><span>Este efecto puede fallar en aliados que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
@@ -2338,7 +2359,7 @@ function init()
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-checkbox="eval">100k</output></span><span> </span><span class="unit-expr-misc">Puntos de vida máximos</span></li>
       <li><span>Los héroes </span><a href="../hero_list.htm?role=damage" class="unit-expr-misc">Daño</a><span> del equipo obtienen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="100k" data-checkbox="eval">100k</output></span><span> </span><span class="unit-expr-misc">Puntos de vida máximos</span><span>.</span></li>
-      <li><span>Los aliados en rol de daño reciben +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> de daño y regeneración adicionales de &#34;</span><a href="../hero/MICKEY_MOUSE.htm#WHITE" class="rarity-white">Animando al equipo</a><span>&#34; y &#34;</span><a href="../hero/MICKEY_MOUSE.htm#PURPLE" class="rarity-purple">¡Vaya!</a><span>&#34;</span></li>
+      <li><span>Los aliados en rol de daño reciben +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> de daño y regeneración adicionales de &#34;</span><a href="../hero/MICKEY_MOUSE.htm#WHITE" class="rarity-white">Animando al equipo</a><span>&#34; y &#34;</span><a href="../hero/MICKEY_MOUSE.htm#PURPLE" class="rarity-purple">�Vaya!</a><span>&#34;</span></li>
     </ul>
     <!-- Disk } -->
     </form>

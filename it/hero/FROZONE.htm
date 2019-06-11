@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Siberius - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Lucius Best (Siberius) è un supereroe capace di ragionare a mente fredda. Tiene a bada i nemici con i suoi versatili attacchi di ghiaccio.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2158,7 +2158,7 @@ function init()
           </select>
           <dl class="inline-list unit-note">
             <dt>Danni base</dt><dd>199</dd>
-            <dt>Disable Evasion</dt><dd>145</dd>
+            <dt>Evasione</dt><dd>145</dd>
           </dl>
         </span>
         <span class="unit-pair-name" data-r_blk="3.87">
@@ -2240,7 +2240,7 @@ function init()
       <span class="unit-pair-val unit-expr-g">
         <output name="crit_damage" for="core_crit_damage b_crit_damage func:badge_inc,calcBadge,badge_param" data-formula="core_crit_damage + b_crit_damage + badge_inc" data-badge_param="crit_damage|S*(B&gt;0)"></output>
       </span>
-      <span class="unit-pair-name">Disable Evasion</span>
+      <span class="unit-pair-name">Evasione</span>
       <span class="unit-pair-val unit-expr-g">
         <output name="evasion" for="core_evasion b_evasion func:badge_inc,calcBadge,badge_param" data-formula="core_evasion + b_evasion + badge_inc" data-badge_param="evasion|S*(B&gt;0)"></output>
       </span>
@@ -2261,13 +2261,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Freddati</a></h2>
     <p><span>Siberius lancia del ghiaccio ai nemici, congelandoli per </span><span class="unit-expr-misc">4</span><span> secondi.</span></p>
-    <p><span>Il congelamento può durare solo </span><span class="unit-expr-misc">1</span><span> secondi per i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Il congelamento pu� durare solo </span><span class="unit-expr-misc">1</span><span> secondi per i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -2283,7 +2304,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Ondata di freddo</a></h2>
-    <p><span>Lancia un&#39;onda congelante al nemico più vicino, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni.</span></p>
+    <p><span>Lancia un&#39;onda congelante al nemico pi� vicino, infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 1sp" data-checkbox="eval">150k + 1sp</output></span><span> danni.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2305,8 +2326,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Brezza artica</a></h2>
-    <p><span>Colpisce il nemico più vicino, congelandolo per </span><span class="unit-expr-misc">8</span><span> secondi.</span></p>
-    <p><span>Il congelamento può durare solo </span><span class="unit-expr-misc">2</span><span> secondi per i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Colpisce il nemico pi� vicino, congelandolo per </span><span class="unit-expr-misc">8</span><span> secondi.</span></p>
+    <p><span>Il congelamento pu� durare solo </span><span class="unit-expr-misc">2</span><span> secondi per i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>

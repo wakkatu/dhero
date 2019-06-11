@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Baymax - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Costruito dal fratello di Hiro, Tadashi, Baymax era inizialmente progettato per fornire assistenza medica. Ma dopo che Hiro gli ha fatto qualche modifica, è diventato un combattente di tutto rispetto.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2226,10 +2226,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Assistenza sanitaria</a></h2>
     <p><span>Baymax protegge </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="240k + 1.6sp" data-checkbox="eval">240k + 1.6sp</output></span><span> PS degli alleati per </span><span class="unit-expr-misc">9.5</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2260,9 +2281,9 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Esegui una scansione</a></h2>
-    <p><span>Baymax esegue una scansione sul nemico con l&#39;armatura più robusta, studiandolo per </span><span class="unit-expr-misc">12</span><span> secondi.</span></p>
+    <p><span>Baymax esegue una scansione sul nemico con l&#39;armatura pi� robusta, studiandolo per </span><span class="unit-expr-misc">12</span><span> secondi.</span></p>
     <p><span>Gli attacchi che infliggono Danni normali infliggono sempre un Colpo critico ai nemici studiati. </span></p>
-    <p><span> Lo studio può non funzionare con i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span> Lo studio pu� non funzionare con i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>
@@ -2283,7 +2304,7 @@ function init()
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Armatura ottimizzata</a></h2>
     <p><span>Gli scudi di Baymax da &#34;</span><a href="../hero/BAYMAX.htm#WHITE" class="rarity-white">Assistenza sanitaria</a><span>&#34; e &#34;</span><a href="../hero/BAYMAX.htm#GREEN" class="rarity-green">Partenza a razzo</a><span>&#34; riducono di un </span><span class="unit-expr-misc">40%</span><span> i danni subiti in seguito a colpi critici.</span></p>
-    <p><span>L&#39;effetto è ridotto per i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>L&#39;effetto � ridotto per i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

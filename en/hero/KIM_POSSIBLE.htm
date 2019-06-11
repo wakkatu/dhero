@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Kim Possible - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Just your basic average girl who saves the world each night before doing her homework. Kim Possible uses her handy gadgets to control enemies. She&#39;s just a call or a beep away!">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2208,10 +2208,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Level</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Basic Damage</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Skill Power</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">What&#39;s the Sitch?</a></h2>
     <p><span>The player chooses one of three actions for Kim Possible to perform when &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">What&#39;s the Sitch?</a><span>&#34; is activated: Kim Possible uses her Kimmunicator to study all enemies for </span><span class="unit-expr-misc">15</span><span> seconds, Kim Possible kicks the frontmost enemy, dealing </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="370k + 3bd" data-checkbox="eval">370k + 3bd</output></span><span> damage and knocking them back, or Kim Possible heals all allies for </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="280k + 1.5sp" data-checkbox="eval">280k + 1.5sp</output></span><span> HP.</span></p>
     <p><span>While the battle is on auto, the first use of &#34;</span><a href="../hero/KIM_POSSIBLE.htm#WHITE" class="rarity-white">What&#39;s the Sitch?</a><span>&#34; studies enemies, the next kicks the frontmost enemy, and the next heals allies, repeating this cycle for the remainder of the wave.</span></p>
@@ -2284,7 +2305,7 @@ function init()
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>aoedmg</dt><dd>165k + 0.75bd</dd>
-        <dt>aoedmgduration</dt><dd>15</dd>
+        <dt>aoeduration</dt><dd>15</dd>
         <dt>aoerange</dt><dd>325</dd>
         <dt>dmgbuff</dt><dd>275k</dd>
         <dt>attackspeed</dt><dd>1.5[%]</dd>
@@ -2365,6 +2386,14 @@ function init()
   <!-- Friends 2 { -->
   <div class="section">
     <h1>Friends</h1>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/DUKE_CABOOM.htm">Duke Caboom</a> <small>(119)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#DUKE_CABOOM_CONTROL">Stunt Team</a>
+    </p>
+    <!-- Disk } -->
   </div>
   <!-- Friends 2 } -->
 

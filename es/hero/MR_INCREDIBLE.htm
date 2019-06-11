@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Mr. Increíble - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Bob Parr (alias &#34;Mr. Increíble&#34;) usa su superfuerza para combatir el mal y proteger a los inocentes.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2233,12 +2233,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Gran embate</a></h2>
-    <p><span>Mr. Increíble emprende vuelo, se zambulle en medio de sus enemigos y les hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 0.8sp" data-checkbox="eval">150k + 0.8sp</output></span><span> de daño. El impacto de este aterrizaje también derriba a los enemigos hacia atrás.</span></p>
+    <p><span>Mr. Incre�ble emprende vuelo, se zambulle en medio de sus enemigos y les hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="150k + 0.8sp" data-checkbox="eval">150k + 0.8sp</output></span><span> de da�o. El impacto de este aterrizaje tambi�n derriba a los enemigos hacia atr�s.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2259,8 +2280,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-green"><a id="GREEN">Aporreo sísmico</a></h2>
-    <p><span>Mr. Increíble da un pisotón sobre el suelo y hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> de daño a los enemigos cercanos.</span></p>
+    <h2 class="rarity-green"><a id="GREEN">Aporreo s�smico</a></h2>
+    <p><span>Mr. Incre�ble da un pisot�n sobre el suelo y hace </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k + 0.5sp" data-checkbox="eval">75k + 0.5sp</output></span><span> de da�o a los enemigos cercanos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2284,7 +2305,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Excelente</a></h2>
-    <p><span>Cuando la vida de Mr. Increíble disminuye por debajo de </span><span class="unit-expr-misc">50%</span><span> de vida, su velocidad de ataque aumenta en </span><span class="unit-expr-misc">400%</span><span> y sus ataques básicos hacen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format=".1" data-checkbox="eval">40k</output></span><span> de daño adicional.</span></p>
+    <p><span>Cuando la vida de Mr. Incre�ble disminuye por debajo de </span><span class="unit-expr-misc">50%</span><span> de vida, su velocidad de ataque aumenta en </span><span class="unit-expr-misc">400%</span><span> y sus ataques b�sicos hacen </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="40k" data-format=".1" data-checkbox="eval">40k</output></span><span> de da�o adicional.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
@@ -2298,7 +2319,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Fuerte y saludable</a></h2>
-    <p><span>Mr. Increíble obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="1350k" data-checkbox="eval">1350k</output></span><span> de vida máxima adicional.</span></p>
+    <p><span>Mr. Incre�ble obtiene </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="1350k" data-checkbox="eval">1350k</output></span><span> de vida m�xima adicional.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>

@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Judy Hopps - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Straripante d&#39;ottimismo e determinazione, Judy Hopps usa le sue abilità da kickboxer per mandare al tappeto i nemici.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2221,13 +2221,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Livello</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Danni base</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Potenza abilità</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Salto da coniglio</a></h2>
-    <p><span>Judy salta per calciare il nemico più vicino, spingendolo indietro e infliggendogli </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="300k + 1.5sp" data-checkbox="eval">300k + 1.5sp</output></span><span> danni. La velocità d&#39;attacco del nemico si riduce di </span><span class="unit-expr-misc">80%</span><span> e la velocità di movimento di </span><span class="unit-expr-misc">80%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
-    <p><span>Il rallentamento può mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Judy salta per calciare il nemico pi� vicino, spingendolo indietro e infliggendogli </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="300k + 1.5sp" data-checkbox="eval">300k + 1.5sp</output></span><span> danni. La velocit� d&#39;attacco del nemico si riduce di </span><span class="unit-expr-misc">80%</span><span> e la velocit� di movimento di </span><span class="unit-expr-misc">80%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
+    <p><span>Il rallentamento pu� mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -2250,7 +2271,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Discorso motivazionale</a></h2>
-    <p><span>Judy incita i suoi alleati all&#39;inizio di ogni ondata, dando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="10k + 0.05sp" data-format=".1" data-checkbox="eval">10k + 0.05sp</output></span><span> danni base e </span><span class="unit-expr-misc">15%</span><span> velocità di movimento e </span><span class="unit-expr-misc">15%</span><span> velocità d&#39;attacco per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <p><span>Judy incita i suoi alleati all&#39;inizio di ogni ondata, dando </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="10k + 0.05sp" data-format=".1" data-checkbox="eval">10k + 0.05sp</output></span><span> danni base e </span><span class="unit-expr-misc">15%</span><span> velocit� di movimento e </span><span class="unit-expr-misc">15%</span><span> velocit� d&#39;attacco per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
@@ -2280,8 +2301,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Fai il morto</a></h2>
-    <p><span>La prima volta che Judy raggiunge 0 PS, fa il morto. Poco dopo, torna in vita con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="500k" data-checkbox="eval">500k</output></span><span> PS. Questo trucchetto miracoloso dà Ispirazione a tutti gli alleati per </span><span class="unit-expr-misc">2</span><span> secondi.</span></p>
-    <p><span>Judy è invincibile per </span><span class="unit-expr-misc">1</span><span> secondi dopo essere tornata in vita.</span></p>
+    <p><span>La prima volta che Judy raggiunge 0 PS, fa il morto. Poco dopo, torna in vita con </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="500k" data-checkbox="eval">500k</output></span><span> PS. Questo trucchetto miracoloso d� Ispirazione a tutti gli alleati per </span><span class="unit-expr-misc">2</span><span> secondi.</span></p>
+    <p><span>Judy � invincibile per </span><span class="unit-expr-misc">1</span><span> secondi dopo essere tornata in vita.</span></p>
     <p><span>I vantaggi dell&#39;Ispirazione sono gli stessi di quelli di &#34;</span><a href="../hero/JUDY_HOPPS.htm#GREEN" class="rarity-green">Discorso motivazionale</a><span>&#34;. La potenza dell&#39;Ispirazione corrisponde al livello di &#34;</span><a href="../hero/JUDY_HOPPS.htm#GREEN" class="rarity-green">Discorso motivazionale</a><span>&#34;.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

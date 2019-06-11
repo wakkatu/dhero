@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Genio - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Con sus poderes cósmicos fenomenales, el Genio ayuda a sus aliados y controla a sus enemigos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2246,13 +2246,34 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Tres deseos</a></h2>
-    <p><span>El Genio otorga 3 deseos, lo cual les sana </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="250k + 2sp" data-checkbox="eval">250k + 2sp</output></span><span> de salud a los 3 aliados más débiles.</span></p>
-    <p><span>El Genio no se puede conceder un deseo a sí mismo.</span></p>
+    <p><span>El Genio otorga 3 deseos, lo cual les sana </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="250k + 2sp" data-checkbox="eval">250k + 2sp</output></span><span> de salud a los 3 aliados m�s d�biles.</span></p>
+    <p><span>El Genio no se puede conceder un deseo a s� mismo.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -2265,7 +2286,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Cambio de imagen</a></h2>
-    <p><span>El Genio convierte a un enemigo aleatorio en un objeto y lo aturde durante </span><span class="unit-expr-misc">5</span><span> segundos. Cuando el objetivo vuelve a su forma normal, recibe </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="200k + 1sp" data-checkbox="eval">200k + 1sp</output></span><span> de daño.</span></p>
+    <p><span>El Genio convierte a un enemigo aleatorio en un objeto y lo aturde durante </span><span class="unit-expr-misc">5</span><span> segundos. Cuando el objetivo vuelve a su forma normal, recibe </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="200k + 1sp" data-checkbox="eval">200k + 1sp</output></span><span> de da�o.</span></p>
     <p><span>Las unidades transformadas por esta habilidad no se pueden marcar como objetivo. Esta habilidad puede fallar contra enemigos de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2288,8 +2309,8 @@ function init()
       </dl>
       </div></div>
     </div><!-- unit-note } -->
-    <h2 class="rarity-blue"><a id="BLUE">Poder cósmico</a></h2>
-    <p><span>El segundo deseo del Genio ahora otorga </span><span class="unit-expr-misc">7</span><span> segundos de invisibilidad además de sanar.</span></p>
+    <h2 class="rarity-blue"><a id="BLUE">Poder c�smico</a></h2>
+    <p><span>El segundo deseo del Genio ahora otorga </span><span class="unit-expr-misc">7</span><span> segundos de invisibilidad adem�s de sanar.</span></p>
     <p><span>Esto puede fallar en aliados de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue">...</label>
@@ -2300,7 +2321,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Energizar</a></h2>
-    <p><span>El tercer deseo del Genio ahora otorga </span><span class="unit-expr-misc">500</span><span> de energía además de sanar.</span></p>
+    <p><span>El tercer deseo del Genio ahora otorga </span><span class="unit-expr-misc">500</span><span> de energ�a adem�s de sanar.</span></p>
     <p><span>Este efecto se reduce en los aliados de un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

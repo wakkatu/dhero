@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>Hiro Hamada - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Hiro Hamada, un prodigio de la robótica, usa su inteligencia y sus artefactos para derrotar a sus enemigos.">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2220,12 +2220,33 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nivel</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Daño básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">Poder de habilidad</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">Llamada a Megabot</a></h2>
-    <p><span>Hiro llama a su robot de juguete, Megabot, para que luche por él. Megabot aturde a los enemigos cercanos por </span><span class="unit-expr-misc">5</span><span> segundos cuando aterriza. Tiene </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="1300k+13sp" data-checkbox="eval">1300k+13sp</output></span><span> de salud e inflige </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="26k+0.65bd" data-checkbox="eval">26k+0.65bd</output></span><span> de daño con cada ataque posterior.</span></p>
+    <p><span>Hiro llama a su robot de juguete, Megabot, para que luche por �l. Megabot aturde a los enemigos cercanos por </span><span class="unit-expr-misc">5</span><span> segundos cuando aterriza. Tiene </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="1300k+13sp" data-checkbox="eval">1300k+13sp</output></span><span> de salud e inflige </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="26k+0.65bd" data-checkbox="eval">26k+0.65bd</output></span><span> de da�o con cada ataque posterior.</span></p>
     <p><span>Hiro solo puede tener un Megabot activo a la vez.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -2248,7 +2269,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">Giro de Megabot</a></h2>
-    <p><span>El robot de juguete de Hiro, Megabot, ahora puede hacer un ataque giratorio que inflige </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k+0.75bd+1.5sp" data-checkbox="eval">75k+0.75bd+1.5sp</output></span><span> de daño a todos los enemigos cerca de él y disminuye su velocidad de movimiento y ataque en un </span><span class="unit-expr-misc">40%</span><span> por </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
+    <p><span>El robot de juguete de Hiro, Megabot, ahora puede hacer un ataque giratorio que inflige </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="75k+0.75bd+1.5sp" data-checkbox="eval">75k+0.75bd+1.5sp</output></span><span> de da�o a todos los enemigos cerca de �l y disminuye su velocidad de movimiento y ataque en un </span><span class="unit-expr-misc">40%</span><span> por </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
     <p><span>Megabot puede usar este ataque cada </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2266,8 +2287,8 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><a id="BLUE">Aturdimiento de microbots</a></h2>
-    <p><span>Hiro invoca una columna de microbots que inflige </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="114k + 1.2sp" data-checkbox="eval">114k + 1.2sp</output></span><span> de daño al enemigo más lejano y lo aturde durante </span><span class="unit-expr-misc">6</span><span> segundos.</span></p>
-    <p><span>Hiro gana </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="70k" data-checkbox="eval">70k</output></span><span> de poder de habilidad por el resto de la oleada cuando él o Megabot aturden a un enemigo.</span></p>
+    <p><span>Hiro invoca una columna de microbots que inflige </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="114k + 1.2sp" data-checkbox="eval">114k + 1.2sp</output></span><span> de da�o al enemigo m�s lejano y lo aturde durante </span><span class="unit-expr-misc">6</span><span> segundos.</span></p>
+    <p><span>Hiro gana </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="70k" data-checkbox="eval">70k</output></span><span> de poder de habilidad por el resto de la oleada cuando �l o Megabot aturden a un enemigo.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -2291,7 +2312,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">Analizar</a></h2>
-    <p><span>Hiro y su robot de juguete, Megabot, tienen una probabilidad del </span><span class="unit-expr-misc">30%</span><span> de esquivar ataques. Hiro obtiene </span><span class="unit-expr-misc">30</span><span> de energía cuando él o Megabot esquivan un ataque.</span></p>
+    <p><span>Hiro y su robot de juguete, Megabot, tienen una probabilidad del </span><span class="unit-expr-misc">30%</span><span> de esquivar ataques. Hiro obtiene </span><span class="unit-expr-misc">30</span><span> de energ�a cuando �l o Megabot esquivan un ataque.</span></p>
     <p><span>Este efecto se reduce cuando el enemigo tiene un nivel superior a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>

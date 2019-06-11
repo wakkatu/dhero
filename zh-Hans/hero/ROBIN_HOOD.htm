@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1560018866">
-<link rel="stylesheet" href="../../star.css?1560018866">
-<link rel="stylesheet" href="../../unit.css?1560018866">
+<link rel="stylesheet" href="../../main.css?1560288121">
+<link rel="stylesheet" href="../../star.css?1560288121">
+<link rel="stylesheet" href="../../unit.css?1560288121">
 <title>罗宾汉 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="勇敢的罗宾汉运用高超的射箭技巧，偷走富人的东西接济穷人。">
-<script src="../../util.js?1560018866"></script>
-<script src="../../unit.js?1560018866"></script>
+<script src="../../util.js?1560288121"></script>
+<script src="../../unit.js?1560288121"></script>
 <script>
 var calculator= null;
 
@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2019</span>
+  <span style="white-space: nowrap;">Release date: 06/11/2019</span>
   -->
 </div><!--  container } -->
 
@@ -2216,10 +2216,31 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula="x" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula="x" data-raw="1"></output>
-    <output name="k" class="hidden" for="ref:v,unit-stat,v" data-formula="exp(v*0.036)" data-raw="1"></output>
-    <output name="level" class="hidden" for="ref:v,unit-stat,v" data-formula="v" data-raw="1"></output>
+    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
+    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
+    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">基本伤害</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+      </span>
+      <span class="unit-pair-name">技能力量</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+      </span>
+    </div>
+    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
     <h2 class="rarity-white"><a id="WHITE">劫富济贫</a></h2>
     <p><span>罗宾汉施展射箭技能，从生命值最高的敌人那里偷取 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> 点生命值，将它赠与生命值最低的盟友，帮他们治疗 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> 点生命值。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -2239,7 +2260,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><a id="GREEN">正中靶心</a></h2>
-    <p><span>罗宾汉标记最近的敌人，研究他们 </span><span class="unit-expr-misc">12</span><span> 并偷取 </span><span class="unit-expr-misc">200</span><span> 点能量。</span></p>
+    <p><span>罗宾汉标记最近的敌人，研究他们 </span><span class="unit-expr-misc">12</span><span> 秒并偷取 </span><span class="unit-expr-misc">200</span><span> 点能量。</span></p>
     <p><span>对于高于 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 级的敌人，所偷取的能量值会减少。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -2285,7 +2306,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><a id="PURPLE">更强大的弓箭</a></h2>
-    <p><span>罗宾汉获得 </span><span class="unit-expr-misc">&lt;critDmgBuff&gt;</span><span> 点暴击伤害。暴击伤害能增加队伍进行暴击时造成的伤害值。</span></p>
+    <p><span>罗宾汉获得 </span><span class="unit-expr-misc">40 + v</span><span> 点暴击伤害。暴击伤害能增加队伍进行暴击时造成的伤害值。</span></p>
     <p><span>对等级高于 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 级的敌人暴击伤害会减弱。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
