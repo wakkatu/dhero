@@ -9,6 +9,7 @@ function evalFormula(formula, data, internal)
     percent = true;
   }
 
+  try {
   r = eval(formula.replace(/(\d)\s*([A-Za-z])/g,"$1*$2")
     .replace(/[a-zA-Z_][0-9a-zA-Z_]*/g, function (k) {
       if (data.has(k))
@@ -21,6 +22,9 @@ function evalFormula(formula, data, internal)
         return 0;
       return k;
     }));
+  } catch (e) {
+    return NaN;
+  }
 
   if (percent)
     r /= 100;
@@ -187,8 +191,8 @@ function calcOutput(obj)
       obj.dataset.raw);
   }
 
-  if (obj.dataset.checkbox == null ||
-    obj.form[obj.dataset.checkbox].checked)
+  if (!isNaN(obj.dataset.val) &&
+    (obj.dataset.checkbox == null || obj.form[obj.dataset.checkbox].checked))
   {
     obj.innerText = formatOutput(obj.dataset.format, obj.dataset.val);
   }
@@ -220,6 +224,20 @@ function calcForm(objForm)
   {
     o.dataset.val = "";
     o.innerText = "";
+
+    if (o.dataset.formulaRef)
+    {
+      let objFormula = objForm[o.dataset.formulaRef];
+
+      if (objFormula.value)
+      {
+        o.dataset.formula = objFormula.value;
+      }
+      else
+      {
+        o.dataset.formula = objFormula.defaultValue;
+      }
+    }
   }
 
   for (let o of outputs)
