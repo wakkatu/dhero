@@ -2261,9 +2261,6 @@ function init()
 
     <form data-for="unit-stat" onchange="calcForm(this)">
     <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
-    <output name="bd" class="hidden" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-raw="1"></output>
-    <output name="sp" class="hidden" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-raw="1"></output>
-    <output name="v" class="hidden" for="ref:x,unit-stat,v" data-formula-ref="formula_v"></output>
     <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
     <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
 
@@ -2272,17 +2269,20 @@ function init()
       <span class="unit-pair-name">레벨</span>
       <span class="unit-pair-val">
         <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
       </span>
       <span class="unit-pair-name">기본 데미지</span>
       <span class="unit-pair-val">
         <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
       </span>
       <span class="unit-pair-name">스킬 파워</span>
       <span class="unit-pair-val">
         <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
       </span>
     </div>
-    <blockquote class="undertest">Specify number or simple math express, e.g. <code>x*1.2</code></blockquote>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
     <!-- Level } -->
 
     <p class="hr"></p>
