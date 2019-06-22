@@ -10,7 +10,7 @@ function evalFormula(formula, data, internal)
   }
 
   try {
-  r = eval(formula.replace(/(\d)\s*([A-Za-z])/g,"$1*$2")
+  r = eval(formula.replace(/([0-9.])\s*([A-Za-z])/g,"$1*$2")
     .replace(/[a-zA-Z_][0-9a-zA-Z_]*/g, function (k) {
       if (data.has(k))
         return data.get(k);
