@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1561488137">
+<link rel="stylesheet" href="../../star.css?1561488137">
+<link rel="stylesheet" href="../../unit.css?1561488137">
+<title>牧羊女宝贝 - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="牧羊女宝贝、玩具救援者和羊群，使用她的手杖保护盟友。">
+<script src="../../util.js?1561488137"></script>
+<script src="../../unit.js?1561488137"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+  document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">英雄</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">好友</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">收藏</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">物品</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    选择语言 / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/BO_PEEP.htm">Deutsche</a>
+        <a href="../../en/hero/BO_PEEP.htm">English</a>
+        <a href="../../es/hero/BO_PEEP.htm">Español</a>
+        <a href="../../fr/hero/BO_PEEP.htm">Français</a>
+        <a href="../../it/hero/BO_PEEP.htm">Italiano</a>
+        <a href="../../ja/hero/BO_PEEP.htm">日本語</a>
+        <a href="../../ko/hero/BO_PEEP.htm">한국어</a>
+        <a href="../../pt/hero/BO_PEEP.htm">Português</a>
+        <a href="../../ru/hero/BO_PEEP.htm">русский</a>
+        <a href="../../zh-Hans/hero/BO_PEEP.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/BO_PEEP.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 07/01/2019</span>
+  -->
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar"><!--
+      <img alt="牧羊女宝贝" src="BO_PEEP.png">
+    --></div>
+    <h1>牧羊女宝贝</h1>
+    <p>牧羊女宝贝、玩具救援者和羊群，使用她的手杖保护盟友。</p>
+    <blockquote>&#34;你在乎的样子真可爱。&#34;</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">角色</span>
+      <a class="unit-pair-val" href="../hero_list.htm?role=tank">肉盾</a>
+      <span class="unit-pair-name">位置</span>
+      <a class="unit-pair-val" href="../hero_list.htm?position=front">前</a>
+      <span class="unit-pair-name">试炼队伍：</span>
+      <a class="unit-pair-val" href="../hero_list.htm?team=blue">蓝色</a>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>核心统计数据</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">最大生命值</span>
+      <span class="unit-pair-val unit-expr-g">
+        533.5 + 44.04g
+      </span>
+      <span class="unit-pair-name">基本伤害</span>
+      <span class="unit-pair-val unit-expr-g">
+        30.8 + 2.54g
+      </span>
+      <span class="unit-pair-name">技能力量</span>
+      <span class="unit-pair-val unit-expr-g">
+        34.1 + 2.81g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1>详细数据</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="125" value="125">
+      </span>
+      <span class="unit-pair-name">排名</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="4.25" selected>ORANGE+7</option>
+          <option value="3.87">ORANGE+6</option>
+          <option value="3.52">ORANGE+5</option>
+          <option value="3.2">ORANGE+4</option>
+          <option value="2.91">ORANGE+3</option>
+          <option value="2.65">ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">星星</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">甜蜜冲刺</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>125</dd>
+            <dt>普通暴击</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">甜蜜冲刺</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b2" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>125</dd>
+            <dt>普通暴击</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">单面煎蛋</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b3" data-armor="45" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">美丽之夜</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b4" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>10</dd>
+            <dt>最大生命值</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">魔术币</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b5" data-hp_max="150" data-armor="30" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>150</dd>
+            <dt>盔甲</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">美丽之夜</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b6" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>10</dd>
+            <dt>最大生命值</dt><dd>100</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_hp_max" class="hidden" data-formula="600" data-r_ctl="1.1"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="16" data-r_ctl="1.1"></output>
+        <output name="b_armor" class="hidden" data-formula="75" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="20" data-r_ctl="1.1"></output>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=PIRATES_COMPASS#PIRATES_COMPASS" class="rarity-green">海盗的指南针</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b1" data-hp_max="250" data-hp_regen="50" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>250</dd>
+            <dt>生命值再生</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">尼莫的海葵</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b2" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>128</dd>
+            <dt>盔甲</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">一捆烟花</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b3" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>20</dd>
+            <dt>技能力量</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">派对之王</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b4" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>25</dd>
+            <dt>普通暴击</dt><dd>11</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">尼莫的海葵</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b5" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>128</dd>
+            <dt>盔甲</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">鼻涕虫</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>8</dd>
+            <dt>技能力量</dt><dd>8</dd>
+            <dt>最大生命值</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1156" data-r_ctl="1.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="27" data-r_ctl="1.2"></output>
+        <output name="b_armor" class="hidden" data-formula="267" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="48" data-r_ctl="1.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="50" data-r_ctl="1.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="53" data-r_ctl="1.2"></output>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">火星罐头</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b1" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>60</dd>
+            <dt>最大生命值</dt><dd>400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">早餐公主</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b2" data-skill_power="30" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=MULTIPURPOSE_FRYING_PAN#MULTIPURPOSE_FRYING_PAN" class="rarity-green">平底锅</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b3" data-normal_crit="12" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>普通暴击</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">好苹果</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b4" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>55</dd>
+            <dt>能量再生</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">单面煎蛋</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b5" data-armor="45" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">鼻涕虫</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>8</dd>
+            <dt>技能力量</dt><dd>8</dd>
+            <dt>最大生命值</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1606" data-r_ctl="1.3"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="39" data-r_ctl="1.3"></output>
+        <output name="b_armor" class="hidden" data-formula="312" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="141" data-r_ctl="1.3"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="50" data-r_ctl="1.3"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="121" data-r_ctl="1.3"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="20" data-r_ctl="1.3"></output>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCOGNITO_MODE#INCOGNITO_MODE" class="rarity-blue">隐身模式</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b1" data-skill_power="45" data-hp_max="300" data-armor_negation="7" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>45</dd>
+            <dt>最大生命值</dt><dd>300</dd>
+            <dt>盔甲作废</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">一捆烟花</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b2" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>20</dd>
+            <dt>技能力量</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=TINY_CAR#TINY_CAR" class="rarity-green">非超能车</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b3" data-armor="60" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=MRS_NESBITTS_CHAPEAU#MRS_NESBITTS_CHAPEAU" class="rarity-blue">纳斯比太太的帽子</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b4" data-armor_negation="20" data-normal_crit="12" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲作废</dt><dd>20</dd>
+            <dt>普通暴击</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">驯鹿的动力</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b5" data-hp_max="300" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=FLYAWAY_UMBRELLA#FLYAWAY_UMBRELLA" class="rarity-green">飞天伞</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b6" data-basic_damage="60" data-r_ctl="1.3" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>60</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="2206" data-r_ctl="1.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="51" data-r_ctl="1.4"></output>
+        <output name="b_armor" class="hidden" data-formula="372" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="206" data-r_ctl="1.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="50" data-r_ctl="1.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="201" data-r_ctl="1.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="20" data-r_ctl="1.4"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="27" data-r_ctl="1.4"></output>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=CHERRY_BOMB#CHERRY_BOMB" class="rarity-blue">樱桃炸弹</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b1" data-hp_regen="750" data-armor="300" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>750</dd>
+            <dt>盔甲</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">海盗帽</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b2" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>300</dd>
+            <dt>能量再生</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=YZMAS_ANTI_AGING_CREAM#YZMAS_ANTI_AGING_CREAM" class="rarity-blue">伊斯玛的不老乳液</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b3" data-basic_damage="90" data-energy_regen="50" data-armor_negation="7" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>90</dd>
+            <dt>能量再生</dt><dd>50</dd>
+            <dt>盔甲作废</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">旧金山披萨</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b4" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>40</dd>
+            <dt>技能力量</dt><dd>40</dd>
+            <dt>最大生命值</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=TOUGH_COOKIE#TOUGH_COOKIE" class="rarity-green">刚硬曲奇</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b5" data-armor="30" data-normal_crit="8" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>30</dd>
+            <dt>普通暴击</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=REALLY_BAD_EGG#REALLY_BAD_EGG" class="rarity-blue">超级坏蛋</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b6" data-armor_negation="30" data-r_ctl="1.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲作废</dt><dd>30</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_hp_max" class="hidden" data-formula="2706" data-r_ctl="1.5"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="59" data-r_ctl="1.5"></output>
+        <output name="b_armor" class="hidden" data-formula="702" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="246" data-r_ctl="1.5"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="800" data-r_ctl="1.5"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="331" data-r_ctl="1.5"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="120" data-r_ctl="1.5"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="64" data-r_ctl="1.5"></output>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">爱的金龟车</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b1" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>180</dd>
+            <dt>普通暴击</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">好苹果</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b2" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>55</dd>
+            <dt>能量再生</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BASKETBALL_JERSEY#BASKETBALL_JERSEY" class="rarity-blue">篮球衣</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b3" data-basic_damage="90" data-armor_negation="7" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>90</dd>
+            <dt>盔甲作废</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">无用手铐</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b4" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>50</dd>
+            <dt>最大生命值</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">驯鹿的动力</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b5" data-hp_max="300" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BADGE_OF_GIRTH#BADGE_OF_GIRTH" class="rarity-green">肥肚肚徽章</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b6" data-skill_power="40" data-energy_regen="50" data-r_ctl="1.5" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>40</dd>
+            <dt>能量再生</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3106" data-r_ctl="1.6"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="71" data-r_ctl="1.6"></output>
+        <output name="b_armor" class="hidden" data-formula="702" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="341" data-r_ctl="1.6"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="800" data-r_ctl="1.6"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="651" data-r_ctl="1.6"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="1.6"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="71" data-r_ctl="1.6"></output>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">贾方的护袖</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b1" data-hp_max="2000" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=FAMILY_HEIRLOOM#FAMILY_HEIRLOOM" class="rarity-purple">寻找黄金</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b2" data-basic_damage="225" data-reality="325" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>225</dd>
+            <dt>现实度</dt><dd>325</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">黄金茶壶</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b3" data-hp_regen="65" data-reality="155" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>65</dd>
+            <dt>现实度</dt><dd>155</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">神秘幼苗</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b4" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>40</dd>
+            <dt>普通暴击</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">骨头木琴</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b5" data-skill_power="150" data-hp_max="250" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>150</dd>
+            <dt>最大生命值</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">错位的尾巴</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b6" data-hp_max="400" data-reality="225" data-r_ctl="1.6" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>400</dd>
+            <dt>现实度</dt><dd>225</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_hp_max" class="hidden" data-formula="5756" data-r_ctl="1.7"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="83" data-r_ctl="1.7"></output>
+        <output name="b_armor" class="hidden" data-formula="702" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="531" data-r_ctl="1.7"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="865" data-r_ctl="1.7"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="876" data-r_ctl="1.7"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="1.7"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="71" data-r_ctl="1.7"></output>
+        <output name="b_reality" class="hidden" data-formula="705" data-r_ctl="1.7"></output>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=TRITONS_TRIDENT#TRITONS_TRIDENT" class="rarity-purple">川顿的三叉戟</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b1" data-hp_max="1337" data-armor="137" data-reality="137" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1337</dd>
+            <dt>盔甲</dt><dd>137</dd>
+            <dt>现实度</dt><dd>137</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇怪的蘑菇</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b2" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>300</dd>
+            <dt>生命值再生</dt><dd>100</dd>
+            <dt>盔甲</dt><dd>90</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=EXTRACT_OF_LLAMA#EXTRACT_OF_LLAMA" class="rarity-blue">羊驼的口水</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b3" data-hp_regen="2000" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">废弃的王冠</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b4" data-skill_power="100" data-armor="300" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>100</dd>
+            <dt>盔甲</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">刺薄荷</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b5" data-basic_damage="230" data-hp_max="230" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>230</dd>
+            <dt>最大生命值</dt><dd>230</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">一首诱人歌曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_hp_max" class="hidden" data-formula="8073" data-r_ctl="1.8"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="83" data-r_ctl="1.8"></output>
+        <output name="b_armor" class="hidden" data-formula="1229" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="631" data-r_ctl="1.8"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2965" data-r_ctl="1.8"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1106" data-r_ctl="1.8"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="1.8"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="71" data-r_ctl="1.8"></output>
+        <output name="b_reality" class="hidden" data-formula="842" data-r_ctl="1.8"></output>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=SANDY_CLAWS_LANTERN#SANDY_CLAWS_LANTERN" class="rarity-purple">圣诞南瓜灯</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b1" data-basic_damage="70" data-hp_max="600" data-armor_negation="7" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>70</dd>
+            <dt>最大生命值</dt><dd>600</dd>
+            <dt>盔甲作废</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">花家宝剑</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b2" data-skill_power="450" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=PRINCESS_FINDER#PRINCESS_FINDER" class="rarity-blue">公主搜寻灯</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b3" data-armor_negation="20" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲作废</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">美丽的灯</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b4" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>最大生命值</dt><dd>800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">错位的尾巴</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b5" data-hp_max="400" data-reality="225" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>400</dd>
+            <dt>现实度</dt><dd>225</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">一首诱人歌曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_hp_max" class="hidden" data-formula="10323" data-r_ctl="1.9"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="83" data-r_ctl="1.9"></output>
+        <output name="b_armor" class="hidden" data-formula="1229" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1081" data-r_ctl="1.9"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2965" data-r_ctl="1.9"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1276" data-r_ctl="1.9"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="1.9"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="98" data-r_ctl="1.9"></output>
+        <output name="b_reality" class="hidden" data-formula="1067" data-r_ctl="1.9"></output>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=LUCKY_EARS#LUCKY_EARS" class="rarity-purple">幸运之耳</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b1" data-armor="1337" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>1337</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=HANKS_HOT_SAUCE#HANKS_HOT_SAUCE" class="rarity-purple">章鱼汉克辣酱</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b2" data-basic_damage="125" data-hp_max="525" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>最大生命值</dt><dd>525</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=SEA_WITCHS_CONTRACT#SEA_WITCHS_CONTRACT" class="rarity-blue">海巫婆契约</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b3" data-hp_regen="750" data-reality="300" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>750</dd>
+            <dt>现实度</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇怪的蘑菇</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b4" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>300</dd>
+            <dt>生命值再生</dt><dd>100</dd>
+            <dt>盔甲</dt><dd>90</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=STABLE_WALKING_CANE#STABLE_WALKING_CANE" class="rarity-purple">稳固手杖</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b5" data-basic_damage="100" data-armor_negation="10" data-normal_crit="10" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>盔甲作废</dt><dd>10</dd>
+            <dt>普通暴击</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">一首诱人歌曲</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="11598" data-r_ctl="2.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="93" data-r_ctl="2.05"></output>
+        <output name="b_armor" class="hidden" data-formula="2656" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1081" data-r_ctl="2.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3815" data-r_ctl="2.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1501" data-r_ctl="2.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="2.05"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="108" data-r_ctl="2.05"></output>
+        <output name="b_reality" class="hidden" data-formula="1367" data-r_ctl="2.05"></output>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=UKULELE#UKULELE" class="rarity-orange">尤克里里琴</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b1" data-basic_damage="500" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">刺薄荷</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b2" data-basic_damage="230" data-hp_max="230" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>230</dd>
+            <dt>最大生命值</dt><dd>230</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">千百世界中的战利品</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b3" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>150</dd>
+            <dt>普通暴击</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">斯萨林斯基的缩小射线</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b4" data-skill_power="200" data-armor="200" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>200</dd>
+            <dt>盔甲</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=TOUGH_COOKIE#TOUGH_COOKIE" class="rarity-green">刚硬曲奇</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b5" data-armor="30" data-normal_crit="8" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>30</dd>
+            <dt>普通暴击</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">独家俱乐部徽章</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>250</dd>
+            <dt>技能力量</dt><dd>250</dd>
+            <dt>最大生命值</dt><dd>3500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="15328" data-r_ctl="2.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="108" data-r_ctl="2.2"></output>
+        <output name="b_armor" class="hidden" data-formula="2886" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1531" data-r_ctl="2.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3815" data-r_ctl="2.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2631" data-r_ctl="2.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="2.2"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="108" data-r_ctl="2.2"></output>
+        <output name="b_reality" class="hidden" data-formula="1367" data-r_ctl="2.2"></output>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">狗狗的早餐</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b1" data-hp_max="1000" data-armor="2000" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+            <dt>盔甲</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=JAR_OF_HUNNY#JAR_OF_HUNNY" class="rarity-orange">蜜糖瓮</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b2" data-hp_max="3000" data-armor="1000" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>3000</dd>
+            <dt>盔甲</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">爱的金龟车</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b3" data-basic_damage="180" data-normal_crit="12" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>180</dd>
+            <dt>普通暴击</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">贾方的护袖</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b4" data-hp_max="2000" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=BOAT_SNACK#BOAT_SNACK" class="rarity-purple">航海点心</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b5" data-hp_regen="500" data-armor="650" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>500</dd>
+            <dt>盔甲</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">英俊的王子</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>555</dd>
+            <dt>盔甲</dt><dd>777</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="21328" data-r_ctl="2.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="120" data-r_ctl="2.4"></output>
+        <output name="b_armor" class="hidden" data-formula="7313" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2086" data-r_ctl="2.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4315" data-r_ctl="2.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2811" data-r_ctl="2.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="2.4"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="108" data-r_ctl="2.4"></output>
+        <output name="b_reality" class="hidden" data-formula="1367" data-r_ctl="2.4"></output>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">可能很美味</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b1" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>最大生命值</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TOUGH_PETAL#TOUGH_PETAL" class="rarity-purple">坚硬的花瓣</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b2" data-basic_damage="125" data-armor_negation="10" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>盔甲作废</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=REALLY_GOOD_BALL#REALLY_GOOD_BALL" class="rarity-purple">弹力球</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b3" data-basic_damage="125" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">甜蜜牙齿</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b4" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+            <dt>盔甲</dt><dd>1000</dd>
+            <dt>现实度</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=STABLE_WALKING_CANE#STABLE_WALKING_CANE" class="rarity-purple">稳固手杖</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b5" data-basic_damage="100" data-armor_negation="10" data-normal_crit="10" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>盔甲作废</dt><dd>10</dd>
+            <dt>普通暴击</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=SANDY_CLAWS_LANTERN#SANDY_CLAWS_LANTERN" class="rarity-purple">圣诞南瓜灯</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b6" data-basic_damage="70" data-hp_max="600" data-armor_negation="7" data-r_ctl="2.4" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>70</dd>
+            <dt>最大生命值</dt><dd>600</dd>
+            <dt>盔甲作废</dt><dd>7</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_hp_max" class="hidden" data-formula="23928" data-r_ctl="2.65"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="130" data-r_ctl="2.65"></output>
+        <output name="b_armor" class="hidden" data-formula="8313" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2086" data-r_ctl="2.65"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4315" data-r_ctl="2.65"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3356" data-r_ctl="2.65"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="2.65"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="135" data-r_ctl="2.65"></output>
+        <output name="b_reality" class="hidden" data-formula="2367" data-r_ctl="2.65"></output>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=GONNA_GET_A_LITTLE_WEIRD#GONNA_GET_A_LITTLE_WEIRD" class="rarity-orange">有点奇怪</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b1" data-basic_damage="125" data-armor_negation="10" data-normal_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>盔甲作废</dt><dd>10</dd>
+            <dt>普通暴击</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">甜蜜牙齿</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b2" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+            <dt>盔甲</dt><dd>1000</dd>
+            <dt>现实度</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">年度顾客</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b3" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>最大生命值</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=TRUST_IN_ME#TRUST_IN_ME" class="rarity-purple">我的信任</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b4" data-basic_damage="100" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">千百世界中的战利品</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>150</dd>
+            <dt>普通暴击</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=ROCK_PUNCH#ROCK_PUNCH" class="rarity-purple">石头拳</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b6" data-basic_damage="100" data-reality="400" data-r_ctl="2.65" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>现实度</dt><dd>400</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.91"> -->
+        <output name="b_hp_max" class="hidden" data-formula="25928" data-r_ctl="2.91"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="147" data-r_ctl="2.91"></output>
+        <output name="b_armor" class="hidden" data-formula="9313" data-r_ctl="2.91"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2086" data-r_ctl="2.91"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4315" data-r_ctl="2.91"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3956" data-r_ctl="2.91"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="2.91"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="145" data-r_ctl="2.91"></output>
+        <output name="b_reality" class="hidden" data-formula="3767" data-r_ctl="2.91"></output>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">牧师的日记</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b1" data-armor="1000" data-reality="1000" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>1000</dd>
+            <dt>现实度</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">狗狗的早餐</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b2" data-hp_max="1000" data-armor="2000" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+            <dt>盔甲</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=ROCKET_PACK_PATCH_KIT#ROCKET_PACK_PATCH_KIT" class="rarity-purple">飞行背包修补工具</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b3" data-hp_max="3333" data-armor="333" data-reality="333" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>3333</dd>
+            <dt>盔甲</dt><dd>333</dd>
+            <dt>现实度</dt><dd>333</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=BOAT_SNACK#BOAT_SNACK" class="rarity-purple">航海点心</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b4" data-hp_regen="500" data-armor="650" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>生命值再生</dt><dd>500</dd>
+            <dt>盔甲</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=POOH_STICKS#POOH_STICKS" class="rarity-purple">掉落的树枝</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b5" data-reality="500" data-normal_crit="10" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>现实度</dt><dd>500</dd>
+            <dt>普通暴击</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">快乐的想法</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>906</dd>
+            <dt>现实度</dt><dd>906</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="30261" data-r_ctl="3.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="157" data-r_ctl="3.2"></output>
+        <output name="b_armor" class="hidden" data-formula="14202" data-r_ctl="3.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2086" data-r_ctl="3.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4815" data-r_ctl="3.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3956" data-r_ctl="3.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="3.2"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="145" data-r_ctl="3.2"></output>
+        <output name="b_reality" class="hidden" data-formula="6506" data-r_ctl="3.2"></output>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">早间加油。</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b1" data-hp_max="777" data-reality="606" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>777</dd>
+            <dt>现实度</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=ROCKET_PACK_PATCH_KIT#ROCKET_PACK_PATCH_KIT" class="rarity-purple">飞行背包修补工具</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b2" data-hp_max="3333" data-armor="333" data-reality="333" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>3333</dd>
+            <dt>盔甲</dt><dd>333</dd>
+            <dt>现实度</dt><dd>333</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=MERLINS_BAG#MERLINS_BAG" class="rarity-orange">梅林的袋子</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b3" data-hp_max="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SUPER_FAN#SUPER_FAN" class="rarity-orange">超级粉丝</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b4" data-basic_damage="275" data-hp_max="1200" data-hp_regen="500" data-armor="654" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>275</dd>
+            <dt>最大生命值</dt><dd>1200</dd>
+            <dt>生命值再生</dt><dd>500</dd>
+            <dt>盔甲</dt><dd>654</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">牧师的日记</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b5" data-armor="1000" data-reality="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>1000</dd>
+            <dt>现实度</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">黄金太阳</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>1000</dd>
+            <dt>盔甲</dt><dd>1000</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.52"> -->
+        <output name="b_hp_max" class="hidden" data-formula="37571" data-r_ctl="3.52"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="157" data-r_ctl="3.52"></output>
+        <output name="b_armor" class="hidden" data-formula="17189" data-r_ctl="3.52"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2086" data-r_ctl="3.52"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5315" data-r_ctl="3.52"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4231" data-r_ctl="3.52"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="3.52"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="145" data-r_ctl="3.52"></output>
+        <output name="b_reality" class="hidden" data-formula="8445" data-r_ctl="3.52"></output>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">带四个立柱的床</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b1" data-armor="1300" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>1300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=PAPEL_PICADO#PAPEL_PICADO" class="rarity-purple">切碎的纸</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b2" data-armor="678" data-armor_negation="15" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>盔甲</dt><dd>678</dd>
+            <dt>盔甲作废</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=ILL_WISHING_WELL#ILL_WISHING_WELL" class="rarity-orange">生病的许愿井</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b3" data-reality="1200" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>现实度</dt><dd>1200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=ANGRY_EYES#ANGRY_EYES" class="rarity-purple">愤怒之眼</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b4" data-basic_damage="105" data-skill_power="500" data-hp_max="1254" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>105</dd>
+            <dt>技能力量</dt><dd>500</dd>
+            <dt>最大生命值</dt><dd>1254</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=DARK_DISGUISE#DARK_DISGUISE" class="rarity-purple">黑暗伪装</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b5" data-reality="1337" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>现实度</dt><dd>1337</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">联赛咬咬玩具</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>365</dd>
+            <dt>现实度</dt><dd>1001</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.87"> -->
+        <output name="b_hp_max" class="hidden" data-formula="38825" data-r_ctl="3.87"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="157" data-r_ctl="3.87"></output>
+        <output name="b_armor" class="hidden" data-formula="19167" data-r_ctl="3.87"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2586" data-r_ctl="3.87"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5315" data-r_ctl="3.87"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4701" data-r_ctl="3.87"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="3.87"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="160" data-r_ctl="3.87"></output>
+        <output name="b_reality" class="hidden" data-formula="11983" data-r_ctl="3.87"></output>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=HAPPY_PANCAKE#HAPPY_PANCAKE" class="rarity-orange">快乐早餐饼</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b1" data-basic_damage="100" data-skill_power="222" data-hp_max="250" data-hp_regen="648" data-reality="455" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>技能力量</dt><dd>222</dd>
+            <dt>最大生命值</dt><dd>250</dd>
+            <dt>生命值再生</dt><dd>648</dd>
+            <dt>现实度</dt><dd>455</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=VICTORIOUS_URN#VICTORIOUS_URN" class="rarity-orange">胜利的古瓮</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b2" data-reality="729" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>现实度</dt><dd>729</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=ANGRY_EYES#ANGRY_EYES" class="rarity-purple">愤怒之眼</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b3" data-basic_damage="105" data-skill_power="500" data-hp_max="1254" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>105</dd>
+            <dt>技能力量</dt><dd>500</dd>
+            <dt>最大生命值</dt><dd>1254</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=GUMMIBEARY_JUICE#GUMMIBEARY_JUICE" class="rarity-orange">妙妙熊果汁</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b4" data-basic_damage="800" data-hp_max="8000" data-hp_regen="8000" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>800</dd>
+            <dt>最大生命值</dt><dd>8000</dd>
+            <dt>生命值再生</dt><dd>8000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=CAKE_OF_GOOD_INTENTIONS#CAKE_OF_GOOD_INTENTIONS" class="rarity-purple">善意的蛋糕</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b5" data-basic_damage="199" data-evasion="145" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>199</dd>
+            <dt>入侵</dt><dd>145</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">天空海盗</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>699</dd>
+            <dt>现实度</dt><dd>1297</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.25"> -->
+        <output name="b_hp_max" class="hidden" data-formula="48329" data-r_ctl="4.25"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="157" data-r_ctl="4.25"></output>
+        <output name="b_armor" class="hidden" data-formula="19167" data-r_ctl="4.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4007" data-r_ctl="4.25"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="13963" data-r_ctl="4.25"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="5905" data-r_ctl="4.25"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="190" data-r_ctl="4.25"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="160" data-r_ctl="4.25"></output>
+        <output name="b_reality" class="hidden" data-formula="14464" data-r_ctl="4.25"></output>
+        <output name="b_evasion" class="hidden" data-formula="145" data-r_ctl="4.25"></output>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=EXPLORE#EXPLORE" class="rarity-orange">探索！</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b1" data-hp_max="2105" data-armor="1400" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>最大生命值</dt><dd>2105</dd>
+            <dt>盔甲</dt><dd>1400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">可能很美味</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b2" data-basic_damage="125" data-hp_max="1000" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>125</dd>
+            <dt>最大生命值</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=HAPPY_PANCAKE#HAPPY_PANCAKE" class="rarity-orange">快乐早餐饼</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b3" data-basic_damage="100" data-skill_power="222" data-hp_max="250" data-hp_regen="648" data-reality="455" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>100</dd>
+            <dt>技能力量</dt><dd>222</dd>
+            <dt>最大生命值</dt><dd>250</dd>
+            <dt>生命值再生</dt><dd>648</dd>
+            <dt>现实度</dt><dd>455</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=SPINACH_PUFFS#SPINACH_PUFFS" class="rarity-purple">菠菜泡芙</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b4" data-basic_damage="269" data-hp_max="1530" data-hp_regen="555" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>269</dd>
+            <dt>最大生命值</dt><dd>1530</dd>
+            <dt>生命值再生</dt><dd>555</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=MR_CARROT#MR_CARROT" class="rarity-purple">胡萝卜先生</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b5" data-basic_damage="300" data-skill_power="600" data-hp_max="1750" data-evasion="10" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>基本伤害</dt><dd>300</dd>
+            <dt>技能力量</dt><dd>600</dd>
+            <dt>最大生命值</dt><dd>1750</dd>
+            <dt>入侵</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">火箭冰棍</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
+            <option value="-1">不适用</option>
+            <option value="0" selected>装备</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>技能力量</dt><dd>650</dd>
+            <dt>盔甲</dt><dd>1200</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="533.5 + 44.04g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="30.8 + 2.54g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="34.1 + 2.81g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">基本伤害</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">技能力量</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">最大生命值</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-name">生命值再生</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_regen" for="core_hp_regen b_hp_regen func:badge_inc,calcBadge,badge_param" data-formula="core_hp_regen + b_hp_regen + badge_inc" data-badge_param="hp_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">能量再生</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="energy_regen" for="core_energy_regen b_energy_regen func:badge_inc,calcBadge,badge_param" data-formula="core_energy_regen + b_energy_regen + badge_inc" data-badge_param="energy_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">盔甲</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor" for="core_armor b_armor func:badge_inc,calcBadge,badge_param" data-formula="core_armor + b_armor + badge_inc" data-badge_param="armor|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">现实度</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality" for="core_reality b_reality func:badge_inc,calcBadge,badge_param" data-formula="core_reality + b_reality + badge_inc" data-badge_param="reality|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">盔甲作废</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor_negation" for="core_armor_negation b_armor_negation func:badge_inc,calcBadge,badge_param" data-formula="core_armor_negation + b_armor_negation + badge_inc" data-badge_param="armor_negation|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">普通暴击</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="normal_crit" for="core_normal_crit b_normal_crit func:badge_inc,calcBadge,badge_param" data-formula="core_normal_crit + b_normal_crit + badge_inc" data-badge_param="normal_crit|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">入侵</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="evasion" for="core_evasion b_evasion func:badge_inc,calcBadge,badge_param" data-formula="core_evasion + b_evasion + badge_inc" data-badge_param="evasion|S*(B&gt;0)"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">技能</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
+      </span>
+      <span class="unit-pair-name">基本伤害</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
+      </span>
+      <span class="unit-pair-name">技能力量</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
+      </span>
+    </div>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><a id="WHITE">变形旋转</a></h2>
+    <p><span>牧羊女宝贝一边向前走，一边旋转她的手杖，直到能量耗尽，阻挡所有经过的抛射物，并造成 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="100k + 0.3sp" data-checkbox="eval">100k + 0.3sp</output></span><span> 点伤害，击退所击中的敌人。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>knockbackdistance</dt><dd>250</dd>
+        <dt>splash</dt><dd>50</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>0.65</dd>
+        <dt>duration</dt><dd>3.5</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closestprefFacing &lt; enemy | within(default)</dd>
+        <dt>splash</dt><dd>enemy | within(50)</dd>
+        <dt>dmg</dt><dd>100k + 0.3sp</dd>
+        <dt>knockbackdistance</dt><dd>250</dd>
+        <dt>energyperupdate</dt><dd>100</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><a id="GREEN">比利、高特和格拉夫</a></h2>
+    <p><span>牧羊女宝贝召唤来比利、高特和格拉夫，用头碰撞最近处的敌人，造成 </span><span class="unit-expr-sp"><output for="s k bd sp" data-formula="200k+1sp" data-checkbox="eval">200k+1sp</output></span><span> 点伤害，让他们失明 </span><span class="unit-expr-misc">5</span><span> 秒，将他们向后击退。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>initcooldown</dt><dd>3.75</dd>
+        <dt>cooldown</dt><dd>13</dd>
+        <dt>knockbackdistance</dt><dd>600</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>1.5</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>13</dd>
+        <dt>initcooldown</dt><dd>3.75</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closestprefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>closestprefFacing &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>dmg</dt><dd>200k+1sp</dd>
+        <dt>durationblind</dt><dd>5</dd>
+        <dt>knockbackdistance</dt><dd>600</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><a id="BLUE">实地训练</a></h2>
+    <p><span>牧羊女宝贝闪避一次近战攻击并进行反击，造成 </span><span class="unit-expr-bd"><output for="s k bd sp" data-formula="137.5k + 1.88bd" data-checkbox="eval">137.5k + 1.88bd</output></span><span> 点伤害。牧羊女宝贝可每隔 </span><span class="unit-expr-misc">7</span><span> 秒躲避一次近战攻击。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>initcooldown</dt><dd>1.5</dd>
+        <dt>cooldown</dt><dd>7</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>1.5</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>7</dd>
+        <dt>initcooldown</dt><dd>1.5</dd>
+        <dt>priority</dt><dd>2</dd>
+        <dt>splash</dt><dd>enemy | within(default+50)</dd>
+        <dt>dmg</dt><dd>137.5k + 1.88bd</dd>
+        <dt>meleefilter</dt><dd>enemy | within(default)</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><a id="PURPLE">阻挡牧马赛</a></h2>
+    <p><span>每当有 </span><span class="unit-expr-misc">3</span><span> 个抛射物瞄准牧羊女，她都可以使用她的手杖阻挡一次远程攻击。</span></p>
+    <p><span>对等级高于 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 级的敌人，阻挡远程攻击可能失败。</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple">...</label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>blockamt</dt><dd>3</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">好友</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden" checked>
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="85" value="85">
+      </span>
+      <span class="unit-pair-name">星星</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/WOODY.htm">胡迪</a> <small>(124)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#BO_PEEP_ARMOR_DEBUFF">坐在小羊上</a>
+    </p>
+    <blockquote><span>盔甲削减力度更大</span></blockquote>
+    <ul>
+      <li><span>被&#34;</span><a href="../hero/BO_PEEP.htm#WHITE" class="rarity-white">变形旋转</a><span>&#34;伤到的敌人将失去 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="150k" data-checkbox="eval">150k</output></span><span> 点盔甲，持续时间为 </span><span class="unit-expr-misc">11</span><span> 秒；这种效果可叠加 </span><span class="unit-expr-misc">5</span><span> 次</span></li>
+      <li><span>盟友可对具有盔甲减益的敌人多造成 </span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval">5s%</output></span><span> 点伤害</span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      ???
+    </h2>
+    <p>
+      <a href="../disk_list.htm#BO_PEEP_HEAL">羊毛外套</a>
+    </p>
+    <blockquote><span>阻挡抛射物时可进行治疗</span></blockquote>
+    <ul>
+      <li><span>当牧羊女宝贝使用&#34;</span><a href="../hero/BO_PEEP.htm#WHITE" class="rarity-white">变形旋转</a><span>&#34;或&#34;</span><a href="../hero/BO_PEEP.htm#PURPLE" class="rarity-purple">阻挡牧马赛</a><span>&#34;阻挡一个抛射物时，可以治疗 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="230k" data-checkbox="eval">230k</output></span><span> 点生命值</span></li>
+      <li><span>友军 +</span><span class="unit-expr-s"><output for="s k bd sp" data-formula="5s%" data-format="%" data-checkbox="eval">5s%</output></span><span> </span><span class="unit-expr-misc">改善治疗</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>好友</h1>
+  </div>
+  <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">收藏</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">等级</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#TANK">肉盾</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>额外盔甲</blockquote>
+    <ul>
+      <li><span>针对队伍中的肉盾型英雄数量，队伍获得 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="0.12k" data-format=".3" data-checkbox="eval">0.12k</output></span><span> 点盔甲值。</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#TOY_STORY">玩具总动员</a>
+      <small>(<output for="k" data-formula="k"></output> / 8)</small>
+    </h2>
+    <blockquote>额外基本伤害</blockquote>
+    <ul>
+      <li><span>收藏的人物获得 </span><span class="unit-expr-k"><output for="s k bd sp" data-formula="4.5k" data-format=".3" data-checkbox="eval">4.5k</output></span><span> 点基本伤害。</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
+
+</div><!--  container } -->
+</body>
+</html>
