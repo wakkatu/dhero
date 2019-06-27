@@ -120,6 +120,11 @@ function calcControl(obj, id)
     return 0;
   }
 
+  if (obj.disabled)
+  {
+    return 0;
+  }
+
   if (obj.tagName == null) /* RadioNodeList */
   {
     for (let o of obj)
@@ -176,7 +181,7 @@ function calcOutput(obj)
 
   if (obj.dataset.debug)
   {
-    console.log(data);
+    console.log(obj, data);
   }
 
   if (data.size == 0)
