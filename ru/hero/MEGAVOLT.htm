@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1571877423">
+<link rel="stylesheet" href="../../star.css?1571877423">
+<link rel="stylesheet" href="../../unit.css?1571877423">
+<title>Мегавольт - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Мегавольт шокирует врагов, используя электричество.">
+<script src="../../util.js?1571877423"></script>
+<script src="../../unit.js?1571877423"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+  document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">Герои</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">Друзья</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Коллекции</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">Предметы</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Выбрать язык / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/MEGAVOLT.htm">Deutsche</a>
+        <a href="../../en/hero/MEGAVOLT.htm">English</a>
+        <a href="../../es/hero/MEGAVOLT.htm">Español</a>
+        <a href="../../fr/hero/MEGAVOLT.htm">Français</a>
+        <a href="../../it/hero/MEGAVOLT.htm">Italiano</a>
+        <a href="../../ja/hero/MEGAVOLT.htm">日本語</a>
+        <a href="../../ko/hero/MEGAVOLT.htm">한국어</a>
+        <a href="../../pt/hero/MEGAVOLT.htm">Português</a>
+        <a href="../../ru/hero/MEGAVOLT.htm">русский</a>
+        <a href="../../zh-Hans/hero/MEGAVOLT.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/MEGAVOLT.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 11/01/2019</span>
+  -->
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar"><!--
+      <img alt="Мегавольт" src="MEGAVOLT.png">
+    --></div>
+    <h1 class="undertest">Мегавольт</h1>
+    <p>Мегавольт шокирует врагов, используя электричество.</p>
+    <blockquote>«Все говорили, я сумасшедшая! Безумная! Съехала с катушек! И как же все были правы».</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Роль</span>
+      <a class="unit-pair-val" href="../hero_list.htm?role=damage">Урон</a>
+      <span class="unit-pair-name">Позиция</span>
+      <a class="unit-pair-val" href="../hero_list.htm?position=mid"></a>
+      <span class="unit-pair-name">Команда в испытаниях:</span>
+      <a class="unit-pair-val" href="../hero_list.htm?team=red">Красный</a>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>Основные характеристики</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Макс. HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        320.7 + 72.82g
+      </span>
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val unit-expr-g">
+        40.7 + 4.36g
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val unit-expr-g">
+        66.7 + 9.34g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1>Подробнее</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="145" value="145">
+      </span>
+      <span class="unit-pair-name">Ранг</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="6.19" selected>RED+2</option>
+          <option value="5.64">RED+1</option>
+          <option value="5.13">RED</option>
+          <option value="4.67">ORANGE+8</option>
+          <option value="4.25">ORANGE+7</option>
+          <option value="3.87">ORANGE+6</option>
+          <option value="3.52">ORANGE+5</option>
+          <option value="3.2">ORANGE+4</option>
+          <option value="2.91">ORANGE+3</option>
+          <option value="2.65">ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">Звезды</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">Bella Notte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b1" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>10</dd>
+            <dt>Макс. HP</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">Bella Notte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b2" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>10</dd>
+            <dt>Макс. HP</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">Умный лис</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b3" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>100</dd>
+            <dt>Восстановление HP</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">Сладкий Форсаж</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b4" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>125</dd>
+            <dt>Нормальный критический удар</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BADGE_OF_FRIENDSHIP#BADGE_OF_FRIENDSHIP" class="rarity-white">Значок дружбы</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b5" data-energy_regen="25" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Восстановление энергии</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">Тупой меч</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b6" data-skill_power="20" data-r_ctl="1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>20</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_hp_max" class="hidden" data-formula="425" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="40" data-r_ctl="1.1"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="100" data-r_ctl="1.1"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="8" data-r_ctl="1.1"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="25" data-r_ctl="1.1"></output>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">Отличный бросок</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b1" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>20</dd>
+            <dt>Восстановление HP</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=MULTIPURPOSE_FRYING_PAN#MULTIPURPOSE_FRYING_PAN" class="rarity-green">Сковорода</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b2" data-normal_crit="12" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">А-немо-немона</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b3" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>128</dd>
+            <dt>Броня</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=THINGAMABOB#THINGAMABOB" class="rarity-white">Прибамбас</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b4" data-hp_max="235" data-hp_regen="235" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>235</dd>
+            <dt>Восстановление HP</dt><dd>235</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">А-немо-немона</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b5" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>128</dd>
+            <dt>Броня</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Скользкий, но приятный</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>8</dd>
+            <dt>Сила навыка</dt><dd>8</dd>
+            <dt>Макс. HP</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="966" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="48" data-r_ctl="1.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="385" data-r_ctl="1.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="20" data-r_ctl="1.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="25" data-r_ctl="1.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="28" data-r_ctl="1.2"></output>
+        <output name="b_armor" class="hidden" data-formula="192" data-r_ctl="1.2"></output>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GIGANTIC_PEACH#GIGANTIC_PEACH" class="rarity-blue">Гигантский персик</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b1" data-fantastic_crit="25" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Фантастический критический удар</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">А-немо-немона</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b2" data-hp_max="128" data-armor="96" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>128</dd>
+            <dt>Броня</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">Таинственный саженец</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b3" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>40</dd>
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">Приманка для оленя</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b4" data-hp_max="300" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">Золотой чайник</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b5" data-hp_regen="65" data-reality="155" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Восстановление HP</dt><dd>65</dd>
+            <dt>Реальность</dt><dd>155</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Скользкий, но приятный</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>8</dd>
+            <dt>Сила навыка</dt><dd>8</dd>
+            <dt>Макс. HP</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1444" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="96" data-r_ctl="1.3"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="450" data-r_ctl="1.3"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="32" data-r_ctl="1.3"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="25" data-r_ctl="1.3"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="36" data-r_ctl="1.3"></output>
+        <output name="b_armor" class="hidden" data-formula="288" data-r_ctl="1.3"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="25" data-r_ctl="1.3"></output>
+        <output name="b_reality" class="hidden" data-formula="155" data-r_ctl="1.3"></output>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">Спасительный жетон</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b1" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>60</dd>
+            <dt>Восстановление энергии</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Испорченное яблоко</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b2" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>55</dd>
+            <dt>Восстановление энергии</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=TOUGH_COOKIE#TOUGH_COOKIE" class="rarity-green">Крепкий коржик</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b3" data-armor="30" data-normal_crit="8" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Броня</dt><dd>30</dd>
+            <dt>Нормальный критический удар</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=BADGE_OF_MOTIVATION#BADGE_OF_MOTIVATION" class="rarity-blue">Значок мотивации</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b4" data-skill_power="50" data-reality_negation="15" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>50</dd>
+            <dt>Игнорирование реальности</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">Юный Какамора</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b5" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>27</dd>
+            <dt>Макс. HP</dt><dd>272</dd>
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=GIGANTIC_PEACH#GIGANTIC_PEACH" class="rarity-blue">Гигантский персик</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b6" data-fantastic_crit="25" data-r_ctl="1.3" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Фантастический критический удар</dt><dd>25</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1716" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="288" data-r_ctl="1.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="450" data-r_ctl="1.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="52" data-r_ctl="1.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="105" data-r_ctl="1.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="36" data-r_ctl="1.4"></output>
+        <output name="b_armor" class="hidden" data-formula="318" data-r_ctl="1.4"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="50" data-r_ctl="1.4"></output>
+        <output name="b_reality" class="hidden" data-formula="155" data-r_ctl="1.4"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="15" data-r_ctl="1.4"></output>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=BOOS_ROOM_KEY#BOOS_ROOM_KEY" class="rarity-blue">Осколок надежды</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b1" data-reality_negation="30" data-fantastic_crit="15" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Игнорирование реальности</dt><dd>30</dd>
+            <dt>Фантастический критический удар</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">Свинья-копилка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b2" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>40</dd>
+            <dt>Восстановление HP</dt><dd>100</dd>
+            <dt>Восстановление энергии</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=POCKET_TREE#POCKET_TREE" class="rarity-blue">Карманное дерево</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b3" data-reality_negation="24" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Игнорирование реальности</dt><dd>24</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Испорченное яблоко</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b4" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>55</dd>
+            <dt>Восстановление энергии</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Непрактичные наручники</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b5" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>50</dd>
+            <dt>Макс. HP</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=HOMEOPATHIC_CURE#HOMEOPATHIC_CURE" class="rarity-green">Гомеопатическое средство</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b6" data-skill_power="40" data-hp_max="300" data-r_ctl="1.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>40</dd>
+            <dt>Макс. HP</dt><dd>300</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_hp_max" class="hidden" data-formula="2116" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="423" data-r_ctl="1.5"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="550" data-r_ctl="1.5"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="52" data-r_ctl="1.5"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="175" data-r_ctl="1.5"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="86" data-r_ctl="1.5"></output>
+        <output name="b_armor" class="hidden" data-formula="318" data-r_ctl="1.5"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="65" data-r_ctl="1.5"></output>
+        <output name="b_reality" class="hidden" data-formula="155" data-r_ctl="1.5"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="69" data-r_ctl="1.5"></output>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">Красивая лампа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b1" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>100</dd>
+            <dt>Макс. HP</dt><dd>800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Непрактичные наручники</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b2" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>50</dd>
+            <dt>Макс. HP</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=TREASURE_MAP#TREASURE_MAP" class="rarity-green">Карта сокровищ</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b3" data-skill_power="40" data-energy_regen="50" data-normal_crit="12" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>40</dd>
+            <dt>Восстановление энергии</dt><dd>50</dd>
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">Красивая лампа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b4" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>100</dd>
+            <dt>Макс. HP</dt><dd>800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=PROUD_UNICORN#PROUD_UNICORN" class="rarity-blue">Гордый единорог</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b5" data-skill_power="88" data-fantastic_crit="22" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>88</dd>
+            <dt>Фантастический критический удар</dt><dd>22</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Брошенная тиара</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b6" data-skill_power="100" data-armor="300" data-r_ctl="1.5" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>100</dd>
+            <dt>Броня</dt><dd>300</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3816" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="651" data-r_ctl="1.6"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="550" data-r_ctl="1.6"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="64" data-r_ctl="1.6"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="225" data-r_ctl="1.6"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="336" data-r_ctl="1.6"></output>
+        <output name="b_armor" class="hidden" data-formula="618" data-r_ctl="1.6"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="87" data-r_ctl="1.6"></output>
+        <output name="b_reality" class="hidden" data-formula="155" data-r_ctl="1.6"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="69" data-r_ctl="1.6"></output>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=FOX_MACE#FOX_MACE" class="rarity-purple">Антилисиновый спрей</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b1" data-skill_power="70" data-hp_max="700" data-conservation="0.1" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>70</dd>
+            <dt>Макс. HP</dt><dd>700</dd>
+            <dt>Рациональность</dt><dd>0.1</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">Приманка для оленя</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b2" data-hp_max="300" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=YOU_CAN_FLY#YOU_CAN_FLY" class="rarity-blue">Вы можете летать!</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b3" data-basic_damage="50" data-reality="175" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>50</dd>
+            <dt>Реальность</dt><dd>175</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">Пиратская шляпа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b4" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>300</dd>
+            <dt>Восстановление энергии</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Банка с Марсом</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b5" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>60</dd>
+            <dt>Макс. HP</dt><dd>400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=FAMILY_HEIRLOOM#FAMILY_HEIRLOOM" class="rarity-purple">Вперед за золотом</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b6" data-basic_damage="225" data-reality="325" data-r_ctl="1.6" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>225</dd>
+            <dt>Реальность</dt><dd>325</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_hp_max" class="hidden" data-formula="5516" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="721" data-r_ctl="1.7"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="550" data-r_ctl="1.7"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="64" data-r_ctl="1.7"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="275" data-r_ctl="1.7"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="671" data-r_ctl="1.7"></output>
+        <output name="b_armor" class="hidden" data-formula="618" data-r_ctl="1.7"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="87" data-r_ctl="1.7"></output>
+        <output name="b_reality" class="hidden" data-formula="655" data-r_ctl="1.7"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="69" data-r_ctl="1.7"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="1.7"></output>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">Семейные ножницы Фа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b1" data-skill_power="450" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=PROUD_UNICORN#PROUD_UNICORN" class="rarity-blue">Гордый единорог</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b2" data-skill_power="88" data-fantastic_crit="22" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>88</dd>
+            <dt>Фантастический критический удар</dt><dd>22</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Помада Круэллы</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b3" data-basic_damage="190" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>190</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=PIRATES_COMPASS#PIRATES_COMPASS" class="rarity-green">Пиратский компас</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b4" data-hp_max="250" data-hp_regen="50" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>250</dd>
+            <dt>Восстановление HP</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Жук любви</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b5" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>180</dd>
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_hp_max" class="hidden" data-formula="6216" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1259" data-r_ctl="1.8"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="600" data-r_ctl="1.8"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="76" data-r_ctl="1.8"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="275" data-r_ctl="1.8"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1041" data-r_ctl="1.8"></output>
+        <output name="b_armor" class="hidden" data-formula="618" data-r_ctl="1.8"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="109" data-r_ctl="1.8"></output>
+        <output name="b_reality" class="hidden" data-formula="655" data-r_ctl="1.8"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="69" data-r_ctl="1.8"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="1.8"></output>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=MASK_OF_THE_CAKE_EATER#MASK_OF_THE_CAKE_EATER" class="rarity-purple">Маска поедателя торта</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b1" data-basic_damage="107" data-hp_regen="750" data-armor="250" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>107</dd>
+            <dt>Восстановление HP</dt><dd>750</dd>
+            <dt>Броня</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">Подозрительный гриб</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b2" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>300</dd>
+            <dt>Восстановление HP</dt><dd>100</dd>
+            <dt>Броня</dt><dd>90</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">Свежая мята</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b3" data-basic_damage="230" data-hp_max="230" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>230</dd>
+            <dt>Макс. HP</dt><dd>230</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=BELLWEATHERS_MUG#BELLWEATHERS_MUG" class="rarity-purple">Кружка Барашкис</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b4" data-skill_power="195" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>195</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=BADGE_OF_MOTIVATION#BADGE_OF_MOTIVATION" class="rarity-blue">Значок мотивации</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b5" data-skill_power="50" data-reality_negation="15" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>50</dd>
+            <dt>Игнорирование реальности</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_hp_max" class="hidden" data-formula="7196" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1504" data-r_ctl="1.9"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="1450" data-r_ctl="1.9"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="76" data-r_ctl="1.9"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="275" data-r_ctl="1.9"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1378" data-r_ctl="1.9"></output>
+        <output name="b_armor" class="hidden" data-formula="958" data-r_ctl="1.9"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="109" data-r_ctl="1.9"></output>
+        <output name="b_reality" class="hidden" data-formula="655" data-r_ctl="1.9"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="84" data-r_ctl="1.9"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="1.9"></output>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=DARK_DISGUISE#DARK_DISGUISE" class="rarity-purple">Темная маскировка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b1" data-reality="1337" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Реальность</dt><dd>1337</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ARAIGNEE_NOIRE#ARAIGNEE_NOIRE" class="rarity-purple">Паук Нуар</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b2" data-hp_max="400" data-energy_regen="100" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>400</dd>
+            <dt>Восстановление энергии</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=FREDS_RECYCLED_BOXERS#FREDS_RECYCLED_BOXERS" class="rarity-purple">Шорты Фреда</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b3" data-basic_damage="150" data-normal_crit="15" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>150</dd>
+            <dt>Нормальный критический удар</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=BOOS_ROOM_KEY#BOOS_ROOM_KEY" class="rarity-blue">Осколок надежды</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b4" data-reality_negation="30" data-fantastic_crit="15" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Игнорирование реальности</dt><dd>30</dd>
+            <dt>Фантастический критический удар</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=POCKET_TREE#POCKET_TREE" class="rarity-blue">Карманное дерево</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b5" data-reality_negation="24" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Игнорирование реальности</dt><dd>24</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="8046" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1504" data-r_ctl="2.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="1450" data-r_ctl="2.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="91" data-r_ctl="2.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="375" data-r_ctl="2.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1528" data-r_ctl="2.05"></output>
+        <output name="b_armor" class="hidden" data-formula="958" data-r_ctl="2.05"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="124" data-r_ctl="2.05"></output>
+        <output name="b_reality" class="hidden" data-formula="1992" data-r_ctl="2.05"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="138" data-r_ctl="2.05"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.05"></output>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">Книга заклятий Уиннифред</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b1" data-skill_power="500" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Жук любви</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b2" data-basic_damage="180" data-normal_crit="12" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>180</dd>
+            <dt>Нормальный критический удар</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=TRON_BIT#TRON_BIT" class="rarity-purple">Фрагмент</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b3" data-skill_power="200" data-armor="200" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>200</dd>
+            <dt>Броня</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=HANKS_HOT_SAUCE#HANKS_HOT_SAUCE" class="rarity-purple">Острый соус Хэнка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b4" data-basic_damage="125" data-hp_max="525" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>125</dd>
+            <dt>Макс. HP</dt><dd>525</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=BELLWEATHERS_MUG#BELLWEATHERS_MUG" class="rarity-purple">Кружка Барашкис</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b5" data-skill_power="195" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>195</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">Уникальный значок клуба</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>250</dd>
+            <dt>Сила навыка</dt><dd>250</dd>
+            <dt>Макс. HP</dt><dd>3500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="12071" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2649" data-r_ctl="2.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="1450" data-r_ctl="2.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="103" data-r_ctl="2.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="375" data-r_ctl="2.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2083" data-r_ctl="2.2"></output>
+        <output name="b_armor" class="hidden" data-formula="1158" data-r_ctl="2.2"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="124" data-r_ctl="2.2"></output>
+        <output name="b_reality" class="hidden" data-formula="1992" data-r_ctl="2.2"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="138" data-r_ctl="2.2"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.2"></output>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">Жидкий завтрак</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b1" data-hp_max="1000" data-reality="2000" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>1000</dd>
+            <dt>Реальность</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LEANING_TOWER_OF_CHEEZ_A#LEANING_TOWER_OF_CHEEZ_A" class="rarity-purple">Падающая башня сыра</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b2" data-skill_power="100" data-hp_max="550" data-reality_negation="12" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>100</dd>
+            <dt>Макс. HP</dt><dd>550</dd>
+            <dt>Игнорирование реальности</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b3" data-hp_max="450" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=PIED_SANDPIPER#PIED_SANDPIPER" class="rarity-purple">Пестрый кулик</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b4" data-hp_regen="500" data-reality="650" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Восстановление HP</dt><dd>500</dd>
+            <dt>Реальность</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=GRAPPLING_HOOK#GRAPPLING_HOOK" class="rarity-purple">Хватательный крюк</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b5" data-basic_damage="377" data-normal_crit="17" data-fantastic_crit="17" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>377</dd>
+            <dt>Нормальный критический удар</dt><dd>17</dd>
+            <dt>Фантастический критический удар</dt><dd>17</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">Красавчик-принц</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>555</dd>
+            <dt>Броня</dt><dd>777</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="14071" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3304" data-r_ctl="2.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="1950" data-r_ctl="2.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="120" data-r_ctl="2.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="375" data-r_ctl="2.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2460" data-r_ctl="2.4"></output>
+        <output name="b_armor" class="hidden" data-formula="1935" data-r_ctl="2.4"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="141" data-r_ctl="2.4"></output>
+        <output name="b_reality" class="hidden" data-formula="4642" data-r_ctl="2.4"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="150" data-r_ctl="2.4"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.4"></output>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TRICK_OR_TREAT#TRICK_OR_TREAT" class="rarity-orange">Мышиный фонарь</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b1" data-hp_max="600" data-fantastic_crit="10" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>600</dd>
+            <dt>Фантастический критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=CIRCLE_OF_LIFE#CIRCLE_OF_LIFE" class="rarity-purple">Жизни вечный круг</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b2" data-hp_regen="500" data-armor="650" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Восстановление HP</dt><dd>500</dd>
+            <dt>Броня</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TOKEN_OF_RADITUDE#TOKEN_OF_RADITUDE" class="rarity-purple">Жетон крутоты</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b3" data-skill_power="200" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">Сластена</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b4" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>1000</dd>
+            <dt>Броня</dt><dd>1000</dd>
+            <dt>Реальность</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=FREDS_RECYCLED_BOXERS#FREDS_RECYCLED_BOXERS" class="rarity-purple">Шорты Фреда</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b5" data-basic_damage="150" data-normal_crit="15" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>150</dd>
+            <dt>Нормальный критический удар</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Помада Круэллы</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b6" data-basic_damage="190" data-r_ctl="2.4" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>190</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_hp_max" class="hidden" data-formula="15671" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3504" data-r_ctl="2.65"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2450" data-r_ctl="2.65"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="135" data-r_ctl="2.65"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="375" data-r_ctl="2.65"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2800" data-r_ctl="2.65"></output>
+        <output name="b_armor" class="hidden" data-formula="3585" data-r_ctl="2.65"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="151" data-r_ctl="2.65"></output>
+        <output name="b_reality" class="hidden" data-formula="5642" data-r_ctl="2.65"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="150" data-r_ctl="2.65"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.65"></output>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOVE_POTION#LOVE_POTION" class="rarity-orange">Приворотное зелье</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b1" data-skill_power="125" data-reality_negation="10" data-fantastic_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>125</dd>
+            <dt>Игнорирование реальности</dt><dd>10</dd>
+            <dt>Фантастический критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">Дьявольский камень</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b2" data-hp_max="600" data-normal_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>600</dd>
+            <dt>Нормальный критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=FLIGHT_OF_FANCY#FLIGHT_OF_FANCY" class="rarity-purple">Несбыточная мечта</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b3" data-hp_max="800" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=TIN_TOY#TIN_TOY" class="rarity-purple">Жестяная игрушка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b4" data-hp_regen="650" data-energy_regen="75" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Восстановление HP</dt><dd>650</dd>
+            <dt>Восстановление энергии</dt><dd>75</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=A_VERY_PINE_HAT#A_VERY_PINE_HAT" class="rarity-purple">Очень волшебная шляпа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b5" data-hp_max="2500" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>2500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=BAYMAX_PATCH_KIT#BAYMAX_PATCH_KIT" class="rarity-purple">Пластырь Бэймакса</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b6" data-hp_max="200" data-energy_regen="100" data-r_ctl="2.65" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>200</dd>
+            <dt>Восстановление энергии</dt><dd>100</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.91"> -->
+        <output name="b_hp_max" class="hidden" data-formula="19771" data-r_ctl="2.91"></output>
+        <output name="b_skill_power" class="hidden" data-formula="3629" data-r_ctl="2.91"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3100" data-r_ctl="2.91"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="145" data-r_ctl="2.91"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="2.91"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2800" data-r_ctl="2.91"></output>
+        <output name="b_armor" class="hidden" data-formula="3585" data-r_ctl="2.91"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="161" data-r_ctl="2.91"></output>
+        <output name="b_reality" class="hidden" data-formula="5642" data-r_ctl="2.91"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="160" data-r_ctl="2.91"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="2.91"></output>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=WEIRD_WEBSITE#WEIRD_WEBSITE" class="rarity-orange">Странный сайт</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b1" data-skill_power="150" data-reality_negation="10" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>150</dd>
+            <dt>Игнорирование реальности</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=STAR_CASE#STAR_CASE" class="rarity-purple">Звездный ларец</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b2" data-basic_damage="250" data-hp_max="1200" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>250</dd>
+            <dt>Макс. HP</dt><dd>1200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">Трос лебедки</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b3" data-skill_power="125" data-hp_max="1000" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>125</dd>
+            <dt>Макс. HP</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=TRON_BIT#TRON_BIT" class="rarity-purple">Фрагмент</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b4" data-skill_power="200" data-armor="200" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>200</dd>
+            <dt>Броня</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=OO_DE_LALLY_ARROWS#OO_DE_LALLY_ARROWS" class="rarity-purple">О-де-лалли лютня</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b5" data-hp_max="999" data-reality="999" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>999</dd>
+            <dt>Реальность</dt><dd>999</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">Хорошие мысли</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Броня</dt><dd>906</dd>
+            <dt>Реальность</dt><dd>906</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="22970" data-r_ctl="3.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4104" data-r_ctl="3.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3100" data-r_ctl="3.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="145" data-r_ctl="3.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="3.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3050" data-r_ctl="3.2"></output>
+        <output name="b_armor" class="hidden" data-formula="4691" data-r_ctl="3.2"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="161" data-r_ctl="3.2"></output>
+        <output name="b_reality" class="hidden" data-formula="7547" data-r_ctl="3.2"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="170" data-r_ctl="3.2"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="3.2"></output>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">Уменьшающий луч Залински</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b1" data-skill_power="200" data-armor="200" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>200</dd>
+            <dt>Броня</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SIDS_TOY#SIDS_TOY" class="rarity-orange">Игрушка Сида</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b2" data-skill_power="440" data-hp_max="1200" data-hp_regen="350" data-armor="502" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>440</dd>
+            <dt>Макс. HP</dt><dd>1200</dd>
+            <dt>Восстановление HP</dt><dd>350</dd>
+            <dt>Броня</dt><dd>502</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Утренняя заправка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b3" data-hp_max="777" data-reality="606" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>777</dd>
+            <dt>Реальность</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=PIRATE_HIDEOUT#PIRATE_HIDEOUT" class="rarity-orange">Тайник пиратов</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b4" data-basic_damage="200" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">Дневник Шепарда</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b5" data-armor="1000" data-reality="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Броня</dt><dd>1000</dd>
+            <dt>Реальность</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">Золотое солнышко</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>1000</dd>
+            <dt>Броня</dt><dd>1000</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.52"> -->
+        <output name="b_hp_max" class="hidden" data-formula="25947" data-r_ctl="3.52"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4744" data-r_ctl="3.52"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3450" data-r_ctl="3.52"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="145" data-r_ctl="3.52"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="3.52"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3250" data-r_ctl="3.52"></output>
+        <output name="b_armor" class="hidden" data-formula="7393" data-r_ctl="3.52"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="161" data-r_ctl="3.52"></output>
+        <output name="b_reality" class="hidden" data-formula="9153" data-r_ctl="3.52"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="170" data-r_ctl="3.52"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="3.52"></output>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=RED_UMBRELLA#RED_UMBRELLA" class="rarity-orange">Красный зонт</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b1" data-skill_power="805" data-reality_negation="5" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>805</dd>
+            <dt>Игнорирование реальности</dt><dd>5</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=ANGRY_EYES#ANGRY_EYES" class="rarity-purple">Сердитые глаза</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b2" data-basic_damage="105" data-skill_power="500" data-hp_max="1254" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>105</dd>
+            <dt>Сила навыка</dt><dd>500</dd>
+            <dt>Макс. HP</dt><dd>1254</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=CHEESE_WHEEL#CHEESE_WHEEL" class="rarity-purple">Головка сыра</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b3" data-hp_max="888" data-hp_regen="350" data-normal_crit="6" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>888</dd>
+            <dt>Восстановление HP</dt><dd>350</dd>
+            <dt>Нормальный критический удар</dt><dd>6</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=LOVE_POTION#LOVE_POTION" class="rarity-orange">Приворотное зелье</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b4" data-skill_power="125" data-reality_negation="10" data-fantastic_crit="10" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>125</dd>
+            <dt>Игнорирование реальности</dt><dd>10</dd>
+            <dt>Фантастический критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Утренняя заправка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b5" data-hp_max="777" data-reality="606" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>777</dd>
+            <dt>Реальность</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">Жевательная игрушка лиги</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>365</dd>
+            <dt>Реальность</dt><dd>1001</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.87"> -->
+        <output name="b_hp_max" class="hidden" data-formula="28866" data-r_ctl="3.87"></output>
+        <output name="b_skill_power" class="hidden" data-formula="6174" data-r_ctl="3.87"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3800" data-r_ctl="3.87"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="151" data-r_ctl="3.87"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="3.87"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3720" data-r_ctl="3.87"></output>
+        <output name="b_armor" class="hidden" data-formula="7393" data-r_ctl="3.87"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="171" data-r_ctl="3.87"></output>
+        <output name="b_reality" class="hidden" data-formula="10760" data-r_ctl="3.87"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="185" data-r_ctl="3.87"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="3.87"></output>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=TEMPTING_SWITCH#TEMPTING_SWITCH" class="rarity-orange">Так и хочется нажать</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b1" data-basic_damage="120" data-armor="325" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>120</dd>
+            <dt>Броня</dt><dd>325</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=PIT_STOP#PIT_STOP" class="rarity-orange">Остановочка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b2" data-skill_power="444" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>444</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=BIRDS_OF_A_FEATHER#BIRDS_OF_A_FEATHER" class="rarity-purple">Три кабальеро</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b3" data-skill_power="399" data-hp_max="963" data-reality="899" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>399</dd>
+            <dt>Макс. HP</dt><dd>963</dd>
+            <dt>Реальность</dt><dd>899</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=SALLYS_SPICES#SALLYS_SPICES" class="rarity-orange">Пряности Салли</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b4" data-reality="1200" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Реальность</dt><dd>1200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=GOLDEN_HARP#GOLDEN_HARP" class="rarity-orange">Золотая арфа</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b5" data-hp_max="3456" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>3456</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">Небесные пираты</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>699</dd>
+            <dt>Реальность</dt><dd>1297</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.25"> -->
+        <output name="b_hp_max" class="hidden" data-formula="33285" data-r_ctl="4.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="7716" data-r_ctl="4.25"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3800" data-r_ctl="4.25"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="151" data-r_ctl="4.25"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="4.25"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3840" data-r_ctl="4.25"></output>
+        <output name="b_armor" class="hidden" data-formula="7718" data-r_ctl="4.25"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="171" data-r_ctl="4.25"></output>
+        <output name="b_reality" class="hidden" data-formula="14156" data-r_ctl="4.25"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="185" data-r_ctl="4.25"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="4.25"></output>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=EXPLORE#EXPLORE" class="rarity-orange">Вперед!</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b1" data-hp_max="2105" data-armor="1400" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>2105</dd>
+            <dt>Броня</dt><dd>1400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=BIRDS_OF_A_FEATHER#BIRDS_OF_A_FEATHER" class="rarity-purple">Три кабальеро</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b2" data-skill_power="399" data-hp_max="963" data-reality="899" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>399</dd>
+            <dt>Макс. HP</dt><dd>963</dd>
+            <dt>Реальность</dt><dd>899</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=POWER_UP#POWER_UP" class="rarity-purple">Подзарядка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b3" data-basic_damage="120" data-skill_power="150" data-hp_regen="750" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>120</dd>
+            <dt>Сила навыка</dt><dd>150</dd>
+            <dt>Восстановление HP</dt><dd>750</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=TRICK_OR_TREAT#TRICK_OR_TREAT" class="rarity-orange">Мышиный фонарь</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b4" data-hp_max="600" data-fantastic_crit="10" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>600</dd>
+            <dt>Фантастический критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ANIMAL_AURORA#ANIMAL_AURORA" class="rarity-purple">Звериное сияние</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b5" data-basic_damage="190" data-skill_power="460" data-normal_crit="8" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>190</dd>
+            <dt>Сила навыка</dt><dd>460</dd>
+            <dt>Нормальный критический удар</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">Ракета-шипучка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>650</dd>
+            <dt>Броня</dt><dd>1200</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.67"> -->
+        <output name="b_hp_max" class="hidden" data-formula="36953" data-r_ctl="4.67"></output>
+        <output name="b_skill_power" class="hidden" data-formula="9375" data-r_ctl="4.67"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4550" data-r_ctl="4.67"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="159" data-r_ctl="4.67"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="4.67"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4150" data-r_ctl="4.67"></output>
+        <output name="b_armor" class="hidden" data-formula="10318" data-r_ctl="4.67"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="181" data-r_ctl="4.67"></output>
+        <output name="b_reality" class="hidden" data-formula="15055" data-r_ctl="4.67"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="185" data-r_ctl="4.67"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="4.67"></output>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=POM_POM_SHOES#POM_POM_SHOES" class="rarity-orange">Туфли с помпонами</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b1" data-skill_power="326" data-armor="999" data-reality="855" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>326</dd>
+            <dt>Броня</dt><dd>999</dd>
+            <dt>Реальность</dt><dd>855</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">Трос лебедки</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b2" data-skill_power="125" data-hp_max="1000" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>125</dd>
+            <dt>Макс. HP</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=DARING_DISGUISE#DARING_DISGUISE" class="rarity-purple">Прекрасная маскировка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b3" data-basic_damage="280" data-reality="890" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>280</dd>
+            <dt>Реальность</dt><dd>890</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=NEST_EGG#NEST_EGG" class="rarity-orange">Отложенное про запас</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b4" data-skill_power="355" data-hp_max="1000" data-reality="703" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>355</dd>
+            <dt>Макс. HP</dt><dd>1000</dd>
+            <dt>Реальность</dt><dd>703</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=TSUMDERE#TSUMDERE" class="rarity-purple">Цумдере</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b5" data-basic_damage="350" data-skill_power="260" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>350</dd>
+            <dt>Сила навыка</dt><dd>260</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">Значок восторга</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>700</dd>
+            <dt>Макс. HP</dt><dd>4500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.13"> -->
+        <output name="b_hp_max" class="hidden" data-formula="43453" data-r_ctl="5.13"></output>
+        <output name="b_skill_power" class="hidden" data-formula="11141" data-r_ctl="5.13"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="4550" data-r_ctl="5.13"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="159" data-r_ctl="5.13"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="5.13"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4780" data-r_ctl="5.13"></output>
+        <output name="b_armor" class="hidden" data-formula="11317" data-r_ctl="5.13"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="181" data-r_ctl="5.13"></output>
+        <output name="b_reality" class="hidden" data-formula="17503" data-r_ctl="5.13"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="185" data-r_ctl="5.13"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="5.13"></output>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=CUDDLE_PARTY#CUDDLE_PARTY" class="rarity-red">Обнимашки</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b1" data-skill_power="750" data-hp_regen="800" data-fantastic_crit="16" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>750</dd>
+            <dt>Восстановление HP</dt><dd>800</dd>
+            <dt>Фантастический критический удар</dt><dd>16</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=POOH_STICKS#POOH_STICKS" class="rarity-purple">Палочки Пуха</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b2" data-reality="500" data-normal_crit="10" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Реальность</dt><dd>500</dd>
+            <dt>Нормальный критический удар</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=BROKEN_NECKLACE#BROKEN_NECKLACE" class="rarity-orange">Сломанное ожерелье</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b3" data-basic_damage="749" data-hp_max="8555" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>749</dd>
+            <dt>Макс. HP</dt><dd>8555</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">Кость с бесконечными гранями</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b4" data-skill_power="599" data-hp_max="3653" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>599</dd>
+            <dt>Макс. HP</dt><dd>3653</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=UNICORN_DREAMS#UNICORN_DREAMS" class="rarity-purple">Единорожьи фантазии</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b5" data-skill_power="300" data-hp_max="500" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>300</dd>
+            <dt>Макс. HP</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">Вращающееся колесо</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>2800</dd>
+            <dt>Броня</dt><dd>1500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.64"> -->
+        <output name="b_hp_max" class="hidden" data-formula="58961" data-r_ctl="5.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="12790" data-r_ctl="5.64"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5350" data-r_ctl="5.64"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="169" data-r_ctl="5.64"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="5.64"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="5529" data-r_ctl="5.64"></output>
+        <output name="b_armor" class="hidden" data-formula="12817" data-r_ctl="5.64"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="197" data-r_ctl="5.64"></output>
+        <output name="b_reality" class="hidden" data-formula="18003" data-r_ctl="5.64"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="185" data-r_ctl="5.64"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="5.64"></output>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Королевские богатства</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>999</dd>
+            <dt>Броня</dt><dd>1450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=ABSTRACT_THOUGHT#ABSTRACT_THOUGHT" class="rarity-red">Абстрактное мышление</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b2" data-armor="1400" data-reality="1400" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Броня</dt><dd>1400</dd>
+            <dt>Реальность</dt><dd>1400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Утренняя заправка</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b3" data-hp_max="777" data-reality="606" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>777</dd>
+            <dt>Реальность</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=MODEL_CITY#MODEL_CITY" class="rarity-orange">Примерный город</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b4" data-skill_power="1111" data-hp_max="8650" data-reality_negation="13" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>1111</dd>
+            <dt>Макс. HP</dt><dd>8650</dd>
+            <dt>Игнорирование реальности</dt><dd>13</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=SUPER_TEAM_ASSEMBLE#SUPER_TEAM_ASSEMBLE" class="rarity-purple">Сбор суперкоманды</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b5" data-basic_damage="350" data-reality="1700" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>350</dd>
+            <dt>Реальность</dt><dd>1700</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">Маленькая картошка фри</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>650</dd>
+            <dt>Сила навыка</dt><dd>840</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.19"> -->
+        <output name="b_hp_max" class="hidden" data-formula="68388" data-r_ctl="6.19"></output>
+        <output name="b_skill_power" class="hidden" data-formula="15740" data-r_ctl="6.19"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5350" data-r_ctl="6.19"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="169" data-r_ctl="6.19"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="550" data-r_ctl="6.19"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="6529" data-r_ctl="6.19"></output>
+        <output name="b_armor" class="hidden" data-formula="15667" data-r_ctl="6.19"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="197" data-r_ctl="6.19"></output>
+        <output name="b_reality" class="hidden" data-formula="21709" data-r_ctl="6.19"></output>
+        <output name="b_reality_negation" class="hidden" data-formula="198" data-r_ctl="6.19"></output>
+        <output name="b_conservation" class="hidden" data-formula="0.1" data-r_ctl="6.19"></output>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=FACETED#FACETED" class="rarity-red">Сквозь призму</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b1" data-basic_damage="303" data-hp_max="13542" data-reality="2500" data-fantastic_crit="11" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Базовый урон</dt><dd>303</dd>
+            <dt>Макс. HP</dt><dd>13542</dd>
+            <dt>Реальность</dt><dd>2500</dd>
+            <dt>Фантастический критический удар</dt><dd>11</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=MORE_TAMALES#MORE_TAMALES" class="rarity-orange">Побольше сладенького</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b2" data-skill_power="1300" data-fantastic_crit="11" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>1300</dd>
+            <dt>Фантастический критический удар</dt><dd>11</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=FORGOTTEN_SPELLBOOK#FORGOTTEN_SPELLBOOK" class="rarity-orange">Забытые заклинания</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b3" data-reality="3200" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Реальность</dt><dd>3200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=HOUSE_OF_CARDS#HOUSE_OF_CARDS" class="rarity-orange">Карточный домик</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b4" data-skill_power="650" data-hp_max="2350" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>650</dd>
+            <dt>Макс. HP</dt><dd>2350</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=WEIRD_WEBSITE#WEIRD_WEBSITE" class="rarity-orange">Странный сайт</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b5" data-skill_power="150" data-reality_negation="10" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Сила навыка</dt><dd>150</dd>
+            <dt>Игнорирование реальности</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">Просто идеально</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
+            <option value="-1">Н/Д</option>
+            <option value="0" selected>Надеть</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Макс. HP</dt><dd>10364</dd>
+            <dt>Нормальный критический удар</dt><dd>6</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="320.7 + 72.82g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="40.7 + 4.36g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="66.7 + 9.34g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Макс. HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-name">Восстановление HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_regen" for="core_hp_regen b_hp_regen func:badge_inc,calcBadge,badge_param" data-formula="core_hp_regen + b_hp_regen + badge_inc" data-badge_param="hp_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Восстановление энергии</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="energy_regen" for="core_energy_regen b_energy_regen func:badge_inc,calcBadge,badge_param" data-formula="core_energy_regen + b_energy_regen + badge_inc" data-badge_param="energy_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Броня</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor" for="core_armor b_armor func:badge_inc,calcBadge,badge_param" data-formula="core_armor + b_armor + badge_inc" data-badge_param="armor|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Реальность</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality" for="core_reality b_reality func:badge_inc,calcBadge,badge_param" data-formula="core_reality + b_reality + badge_inc" data-badge_param="reality|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Игнорирование реальности</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality_negation" for="core_reality_negation b_reality_negation func:badge_inc,calcBadge,badge_param" data-formula="core_reality_negation + b_reality_negation + badge_inc" data-badge_param="reality_negation|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">Нормальный критический удар</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="normal_crit" for="core_normal_crit b_normal_crit func:badge_inc,calcBadge,badge_param" data-formula="core_normal_crit + b_normal_crit + badge_inc" data-badge_param="normal_crit|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">Фантастический критический удар</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="fantastic_crit" for="core_fantastic_crit b_fantastic_crit func:badge_inc,calcBadge,badge_param" data-formula="core_fantastic_crit + b_fantastic_crit + badge_inc" data-badge_param="fantastic_crit|S*(B&gt;0)"></output>
+      </span>
+      <span class="unit-pair-name">Рациональность</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="conservation" for="core_conservation b_conservation func:badge_inc,calcBadge,badge_param" data-formula="core_conservation + b_conservation + badge_inc" data-format="%" data-badge_param="conservation|ceil(100*B*0.35)*S/100"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">Навыки</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
+      </span>
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
+      </span>
+    </div>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Экстатический рывок</a></label></h2>
+    <p><span>Пассивный навык: базовые атаки Мегавольта применяют </span><span class="unit-expr-misc">4</span><span>-й ур. «Разряда» к врагам, замедляя движение врагов с «Разрядом» на </span><span class="unit-expr-misc">5%</span><span> ед. за уровень.</span></p>
+    <p><span>Активный навык: Мегавольт поглощает все уровни «Разряда» и запускает электрический разряд, который прыгает по врагам столько раз, сколько было уровней. Каждый прыжок разряда наносит </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="80k+1.1sp" data-checkbox="eval">80k+1.1sp</output></span><span> ед. урона.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>1.2</dd>
+        <dt>duration</dt><dd>1.5</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closestprefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>closestprefFacing &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>stackamt</dt><dd>4</dd>
+        <dt>slowamt</dt><dd>0.05[%]</dd>
+        <dt>slowamtcap</dt><dd>0.5[%]</dd>
+        <dt>dmg</dt><dd>80k+1.1sp</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Шокирующий удар</a></label></h2>
+    <p><span>Мегавольт выпускает электрический разряд, нанося </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k + 1.6sp" data-checkbox="eval">150k + 1.6sp</output></span><span> ед. урона всем врагам и применяя </span><span class="unit-expr-misc">3</span><span>-й ур. «Разряда» к задетым атакой врагам.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>cooldown</dt><dd>14</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>14</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>dmg</dt><dd>150k + 1.6sp</dd>
+        <dt>stackamt</dt><dd>3</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Сколько вольт?</a></label></h2>
+    <p><span>Мегавольт стреляет молнией во врагам с наибольшим количеством энергии, оглушая его на </span><span class="unit-expr-misc">7</span><span> с и нанося </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k + 1.3sp" data-checkbox="eval">300k + 1.3sp</output></span><span> урона.</span></p>
+    <p><span>Если у цели более </span><span class="unit-expr-misc">500</span><span> ед. энергии, вместо этого их оглушает на </span><span class="unit-expr-misc">9</span><span> с, и они получают </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="430k + 1.8sp" data-checkbox="eval">430k + 1.8sp</output></span><span> ед. урона.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>initcooldown</dt><dd>3.5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2.1</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>3.5</dd>
+        <dt>priority</dt><dd>2</dd>
+        <dt>trigger</dt><dd>mostEnergy &lt; enemy</dd>
+        <dt>primary</dt><dd>mostEnergy &lt; enemy</dd>
+        <dt>dmg</dt><dd>300k + 1.3sp</dd>
+        <dt>stunduration</dt><dd>7</dd>
+        <dt>energyamt</dt><dd>500</dd>
+        <dt>stundurationbuff</dt><dd>9</dd>
+        <dt>dmgamtbuff</dt><dd>430k + 1.8sp</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Электрошок</a></label></h2>
+    <p><span>Мегавольт постоянно атакует находящихся рядом врагов, нанося </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="70k + 0.4sp" data-checkbox="eval">70k + 0.4sp</output></span><span> ед. урона в секунду. Каждый уровень «Разряда» повышает урон от этого навыка на </span><span class="unit-expr-misc">15%</span><span> ед. до максимума в </span><span class="unit-expr-misc">200%</span><span> ед. доп. урона.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>dmgpersecond</dt><dd>70k + 0.4sp</dd>
+        <dt>dmgamppercent</dt><dd>0.15[%]</dd>
+        <dt>dmgamppercentmax</dt><dd>2.0[%]</dd>
+        <dt>aura</dt><dd>enemy | within(350)</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Свежая идея</a></label></h2>
+    <p><span>Мегавольт применяет </span><span class="unit-expr-misc">2</span><span> ур. «Разряда» к врагам, которых поражает «</span><a href="../hero/MEGAVOLT.htm#PURPLE" class="rarity-purple">Электрошок</a><span>» каждые </span><span class="unit-expr-misc">3</span><span> сек.</span></p>
+    <p><span>Врага, получившего </span><span class="unit-expr-misc">5</span><span> ур. «Разряда», оглушает на </span><span class="unit-expr-misc">7</span><span> сек., и он получает </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="245k" data-checkbox="eval">245k</output></span><span> ед. урона.</span></p>
+    <p><span>Оглушение может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
+    <p>Дополнительные усилители параметров:<p>
+    <ul>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="220k" data-checkbox="eval">220k</output></span><span> силы навыка</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="160k" data-checkbox="eval">160k</output></span><span> базового урона</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="144k" data-checkbox="eval">144k</output></span><span> урона за прыжок («</span><a href="../hero/MEGAVOLT.htm#WHITE" class="rarity-white">Экстатический рывок</a><span>»)</span></li>
+    </ul>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-red"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <dl class="attr-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>stackamt</dt><dd>2</dd>
+        <dt>stackduration</dt><dd>3</dd>
+        <dt>stackamtstun</dt><dd>5</dd>
+        <dt>stunduration</dt><dd>7</dd>
+        <dt>dmg</dt><dd>245k</dd>
+        <dt>skillpoweramt</dt><dd>220k</dd>
+        <dt>basicdmgamt</dt><dd>160k</dd>
+        <dt>skill1dmgbuff</dt><dd>144k</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">Друзья</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden" checked>
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="105" value="105">
+      </span>
+      <span class="unit-pair-name">Звезды</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/EMPEROR_ZURG.htm">Император Зург</a> <small>(141)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#MEGAVOLT_TANK_COUNTER">Высоковольтное злодейство</a>
+    </p>
+    <blockquote><span>Противодействие врагам-танкам.</span></blockquote>
+    <ul>
+      <li><span>Когда вражеский танк получает щит, то ему наносят </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="277k" data-checkbox="eval">277k</output></span><span> ед. урона, и он получает </span><span class="unit-expr-misc">2</span><span>-й ур. «Разряда».</span></li>
+      <li><span>«</span><a href="../hero/MEGAVOLT.htm#WHITE" class="rarity-white">Экстатический рывок</a><span>» также наносит </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s%" data-format="%" data-checkbox="eval">1s%</output></span><span> от макс. HP врага в качестве фантастического урона.</span>
+        <div><dl class="unit-note inline-list">
+          <dt>damagetype</dt><dd>Fantastic</dd>
+        </dl></div>
+      </li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      ???
+    </h2>
+    <p>
+      <a href="../disk_list.htm#MEGAVOLT_CONTROL_COUNTER"></a>
+    </p>
+    <blockquote><span>Более краткое отключение врагов</span></blockquote>
+    <ul>
+      <li><span>Если вражеские герои контроля отменяют атаку союзника Мегавольта, их сила навыка уменьшается на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="133k" data-checkbox="eval">133k</output></span><span> до конца волны.</span></li>
+      <li><span>Длительность блокировок врагов в контролирующей роли уменьшается на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="50s%" data-format="%" data-checkbox="eval">50s%</output></span><span>.</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>Друзья</h1>
+  </div>
+  <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Коллекции</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#DAMAGE">Урон</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Доп. урон</blockquote>
+    <ul>
+      <li><span>Разящие герои наносят на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.4k" data-format=".3" data-checkbox="eval">0.4k</output></span><span>% больше урона другим разящим героям.</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#STUN">Оглушение</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Лечение при оглушении</blockquote>
+    <ul>
+      <li><span>Излечение на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.5k" data-format=".3" data-checkbox="eval">0.5k</output></span><span>% недостающих HP при оглушении.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
+
+</div><!--  container } -->
+</body>
+</html>
