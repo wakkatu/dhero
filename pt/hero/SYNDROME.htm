@@ -1,0 +1,3625 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1580904044">
+<link rel="stylesheet" href="../../star.css?1580904044">
+<link rel="stylesheet" href="../../unit.css?1580904044">
+<title>Síndrome - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Síndrome voa até a batalha e usa suas invenções de alta tecnologia para atordoar e analisar inimigos.">
+<script src="../../util.js?1580904044"></script>
+<script src="../../unit.js?1580904044"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+  document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">Heróis</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">Amigos</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Coleções</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">Itens</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Escolher idioma / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/SYNDROME.htm">Deutsche</a>
+        <a href="../../en/hero/SYNDROME.htm">English</a>
+        <a href="../../es/hero/SYNDROME.htm">Español</a>
+        <a href="../../fr/hero/SYNDROME.htm">Français</a>
+        <a href="../../it/hero/SYNDROME.htm">Italiano</a>
+        <a href="../../ja/hero/SYNDROME.htm">日本語</a>
+        <a href="../../ko/hero/SYNDROME.htm">한국어</a>
+        <a href="../../pt/hero/SYNDROME.htm">Português</a>
+        <a href="../../ru/hero/SYNDROME.htm">русский</a>
+        <a href="../../zh-Hans/hero/SYNDROME.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/SYNDROME.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 03/10/2020</span>
+  -->
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar"><!--
+      <img alt="Síndrome" src="SYNDROME.png">
+    --></div>
+    <h1 class="undertest">Síndrome</h1>
+    <p>Síndrome voa até a batalha e usa suas invenções de alta tecnologia para atordoar e analisar inimigos.</p>
+    <blockquote>&#34;E quando a esperança estiver perdida, Síndrome vai salvar o dia!\nEu serei um herói maior do que você já foi!&#34;</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Função</span>
+      <a class="unit-pair-val" href="../hero_list.htm?role=control">Controle</a>
+      <span class="unit-pair-name">Posição</span>
+      <a class="unit-pair-val" href="../hero_list.htm?position=central">Meio</a>
+      <span class="unit-pair-name">Prova de Equipe:</span>
+      <a class="unit-pair-val" href="../hero_list.htm?team=red">Vermelha</a>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>Atributos Principais</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">PV máx.</span>
+      <span class="unit-pair-val unit-expr-g">
+        1876 + 154.44g
+      </span>
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val unit-expr-g">
+        35.42 + 2.921g
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val unit-expr-g">
+        51.15 + 4.22g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1>Atributos detalhados</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="170" value="170">
+      </span>
+      <span class="unit-pair-name">Classificação</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="9.96" selected>RED+7</option>
+          <option value="9.05">RED+6</option>
+          <option value="8.23">RED+5</option>
+          <option value="7.51">RED+4</option>
+          <option value="6.82">RED+3</option>
+          <option value="6.19">RED+2</option>
+          <option value="5.64">RED+1</option>
+          <option value="5.13">RED</option>
+          <option value="4.67">ORANGE+8</option>
+          <option value="4.25">ORANGE+7</option>
+          <option value="3.87">ORANGE+6</option>
+          <option value="3.52">ORANGE+5</option>
+          <option value="3.2">ORANGE+4</option>
+          <option value="2.91">ORANGE+3</option>
+          <option value="2.65">ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">Estrelas</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">Barato de Açúcar</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>125</dd>
+            <dt>Dano crítico normal</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">Um Pouco de Ilusionismo</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b2" data-hp_max="150" data-armor="30" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>150</dd>
+            <dt>Armadura</dt><dd>30</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">Lado Ensolarado</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b3" data-armor="45" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>45</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=NUMBER_ONE_DIME#NUMBER_ONE_DIME" class="rarity-white">Moedinha nº 1</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b4" data-normal_crit="15" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano crítico normal</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">Noite Bela</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b5" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>10</dd>
+            <dt>PV máx.</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1">
+          <a href="../item_list.htm?item=HEARTY_BREAKFAST#HEARTY_BREAKFAST" class="rarity-white">Café da Manhã Amável</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1">
+          <select name="b6" data-skill_power="15" data-energy_regen="10" data-r_ctl="1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>15</dd>
+            <dt>Regen. de energia</dt><dd>10</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_hp_max" class="hidden" data-formula="375" data-r_ctl="1.1"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="23" data-r_ctl="1.1"></output>
+        <output name="b_armor" class="hidden" data-formula="75" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="25" data-r_ctl="1.1"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="10" data-r_ctl="1.1"></output>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=WIZARD_HAT#WIZARD_HAT" class="rarity-green">Chapéu do Feiticeiro</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b1" data-basic_damage="6" data-hp_regen="60" data-armor="18" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>6</dd>
+            <dt>Regen. de PV</dt><dd>60</dd>
+            <dt>Armadura</dt><dd>18</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">Festa Rex</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b2" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>25</dd>
+            <dt>Dano crítico normal</dt><dd>11</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">Raposa Esperta</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b3" data-hp_max="100" data-hp_regen="100" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>100</dd>
+            <dt>Regen. de PV</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">A-nemo-nêmona</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b4" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>128</dd>
+            <dt>Armadura</dt><dd>96</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=THINGAMABOB#THINGAMABOB" class="rarity-white">Aquela Coisa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b5" data-hp_max="235" data-hp_regen="235" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>235</dd>
+            <dt>Regen. de PV</dt><dd>235</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.1">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Melequento, Mas Gostoso</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.1">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>8</dd>
+            <dt>Poder de habilidade</dt><dd>8</dd>
+            <dt>PV máx.</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="888" data-r_ctl="1.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="34" data-r_ctl="1.2"></output>
+        <output name="b_armor" class="hidden" data-formula="189" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="33" data-r_ctl="1.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="10" data-r_ctl="1.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="39" data-r_ctl="1.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="395" data-r_ctl="1.2"></output>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=EXTRACT_OF_LLAMA#EXTRACT_OF_LLAMA" class="rarity-blue">Extrato de Lhama</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b1" data-hp_regen="2000" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Regen. de PV</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=CRAB_CAKE#CRAB_CAKE" class="rarity-green">Bolo de Caranguejo</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b2" data-basic_damage="50" data-hp_max="100" data-normal_crit="10" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>50</dd>
+            <dt>PV máx.</dt><dd>100</dd>
+            <dt>Dano crítico normal</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=BADGE_OF_FRIENDSHIP#BADGE_OF_FRIENDSHIP" class="rarity-white">Insígnia da Amizade</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b3" data-energy_regen="25" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Regen. de energia</dt><dd>25</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">Biscoitos do Meeko</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b4" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>30</dd>
+            <dt>Regen. de PV</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">O Lance Perfeito</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b5" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>20</dd>
+            <dt>Regen. de PV</dt><dd>50</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.2">
+          <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Melequento, Mas Gostoso</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.2">
+          <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>8</dd>
+            <dt>Poder de habilidade</dt><dd>8</dd>
+            <dt>PV máx.</dt><dd>50</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_hp_max" class="hidden" data-formula="1038" data-r_ctl="1.3"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="44" data-r_ctl="1.3"></output>
+        <output name="b_armor" class="hidden" data-formula="189" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="71" data-r_ctl="1.3"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="35" data-r_ctl="1.3"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="117" data-r_ctl="1.3"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.3"></output>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b1" data-hp_max="450" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Maçã Imperceptível</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b2" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>55</dd>
+            <dt>Regen. de energia</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Leite Derramado</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b3" data-armor="156" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>156</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">Muda Misteriosa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b4" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>40</dd>
+            <dt>Dano crítico normal</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">Motivação para a Rena</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b5" data-hp_max="300" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.3">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Jarra de Marte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.3">
+          <select name="b6" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.3" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>60</dd>
+            <dt>PV máx.</dt><dd>400</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="2188" data-r_ctl="1.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="56" data-r_ctl="1.4"></output>
+        <output name="b_armor" class="hidden" data-formula="345" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="166" data-r_ctl="1.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="55" data-r_ctl="1.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="177" data-r_ctl="1.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.4"></output>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=SHOEBILL#SHOEBILL" class="rarity-blue">Bico-de-sapato</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b1" data-basic_damage="75" data-armor="300" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>75</dd>
+            <dt>Armadura</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b2" data-hp_max="450" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">Pizza de São Francisco</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b3" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>40</dd>
+            <dt>Poder de habilidade</dt><dd>40</dd>
+            <dt>PV máx.</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Jarra de Marte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b4" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>60</dd>
+            <dt>PV máx.</dt><dd>400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">Bolsa de Tapete da Poppins</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b5" data-basic_damage="28" data-armor="36" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>28</dd>
+            <dt>Armadura</dt><dd>36</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.4">
+          <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Leite Derramado</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.4">
+          <select name="b6" data-armor="156" data-r_ctl="1.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>156</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_hp_max" class="hidden" data-formula="3238" data-r_ctl="1.5"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="56" data-r_ctl="1.5"></output>
+        <output name="b_armor" class="hidden" data-formula="837" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="206" data-r_ctl="1.5"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="55" data-r_ctl="1.5"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="380" data-r_ctl="1.5"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.5"></output>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=MIST_MAKER#MIST_MAKER" class="rarity-purple">Gerador de Névoa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b1" data-hp_max="450" data-reality="450" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+            <dt>Realidade</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b2" data-hp_max="450" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Maçã Imperceptível</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b3" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>55</dd>
+            <dt>Regen. de energia</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">Relâmpago</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b4" data-hp_max="400" data-armor="500" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>400</dd>
+            <dt>Armadura</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=SHOEBILL#SHOEBILL" class="rarity-blue">Bico-de-sapato</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b5" data-basic_damage="75" data-armor="300" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>75</dd>
+            <dt>Armadura</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.5">
+          <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">Bolsa de Tapete da Poppins</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.5">
+          <select name="b6" data-basic_damage="28" data-armor="36" data-r_ctl="1.5" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>28</dd>
+            <dt>Armadura</dt><dd>36</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_hp_max" class="hidden" data-formula="4538" data-r_ctl="1.6"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="56" data-r_ctl="1.6"></output>
+        <output name="b_armor" class="hidden" data-formula="1673" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="261" data-r_ctl="1.6"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="75" data-r_ctl="1.6"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="483" data-r_ctl="1.6"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.6"></output>
+        <output name="b_reality" class="hidden" data-formula="450" data-r_ctl="1.6"></output>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">Hortelã</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b1" data-basic_damage="230" data-hp_max="230" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>230</dd>
+            <dt>PV máx.</dt><dd>230</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Abotoaduras Nada Práticas</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b2" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>50</dd>
+            <dt>PV máx.</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Maçã Imperceptível</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b3" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>55</dd>
+            <dt>Regen. de energia</dt><dd>20</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=FAMILY_HEIRLOOM#FAMILY_HEIRLOOM" class="rarity-purple">Rumo ao Ouro</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b4" data-basic_damage="225" data-reality="325" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>225</dd>
+            <dt>Realidade</dt><dd>325</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Abotoaduras Nada Práticas</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b5" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>50</dd>
+            <dt>PV máx.</dt><dd>100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.6">
+          <a href="../item_list.htm?item=GOLDEN_FLOWER#GOLDEN_FLOWER" class="rarity-green">Flor Dourada</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.6">
+          <select name="b6" data-basic_damage="40" data-skill_power="25" data-normal_crit="7" data-r_ctl="1.6" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>40</dd>
+            <dt>Poder de habilidade</dt><dd>25</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_hp_max" class="hidden" data-formula="4968" data-r_ctl="1.7"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="63" data-r_ctl="1.7"></output>
+        <output name="b_armor" class="hidden" data-formula="1673" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="341" data-r_ctl="1.7"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="95" data-r_ctl="1.7"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1078" data-r_ctl="1.7"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.7"></output>
+        <output name="b_reality" class="hidden" data-formula="775" data-r_ctl="1.7"></output>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=BRUCES_BADGES#BRUCES_BADGES" class="rarity-purple">Insígnias do Bruce</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b1" data-basic_damage="150" data-skill_power="150" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+            <dt>Poder de habilidade</dt><dd>150</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">Muda Misteriosa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b2" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>40</dd>
+            <dt>Dano crítico normal</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">Token da Salvação</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b3" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>60</dd>
+            <dt>Regen. de energia</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">Abotoaduras de Jafar</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b4" data-hp_max="2000" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Jarra de Marte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b5" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>60</dd>
+            <dt>PV máx.</dt><dd>400</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.7">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.7">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_hp_max" class="hidden" data-formula="7818" data-r_ctl="1.8"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="75" data-r_ctl="1.8"></output>
+        <output name="b_armor" class="hidden" data-formula="1673" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="591" data-r_ctl="1.8"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="1.8"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1288" data-r_ctl="1.8"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.8"></output>
+        <output name="b_reality" class="hidden" data-formula="775" data-r_ctl="1.8"></output>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">Guardião da Pedra</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b1" data-basic_damage="225" data-hp_max="525" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>225</dd>
+            <dt>PV máx.</dt><dd>525</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">Abotoaduras de Jafar</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b2" data-hp_max="2000" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">Tesouras da Família Fa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b3" data-skill_power="450" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=MULTIPURPOSE_FRYING_PAN#MULTIPURPOSE_FRYING_PAN" class="rarity-green">Frigideira</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b4" data-normal_crit="12" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano crítico normal</dt><dd>12</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Leite Derramado</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b5" data-armor="156" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>156</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.8">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.8">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_hp_max" class="hidden" data-formula="10793" data-r_ctl="1.9"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="87" data-r_ctl="1.9"></output>
+        <output name="b_armor" class="hidden" data-formula="1829" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1041" data-r_ctl="1.9"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="1.9"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1513" data-r_ctl="1.9"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="2495" data-r_ctl="1.9"></output>
+        <output name="b_reality" class="hidden" data-formula="775" data-r_ctl="1.9"></output>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=SCREAM_CANISTER#SCREAM_CANISTER" class="rarity-purple">Cilindro do Grito</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b1" data-hp_max="999" data-armor="999" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>999</dd>
+            <dt>Armadura</dt><dd>999</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">Raio Redutor Szalinkski</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b2" data-skill_power="200" data-armor="200" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>200</dd>
+            <dt>Armadura</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Tiara Descartada</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b3" data-skill_power="100" data-armor="300" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>100</dd>
+            <dt>Armadura</dt><dd>300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=TINY_CAR#TINY_CAR" class="rarity-green">Carro Nem Tão Incrível</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b4" data-armor="60" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>60</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=MASK_OF_THE_CAKE_EATER#MASK_OF_THE_CAKE_EATER" class="rarity-purple">Máscara do Guloso</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b5" data-basic_damage="107" data-hp_regen="750" data-armor="250" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>107</dd>
+            <dt>Regen. de PV</dt><dd>750</dd>
+            <dt>Armadura</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="1.9">
+          <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Obra Musical Emocionante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="1.9">
+          <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="12242" data-r_ctl="2.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="87" data-r_ctl="2.05"></output>
+        <output name="b_armor" class="hidden" data-formula="3638" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="1341" data-r_ctl="2.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="2.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="1620" data-r_ctl="2.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3245" data-r_ctl="2.05"></output>
+        <output name="b_reality" class="hidden" data-formula="775" data-r_ctl="2.05"></output>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">Feitiços da Winifred</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b1" data-skill_power="500" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=MASK_OF_THE_CAKE_EATER#MASK_OF_THE_CAKE_EATER" class="rarity-purple">Máscara do Guloso</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b2" data-basic_damage="107" data-hp_regen="750" data-armor="250" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>107</dd>
+            <dt>Regen. de PV</dt><dd>750</dd>
+            <dt>Armadura</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">Xilofone de Ossos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b3" data-skill_power="150" data-hp_max="250" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>150</dd>
+            <dt>PV máx.</dt><dd>250</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">Tesouras da Família Fa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b4" data-skill_power="450" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">Espólio de Mil Mundos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.05">
+          <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">Insígnia Exclusiva do Clube</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.05">
+          <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>250</dd>
+            <dt>Poder de habilidade</dt><dd>250</dd>
+            <dt>PV máx.</dt><dd>3500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="15992" data-r_ctl="2.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="94" data-r_ctl="2.2"></output>
+        <output name="b_armor" class="hidden" data-formula="3888" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2691" data-r_ctl="2.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="2.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2127" data-r_ctl="2.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3995" data-r_ctl="2.2"></output>
+        <output name="b_reality" class="hidden" data-formula="775" data-r_ctl="2.2"></output>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">Café da Manhã Líquido</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b1" data-hp_max="1000" data-reality="2000" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1000</dd>
+            <dt>Realidade</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANKS_HOT_SAUCE#HANKS_HOT_SAUCE" class="rarity-purple">Molho Apimentado do Hank</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b2" data-basic_damage="125" data-hp_max="525" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>125</dd>
+            <dt>PV máx.</dt><dd>525</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">Raio Redutor Szalinkski</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b3" data-skill_power="200" data-armor="200" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>200</dd>
+            <dt>Armadura</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">Príncipe Lindo</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b4" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>555</dd>
+            <dt>Armadura</dt><dd>777</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=MIST_MAKER#MIST_MAKER" class="rarity-purple">Gerador de Névoa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b5" data-hp_max="450" data-reality="450" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>450</dd>
+            <dt>Realidade</dt><dd>450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.2">
+          <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">Príncipe Lindo</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.2">
+          <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>555</dd>
+            <dt>Armadura</dt><dd>777</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_hp_max" class="hidden" data-formula="17967" data-r_ctl="2.4"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="94" data-r_ctl="2.4"></output>
+        <output name="b_armor" class="hidden" data-formula="5642" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4001" data-r_ctl="2.4"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="2.4"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2252" data-r_ctl="2.4"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3995" data-r_ctl="2.4"></output>
+        <output name="b_reality" class="hidden" data-formula="3225" data-r_ctl="2.4"></output>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">Via do Tambor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b1" data-skill_power="125" data-hp_max="1000" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>125</dd>
+            <dt>PV máx.</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=ITS_ROBOT_TIME#ITS_ROBOT_TIME" class="rarity-purple">Hora do Robô</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b2" data-armor="650" data-reality="650" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>650</dd>
+            <dt>Realidade</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TOKEN_OF_RADITUDE#TOKEN_OF_RADITUDE" class="rarity-purple">Token de Ratidão</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b3" data-skill_power="200" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">Café da Manhã Líquido</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b4" data-hp_max="1000" data-reality="2000" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1000</dd>
+            <dt>Realidade</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=SAFETY_HELMET#SAFETY_HELMET" class="rarity-purple">Capacete de Segurança</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b5" data-skill_power="277" data-hp_max="577" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>277</dd>
+            <dt>PV máx.</dt><dd>577</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.4">
+          <a href="../item_list.htm?item=TRITONS_TRIDENT#TRITONS_TRIDENT" class="rarity-purple">Tridente do Tritão</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.4">
+          <select name="b6" data-hp_max="1337" data-armor="137" data-reality="137" data-r_ctl="2.4" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1337</dd>
+            <dt>Armadura</dt><dd>137</dd>
+            <dt>Realidade</dt><dd>137</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_hp_max" class="hidden" data-formula="21881" data-r_ctl="2.65"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="94" data-r_ctl="2.65"></output>
+        <output name="b_armor" class="hidden" data-formula="6429" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4603" data-r_ctl="2.65"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="2.65"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2252" data-r_ctl="2.65"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="3995" data-r_ctl="2.65"></output>
+        <output name="b_reality" class="hidden" data-formula="6012" data-r_ctl="2.65"></output>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">Cheque em Branco</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b1" data-basic_damage="125" data-hp_regen="650" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>125</dd>
+            <dt>Regen. de PV</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">Diablo Piedra</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b2" data-hp_max="600" data-normal_crit="10" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>600</dd>
+            <dt>Dano crítico normal</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">Cliente do Ano</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b3" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>125</dd>
+            <dt>PV máx.</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">Sombra Mágica</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b4" data-hp_regen="650" data-armor="750" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Regen. de PV</dt><dd>650</dd>
+            <dt>Armadura</dt><dd>750</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">Espólio de Mil Mundos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.65">
+          <a href="../item_list.htm?item=TRITONS_TRIDENT#TRITONS_TRIDENT" class="rarity-purple">Tridente do Tritão</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.65">
+          <select name="b6" data-hp_max="1337" data-armor="137" data-reality="137" data-r_ctl="2.65" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1337</dd>
+            <dt>Armadura</dt><dd>137</dd>
+            <dt>Realidade</dt><dd>137</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.91"> -->
+        <output name="b_hp_max" class="hidden" data-formula="24818" data-r_ctl="2.91"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="111" data-r_ctl="2.91"></output>
+        <output name="b_armor" class="hidden" data-formula="7316" data-r_ctl="2.91"></output>
+        <output name="b_skill_power" class="hidden" data-formula="4603" data-r_ctl="2.91"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="2.91"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2652" data-r_ctl="2.91"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5295" data-r_ctl="2.91"></output>
+        <output name="b_reality" class="hidden" data-formula="6149" data-r_ctl="2.91"></output>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">Rato de Academia</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b1" data-basic_damage="150" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=POOH_STICKS#POOH_STICKS" class="rarity-purple">Poohnte</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b2" data-reality="500" data-normal_crit="10" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Realidade</dt><dd>500</dd>
+            <dt>Dano crítico normal</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=DINGLEHOPPER#DINGLEHOPPER" class="rarity-orange">Bruguzumba</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b3" data-skill_power="125" data-hp_regen="650" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>125</dd>
+            <dt>Regen. de PV</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=LOVE_BIRDS#LOVE_BIRDS" class="rarity-purple">Pombinhos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b4" data-skill_power="505" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>505</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">Raio Redutor Szalinkski</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b5" data-skill_power="200" data-armor="200" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>200</dd>
+            <dt>Armadura</dt><dd>200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="2.91">
+          <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">Pensamentos Felizes</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="2.91">
+          <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>906</dd>
+            <dt>Realidade</dt><dd>906</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.2"> -->
+        <output name="b_hp_max" class="hidden" data-formula="24818" data-r_ctl="3.2"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="121" data-r_ctl="3.2"></output>
+        <output name="b_armor" class="hidden" data-formula="8422" data-r_ctl="3.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="5433" data-r_ctl="3.2"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="3.2"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="2802" data-r_ctl="3.2"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="5945" data-r_ctl="3.2"></output>
+        <output name="b_reality" class="hidden" data-formula="7555" data-r_ctl="3.2"></output>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=TINY_TERRARIUM#TINY_TERRARIUM" class="rarity-orange">Miniterrário</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b1" data-basic_damage="177" data-skill_power="222" data-hp_max="796" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>177</dd>
+            <dt>Poder de habilidade</dt><dd>222</dd>
+            <dt>PV máx.</dt><dd>796</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=AUTO#AUTO" class="rarity-purple">AUTO</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b2" data-basic_damage="150" data-hp_max="389" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+            <dt>PV máx.</dt><dd>389</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=DINGLEHOPPER#DINGLEHOPPER" class="rarity-orange">Bruguzumba</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b3" data-skill_power="125" data-hp_regen="650" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>125</dd>
+            <dt>Regen. de PV</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Combustível Matinal</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b4" data-hp_max="777" data-reality="606" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>777</dd>
+            <dt>Realidade</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">Diário do Pastor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b5" data-armor="1000" data-reality="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>1000</dd>
+            <dt>Realidade</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.2">
+          <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">Sol Brilhante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.2">
+          <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1000</dd>
+            <dt>Armadura</dt><dd>1000</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.52"> -->
+        <output name="b_hp_max" class="hidden" data-formula="27780" data-r_ctl="3.52"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="121" data-r_ctl="3.52"></output>
+        <output name="b_armor" class="hidden" data-formula="10422" data-r_ctl="3.52"></output>
+        <output name="b_skill_power" class="hidden" data-formula="5780" data-r_ctl="3.52"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="3.52"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="3129" data-r_ctl="3.52"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="6595" data-r_ctl="3.52"></output>
+        <output name="b_reality" class="hidden" data-formula="9161" data-r_ctl="3.52"></output>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=WIND_UP_MOUSE#WIND_UP_MOUSE" class="rarity-orange">Rato Cansado</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b1" data-skill_power="450" data-reality="1700" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>450</dd>
+            <dt>Realidade</dt><dd>1700</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=SPINACH_PUFFS#SPINACH_PUFFS" class="rarity-purple">Bolinhos de Espinafre</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b2" data-basic_damage="269" data-hp_max="1530" data-hp_regen="555" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>269</dd>
+            <dt>PV máx.</dt><dd>1530</dd>
+            <dt>Regen. de PV</dt><dd>555</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">Rato de Academia</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b3" data-basic_damage="150" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>150</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">Clássico Eterno</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b4" data-basic_damage="499" data-normal_crit="7" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>499</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=JAR_OF_HUNNY#JAR_OF_HUNNY" class="rarity-orange">Pote de Mel</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b5" data-hp_max="3000" data-armor="1000" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>3000</dd>
+            <dt>Armadura</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.52">
+          <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">Brinquedo de Cachorro da Liga</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.52">
+          <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>365</dd>
+            <dt>Realidade</dt><dd>1001</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.87"> -->
+        <output name="b_hp_max" class="hidden" data-formula="32310" data-r_ctl="3.87"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="128" data-r_ctl="3.87"></output>
+        <output name="b_armor" class="hidden" data-formula="11422" data-r_ctl="3.87"></output>
+        <output name="b_skill_power" class="hidden" data-formula="6230" data-r_ctl="3.87"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="3.87"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4412" data-r_ctl="3.87"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7150" data-r_ctl="3.87"></output>
+        <output name="b_reality" class="hidden" data-formula="11862" data-r_ctl="3.87"></output>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=BABY_BRIBE#BABY_BRIBE" class="rarity-orange">Suborno de Bebê</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b1" data-basic_damage="225" data-skill_power="450" data-hp_max="750" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>225</dd>
+            <dt>Poder de habilidade</dt><dd>450</dd>
+            <dt>PV máx.</dt><dd>750</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=GARDEN_SONG#GARDEN_SONG" class="rarity-purple">Música de jardim</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b2" data-hp_max="1111" data-armor="999" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1111</dd>
+            <dt>Armadura</dt><dd>999</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Combustível Matinal</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b3" data-hp_max="777" data-reality="606" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>777</dd>
+            <dt>Realidade</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=GOLDEN_HARP#GOLDEN_HARP" class="rarity-orange">Harpa Dourada</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b4" data-hp_max="3456" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>3456</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=I_FIGHT_FOR_THE_USERS#I_FIGHT_FOR_THE_USERS" class="rarity-orange">Eu Luto pelos Usuários</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b5" data-armor="2000" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="3.87">
+          <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">Piratas do céu</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="3.87">
+          <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>699</dd>
+            <dt>Realidade</dt><dd>1297</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.25"> -->
+        <output name="b_hp_max" class="hidden" data-formula="38404" data-r_ctl="4.25"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="128" data-r_ctl="4.25"></output>
+        <output name="b_armor" class="hidden" data-formula="14421" data-r_ctl="4.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="7379" data-r_ctl="4.25"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="4.25"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="4637" data-r_ctl="4.25"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7150" data-r_ctl="4.25"></output>
+        <output name="b_reality" class="hidden" data-formula="13765" data-r_ctl="4.25"></output>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ANDYS_GAME#ANDYS_GAME" class="rarity-orange">Jogo do Andy</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b1" data-basic_damage="265" data-armor="1600" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>265</dd>
+            <dt>Armadura</dt><dd>1600</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=UNICORN_DREAMS#UNICORN_DREAMS" class="rarity-purple">Sonho de Unicórnio</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b2" data-skill_power="300" data-hp_max="500" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>300</dd>
+            <dt>PV máx.</dt><dd>500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">Café da Manhã de Cachorro</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b3" data-hp_max="1000" data-armor="2000" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>1000</dd>
+            <dt>Armadura</dt><dd>2000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">Diário do Pastor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b4" data-armor="1000" data-reality="1000" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>1000</dd>
+            <dt>Realidade</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ANIMAL_AURORA#ANIMAL_AURORA" class="rarity-purple">Aurora Animal</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b5" data-basic_damage="190" data-skill_power="460" data-normal_crit="8" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>190</dd>
+            <dt>Poder de habilidade</dt><dd>460</dd>
+            <dt>Dano crítico normal</dt><dd>8</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.25">
+          <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">Propulsor Doce</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.25">
+          <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>650</dd>
+            <dt>Armadura</dt><dd>1200</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.67"> -->
+        <output name="b_hp_max" class="hidden" data-formula="39904" data-r_ctl="4.67"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="136" data-r_ctl="4.67"></output>
+        <output name="b_armor" class="hidden" data-formula="20221" data-r_ctl="4.67"></output>
+        <output name="b_skill_power" class="hidden" data-formula="8789" data-r_ctl="4.67"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="4.67"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="5092" data-r_ctl="4.67"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7150" data-r_ctl="4.67"></output>
+        <output name="b_reality" class="hidden" data-formula="14765" data-r_ctl="4.67"></output>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=POM_POM_SHOES#POM_POM_SHOES" class="rarity-orange">Sapatos de Pompom</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b1" data-skill_power="326" data-armor="999" data-reality="855" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>326</dd>
+            <dt>Armadura</dt><dd>999</dd>
+            <dt>Realidade</dt><dd>855</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=BIRDS_OF_A_FEATHER#BIRDS_OF_A_FEATHER" class="rarity-purple">Los Três Mosqueteros</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b2" data-skill_power="399" data-hp_max="963" data-reality="899" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>399</dd>
+            <dt>PV máx.</dt><dd>963</dd>
+            <dt>Realidade</dt><dd>899</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=SUPER_TEAM_ASSEMBLE#SUPER_TEAM_ASSEMBLE" class="rarity-purple">Super Equipe</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b3" data-basic_damage="350" data-reality="1700" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>350</dd>
+            <dt>Realidade</dt><dd>1700</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=DINGLEHOPPER#DINGLEHOPPER" class="rarity-orange">Bruguzumba</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b4" data-skill_power="125" data-hp_regen="650" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>125</dd>
+            <dt>Regen. de PV</dt><dd>650</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=HOUSE_OF_CARDS#HOUSE_OF_CARDS" class="rarity-orange">Castelo de Cartas</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b5" data-skill_power="650" data-hp_max="2350" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>650</dd>
+            <dt>PV máx.</dt><dd>2350</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="4.67">
+          <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">Insígnia de Deleite</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="4.67">
+          <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>700</dd>
+            <dt>PV máx.</dt><dd>4500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.13"> -->
+        <output name="b_hp_max" class="hidden" data-formula="47717" data-r_ctl="5.13"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="136" data-r_ctl="5.13"></output>
+        <output name="b_armor" class="hidden" data-formula="21220" data-r_ctl="5.13"></output>
+        <output name="b_skill_power" class="hidden" data-formula="10989" data-r_ctl="5.13"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="5.13"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="5442" data-r_ctl="5.13"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7800" data-r_ctl="5.13"></output>
+        <output name="b_reality" class="hidden" data-formula="18219" data-r_ctl="5.13"></output>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=GRAND_FINALE#GRAND_FINALE" class="rarity-red">Grand Finale</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b1" data-basic_damage="370" data-skill_power="610" data-hp_max="4450" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>370</dd>
+            <dt>Poder de habilidade</dt><dd>610</dd>
+            <dt>PV máx.</dt><dd>4450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=BLACK_FLAME_CANDLE#BLACK_FLAME_CANDLE" class="rarity-orange">Vela da Chama Negra</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b2" data-hp_max="2333" data-reality="462" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>2333</dd>
+            <dt>Realidade</dt><dd>462</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=TSUMDERE#TSUMDERE" class="rarity-purple">Tsumdere</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b3" data-basic_damage="350" data-skill_power="260" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>350</dd>
+            <dt>Poder de habilidade</dt><dd>260</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">Via do Tambor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b4" data-skill_power="125" data-hp_max="1000" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>125</dd>
+            <dt>PV máx.</dt><dd>1000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">Cama de Quatro Pôsteres</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b5" data-armor="1300" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>1300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.13">
+          <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">Roda de Fiar</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.13">
+          <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>2800</dd>
+            <dt>Armadura</dt><dd>1500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.64"> -->
+        <output name="b_hp_max" class="hidden" data-formula="58300" data-r_ctl="5.64"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="136" data-r_ctl="5.64"></output>
+        <output name="b_armor" class="hidden" data-formula="24020" data-r_ctl="5.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="11984" data-r_ctl="5.64"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="5.64"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="6162" data-r_ctl="5.64"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7800" data-r_ctl="5.64"></output>
+        <output name="b_reality" class="hidden" data-formula="18681" data-r_ctl="5.64"></output>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Fortuna do Príncipe</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>999</dd>
+            <dt>Armadura</dt><dd>1450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=TRIPLEDENT_GUN#TRIPLEDENT_GUN" class="rarity-orange">Chiclete tridente</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b2" data-basic_damage="303" data-skill_power="608" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>303</dd>
+            <dt>Poder de habilidade</dt><dd>608</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">Sombra Mágica</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b3" data-hp_regen="650" data-armor="750" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Regen. de PV</dt><dd>650</dd>
+            <dt>Armadura</dt><dd>750</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=POLKA_DOTS#POLKA_DOTS" class="rarity-orange">Roupa de Bolinhas</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b4" data-basic_damage="399" data-normal_crit="13" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>399</dd>
+            <dt>Dano crítico normal</dt><dd>13</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=CLOUD_KICKER#CLOUD_KICKER" class="rarity-orange">Onda nas Nuvens</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b5" data-basic_damage="419" data-hp_regen="1999" data-normal_crit="7" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>419</dd>
+            <dt>Regen. de PV</dt><dd>1999</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="5.64">
+          <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">Peixe Pequeno</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="5.64">
+          <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>650</dd>
+            <dt>Poder de habilidade</dt><dd>840</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.19"> -->
+        <output name="b_hp_max" class="hidden" data-formula="58300" data-r_ctl="6.19"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="156" data-r_ctl="6.19"></output>
+        <output name="b_armor" class="hidden" data-formula="26220" data-r_ctl="6.19"></output>
+        <output name="b_skill_power" class="hidden" data-formula="14431" data-r_ctl="6.19"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="6.19"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="7933" data-r_ctl="6.19"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="10449" data-r_ctl="6.19"></output>
+        <output name="b_reality" class="hidden" data-formula="18681" data-r_ctl="6.19"></output>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=MONSTER_MAIL#MONSTER_MAIL" class="rarity-red">Correio dos Monstros</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b1" data-skill_power="720" data-hp_max="7000" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>720</dd>
+            <dt>PV máx.</dt><dd>7000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">Combustível Matinal</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b2" data-hp_max="777" data-reality="606" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>777</dd>
+            <dt>Realidade</dt><dd>606</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=FORGOTTEN_SPELLBOOK#FORGOTTEN_SPELLBOOK" class="rarity-orange">Antigo Livro de Feitiços</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b3" data-reality="3200" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Realidade</dt><dd>3200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Ervilhas na Vagem</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b4" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>421</dd>
+            <dt>PV máx.</dt><dd>4120</dd>
+            <dt>Regen. de PV</dt><dd>1420</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=ANDYS_GAME#ANDYS_GAME" class="rarity-orange">Jogo do Andy</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b5" data-basic_damage="265" data-armor="1600" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>265</dd>
+            <dt>Armadura</dt><dd>1600</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.19">
+          <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">Perfeição Absoluta</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.19">
+          <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>10364</dd>
+            <dt>Dano crítico normal</dt><dd>6</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.82"> -->
+        <output name="b_hp_max" class="hidden" data-formula="80561" data-r_ctl="6.82"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="162" data-r_ctl="6.82"></output>
+        <output name="b_armor" class="hidden" data-formula="27820" data-r_ctl="6.82"></output>
+        <output name="b_skill_power" class="hidden" data-formula="15151" data-r_ctl="6.82"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="6.82"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="8619" data-r_ctl="6.82"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="11869" data-r_ctl="6.82"></output>
+        <output name="b_reality" class="hidden" data-formula="22487" data-r_ctl="6.82"></output>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=WADDLES#WADDLES" class="rarity-red">Pateando</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b1" data-skill_power="620" data-hp_max="10200" data-reality="1100" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>620</dd>
+            <dt>PV máx.</dt><dd>10200</dd>
+            <dt>Realidade</dt><dd>1100</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=LOST_NANNY#LOST_NANNY" class="rarity-orange">Babá Fiel</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b2" data-basic_damage="423" data-hp_max="13226" data-armor="1252" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>423</dd>
+            <dt>PV máx.</dt><dd>13226</dd>
+            <dt>Armadura</dt><dd>1252</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=PHOENIX_GATE#PHOENIX_GATE" class="rarity-orange">Portão da Fênix</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b3" data-basic_damage="450" data-hp_max="9000" data-hp_regen="3600" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>450</dd>
+            <dt>PV máx.</dt><dd>9000</dd>
+            <dt>Regen. de PV</dt><dd>3600</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">Clássico Eterno</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b4" data-basic_damage="499" data-normal_crit="7" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>499</dd>
+            <dt>Dano crítico normal</dt><dd>7</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=TSUMDERE#TSUMDERE" class="rarity-purple">Tsumdere</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b5" data-basic_damage="350" data-skill_power="260" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>350</dd>
+            <dt>Poder de habilidade</dt><dd>260</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="6.82">
+          <a href="../item_list.htm?item=SNAKE_BALLOON#SNAKE_BALLOON" class="rarity-orange">Zeppelin Reptiliano</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="6.82">
+          <select name="b6" data-basic_damage="550" data-hp_max="10001" data-r_ctl="6.82" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>550</dd>
+            <dt>PV máx.</dt><dd>10001</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="7.51"> -->
+        <output name="b_hp_max" class="hidden" data-formula="122988" data-r_ctl="7.51"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="169" data-r_ctl="7.51"></output>
+        <output name="b_armor" class="hidden" data-formula="29072" data-r_ctl="7.51"></output>
+        <output name="b_skill_power" class="hidden" data-formula="16031" data-r_ctl="7.51"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="7.51"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="10891" data-r_ctl="7.51"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="15469" data-r_ctl="7.51"></output>
+        <output name="b_reality" class="hidden" data-formula="23587" data-r_ctl="7.51"></output>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Rato Irritante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b1" data-basic_damage="530" data-armor="1865" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>530</dd>
+            <dt>Armadura</dt><dd>1865</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Poder do Macaco Místico</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b2" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>1000</dd>
+            <dt>PV máx.</dt><dd>22222</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=HYPNOTIC_MELODY#HYPNOTIC_MELODY" class="rarity-purple">Melodia Hipnótica</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b3" data-hp_max="2065" data-armor="1550" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>2065</dd>
+            <dt>Armadura</dt><dd>1550</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=CAT_IN_A_BOX#CAT_IN_A_BOX" class="rarity-orange">Gato na Caixa</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b4" data-skill_power="920" data-armor="2701" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>920</dd>
+            <dt>Armadura</dt><dd>2701</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=HISSY_FIT#HISSY_FIT" class="rarity-orange">Gateada</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b5" data-basic_damage="809" data-skill_power="1645" data-reality="2300" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>809</dd>
+            <dt>Poder de habilidade</dt><dd>1645</dd>
+            <dt>Realidade</dt><dd>2300</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="7.51">
+          <a href="../item_list.htm?item=MOVEABLE_COAT_RACK#MOVEABLE_COAT_RACK" class="rarity-orange">Bastidor Móvel de Casacos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="7.51">
+          <select name="b6" data-basic_damage="562" data-skill_power="952" data-hp_max="14200" data-hp_regen="12000" data-r_ctl="7.51" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>562</dd>
+            <dt>Poder de habilidade</dt><dd>952</dd>
+            <dt>PV máx.</dt><dd>14200</dd>
+            <dt>Regen. de PV</dt><dd>12000</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="8.23"> -->
+        <output name="b_hp_max" class="hidden" data-formula="161475" data-r_ctl="8.23"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="169" data-r_ctl="8.23"></output>
+        <output name="b_armor" class="hidden" data-formula="35188" data-r_ctl="8.23"></output>
+        <output name="b_skill_power" class="hidden" data-formula="19548" data-r_ctl="8.23"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="8.23"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="13792" data-r_ctl="8.23"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="27469" data-r_ctl="8.23"></output>
+        <output name="b_reality" class="hidden" data-formula="25887" data-r_ctl="8.23"></output>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=SMELL_THE_CORK#SMELL_THE_CORK" class="rarity-red">Cheiro da Rolha</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b1" data-hp_max="16000" data-armor="4500" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>16000</dd>
+            <dt>Armadura</dt><dd>4500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=JANES_SKETCH#JANES_SKETCH" class="rarity-orange">Desenho da Jane</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b2" data-skill_power="1563" data-hp_max="17005" data-hp_regen="5300" data-normal_crit="10" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>1563</dd>
+            <dt>PV máx.</dt><dd>17005</dd>
+            <dt>Regen. de PV</dt><dd>5300</dd>
+            <dt>Dano crítico normal</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">Treino de Trenó</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b3" data-armor="1300" data-normal_crit="10" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Armadura</dt><dd>1300</dd>
+            <dt>Dano crítico normal</dt><dd>10</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=PROGRAM_SCANNER#PROGRAM_SCANNER" class="rarity-orange">Reconhecedor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b4" data-basic_damage="756" data-skill_power="1023" data-reality="2800" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>756</dd>
+            <dt>Poder de habilidade</dt><dd>1023</dd>
+            <dt>Realidade</dt><dd>2800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Rato Irritante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b5" data-basic_damage="530" data-armor="1865" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>530</dd>
+            <dt>Armadura</dt><dd>1865</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="8.23">
+          <a href="../item_list.htm?item=ESCAPE#ESCAPE" class="rarity-red">Escapar</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="8.23">
+          <select name="b6" data-hp_max="19876" data-reality="4200" data-normal_crit="5" data-r_ctl="8.23" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>19876</dd>
+            <dt>Realidade</dt><dd>4200</dd>
+            <dt>Dano crítico normal</dt><dd>5</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.05"> -->
+        <output name="b_hp_max" class="hidden" data-formula="214356" data-r_ctl="9.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="194" data-r_ctl="9.05"></output>
+        <output name="b_armor" class="hidden" data-formula="42853" data-r_ctl="9.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="22134" data-r_ctl="9.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="9.05"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="15078" data-r_ctl="9.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="32769" data-r_ctl="9.05"></output>
+        <output name="b_reality" class="hidden" data-formula="32887" data-r_ctl="9.05"></output>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=FAIRY_FENCERS#FAIRY_FENCERS" class="rarity-red">Esgrima Chique</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b1" data-basic_damage="689" data-hp_max="34504" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>689</dd>
+            <dt>PV máx.</dt><dd>34504</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=ITTY_BIDDY#ITTY_BIDDY" class="rarity-orange">Rabugreenta</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b2" data-skill_power="3000" data-normal_crit="15" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>3000</dd>
+            <dt>Dano crítico normal</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Rato Irritante</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b3" data-basic_damage="530" data-armor="1865" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>530</dd>
+            <dt>Armadura</dt><dd>1865</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">Dado de Lados Infinitos</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b4" data-skill_power="599" data-hp_max="3653" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>599</dd>
+            <dt>PV máx.</dt><dd>3653</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=PROGRAM_SCANNER#PROGRAM_SCANNER" class="rarity-orange">Reconhecedor</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b5" data-basic_damage="756" data-skill_power="1023" data-reality="2800" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Dano básico</dt><dd>756</dd>
+            <dt>Poder de habilidade</dt><dd>1023</dd>
+            <dt>Realidade</dt><dd>2800</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.05">
+          <a href="../item_list.htm?item=CALAMITY_BOX#CALAMITY_BOX" class="rarity-red">Caixinha de Calamidade</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.05">
+          <select name="b6" data-hp_max="26000" data-armor="6500" data-reality="6500" data-r_ctl="9.05" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>26000</dd>
+            <dt>Armadura</dt><dd>6500</dd>
+            <dt>Realidade</dt><dd>6500</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.96"> -->
+        <output name="b_hp_max" class="hidden" data-formula="278513" data-r_ctl="9.96"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="209" data-r_ctl="9.96"></output>
+        <output name="b_armor" class="hidden" data-formula="51218" data-r_ctl="9.96"></output>
+        <output name="b_skill_power" class="hidden" data-formula="26756" data-r_ctl="9.96"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="155" data-r_ctl="9.96"></output>
+        <output name="b_basic_damage" class="hidden" data-formula="17053" data-r_ctl="9.96"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="32769" data-r_ctl="9.96"></output>
+        <output name="b_reality" class="hidden" data-formula="42187" data-r_ctl="9.96"></output>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Fortuna do Príncipe</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>999</dd>
+            <dt>Armadura</dt><dd>1450</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=PIANO_KITTIES#PIANO_KITTIES" class="rarity-red">Gatos Pianistas</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b2" data-skill_power="1800" data-hp_max="17500" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>1800</dd>
+            <dt>PV máx.</dt><dd>17500</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=PRETEND_PRINCE#PRETEND_PRINCE" class="rarity-orange">Príncipe de Mentira</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b3" data-hp_max="10500" data-hp_regen="8008" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>10500</dd>
+            <dt>Regen. de PV</dt><dd>8008</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=BEARS_NATURAL_HABITAT#BEARS_NATURAL_HABITAT" class="rarity-red">Habitat Natural do Urso</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b4" data-hp_regen="16200" data-reality="2200" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Regen. de PV</dt><dd>16200</dd>
+            <dt>Realidade</dt><dd>2200</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=BE_MY_PAL#BE_MY_PAL" class="rarity-orange">Mensagem de Glacê</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b5" data-skill_power="1137.5" data-hp_regen="10500" data-reality="5555" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Poder de habilidade</dt><dd>1137.5</dd>
+            <dt>Regen. de PV</dt><dd>10500</dd>
+            <dt>Realidade</dt><dd>5555</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" data-r_blk="9.96">
+          <a href="../item_list.htm?item=THAT_DARN_CAT#THAT_DARN_CAT" class="rarity-red">Aquele Gato Lá</a>
+        </span>
+        <span class="unit-pair-val" data-r_blk="9.96">
+          <select name="b6" data-hp_max="25910" data-normal_crit="6" data-r_ctl="9.96" disabled>
+            <option value="-1">N.D.</option>
+            <option value="0" selected>Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>PV máx.</dt><dd>25910</dd>
+            <dt>Dano crítico normal</dt><dd>6</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="1876 + 154.44g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="35.42 + 2.921g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="51.15 + 4.22g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">PV máx.</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-name">Regen. de PV</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_regen" for="core_hp_regen b_hp_regen func:badge_inc,calcBadge,badge_param" data-formula="core_hp_regen + b_hp_regen + badge_inc" data-badge_param="hp_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Regen. de energia</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="energy_regen" for="core_energy_regen b_energy_regen func:badge_inc,calcBadge,badge_param" data-formula="core_energy_regen + b_energy_regen + badge_inc" data-badge_param="energy_regen|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Armadura</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="armor" for="core_armor b_armor func:badge_inc,calcBadge,badge_param" data-formula="core_armor + b_armor + badge_inc" data-badge_param="armor|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Realidade</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="reality" for="core_reality b_reality func:badge_inc,calcBadge,badge_param" data-formula="core_reality + b_reality + badge_inc" data-badge_param="reality|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Dano crítico normal</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="normal_crit" for="core_normal_crit b_normal_crit func:badge_inc,calcBadge,badge_param" data-formula="core_normal_crit + b_normal_crit + badge_inc" data-badge_param="normal_crit|S*(B&gt;0)"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">Habilidades</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
+      </span>
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
+      </span>
+    </div>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Energia de Ponto Zero</a></label></h2>
+    <p><span>Síndrome interrompe os primeiros </span><span class="unit-expr-misc">2</span><span> inimigos com seu raio de energia de ponto zero, atordoando-os durante </span><span class="unit-expr-misc">12</span><span> segundos. Durante o atordoamento causado pela habilidade, os inimigos não ganham energia.</span></p>
+    <p><span>Essa habilidade pode falhar contra os inimigos de nível maior que </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white">...</label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>0.83</dd>
+        <dt>duration</dt><dd>1.5</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closestprefFacing &lt; enemy | !stunned</dd>
+        <dt>primary</dt><dd>closestprefFacing &lt; enemy | !stunned</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>enemyamt</dt><dd>2</dd>
+        <dt>stunduration</dt><dd>12</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Varredura da Sonda</a></label></h2>
+    <p><span>Síndrome lança seu dispositivo de varredura, estudando inimigos em uma área durante </span><span class="unit-expr-misc">4</span><span> segundos. O dispositivo então se autodestrói, causando </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k + 1.1sp" data-checkbox="eval">150k + 1.1sp</output></span><span> dano aos inimigos em torno dele.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>cooldown</dt><dd>7</dd>
+        <dt>splash</dt><dd>150</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2.5</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>7</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>splash</dt><dd>within(150)</dd>
+        <dt>dmg</dt><dd>150k + 1.1sp</dd>
+        <dt>studyduration</dt><dd>4</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Força Propulsora</a></label></h2>
+    <p><span>Síndrome usa seu raio de energia de ponto zero no inimigo mais à frente, lançando-o para trás, causando </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k + 1.1sp" data-checkbox="eval">150k + 1.1sp</output></span><span> dano e atordoando-o durante </span><span class="unit-expr-misc">4</span><span> segundos quando ele chegar ao chão.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>initcooldown</dt><dd>2</dd>
+        <dt>cooldown</dt><dd>9</dd>
+        <dt>splash</dt><dd>400</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2.5</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>9</dd>
+        <dt>initcooldown</dt><dd>2</dd>
+        <dt>priority</dt><dd>2</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy | within(400)</dd>
+        <dt>dmg</dt><dd>150k + 1.1sp</dd>
+        <dt>stunduration</dt><dd>4</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Atordoamento de Energia</a></label></h2>
+    <p><span>A cada </span><span class="unit-expr-misc">3</span><span> ataques básicos, Síndrome atordoa o inimigo que estiver atacando durante </span><span class="unit-expr-misc">4</span><span> segundos.</span></p>
+    <p><span>O atordoamento pode falhar contra inimigos de nível maior que </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple"><dl class="inline-list">
+        <dt>cooldown</dt><dd>0</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>cooldown</dt><dd>0</dd>
+        <dt>attackamt</dt><dd>3</dd>
+        <dt>stunduration</dt><dd>4</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Super Autoproclamado</a></label></h2>
+    <p><span>&#34;</span><a href="../hero/SYNDROME.htm#GREEN" class="rarity-green">Varredura da Sonda</a><span>&#34; agora estuda todos os inimigos durante </span><span class="unit-expr-misc">4</span><span> segundos.</span></p>
+    <p><span>Inimigos lançados para trás por &#34;</span><a href="../hero/SYNDROME.htm#BLUE" class="rarity-blue">Força Propulsora</a><span>&#34; agora causam </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k + 1.1sp" data-checkbox="eval">150k + 1.1sp</output></span><span> dano a inimigos próximos quando chegam ao chão. Se caírem em inimigos atordoados, os inimigos atingidos perdem </span><span class="unit-expr-misc">400</span><span> energia.</span></p>
+    <p><span>O estudo pode falhar e a remoção de energia é menos efetiva contra os inimigos de nível maior que </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p>Bônus de Atributo Adicionais:<p>
+    <ul>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="75k" data-checkbox="eval">75k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidade</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="62k" data-checkbox="eval">62k</output></span><span> </span><span class="unit-expr-misc">Dano básico</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="46k" data-checkbox="eval">46k</output></span><span> </span><span class="unit-expr-misc">Realidade</span></li>
+    </ul>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-red"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <dl class="attr-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>dmg</dt><dd>150k + 1.1sp</dd>
+        <dt>studyduration</dt><dd>4</dd>
+        <dt>energyamt</dt><dd>400</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">Amigos</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden" checked>
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="130" value="130">
+      </span>
+      <span class="unit-pair-name">Estrelas</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/MAGICA_DE_SPELL.htm">Maga Patalójika</a> <small>(170)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#SYNDROME_STUDY">Magia Técnica</a>
+    </p>
+    <blockquote><span>Causa ônus a inimigos estudados</span></blockquote>
+    <ul>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="52k" data-checkbox="eval">52k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidade</span><span> para </span><span class="unit-expr-misc">&lt;hero&gt;</span><span> e aliados</span></li>
+      <li><span>Se Síndrome atordoar um inimigo estudado, ele fica atordoado durante </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="20s%" data-format="%" data-checkbox="eval">20s%</output></span><span> a mais</span></li>
+      <li><span>Inimigos perdem </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval">150k</output></span><span> </span><span class="unit-expr-misc">Armadura</span><span> enquanto estiverem estudados</span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      ???
+    </h2>
+    <p>
+      <a href="../disk_list.htm#SYNDROME_SLOW">Truque Adequado</a>
+    </p>
+    <blockquote><span>Imunidade a lentidões</span></blockquote>
+    <ul>
+      <li><span>Síndrome fica imune a todas as lentidões e as lentidões aplicadas a aliados são </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s%" data-format="%" data-checkbox="eval">25s%</output></span><span> menos efetivas</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidade</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="52k" data-checkbox="eval">52k</output></span><span> </span><span class="unit-expr-misc">PV máx.</span><span> para </span><span class="unit-expr-misc">&lt;hero&gt;</span><span> e aliados</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>Amigos</h1>
+  </div>
+  <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Coleções</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#CONTROL">Controle</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Reduzir Ganho de energia do inimigo</blockquote>
+    <ul>
+      <li><span>Equipes inimigas ganham </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.002k" data-format=".3" data-checkbox="eval">0.002k</output></span><span>% menos energia para cada personagem desta coleção na sua equipe.</span></li>
+    </ul>
+    <!-- Collection } -->
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#STUN">Atordoamento</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Curar quando atordoado</blockquote>
+    <ul>
+      <li><span>Cura </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.5k" data-format=".3" data-checkbox="eval">0.5k</output></span><span>% do PV perdido enquanto atordoado.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
+
+</div><!--  container } -->
+</body>
+</html>
