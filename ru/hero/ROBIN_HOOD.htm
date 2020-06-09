@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2020</span>
+  <span style="white-space: nowrap;">Release date: 06/09/2020</span>
   -->
 </div><!--  container } -->
 
@@ -105,7 +105,7 @@ function init()
     <div class="unit-avatar"><!--
       <img alt="Робин Гуд" src="ROBIN_HOOD.png">
     --></div>
-    <h1>Робин Гуд</h1>
+    <h1 class="undertest">Робин Гуд</h1>
     <p>Галантный Робин Гуд с помощью исключительных навыков стрельбы из лука крадет у богатых и одаривает бедных.</p>
     <blockquote>«Выше нос. Однажды все снова будут счастливы».</blockquote>
     <div class="unit-pair-list">
@@ -125,19 +125,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Макс. HP</span>
       <span class="unit-pair-val unit-expr-g">
-        781.35 + 105.975g
+        781.35 + 135.975g
       </span>
       <span class="unit-pair-name">Базовый урон</span>
       <span class="unit-pair-val unit-expr-g">
-        61.05 + 18g
+        61.05 + 19g
       </span>
       <span class="unit-pair-name">Сила навыка</span>
       <span class="unit-pair-val unit-expr-g">
-        140.07 + 11.55g
-      </span>
-      <span class="unit-pair-name">Броня</span>
-      <span class="unit-pair-val unit-expr-g">
-        15 + 3.447g
+        140.07 + 13.55g
       </span>
     </div>
   </div>
@@ -3648,10 +3644,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="781.35 + 105.975g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="61.05 + 18g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="140.07 + 11.55g"></output>
-        <output name="core_armor" for="g" data-raw="1" data-formula="15 + 3.447g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="781.35 + 135.975g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="61.05 + 19g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="140.07 + 13.55g"></output>
       </span>
 
       <!-- Stats { -->
@@ -3743,7 +3738,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Подаяние бедным</a></label></h2>
-    <p><span>Робин Гуд метким выстрелом отбирает </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> HP врага, излечивая союзника с наименьшим количеством HP на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> HP.</span></p>
+    <p><span>Робин Гуд метким выстрелом отбирает </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="360k + 3.2sp" data-checkbox="eval">360k + 3.2sp</output></span><span> HP врага, излечивая союзника с наименьшим количеством HP на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="360k + 3.2sp" data-checkbox="eval">360k + 3.2sp</output></span><span> HP.</span></p>
+    <p><span>Если Робин Гуд целится в изученного врага этим навыком, он наносит урон, равный оставшимся HP врага, потом распределяет </span><span class="unit-expr-misc">100%</span><span> от нанесенного урона по всем союзникам в виде HP.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -3756,12 +3752,15 @@ function init()
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>mostHPRaw &lt; enemy</dd>
         <dt>primary</dt><dd>mostHPRaw &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>320k + 3sp</dd>
+        <dt>dmgamt</dt><dd>360k + 3.2sp</dd>
+        <dt>percent</dt><dd>1[%]</dd>
+        <dt>dmgpercent</dt><dd>2.5[%]</dd>
+        <dt>dmgcap</dt><dd>10000 + 2000k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">В точку</a></label></h2>
-    <p><span>Робин Гуд помечает ближайшего врага, изучая его в течение </span><span class="unit-expr-misc">12</span><span> сек. и отбирая </span><span class="unit-expr-misc">200</span><span> ед. энергии.</span></p>
+    <p><span>Робин Гуд помечает ближайшего врага, изучая его в течение </span><span class="unit-expr-misc">14</span><span> сек. и отбирая всю энергию.</span></p>
     <p><span>Количество похищенной энергии уменьшается, если враг выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>-го уровня.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -3777,13 +3776,12 @@ function init()
         <dt>priority</dt><dd>1</dd>
         <dt>trigger</dt><dd>closest &lt; enemy | within(default+100)</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default+100)</dd>
-        <dt>studyduration</dt><dd>12</dd>
-        <dt>energyamt</dt><dd>200</dd>
+        <dt>studyduration</dt><dd>14</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Тугая тетива</a></label></h2>
-    <p><span>Робин Гуд выстрелом ослабляет ближайшего врага, нанося </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="250k + 1.3bd" data-checkbox="eval">250k + 1.3bd</output></span><span> урона, отбрасывая его назад и оглушая на </span><span class="unit-expr-misc">10</span><span> сек.</span></p>
+    <p><span>Робин Гуд выстрелом ослабляет ближайшего врага, нанося </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="270k + 2.6bd" data-checkbox="eval">270k + 2.6bd</output></span><span> урона, отбрасывая его назад и оглушая на </span><span class="unit-expr-misc">12</span><span> сек.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -3801,21 +3799,22 @@ function init()
         <dt>priority</dt><dd>2</dd>
         <dt>trigger</dt><dd>closest &lt; enemy | within(default+100)</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default+100)</dd>
-        <dt>dmg</dt><dd>250k + 1.3bd</dd>
-        <dt>stunduration</dt><dd>10</dd>
+        <dt>dmg</dt><dd>270k + 2.6bd</dd>
+        <dt>stunduration</dt><dd>12</dd>
         <dt>knockbackamt</dt><dd>250</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Прочный лук</a></label></h2>
-    <p><span>Робин Гуд наносит </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="40 + v" data-checkbox="eval">40 + v</output></span><span> ед. критического урона. Критический урон повышается для персонажа, совершающего критический удар.</span></p>
-    <p><span>Критический бонусный урон снижается в схватке с врагами выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
+    <p><span>При нанесении урона изученному врагу Робин Гуд получает </span><span class="unit-expr-misc">75</span><span> ед. энергии.</span></p>
+    <p><span>Количество получаемой энергии снижается в схватке с изученными врагами выше ур. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
       <dl class="attr-list">
-        <dt>type</dt><dd>CRIT_DAMAGE</dd>
-        <dt>amt</dt><dd>40 + v</dd>
+        <dt>energyamt</dt><dd>75</dd>
+        <dt>type</dt><dd>ARMOR</dd>
+        <dt>amt</dt><dd>45k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -3864,8 +3863,8 @@ function init()
     </p>
     <blockquote><span>Оглушение после «Тугой тетивы» длится больше.</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="240k" data-checkbox="eval">240k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span></li>
-      <li><span>«</span><a href="../hero/ROBIN_HOOD.htm#BLUE" class="rarity-blue">Тугая тетива</a><span>» отбрасывает врагов дальше и оглушает на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> сек. дольше.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="260k" data-checkbox="eval">260k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span></li>
+      <li><span>«</span><a href="../hero/ROBIN_HOOD.htm#BLUE" class="rarity-blue">Тугая тетива</a><span>» отбрасывает врагов дальше и оглушает на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> сек. дольше. Робин Гуд целится во врага с наибольшей энергией, используя «</span><a href="../hero/ROBIN_HOOD.htm#GREEN" class="rarity-green">В точку</a><span>».</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -3877,8 +3876,8 @@ function init()
     </p>
     <blockquote><span>Больше энергии, крадет HP с помощью «В точку».</span></blockquote>
     <ul>
-      <li><span>Робин Гуд ворует на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval">400k</output></span><span> больше HP, применив навык «</span><a href="../hero/ROBIN_HOOD.htm#WHITE" class="rarity-white">Подаяние бедным</a><span>».</span></li>
-      <li><span>Робин Гуд ворует на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="75s" data-checkbox="eval">75s</output></span><span> больше энергии, применив навык «</span><a href="../hero/ROBIN_HOOD.htm#GREEN" class="rarity-green">В точку</a><span>».</span></li>
+      <li><span>Робин Гуд и его союзники получают </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="420k" data-checkbox="eval">420k</output></span><span> HP, если наносят урон изученному врагу.</span></li>
+      <li><span>Робин Гуд и его союзники с шансом </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="20s%" data-format="%" data-checkbox="eval">20s%</output></span><span> наносят суперкрит вместо крита изученным врагам.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

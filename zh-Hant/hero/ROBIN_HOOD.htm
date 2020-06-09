@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2020</span>
+  <span style="white-space: nowrap;">Release date: 06/09/2020</span>
   -->
 </div><!--  container } -->
 
@@ -105,7 +105,7 @@ function init()
     <div class="unit-avatar"><!--
       <img alt="羅賓漢" src="ROBIN_HOOD.png">
     --></div>
-    <h1>羅賓漢</h1>
+    <h1 class="undertest">羅賓漢</h1>
     <p>俠盜羅賓漢懂得運用他巧妙的箭術劫富濟貧。</p>
     <blockquote>「記住，別灰心，總有一天這兒會充滿歡樂的。」</blockquote>
     <div class="unit-pair-list">
@@ -125,19 +125,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">最大生命值</span>
       <span class="unit-pair-val unit-expr-g">
-        781.35 + 105.975g
+        781.35 + 135.975g
       </span>
       <span class="unit-pair-name">基本傷害</span>
       <span class="unit-pair-val unit-expr-g">
-        61.05 + 18g
+        61.05 + 19g
       </span>
       <span class="unit-pair-name">技能威力</span>
       <span class="unit-pair-val unit-expr-g">
-        140.07 + 11.55g
-      </span>
-      <span class="unit-pair-name">護甲</span>
-      <span class="unit-pair-val unit-expr-g">
-        15 + 3.447g
+        140.07 + 13.55g
       </span>
     </div>
   </div>
@@ -3648,10 +3644,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="781.35 + 105.975g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="61.05 + 18g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="140.07 + 11.55g"></output>
-        <output name="core_armor" for="g" data-raw="1" data-formula="15 + 3.447g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="781.35 + 135.975g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="61.05 + 19g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="140.07 + 13.55g"></output>
       </span>
 
       <!-- Stats { -->
@@ -3743,7 +3738,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">相中弱者</a></label></h2>
-    <p><span>羅賓漢射出漂亮的一箭，從生命值最高的敵人身上竊取 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> 生命值並送給生命值最低的盟友，幫他們治療 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="320k + 3sp" data-checkbox="eval">320k + 3sp</output></span><span> 生命值。</span></p>
+    <p><span>羅賓漢射出漂亮的一箭，從生命值最高的敵人身上竊取 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="360k + 3.2sp" data-checkbox="eval">360k + 3.2sp</output></span><span> 生命值並送給生命值最低的盟友，幫他們治療 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="360k + 3.2sp" data-checkbox="eval">360k + 3.2sp</output></span><span> 生命值。</span></p>
+    <p><span>If Robin Hood targets a studied enemy with this skill, he instead deals damage equal to </span><span class="unit-expr-misc">250%</span><span> of their remaining HP and distributes </span><span class="unit-expr-misc">100%</span><span> of the damage done to all of his allies as HP. Robin Hood cannot deal more than </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10000 + 2000k" data-checkbox="eval">10000 + 2000k</output></span><span> damage with this.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -3756,12 +3752,15 @@ function init()
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>mostHPRaw &lt; enemy</dd>
         <dt>primary</dt><dd>mostHPRaw &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>320k + 3sp</dd>
+        <dt>dmgamt</dt><dd>360k + 3.2sp</dd>
+        <dt>percent</dt><dd>1[%]</dd>
+        <dt>dmgpercent</dt><dd>2.5[%]</dd>
+        <dt>dmgcap</dt><dd>10000 + 2000k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">正中紅心</a></label></h2>
-    <p><span>羅賓漢瞄準最近的一名敵人，觀察他們 </span><span class="unit-expr-misc">12</span><span> 秒並竊取 </span><span class="unit-expr-misc">200</span><span> 能量。</span></p>
+    <p><span>羅賓漢瞄準最近的一名敵人，觀察他們 </span><span class="unit-expr-misc">14</span><span> 秒並竊取 </span><span class="unit-expr-misc">&lt;energyAmt&gt;</span><span> 能量。</span></p>
     <p><span>面對等級高於 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 的敵人時，竊取到的能量會比較少。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -3777,13 +3776,12 @@ function init()
         <dt>priority</dt><dd>1</dd>
         <dt>trigger</dt><dd>closest &lt; enemy | within(default+100)</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default+100)</dd>
-        <dt>studyduration</dt><dd>12</dd>
-        <dt>energyamt</dt><dd>200</dd>
+        <dt>studyduration</dt><dd>14</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">箭在弦上</a></label></h2>
-    <p><span>羅賓漢朝最近的一名敵人射出奪魂箭，造成 </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="250k + 1.3bd" data-checkbox="eval">250k + 1.3bd</output></span><span> 傷害，將他們擊退並擊暈長達 </span><span class="unit-expr-misc">10</span><span> 秒。</span></p>
+    <p><span>羅賓漢朝最近的一名敵人射出奪魂箭，造成 </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="270k + 2.6bd" data-checkbox="eval">270k + 2.6bd</output></span><span> 傷害，將他們擊退並擊暈長達 </span><span class="unit-expr-misc">12</span><span> 秒。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -3801,21 +3799,22 @@ function init()
         <dt>priority</dt><dd>2</dd>
         <dt>trigger</dt><dd>closest &lt; enemy | within(default+100)</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default+100)</dd>
-        <dt>dmg</dt><dd>250k + 1.3bd</dd>
-        <dt>stunduration</dt><dd>10</dd>
+        <dt>dmg</dt><dd>270k + 2.6bd</dd>
+        <dt>stunduration</dt><dd>12</dd>
         <dt>knockbackamt</dt><dd>250</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">強化之弓</a></label></h2>
-    <p><span>羅賓漢獲得 </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="40 + v" data-checkbox="eval">40 + v</output></span><span> 暴擊傷害。暴擊傷害可提高在暴擊時所造成的傷害。</span></p>
+    <p><span>羅賓漢獲得 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="45k" data-checkbox="eval">45k</output></span><span> 暴擊傷害。暴擊傷害可提高在暴擊時所造成的傷害。</span></p>
     <p><span>面對等級高於 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 的敵人時，暴擊傷害的加成會比較低。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
       <dl class="attr-list">
-        <dt>type</dt><dd>CRIT_DAMAGE</dd>
-        <dt>amt</dt><dd>40 + v</dd>
+        <dt>energyamt</dt><dd>75</dd>
+        <dt>type</dt><dd>ARMOR</dd>
+        <dt>amt</dt><dd>45k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -3864,7 +3863,7 @@ function init()
     </p>
     <blockquote><span>「箭在弦上」擊暈時間拉長。</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="240k" data-checkbox="eval">240k</output></span><span> </span><span class="unit-expr-misc">基本傷害</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="260k" data-checkbox="eval">260k</output></span><span> </span><span class="unit-expr-misc">基本傷害</span></li>
       <li><span>「</span><a href="../hero/ROBIN_HOOD.htm#BLUE" class="rarity-blue">箭在弦上</a><span>」可將敵人擊退地更遠，敵人遭到擊暈的時間拉長 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> 秒。</span></li>
     </ul>
     <!-- Disk } -->
@@ -3877,8 +3876,8 @@ function init()
     </p>
     <blockquote><span>使用「正中紅心」可竊取更多能量、生命值。</span></blockquote>
     <ul>
-      <li><span>羅賓漢使用「</span><a href="../hero/ROBIN_HOOD.htm#WHITE" class="rarity-white">相中弱者</a><span>」可額外竊取 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval">400k</output></span><span> 生命值。</span></li>
-      <li><span> 羅賓漢使用「</span><a href="../hero/ROBIN_HOOD.htm#GREEN" class="rarity-green">正中紅心</a><span>」可額外竊取 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="75s" data-checkbox="eval">75s</output></span><span> 能量。</span></li>
+      <li><span>羅賓漢使用「</span><a href="../hero/ROBIN_HOOD.htm#WHITE" class="rarity-white">相中弱者</a><span>」可額外竊取 </span><span class="unit-expr-misc">&lt;dmgAmtBuff&gt;</span><span> 生命值。</span></li>
+      <li><span> 羅賓漢使用「</span><a href="../hero/ROBIN_HOOD.htm#GREEN" class="rarity-green">正中紅心</a><span>」可額外竊取 </span><span class="unit-expr-misc">&lt;energyAmtBuff&gt;</span><span> 能量。</span></li>
     </ul>
     <!-- Disk } -->
     </form>
