@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1580904044">
+<link rel="stylesheet" href="../../star.css?1580904044">
+<link rel="stylesheet" href="../../unit.css?1580904044">
+<title>Шито, Крыто и Корыто - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Шито, Крыто и Корыто к вашим услугам. Целый арсенал оружия, перевозимый в ванне, позволяет этой коварной троице наносить разнообразный урон по врагам.">
+<script src="../../util.js?1580904044"></script>
+<script src="../../unit.js?1580904044"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+  document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">Герои</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">Друзья</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Коллекции</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">Предметы</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Выбрать язык / Choose Language
+    <span class="input-btn">
+      <input id="lang-menu" type="checkbox">
+      <span class="dropdown-content">
+        <a href="../../de/hero/LOCK_SHOCK_BARREL.htm">Deutsche</a>
+        <a href="../../en/hero/LOCK_SHOCK_BARREL.htm">English</a>
+        <a href="../../es/hero/LOCK_SHOCK_BARREL.htm">Español</a>
+        <a href="../../fr/hero/LOCK_SHOCK_BARREL.htm">Français</a>
+        <a href="../../it/hero/LOCK_SHOCK_BARREL.htm">Italiano</a>
+        <a href="../../ja/hero/LOCK_SHOCK_BARREL.htm">日本語</a>
+        <a href="../../ko/hero/LOCK_SHOCK_BARREL.htm">한국어</a>
+        <a href="../../pt/hero/LOCK_SHOCK_BARREL.htm">Português</a>
+        <a href="../../ru/hero/LOCK_SHOCK_BARREL.htm">русский</a>
+        <a href="../../zh-Hans/hero/LOCK_SHOCK_BARREL.htm">简体中文</a>
+        <a href="../../zh-Hant/hero/LOCK_SHOCK_BARREL.htm">繁體中文</a>
+      </span>
+    </span>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 09/01/2020</span>
+  -->
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar"><!--
+      <img alt="Шито, Крыто и Корыто" src="LOCK_SHOCK_BARREL.png">
+    --></div>
+    <h1 class="undertest">Шито, Крыто и Корыто</h1>
+    <p>Шито, Крыто и Корыто к вашим услугам. Целый арсенал оружия, перевозимый в ванне, позволяет этой коварной троице наносить разнообразный урон по врагам.</p>
+    <blockquote>«Сласти или страсти!»</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Роль</span>
+      <a class="unit-pair-val" href="../hero_list.htm?role=control">Контроль</a>
+      <span class="unit-pair-name">Позиция</span>
+      <a class="unit-pair-val" href="../hero_list.htm?position=central">По центру</a>
+      <span class="unit-pair-name">Команда в испытаниях:</span>
+      <a class="unit-pair-val" href="../hero_list.htm?team=yellow">Желтый</a>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>Основные характеристики</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Макс. HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        800.7 + 244.82g
+      </span>
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val unit-expr-g">
+        36.8 + 2.94g
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val unit-expr-g">
+        34.1 + 11.41g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1>Подробнее</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="200" value="200">
+      </span>
+      <span class="unit-pair-name">Ранг</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="17.64" selected>RED+13</option>
+          <option value="16.03">RED+12</option>
+          <option value="14.58">RED+11</option>
+          <option value="13.25">RED+10</option>
+          <option value="12.05">RED+9</option>
+          <option value="10.95">RED+8</option>
+          <option value="9.96">RED+7</option>
+          <option value="9.05">RED+6</option>
+          <option value="8.23">RED+5</option>
+          <option value="7.51">RED+4</option>
+          <option value="6.82">RED+3</option>
+          <option value="6.19">RED+2</option>
+          <option value="5.64">RED+1</option>
+          <option value="5.13">RED</option>
+          <option value="4.67">ORANGE+8</option>
+          <option value="4.25">ORANGE+7</option>
+          <option value="3.87">ORANGE+6</option>
+          <option value="3.52">ORANGE+5</option>
+          <option value="3.2">ORANGE+4</option>
+          <option value="2.91">ORANGE+3</option>
+          <option value="2.65">ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">Звезды</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.91"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.52"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.87"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.25"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.67"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.13"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.64"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.19"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.82"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="7.51"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="8.23"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.96"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="10.95"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="12.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="13.25"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="14.58"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="16.03"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="17.64"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="800.7 + 244.82g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="36.8 + 2.94g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="34.1 + 11.41g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Макс. HP</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">Навыки</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
+      </span>
+      <span class="unit-pair-name">Базовый урон</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
+      </span>
+      <span class="unit-pair-name">Сила навыка</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
+      </span>
+    </div>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Попался!</a></label></h2>
+    <p><span>Пассивный навык: при базовой атаке Шито и Крыто стреляют из рогатки и наносят фантастический урон, а Корыто облизывает леденец и лечит союзника с наименьшими HP. </span></p>
+    <p><span> Активный навык: игрок выбирает врага, которого Шито, Крыто и Корыто похищают. Троица на ванне подъезжает к врагу и засовывает его в мешок. Пока враг в мешке, он получает </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="260k + 0.8sp" data-checkbox="eval">260k + 0.8sp</output></span><span> ед. урона в секунду. Враг выбирается из мешка спустя </span><span class="unit-expr-misc">8</span><span> сек. </span></p>
+    <p><span> В авторежиме Шито, Крыто и Корыто выбирают врага с наибольшим избежанием. Если Шито, Крыто и Корыто упускают выбранного врага и не используют навык, они получают </span><span class="unit-expr-misc">200</span><span> ед. энергии.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>0.9</dd>
+        <dt>duration</dt><dd>2</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>dmg</dt><dd>260k + 0.8sp</dd>
+        <dt>energyamt</dt><dd>200</dd>
+        <dt>sackduration</dt><dd>8</dd>
+        <dt>choiceduration</dt><dd>10</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Боязнь скорпионов</a></label></h2>
+    <p><span>Шито бросает коробку со скорпионами в ближайшего врага, нанося </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="260k + 0.8sp" data-checkbox="eval">260k + 0.8sp</output></span><span> ед. урона в секунду в течение </span><span class="unit-expr-misc">4</span><span> сек. и отбирая </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k + 1sp" data-checkbox="eval">200k + 1sp</output></span><span> ед. реальности на </span><span class="unit-expr-misc">3</span><span> сек.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>cooldown</dt><dd>10</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2.4</dd>
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>10</dd>
+        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
+        <dt>dmg</dt><dd>260k + 0.8sp</dd>
+        <dt>realityamt</dt><dd>200k + 1sp</dd>
+        <dt>dotduration</dt><dd>4</dd>
+        <dt>realityduration</dt><dd>3</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Нежеланный подарок</a></label></h2>
+    <p><span>Крыто бросает табакерку с чертиком на поле боя. Через </span><span class="unit-expr-misc">5</span><span> сек. табакерка открывается, пугая врагов рядом на </span><span class="unit-expr-misc">5</span><span> сек.</span></p>
+    <p><span>Испуг может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>-го уровня.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>cooldown</dt><dd>8</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <dl class="attr-list">
+        <dt>duration</dt><dd>2</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>initcooldown</dt><dd>3</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>furthestPrefFacing &lt; enemy</dd>
+        <dt>primary</dt><dd>furthestPrefFacing &lt; enemy</dd>
+        <dt>waitduration</dt><dd>5</dd>
+        <dt>scareduration</dt><dd>5</dd>
+        <dt>scareradius</dt><dd>200</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Восторг приспешников</a></label></h2>
+    <p><span>Каждый </span><span class="unit-expr-misc">4</span><span>-й крит. удар Шито, Крыто и Корыто отнимает у задетого врага </span><span class="unit-expr-misc">200</span><span> ед. стойкости и </span><span class="unit-expr-misc">200</span><span> ед. избежания на </span><span class="unit-expr-misc">3</span><span> сек.</span></p>
+    <p><span>Ослабление стойкости и избежания может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>-го уровня.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple"><dl class="inline-list">
+        <dt>cooldown</dt><dd>3</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <dl class="attr-list">
+        <dt>cooldown</dt><dd>3</dd>
+        <dt>evasiondown</dt><dd>200</dd>
+        <dt>tenacitydown</dt><dd>200</dd>
+        <dt>critamt</dt><dd>4</dd>
+        <dt>duration</dt><dd>3</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Шаловливая троица</a></label></h2>
+    <p><span>Когда Шито, Крыто и Корыто наносят врагу критический урон, у них есть </span><span class="unit-expr-misc">0.8</span><span> шанс наложить на врага случайную блокировку на </span><span class="unit-expr-misc">4</span><span> сек.</span></p>
+    <p><span> Если последний враг в бою имеет менее </span><span class="unit-expr-misc">30%</span><span> от своего здоровья, «</span><a href="../hero/LOCK_SHOCK_BARREL.htm#WHITE" class="rarity-white">Попался!</a><span>» мгновенно отправит его в нокаут.</span></p>
+    <p><span> Блокировки включают в себя оглушение, заморозку, ослепление, очарование и молчание.</span></p>
+    <p><span>Шанс наложить случайную блокировку уменьшается, если враг выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>-го уровня.</span></p>
+    <p>Дополнительные усилители параметров:<p>
+    <ul>
+      <li><span>+</span><span class="unit-expr-misc">400</span><span> урона/сек. от навыка «</span><a href="../hero/LOCK_SHOCK_BARREL.htm#WHITE" class="rarity-white">Попался!</a><span>»</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="135k" data-checkbox="eval">135k</output></span><span> </span><span class="unit-expr-misc">Броня</span></li>
+    </ul>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-red"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+      </dl></label>
+      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <dl class="attr-list">
+        <dt>damagetype</dt><dd>Fantastic</dd>
+        <dt>disablepercent</dt><dd>0.8</dd>
+        <dt>disableduration</dt><dd>4</dd>
+        <dt>hppercent</dt><dd>0.3[%]</dd>
+        <dt>dmg</dt><dd>400</dd>
+      </dl>
+      </div></div>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">Друзья</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden" checked>
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="160" value="160">
+      </span>
+      <span class="unit-pair-name">Звезды</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/OOGIE_BOOGIE.htm">Уги-Буги</a> <small>(188)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#LOCK_SHOCK_BARREL_SCARE">Маскировка приспешника</a>
+    </p>
+    <blockquote><span>Постепенный урон увеличивает длительность испуга</span></blockquote>
+    <ul>
+      <li><span>При накладывании эффекта постепенного урона на испуганного врага продолжительность испуга увеличивается на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="3+2s" data-checkbox="eval">3+2s</output></span><span> сек.</span></li>
+      <li><span>Враги теряют </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="90s" data-checkbox="eval">90s</output></span><span> </span><span class="unit-expr-misc">Избежание</span><span>, пока испуганы.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="492k" data-checkbox="eval">492k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span> к союзникам по команде (</span><a href="../hero_list.htm?team=yellow" class="unit-expr-misc">Желтый</a><span>)</span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/CHESHIRE_CAT.htm">Чеширский кот</a> <small>(188)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#LOCK_SHOCK_BARREL_FATIGUE">Мешок шалостей</a>
+    </p>
+    <blockquote><span>Похищенные враги получают «Усталость»</span></blockquote>
+    <ul>
+      <li><span>Когда враг выбирается из мешка, он получает </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="3+2s" data-checkbox="eval">3+2s</output></span><span> ур. «Усталости».</span></li>
+      <li><span>Враги на позиции «</span><a href="../hero_list.htm?role=damage" class="unit-expr-misc">Урон</a><span>» теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="145k" data-checkbox="eval">145k</output></span><span> </span><span class="unit-expr-misc">Реальность</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>Друзья</h1>
+  </div>
+  <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Коллекции</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Уровень</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#CONTROL">Контроль</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Уменьшение получаемой врагами энергии</blockquote>
+    <ul>
+      <li><span>Вражеская команда получает на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.002k" data-format=".3" data-checkbox="eval">0.002k</output></span><span>% меньше энергии с каждым героем из этой коллекции, которого вы берете в команду.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
+
+</div><!--  container } -->
+</body>
+</html>
