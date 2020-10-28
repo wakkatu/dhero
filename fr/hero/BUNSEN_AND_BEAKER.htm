@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 10/13/2020</span>
+  <span style="white-space: nowrap;">Release date: 10/27/2020</span>
   -->
 </div><!--  container } -->
 
@@ -125,7 +125,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">PV max</span>
       <span class="unit-pair-val unit-expr-g">
-        300.7 + 24.82g
+        300.7 + 294.82g
       </span>
       <span class="unit-pair-name">Dégâts de base</span>
       <span class="unit-pair-val unit-expr-g">
@@ -149,12 +149,13 @@ function init()
       <!-- Level { -->
       <span class="unit-pair-name">Niveau</span>
       <span class="unit-pair-val">
-        <input name="v" type="number" pattern="\d*" min="1" max="205" value="205">
+        <input name="v" type="number" pattern="\d*" min="1" max="210" value="210">
       </span>
       <span class="unit-pair-name">Rang</span>
       <span class="unit-pair-val">
         <select name="r">
-          <option value="19.40" selected>RED+14</option>
+          <option value="21.34" selected>RED+15</option>
+          <option value="19.40">RED+14</option>
           <option value="17.64">RED+13</option>
           <option value="16.03">RED+12</option>
           <option value="14.58">RED+11</option>
@@ -381,12 +382,17 @@ function init()
         <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
         <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
       <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="21.34"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+      <!-- </fieldset> -->
       <!-- Badge } -->
 
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 24.82g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 294.82g"></output>
         <output name="core_basic_damage" for="g" data-raw="1" data-formula="40.7 + 3.36g"></output>
         <output name="core_skill_power" for="g" data-raw="1" data-formula="66.7 + 5.5g"></output>
       </span>
@@ -501,26 +507,24 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Bulles de victoire</a></label></h2>
-    <p><span>Les clones de Beaker absorbent </span><span class="unit-expr-misc">5%</span><span> des dégâts infligés aux alliés à proximité.</span></p>
-    <p><span>Le renvoi des dégâts est moins efficace sur les alliés de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Beaker, Bunsen et les alliés sont insensibles aux études pendant les </span><span class="unit-expr-misc">10</span><span> premières secondes de chaque vague.</span></p>
+    <p><span>Cette insensibilité aux études peut échouer face aux ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
-      <label for="details-btn-purple"><dl class="inline-list">
-        <dt>splash</dt><dd>60</dd>
-      </dl></label>
+      <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
       <dl class="attr-list">
-        <dt>splash</dt><dd>ally | within(60)</dd>
-        <dt>percent</dt><dd>0.05[%]</dd>
+        <dt>studyduration</dt><dd>10</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Histoire de clones</a></label></h2>
     <p><span>Une fois qu&#39;un Beaker a infligé </span><span class="unit-expr-misc">3</span><span> fois une attaque de base, il explose et inflige </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="70k+0.25sp" data-checkbox="eval">70k+0.25sp</output></span><span> pts de dégâts bonus en plus des dégâts infligés par &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clones en crise</a><span>&#34;.</span></p>
-    <p><span>Quand la compétence des alliés inflige des dégâts à un ennemi aveuglé, elle inflige aussi </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="30k+0.2sp" data-checkbox="eval">30k+0.2sp</output></span><span> pts de dégâts fantastiques en plus.</span></p>
+    <p><span>La compétence des alliés inflige </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="30k+0.2sp" data-checkbox="eval">30k+0.2sp</output></span><span> pts de dégâts en plus à un ennemi aveuglé.</span></p>
     <p>Bonus de stats en plus:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="100k" data-checkbox="eval">100k</output></span><span> pts de dégâts sur &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clones en crise</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-misc">&lt;dmgSkill2&gt;</span><span> pts de dégâts sur &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clones en crise</a><span>&#34;</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">PV max</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="83k" data-checkbox="eval">83k</output></span><span> </span><span class="unit-expr-misc">Réalité</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="50k" data-checkbox="eval">50k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -533,7 +537,6 @@ function init()
         <dt>attackamt</dt><dd>3</dd>
         <dt>dmgbonus</dt><dd>70k+0.25sp</dd>
         <dt>dmgbonus2</dt><dd>30k+0.2sp</dd>
-        <dt>dmgskill2</dt><dd>100k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -554,7 +557,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Niveau</span>
       <span class="unit-pair-val">
-        <input name="level" type="number" pattern="\d*" min="1" max="165" value="165">
+        <input name="level" type="number" pattern="\d*" min="1" max="170" value="170">
       </span>
       <span class="unit-pair-name">Étoiles</span>
       <span class="unit-pair-val star-group">
@@ -575,7 +578,7 @@ function init()
     <p class="hr"></p>
     <!-- Disk { -->
     <h2>
-      ???
+      <a href="../hero/YZMA.htm">Yzma</a> <small>(195)</small>
     </h2>
     <p>
       <a href="../disk_list.htm#BUNSEN_AND_BEAKER_SPEED"></a>
@@ -592,13 +595,17 @@ function init()
       ???
     </h2>
     <p>
-      <a href="../disk_list.htm#BUNSEN_AND_BEAKER_STUDY">Faut pas pousser</a>
+      <a href="../disk_list.htm#BUNSEN_AND_BEAKER_STUDY"></a>
     </p>
-    <blockquote><span>Les alliés sont immunisés contre l&#39;étude</span></blockquote>
+    <blockquote></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="60k" data-checkbox="eval">60k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="57k" data-checkbox="eval">57k</output></span><span> &#34;</span><span class="unit-expr-misc">Armure</span><span>&#34; aux alliés</span></li>
-      <li><span>Beaker, Bunsen et les alliés sont insensibles aux études pendant les </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="3s" data-checkbox="eval">3s</output></span><span> premières secondes de chaque vague.</span></li>
+      <li><span>Les clones de Beaker absorbent </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="4s%" data-format="%" data-checkbox="eval">4s%</output></span><span> des dégâts infligés aux alliés à proximité</span>
+        <div><dl class="unit-note inline-list">
+          <dt>splash</dt><dd>60</dd>
+        </dl></div>
+      </li>
     </ul>
     <!-- Disk } -->
     </form>

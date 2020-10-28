@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 10/13/2020</span>
+  <span style="white-space: nowrap;">Release date: 10/27/2020</span>
   -->
 </div><!--  container } -->
 
@@ -125,7 +125,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">最大生命值</span>
       <span class="unit-pair-val unit-expr-g">
-        300.7 + 24.82g
+        300.7 + 294.82g
       </span>
       <span class="unit-pair-name">基本傷害</span>
       <span class="unit-pair-val unit-expr-g">
@@ -149,12 +149,13 @@ function init()
       <!-- Level { -->
       <span class="unit-pair-name">等級</span>
       <span class="unit-pair-val">
-        <input name="v" type="number" pattern="\d*" min="1" max="205" value="205">
+        <input name="v" type="number" pattern="\d*" min="1" max="210" value="210">
       </span>
       <span class="unit-pair-name">排名</span>
       <span class="unit-pair-val">
         <select name="r">
-          <option value="19.40" selected>RED+14</option>
+          <option value="21.34" selected>RED+15</option>
+          <option value="19.40">RED+14</option>
           <option value="17.64">RED+13</option>
           <option value="16.03">RED+12</option>
           <option value="14.58">RED+11</option>
@@ -381,12 +382,17 @@ function init()
         <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
         <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
       <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="21.34"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+      <!-- </fieldset> -->
       <!-- Badge } -->
 
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 24.82g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 294.82g"></output>
         <output name="core_basic_damage" for="g" data-raw="1" data-formula="40.7 + 3.36g"></output>
         <output name="core_skill_power" for="g" data-raw="1" data-formula="66.7 + 5.5g"></output>
       </span>
@@ -443,8 +449,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Copy Machine</a></label></h2>
-    <p><span>Passive: Dr Bunsen enters battle with a clone of Beaker who has </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+1sp" data-checkbox="eval">200k+1sp</output></span><span> Max HP and runs forward and flails at enemies as a basic attack, dealing </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="40k + 1bd" data-checkbox="eval">40k + 1bd</output></span><span> per hit. Instead of a basic attack, Dr Bunsen clones Beaker again. Dr Bunsen can summon a maximum of </span><span class="unit-expr-misc">5</span><span> Beakers at a time.</span></p>
-    <p><span>Active: Dr Bunsen sends his cloning machine into overdrive, instantly cloning </span><span class="unit-expr-misc">2</span><span> new Beakers.</span></p>
+    <p><span>Passive: Instead of a basic attack, Dr. Bunsen clones Beaker. Each clone of Beaker has </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+1sp" data-checkbox="eval">200k+1sp</output></span><span> Max HP and deals </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="40k + 1bd" data-checkbox="eval">40k + 1bd</output></span><span> damage with each basic attack. Dr. Bunsen can have a maximum of </span><span class="unit-expr-misc">5</span><span> Beaker clones in battle at one time.</span></p>
+    <p><span>Active: Dr. Bunsen sends his cloning machine into overdrive, instantly cloning </span><span class="unit-expr-misc">2</span><span> new Beakers.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -480,7 +486,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Electric Nose Warmer</a></label></h2>
-    <p><span>Dr Bunsen activates his electric nose warmer, giving him </span><span class="unit-expr-misc">180</span><span> energy, healing him for </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+1sp" data-checkbox="eval">200k+1sp</output></span><span> HP, and increasing his attack speed </span><span class="unit-expr-misc">25%</span><span> for </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
+    <p><span>Dr. Bunsen activates his electric nose warmer, giving him </span><span class="unit-expr-misc">180</span><span> energy, healing him for </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+1sp" data-checkbox="eval">200k+1sp</output></span><span> HP, and increasing his attack speed by </span><span class="unit-expr-misc">25%</span><span> for </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>initcooldown</dt><dd>3</dd>
@@ -501,26 +507,24 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Bubbly With Excitement</a></label></h2>
-    <p><span>Clones of Beaker divert </span><span class="unit-expr-misc">5%</span><span> of damage dealt to nearby allies to themselves.</span></p>
-    <p><span>The damage diversion is less effective for allies above level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p><span>Beaker, Dr. Bunsen, and allies are immune to Studies for the first </span><span class="unit-expr-misc">10</span><span> seconds of each wave.</span></p>
+    <p><span>The Study immunity has a chance to fail against enemies above level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
-      <label for="details-btn-purple"><dl class="inline-list">
-        <dt>splash</dt><dd>60</dd>
-      </dl></label>
+      <label for="details-btn-purple">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
       <dl class="attr-list">
-        <dt>splash</dt><dd>ally | within(60)</dd>
-        <dt>percent</dt><dd>0.05[%]</dd>
+        <dt>studyduration</dt><dd>10</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Cloning Around</a></label></h2>
     <p><span>After a Beaker has basic attacked </span><span class="unit-expr-misc">3</span><span> times, they automatically explode, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="70k+0.25sp" data-checkbox="eval">70k+0.25sp</output></span><span> bonus damage in addition to the damage dealt by &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clone Kaboom</a><span>&#34;.</span></p>
-    <p><span>When allies&#39;s skill deals damage to a blinded enemy, they also deal </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="30k+0.2sp" data-checkbox="eval">30k+0.2sp</output></span><span> bonus Fantastic damage.</span></p>
+    <p><span>Allies&#39;s damage dealing skills deal </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="30k+0.2sp" data-checkbox="eval">30k+0.2sp</output></span><span> bonus damage to Blinded enemies.</span></p>
     <p>額外屬性提升：<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="100k" data-checkbox="eval">100k</output></span><span> Damage to &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clone Kaboom</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-misc">&lt;dmgSkill2&gt;</span><span> Damage to &#34;</span><a href="../hero/BUNSEN_AND_BEAKER.htm#GREEN" class="rarity-green">Clone Kaboom</a><span>&#34;</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="83k" data-checkbox="eval">83k</output></span><span> </span><span class="unit-expr-misc">現實</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="50k" data-checkbox="eval">50k</output></span><span> </span><span class="unit-expr-misc">技能威力</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -533,7 +537,6 @@ function init()
         <dt>attackamt</dt><dd>3</dd>
         <dt>dmgbonus</dt><dd>70k+0.25sp</dd>
         <dt>dmgbonus2</dt><dd>30k+0.2sp</dd>
-        <dt>dmgskill2</dt><dd>100k</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -554,7 +557,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">等級</span>
       <span class="unit-pair-val">
-        <input name="level" type="number" pattern="\d*" min="1" max="165" value="165">
+        <input name="level" type="number" pattern="\d*" min="1" max="170" value="170">
       </span>
       <span class="unit-pair-name">星等</span>
       <span class="unit-pair-val star-group">
@@ -575,7 +578,7 @@ function init()
     <p class="hr"></p>
     <!-- Disk { -->
     <h2>
-      ???
+      <a href="../hero/YZMA.htm">伊絲瑪</a> <small>(195)</small>
     </h2>
     <p>
       <a href="../disk_list.htm#BUNSEN_AND_BEAKER_SPEED"></a>
@@ -592,13 +595,17 @@ function init()
       ???
     </h2>
     <p>
-      <a href="../disk_list.htm#BUNSEN_AND_BEAKER_STUDY">Don&#39;t Push It</a>
+      <a href="../disk_list.htm#BUNSEN_AND_BEAKER_STUDY"></a>
     </p>
-    <blockquote><span>Allies Immune to Studied</span></blockquote>
+    <blockquote></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="60k" data-checkbox="eval">60k</output></span><span> </span><span class="unit-expr-misc">技能威力</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="57k" data-checkbox="eval">57k</output></span><span> </span><span class="unit-expr-misc">護甲</span><span> to allies</span></li>
-      <li><span>Beaker &amp; Bunsen and allies are immune to being Studied for the first </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="3s" data-checkbox="eval">3s</output></span><span> seconds of each wave</span></li>
+      <li><span>Clones of Beaker divert </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="4s%" data-format="%" data-checkbox="eval">4s%</output></span><span> of damage dealt to nearby allies to themselves</span>
+        <div><dl class="unit-note inline-list">
+          <dt>splash</dt><dd>60</dd>
+        </dl></div>
+      </li>
     </ul>
     <!-- Disk } -->
     </form>
