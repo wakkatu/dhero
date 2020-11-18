@@ -94,7 +94,7 @@ function init()
     </span>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 11/10/2020</span>
+  <span style="white-space: nowrap;">Release date: 11/17/2020</span>
   -->
 </div><!--  container } -->
 
@@ -105,7 +105,7 @@ function init()
     <div class="unit-avatar"><!--
       <img alt="Dr. Facilier" src="DR_FACILIER.png">
     --></div>
-    <h1>Dr. Facilier</h1>
+    <h1 class="undertest">Dr. Facilier</h1>
     <p>Com a ajuda de seus amigos do outro lado, o Dr. Facilier usa seus truques e maldições para causar caos no campo de batalha.</p>
     <blockquote>&#34;Você está no meu mundo agora, e eu tenho amigos do outro lado.&#34;</blockquote>
     <div class="unit-pair-list">
@@ -4424,7 +4424,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Visão Verde</a></label></h2>
-    <p><span>O Dr. Facilier coloca um totem no inimigo mais próximo, transformando-o em sapo. Ele também aplica um escudo com </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="1250k + 2.9sp" data-checkbox="eval">1250k + 2.9sp</output></span><span> PV em si mesmo, com duração de </span><span class="unit-expr-misc">17</span><span> segundos. Quando o escudo é destruído, o inimigo volta à sua forma original.</span></p>
+    <p><span>O Dr. Facilier coloca um totem no inimigo mais próximo, transformando-o em sapo. Ele também aplica um escudo com </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="1250k + 2.9sp" data-checkbox="eval">1250k + 2.9sp</output></span><span> PV em si mesmo. Quando o escudo é destruído, o inimigo volta à sua forma original.</span></p>
+    <p><span>O totem do Dr. Facilier não pode ser evitado nem reduzido com esquiva, tenacidade ou desvios.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
       <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
@@ -4436,7 +4437,6 @@ function init()
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
         <dt>splash</dt><dd>enemy</dd>
         <dt>hpamt</dt><dd>1250k + 2.9sp</dd>
-        <dt>shieldduration</dt><dd>17</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -4467,7 +4467,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Cobra das Sombra</a></label></h2>
-    <p><span>Dr. Facilier convoca um de seus amigos do outro lado para golpear o inimigo com mais PV, causando </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="241k + 2.4sp" data-checkbox="eval">241k + 2.4sp</output></span><span> dano e atordoando-o durante </span><span class="unit-expr-misc">12</span><span> segundos.</span></p>
+    <p><span>Dr. Facilier convoca um de seus amigos do outro lado para golpear o inimigo com mais PV, causando </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="241k + 2.4sp" data-checkbox="eval">241k + 2.4sp</output></span><span> dano e atordoando-o durante </span><span class="unit-expr-misc">12</span><span> segundos. Se o Dr. Facilier derrotar um inimigo com esta habilidade, o tempo de espera dela é reduzido a 0 segundos.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -4501,7 +4501,7 @@ function init()
       </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Cadê o Chapéu?</a></label></h2>
-    <p><span>Inimigos atingidos por &#34;</span><a href="../hero/DR_FACILIER.htm#GREEN" class="rarity-green">As Cartas Dirão</a><span>&#34; também ficam esgotados durante </span><span class="unit-expr-misc">8</span><span> segundos.</span></p>
+    <p><span>Inimigos atingidos por &#34;</span><a href="../hero/DR_FACILIER.htm#GREEN" class="rarity-green">As Cartas Dirão</a><span>&#34; também ficam esgotados durante </span><span class="unit-expr-misc">8</span><span> segundos. Para cada </span><span class="unit-expr-misc">3</span><span> inimigos amaldiçoados pelo Dr. Facilier, o tempo de espera restante de &#34;</span><a href="../hero/DR_FACILIER.htm#GREEN" class="rarity-green">As Cartas Dirão</a><span>&#34; é reduzido em </span><span class="unit-expr-misc">5</span><span> segundos.</span></p>
     <p><span>A velocidade de ataque do Dr. Facilier aumenta em </span><span class="unit-expr-misc">50%</span><span> enquanto ele tiver o escudo de &#34;</span><a href="../hero/DR_FACILIER.htm#WHITE" class="rarity-white">Visão Verde</a><span>&#34;.</span></p>
     <p><span>O esgotamento pode falhar contra os inimigos de nível maior que </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <p>Bônus de Atributo Adicionais:<p>
@@ -4517,6 +4517,8 @@ function init()
         <dt>sapduration</dt><dd>8</dd>
         <dt>attackspeedpercent</dt><dd>0.5[%]</dd>
         <dt>skill1buffamt</dt><dd>595k</dd>
+        <dt>curseamt</dt><dd>3</dd>
+        <dt>cooldownamt</dt><dd>5</dd>
       </dl>
       </div></div>
     </div><!-- unit-note } -->
@@ -4563,12 +4565,16 @@ function init()
     <p>
       <a href="../disk_list.htm#DR_FACILIER_SKILL1_BUFF">Estilo Sangue Frio</a>
     </p>
-    <blockquote><span>Transformação em Sapo mais longa</span></blockquote>
+    <blockquote><span>&#34;</span><a href="../hero/DR_FACILIER.htm#WHITE" class="rarity-white">Visão Verde</a><span>&#34; cura escudo</span></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="123k" data-checkbox="eval">123k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidade</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="92k" data-checkbox="eval">92k</output></span><span> </span><span class="unit-expr-misc">Dano básico</span></li>
       <li><span>Quando um inimigo é transformado em sapo por &#34;</span><a href="../hero/DR_FACILIER.htm#WHITE" class="rarity-white">Visão Verde</a><span>&#34;, ele salta na direção do Dr. Facilier até ficar ao lado dele</span></li>
-      <li><span>O escudo de Dr. Facilier de &#34;</span><a href="../hero/DR_FACILIER.htm#WHITE" class="rarity-white">Visão Verde</a><span>&#34; dura </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> segundos a mais</span></li>
+      <li><span class="unit-expr-misc">5</span><span> segundos após o Dr. Facilier usar &#34;</span><a href="../hero/DR_FACILIER.htm#WHITE" class="rarity-white">Visão Verde</a><span>&#34;, ele cura </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="20s%" data-format="%" data-checkbox="eval">20s%</output></span><span> do PV de seu escudo</span>
+        <div><dl class="unit-note inline-list">
+          <dt>cooldown</dt><dd>5</dd>
+        </dl></div>
+      </li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
