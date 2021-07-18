@@ -8,6 +8,24 @@
 <link rel="stylesheet" href="../unit.css?1580904044">
 <title>英雄 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="欢迎来到 Disney Heroes：战斗模式！">
+<style>
+.container > .section:first-child {
+  max-height: 160px;
+  overflow-y: scroll;
+}
+
+#unit-filter legend {
+  text-transform: uppercase;
+}
+
+#unit-filter span {
+  white-space: nowrap;
+}
+
+#unit-filter input:checked + label {
+  text-shadow: 0px 0px 2px yellow;
+}
+</style>
 <script src="../util.js?1580904044"></script>
 <script>
 var filter = null;
@@ -20,15 +38,39 @@ function filterBy(params)
   for (const heroObj of heroObjs)
   {
     let display = "";
+    let orFilters = new Map();
 
     for (const p of params)
     {
-      if (p[1] === "_")
+      if (p[1] === "")
       {
         continue;
       }
 
-      if (-1 === [].indexOf.call(heroObj.classList, "unit-"+p[0]+"-"+p[1]))
+      if (-1 === heroObj.dataset.tag.split(/\s+/).indexOf(p[0]))
+      {
+        if (p[1] !== "on")
+        {
+          if (!orFilters.has(p[1]))
+          {
+            orFilters.set(p[1], false);
+          }
+        }
+        else
+        {
+          display = "none";
+          break;
+        }
+      }
+      else if (p[1] !== "on")
+      {
+        orFilters.set(p[1], true);
+      }
+    }
+
+    for (const v of orFilters.values())
+    {
+      if (!v)
       {
         display = "none";
         break;
@@ -94,31 +136,114 @@ function init()
 <div class="container"><!-- container { -->
 <div class="section">
   <form id="unit-filter">
-  <div>
-    <input type="radio" name="role" value="_" id="unit-role-all" onchange="filter.update()" checked><label for="unit-role-all">全部</label>
-    <input type="radio" name="role" value="tank" id="unit-role-tank" onchange="filter.update()"><label for="unit-role-tank">肉盾</label>
-    <input type="radio" name="role" value="damage" id="unit-role-damage" onchange="filter.update()"><label for="unit-role-damage">伤害</label>
-    <input type="radio" name="role" value="support" id="unit-role-support" onchange="filter.update()"><label for="unit-role-support">辅助</label>
-    <input type="radio" name="role" value="control" id="unit-role-control" onchange="filter.update()"><label for="unit-role-control">控制</label>
-  </div>
-  <div>
-    <input type="radio" name="position" value="_" id="unit-position-all" onchange="filter.update()" checked><label for="unit-position-all">全部</label>
-    <input type="radio" name="position" value="front" id="unit-position-front" onchange="filter.update()"><label for="unit-position-front">前</label>
-    <input type="radio" name="position" value="central" id="unit-position-central" onchange="filter.update()"><label for="unit-position-central">中</label>
-    <input type="radio" name="position" value="back" id="unit-position-back" onchange="filter.update()"><label for="unit-position-back">后</label>
-  </div>
-  <div>
-    <input type="radio" name="team" value="_" id="unit-team-all" onchange="filter.update()" checked><label for="unit-team-all">全部</label>
-    <input type="radio" name="team" value="red" id="unit-team-red" onchange="filter.update()"><label for="unit-team-red">红</label>
-    <input type="radio" name="team" value="yellow" id="unit-team-yellow" onchange="filter.update()"><label for="unit-team-yellow">黄</label>
-    <input type="radio" name="team" value="blue" id="unit-team-blue" onchange="filter.update()"><label for="unit-team-blue">蓝色</label>
-  </div>
+    <input type="button" value="Reset" onclick="this.form.reset(); filter.update()">
+    <fieldset>
+      <legend>General</legend>
+      <div>
+        <span><input type="checkbox" name="POSITION_FRONT" id="unit-tag-POSITION_FRONT" value="position" onchange="filter.update()"><label for="unit-tag-POSITION_FRONT">前</label></span>
+        <span><input type="checkbox" name="POSITION_CENTRAL" id="unit-tag-POSITION_CENTRAL" value="position" onchange="filter.update()"><label for="unit-tag-POSITION_CENTRAL">中</label></span>
+        <span><input type="checkbox" name="POSITION_BACK" id="unit-tag-POSITION_BACK" value="position" onchange="filter.update()"><label for="unit-tag-POSITION_BACK">后</label></span>
+      </div>
+      <div>
+        <span><input type="checkbox" name="RED_TEAM" id="unit-tag-RED_TEAM" value="team"onchange="filter.update()"><label for="unit-tag-RED_TEAM">Red Team</label></span>
+        <span><input type="checkbox" name="YELLOW_TEAM" id="unit-tag-YELLOW_TEAM" value="team"onchange="filter.update()"><label for="unit-tag-YELLOW_TEAM">Yellow Team</label></span>
+        <span><input type="checkbox" name="BLUE_TEAM" id="unit-tag-BLUE_TEAM" value="team"onchange="filter.update()"><label for="unit-tag-BLUE_TEAM">Blue Team</label></span>
+      </div>
+      <div>
+        <span><input type="checkbox" name="TANK_ROLE" id="unit-tag-TANK_ROLE" value="role"onchange="filter.update()"><label for="unit-tag-TANK_ROLE">Tank</label></span>
+        <span><input type="checkbox" name="DPS_ROLE" id="unit-tag-DPS_ROLE" value="role"onchange="filter.update()"><label for="unit-tag-DPS_ROLE">Damage</label></span>
+        <span><input type="checkbox" name="SUPPORT_ROLE" id="unit-tag-SUPPORT_ROLE" value="role"onchange="filter.update()"><label for="unit-tag-SUPPORT_ROLE">Support</label></span>
+        <span><input type="checkbox" name="CONTROL_ROLE" id="unit-tag-CONTROL_ROLE" value="role"onchange="filter.update()"><label for="unit-tag-CONTROL_ROLE">Control</label></span>
+      </div>
+      <div>
+        <span><input type="checkbox" name="NORMAL_DAMAGE" id="unit-tag-NORMAL_DAMAGE" value="damage_type"onchange="filter.update()"><label for="unit-tag-NORMAL_DAMAGE">Normal Damage</label></span>
+        <span><input type="checkbox" name="FANTASTIC_DAMAGE" id="unit-tag-FANTASTIC_DAMAGE" value="damage_type"onchange="filter.update()"><label for="unit-tag-FANTASTIC_DAMAGE">Fantastic Damage</label></span>
+        <span><input type="checkbox" name="TRUE_DAMAGE" id="unit-tag-TRUE_DAMAGE" value="damage_type"onchange="filter.update()"><label for="unit-tag-TRUE_DAMAGE">True Damage</label></span>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>- Effects</legend>
+      <span><input type="checkbox" name="STUN" id="unit-tag-STUN" onchange="filter.update()"><label for="unit-tag-STUN">Stun</label></span>
+      <span><input type="checkbox" name="FREEZE" id="unit-tag-FREEZE" onchange="filter.update()"><label for="unit-tag-FREEZE">Freeze</label></span>
+      <span><input type="checkbox" name="BLIND" id="unit-tag-BLIND" onchange="filter.update()"><label for="unit-tag-BLIND">Blind</label></span>
+      <span><input type="checkbox" name="SILENCE" id="unit-tag-SILENCE" onchange="filter.update()"><label for="unit-tag-SILENCE">Silence</label></span>
+      <span><input type="checkbox" name="CHARM" id="unit-tag-CHARM" onchange="filter.update()"><label for="unit-tag-CHARM">Charm</label></span>
+      <span><input type="checkbox" name="DISTRACT" id="unit-tag-DISTRACT" onchange="filter.update()"><label for="unit-tag-DISTRACT">Distract</label></span>
+      <span><input type="checkbox" name="CURSE" id="unit-tag-CURSE" onchange="filter.update()"><label for="unit-tag-CURSE">Curse</label></span>
+      <span><input type="checkbox" name="HEX" id="unit-tag-HEX" onchange="filter.update()"><label for="unit-tag-HEX">Hex</label></span>
+      <span><input type="checkbox" name="ENERGY_REMOVAL" id="unit-tag-ENERGY_REMOVAL" onchange="filter.update()"><label for="unit-tag-ENERGY_REMOVAL">Energy Removal</label></span>
+      <span><input type="checkbox" name="SAP" id="unit-tag-SAP" onchange="filter.update()"><label for="unit-tag-SAP">Sap</label></span>
+      <span><input type="checkbox" name="STUDY" id="unit-tag-STUDY" onchange="filter.update()"><label for="unit-tag-STUDY">Study</label></span>
+      <span><input type="checkbox" name="SCARE" id="unit-tag-SCARE" onchange="filter.update()"><label for="unit-tag-SCARE">Scare</label></span>
+      <span><input type="checkbox" name="PIERCE" id="unit-tag-PIERCE" onchange="filter.update()"><label for="unit-tag-PIERCE">Pierce</label></span>
+      <span><input type="checkbox" name="SHATTER" id="unit-tag-SHATTER" onchange="filter.update()"><label for="unit-tag-SHATTER">Shatter</label></span>
+      <span><input type="checkbox" name="FATIGUE" id="unit-tag-FATIGUE" onchange="filter.update()"><label for="unit-tag-FATIGUE">Fatigue</label></span>
+      <span><input type="checkbox" name="WEAKNESS" id="unit-tag-WEAKNESS" onchange="filter.update()"><label for="unit-tag-WEAKNESS">Weakness</label></span>
+      <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK" onchange="filter.update()"><label for="unit-tag-KNOCKBACK">Knock Back</label></span>
+      <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME" onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME">Damage Over Time</label></span>
+      <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF" onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF">Remove Buff</label></span>
+      <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT" onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT">Reduced Damage Dealt</label></span>
+    </fieldset>
+    <fieldset>
+      <legend>+ EFFECTS</legend>
+      <span><input type="checkbox" name="HEAL_SELF" id="unit-tag-HEAL_SELF" onchange="filter.update()"><label for="unit-tag-HEAL_SELF">Heal Self</label></span>
+      <span><input type="checkbox" name="HEAL_TEAM" id="unit-tag-HEAL_TEAM" onchange="filter.update()"><label for="unit-tag-HEAL_TEAM">Heal Team</label></span>
+      <span><input type="checkbox" name="HEAL_OVER_TIME_SELF" id="unit-tag-HEAL_OVER_TIME_SELF" onchange="filter.update()"><label for="unit-tag-HEAL_OVER_TIME_SELF">Heal Over Time Self</label></span>
+      <span><input type="checkbox" name="HEAL_OVER_TIME_TEAM" id="unit-tag-HEAL_OVER_TIME_TEAM" onchange="filter.update()"><label for="unit-tag-HEAL_OVER_TIME_TEAM">Heal Over Time Team</label></span>
+      <span><input type="checkbox" name="SHIELD_SELF" id="unit-tag-SHIELD_SELF" onchange="filter.update()"><label for="unit-tag-SHIELD_SELF">Shield Self</label></span>
+      <span><input type="checkbox" name="SHIELD_TEAM" id="unit-tag-SHIELD_TEAM" onchange="filter.update()"><label for="unit-tag-SHIELD_TEAM">Shield Team</label></span>
+      <span><input type="checkbox" name="REVIVE_SELF" id="unit-tag-REVIVE_SELF" onchange="filter.update()"><label for="unit-tag-REVIVE_SELF">Revive Self</label></span>
+      <span><input type="checkbox" name="REVIVE_TEAM" id="unit-tag-REVIVE_TEAM" onchange="filter.update()"><label for="unit-tag-REVIVE_TEAM">Revive Team</label></span>
+      <span><input type="checkbox" name="ENERGY_SELF" id="unit-tag-ENERGY_SELF" onchange="filter.update()"><label for="unit-tag-ENERGY_SELF">Energy Self</label></span>
+      <span><input type="checkbox" name="ENERGY_TEAM" id="unit-tag-ENERGY_TEAM" onchange="filter.update()"><label for="unit-tag-ENERGY_TEAM">Energy Team</label></span>
+      <span><input type="checkbox" name="ENERGIZE" id="unit-tag-ENERGIZE" onchange="filter.update()"><label for="unit-tag-ENERGIZE">Energize</label></span>
+      <span><input type="checkbox" name="HARDY" id="unit-tag-HARDY" onchange="filter.update()"><label for="unit-tag-HARDY">Hardy</label></span>
+      <span><input type="checkbox" name="CLEANSE" id="unit-tag-CLEANSE" onchange="filter.update()"><label for="unit-tag-CLEANSE">Cleanse</label></span>
+      <span><input type="checkbox" name="COPY_BUFF" id="unit-tag-COPY_BUFF" onchange="filter.update()"><label for="unit-tag-COPY_BUFF">Copy Buff</label></span>
+      <span><input type="checkbox" name="REFLECT" id="unit-tag-REFLECT" onchange="filter.update()"><label for="unit-tag-REFLECT">Reflect</label></span>
+      <span><input type="checkbox" name="BERSERK" id="unit-tag-BERSERK" onchange="filter.update()"><label for="unit-tag-BERSERK">Berserk</label></span>
+      <span><input type="checkbox" name="REDUCED_DAMAGE_TAKEN" id="unit-tag-REDUCED_DAMAGE_TAKEN" onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_TAKEN">Reduced Damage Taken</label></span>
+      <span><input type="checkbox" name="INVINCIBLE" id="unit-tag-INVINCIBLE" onchange="filter.update()"><label for="unit-tag-INVINCIBLE">Invincible</label></span>
+      <span><input type="checkbox" name="DODGE" id="unit-tag-DODGE" onchange="filter.update()"><label for="unit-tag-DODGE">Dodge</label></span>
+      <span><input type="checkbox" name="INVISIBLE" id="unit-tag-INVISIBLE" onchange="filter.update()"><label for="unit-tag-INVISIBLE">Invisible</label></span>
+      <span><input type="checkbox" name="PRECISE" id="unit-tag-PRECISE" onchange="filter.update()"><label for="unit-tag-PRECISE">Precise</label></span>
+    </fieldset>
+    <fieldset>
+      <legend>- Stats</legend>
+      <span><input type="checkbox" name="ARMOR_DECREASE" id="unit-tag-ARMOR_DECREASE" onchange="filter.update()"><label for="unit-tag-ARMOR_DECREASE">Armor Decrease</label></span>
+      <span><input type="checkbox" name="REALITY_DECREASE" id="unit-tag-REALITY_DECREASE" onchange="filter.update()"><label for="unit-tag-REALITY_DECREASE">Reality Decrease</label></span>
+      <span><input type="checkbox" name="DAMAGE_DECREASE" id="unit-tag-DAMAGE_DECREASE" onchange="filter.update()"><label for="unit-tag-DAMAGE_DECREASE">Basic Damage Decrease</label></span>
+      <span><input type="checkbox" name="SKILL_POWER_DECREASE" id="unit-tag-SKILL_POWER_DECREASE" onchange="filter.update()"><label for="unit-tag-SKILL_POWER_DECREASE">Skill Power Decrease</label></span>
+      <span><input type="checkbox" name="NORMAL_CRIT_DECREASE" id="unit-tag-NORMAL_CRIT_DECREASE" onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_DECREASE">Normal Crit Decrease</label></span>
+      <span><input type="checkbox" name="FANTASTIC_CRIT_DECREASE" id="unit-tag-FANTASTIC_CRIT_DECREASE" onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_DECREASE">Fantastic Crit Decrease</label></span>
+      <span><input type="checkbox" name="ATTACK_SPEED_DECREASE" id="unit-tag-ATTACK_SPEED_DECREASE" onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_DECREASE">Attack Speed Decrease</label></span>
+      <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE" onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE">Move Speed Decrease</label></span>
+      <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE" onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE">Evasion Decrease</label></span>
+      <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE" onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE">Tenacity Decrease</label></span>
+      <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE" onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE">Max HP Decrease</label></span>
+      <span><input type="checkbox" name="CRIT_DAMAGE_DECREASE" id="unit-tag-CRIT_DAMAGE_DECREASE" onchange="filter.update()"><label for="unit-tag-CRIT_DAMAGE_DECREASE">Crit Damage Decrease</label></span>
+    </fieldset>
+    <fieldset>
+      <legend>+ Stats</legend>
+      <span><input type="checkbox" name="ARMOR_INCREASE" id="unit-tag-ARMOR_INCREASE" onchange="filter.update()"><label for="unit-tag-ARMOR_INCREASE">Armor Increase</label></span>
+      <span><input type="checkbox" name="REALITY_INCREASE" id="unit-tag-REALITY_INCREASE" onchange="filter.update()"><label for="unit-tag-REALITY_INCREASE">Reality Increase</label></span>
+      <span><input type="checkbox" name="DAMAGE_INCREASE" id="unit-tag-DAMAGE_INCREASE" onchange="filter.update()"><label for="unit-tag-DAMAGE_INCREASE">Basic Damage Increase</label></span>
+      <span><input type="checkbox" name="SKILL_POWER_INCREASE" id="unit-tag-SKILL_POWER_INCREASE" onchange="filter.update()"><label for="unit-tag-SKILL_POWER_INCREASE">Skill Power Increase</label></span>
+      <span><input type="checkbox" name="NORMAL_CRIT_INCREASE" id="unit-tag-NORMAL_CRIT_INCREASE" onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_INCREASE">Normal Crit Increase</label></span>
+      <span><input type="checkbox" name="FANTASTIC_CRIT_INCREASE" id="unit-tag-FANTASTIC_CRIT_INCREASE" onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_INCREASE">Fantastic Crit Increase</label></span>
+      <span><input type="checkbox" name="ATTACK_SPEED_INCREASE" id="unit-tag-ATTACK_SPEED_INCREASE" onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_INCREASE">Attack Speed Increase</label></span>
+      <span><input type="checkbox" name="MOVE_SPEED_INCREASE" id="unit-tag-MOVE_SPEED_INCREASE" onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_INCREASE">Move Speed Increase</label></span>
+      <span><input type="checkbox" name="EVASION_INCREASE" id="unit-tag-EVASION_INCREASE" onchange="filter.update()"><label for="unit-tag-EVASION_INCREASE">Evasion Increase</label></span>
+      <span><input type="checkbox" name="TENACITY_INCREASE" id="unit-tag-TENACITY_INCREASE" onchange="filter.update()"><label for="unit-tag-TENACITY_INCREASE">Tenacity Increase</label></span>
+      <span><input type="checkbox" name="MAX_HP_INCREASE" id="unit-tag-MAX_HP_INCREASE" onchange="filter.update()"><label for="unit-tag-MAX_HP_INCREASE">Max HP Increase</label></span>
+      <span><input type="checkbox" name="CRIT_DAMAGE_INCREASE" id="unit-tag-CRIT_DAMAGE_INCREASE" onchange="filter.update()"><label for="unit-tag-CRIT_DAMAGE_INCREASE">Crit Damage Increase</label></span>
+    </fieldset>
   </form>
 </div>
 
 <div class="unit-brief-list"><!-- unit-brief-list { -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM NORMAL_DAMAGE DODGE ENERGY_REMOVAL ENERGY_SELF DAMAGE_INCREASE MAX_HP_INCREASE REALITY_INCREASE DAMAGE_INCREASE INVISIBLE DAMAGE_INCREASE ATTACK_SPEED_INCREASE HEAL_OVER_TIME_SELF INVINCIBLE">
     <a href="./hero/ALADDIN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="阿拉丁" src="ALADDIN.png">
@@ -133,7 +258,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM HEAL_SELF FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE NORMAL_DAMAGE ATTACK_SPEED_INCREASE KNOCKBACK MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE TENACITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE SHIELD_TEAM">
     <a href="./hero/ALICE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="爱丽丝" src="ALICE.png">
@@ -148,7 +273,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-blue">
+  <div class="section unit-role-control unit-position-back unit-team-blue" data-tag="POSITION_BACK CONTROL_ROLE BLUE_TEAM SILENCE DAMAGE_DECREASE CHARM REVIVE_SELF HEAL_TEAM INVINCIBLE DAMAGE_INCREASE ENERGY_REMOVAL SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SHIELD_TEAM DAMAGE_DECREASE REALITY_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE BLIND">
     <a href="./hero/ANGEL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Angel" src="ANGEL.png">
@@ -163,7 +288,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+  <div class="section unit-role-damage unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_INCREASE DAMAGE_INCREASE SAP SKILL_POWER_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE NORMAL_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_INCREASE">
     <a href="./hero/ANGER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="怒怒" src="ANGER.png">
@@ -178,7 +303,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM ATTACK_SPEED_INCREASE DAMAGE_INCREASE FANTASTIC_DAMAGE KNOCKBACK CLEANSE HEAL_SELF MOVE_SPEED_INCREASE MAX_HP_INCREASE MOVE_SPEED_DECREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE ENERGIZE HEAL_SELF HEAL_TEAM ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE SHIELD_TEAM ATTACK_SPEED_INCREASE">
     <a href="./hero/ANIMAL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="动物鼓手" src="ANIMAL.png">
@@ -193,7 +318,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM HEAL_OVER_TIME_SELF CHARM HARDY ARMOR_INCREASE REALITY_INCREASE ENERGY_SELF HEAL_OVER_TIME_TEAM MAX_HP_INCREASE REALITY_INCREASE ARMOR_INCREASE BERSERK ARMOR_DECREASE SKILL_POWER_INCREASE MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN DAMAGE_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM">
     <a href="./hero/BALOO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Baloo" src="BALOO.png">
@@ -208,7 +333,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM DISTRACT REALITY_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE NORMAL_DAMAGE STUN HEAL_OVER_TIME_SELF BERSERK ATTACK_SPEED_INCREASE HEAL_TEAM ARMOR_INCREASE REALITY_INCREASE SHIELD_SELF SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGIZE ARMOR_INCREASE ARMOR_DECREASE">
     <a href="./hero/BARLEY_LIGHTFOOT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Barley Lightfoot" src="BARLEY_LIGHTFOOT.png">
@@ -223,7 +348,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM NORMAL_DAMAGE STUDY DAMAGE_OVER_TIME ENERGY_SELF ENERGY_REMOVAL DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE HARDY REALITY_DECREASE DAMAGE_INCREASE REDUCED_DAMAGE_DEALT DAMAGE_INCREASE MAX_HP_INCREASE HEAL_OVER_TIME_TEAM">
     <a href="./hero/BASIL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Basil of Baker Street" src="BASIL.png">
@@ -238,7 +363,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM SHIELD_SELF SHIELD_TEAM NORMAL_DAMAGE STUDY REDUCED_DAMAGE_TAKEN HARDY ARMOR_INCREASE MAX_HP_INCREASE ARMOR_INCREASE SHIELD_TEAM SKILL_POWER_INCREASE FREEZE ARMOR_INCREASE SHIELD_SELF SHIELD_TEAM">
     <a href="./hero/BAYMAX.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="大白" src="BAYMAX.png">
@@ -253,7 +378,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM BERSERK ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE HEAL_SELF NORMAL_DAMAGE FANTASTIC_DAMAGE KNOCKBACK CRIT_DAMAGE_INCREASE ARMOR_DECREASE SILENCE DAMAGE_INCREASE MAX_HP_INCREASE REALITY_INCREASE DAMAGE_INCREASE NORMAL_CRIT_INCREASE REALITY_INCREASE MAX_HP_INCREASE DODGE ATTACK_SPEED_DECREASE ARMOR_INCREASE NORMAL_DAMAGE">
     <a href="./hero/BEAST.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="野兽" src="BEAST.png">
@@ -268,7 +393,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+  <div class="section unit-role-damage unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE ENERGY_SELF HARDY SHIELD_SELF DAMAGE_INCREASE NORMAL_DAMAGE SKILL_POWER_INCREASE SAP KNOCKBACK ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE REALITY_INCREASE MAX_HP_INCREASE DODGE SAP SKILL_POWER_INCREASE REALITY_INCREASE ENERGY_SELF">
     <a href="./hero/BELLE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Belle" src="BELLE.png">
@@ -283,7 +408,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM NORMAL_DAMAGE KNOCKBACK FANTASTIC_DAMAGE BLIND ARMOR_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE ARMOR_DECREASE HEAL_SELF">
     <a href="./hero/BO_PEEP.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="牧羊女宝贝" src="BO_PEEP.png">
@@ -298,7 +423,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM NORMAL_DAMAGE FANTASTIC_DAMAGE BLIND ENERGY_SELF HEAL_SELF ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE">
     <a href="./hero/BUNSEN_AND_BEAKER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Dr. Bunsen Honeydew &amp; Beaker" src="BUNSEN_AND_BEAKER.png">
@@ -313,7 +438,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM NORMAL_DAMAGE STUN KNOCKBACK BLIND DAMAGE_INCREASE ARMOR_INCREASE ARMOR_INCREASE DAMAGE_INCREASE ENERGIZE SKILL_POWER_INCREASE SHIELD_TEAM DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/BUZZ.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="巴斯光年" src="BUZZ.png">
@@ -328,7 +453,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM NORMAL_DAMAGE DAMAGE_OVER_TIME DAMAGE_INCREASE FATIGUE SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE SHIELD_TEAM DAMAGE_INCREASE ENERGY_SELF SHIELD_TEAM">
     <a href="./hero/CALHOUN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="卡洪" src="CALHOUN.png">
@@ -343,7 +468,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM SAP ATTACK_SPEED_INCREASE NORMAL_DAMAGE DAMAGE_INCREASE ENERGY_SELF NORMAL_CRIT_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE DAMAGE_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/CAPTAIN_AMELIA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Captain Amelia" src="CAPTAIN_AMELIA.png">
@@ -358,7 +483,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-red">
+  <div class="section unit-role-control unit-position-front unit-team-red" data-tag="POSITION_FRONT CONTROL_ROLE RED_TEAM NORMAL_DAMAGE INVINCIBLE FANTASTIC_DAMAGE SAP STUDY ARMOR_DECREASE ENERGY_SELF DAMAGE_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE ARMOR_INCREASE DAMAGE_INCREASE REALITY_INCREASE HARDY DAMAGE_INCREASE SKILL_POWER_INCREASE SAP SHIELD_TEAM">
     <a href="./hero/CAPTAIN_HOOK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Captain Hook" src="CAPTAIN_HOOK.png">
@@ -373,7 +498,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM FANTASTIC_DAMAGE KNOCKBACK ENERGY_REMOVAL STUN SILENCE FATIGUE NORMAL_DAMAGE SAP REDUCED_DAMAGE_TAKEN REALITY_DECREASE ENERGY_SELF MAX_HP_INCREASE REALITY_INCREASE MAX_HP_INCREASE REALITY_INCREASE HEAL_SELF SKILL_POWER_INCREASE REALITY_DECREASE MAX_HP_INCREASE SILENCE ARMOR_INCREASE REALITY_INCREASE HEAL_SELF">
     <a href="./hero/CARL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Carl" src="CARL.png">
@@ -388,7 +513,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM FANTASTIC_DAMAGE SAP STUN HEAL_SELF ENERGY_SELF NORMAL_DAMAGE ATTACK_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ARMOR_INCREASE HEAL_SELF SKILL_POWER_INCREASE ARMOR_INCREASE STUN SKILL_POWER_INCREASE DAMAGE_INCREASE ENERGY_SELF">
     <a href="./hero/CHESHIRE_CAT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Cheshire Cat" src="CHESHIRE_CAT.png">
@@ -403,7 +528,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM SHIELD_SELF NORMAL_DAMAGE STUN FANTASTIC_DAMAGE BLIND HEAL_SELF REALITY_INCREASE SKILL_POWER_INCREASE HEAL_TEAM MAX_HP_INCREASE ARMOR_INCREASE ARMOR_INCREASE MAX_HP_INCREASE HARDY DAMAGE_INCREASE NORMAL_DAMAGE KNOCKBACK SKILL_POWER_INCREASE SHIELD_SELF HEAL_SELF">
     <a href="./hero/CHIEF_BOGO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="牛局长" src="CHIEF_BOGO.png">
@@ -418,7 +543,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM DAMAGE_INCREASE NORMAL_DAMAGE HEAL_SELF ARMOR_INCREASE ATTACK_SPEED_INCREASE REALITY_INCREASE SHIELD_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE SHIELD_SELF DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME REALITY_INCREASE MAX_HP_INCREASE NORMAL_DAMAGE">
     <a href="./hero/CLAWHAUSER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Clawhauser" src="CLAWHAUSER.png">
@@ -433,7 +558,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND STUN TRUE_DAMAGE REMOVE_BUFF ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE INVISIBLE SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND ENERGY_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE STUN">
     <a href="./hero/COLETTE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Colette" src="COLETTE.png">
@@ -448,7 +573,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM NORMAL_DAMAGE INVISIBLE STUN ATTACK_SPEED_INCREASE DAMAGE_INCREASE REFLECT HEAL_SELF ARMOR_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE HARDY SKILL_POWER_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE ARMOR_INCREASE REALITY_INCREASE STUN">
     <a href="./hero/DARKWING_DUCK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="狡猾飞天德" src="DARKWING_DUCK.png">
@@ -463,7 +588,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-red">
+  <div class="section unit-role-damage unit-position-central unit-team-red" data-tag="POSITION_CENTRAL DPS_ROLE RED_TEAM NORMAL_DAMAGE REDUCED_DAMAGE_TAKEN ENERGY_SELF DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE ARMOR_INCREASE ARMOR_INCREASE DAMAGE_INCREASE NORMAL_CRIT_INCREASE SKILL_POWER_INCREASE ENERGY_REMOVAL SKILL_POWER_INCREASE">
     <a href="./hero/DASH.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="巴小飞" src="DASH.png">
@@ -478,7 +603,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-yellow">
+  <div class="section unit-role-control unit-position-front unit-team-yellow" data-tag="POSITION_FRONT CONTROL_ROLE YELLOW_TEAM NORMAL_DAMAGE STUN BERSERK REDUCED_DAMAGE_DEALT CURSE HEAL_SELF INVINCIBLE ENERGY_REMOVAL DAMAGE_INCREASE ARMOR_INCREASE MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE ENERGIZE DAMAGE_INCREASE CURSE ARMOR_DECREASE MAX_HP_INCREASE REDUCED_DAMAGE_DEALT">
     <a href="./hero/DAVY_JONES.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Davy Jones" src="DAVY_JONES.png">
@@ -493,7 +618,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-blue">
+  <div class="section unit-role-damage unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE REVIVE_SELF ENERGY_SELF SCARE SAP WEAKNESS DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE FANTASTIC_CRIT_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE WEAKNESS">
     <a href="./hero/DEMONA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Demona" src="DEMONA.png">
@@ -508,7 +633,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-yellow">
+  <div class="section unit-role-control unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SILENCE DAMAGE_DECREASE ARMOR_DECREASE HEAL_SELF REMOVE_BUFF COPY_BUFF SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE FANTASTIC_CRIT_INCREASE DAMAGE_INCREASE FANTASTIC_DAMAGE REALITY_DECREASE FANTASTIC_DAMAGE">
     <a href="./hero/DISGUST.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Disgust" src="DISGUST.png">
@@ -523,7 +648,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE BLIND HEAL_OVER_TIME_SELF ENERGY_SELF HEAL_TEAM DAMAGE_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE PRECISE DAMAGE_INCREASE TRUE_DAMAGE DAMAGE_INCREASE INVINCIBLE">
     <a href="./hero/DONALD_DUCK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Donald Duck" src="DONALD_DUCK.png">
@@ -538,7 +663,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-blue">
+  <div class="section unit-role-control unit-position-back unit-team-blue" data-tag="POSITION_BACK CONTROL_ROLE BLUE_TEAM SILENCE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE CHARM DAMAGE_INCREASE FANTASTIC_DAMAGE ENERGY_REMOVAL WEAKNESS SKILL_POWER_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE ENERGIZE SKILL_POWER_DECREASE REALITY_INCREASE REFLECT SKILL_POWER_INCREASE ARMOR_DECREASE REALITY_DECREASE SILENCE">
     <a href="./hero/DR_DRAKKEN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Dr. Drakken" src="DR_DRAKKEN.png">
@@ -553,7 +678,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM SHIELD_SELF FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE SILENCE STUN CURSE SAP ATTACK_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE DAMAGE_INCREASE SHIELD_SELF SKILL_POWER_INCREASE DAMAGE_INCREASE SHIELD_SELF REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_DECREASE FANTASTIC_DAMAGE">
     <a href="./hero/DR_FACILIER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Dr. Facilier" src="DR_FACILIER.png">
@@ -568,7 +693,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE HEAL_SELF KNOCKBACK SKILL_POWER_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE INVINCIBLE FANTASTIC_DAMAGE DAMAGE_OVER_TIME STUN EVASION_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/DUCKY_AND_BUNNY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="达鸭和兔子" src="DUCKY_AND_BUNNY.png">
@@ -583,7 +708,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM NORMAL_DAMAGE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE BERSERK SKILL_POWER_INCREASE KNOCKBACK STUN MAX_HP_INCREASE ARMOR_INCREASE HEAL_TEAM">
     <a href="./hero/DUKE_CABOOM.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="潇洒公爵" src="DUKE_CABOOM.png">
@@ -598,7 +723,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM SHIELD_SELF HEAL_OVER_TIME_SELF ENERGY_REMOVAL ENERGY_SELF SAP NORMAL_DAMAGE KNOCKBACK ARMOR_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE REALITY_INCREASE REFLECT MAX_HP_INCREASE ARMOR_INCREASE STUN REALITY_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE STUN">
     <a href="./hero/EEYORE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Eeyore" src="EEYORE.png">
@@ -613,7 +738,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-red">
+  <div class="section unit-role-damage unit-position-central unit-team-red" data-tag="POSITION_CENTRAL DPS_ROLE RED_TEAM FANTASTIC_DAMAGE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE KNOCKBACK SKILL_POWER_INCREASE HARDY REDUCED_DAMAGE_TAKEN MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE FANTASTIC_CRIT_INCREASE SKILL_POWER_INCREASE REALITY_DECREASE SKILL_POWER_INCREASE ENERGY_SELF">
     <a href="./hero/ELASTIGIRL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="弹力女超人" src="ELASTIGIRL.png">
@@ -628,7 +753,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE FREEZE ENERGY_SELF DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE SHIELD_SELF SKILL_POWER_INCREASE FREEZE MAX_HP_INCREASE SHIELD_TEAM">
     <a href="./hero/ELSA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="艾莎" src="ELSA.png">
@@ -643,7 +768,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-blue">
+  <div class="section unit-role-damage unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE SCARE ENERGY_REMOVAL ENERGY_SELF SKILL_POWER_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE ENERGY_TEAM DAMAGE_INCREASE">
     <a href="./hero/EMPEROR_ZURG.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="索克天王" src="EMPEROR_ZURG.png">
@@ -658,7 +783,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-yellow">
+  <div class="section unit-role-support unit-position-front unit-team-yellow" data-tag="POSITION_FRONT SUPPORT_ROLE YELLOW_TEAM ENERGIZE ATTACK_SPEED_INCREASE NORMAL_DAMAGE HARDY FANTASTIC_DAMAGE DAMAGE_OVER_TIME ENERGY_SELF HEAL_TEAM SHIELD_TEAM DISTRACT DAMAGE_INCREASE MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_TEAM FANTASTIC_DAMAGE ARMOR_INCREASE BLIND ARMOR_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/ESMERALDA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Esmeralda" src="ESMERALDA.png">
@@ -673,7 +798,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-red">
+  <div class="section unit-role-damage unit-position-back unit-team-red" data-tag="POSITION_BACK DPS_ROLE RED_TEAM NORMAL_DAMAGE SHIELD_TEAM STUN DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ARMOR_INCREASE ENERGIZE HEAL_OVER_TIME_TEAM SHIELD_TEAM SKILL_POWER_INCREASE STUN">
     <a href="./hero/EVE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="伊芙" src="EVE.png">
@@ -688,7 +813,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE STUN TRUE_DAMAGE CURSE HEAL_SELF REMOVE_BUFF REDUCED_DAMAGE_TAKEN DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE EVASION_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE">
     <a href="./hero/EVIL_QUEEN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="The Evil Queen" src="EVIL_QUEEN.png">
@@ -703,7 +828,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM HEAL_TEAM HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM REALITY_INCREASE HARDY ENERGIZE FANTASTIC_DAMAGE STUN ARMOR_INCREASE ENERGY_SELF SKILL_POWER_INCREASE REALITY_INCREASE ARMOR_INCREASE SHIELD_TEAM DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE REALITY_INCREASE SKILL_POWER_DECREASE REDUCED_DAMAGE_TAKEN">
     <a href="./hero/FAIRY_GODMOTHER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Fairy Godmother" src="FAIRY_GODMOTHER.png">
@@ -718,7 +843,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-yellow">
+  <div class="section unit-role-support unit-position-back unit-team-yellow" data-tag="POSITION_BACK SUPPORT_ROLE YELLOW_TEAM FANTASTIC_DAMAGE ARMOR_INCREASE STUN SCARE SHIELD_TEAM REDUCED_DAMAGE_TAKEN CHARM FREEZE BLIND SILENCE SKILL_POWER_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE INVISIBLE HEAL_TEAM ARMOR_INCREASE HARDY REFLECT SKILL_POWER_INCREASE MAX_HP_INCREASE">
     <a href="./hero/FEAR.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Fear" src="FEAR.png">
@@ -733,7 +858,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM NORMAL_DAMAGE STUN HEAL_TEAM BLIND SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE MAX_HP_INCREASE REALITY_INCREASE HEAL_TEAM MAX_HP_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE FREEZE">
     <a href="./hero/FELIX.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="阿修" src="FELIX.png">
@@ -748,7 +873,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-yellow">
+  <div class="section unit-role-control unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL CONTROL_ROLE YELLOW_TEAM NORMAL_DAMAGE KNOCKBACK STUN FANTASTIC_DAMAGE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE REDUCED_DAMAGE_DEALT SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE HARDY NORMAL_DAMAGE ENERGY_SELF SKILL_POWER_INCREASE ENERGY_REMOVAL">
     <a href="./hero/FINNICK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="小飞" src="FINNICK.png">
@@ -763,7 +888,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-yellow">
+  <div class="section unit-role-control unit-position-front unit-team-yellow" data-tag="POSITION_FRONT CONTROL_ROLE YELLOW_TEAM NORMAL_DAMAGE SAP ENERGY_REMOVAL ENERGY_SELF ENERGY_TEAM DAMAGE_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE CHARM MAX_HP_INCREASE DAMAGE_INCREASE">
     <a href="./hero/FLYNN_RIDER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Flynn Rider" src="FLYNN_RIDER.png">
@@ -778,7 +903,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-blue">
+  <div class="section unit-role-control unit-position-front unit-team-blue" data-tag="POSITION_FRONT CONTROL_ROLE BLUE_TEAM NORMAL_DAMAGE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE KNOCKBACK STUN REVIVE_SELF HARDY ENERGY_REMOVAL REDUCED_DAMAGE_DEALT MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_DECREASE ENERGY_REMOVAL SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/FOZZIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Fozzie Bear" src="FOZZIE.png">
@@ -793,7 +918,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-red">
+  <div class="section unit-role-control unit-position-back unit-team-red" data-tag="POSITION_BACK CONTROL_ROLE RED_TEAM FREEZE FANTASTIC_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE FANTASTIC_CRIT_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_TEAM">
     <a href="./hero/FROZONE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="酷冰侠" src="FROZONE.png">
@@ -808,7 +933,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM NORMAL_DAMAGE STUN CHARM REVIVE_SELF INVINCIBLE ENERGY_SELF ATTACK_SPEED_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE MAX_HP_INCREASE INVINCIBLE DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE">
     <a href="./hero/GASTON.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="加斯东" src="GASTON.png">
@@ -823,7 +948,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM HEAL_OVER_TIME_TEAM FANTASTIC_DAMAGE INVINCIBLE ENERGY_TEAM ATTACK_SPEED_INCREASE ENERGIZE DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ARMOR_INCREASE ENERGIZE SKILL_POWER_INCREASE REALITY_INCREASE SHIELD_TEAM DAMAGE_INCREASE FREEZE">
     <a href="./hero/GENIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="精灵" src="GENIE.png">
@@ -838,7 +963,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM FANTASTIC_DAMAGE REDUCED_DAMAGE_TAKEN KNOCKBACK MOVE_SPEED_INCREASE ATTACK_SPEED_INCREASE SILENCE HEAL_OVER_TIME_TEAM ARMOR_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE REALITY_INCREASE SHIELD_TEAM ARMOR_DECREASE SKILL_POWER_INCREASE ARMOR_INCREASE SHIELD_TEAM">
     <a href="./hero/GERALD_MARLIN_NEMO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Gerald, Marlin, &amp; Nemo" src="GERALD_MARLIN_NEMO.png">
@@ -853,7 +978,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-red">
+  <div class="section unit-role-support unit-position-central unit-team-red" data-tag="POSITION_CENTRAL SUPPORT_ROLE RED_TEAM ARMOR_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE NORMAL_DAMAGE STUDY ARMOR_DECREASE SHIELD_TEAM HEAL_OVER_TIME_TEAM MAX_HP_INCREASE ARMOR_INCREASE REFLECT SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_DECREASE INVINCIBLE MAX_HP_INCREASE HEAL_TEAM ARMOR_INCREASE ENERGY_SELF ENERGY_TEAM">
     <a href="./hero/GIZMODUCK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Gizmoduck" src="GIZMODUCK.png">
@@ -868,7 +993,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM FANTASTIC_DAMAGE REDUCED_DAMAGE_TAKEN NORMAL_DAMAGE KNOCKBACK HEAL_SELF ARMOR_INCREASE MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE TENACITY_INCREASE DAMAGE_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE ENERGY_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_SELF ARMOR_INCREASE">
     <a href="./hero/GOLIATH.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Goliath" src="GOLIATH.png">
@@ -883,7 +1008,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM FANTASTIC_DAMAGE STUN NORMAL_DAMAGE SHIELD_SELF REDUCED_DAMAGE_TAKEN HEAL_OVER_TIME_SELF MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE SHIELD_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE DAMAGE_DECREASE DAMAGE_INCREASE">
     <a href="./hero/GONZO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="冈佐" src="GONZO.png">
@@ -898,7 +1023,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM BLIND ATTACK_SPEED_INCREASE NORMAL_DAMAGE SHIELD_SELF TENACITY_INCREASE ARMOR_INCREASE REALITY_INCREASE HEAL_SELF STUN SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_INCREASE TENACITY_INCREASE SHIELD_TEAM HEAL_TEAM MAX_HP_INCREASE DAMAGE_INCREASE">
     <a href="./hero/GOOFY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="高飞" src="GOOFY.png">
@@ -913,7 +1038,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-red">
+  <div class="section unit-role-damage unit-position-central unit-team-red" data-tag="POSITION_CENTRAL DPS_ROLE RED_TEAM NORMAL_DAMAGE TRUE_DAMAGE FANTASTIC_DAMAGE ENERGY_REMOVAL SKILL_POWER_INCREASE MAX_HP_INCREASE INVISIBLE REALITY_INCREASE SKILL_POWER_INCREASE HEAL_SELF DAMAGE_INCREASE HARDY SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_SELF">
     <a href="./hero/GO_GO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Go Go" src="GO_GO.png">
@@ -928,7 +1053,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-central unit-team-blue">
+  <div class="section unit-role-tank unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL TANK_ROLE BLUE_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME REVIVE_SELF SCARE INVINCIBLE SKILL_POWER_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGY_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE">
     <a href="./hero/HADES.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="哈迪斯" src="HADES.png">
@@ -943,7 +1068,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM TRUE_DAMAGE SAP KNOCKBACK REFLECT HEAL_OVER_TIME_SELF NORMAL_DAMAGE MOVE_SPEED_DECREASE ENERGY_SELF HEAL_TEAM SKILL_POWER_INCREASE ARMOR_INCREASE MAX_HP_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_SELF DAMAGE_DECREASE MAX_HP_INCREASE TENACITY_DECREASE EVASION_DECREASE DAMAGE_INCREASE SKILL_POWER_INCREASE HEAL_TEAM">
     <a href="./hero/HAMM.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Hamm" src="HAMM.png">
@@ -958,7 +1083,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-red">
+  <div class="section unit-role-control unit-position-front unit-team-red" data-tag="POSITION_FRONT CONTROL_ROLE RED_TEAM INVISIBLE BLIND FANTASTIC_DAMAGE STUN CLEANSE HEAL_OVER_TIME_SELF DODGE HEAL_SELF HEAL_TEAM HARDY DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE REALITY_INCREASE ARMOR_INCREASE BERSERK MAX_HP_INCREASE HARDY DAMAGE_INCREASE">
     <a href="./hero/HANK_AND_DORY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Hank &amp; Dory" src="HANK_AND_DORY.png">
@@ -973,7 +1098,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM STUDY ATTACK_SPEED_INCREASE HEAL_SELF ENERGY_SELF NORMAL_DAMAGE ATTACK_SPEED_DECREASE DAMAGE_OVER_TIME HARDY DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE STUDY SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE">
     <a href="./hero/HECTOR_BARBOSSA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="赫克托·巴波萨" src="HECTOR_BARBOSSA.png">
@@ -988,7 +1113,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM HEAL_SELF INVINCIBLE NORMAL_DAMAGE KNOCKBACK STUN MAX_HP_INCREASE ARMOR_INCREASE ENERGIZE MAX_HP_INCREASE DAMAGE_INCREASE HARDY SKILL_POWER_INCREASE MAX_HP_INCREASE STUN KNOCKBACK MAX_HP_INCREASE INVINCIBLE">
     <a href="./hero/HERCULES.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="海格力斯" src="HERCULES.png">
@@ -1003,7 +1128,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-red">
+  <div class="section unit-role-control unit-position-back unit-team-red" data-tag="POSITION_BACK CONTROL_ROLE RED_TEAM NORMAL_DAMAGE STUN MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE FANTASTIC_DAMAGE SKILL_POWER_INCREASE DODGE ENERGY_SELF REALITY_INCREASE DAMAGE_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE PRECISE SHIELD_TEAM ENERGY_SELF ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE STUN">
     <a href="./hero/HIRO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="小宏" src="HIRO.png">
@@ -1018,7 +1143,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE FREEZE BLIND SHIELD_SELF ENERGY_SELF DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE DAMAGE_INCREASE HEAL_TEAM ARMOR_DECREASE SKILL_POWER_INCREASE EVASION_DECREASE TENACITY_DECREASE ARMOR_INCREASE NORMAL_DAMAGE">
     <a href="./hero/HONEY_LEMON.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Honey Lemon" src="HONEY_LEMON.png">
@@ -1033,7 +1158,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE STUN NORMAL_DAMAGE KNOCKBACK SKILL_POWER_INCREASE DAMAGE_DECREASE ARMOR_DECREASE MAX_HP_INCREASE ARMOR_INCREASE SHIELD_SELF ARMOR_DECREASE FANTASTIC_DAMAGE STUN HEAL_SELF CLEANSE ATTACK_SPEED_INCREASE">
     <a href="./hero/HUEY_DEWEY_LOUIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="辉儿、杜儿和路儿" src="HUEY_DEWEY_LOUIE.png">
@@ -1048,7 +1173,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-red">
+  <div class="section unit-role-control unit-position-back unit-team-red" data-tag="POSITION_BACK CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE KNOCKBACK DAMAGE_OVER_TIME BLIND MAX_HP_DECREASE DAMAGE_DECREASE MOVE_SPEED_DECREASE REFLECT ENERGY_SELF HARDY SKILL_POWER_INCREASE REALITY_INCREASE FANTASTIC_CRIT_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE PRECISE SKILL_POWER_INCREASE ENERGY_SELF MAX_HP_INCREASE REFLECT">
     <a href="./hero/IAN_LIGHTFOOT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Ian Lightfoot" src="IAN_LIGHTFOOT.png">
@@ -1063,7 +1188,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-red">
+  <div class="section unit-role-damage unit-position-back unit-team-red" data-tag="POSITION_BACK DPS_ROLE RED_TEAM FANTASTIC_DAMAGE ENERGY_SELF DAMAGE_OVER_TIME DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE FANTASTIC_CRIT_INCREASE SKILL_POWER_INCREASE FANTASTIC_DAMAGE STUN DAMAGE_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE">
     <a href="./hero/JACK_JACK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="小杰" src="JACK_JACK.png">
@@ -1078,7 +1203,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME SCARE STUN HEAL_SELF HEAL_TEAM DAMAGE_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME SKILL_POWER_INCREASE FANTASTIC_DAMAGE SCARE">
     <a href="./hero/JACK_SKELLINGTON.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="杰克骷髅" src="JACK_SKELLINGTON.png">
@@ -1093,7 +1218,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM NORMAL_DAMAGE DAMAGE_INCREASE ENERGY_SELF NORMAL_CRIT_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE CRIT_DAMAGE_INCREASE MAX_HP_INCREASE HEAL_SELF DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/JACK_SPARROW.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="杰克•史派罗" src="JACK_SPARROW.png">
@@ -1108,7 +1233,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-blue">
+  <div class="section unit-role-control unit-position-back unit-team-blue" data-tag="POSITION_BACK CONTROL_ROLE BLUE_TEAM CHARM DAMAGE_INCREASE ENERGY_REMOVAL ENERGY_SELF ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME HEAL_OVER_TIME_SELF ENERGY_TEAM MAX_HP_INCREASE SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND">
     <a href="./hero/JAFAR.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="贾方" src="JAFAR.png">
@@ -1123,7 +1248,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM FANTASTIC_DAMAGE NORMAL_DAMAGE STUN KNOCKBACK ENERGY_REMOVAL ENERGY_SELF MAX_HP_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE ARMOR_INCREASE ENERGY_SELF DAMAGE_INCREASE ATTACK_SPEED_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ENERGY_TEAM">
     <a href="./hero/JASMINE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="茉莉" src="JASMINE.png">
@@ -1138,7 +1263,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM NORMAL_DAMAGE REMOVE_BUFF COPY_BUFF FANTASTIC_DAMAGE HEAL_SELF DODGE ATTACK_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE SHIELD_SELF DAMAGE_INCREASE ENERGY_SELF MAX_HP_INCREASE DODGE">
     <a href="./hero/JESSIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="翠丝" src="JESSIE.png">
@@ -1153,7 +1278,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-red">
+  <div class="section unit-role-support unit-position-front unit-team-red" data-tag="POSITION_FRONT SUPPORT_ROLE RED_TEAM DAMAGE_INCREASE ENERGY_SELF ENERGY_TEAM ENERGIZE SHIELD_SELF SHIELD_TEAM NORMAL_DAMAGE BLIND HEAL_SELF HEAL_TEAM MAX_HP_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE HEAL_TEAM SKILL_POWER_INCREASE ENERGY_TEAM SKILL_POWER_DECREASE ARMOR_DECREASE DAMAGE_INCREASE">
     <a href="./hero/JIM_HAWKINS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Jim Hawkins" src="JIM_HAWKINS.png">
@@ -1168,7 +1293,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM NORMAL_DAMAGE KNOCKBACK HEAL_SELF ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE STUDY REDUCED_DAMAGE_TAKEN STUN SHIELD_SELF DAMAGE_INCREASE CRIT_DAMAGE_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ENERGIZE DAMAGE_INCREASE REALITY_INCREASE BERSERK DAMAGE_INCREASE SKILL_POWER_DECREASE STUDY">
     <a href="./hero/JOHN_SILVER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="John Silver" src="JOHN_SILVER.png">
@@ -1183,7 +1308,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-yellow">
+  <div class="section unit-role-support unit-position-back unit-team-yellow" data-tag="POSITION_BACK SUPPORT_ROLE YELLOW_TEAM SKILL_POWER_INCREASE HEAL_TEAM ENERGY_SELF SHIELD_TEAM REALITY_INCREASE MAX_HP_INCREASE EVASION_INCREASE REALITY_INCREASE DAMAGE_INCREASE SHIELD_TEAM ARMOR_INCREASE HEAL_TEAM">
     <a href="./hero/JOY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="乐乐" src="JOY.png">
@@ -1198,7 +1323,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-yellow">
+  <div class="section unit-role-support unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL SUPPORT_ROLE YELLOW_TEAM NORMAL_DAMAGE KNOCKBACK ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE DAMAGE_INCREASE MOVE_SPEED_INCREASE ATTACK_SPEED_INCREASE HEAL_TEAM REVIVE_SELF INVINCIBLE ENERGY_SELF ENERGY_TEAM TENACITY_INCREASE HARDY STUDY NORMAL_CRIT_INCREASE ARMOR_INCREASE DAMAGE_INCREASE SHIELD_TEAM MAX_HP_INCREASE DAMAGE_INCREASE REVIVE_SELF ATTACK_SPEED_INCREASE INVINCIBLE SKILL_POWER_INCREASE DAMAGE_INCREASE">
     <a href="./hero/JUDY_HOPPS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="朱迪· 霍普斯" src="JUDY_HOPPS.png">
@@ -1213,7 +1338,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM NORMAL_DAMAGE STUN HEAL_TEAM MAX_HP_INCREASE ENERGY_TEAM DAMAGE_INCREASE PRECISE ENERGY_SELF REALITY_INCREASE DAMAGE_INCREASE REALITY_INCREASE ENERGIZE DAMAGE_INCREASE MAX_HP_INCREASE PRECISE REMOVE_BUFF ARMOR_INCREASE DAMAGE_INCREASE STUN">
     <a href="./hero/JUMBA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Jumba" src="JUMBA.png">
@@ -1228,7 +1353,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM HEAL_TEAM COPY_BUFF DAMAGE_DECREASE INVINCIBLE ENERGY_SELF HARDY DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE SHIELD_TEAM REALITY_INCREASE ARMOR_INCREASE DAMAGE_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE INVINCIBLE">
     <a href="./hero/KERMIT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Kermit" src="KERMIT.png">
@@ -1243,7 +1368,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-red">
+  <div class="section unit-role-support unit-position-back unit-team-red" data-tag="POSITION_BACK SUPPORT_ROLE RED_TEAM FANTASTIC_DAMAGE CLEANSE HEAL_TEAM SHIELD_TEAM REALITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE INVINCIBLE SKILL_POWER_INCREASE SHIELD_TEAM DODGE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM ENERGY_SELF">
     <a href="./hero/KEVIN_FLYNN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="凯文弗林" src="KEVIN_FLYNN.png">
@@ -1258,7 +1383,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE HEAL_SELF ARMOR_INCREASE NORMAL_DAMAGE ARMOR_DECREASE ENERGY_SELF ENERGY_TEAM DAMAGE_INCREASE REALITY_DECREASE MAX_HP_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE FANTASTIC_CRIT_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/KIDA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Kida" src="KIDA.png">
@@ -1273,7 +1398,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-blue">
+  <div class="section unit-role-damage unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL DPS_ROLE BLUE_TEAM NORMAL_DAMAGE ENERGY_REMOVAL ENERGY_SELF ATTACK_SPEED_DECREASE HEAL_SELF STUDY KNOCKBACK STUN DAMAGE_OVER_TIME CRIT_DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ARMOR_INCREASE EVASION_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/KIM_POSSIBLE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Kim Possible" src="KIM_POSSIBLE.png">
@@ -1288,7 +1413,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-blue">
+  <div class="section unit-role-damage unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE KNOCKBACK SAP ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE EVASION_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE ARMOR_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
     <a href="./hero/KING_LOUIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="King Louie" src="KING_LOUIE.png">
@@ -1303,7 +1428,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM HEAL_SELF HEAL_TEAM ARMOR_INCREASE NORMAL_DAMAGE SKILL_POWER_INCREASE FANTASTIC_DAMAGE KNOCKBACK FREEZE DAMAGE_OVER_TIME MAX_HP_INCREASE REALITY_INCREASE REALITY_INCREASE HEAL_OVER_TIME_TEAM MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE MAX_HP_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM INVINCIBLE">
     <a href="./hero/KRISTOFF_AND_SVEN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Kristoff &amp; Sven" src="KRISTOFF_AND_SVEN.png">
@@ -1318,7 +1443,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-yellow">
+  <div class="section unit-role-support unit-position-front unit-team-yellow" data-tag="POSITION_FRONT SUPPORT_ROLE YELLOW_TEAM INVINCIBLE DAMAGE_INCREASE NORMAL_DAMAGE HEAL_TEAM HEAL_SELF REVIVE_SELF ENERGY_REMOVAL MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE ARMOR_INCREASE REFLECT REALITY_INCREASE MAX_HP_INCREASE INVINCIBLE ARMOR_INCREASE SKILL_POWER_INCREASE INVINCIBLE">
     <a href="./hero/KRONK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Kronk" src="KRONK.png">
@@ -1333,7 +1458,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-red">
+  <div class="section unit-role-support unit-position-front unit-team-red" data-tag="POSITION_FRONT SUPPORT_ROLE RED_TEAM BLIND HEAL_TEAM ENERGY_TEAM FANTASTIC_DAMAGE STUN HEAL_SELF DAMAGE_INCREASE MAX_HP_INCREASE INVINCIBLE SKILL_POWER_INCREASE ARMOR_INCREASE REALITY_INCREASE TENACITY_INCREASE DAMAGE_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE SKILL_POWER_INCREASE MAX_HP_INCREASE">
     <a href="./hero/LAUNCHPAD_MCQUACK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="阿彪" src="LAUNCHPAD_MCQUACK.png">
@@ -1348,7 +1473,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-yellow">
+  <div class="section unit-role-support unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL SUPPORT_ROLE YELLOW_TEAM HEAL_TEAM HEAL_OVER_TIME_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME ARMOR_DECREASE HARDY SKILL_POWER_INCREASE ARMOR_INCREASE REALITY_INCREASE MAX_HP_INCREASE HEAL_TEAM REALITY_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE REALITY_INCREASE DAMAGE_INCREASE">
     <a href="./hero/LINGUINI_AND_REMY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Linguini &amp; Remy" src="LINGUINI_AND_REMY.png">
@@ -1363,7 +1488,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-yellow">
+  <div class="section unit-role-support unit-position-front unit-team-yellow" data-tag="POSITION_FRONT SUPPORT_ROLE YELLOW_TEAM NORMAL_DAMAGE HEAL_SELF HEAL_TEAM ARMOR_INCREASE SHIELD_SELF SHIELD_TEAM ATTACK_SPEED_INCREASE DAMAGE_INCREASE ENERGY_SELF ENERGY_TEAM REALITY_INCREASE HARDY SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_TEAM REALITY_INCREASE DAMAGE_INCREASE SILENCE SKILL_POWER_INCREASE DODGE">
     <a href="./hero/LI_SHANG.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Li Shang" src="LI_SHANG.png">
@@ -1378,7 +1503,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-yellow">
+  <div class="section unit-role-control unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE HEAL_TEAM DAMAGE_OVER_TIME REALITY_DECREASE SCARE TENACITY_DECREASE EVASION_DECREASE STUN FREEZE BLIND CHARM SILENCE SKILL_POWER_INCREASE ARMOR_INCREASE REALITY_INCREASE DAMAGE_INCREASE EVASION_INCREASE DAMAGE_DECREASE DAMAGE_INCREASE SCARE EVASION_DECREASE REALITY_DECREASE SKILL_POWER_INCREASE FATIGUE">
     <a href="./hero/LOCK_SHOCK_BARREL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Lock, Shock, &amp; Barrel" src="LOCK_SHOCK_BARREL.png">
@@ -1393,7 +1518,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE NORMAL_DAMAGE SCARE HEX FATIGUE DAMAGE_OVER_TIME ENERGY_SELF DAMAGE_DECREASE SKILL_POWER_DECREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE BERSERK REALITY_DECREASE SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_DECREASE HEX REMOVE_BUFF SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE DAMAGE_INCREASE">
     <a href="./hero/MADAM_MIM.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="蛮夫人" src="MADAM_MIM.png">
@@ -1408,7 +1533,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE FANTASTIC_DAMAGE ARMOR_DECREASE CHARM SKILL_POWER_INCREASE REALITY_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE MOVE_SPEED_INCREASE ATTACK_SPEED_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE">
     <a href="./hero/MAD_HATTER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="疯帽子" src="MAD_HATTER.png">
@@ -1423,7 +1548,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-red">
+  <div class="section unit-role-control unit-position-back unit-team-red" data-tag="POSITION_BACK CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE STUN DAMAGE_OVER_TIME ENERGY_REMOVAL ENERGY_SELF ARMOR_DECREASE CURSE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE SKILL_POWER_INCREASE REALITY_INCREASE ARMOR_INCREASE DAMAGE_INCREASE EVASION_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE REDUCED_DAMAGE_DEALT SKILL_POWER_INCREASE MAX_HP_INCREASE STUN">
     <a href="./hero/MAGICA_DE_SPELL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Magica De Spell" src="MAGICA_DE_SPELL.png">
@@ -1438,7 +1563,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE STUN DAMAGE_OVER_TIME CURSE TENACITY_DECREASE DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE ENERGIZE FANTASTIC_DAMAGE DAMAGE_OVER_TIME CURSE STUN SKILL_POWER_INCREASE ENERGY_REMOVAL">
     <a href="./hero/MALEFICENT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="黑巫婆" src="MALEFICENT.png">
@@ -1453,7 +1578,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM NORMAL_DAMAGE FANTASTIC_DAMAGE STUN DAMAGE_OVER_TIME ARMOR_DECREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE DAMAGE_INCREASE REALITY_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME ARMOR_INCREASE HEAL_SELF HEAL_TEAM ENERGY_SELF">
     <a href="./hero/MANTICORE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="The Manticore" src="MANTICORE.png">
@@ -1468,7 +1593,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM TRUE_DAMAGE REDUCED_DAMAGE_TAKEN NORMAL_DAMAGE KNOCKBACK ENERGY_TEAM HEAL_OVER_TIME_SELF ARMOR_INCREASE REALITY_INCREASE ENERGY_REMOVAL ENERGY_SELF SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE REFLECT MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGY_REMOVAL ENERGY_SELF">
     <a href="./hero/MAUI.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="毛伊" src="MAUI.png">
@@ -1483,7 +1608,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM NORMAL_DAMAGE DAMAGE_INCREASE STUDY FANTASTIC_DAMAGE HEAL_SELF STUN REDUCED_DAMAGE_DEALT HARDY SKILL_POWER_INCREASE REALITY_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE PRECISE MAX_HP_INCREASE DAMAGE_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE REMOVE_BUFF">
     <a href="./hero/MAXIMUS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Maximus" src="MAXIMUS.png">
@@ -1498,7 +1623,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-blue">
+  <div class="section unit-role-support unit-position-back unit-team-blue" data-tag="POSITION_BACK SUPPORT_ROLE BLUE_TEAM CHARM HEAL_SELF FANTASTIC_DAMAGE SILENCE DAMAGE_INCREASE SKILL_POWER_INCREASE COPY_BUFF ARMOR_INCREASE TENACITY_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE HEAL_OVER_TIME_SELF DAMAGE_INCREASE SKILL_POWER_INCREASE INVINCIBLE MAX_HP_INCREASE SKILL_POWER_INCREASE">
     <a href="./hero/MEGARA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="蜜格拉" src="MEGARA.png">
@@ -1513,7 +1638,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-red">
+  <div class="section unit-role-damage unit-position-central unit-team-red" data-tag="POSITION_CENTRAL DPS_ROLE RED_TEAM FANTASTIC_DAMAGE MOVE_SPEED_DECREASE STUN DAMAGE_OVER_TIME DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE FANTASTIC_CRIT_INCREASE FANTASTIC_DAMAGE MOVE_SPEED_DECREASE SKILL_POWER_DECREASE">
     <a href="./hero/MEGAVOLT.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="耐格沃特" src="MEGAVOLT.png">
@@ -1528,7 +1653,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-red">
+  <div class="section unit-role-damage unit-position-back unit-team-red" data-tag="POSITION_BACK DPS_ROLE RED_TEAM NORMAL_DAMAGE ATTACK_SPEED_INCREASE DAMAGE_INCREASE ARMOR_DECREASE WEAKNESS SKILL_POWER_INCREASE DAMAGE_INCREASE REALITY_INCREASE BERSERK NORMAL_DAMAGE DAMAGE_OVER_TIME NORMAL_CRIT_INCREASE SKILL_POWER_INCREASE FREEZE">
     <a href="./hero/MERIDA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="梅莉达" src="MERIDA.png">
@@ -1543,7 +1668,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM DAMAGE_DECREASE INVISIBLE REDUCED_DAMAGE_TAKEN FANTASTIC_DAMAGE KNOCKBACK ENERGY_SELF FATIGUE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE KNOCKBACK DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/MERLIN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="梅林" src="MERLIN.png">
@@ -1558,7 +1683,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-red">
+  <div class="section unit-role-support unit-position-back unit-team-red" data-tag="POSITION_BACK SUPPORT_ROLE RED_TEAM ENERGY_TEAM HEAL_TEAM HEAL_OVER_TIME_TEAM ENERGY_SELF SKILL_POWER_INCREASE ARMOR_INCREASE MAX_HP_INCREASE ARMOR_INCREASE HEAL_TEAM SKILL_POWER_INCREASE MAX_HP_INCREASE HEAL_OVER_TIME_TEAM">
     <a href="./hero/MICKEY_MOUSE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="米老鼠" src="MICKEY_MOUSE.png">
@@ -1573,7 +1698,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-yellow">
+  <div class="section unit-role-support unit-position-back unit-team-yellow" data-tag="POSITION_BACK SUPPORT_ROLE YELLOW_TEAM HEAL_OVER_TIME_TEAM HEAL_TEAM SKILL_POWER_INCREASE ENERGY_TEAM ARMOR_DECREASE MOVE_SPEED_DECREASE STUN MAX_HP_INCREASE DAMAGE_INCREASE REALITY_INCREASE DAMAGE_INCREASE HEAL_OVER_TIME_TEAM ARMOR_DECREASE SKILL_POWER_INCREASE FREEZE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/MIGUEL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="米格·里韦拉" src="MIGUEL.png">
@@ -1588,7 +1713,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SCARE STUN MAX_HP_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE SKILL_POWER_INCREASE ENERGY_SELF STUN DAMAGE_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE">
     <a href="./hero/MIKE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="麦克·华斯基" src="MIKE.png">
@@ -1603,7 +1728,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-red">
+  <div class="section unit-role-control unit-position-back unit-team-red" data-tag="POSITION_BACK CONTROL_ROLE RED_TEAM NORMAL_DAMAGE CHARM ATTACK_SPEED_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE ENERGIZE DAMAGE_INCREASE CHARM SAP DAMAGE_INCREASE REALITY_INCREASE">
     <a href="./hero/MINNIE_MOUSE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Minnie Mouse" src="MINNIE_MOUSE.png">
@@ -1618,7 +1743,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM NORMAL_DAMAGE KNOCKBACK STUN CHARM ATTACK_SPEED_INCREASE DAMAGE_INCREASE HEAL_SELF MAX_HP_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGIZE HEAL_SELF DODGE ATTACK_SPEED_INCREASE DAMAGE_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME ENERGY_SELF">
     <a href="./hero/MISS_PIGGY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="猪小姐" src="MISS_PIGGY.png">
@@ -1633,7 +1758,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-central unit-team-yellow">
+  <div class="section unit-role-damage unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL DPS_ROLE YELLOW_TEAM SHIELD_SELF ATTACK_SPEED_INCREASE NORMAL_DAMAGE HEAL_SELF ENERGY_SELF DAMAGE_INCREASE MAX_HP_INCREASE ARMOR_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE SHIELD_TEAM">
     <a href="./hero/MOANA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="莫阿娜" src="MOANA.png">
@@ -1648,7 +1773,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-yellow">
+  <div class="section unit-role-control unit-position-front unit-team-yellow" data-tag="POSITION_FRONT CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SCARE FREEZE SHIELD_SELF HARDY ARMOR_INCREASE DAMAGE_OVER_TIME DAMAGE_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_SELF SKILL_POWER_INCREASE REALITY_DECREASE ENERGY_SELF ARMOR_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
     <a href="./hero/MR_BIG_AND_KOSLOV.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Mr. Big &amp; Koslov" src="MR_BIG_AND_KOSLOV.png">
@@ -1663,7 +1788,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM NORMAL_DAMAGE KNOCKBACK FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE HEAL_SELF MAX_HP_INCREASE ARMOR_INCREASE DAMAGE_INCREASE PRECISE MAX_HP_INCREASE SKILL_POWER_INCREASE BERSERK DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_DECREASE MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN">
     <a href="./hero/MR_INCREDIBLE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="超能先生" src="MR_INCREDIBLE.png">
@@ -1678,7 +1803,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM NORMAL_DAMAGE BLIND STUN SHIELD_SELF NORMAL_CRIT_INCREASE ATTACK_SPEED_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SHIELD_SELF HEAL_SELF SHIELD_SELF MAX_HP_INCREASE DAMAGE_INCREASE KNOCKBACK NORMAL_DAMAGE">
     <a href="./hero/MULAN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Mulan" src="MULAN.png">
@@ -1693,7 +1818,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SILENCE SCARE DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE FANTASTIC_CRIT_INCREASE MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE">
     <a href="./hero/MUSHU.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Mushu" src="MUSHU.png">
@@ -1708,7 +1833,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE CHARM SKILL_POWER_INCREASE STUN ARMOR_DECREASE DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ENERGY_SELF SKILL_POWER_INCREASE CHARM MAX_HP_INCREASE SKILL_POWER_INCREASE SHIELD_TEAM">
     <a href="./hero/NICK_WILDE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="狐尼克" src="NICK_WILDE.png">
@@ -1723,7 +1848,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM FREEZE HEAL_SELF FANTASTIC_DAMAGE DODGE DAMAGE_OVER_TIME REVIVE_SELF ENERGY_SELF MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM HEAL_TEAM MAX_HP_INCREASE REALITY_INCREASE REALITY_INCREASE MAX_HP_INCREASE HEAL_OVER_TIME_SELF MAX_HP_INCREASE FANTASTIC_DAMAGE MAX_HP_INCREASE DODGE ENERGY_SELF">
     <a href="./hero/OLAF.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="雪宝" src="OLAF.png">
@@ -1738,7 +1863,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SCARE HEAL_SELF MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN REDUCED_DAMAGE_DEALT SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_INCREASE HEAL_SELF ARMOR_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE">
     <a href="./hero/OOGIE_BOOGIE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Oogie Boogie" src="OOGIE_BOOGIE.png">
@@ -1753,7 +1878,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM FANTASTIC_DAMAGE DODGE BLIND HEAL_SELF DAMAGE_INCREASE REMOVE_BUFF COPY_BUFF HARDY REALITY_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE DAMAGE_INCREASE FANTASTIC_DAMAGE DODGE HEAL_TEAM DAMAGE_INCREASE SKILL_POWER_INCREASE">
     <a href="./hero/PETER_PAN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="彼得潘" src="PETER_PAN.png">
@@ -1768,7 +1893,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM NORMAL_DAMAGE DAMAGE_OVER_TIME HEAL_OVER_TIME_SELF STUDY DAMAGE_DECREASE SKILL_POWER_INCREASE REALITY_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE NORMAL_CRIT_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE ARMOR_INCREASE DAMAGE_INCREASE">
     <a href="./hero/PLEAKLEY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Pleakley" src="PLEAKLEY.png">
@@ -1783,7 +1908,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM NORMAL_DAMAGE KNOCKBACK STUN HEAL_SELF HEAL_TEAM ENERGY_REMOVAL ENERGY_SELF FANTASTIC_DAMAGE REMOVE_BUFF ARMOR_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE ENERGY_REMOVAL ENERGY_SELF REALITY_INCREASE DAMAGE_INCREASE ARMOR_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
     <a href="./hero/POCAHONTAS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Pocahontas" src="POCAHONTAS.png">
@@ -1798,7 +1923,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-front unit-team-red">
+  <div class="section unit-role-control unit-position-front unit-team-red" data-tag="POSITION_FRONT CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE BLIND FREEZE REDUCED_DAMAGE_TAKEN SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE REALITY_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE MAX_HP_INCREASE CLEANSE ENERGY_TEAM">
     <a href="./hero/POWERLINE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Powerline" src="POWERLINE.png">
@@ -1813,7 +1938,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM FANTASTIC_DAMAGE ENERGY_SELF SCARE FATIGUE DISTRACT DAMAGE_OVER_TIME SKILL_POWER_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE ARMOR_INCREASE SKILL_POWER_INCREASE DAMAGE_DECREASE SAP">
     <a href="./hero/QUACKERJACK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Quackerjack" src="QUACKERJACK.png">
@@ -1828,7 +1953,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM ATTACK_SPEED_INCREASE FATIGUE ARMOR_INCREASE TRUE_DAMAGE STUN HEAL_SELF HEAL_TEAM MOVE_SPEED_DECREASE ARMOR_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE MAX_HP_INCREASE REALITY_INCREASE REFLECT ARMOR_INCREASE HARDY SKILL_POWER_INCREASE TRUE_DAMAGE STUN">
     <a href="./hero/QUEEN_OF_HEARTS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="红心皇后" src="QUEEN_OF_HEARTS.png">
@@ -1843,7 +1968,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM FANTASTIC_DAMAGE SAP NORMAL_CRIT_INCREASE FANTASTIC_CRIT_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE SHIELD_SELF HEAL_SELF NORMAL_CRIT_INCREASE FANTASTIC_CRIT_INCREASE">
     <a href="./hero/QUORRA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="葵拉" src="QUORRA.png">
@@ -1858,7 +1983,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-red">
+  <div class="section unit-role-support unit-position-front unit-team-red" data-tag="POSITION_FRONT SUPPORT_ROLE RED_TEAM HEAL_SELF HEAL_OVER_TIME_SELF REDUCED_DAMAGE_TAKEN FANTASTIC_DAMAGE STUN DAMAGE_INCREASE ARMOR_INCREASE BLIND HEAL_TEAM MAX_HP_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE FANTASTIC_DAMAGE ARMOR_INCREASE MAX_HP_INCREASE HEAL_TEAM HEAL_OVER_TIME_TEAM">
     <a href="./hero/RAFIKI.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="拉飞奇" src="RAFIKI.png">
@@ -1873,7 +1998,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM NORMAL_DAMAGE STUN FANTASTIC_DAMAGE SILENCE HEAL_OVER_TIME_SELF CLEANSE HARDY ATTACK_SPEED_INCREASE MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_SELF SKILL_POWER_INCREASE STUN HEAL_SELF HEAL_OVER_TIME_SELF">
     <a href="./hero/RALPH.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="拉尔夫" src="RALPH.png">
@@ -1888,7 +2013,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE INVISIBLE SCARE REDUCED_DAMAGE_TAKEN DODGE REVIVE_SELF ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE TRUE_DAMAGE REMOVE_BUFF DAMAGE_INCREASE MAX_HP_INCREASE DODGE">
     <a href="./hero/RANDALL_BOGGS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Randall Boggs" src="RANDALL_BOGGS.png">
@@ -1903,7 +2028,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-yellow">
+  <div class="section unit-role-support unit-position-central unit-team-yellow" data-tag="POSITION_CENTRAL SUPPORT_ROLE YELLOW_TEAM FANTASTIC_DAMAGE STUN KNOCKBACK HEAL_TEAM REALITY_INCREASE ENERGY_SELF SKILL_POWER_INCREASE HARDY CLEANSE ENERGY_TEAM SKILL_POWER_INCREASE ARMOR_INCREASE ENERGY_SELF SKILL_POWER_INCREASE DAMAGE_INCREASE DAMAGE_DECREASE FANTASTIC_DAMAGE MOVE_SPEED_DECREASE">
     <a href="./hero/RAPUNZEL.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Rapunzel" src="RAPUNZEL.png">
@@ -1918,7 +2043,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM NORMAL_DAMAGE KNOCKBACK FANTASTIC_DAMAGE SILENCE CRIT_DAMAGE_INCREASE CLEANSE HEAL_SELF ARMOR_INCREASE REALITY_INCREASE REALITY_INCREASE MAX_HP_INCREASE INVINCIBLE MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN ATTACK_SPEED_INCREASE">
     <a href="./hero/REX.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="抱抱龙" src="REX.png">
@@ -1933,7 +2058,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM NORMAL_DAMAGE HEAL_TEAM TRUE_DAMAGE STUDY ENERGY_REMOVAL ENERGY_SELF KNOCKBACK STUN ARMOR_INCREASE PRECISE DAMAGE_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE KNOCKBACK STUN HEAL_SELF HEAL_TEAM">
     <a href="./hero/ROBIN_HOOD.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="罗宾汉" src="ROBIN_HOOD.png">
@@ -1948,7 +2073,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM FANTASTIC_DAMAGE KNOCKBACK HEAL_OVER_TIME_SELF ENERGY_SELF HARDY HEAL_SELF DAMAGE_INCREASE ARMOR_INCREASE ARMOR_INCREASE DAMAGE_INCREASE BERSERK TRUE_DAMAGE DAMAGE_INCREASE FANTASTIC_DAMAGE REALITY_INCREASE SKILL_POWER_INCREASE SILENCE">
     <a href="./hero/ROCKETEER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="The Rocketeer" src="ROCKETEER.png">
@@ -1963,7 +2088,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE REFLECT ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE NORMAL_DAMAGE STUN ATTACK_SPEED_INCREASE DAMAGE_INCREASE ENERGIZE MAX_HP_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE HEAL_SELF ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
     <a href="./hero/RON_STOPPABLE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Ron Stoppable" src="RON_STOPPABLE.png">
@@ -1978,7 +2103,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-front unit-team-red">
+  <div class="section unit-role-support unit-position-front unit-team-red" data-tag="POSITION_FRONT SUPPORT_ROLE RED_TEAM HEAL_SELF HEAL_TEAM SKILL_POWER_INCREASE FANTASTIC_CRIT_INCREASE ENERGIZE NORMAL_DAMAGE SHATTER ENERGY_REMOVAL MAX_HP_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_TEAM FANTASTIC_DAMAGE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE REALITY_INCREASE ARMOR_INCREASE SHIELD_SELF SHIELD_TEAM">
     <a href="./hero/RUSSELL_AND_KEVIN.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Russell &amp; Kevin" src="RUSSELL_AND_KEVIN.png">
@@ -1993,7 +2118,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM DODGE ARMOR_INCREASE REALITY_INCREASE FATIGUE SILENCE FANTASTIC_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE MAX_HP_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE HEAL_OVER_TIME_SELF DAMAGE_INCREASE MAX_HP_INCREASE ARMOR_INCREASE NORMAL_CRIT_DECREASE">
     <a href="./hero/SADNESS.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Sadness" src="SADNESS.png">
@@ -2008,7 +2133,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME REVIVE_SELF MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE MAX_HP_INCREASE BERSERK REALITY_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME">
     <a href="./hero/SALLY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="莎莉" src="SALLY.png">
@@ -2023,7 +2148,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM NORMAL_DAMAGE SILENCE INVISIBLE HEAL_SELF STUN SKILL_POWER_INCREASE DAMAGE_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE INVISIBLE">
     <a href="./hero/SCAR.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="刀疤" src="SCAR.png">
@@ -2038,7 +2163,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-red">
+  <div class="section unit-role-damage unit-position-back unit-team-red" data-tag="POSITION_BACK DPS_ROLE RED_TEAM FANTASTIC_DAMAGE KNOCKBACK HEAL_SELF ATTACK_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE REALITY_INCREASE INVISIBLE FANTASTIC_DAMAGE STUN NORMAL_DAMAGE STUN">
     <a href="./hero/SCROOGE_MCDUCK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Scrooge McDuck" src="SCROOGE_MCDUCK.png">
@@ -2053,7 +2178,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM NORMAL_DAMAGE REDUCED_DAMAGE_TAKEN SKILL_POWER_INCREASE ARMOR_INCREASE DISTRACT HEAL_SELF MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE NORMAL_CRIT_INCREASE REDUCED_DAMAGE_TAKEN ENERGY_SELF STUN DAMAGE_INCREASE ARMOR_INCREASE">
     <a href="./hero/SHANK.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="闪姐" src="SHANK.png">
@@ -2068,7 +2193,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-yellow">
+  <div class="section unit-role-damage unit-position-front unit-team-yellow" data-tag="POSITION_FRONT DPS_ROLE YELLOW_TEAM NORMAL_DAMAGE ENERGY_SELF STUDY STUN TENACITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE DAMAGE_OVER_TIME MAX_HP_INCREASE ARMOR_INCREASE ARMOR_INCREASE CRIT_DAMAGE_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE STUDY SKILL_POWER_INCREASE ENERGY_SELF SILENCE">
     <a href="./hero/SHAN_YU.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Shan Yu" src="SHAN_YU.png">
@@ -2083,7 +2208,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-blue">
+  <div class="section unit-role-damage unit-position-front unit-team-blue" data-tag="POSITION_FRONT DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE SHATTER ATTACK_SPEED_INCREASE HEAL_SELF SHIELD_SELF DAMAGE_INCREASE FANTASTIC_CRIT_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_INCREASE ATTACK_SPEED_INCREASE FANTASTIC_CRIT_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE REMOVE_BUFF">
     <a href="./hero/SHEGO.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Shego" src="SHEGO.png">
@@ -2098,7 +2223,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-back unit-team-yellow">
+  <div class="section unit-role-tank unit-position-back unit-team-yellow" data-tag="POSITION_BACK TANK_ROLE YELLOW_TEAM ATTACK_SPEED_INCREASE DAMAGE_DECREASE DAMAGE_INCREASE ARMOR_INCREASE REALITY_INCREASE SAP NORMAL_DAMAGE KNOCKBACK ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE REDUCED_DAMAGE_DEALT CURSE MAX_HP_INCREASE HEAL_SELF MAX_HP_INCREASE DAMAGE_INCREASE ARMOR_DECREASE DAMAGE_DECREASE TRUE_DAMAGE DAMAGE_INCREASE ARMOR_INCREASE">
     <a href="./hero/SHERIFF_OF_NOTTINGHAM.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Sheriff of Nottingham" src="SHERIFF_OF_NOTTINGHAM.png">
@@ -2113,7 +2238,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE ARMOR_DECREASE ATTACK_SPEED_DECREASE CHARM DAMAGE_INCREASE ENERGY_REMOVAL ENERGY_SELF NORMAL_DAMAGE HEAL_SELF SILENCE HEAL_TEAM MAX_HP_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE EVASION_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE MAX_HP_INCREASE FANTASTIC_DAMAGE SILENCE">
     <a href="./hero/SIMBA_AND_NALA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="辛巴和娜娜" src="SIMBA_AND_NALA.png">
@@ -2128,7 +2253,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-central unit-team-blue">
+  <div class="section unit-role-tank unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL TANK_ROLE BLUE_TEAM SHIELD_SELF SHIELD_TEAM FANTASTIC_DAMAGE SKILL_POWER_DECREASE REALITY_INCREASE ARMOR_INCREASE REALITY_DECREASE SKILL_POWER_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ENERGY_SELF REALITY_INCREASE FANTASTIC_DAMAGE SKILL_POWER_INCREASE">
     <a href="./hero/SLINKY_DOG.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Slinky Dog" src="SLINKY_DOG.png">
@@ -2143,7 +2268,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM NORMAL_DAMAGE FANTASTIC_DAMAGE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE STUDY TRUE_DAMAGE STUN HEAL_SELF ARMOR_DECREASE ENERGY_SELF REMOVE_BUFF DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE ENERGY_SELF DAMAGE_INCREASE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE SKILL_POWER_INCREASE TRUE_DAMAGE STUN HEAL_SELF ARMOR_DECREASE">
     <a href="./hero/STITCH.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="史迪奇" src="STITCH.png">
@@ -2158,7 +2283,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-yellow">
+  <div class="section unit-role-tank unit-position-front unit-team-yellow" data-tag="POSITION_FRONT TANK_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SCARE HEAL_SELF SKILL_POWER_INCREASE ARMOR_INCREASE HARDY SHIELD_SELF SHIELD_TEAM MAX_HP_INCREASE ARMOR_INCREASE MAX_HP_INCREASE INVINCIBLE SKILL_POWER_INCREASE HEAL_SELF DODGE SKILL_POWER_INCREASE HEAL_TEAM">
     <a href="./hero/SULLEY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="毛怪与阿布" src="SULLEY.png">
@@ -2173,7 +2298,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-blue">
+  <div class="section unit-role-tank unit-position-front unit-team-blue" data-tag="POSITION_FRONT TANK_ROLE BLUE_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME FATIGUE REDUCED_DAMAGE_TAKEN HEAL_SELF COPY_BUFF REDUCED_DAMAGE_DEALT MAX_HP_INCREASE ARMOR_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE CRIT_DAMAGE_INCREASE DAMAGE_DECREASE REMOVE_BUFF REALITY_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME FATIGUE">
     <a href="./hero/SWEDISH_CHEF.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Swedish Chef" src="SWEDISH_CHEF.png">
@@ -2188,7 +2313,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM STUN NORMAL_DAMAGE STUDY KNOCKBACK ENERGY_REMOVAL DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE ARMOR_INCREASE MAX_HP_INCREASE INVISIBLE SKILL_POWER_INCREASE ARMOR_DECREASE STUN SKILL_POWER_INCREASE MAX_HP_INCREASE">
     <a href="./hero/SYNDROME.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Syndrome" src="SYNDROME.png">
@@ -2203,7 +2328,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE SILENCE CHARM SKILL_POWER_INCREASE KNOCKBACK CURSE ENERGY_SELF DAMAGE_INCREASE MAX_HP_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME CHARM FANTASTIC_DAMAGE DAMAGE_OVER_TIME SILENCE">
     <a href="./hero/TIA_DALMA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="达尔玛" src="TIA_DALMA.png">
@@ -2218,7 +2343,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM FANTASTIC_DAMAGE KNOCKBACK STUN NORMAL_DAMAGE DAMAGE_INCREASE REALITY_INCREASE REALITY_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE DAMAGE_INCREASE REALITY_INCREASE KNOCKBACK STUN ENERGY_SELF HEAL_SELF DAMAGE_INCREASE ARMOR_INCREASE ENERGY_SELF">
     <a href="./hero/TIGGER.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Tigger" src="TIGGER.png">
@@ -2233,7 +2358,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-red">
+  <div class="section unit-role-support unit-position-back unit-team-red" data-tag="POSITION_BACK SUPPORT_ROLE RED_TEAM FANTASTIC_DAMAGE KNOCKBACK ARMOR_INCREASE HEAL_OVER_TIME_TEAM HEAL_OVER_TIME_SELF SKILL_POWER_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE HEAL_OVER_TIME_TEAM SKILL_POWER_INCREASE DAMAGE_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_TEAM ARMOR_DECREASE STUN">
     <a href="./hero/TIMON_AND_PUMBAA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="丁满和彭彭" src="TIMON_AND_PUMBAA.png">
@@ -2248,7 +2373,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-red">
+  <div class="section unit-role-support unit-position-back unit-team-red" data-tag="POSITION_BACK SUPPORT_ROLE RED_TEAM FANTASTIC_DAMAGE REMOVE_BUFF HARDY SKILL_POWER_INCREASE HEAL_SELF HEAL_TEAM STUN MAX_HP_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE HARDY SKILL_POWER_INCREASE HARDY SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGY_SELF">
     <a href="./hero/TRON.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Tron" src="TRON.png">
@@ -2263,7 +2388,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-blue">
+  <div class="section unit-role-control unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL CONTROL_ROLE BLUE_TEAM FANTASTIC_DAMAGE HEX ENERGY_REMOVAL KNOCKBACK SKILL_POWER_INCREASE REALITY_INCREASE REALITY_INCREASE MAX_HP_INCREASE ENERGY_SELF SKILL_POWER_INCREASE ENERGY_TEAM SKILL_POWER_INCREASE ENERGY_SELF">
     <a href="./hero/URSULA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="乌苏拉" src="URSULA.png">
@@ -2278,7 +2403,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-blue">
+  <div class="section unit-role-damage unit-position-back unit-team-blue" data-tag="POSITION_BACK DPS_ROLE BLUE_TEAM FANTASTIC_DAMAGE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE ENERGY_SELF SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE">
     <a href="./hero/VANELLOPE.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="云妮洛普" src="VANELLOPE.png">
@@ -2293,7 +2418,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-back unit-team-yellow">
+  <div class="section unit-role-damage unit-position-back unit-team-yellow" data-tag="POSITION_BACK DPS_ROLE YELLOW_TEAM NORMAL_DAMAGE ENERGY_SELF DAMAGE_OVER_TIME BLIND ARMOR_INCREASE REALITY_INCREASE STUN DAMAGE_INCREASE SKILL_POWER_INCREASE ENERGIZE REALITY_INCREASE DAMAGE_INCREASE NORMAL_DAMAGE DAMAGE_OVER_TIME REALITY_INCREASE BLIND SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_SELF">
     <a href="./hero/VINNY_SANTORINI.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Vinny Santorini" src="VINNY_SANTORINI.png">
@@ -2308,7 +2433,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-red">
+  <div class="section unit-role-support unit-position-central unit-team-red" data-tag="POSITION_CENTRAL SUPPORT_ROLE RED_TEAM SHIELD_SELF SHIELD_TEAM INVISIBLE FANTASTIC_DAMAGE KNOCKBACK SKILL_POWER_INCREASE MAX_HP_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE SHIELD_TEAM SKILL_POWER_INCREASE STUN SKILL_POWER_INCREASE SHIELD_SELF SHIELD_TEAM">
     <a href="./hero/VIOLET.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="巴小倩" src="VIOLET.png">
@@ -2323,7 +2448,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-central unit-team-red">
+  <div class="section unit-role-control unit-position-central unit-team-red" data-tag="POSITION_CENTRAL CONTROL_ROLE RED_TEAM NORMAL_DAMAGE DAMAGE_OVER_TIME FREEZE ENERGY_TEAM BLIND KNOCKBACK SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_INCREASE MAX_HP_INCREASE TENACITY_INCREASE SKILL_POWER_INCREASE ENERGY_TEAM SKILL_POWER_INCREASE DAMAGE_INCREASE">
     <a href="./hero/WALL_E.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="瓦力" src="WALL_E.png">
@@ -2338,7 +2463,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-damage unit-position-front unit-team-red">
+  <div class="section unit-role-damage unit-position-front unit-team-red" data-tag="POSITION_FRONT DPS_ROLE RED_TEAM TRUE_DAMAGE ATTACK_SPEED_INCREASE KNOCKBACK STUN HEAL_SELF DAMAGE_INCREASE ARMOR_INCREASE DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE TRUE_DAMAGE SKILL_POWER_INCREASE ARMOR_INCREASE DAMAGE_INCREASE REALITY_INCREASE ENERGY_SELF">
     <a href="./hero/WASABI.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Wasabi" src="WASABI.png">
@@ -2353,7 +2478,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-tank unit-position-front unit-team-red">
+  <div class="section unit-role-tank unit-position-front unit-team-red" data-tag="POSITION_FRONT TANK_ROLE RED_TEAM FANTASTIC_DAMAGE ENERGY_SELF HEAL_SELF MAX_HP_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE SHIELD_SELF ARMOR_INCREASE MAX_HP_INCREASE REALITY_INCREASE HARDY ARMOR_INCREASE MAX_HP_INCREASE HEAL_TEAM MAX_HP_INCREASE DAMAGE_INCREASE">
     <a href="./hero/WINNIE_THE_POOH.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="Winnie the Pooh" src="WINNIE_THE_POOH.png">
@@ -2368,7 +2493,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-central unit-team-blue">
+  <div class="section unit-role-support unit-position-central unit-team-blue" data-tag="POSITION_CENTRAL SUPPORT_ROLE BLUE_TEAM DAMAGE_INCREASE ATTACK_SPEED_INCREASE CHARM HEAL_TEAM SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_INCREASE DAMAGE_INCREASE HEAL_SELF SKILL_POWER_INCREASE ENERGY_SELF SKILL_POWER_INCREASE STUN">
     <a href="./hero/WOODY.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="胡迪" src="WOODY.png">
@@ -2383,7 +2508,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-support unit-position-back unit-team-yellow">
+  <div class="section unit-role-support unit-position-back unit-team-yellow" data-tag="POSITION_BACK SUPPORT_ROLE YELLOW_TEAM HEAL_TEAM FANTASTIC_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_DECREASE ENERGY_REMOVAL SKILL_POWER_INCREASE MAX_HP_INCREASE REALITY_INCREASE REFLECT SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE DAMAGE_INCREASE">
     <a href="./hero/YAX.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="犀利哥" src="YAX.png">
@@ -2398,7 +2523,7 @@ function init()
   </div>
   <!-- Hero } -->
   <!-- Hero { -->
-  <div class="section unit-role-control unit-position-back unit-team-yellow">
+  <div class="section unit-role-control unit-position-back unit-team-yellow" data-tag="POSITION_BACK CONTROL_ROLE YELLOW_TEAM FANTASTIC_DAMAGE INVINCIBLE STUN SCARE BLIND CURSE DAMAGE_INCREASE SKILL_POWER_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_CRIT_INCREASE ARMOR_DECREASE ARMOR_INCREASE CURSE DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE BLIND CURSE STUN">
     <a href="./hero/YZMA.htm"><div>
       <div class="unit-avatar"><!--
         <img alt="伊斯玛" src="YZMA.png">
