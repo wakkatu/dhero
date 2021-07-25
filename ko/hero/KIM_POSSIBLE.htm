@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1580904044">
-<link rel="stylesheet" href="../../star.css?1580904044">
-<link rel="stylesheet" href="../../unit.css?1580904044">
+<link rel="stylesheet" href="../../main.css?1627216201">
+<link rel="stylesheet" href="../../star.css?1627216201">
+<link rel="stylesheet" href="../../unit.css?1627216201">
 <title>킴 파서블 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="매일 밤 숙제를 하기 전에 세상을 구하는 평범한 여학생인 킴 파서블은 각종 기기를 사용해 적을 통제합니다. 호출하거나 삑 소리를 울리면 바로 나타나죠!">
-<script src="../../util.js?1580904044"></script>
-<script src="../../unit.js?1580904044"></script>
+<script src="../../util.js?1627216201"></script>
+<script src="../../unit.js?1627216201"></script>
 <script>
 var calculator= null;
 
@@ -76,22 +76,20 @@ function init()
   </a>
   <label class="section dropdown" for="lang-menu">
     언어 선택하기 / Choose Language
-    <span class="input-btn">
-      <input id="lang-menu" type="checkbox">
-      <span class="dropdown-content">
-        <a href="../../de/hero/KIM_POSSIBLE.htm">Deutsche</a>
-        <a href="../../en/hero/KIM_POSSIBLE.htm">English</a>
-        <a href="../../es/hero/KIM_POSSIBLE.htm">Español</a>
-        <a href="../../fr/hero/KIM_POSSIBLE.htm">Français</a>
-        <a href="../../it/hero/KIM_POSSIBLE.htm">Italiano</a>
-        <a href="../../ja/hero/KIM_POSSIBLE.htm">日本語</a>
-        <a href="../../ko/hero/KIM_POSSIBLE.htm">한국어</a>
-        <a href="../../pt/hero/KIM_POSSIBLE.htm">Português</a>
-        <a href="../../ru/hero/KIM_POSSIBLE.htm">русский</a>
-        <a href="../../zh-Hans/hero/KIM_POSSIBLE.htm">简体中文</a>
-        <a href="../../zh-Hant/hero/KIM_POSSIBLE.htm">繁體中文</a>
-      </span>
-    </span>
+    <input class="toggle-btn" id="lang-menu" type="checkbox">
+    <div class="dropdown-content">
+      <a href="../../de/hero/KIM_POSSIBLE.htm">Deutsche</a>
+      <a href="../../en/hero/KIM_POSSIBLE.htm">English</a>
+      <a href="../../es/hero/KIM_POSSIBLE.htm">Español</a>
+      <a href="../../fr/hero/KIM_POSSIBLE.htm">Français</a>
+      <a href="../../it/hero/KIM_POSSIBLE.htm">Italiano</a>
+      <a href="../../ja/hero/KIM_POSSIBLE.htm">日本語</a>
+      <a href="../../ko/hero/KIM_POSSIBLE.htm">한국어</a>
+      <a href="../../pt/hero/KIM_POSSIBLE.htm">Português</a>
+      <a href="../../ru/hero/KIM_POSSIBLE.htm">русский</a>
+      <a href="../../zh-Hans/hero/KIM_POSSIBLE.htm">简体中文</a>
+      <a href="../../zh-Hant/hero/KIM_POSSIBLE.htm">繁體中文</a>
+    </div>
   </label>
   <!--
   <span style="white-space: nowrap;">Release date: 07/06/2021</span>
@@ -110,14 +108,64 @@ function init()
     <blockquote>&#34;별거 아냐.&#34;</blockquote>
     <div class="unit-pair-list">
       <span class="unit-pair-name">역할</span>
-      <a class="unit-pair-val" href="../hero_list.htm?role=damage">데미지</a>
+      <a class="unit-pair-val" href="../hero_list.htm?DPS_ROLE=on">데미지</a>
       <span class="unit-pair-name">포지션</span>
-      <a class="unit-pair-val" href="../hero_list.htm?position=central">중간</a>
+      <a class="unit-pair-val" href="../hero_list.htm?POSITION_CENTRAL=on">중간</a>
       <span class="unit-pair-name">도전 팀:</span>
-      <a class="unit-pair-val" href="../hero_list.htm?team=blue">블루</a>
+      <a class="unit-pair-val" href="../hero_list.htm?BLUE_TEAM=on">블루</a>
     </div>
   </div>
   <!-- Intro } -->
+
+  <!-- Filter { -->
+  <div class="section">
+    <h1>필터</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name unit-fltr-grp-name">데미지 종류</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="이 히어로는 스킬로 일반 데미지를 줍니다."><a href="../hero_list.htm?NORMAL_DAMAGE=on">일반 데미지</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">- 효과</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="대상에게서 즉시 일정량의 에너지를 제거합니다."><a href="../hero_list.htm?ENERGY_REMOVAL=on">에너지 제거</a></li>
+          <li title="연구한 적을 상대로 하는 일반 데미지는 항상 크리티컬로 적중합니다."><a href="../hero_list.htm?STUDY=on">연구</a></li>
+          <li title="대상을 일정 거리만큼 밀쳐냅니다."><a href="../hero_list.htm?KNOCKBACK=on">밀쳐내기</a></li>
+          <li title="기절한 유닛은 이동하거나, 공격하거나, 스킬을 사용할 수 없습니다."><a href="../hero_list.htm?STUN=on">기절</a></li>
+          <li title="대상에게 일정 기간에 걸쳐 데미지를 줍니다."><a href="../hero_list.htm?DAMAGE_OVER_TIME=on">지속 데미지</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">+ 효과</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="자신에게 에너지를 부여합니다."><a href="../hero_list.htm?ENERGY_SELF=on">자신 에너지</a></li>
+          <li title="자신을 치유합니다."><a href="../hero_list.htm?HEAL_SELF=on">자신 치유</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">- 능력치</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="공격 스피드가 감소합니다."><a href="../hero_list.htm?ATTACK_SPEED_DECREASE=on">공격 스피드 감소</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">+ 능력치</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="크리티컬로 주는 데미지가 증가합니다."><a href="../hero_list.htm?CRIT_DAMAGE_INCREASE=on">크리티컬 데미지 증가</a></li>
+          <li title="스킬 파워가 증가합니다."><a href="../hero_list.htm?SKILL_POWER_INCREASE=on">스킬 파워 증가</a></li>
+          <li title="기본 데미지가 증가합니다."><a href="../hero_list.htm?DAMAGE_INCREASE=on">기본 데미지 증가</a></li>
+          <li title="방어가 증가합니다."><a href="../hero_list.htm?ARMOR_INCREASE=on">방어 증가</a></li>
+          <li title="회피가 증가합니다."><a href="../hero_list.htm?EVASION_INCREASE=on">회피 증가</a></li>
+          <li title="최대 HP가 증가합니다."><a href="../hero_list.htm?MAX_HP_INCREASE=on">최대 HP 증가</a></li>
+          <li title="현실이 증가합니다."><a href="../hero_list.htm?REALITY_INCREASE=on">현실 증가</a></li>
+          <li title="공격 스피드가 증가합니다."><a href="../hero_list.htm?ATTACK_SPEED_INCREASE=on">공격 스피드 증가</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <!-- Filter } -->
 
   <!-- Core Stats { -->
   <div class="section">
@@ -223,7 +271,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">슈가 러쉬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -236,7 +284,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">슈가 러쉬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b2" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -249,7 +297,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">영리한 여우</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b3" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -262,7 +310,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">무딘 검</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b4" data-skill_power="20" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -274,7 +322,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=ACE_OF_SPADES#ACE_OF_SPADES" class="rarity-white">스페이드 에이스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b5" data-basic_damage="10" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -286,7 +334,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">조금의 마법</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b6" data-hp_max="150" data-armor="30" data-r_ctl="1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -307,7 +355,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">완벽한 낚시</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b1" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -321,7 +369,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">폭죽 묶음</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b2" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -334,7 +382,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">반숙</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b3" data-armor="45" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -346,7 +394,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">파티 렉스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b4" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -359,7 +407,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">물컹하지만 즐거운</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b5" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -373,7 +421,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=BLUEBIRD_OF_HAPPINESS#BLUEBIRD_OF_HAPPINESS" class="rarity-white">행복의 파랑새</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b6" data-basic_damage="45" data-r_ctl="1.1" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -393,7 +441,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=CONSPICUOUS_APPLE#CONSPICUOUS_APPLE" class="rarity-blue">튀는 사과</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b1" data-skill_power="55" data-armor_negation="20" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -409,7 +457,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">포핀스의 여행용 손가방</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b2" data-basic_damage="28" data-armor="36" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -423,7 +471,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">조금의 마법</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b3" data-hp_max="150" data-armor="30" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -436,7 +484,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=ANVIL_OF_MORALITY#ANVIL_OF_MORALITY" class="rarity-green">도덕의 모루</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b4" data-skill_power="40" data-improved_healing="0.1" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -450,7 +498,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">반숙</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b5" data-armor="45" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -462,7 +510,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">물컹하지만 즐거운</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -486,7 +534,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=REALLY_BAD_EGG#REALLY_BAD_EGG" class="rarity-blue">아주 나쁜 달걀</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b1" data-armor_negation="30" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -501,7 +549,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">엎지른 우유</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b2" data-armor="156" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -516,7 +564,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">포핀스의 여행용 손가방</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b3" data-basic_damage="28" data-armor="36" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -530,7 +578,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=TINY_CAR#TINY_CAR" class="rarity-green">인크레더블하지 않은 차</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b4" data-armor="60" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -543,7 +591,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=CRAB_CAKE#CRAB_CAKE" class="rarity-green">빛나는 크랩 케이크</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b5" data-basic_damage="50" data-hp_max="100" data-normal_crit="10" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -558,7 +606,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">파티 렉스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b6" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.3" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -581,7 +629,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SHOEBILL#SHOEBILL" class="rarity-blue">넓적부리 황새</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b1" data-basic_damage="75" data-armor="300" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -597,7 +645,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=INCOGNITO_MODE#INCOGNITO_MODE" class="rarity-blue">익명 모드</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b2" data-skill_power="45" data-hp_max="300" data-armor_negation="7" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -614,7 +662,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=CRAB_CAKE#CRAB_CAKE" class="rarity-green">빛나는 크랩 케이크</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b3" data-basic_damage="50" data-hp_max="100" data-normal_crit="10" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -629,7 +677,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">이상한 버섯</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b4" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -644,7 +692,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=DREAM_JAR#DREAM_JAR" class="rarity-blue">꿈 병</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b5" data-hp_max="300" data-armor_negation="7" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -660,7 +708,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">황금 주전자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b6" data-hp_regen="65" data-reality="155" data-r_ctl="1.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -685,7 +733,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=ARAIGNEE_NOIRE#ARAIGNEE_NOIRE" class="rarity-purple">거미 누아르</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b1" data-hp_max="400" data-energy_regen="100" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -703,7 +751,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">터무니없는 커프링크스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b2" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -717,7 +765,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">돼지 저금통</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b3" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -732,7 +780,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">아름다운 램프</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b4" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -750,7 +798,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">신생 카카모라</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b5" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -765,7 +813,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=PIGASUS#PIGASUS" class="rarity-blue">피그아수스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b6" data-basic_damage="175" data-hp_max="500" data-r_ctl="1.5" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -793,7 +841,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=BELLWEATHERS_MUG#BELLWEATHERS_MUG" class="rarity-purple">벨웨더의 머그컵</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b1" data-skill_power="195" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -810,7 +858,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=PIGASUS#PIGASUS" class="rarity-blue">피그아수스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b2" data-basic_damage="175" data-hp_max="500" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -826,7 +874,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">아름다운 램프</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b3" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -844,7 +892,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">터무니없는 커프링크스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b4" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -858,7 +906,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">해적 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b5" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -872,7 +920,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=SHOEBILL#SHOEBILL" class="rarity-blue">넓적부리 황새</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b6" data-basic_damage="75" data-armor="300" data-r_ctl="1.6" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -900,7 +948,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=UNBIRTHDAY_HAT#UNBIRTHDAY_HAT" class="rarity-purple">생일아님 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b1" data-hp_regen="1500" data-armor="257" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -918,7 +966,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">이상한 버섯</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b2" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -933,7 +981,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">아름다운 램프</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b3" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -951,7 +999,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">미코의 비스킷</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b4" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -965,7 +1013,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">광속</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b5" data-hp_max="400" data-armor="500" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -983,7 +1031,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1010,7 +1058,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=SAFETY_HELMET#SAFETY_HELMET" class="rarity-purple">안전모</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b1" data-skill_power="277" data-hp_max="577" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1028,7 +1076,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">황야 탐험가</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b2" data-skill_power="120" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1043,7 +1091,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=AIR_HERCS#AIR_HERCS" class="rarity-purple">에어 헤르크스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b3" data-hp_max="400" data-hp_regen="1100" data-energy_regen="80" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1062,7 +1110,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=TIME_SINK#TIME_SINK" class="rarity-green">타임 싱크</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b4" data-hp_max="300" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1075,7 +1123,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">러브 버그</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b5" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1093,7 +1141,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1120,7 +1168,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=THINKING_CAP#THINKING_CAP" class="rarity-purple">생각하는 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b1" data-basic_damage="200" data-armor="200" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1138,7 +1186,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=SHRINK_RAY#SHRINK_RAY" class="rarity-purple">스잘린스키의 축소 광선</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b2" data-skill_power="200" data-armor="200" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1156,7 +1204,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">엎지른 우유</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b3" data-armor="156" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1171,7 +1219,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=HOMEOPATHIC_CURE#HOMEOPATHIC_CURE" class="rarity-green">유사 요법</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b4" data-skill_power="40" data-hp_max="300" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1185,7 +1233,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=BRUCES_BADGES#BRUCES_BADGES" class="rarity-purple">브루스의 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b5" data-basic_damage="150" data-skill_power="150" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1203,7 +1251,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">열정적 뮤지컬 곡</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1230,7 +1278,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">위니프레드의 마법서</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b1" data-skill_power="500" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1247,7 +1295,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=DOCTORS_TOP_HAT#DOCTORS_TOP_HAT" class="rarity-blue">의사의 탑 햇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b2" data-armor_negation="42" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1262,7 +1310,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=TRON_BIT#TRON_BIT" class="rarity-purple">조각</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b3" data-skill_power="200" data-armor="200" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1280,7 +1328,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">스피어 민트</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b4" data-basic_damage="230" data-hp_max="230" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1298,7 +1346,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=STABLE_WALKING_CANE#STABLE_WALKING_CANE" class="rarity-purple">안정적 보행 지팡이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b5" data-basic_damage="100" data-armor_negation="10" data-normal_crit="10" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1317,7 +1365,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">상류클럽 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1348,7 +1396,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">개의 아침 식사</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b1" data-hp_max="1000" data-armor="2000" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1366,7 +1414,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=BLACK_MAGIC_CAULDRON#BLACK_MAGIC_CAULDRON" class="rarity-purple">검은 솥</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b2" data-hp_max="1500" data-hp_regen="1000" data-armor="500" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1385,7 +1433,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=SNARFFBLATT#SNARFFBLATT" class="rarity-purple">노래하는 파이프</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b3" data-basic_damage="125" data-skill_power="125" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1403,7 +1451,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">광속</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b4" data-hp_max="400" data-armor="500" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1421,7 +1469,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=YOU_CAN_FLY#YOU_CAN_FLY" class="rarity-blue">날 수 있어요!</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b5" data-basic_damage="50" data-reality="175" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1437,7 +1485,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">늠름한 왕자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1467,7 +1515,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">수학적인 맛</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b1" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1485,7 +1533,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=TOUGH_PETAL#TOUGH_PETAL" class="rarity-purple">억센 꽃잎</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b2" data-basic_damage="125" data-armor_negation="10" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1503,7 +1551,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CROQUET_BALL#CROQUET_BALL" class="rarity-purple">크로켓 공</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b3" data-armor="1000" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1520,7 +1568,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=PIRATE_HIDEOUT#PIRATE_HIDEOUT" class="rarity-orange">해적 은신처</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b4" data-basic_damage="200" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1537,7 +1585,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=KIMMUNICATOR#KIMMUNICATOR" class="rarity-purple">키뮤니케이터</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b5" data-basic_damage="160" data-hp_max="1600" data-normal_crit="5" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1556,7 +1604,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=BEACH_BOMB#BEACH_BOMB" class="rarity-purple">해변 폭탄</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b6" data-basic_damage="202" data-normal_crit="19" data-improved_healing="0.1" data-r_ctl="2.4" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1587,7 +1635,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">백지 수표</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b1" data-basic_damage="125" data-hp_regen="650" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1605,7 +1653,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">설탕 중독</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b2" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1624,7 +1672,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">올해의 손님</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b3" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1642,7 +1690,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">올해의 손님</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b4" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1660,7 +1708,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">천개의 세계의 전리품</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b5" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1678,7 +1726,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BAYMAX_PATCH_KIT#BAYMAX_PATCH_KIT" class="rarity-purple">베이맥스 패치 키트</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b6" data-hp_max="200" data-energy_regen="100" data-r_ctl="2.65" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1708,7 +1756,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">미키와 함께하는 운동</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b1" data-basic_damage="150" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1725,7 +1773,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=GONNA_GET_A_LITTLE_WEIRD#GONNA_GET_A_LITTLE_WEIRD" class="rarity-orange">조금 이상해질 거야</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b2" data-basic_damage="125" data-armor_negation="10" data-normal_crit="10" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1744,7 +1792,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=FA_FAMILY_SHEARS#FA_FAMILY_SHEARS" class="rarity-purple">파 가문 가위</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b3" data-skill_power="450" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1761,7 +1809,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=BOAT_SNACK#BOAT_SNACK" class="rarity-purple">보트 간식</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b4" data-hp_regen="500" data-armor="650" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1779,7 +1827,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=WILD_RIDE#WILD_RIDE" class="rarity-purple">와일드 라이드</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b5" data-skill_power="250" data-hp_max="1200" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1797,7 +1845,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">행복한 생각</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1827,7 +1875,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">미키와 함께하는 운동</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b1" data-basic_damage="150" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1844,7 +1892,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">시대를 초월하는 고전</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b2" data-basic_damage="499" data-normal_crit="7" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1862,7 +1910,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=TINY_TERRARIUM#TINY_TERRARIUM" class="rarity-orange">조그만 테라리움</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b3" data-basic_damage="177" data-skill_power="222" data-hp_max="796" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1881,7 +1929,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=BREAKFAST_PORRIDGE#BREAKFAST_PORRIDGE" class="rarity-orange">아침 죽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b4" data-armor="1000" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1898,7 +1946,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">디아블로 피에드라</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b5" data-hp_max="600" data-normal_crit="10" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1916,7 +1964,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">황금 태양</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1946,7 +1994,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">사주식 침대</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b1" data-armor="1300" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1963,7 +2011,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=LOVE_BIRDS#LOVE_BIRDS" class="rarity-purple">연인들</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b2" data-skill_power="505" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1980,7 +2028,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=PAPEL_PICADO#PAPEL_PICADO" class="rarity-purple">파펠 피카도</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b3" data-armor="678" data-armor_negation="15" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -1998,7 +2046,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=FANTASOUND#FANTASOUND" class="rarity-orange">판타사운드</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b4" data-armor="1200" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2015,7 +2063,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=IN_THE_DOGHOUSE#IN_THE_DOGHOUSE" class="rarity-purple">개집에서</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b5" data-reality="1077" data-normal_crit="5" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2033,7 +2081,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">리그의 물어뜯는 장난감</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2063,7 +2111,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=BABY_BRIBE#BABY_BRIBE" class="rarity-orange">아기 뇌물</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b1" data-basic_damage="225" data-skill_power="450" data-hp_max="750" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2082,7 +2130,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=PAPEL_PICADO#PAPEL_PICADO" class="rarity-purple">파펠 피카도</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b2" data-armor="678" data-armor_negation="15" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2100,7 +2148,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SWEETER_TOOTH#SWEETER_TOOTH" class="rarity-purple">심한 설탕 중독</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b3" data-basic_damage="202" data-hp_max="1111" data-armor="316" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2119,7 +2167,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">사주식 침대</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b4" data-armor="1300" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2136,7 +2184,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=ITS_ROBOT_TIME#ITS_ROBOT_TIME" class="rarity-purple">로봇의 시간</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b5" data-armor="650" data-reality="650" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2154,7 +2202,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">하늘 해적</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2184,7 +2232,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=ANDYS_GAME#ANDYS_GAME" class="rarity-orange">앤디의 게임</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b1" data-basic_damage="265" data-armor="1600" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2202,7 +2250,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=HYPNOTIC_MELODY#HYPNOTIC_MELODY" class="rarity-purple">최면 멜로디</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b2" data-hp_max="2065" data-armor="1550" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2220,7 +2268,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=SWEETER_TOOTH#SWEETER_TOOTH" class="rarity-purple">심한 설탕 중독</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b3" data-basic_damage="202" data-hp_max="1111" data-armor="316" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2239,7 +2287,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">매지카 그림자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b4" data-hp_regen="650" data-armor="750" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2257,7 +2305,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=WILD_RIDE#WILD_RIDE" class="rarity-purple">와일드 라이드</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b5" data-skill_power="250" data-hp_max="1200" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2275,7 +2323,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">로켓 팝</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2305,7 +2353,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BADGE_OF_DISGUISE#BADGE_OF_DISGUISE" class="rarity-orange">변장의 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b1" data-basic_damage="422" data-armor_negation="12" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2323,7 +2371,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">개의 아침 식사</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b2" data-hp_max="1000" data-armor="2000" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2341,7 +2389,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">연습용 썰매</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b3" data-armor="1300" data-normal_crit="10" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2359,7 +2407,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=ANDYS_GAME#ANDYS_GAME" class="rarity-orange">앤디의 게임</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b4" data-basic_damage="265" data-armor="1600" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2377,7 +2425,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=GARDEN_SONG#GARDEN_SONG" class="rarity-purple">정원의 노래</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b5" data-hp_max="1111" data-armor="999" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2395,7 +2443,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">낙의 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2425,7 +2473,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=GRAND_FINALE#GRAND_FINALE" class="rarity-red">대단원</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b1" data-basic_damage="370" data-skill_power="610" data-hp_max="4450" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2444,7 +2492,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=TIN_TOY#TIN_TOY" class="rarity-purple">양철 장난감</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b2" data-hp_regen="650" data-energy_regen="75" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2462,7 +2510,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=FRIENDLY_SURVIVOR#FRIENDLY_SURVIVOR" class="rarity-purple">선의의 생존자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b3" data-hp_max="1150" data-reality="750" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2480,7 +2528,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=BADGE_OF_DISGUISE#BADGE_OF_DISGUISE" class="rarity-orange">변장의 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b4" data-basic_damage="422" data-armor_negation="12" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2498,7 +2546,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=POLKA_DOTS#POLKA_DOTS" class="rarity-orange">물방울무늬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b5" data-basic_damage="399" data-normal_crit="13" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2516,7 +2564,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">물레</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2546,7 +2594,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">왕자의 운수</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2564,7 +2612,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=GROTTO_GIFT#GROTTO_GIFT" class="rarity-orange">동굴 선물</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b2" data-skill_power="888" data-reality="1888" data-improved_healing="0.1" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2583,7 +2631,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">시대를 초월하는 고전</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b3" data-basic_damage="499" data-normal_crit="7" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2601,7 +2649,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=CHRISTMAS_TREE#CHRISTMAS_TREE" class="rarity-red">크리스마스 트리</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b4" data-basic_damage="225" data-hp_max="2711" data-hp_regen="900" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2620,7 +2668,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SUPER_TEAM_ASSEMBLE#SUPER_TEAM_ASSEMBLE" class="rarity-purple">슈퍼 팀 어셈블</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b5" data-basic_damage="350" data-reality="1700" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2638,7 +2686,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">잔챙이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2668,7 +2716,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=CLASSIC_CAR#CLASSIC_CAR" class="rarity-red">클래식 자동차</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b1" data-basic_damage="699" data-skill_power="1199" data-hp_max="13555" data-armor="2133" data-reality="1891" data-normal_crit="8" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2690,7 +2738,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=FORGOTTEN_SPELLBOOK#FORGOTTEN_SPELLBOOK" class="rarity-orange">잊힌 마법서</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b2" data-reality="3200" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2707,7 +2755,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=IRRESISTIBLY_SHINY#IRRESISTIBLY_SHINY" class="rarity-purple">거부하기 힘든 반짝이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b3" data-skill_power="800" data-armor="656" data-improved_healing="0.05" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2726,7 +2774,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=LOST_PETS#LOST_PETS" class="rarity-orange">잃어버린 애완동물</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b4" data-hp_max="1700" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2743,7 +2791,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=GROTTO_GIFT#GROTTO_GIFT" class="rarity-orange">동굴 선물</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b5" data-skill_power="888" data-reality="1888" data-improved_healing="0.1" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2762,7 +2810,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">순수한 완벽함</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2792,7 +2840,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=DOGS_IN_DISGUISE#DOGS_IN_DISGUISE" class="rarity-red">변장한 개들</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b1" data-armor="1600" data-reality="2210" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2810,7 +2858,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=CALL_THE_SUPER#CALL_THE_SUPER" class="rarity-orange">슈퍼 부르기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b2" data-skill_power="1056" data-hp_max="18963" data-evasion="10" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2829,7 +2877,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=PHOENIX_GATE#PHOENIX_GATE" class="rarity-orange">불사조 관문</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b3" data-basic_damage="450" data-hp_max="9000" data-hp_regen="3600" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2848,7 +2896,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=TEMPTING_SWITCH#TEMPTING_SWITCH" class="rarity-orange">유혹적인 스위치</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b4" data-basic_damage="120" data-armor="325" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2866,7 +2914,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=POM_POM_SHOES#POM_POM_SHOES" class="rarity-orange">폼폼 구두</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b5" data-skill_power="326" data-armor="999" data-reality="855" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2885,7 +2933,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SNAKE_BALLOON#SNAKE_BALLOON" class="rarity-orange">파충류 비행선</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b6" data-basic_damage="550" data-hp_max="10001" data-r_ctl="6.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2916,7 +2964,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=OREILLY_LUCKY_COIN#OREILLY_LUCKY_COIN" class="rarity-red">오라일리 행운의 동전</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b1" data-armor="3000" data-reality="3000" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2934,7 +2982,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=ANIMAL_AURORA#ANIMAL_AURORA" class="rarity-purple">동물 오로라</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b2" data-basic_damage="190" data-skill_power="460" data-normal_crit="8" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2953,7 +3001,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">신비로운 원숭이 파워</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b3" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2971,7 +3019,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=CAT_IN_A_BOX#CAT_IN_A_BOX" class="rarity-orange">상자 속의 고양이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b4" data-skill_power="920" data-armor="2701" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -2989,7 +3037,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=PHOENIX_GATE#PHOENIX_GATE" class="rarity-orange">불사조 관문</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b5" data-basic_damage="450" data-hp_max="9000" data-hp_regen="3600" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3008,7 +3056,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MOVEABLE_COAT_RACK#MOVEABLE_COAT_RACK" class="rarity-orange">이동식 코트 걸이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b6" data-basic_damage="562" data-skill_power="952" data-hp_max="14200" data-hp_regen="12000" data-r_ctl="7.51" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3041,7 +3089,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SMELL_THE_CORK#SMELL_THE_CORK" class="rarity-red">코르크 냄새 맡기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b1" data-hp_max="16000" data-armor="4500" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3059,7 +3107,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=JANES_SKETCH#JANES_SKETCH" class="rarity-orange">제인의 스케치</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b2" data-skill_power="1563" data-hp_max="17005" data-hp_regen="5300" data-normal_crit="10" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3079,7 +3127,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=CRYSTAL_PURE#CRYSTAL_PURE" class="rarity-orange">순수한 수정</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b3" data-armor="2900" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3096,7 +3144,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=CAKE_OF_GOOD_INTENTIONS#CAKE_OF_GOOD_INTENTIONS" class="rarity-purple">선의의 케이크</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b4" data-basic_damage="199" data-evasion="145" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3114,7 +3162,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=DOGS_IN_DISGUISE#DOGS_IN_DISGUISE" class="rarity-red">변장한 개들</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b5" data-armor="1600" data-reality="2210" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3132,7 +3180,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=ESCAPE#ESCAPE" class="rarity-red">탈출</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b6" data-hp_max="19876" data-reality="4200" data-normal_crit="5" data-r_ctl="8.23" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3164,7 +3212,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=TREEHOUSE#TREEHOUSE" class="rarity-red">나무 위의 집</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b1" data-skill_power="1056" data-hp_max="34504" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3182,7 +3230,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=ITTY_BIDDY#ITTY_BIDDY" class="rarity-orange">이티 비디</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b2" data-skill_power="3000" data-normal_crit="15" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3200,7 +3248,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CHOCOLATE_BAR#CHOCOLATE_BAR" class="rarity-orange">초콜릿 바</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b3" data-basic_damage="570" data-skill_power="966" data-hp_max="6888" data-evasion="20" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3220,7 +3268,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=DANCING_MUSHROOMS#DANCING_MUSHROOMS" class="rarity-red">춤추는 버섯</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b4" data-hp_max="22222" data-armor="5620" data-evasion="15" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3239,7 +3287,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CAT_IN_A_BOX#CAT_IN_A_BOX" class="rarity-orange">상자 속의 고양이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b5" data-skill_power="920" data-armor="2701" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3257,7 +3305,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CALAMITY_BOX#CALAMITY_BOX" class="rarity-red">재앙 상자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b6" data-hp_max="26000" data-armor="6500" data-reality="6500" data-r_ctl="9.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3289,7 +3337,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=BIG_DONUT#BIG_DONUT" class="rarity-red">큰 도넛</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b1" data-basic_damage="1747.5" data-skill_power="2997.5" data-hp_max="33887.5" data-armor="5332.5" data-reality="4727.5" data-normal_crit="8" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3311,7 +3359,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=FLUTTERBY#FLUTTERBY" class="rarity-red">나풀나풀</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b2" data-hp_max="9624" data-evasion="13" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3329,7 +3377,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=ARLOS_BERRIES#ARLOS_BERRIES" class="rarity-orange">알로의 딸기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b3" data-reality="6555" data-improved_healing="0.15" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3347,7 +3395,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=STAINED_GLASS_ROSE#STAINED_GLASS_ROSE" class="rarity-orange">유리 장미</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b4" data-reality="8000" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3364,7 +3412,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=TREASURE_PARROT#TREASURE_PARROT" class="rarity-red">보물 앵무새</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b5" data-basic_damage="450" data-hp_max="24500" data-hp_regen="12333" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3383,7 +3431,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=THAT_DARN_CAT#THAT_DARN_CAT" class="rarity-red">그 몹쓸 고양이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b6" data-hp_max="25910" data-normal_crit="6" data-r_ctl="9.96" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3414,7 +3462,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=JANES_SKETCH#JANES_SKETCH" class="rarity-orange">제인의 스케치</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b1" data-skill_power="1563" data-hp_max="17005" data-hp_regen="5300" data-normal_crit="10" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3434,7 +3482,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=LOWEST_PRICES_IN_TOWN#LOWEST_PRICES_IN_TOWN" class="rarity-red">시내 최저가</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b2" data-armor="2100" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3451,7 +3499,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=BIGFOOT#BIGFOOT" class="rarity-red">빅풋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b3" data-armor="4000" data-reality="5525" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3469,7 +3517,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=TREEHOUSE#TREEHOUSE" class="rarity-red">나무 위의 집</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b4" data-skill_power="1056" data-hp_max="34504" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3487,7 +3535,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=SUMMER_DESTINATION#SUMMER_DESTINATION" class="rarity-orange">여름 관광지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b5" data-skill_power="2640" data-hp_max="47407.5" data-evasion="10" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3506,7 +3554,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=INSTANT_MAKEOVER#INSTANT_MAKEOVER" class="rarity-red">즉석 변신</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b6" data-basic_damage="1375" data-hp_max="25002.5" data-r_ctl="10.95" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3537,7 +3585,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=HAY_BAILER_ACCIDENT#HAY_BAILER_ACCIDENT" class="rarity-orange">건초 위탁자 사고</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b1" data-basic_damage="565" data-hp_max="29500" data-reality="6900" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3556,7 +3604,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PURPLE_PEACOCKS#PURPLE_PEACOCKS" class="rarity-red">퍼플 공작</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b2" data-hp_max="22500" data-hp_regen="8332.5" data-armor="4000" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3575,7 +3623,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=BAD_HAIR_DAY#BAD_HAIR_DAY" class="rarity-red">머리를 망친 날</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b3" data-armor="7500" data-reality="7500" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3593,7 +3641,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=FREE_RIDE#FREE_RIDE" class="rarity-orange">무임승차</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b4" data-skill_power="2300" data-armor="6752.5" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3611,7 +3659,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=LOWEST_PRICES_IN_TOWN#LOWEST_PRICES_IN_TOWN" class="rarity-red">시내 최저가</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b5" data-armor="2100" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3628,7 +3676,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PUA#PUA" class="rarity-red">놋 멧돼지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b6" data-basic_damage="1405" data-skill_power="2380" data-hp_max="35500" data-hp_regen="30000" data-r_ctl="12.05" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3661,7 +3709,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=GURGI#GURGI" class="rarity-red">걸지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b1" data-hp_max="40000" data-armor="11250" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3679,7 +3727,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=THE_BETTYS#THE_BETTYS" class="rarity-red">베티스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b2" data-basic_damage="1325" data-armor="4662.5" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3697,7 +3745,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=PIP#PIP" class="rarity-orange">핍</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b3" data-skill_power="2380" data-hp_max="40882.5" data-improved_healing="0.1" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3716,7 +3764,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=HIGHER_FOR_HIRE#HIGHER_FOR_HIRE" class="rarity-orange">하늘 대여</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b4" data-skill_power="3907.5" data-hp_max="42512.5" data-hp_regen="13250" data-normal_crit="10" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3736,7 +3784,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=CALL_THE_SUPER#CALL_THE_SUPER" class="rarity-orange">슈퍼 부르기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b5" data-skill_power="1056" data-hp_max="18963" data-evasion="10" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3755,7 +3803,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=RIVERBEND#RIVERBEND" class="rarity-red">강굽이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b6" data-hp_max="49690" data-reality="10500" data-r_ctl="13.25" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3786,7 +3834,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=RING_OF_STONES#RING_OF_STONES" class="rarity-red">돌의 고리</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b1" data-skill_power="2640" data-hp_max="86260" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3804,7 +3852,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=FAMILY_ISLAND#FAMILY_ISLAND" class="rarity-orange">가족 섬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b2" data-skill_power="7500" data-normal_crit="2" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3822,7 +3870,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">호통치는 시궁쥐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b3" data-basic_damage="530" data-armor="1865" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3840,7 +3888,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=PIP#PIP" class="rarity-orange">핍</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b4" data-skill_power="2380" data-hp_max="40882.5" data-improved_healing="0.1" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3859,7 +3907,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=THE_BETTYS#THE_BETTYS" class="rarity-red">베티스</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b5" data-basic_damage="1325" data-armor="4662.5" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3877,7 +3925,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=HOCKEY_ISLAND#HOCKEY_ISLAND" class="rarity-red">하키 섬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b6" data-hp_max="65000" data-armor="16250" data-reality="16250" data-r_ctl="14.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3909,7 +3957,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=SCAREDY_ELEPHANT#SCAREDY_ELEPHANT" class="rarity-red">겁쟁이 코끼리</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b1" data-hp_max="55555" data-armor="14050" data-evasion="13" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3928,7 +3976,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=TARZAN_PARROTS#TARZAN_PARROTS" class="rarity-red">앵무새의 천국</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b2" data-basic_damage="4370" data-skill_power="7495" data-hp_max="84720" data-armor="13332.5" data-reality="11820" data-normal_crit="8" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3950,7 +3998,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=FREE_RIDE#FREE_RIDE" class="rarity-orange">무임승차</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b3" data-skill_power="2300" data-armor="6752.5" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3968,7 +4016,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=ONLOOKERS#ONLOOKERS" class="rarity-orange">구경꾼들</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b4" data-reality="20000" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -3985,7 +4033,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=JANES_SKETCH#JANES_SKETCH" class="rarity-orange">제인의 스케치</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b5" data-skill_power="1563" data-hp_max="17005" data-hp_regen="5300" data-normal_crit="10" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4005,7 +4053,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=MOON_OVER_LONDON#MOON_OVER_LONDON" class="rarity-red">런던 위의 달</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b6" data-hp_max="64775" data-normal_crit="1" data-r_ctl="16.03" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4036,7 +4084,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=BADGE_OF_BONDING#BADGE_OF_BONDING" class="rarity-red">결속의 배지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b1" data-armor="10000" data-reality="13813" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4054,7 +4102,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=DOUBLE_MOONS#DOUBLE_MOONS" class="rarity-orange">두 개의 달</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b2" data-skill_power="6600" data-hp_max="118520" data-evasion="5" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4073,7 +4121,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=GODDESS_OF_ADVENTURE#GODDESS_OF_ADVENTURE" class="rarity-orange">모험의 여신</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b3" data-basic_damage="380" data-skill_power="650" data-hp_max="22000" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4092,7 +4140,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=IMAGINARY_BOYFRIEND#IMAGINARY_BOYFRIEND" class="rarity-orange">상상 남자친구</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b4" data-basic_damage="1412.5" data-hp_max="73750" data-reality="17250" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4111,7 +4159,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=COWSMOOPOLITAN#COWSMOOPOLITAN" class="rarity-red">우음메폴리탄</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b5" data-hp_max="56250" data-hp_regen="20832.5" data-armor="10000" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4130,7 +4178,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=MR_BIMBO#MR_BIMBO" class="rarity-red">빔보 씨</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b6" data-basic_damage="3438" data-hp_max="62508" data-r_ctl="17.64" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4161,7 +4209,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GYPSY#GYPSY" class="rarity-red">집시</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b1" data-armor="18750" data-reality="18750" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4179,7 +4227,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=CINNAMON_ROLL#CINNAMON_ROLL" class="rarity-red">계피롤</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b2" data-skill_power="3875" data-hp_max="63750" data-reality="6875" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4198,7 +4246,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=CAR_FLOATY#CAR_FLOATY" class="rarity-orange">가벼운 자동차</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b3" data-basic_damage="1997.5" data-skill_power="3380" data-hp_max="35722.5" data-armor="5500" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4218,7 +4266,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GUMBO_POT#GUMBO_POT" class="rarity-orange">검보 냄비</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b4" data-skill_power="5750" data-armor="16883" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4236,7 +4284,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=WARDROBE#WARDROBE" class="rarity-orange">초현실적인 옷장</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b5" data-basic_damage="2812.5" data-hp_max="56250" data-hp_regen="22500" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4255,7 +4303,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GOOD_BAD_GUY#GOOD_BAD_GUY" class="rarity-red">좋고 나쁜 녀석</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b6" data-basic_damage="3513" data-skill_power="5950" data-hp_max="88750" data-hp_regen="75000" data-r_ctl="19.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4288,7 +4336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=NIGHT_RIDERS#NIGHT_RIDERS" class="rarity-orange">한밤의 기수</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b1" data-skill_power="9770" data-hp_max="106283" data-hp_regen="33125" data-normal_crit="9" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4308,7 +4356,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=WARDROBE#WARDROBE" class="rarity-orange">초현실적인 옷장</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b2" data-basic_damage="2812.5" data-hp_max="56250" data-hp_regen="22500" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4327,7 +4375,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=HIDING_FROM_HALLOWEEN#HIDING_FROM_HALLOWEEN" class="rarity-red">할로윈 숨기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b3" data-hp_max="100000" data-armor="28125" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4345,7 +4393,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=ALIEN_SAUCER#ALIEN_SAUCER" class="rarity-orange">외계 비행접시</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b4" data-basic_damage="830" data-hp_max="38090" data-tenacity="9" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4364,7 +4412,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=CINNAMON_ROLL#CINNAMON_ROLL" class="rarity-red">계피롤</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b5" data-skill_power="3875" data-hp_max="63750" data-reality="6875" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4383,7 +4431,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BIG_SNOWFLAKE#BIG_SNOWFLAKE" class="rarity-red">커다란 눈송이</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b6" data-hp_max="124225" data-reality="26250" data-r_ctl="21.34" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4415,7 +4463,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=CONSCIENCE#CONSCIENCE" class="rarity-red">양심</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b1" data-hp_max="21512.5" data-hp_regen="17250" data-armor="2020" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4434,7 +4482,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=GUMBO_POT#GUMBO_POT" class="rarity-orange">검보 냄비</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b2" data-skill_power="5750" data-armor="16883" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4452,7 +4500,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=HIDING_FROM_HALLOWEEN#HIDING_FROM_HALLOWEEN" class="rarity-red">할로윈 숨기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b3" data-hp_max="100000" data-armor="28125" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4470,7 +4518,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=CHEAT_ARROW#CHEAT_ARROW" class="rarity-orange">속임수 화살</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b4" data-skill_power="18750" data-normal_crit="3" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4488,7 +4536,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=NURSE_MOUSE#NURSE_MOUSE" class="rarity-red">간호사 쥐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b5" data-skill_power="6600" data-hp_max="215650" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4506,7 +4554,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=HONEST_JOHN#HONEST_JOHN" class="rarity-red">정직한 존</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b6" data-hp_max="162500" data-armor="40625" data-reality="40625" data-r_ctl="23.47" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4539,7 +4587,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=NURSE_MOUSE#NURSE_MOUSE" class="rarity-red">간호사 쥐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b1" data-skill_power="6600" data-hp_max="215650" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4557,7 +4605,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=GURGI#GURGI" class="rarity-red">걸지</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b2" data-hp_max="40000" data-armor="11250" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4575,7 +4623,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=GELATINOUS_CUBE#GELATINOUS_CUBE" class="rarity-orange">젤라틴 큐브</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b3" data-reality="50000" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4592,7 +4640,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=CHICK_HAT#CHICK_HAT" class="rarity-orange">병아리 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b4" data-reality="40970" data-improved_healing="0.1" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4610,7 +4658,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=BNL_NEW_BLUE#BNL_NEW_BLUE" class="rarity-red">BNL 새로운 블루</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b5" data-basic_damage="10925" data-skill_power="18738" data-hp_max="211800" data-armor="33333" data-reality="29550" data-normal_crit="11" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4632,7 +4680,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=DRAGON_HIGH#DRAGON_HIGH" class="rarity-red">용 고등학교</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b6" data-hp_max="161938" data-normal_crit="2" data-r_ctl="25.82" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4664,7 +4712,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=FRIENDSHIP_ISLAND#FRIENDSHIP_ISLAND" class="rarity-orange">우정 섬</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b1" data-basic_damage="3125" data-skill_power="4375" data-hp_max="83332.5" data-reality="22000" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4684,7 +4732,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=MRS_LADYBUG#MRS_LADYBUG" class="rarity-red">무당벌레 여사</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b2" data-armor="25000" data-reality="34533" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4702,7 +4750,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=GREAT_STONE_DRAGON#GREAT_STONE_DRAGON" class="rarity-orange">위대한 용석상</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b3" data-basic_damage="3533" data-hp_max="184375" data-reality="43125" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4721,7 +4769,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=FOUR_ONE_FIVE_HAT#FOUR_ONE_FIVE_HAT" class="rarity-orange">415 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b4" data-basic_damage="11925" data-skill_power="17238" data-hp_max="312520" data-armor_negation="25" data-normal_crit="4" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4742,7 +4790,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=DEAL_GONE_WRONG#DEAL_GONE_WRONG" class="rarity-red">어긋난 거래</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b5" data-skill_power="11250" data-hp_max="109375" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4760,7 +4808,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=YOU_EARNED_IT#YOU_EARNED_IT" class="rarity-red">당신 몫이에요</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b6" data-basic_damage="8595" data-hp_max="156270" data-r_ctl="28.40" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4792,7 +4840,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=LOSING_TO_A_BIRD#LOSING_TO_A_BIRD" class="rarity-red">새에게 패배</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b1" data-armor="46875" data-reality="46875" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4810,7 +4858,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=COLD_LAUGHTER#COLD_LAUGHTER" class="rarity-orange">차가운 웃음</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b2" data-skill_power="14375" data-armor="42208" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4828,7 +4876,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=MAP#MAP" class="rarity-orange">병 속의 보물</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b3" data-basic_damage="4995" data-skill_power="8450" data-hp_max="89307.5" data-armor="13750" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4848,7 +4896,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=REFLECTION#REFLECTION" class="rarity-orange">반영</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b4" data-hp_max="195313" data-armor="46875" data-crit_damage="4" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4867,7 +4915,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=NEPTUNE_INN#NEPTUNE_INN" class="rarity-red">바다의 신 여관</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b5" data-hp_max="140625" data-hp_regen="52083" data-armor="25000" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4886,7 +4934,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=BAGHEERAS_DISGUISE#BAGHEERAS_DISGUISE" class="rarity-red">바기라의 변장</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b6" data-basic_damage="8783" data-skill_power="14875" data-hp_max="221875" data-hp_regen="187500" data-r_ctl="31.24" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4921,7 +4969,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=STUNNING_SYMPHONY#STUNNING_SYMPHONY" class="rarity-red">경이로운 교향곡</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b1" data-basic_damage="4063" data-evasion="10" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4939,7 +4987,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=SO_MUCH_IN_COMMON#SO_MUCH_IN_COMMON" class="rarity-orange">여러 공통점</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b2" data-reality="102425" data-armor_negation="20" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4957,7 +5005,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=FOUR_ONE_FIVE_HAT#FOUR_ONE_FIVE_HAT" class="rarity-orange">415 모자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b3" data-basic_damage="11925" data-skill_power="17238" data-hp_max="312520" data-armor_negation="25" data-normal_crit="4" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4978,7 +5026,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=INTERIOR_DESIGN#INTERIOR_DESIGN" class="rarity-yellow">내부 디자인</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b4" data-hp_max="347220" data-armor="87813" data-evasion="16" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -4997,7 +5045,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=GREAT_PRINCE_OF_THE_FOREST#GREAT_PRINCE_OF_THE_FOREST" class="rarity-red">숲의 멋진 왕자</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b5" data-skill_power="17500" data-hp_max="206250" data-reality="42188" data-evasion="2" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5017,7 +5065,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=THE_ZONE#THE_ZONE" class="rarity-red">지역</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b6" data-hp_max="310563" data-reality="65625" data-r_ctl="34.37" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5050,7 +5098,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=KNITTING_IN#KNITTING_IN" class="rarity-orange">짜넣기</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b1" data-skill_power="14875" data-hp_max="255520" data-improved_healing="0.05" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5069,7 +5117,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=GYPSY#GYPSY" class="rarity-red">집시</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b2" data-armor="18750" data-reality="18750" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5087,7 +5135,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=SECUR_T#SECUR_T" class="rarity-orange">시큐어-T</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b3" data-skill_power="46875" data-normal_crit="9" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5105,7 +5153,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=LOSING_TO_A_BIRD#LOSING_TO_A_BIRD" class="rarity-red">새에게 패배</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b4" data-armor="46875" data-reality="46875" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5123,7 +5171,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=OWLS_FAMILY_HISTORY#OWLS_FAMILY_HISTORY" class="rarity-yellow">부엉이의 가정사</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b5" data-skill_power="16500" data-hp_max="539125" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5141,7 +5189,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=BARBERSHOP_TREAT#BARBERSHOP_TREAT" class="rarity-red">이발소 간식</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b6" data-hp_max="406250" data-armor="101563" data-reality="101563" data-r_ctl="37.80" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5175,7 +5223,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=MAXIMUM_SWEETNESS#MAXIMUM_SWEETNESS" class="rarity-yellow">최대의 달콤함</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b1" data-basic_damage="7033" data-hp_max="382813" data-hp_regen="192708" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5194,7 +5242,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=SO_MUCH_IN_COMMON#SO_MUCH_IN_COMMON" class="rarity-orange">여러 공통점</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b2" data-reality="102425" data-armor_negation="20" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5212,7 +5260,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=ELEPHANT_GRAVEYARD#ELEPHANT_GRAVEYARD" class="rarity-red">코끼리 무덤</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b3" data-reality="87500" data-evasion="12" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5230,7 +5278,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=SPORTY_TUNA#SPORTY_TUNA" class="rarity-yellow">건강한 참치</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b4" data-basic_damage="27313" data-skill_power="46845" data-hp_max="529500" data-armor="58333" data-reality="51713" data-normal_crit="11" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5252,7 +5300,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=CLOAKED_FIGURE#CLOAKED_FIGURE" class="rarity-red">망토 입은 형체</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b5" data-skill_power="11515" data-hp_max="100000" data-reality="28125" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5271,7 +5319,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HOPPS_FAMILY_FARM#HOPPS_FAMILY_FARM" class="rarity-red">홉스 가족 농장</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b6" data-hp_max="404845" data-normal_crit="7" data-r_ctl="41.58" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5304,7 +5352,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=RUBBER_BANDO#RUBBER_BANDO" class="rarity-yellow">고무 반도</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b1" data-skill_power="28125" data-hp_max="273438" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5322,7 +5370,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=PAINTERLY_CAPTURE#PAINTERLY_CAPTURE" class="rarity-red">그림 같은 포착</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b2" data-basic_damage="29813" data-skill_power="43095" data-hp_max="781300" data-armor_negation="13" data-normal_crit="16" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5343,7 +5391,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=EYEWITNESS_DESCRIPTION#EYEWITNESS_DESCRIPTION" class="rarity-yellow">목격자 설명</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b3" data-armor="50000" data-reality="69066" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5361,7 +5409,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=GREAT_STONE_DRAGON#GREAT_STONE_DRAGON" class="rarity-orange">위대한 용석상</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b4" data-basic_damage="3533" data-hp_max="184375" data-reality="43125" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5380,7 +5428,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=PRACTICAL_VOODOO#PRACTICAL_VOODOO" class="rarity-orange">부두 실습</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b5" data-basic_damage="5938" data-skill_power="10158" data-hp_max="343750" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5399,7 +5447,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=COVER_MATERIAL#COVER_MATERIAL" class="rarity-red">표지 모델</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b6" data-basic_damage="21488" data-hp_max="390675" data-r_ctl="45.74" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5432,7 +5480,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=EYEWITNESS_DESCRIPTION#EYEWITNESS_DESCRIPTION" class="rarity-yellow">목격자 설명</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b1" data-armor="50000" data-reality="69066" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5450,7 +5498,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=TODD_AND_RILEY#TODD_AND_RILEY" class="rarity-yellow">토드와 라일리</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b2" data-skill_power="43750" data-hp_max="515625" data-reality="84376" data-evasion="12" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5470,7 +5518,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=GIDEONS_BAKED_GOODS#GIDEONS_BAKED_GOODS" class="rarity-red">기디온의 제빵 제품</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b3" data-basic_damage="31220" data-skill_power="52813" data-hp_max="558175" data-armor="60156" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5490,7 +5538,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=MARCHING_BAND_MOB#MARCHING_BAND_MOB" class="rarity-red">악단 악당</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b4" data-skill_power="35938" data-armor="84416" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5508,7 +5556,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=DEAL_GONE_WRONG#DEAL_GONE_WRONG" class="rarity-red">어긋난 거래</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b5" data-skill_power="11250" data-hp_max="109375" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5526,7 +5574,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=COVERT#COVERT" class="rarity-red">은신</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b6" data-basic_damage="21958" data-skill_power="37188" data-hp_max="554688" data-hp_regen="468750" data-r_ctl="50.32" disabled>
             <option value="-1">해당 없음</option>
             <option value="0" selected>장착</option>
@@ -5657,7 +5705,7 @@ function init()
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>splash</dt><dd>default</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
         <dt>blackouttime</dt><dd>0.9</dd>
         <dt>duration</dt><dd>1.8</dd>
@@ -5679,7 +5727,6 @@ function init()
         <dt>energygainamt</dt><dd>350</dd>
         <dt>choiceduration</dt><dd>10</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">정신 차려</a></label></h2>
     <p><span>킴 파서블이 가장 앞에 있는 적을 걷어차 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="501k + 4.65sp" data-checkbox="eval">501k + 4.65sp</output></span><span> 데미지를 주고 뒤로 밀쳐냅니다. 또한 연구한 적에게 데미지를 주는 경우 </span><span class="unit-expr-misc">8</span><span>초 동안 기절시킵니다.</span></p>
@@ -5690,7 +5737,7 @@ function init()
         <dt>cooldown</dt><dd>10</dd>
         <dt>knockbackdistance</dt><dd>1000</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5704,7 +5751,6 @@ function init()
         <dt>knockbackdistance</dt><dd>1000</dd>
         <dt>stunduration</dt><dd>8</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">문제가 뭔데?</a></label></h2>
     <p><span>킴 파서블이 각 웨이브가 시작할 때 키뮤니케이터로 가장 HP가 많은 적을 표시한 후 1초마다 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+0.25sp" data-checkbox="eval">150k+0.25sp</output></span><span>의 데미지를 주고, 웨이브가 끝날 때까지 대상이 얻는 에너지의 </span><span class="unit-expr-misc">75%</span><span>를 훔칩니다.</span></p>
@@ -5716,7 +5762,7 @@ function init()
         <dt>initcooldown</dt><dd>0</dd>
         <dt>cooldown</dt><dd>3</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5731,7 +5777,6 @@ function init()
         <dt>studyamt</dt><dd>6</dd>
         <dt>dmgpercent</dt><dd>0.5[%]</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">문제 없지</a></label></h2>
     <p><span>킴 파서블이 연구한 적에게 일반 크리티컬이 아닌 슈퍼 크리티컬을 적중시킵니다.</span></p>
@@ -5748,13 +5793,12 @@ function init()
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>dmgbuff</dt><dd>179k</dd>
         <dt>critdmgamt</dt><dd>3</dd>
         <dt>critdmgmax</dt><dd>80</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     </form>
   </div>
@@ -5816,7 +5860,7 @@ function init()
     <blockquote><span>겁주기 디버프 막기</span></blockquote>
     <ul>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="133k" data-checkbox="eval">133k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
-      <li><span>팀의 </span><a href="../hero_list.htm?role=tank" class="unit-expr-misc">탱커</a><span> 히어로들이 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="191k" data-checkbox="eval">191k</output></span><span> </span><span class="unit-expr-misc">현실</span><span>(을)를 획득합니다</span></li>
+      <li><span>팀의 </span><a href="../hero_list.htm?TANK_ROLE=on" class="unit-expr-misc">탱커</a><span> 히어로들이 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="191k" data-checkbox="eval">191k</output></span><span> </span><span class="unit-expr-misc">현실</span><span>(을)를 획득합니다</span></li>
       <li><span>킴 파서블은 겁주기를 막으면 </span><span class="unit-expr-misc">7</span><span>초 동안 기본 데미지가 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="100k" data-checkbox="eval">100k</output></span><span> 증가합니다.</span></li>
       <li><span>킴 파서블은 </span><span class="unit-expr-misc">3</span><span>초마다 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="20s%" data-format="%" data-checkbox="eval">20s%</output></span><span> 확률로 자신 또는 아군을 대상으로 하는 겁주기를 막습니다. 킴 파서블과 그녀의 동료가 </span><span class="unit-expr-misc">8</span><span>초 동안 겁을 먹지 않으면, 웨이브의 남은 시간 동안 킴 파서블의 공격 스피드가 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="4s%" data-format="%" data-checkbox="eval">4s%</output></span><span> 증가합니다.</span>
         <div><dl class="unit-note inline-list">

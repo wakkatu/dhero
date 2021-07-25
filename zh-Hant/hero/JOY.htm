@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1580904044">
-<link rel="stylesheet" href="../../star.css?1580904044">
-<link rel="stylesheet" href="../../unit.css?1580904044">
+<link rel="stylesheet" href="../../main.css?1627216201">
+<link rel="stylesheet" href="../../star.css?1627216201">
+<link rel="stylesheet" href="../../unit.css?1627216201">
 <title>樂樂 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="樂樂會用滿滿的活力與正向能量幫隊友加油打氣。">
-<script src="../../util.js?1580904044"></script>
-<script src="../../unit.js?1580904044"></script>
+<script src="../../util.js?1627216201"></script>
+<script src="../../unit.js?1627216201"></script>
 <script>
 var calculator= null;
 
@@ -76,22 +76,20 @@ function init()
   </a>
   <label class="section dropdown" for="lang-menu">
     選擇語言 / Choose Language
-    <span class="input-btn">
-      <input id="lang-menu" type="checkbox">
-      <span class="dropdown-content">
-        <a href="../../de/hero/JOY.htm">Deutsche</a>
-        <a href="../../en/hero/JOY.htm">English</a>
-        <a href="../../es/hero/JOY.htm">Español</a>
-        <a href="../../fr/hero/JOY.htm">Français</a>
-        <a href="../../it/hero/JOY.htm">Italiano</a>
-        <a href="../../ja/hero/JOY.htm">日本語</a>
-        <a href="../../ko/hero/JOY.htm">한국어</a>
-        <a href="../../pt/hero/JOY.htm">Português</a>
-        <a href="../../ru/hero/JOY.htm">русский</a>
-        <a href="../../zh-Hans/hero/JOY.htm">简体中文</a>
-        <a href="../../zh-Hant/hero/JOY.htm">繁體中文</a>
-      </span>
-    </span>
+    <input class="toggle-btn" id="lang-menu" type="checkbox">
+    <div class="dropdown-content">
+      <a href="../../de/hero/JOY.htm">Deutsche</a>
+      <a href="../../en/hero/JOY.htm">English</a>
+      <a href="../../es/hero/JOY.htm">Español</a>
+      <a href="../../fr/hero/JOY.htm">Français</a>
+      <a href="../../it/hero/JOY.htm">Italiano</a>
+      <a href="../../ja/hero/JOY.htm">日本語</a>
+      <a href="../../ko/hero/JOY.htm">한국어</a>
+      <a href="../../pt/hero/JOY.htm">Português</a>
+      <a href="../../ru/hero/JOY.htm">русский</a>
+      <a href="../../zh-Hans/hero/JOY.htm">简体中文</a>
+      <a href="../../zh-Hant/hero/JOY.htm">繁體中文</a>
+    </div>
   </label>
   <!--
   <span style="white-space: nowrap;">Release date: 07/06/2021</span>
@@ -110,14 +108,41 @@ function init()
     <blockquote>「要相信自己！」</blockquote>
     <div class="unit-pair-list">
       <span class="unit-pair-name">角色</span>
-      <a class="unit-pair-val" href="../hero_list.htm?role=support">輔助</a>
+      <a class="unit-pair-val" href="../hero_list.htm?SUPPORT_ROLE=on">輔助</a>
       <span class="unit-pair-name">位置</span>
-      <a class="unit-pair-val" href="../hero_list.htm?position=back">後排</a>
+      <a class="unit-pair-val" href="../hero_list.htm?POSITION_BACK=on">後排</a>
       <span class="unit-pair-name">試煉團隊：</span>
-      <a class="unit-pair-val" href="../hero_list.htm?team=yellow">黃</a>
+      <a class="unit-pair-val" href="../hero_list.htm?YELLOW_TEAM=on">黃</a>
     </div>
   </div>
   <!-- Intro } -->
+
+  <!-- Filter { -->
+  <div class="section">
+    <h1>篩選</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name unit-fltr-grp-name">+ effects</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Can heal at least one ally."><a href="../hero_list.htm?HEAL_TEAM=on">Heal Team</a></li>
+          <li title="Grants energy to self."><a href="../hero_list.htm?ENERGY_SELF=on">Energy Self</a></li>
+          <li title="Can shield at least one ally."><a href="../hero_list.htm?SHIELD_TEAM=on">Shield Team</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">+ stats</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Skill Power is increased."><a href="../hero_list.htm?SKILL_POWER_INCREASE=on">Skill Power Increase</a></li>
+          <li title="Reality is increased."><a href="../hero_list.htm?REALITY_INCREASE=on">Reality Increase</a></li>
+          <li title="Maximum HP is increased."><a href="../hero_list.htm?MAX_HP_INCREASE=on">Max HP Increase</a></li>
+          <li title="Evasion is increased."><a href="../hero_list.htm?EVASION_INCREASE=on">Evasion Increase</a></li>
+          <li title="Basic Damage is increased."><a href="../hero_list.htm?DAMAGE_INCREASE=on">Basic Damage Increase</a></li>
+          <li title="Armor is increased."><a href="../hero_list.htm?ARMOR_INCREASE=on">Armor Increase</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <!-- Filter } -->
 
   <!-- Core Stats { -->
   <div class="section">
@@ -223,7 +248,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">甜蜜衝刺</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -236,7 +261,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">通心麵</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b2" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -249,7 +274,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=HEARTY_BREAKFAST#HEARTY_BREAKFAST" class="rarity-white">愛心早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b3" data-skill_power="15" data-energy_regen="10" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -262,7 +287,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=A_BIT_OF_PRESTIDIGITATION#A_BIT_OF_PRESTIDIGITATION" class="rarity-white">一點戲法</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b4" data-hp_max="150" data-armor="30" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -275,7 +300,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">聰明的狐狸</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b5" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -288,7 +313,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">荷包蛋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b6" data-armor="45" data-r_ctl="1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -309,7 +334,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">初生可可怪</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b1" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -324,7 +349,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=HEARTY_BREAKFAST#HEARTY_BREAKFAST" class="rarity-white">愛心早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b2" data-skill_power="15" data-energy_regen="10" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -337,7 +362,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">派對抱抱龍</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b3" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -350,7 +375,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">不醒目的蘋果</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b4" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -363,7 +388,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=CONTINENTAL_BREAKFAST#CONTINENTAL_BREAKFAST" class="rarity-white">公主早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b5" data-skill_power="30" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -375,7 +400,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">黏黏的，但很滿意</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -398,7 +423,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=WICKED_BEATS#WICKED_BEATS" class="rarity-blue">邪惡的節奏</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b1" data-improved_healing="0.1" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -413,7 +438,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">一把煙火</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b2" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -426,7 +451,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=ANVIL_OF_MORALITY#ANVIL_OF_MORALITY" class="rarity-green">道德鐵砧</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b3" data-skill_power="40" data-improved_healing="0.1" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -440,7 +465,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=TOUGH_COOKIE#TOUGH_COOKIE" class="rarity-green">狠角色</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b4" data-armor="30" data-normal_crit="8" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -454,7 +479,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">不醒目的蘋果</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b5" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -467,7 +492,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">黏黏的，但很滿意</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -491,7 +516,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">激勵人心的樂曲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b1" data-hp_max="450" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -506,7 +531,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=PRICKLY_PEAR#PRICKLY_PEAR" class="rarity-green">仙人果</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b2" data-hp_max="300" data-hp_regen="50" data-energy_regen="50" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -521,7 +546,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇妙的蘑菇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b3" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -536,7 +561,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">一把煙火</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b4" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -549,7 +574,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">海盜帽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b5" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -563,7 +588,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=ANVIL_OF_MORALITY#ANVIL_OF_MORALITY" class="rarity-green">道德鐵砧</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b6" data-skill_power="40" data-improved_healing="0.1" data-r_ctl="1.3" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -587,7 +612,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">被丟棄的王冠</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b1" data-skill_power="100" data-armor="300" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -603,7 +628,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">初生可可怪</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b2" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -618,7 +643,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">免死金牌</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b3" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -634,7 +659,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">神祕的幼苗</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b4" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -648,7 +673,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=BADGE_OF_GIRTH#BADGE_OF_GIRTH" class="rarity-green">毛肚徽章</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b5" data-skill_power="40" data-energy_regen="50" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -662,7 +687,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=GLASS_SLIPPERS#GLASS_SLIPPERS" class="rarity-green">玻璃鞋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b6" data-hp_regen="27" data-armor="27" data-r_ctl="1.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -686,7 +711,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">萬能金龜車</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b1" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -704,7 +729,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">骨頭琴</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b2" data-skill_power="150" data-hp_max="250" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -720,7 +745,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">海盜帽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b3" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -734,7 +759,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">免死金牌</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b4" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -750,7 +775,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">超不實用的袖扣</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b5" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -764,7 +789,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=FAIRY_LANTERN#FAIRY_LANTERN" class="rarity-purple">小仙子燈籠</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b6" data-skill_power="50" data-hp_max="400" data-energy_regen="120" data-r_ctl="1.5" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -793,7 +818,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=FOX_MACE#FOX_MACE" class="rarity-purple">防狐噴霧器</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b1" data-skill_power="70" data-hp_max="700" data-conservation="0.1" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -812,7 +837,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=WIZARD_HAT#WIZARD_HAT" class="rarity-green">魔法師的帽子</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b2" data-basic_damage="6" data-hp_regen="60" data-armor="18" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -827,7 +852,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇妙的蘑菇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b3" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -842,7 +867,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">激勵人心的樂曲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b4" data-hp_max="450" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -857,7 +882,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">被丟棄的王冠</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b5" data-skill_power="100" data-armor="300" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -873,7 +898,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=BEAUTIFUL_LAMP#BEAUTIFUL_LAMP" class="rarity-purple">漂亮的燈</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b6" data-basic_damage="100" data-hp_max="800" data-r_ctl="1.6" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -902,7 +927,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=BRUCES_BADGES#BRUCES_BADGES" class="rarity-purple">布魯斯的徽章</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b1" data-basic_damage="150" data-skill_power="150" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -920,7 +945,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">被丟棄的王冠</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b2" data-skill_power="100" data-armor="300" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -936,7 +961,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=CHERRY_BOMB#CHERRY_BOMB" class="rarity-blue">櫻桃爆破彈</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b3" data-hp_regen="750" data-armor="300" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -952,7 +977,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">賈方的袖釦</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b4" data-hp_max="2000" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -969,7 +994,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">荒野探險家</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b5" data-skill_power="120" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -984,7 +1009,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">激勵人心的樂曲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1010,7 +1035,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=JAR_OF_SAND#JAR_OF_SAND" class="rarity-purple">一罐灰塵</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b1" data-skill_power="170" data-hp_max="700" data-improved_healing="0.1" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1029,7 +1054,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">荒野探險家</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b2" data-skill_power="120" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1044,7 +1069,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=FOX_MACE#FOX_MACE" class="rarity-purple">防狐噴霧器</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b3" data-skill_power="70" data-hp_max="700" data-conservation="0.1" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1063,7 +1088,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">錯位的結尾</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b4" data-hp_max="400" data-reality="225" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1079,7 +1104,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=ANVIL_OF_MORALITY#ANVIL_OF_MORALITY" class="rarity-green">道德鐵砧</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b5" data-skill_power="40" data-improved_healing="0.1" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1093,7 +1118,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">激勵人心的樂曲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1120,7 +1145,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=BLACK_MAGIC_CAULDRON#BLACK_MAGIC_CAULDRON" class="rarity-purple">黑神鍋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b1" data-hp_max="1500" data-hp_regen="1000" data-armor="500" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1139,7 +1164,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">荒野探險家</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b2" data-skill_power="120" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1154,7 +1179,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">奇妙的蘑菇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b3" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1169,7 +1194,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">光速</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b4" data-hp_max="400" data-armor="500" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1187,7 +1212,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=KIMMUNICATOR#KIMMUNICATOR" class="rarity-purple">麻辣通訊器</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b5" data-basic_damage="160" data-hp_max="1600" data-normal_crit="5" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1206,7 +1231,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">激勵人心的樂曲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1233,7 +1258,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">威妮弗雷德的咒語書</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b1" data-skill_power="500" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1250,7 +1275,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">舊金山披薩</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b2" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1265,7 +1290,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=GOLDEN_FLOWER#GOLDEN_FLOWER" class="rarity-green">金縷花</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b3" data-basic_damage="40" data-skill_power="25" data-normal_crit="7" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1280,7 +1305,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">一千個世界的戰利品</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b4" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1298,7 +1323,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=THINKING_CAP#THINKING_CAP" class="rarity-purple">思考帽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b5" data-basic_damage="200" data-armor="200" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1316,7 +1341,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">貴賓俱樂部徽章</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1347,7 +1372,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">狗狗的早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b1" data-hp_max="1000" data-armor="2000" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1365,7 +1390,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=WINNIFREDS_SPELLBOOK#WINNIFREDS_SPELLBOOK" class="rarity-orange">威妮弗雷德的咒語書</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b2" data-skill_power="500" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1382,7 +1407,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=LOOT_OF_A_THOUSAND_WORLDS#LOOT_OF_A_THOUSAND_WORLDS" class="rarity-purple">一千個世界的戰利品</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b3" data-basic_damage="150" data-normal_crit="7" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1400,7 +1425,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">光速</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b4" data-hp_max="400" data-armor="500" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1418,7 +1443,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">庫伊拉的口紅</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b5" data-basic_damage="190" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1435,7 +1460,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">俊美的王子</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1465,7 +1490,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=PEPPER_SHAKER#PEPPER_SHAKER" class="rarity-orange">波波安搖搖器</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b1" data-skill_power="200" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1482,7 +1507,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CIRCLE_OF_LIFE#CIRCLE_OF_LIFE" class="rarity-purple">生生不息</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b2" data-hp_regen="500" data-armor="650" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1500,7 +1525,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CRYSTAL_BELLE#CRYSTAL_BELLE" class="rarity-purple">水晶貝兒</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b3" data-reality="1000" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1517,7 +1542,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=PIRATE_HIDEOUT#PIRATE_HIDEOUT" class="rarity-orange">海盜藏身處</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b4" data-basic_damage="200" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1534,7 +1559,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=PILOTS_CAP#PILOTS_CAP" class="rarity-purple">小威的備用帽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b5" data-skill_power="150" data-hp_max="650" data-conservation="0.1" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1553,7 +1578,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=TRITONS_TRIDENT#TRITONS_TRIDENT" class="rarity-purple">川頓的三叉戟</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b6" data-hp_max="1337" data-armor="137" data-reality="137" data-r_ctl="2.4" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1584,7 +1609,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=LUCKY_EGG#LUCKY_EGG" class="rarity-orange">幸運蛋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b1" data-armor="750" data-reality="750" data-improved_healing="0.15" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1603,7 +1628,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">流質早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b2" data-hp_max="1000" data-reality="2000" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1621,7 +1646,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">年度最佳顧客</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b3" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1639,7 +1664,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">魔法暗影</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b4" data-hp_regen="650" data-armor="750" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1657,7 +1682,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BADGE_OF_TRUE_LOVE#BADGE_OF_TRUE_LOVE" class="rarity-purple">真愛徽章</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b5" data-skill_power="200" data-reality="200" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1675,7 +1700,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BEACH_BOMB#BEACH_BOMB" class="rarity-purple">海灘爆破彈</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b6" data-basic_damage="202" data-normal_crit="19" data-improved_healing="0.1" data-r_ctl="2.65" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1706,7 +1731,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=ILL_WISHING_WELL#ILL_WISHING_WELL" class="rarity-orange">詛咒井</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b1" data-reality="1200" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1723,7 +1748,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=LUCKY_EGG#LUCKY_EGG" class="rarity-orange">幸運蛋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b2" data-armor="750" data-reality="750" data-improved_healing="0.15" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1742,7 +1767,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=WILD_RIDE#WILD_RIDE" class="rarity-purple">狂野之旅</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b3" data-skill_power="250" data-hp_max="1200" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1760,7 +1785,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">俊美的王子</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b4" data-skill_power="555" data-armor="777" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1778,7 +1803,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=SCREAM_CANISTER#SCREAM_CANISTER" class="rarity-purple">尖叫能量瓶</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b5" data-hp_max="999" data-armor="999" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1796,7 +1821,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">快樂的想法</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1826,7 +1851,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=JAR_OF_SAND#JAR_OF_SAND" class="rarity-purple">一罐灰塵</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b1" data-skill_power="170" data-hp_max="700" data-improved_healing="0.1" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1845,7 +1870,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=DINGLEHOPPER#DINGLEHOPPER" class="rarity-orange">尖刷子</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b2" data-skill_power="125" data-hp_regen="650" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1863,7 +1888,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">牧羊人日誌</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b3" data-armor="1000" data-reality="1000" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1881,7 +1906,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=NEST_EGG#NEST_EGG" class="rarity-orange">窩中蛋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b4" data-skill_power="355" data-hp_max="1000" data-reality="703" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1900,7 +1925,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">早安活力飲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b5" data-hp_max="777" data-reality="606" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1918,7 +1943,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">金黃色的太陽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1948,7 +1973,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">四柱床</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b1" data-armor="1300" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1965,7 +1990,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=CHEESE_WHEEL#CHEESE_WHEEL" class="rarity-purple">輪狀起司</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b2" data-hp_max="888" data-hp_regen="350" data-normal_crit="6" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -1984,7 +2009,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">早安活力飲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b3" data-hp_max="777" data-reality="606" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2002,7 +2027,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=SNARFFBLATT#SNARFFBLATT" class="rarity-purple">暴食者嘎嘎</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b4" data-basic_damage="125" data-skill_power="125" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2020,7 +2045,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">牧羊人日誌</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b5" data-armor="1000" data-reality="1000" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2038,7 +2063,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">棒球口香糖玩具</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2068,7 +2093,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=RED_BALLOON#RED_BALLOON" class="rarity-orange">紅色氣球</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b1" data-skill_power="576" data-armor="300" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2086,7 +2111,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=BIRDS_OF_A_FEATHER#BIRDS_OF_A_FEATHER" class="rarity-purple">三紳士之帽</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b2" data-skill_power="399" data-hp_max="963" data-reality="899" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2105,7 +2130,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=CROQUET_BALL#CROQUET_BALL" class="rarity-purple">槌球</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b3" data-armor="1000" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2122,7 +2147,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=BLUE_UMBRELLA#BLUE_UMBRELLA" class="rarity-purple">藍色雨傘</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b4" data-skill_power="155" data-hp_max="389" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2140,7 +2165,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">四柱床</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b5" data-armor="1300" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2157,7 +2182,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">空中海盜</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2187,7 +2212,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=EXPLORE#EXPLORE" class="rarity-orange">探險吧！</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b1" data-hp_max="2105" data-armor="1400" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2205,7 +2230,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=BOB#BOB" class="rarity-purple">鮑伯</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b2" data-basic_damage="100" data-reality="350" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2223,7 +2248,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=HYPNOTIC_MELODY#HYPNOTIC_MELODY" class="rarity-purple">催眠旋律</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b3" data-hp_max="2065" data-armor="1550" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2241,7 +2266,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=WILD_RIDE#WILD_RIDE" class="rarity-purple">狂野之旅</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b4" data-skill_power="250" data-hp_max="1200" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2259,7 +2284,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=DOGS_BREAKFAST#DOGS_BREAKFAST" class="rarity-orange">狗狗的早餐</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b5" data-hp_max="1000" data-armor="2000" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2277,7 +2302,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">火箭冰棒</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2307,7 +2332,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=POM_POM_SHOES#POM_POM_SHOES" class="rarity-orange">毛球鞋</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b1" data-skill_power="326" data-armor="999" data-reality="855" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2326,7 +2351,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=SIDS_TOY#SIDS_TOY" class="rarity-orange">阿薛的玩具</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b2" data-skill_power="440" data-hp_max="1200" data-hp_regen="350" data-armor="502" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2346,7 +2371,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">練習滑雪橇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b3" data-armor="1300" data-normal_crit="10" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2364,7 +2389,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=FRIENDLY_SURVIVOR#FRIENDLY_SURVIVOR" class="rarity-purple">友好的倖存者</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b4" data-hp_max="1150" data-reality="750" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2382,7 +2407,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">嗜甜如命</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b5" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2401,7 +2426,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">愉悅徽章</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2431,7 +2456,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=ABSTRACT_THOUGHT#ABSTRACT_THOUGHT" class="rarity-red">抽象思想</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b1" data-armor="1400" data-reality="1400" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2449,7 +2474,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=HERCULADE#HERCULADE" class="rarity-orange">海格能量飲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b2" data-basic_damage="366" data-skill_power="566" data-hp_max="2288" data-improved_healing="0.1" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2469,7 +2494,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">鑼鼓喧天</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b3" data-skill_power="125" data-hp_max="1000" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2487,7 +2512,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">無限多面的骰子</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b4" data-skill_power="599" data-hp_max="3653" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2505,7 +2530,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=FRIENDLY_SURVIVOR#FRIENDLY_SURVIVOR" class="rarity-purple">友好的倖存者</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b5" data-hp_max="1150" data-reality="750" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2523,7 +2548,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">紡車</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2553,7 +2578,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=FEARAMID#FEARAMID" class="rarity-red">Fearamid</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b1" data-basic_damage="123" data-skill_power="456" data-hp_max="3456" data-hp_regen="7890" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2573,7 +2598,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">練習滑雪橇</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b2" data-armor="1300" data-normal_crit="10" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2591,7 +2616,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=ABSTRACT_THOUGHT#ABSTRACT_THOUGHT" class="rarity-red">抽象思想</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b3" data-armor="1400" data-reality="1400" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2609,7 +2634,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Peas in a Pod</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b4" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2628,7 +2653,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=MORNING_FUEL#MORNING_FUEL" class="rarity-purple">早安活力飲</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b5" data-hp_max="777" data-reality="606" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2646,7 +2671,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">Smal Fry</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2676,7 +2701,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=FOREST_SPIRIT#FOREST_SPIRIT" class="rarity-red">Forest Spirit</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b1" data-basic_damage="222" data-hp_max="4000" data-armor="405" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2695,7 +2720,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Peas in a Pod</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b2" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2714,7 +2739,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=FLY_AWAY_HOME#FLY_AWAY_HOME" class="rarity-orange">Fly Away Home</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b3" data-skill_power="455" data-hp_regen="4200" data-reality="2222" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2733,7 +2758,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=LOST_PETS#LOST_PETS" class="rarity-orange">失落的寵物</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b4" data-hp_max="1700" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2750,7 +2775,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=SAN_FRANSOKYO_SEWER#SAN_FRANSOKYO_SEWER" class="rarity-orange">舊京山下水道</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b5" data-hp_regen="650" data-armor="445" data-reality="653" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2769,7 +2794,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">Sheer Perfection</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2799,7 +2824,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SUNKEN_SHIP#SUNKEN_SHIP" class="rarity-red">Sunken Ship</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b1" data-hp_regen="3963" data-armor="1450" data-normal_crit="8" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2818,7 +2843,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">永恆經典</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b2" data-basic_damage="499" data-normal_crit="7" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2836,7 +2861,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=BEIGNETS#BEIGNETS" class="rarity-orange">法式甜甜圈</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b3" data-hp_max="789" data-hp_regen="1221" data-reality="444" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2855,7 +2880,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=FLY_AWAY_HOME#FLY_AWAY_HOME" class="rarity-orange">Fly Away Home</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b4" data-skill_power="455" data-hp_regen="4200" data-reality="2222" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2874,7 +2899,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SPOONFUL_OF_SUGAR#SPOONFUL_OF_SUGAR" class="rarity-orange">Spoonful of Sugar</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b5" data-skill_power="452" data-hp_regen="852" data-normal_crit="6" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2893,7 +2918,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SNAKE_BALLOON#SNAKE_BALLOON" class="rarity-orange">Reptilian Zeppelin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b6" data-basic_damage="550" data-hp_max="10001" data-r_ctl="6.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2923,7 +2948,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=WIND_CAN_DO_IT#WIND_CAN_DO_IT" class="rarity-red">Wind Can Do It</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b1" data-hp_max="8605" data-hp_regen="6900" data-armor="808" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2942,7 +2967,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=BOTTOMLESS_BAG#BOTTOMLESS_BAG" class="rarity-orange">Emotional Baggage</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b2" data-basic_damage="320" data-skill_power="565" data-hp_max="8520" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2961,7 +2986,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=FLY_AWAY_HOME#FLY_AWAY_HOME" class="rarity-orange">Fly Away Home</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b3" data-skill_power="455" data-hp_regen="4200" data-reality="2222" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2980,7 +3005,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=BREAD_AND_BUTTERFLIES#BREAD_AND_BUTTERFLIES" class="rarity-purple">麵包蝴蝶</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b4" data-hp_regen="333" data-armor="322" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -2998,7 +3023,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=SUNKEN_SHIP#SUNKEN_SHIP" class="rarity-red">Sunken Ship</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b5" data-hp_regen="3963" data-armor="1450" data-normal_crit="8" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3017,7 +3042,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MOVEABLE_COAT_RACK#MOVEABLE_COAT_RACK" class="rarity-orange">Moveable Coat Rack</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b6" data-basic_damage="562" data-skill_power="952" data-hp_max="14200" data-hp_regen="12000" data-r_ctl="7.51" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3049,7 +3074,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SMELL_THE_CORK#SMELL_THE_CORK" class="rarity-red">Smell the Cork</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b1" data-hp_max="16000" data-armor="4500" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3067,7 +3092,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Fish in a Bowl</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b2" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3085,7 +3110,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SUPER_TEAM_ASSEMBLE#SUPER_TEAM_ASSEMBLE" class="rarity-purple">超級團隊集結</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b3" data-basic_damage="350" data-reality="1700" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3103,7 +3128,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SUNKEN_SHIP#SUNKEN_SHIP" class="rarity-red">Sunken Ship</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b4" data-hp_regen="3963" data-armor="1450" data-normal_crit="8" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3122,7 +3147,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=FLY_AWAY_HOME#FLY_AWAY_HOME" class="rarity-orange">Fly Away Home</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b5" data-skill_power="455" data-hp_regen="4200" data-reality="2222" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3141,7 +3166,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=ESCAPE#ESCAPE" class="rarity-red">Escape</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b6" data-hp_max="19876" data-reality="4200" data-normal_crit="5" data-r_ctl="8.23" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3172,7 +3197,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=TREEHOUSE#TREEHOUSE" class="rarity-red">Treehouse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b1" data-skill_power="1056" data-hp_max="34504" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3190,7 +3215,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=MOONSTONE_THORN#MOONSTONE_THORN" class="rarity-orange">Moonstone Thorn</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b2" data-skill_power="606" data-hp_regen="13500" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3208,7 +3233,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=BLACK_FLAME_CANDLE#BLACK_FLAME_CANDLE" class="rarity-orange">黑焰蠟燭</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b3" data-hp_max="2333" data-reality="462" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3226,7 +3251,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=PRETEND_PRINCE#PRETEND_PRINCE" class="rarity-orange">Pretend Prince</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b4" data-hp_max="10500" data-hp_regen="8008" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3244,7 +3269,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=BEARS_NATURAL_HABITAT#BEARS_NATURAL_HABITAT" class="rarity-red">Bear&#39;s Natural Habitat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b5" data-hp_regen="16200" data-reality="2200" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3262,7 +3287,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CALAMITY_BOX#CALAMITY_BOX" class="rarity-red">Calamity Box</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b6" data-hp_max="26000" data-armor="6500" data-reality="6500" data-r_ctl="9.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3293,7 +3318,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=BE_MY_PAL#BE_MY_PAL" class="rarity-orange">Be My Pal</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b1" data-skill_power="1137.5" data-hp_regen="10500" data-reality="5555" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3312,7 +3337,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=FEARAMID#FEARAMID" class="rarity-red">Fearamid</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b2" data-basic_damage="123" data-skill_power="456" data-hp_max="3456" data-hp_regen="7890" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3332,7 +3357,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=SUNKEN_CITY#SUNKEN_CITY" class="rarity-red">Sunken City</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b3" data-basic_damage="555" data-hp_max="10000" data-armor="1012.5" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3351,7 +3376,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=SAILOR_STRIPES#SAILOR_STRIPES" class="rarity-red">Sailor Stripes</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b4" data-hp_max="16000" data-normal_crit="8" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3369,7 +3394,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Fish in a Bowl</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b5" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3387,7 +3412,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=THAT_DARN_CAT#THAT_DARN_CAT" class="rarity-red">That Darn Cat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b6" data-hp_max="25910" data-normal_crit="6" data-r_ctl="9.96" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3417,7 +3442,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=NOTRE_DAME_GARGOYLES#NOTRE_DAME_GARGOYLES" class="rarity-red">Victor, Hugo, and Laverne</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b1" data-hp_regen="9907.5" data-armor="3625" data-normal_crit="8" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3436,7 +3461,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=SAILOR_STRIPES#SAILOR_STRIPES" class="rarity-red">Sailor Stripes</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b2" data-hp_max="16000" data-normal_crit="8" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3454,7 +3479,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Peas in a Pod</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b3" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3473,7 +3498,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Fish in a Bowl</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b4" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3491,7 +3516,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=SEA_URCHIN#SEA_URCHIN" class="rarity-orange">Sea Urchin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b5" data-skill_power="1130" data-hp_regen="2130" data-normal_crit="6" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3510,7 +3535,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=INSTANT_MAKEOVER#INSTANT_MAKEOVER" class="rarity-red">Instant Makeover</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b6" data-basic_damage="1375" data-hp_max="25002.5" data-r_ctl="10.95" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3540,7 +3565,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=CONSCIENCE#CONSCIENCE" class="rarity-red">Conscience</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b1" data-hp_max="21512.5" data-hp_regen="17250" data-armor="2020" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3559,7 +3584,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=SUNKEN_CITY#SUNKEN_CITY" class="rarity-red">Sunken City</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b2" data-basic_damage="555" data-hp_max="10000" data-armor="1012.5" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3578,7 +3603,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=SUNKEN_SHIP#SUNKEN_SHIP" class="rarity-red">Sunken Ship</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b3" data-hp_regen="3963" data-armor="1450" data-normal_crit="8" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3597,7 +3622,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=MOONSTONE_THORN#MOONSTONE_THORN" class="rarity-orange">Moonstone Thorn</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b4" data-skill_power="606" data-hp_regen="13500" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3615,7 +3640,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PERRY#PERRY" class="rarity-orange">International Platypus of Mystery</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b5" data-basic_damage="800" data-skill_power="1412.5" data-hp_max="21300" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3634,7 +3659,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PUA#PUA" class="rarity-red">Oar Boar</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b6" data-basic_damage="1405" data-skill_power="2380" data-hp_max="35500" data-hp_regen="30000" data-r_ctl="12.05" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3666,7 +3691,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=BE_MY_PAL#BE_MY_PAL" class="rarity-orange">Be My Pal</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b1" data-skill_power="1137.5" data-hp_regen="10500" data-reality="5555" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3685,7 +3710,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=GURGI#GURGI" class="rarity-red">Gurgi</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b2" data-hp_max="40000" data-armor="11250" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3703,7 +3728,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=NOTRE_DAME_GARGOYLES#NOTRE_DAME_GARGOYLES" class="rarity-red">Victor, Hugo, and Laverne</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b3" data-hp_regen="9907.5" data-armor="3625" data-normal_crit="8" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3722,7 +3747,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=WADDLES#WADDLES" class="rarity-red">Waddles</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b4" data-skill_power="620" data-hp_max="10200" data-reality="1100" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3741,7 +3766,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=WILDCAT_HOUSEBOAT#WILDCAT_HOUSEBOAT" class="rarity-orange">Wildcat Houseboat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b5" data-hp_max="22512.5" data-hp_regen="38250" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3759,7 +3784,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=RIVERBEND#RIVERBEND" class="rarity-red">Riverbend</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b6" data-hp_max="49690" data-reality="10500" data-r_ctl="13.25" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3789,7 +3814,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=RING_OF_STONES#RING_OF_STONES" class="rarity-red">Ring Of Stones</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b1" data-skill_power="2640" data-hp_max="86260" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3807,7 +3832,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=BEADS_OF_JADE#BEADS_OF_JADE" class="rarity-orange">Beads Of Jade</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b2" data-skill_power="1515" data-hp_regen="33750" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3825,7 +3850,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=PERRY#PERRY" class="rarity-orange">International Platypus of Mystery</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b3" data-basic_damage="800" data-skill_power="1412.5" data-hp_max="21300" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3844,7 +3869,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=LOST_NANNY#LOST_NANNY" class="rarity-orange">Loyal Nanny</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b4" data-basic_damage="423" data-hp_max="13226" data-armor="1252" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3863,7 +3888,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=PET_COLLECTOR#PET_COLLECTOR" class="rarity-red">Pet Collector</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b5" data-hp_regen="40500" data-reality="5500" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3881,7 +3906,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=HOCKEY_ISLAND#HOCKEY_ISLAND" class="rarity-red">Hockey Island</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b6" data-hp_max="65000" data-armor="16250" data-reality="16250" data-r_ctl="14.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3912,7 +3937,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=HERCULES_STATUE#HERCULES_STATUE" class="rarity-red">Hercules Statue</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b1" data-basic_damage="1387.5" data-hp_max="25000" data-armor="2532.5" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3931,7 +3956,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=PRETEND_PRINCE#PRETEND_PRINCE" class="rarity-orange">Pretend Prince</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b2" data-hp_max="10500" data-hp_regen="8008" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3949,7 +3974,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=GNOME_RAINBOW#GNOME_RAINBOW" class="rarity-orange">Gnome Rainbow</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b3" data-skill_power="2845" data-hp_regen="26250" data-reality="13887.5" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3968,7 +3993,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=BEAGLE_BOYS#BEAGLE_BOYS" class="rarity-red">Beagle Boys</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b4" data-hp_max="40000" data-normal_crit="4" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -3986,7 +4011,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=WILDCAT_HOUSEBOAT#WILDCAT_HOUSEBOAT" class="rarity-orange">Wildcat Houseboat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b5" data-hp_max="22512.5" data-hp_regen="38250" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4004,7 +4029,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=MOON_OVER_LONDON#MOON_OVER_LONDON" class="rarity-red">Moon Over London</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b6" data-hp_max="64775" data-normal_crit="1" data-r_ctl="16.03" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4034,7 +4059,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=OLD_RUSTY#OLD_RUSTY" class="rarity-red">Old Rusty</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b1" data-hp_regen="24770" data-armor="9063" data-normal_crit="3" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4053,7 +4078,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=UNPLEASANT_UNICORN#UNPLEASANT_UNICORN" class="rarity-orange">Unpleasant Unicorn</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b2" data-basic_damage="4725" data-skill_power="6395" data-reality="17500" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4072,7 +4097,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Fish in a Bowl</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b3" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4090,7 +4115,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=WILDCAT_HOUSEBOAT#WILDCAT_HOUSEBOAT" class="rarity-orange">Wildcat Houseboat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b4" data-hp_max="22512.5" data-hp_regen="38250" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4108,7 +4133,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=RING_OF_STONES#RING_OF_STONES" class="rarity-red">Ring Of Stones</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b5" data-skill_power="2640" data-hp_max="86260" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4126,7 +4151,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=MR_BIMBO#MR_BIMBO" class="rarity-red">Mr. Bimbo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b6" data-basic_damage="3438" data-hp_max="62508" data-r_ctl="17.64" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4156,7 +4181,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GODDESS_OF_ADVENTURE#GODDESS_OF_ADVENTURE" class="rarity-orange">Goddess of Adventure</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b1" data-basic_damage="380" data-skill_power="650" data-hp_max="22000" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4175,7 +4200,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=OUTER_SPACE_CAT#OUTER_SPACE_CAT" class="rarity-red">Outer Space Cat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b2" data-hp_max="53783" data-hp_regen="43125" data-armor="5050" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4194,7 +4219,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=POOR_OLIVER#POOR_OLIVER" class="rarity-orange">Poor Oliver</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b3" data-basic_damage="2000" data-skill_power="3533" data-hp_max="53250" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4213,7 +4238,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=HERCULES_STATUE#HERCULES_STATUE" class="rarity-red">Hercules Statue</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b4" data-basic_damage="1387.5" data-hp_max="25000" data-armor="2532.5" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4232,7 +4257,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=BEADS_OF_JADE#BEADS_OF_JADE" class="rarity-orange">Beads Of Jade</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b5" data-skill_power="1515" data-hp_regen="33750" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4250,7 +4275,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GOOD_BAD_GUY#GOOD_BAD_GUY" class="rarity-red">Good Bad Guy</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b6" data-basic_damage="3513" data-skill_power="5950" data-hp_max="88750" data-hp_regen="75000" data-r_ctl="19.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4282,7 +4307,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=GREAT_BOOK_OF_GUMMI#GREAT_BOOK_OF_GUMMI" class="rarity-orange">Great Book Of Gummi</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b1" data-skill_power="2825" data-hp_regen="5325" data-normal_crit="2" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4301,7 +4326,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=OUTER_SPACE_CAT#OUTER_SPACE_CAT" class="rarity-red">Outer Space Cat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b2" data-hp_max="53783" data-hp_regen="43125" data-armor="5050" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4320,7 +4345,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=HIDING_FROM_HALLOWEEN#HIDING_FROM_HALLOWEEN" class="rarity-red">Hiding From Halloween</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b3" data-hp_max="100000" data-armor="28125" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4338,7 +4363,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BADGE_OF_PRIDE#BADGE_OF_PRIDE" class="rarity-orange">Badge of Pride</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b4" data-hp_max="56283" data-hp_regen="95625" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4356,7 +4381,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BIG_DONUT#BIG_DONUT" class="rarity-red">Big Donut</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b5" data-basic_damage="1747.5" data-skill_power="2997.5" data-hp_max="33887.5" data-armor="5332.5" data-reality="4727.5" data-normal_crit="8" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4378,7 +4403,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BIG_SNOWFLAKE#BIG_SNOWFLAKE" class="rarity-red">Big Snowflake</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b6" data-hp_max="124225" data-reality="26250" data-r_ctl="21.34" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4408,7 +4433,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=DEPARTURE_DENIED#DEPARTURE_DENIED" class="rarity-orange">Departure Denied</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b1" data-basic_damage="1890" data-skill_power="2557.5" data-reality="7000" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4427,7 +4452,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=POOR_OLIVER#POOR_OLIVER" class="rarity-orange">Poor Oliver</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b2" data-basic_damage="2000" data-skill_power="3533" data-hp_max="53250" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4446,7 +4471,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=NURSE_MOUSE#NURSE_MOUSE" class="rarity-red">Nurse Mouse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b3" data-skill_power="6600" data-hp_max="215650" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4464,7 +4489,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=UGLY_DUCKLING#UGLY_DUCKLING" class="rarity-red">Ugly Duckling</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b4" data-hp_regen="101250" data-reality="13750" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4482,7 +4507,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=SURPRISE_ME#SURPRISE_ME" class="rarity-orange">Surprise Me</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b5" data-skill_power="3788" data-hp_regen="84375" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4500,7 +4525,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=HONEST_JOHN#HONEST_JOHN" class="rarity-red">Honest John</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b6" data-hp_max="162500" data-armor="40625" data-reality="40625" data-r_ctl="23.47" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4531,7 +4556,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=POOR_OLIVER#POOR_OLIVER" class="rarity-orange">Poor Oliver</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b1" data-basic_damage="2000" data-skill_power="3533" data-hp_max="53250" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4550,7 +4575,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=FREE_RIDE#FREE_RIDE" class="rarity-orange">Free Ride</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b2" data-skill_power="2300" data-armor="6752.5" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4568,7 +4593,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=SHADOW_DEMONS#SHADOW_DEMONS" class="rarity-red">Shadow Demons</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b3" data-basic_damage="3470" data-hp_max="62500" data-armor="6333" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4587,7 +4612,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=UGLY_DUCKLING#UGLY_DUCKLING" class="rarity-red">Ugly Duckling</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b4" data-hp_regen="101250" data-reality="13750" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4605,7 +4630,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=LEFT_HANGING#LEFT_HANGING" class="rarity-orange">Left Hanging</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b5" data-skill_power="7113" data-hp_regen="65625" data-reality="34720" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4624,7 +4649,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=DRAGON_HIGH#DRAGON_HIGH" class="rarity-red">Dragon High</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b6" data-hp_max="161938" data-normal_crit="2" data-r_ctl="25.82" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4654,7 +4679,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=PUFFY_MARAHUTE#PUFFY_MARAHUTE" class="rarity-red">Puffy Marahute</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b1" data-hp_max="100000" data-normal_crit="3" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4672,7 +4697,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=BADGE_OF_PRIDE#BADGE_OF_PRIDE" class="rarity-orange">Badge of Pride</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b2" data-hp_max="56283" data-hp_regen="95625" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4690,7 +4715,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=HONKS_AND_PLUMAGE#HONKS_AND_PLUMAGE" class="rarity-orange">Honks and Plumage</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b3" data-basic_damage="11813" data-skill_power="15988" data-reality="43750" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4709,7 +4734,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=FAIR_FOLK#FAIR_FOLK" class="rarity-red">Fair Folk</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b4" data-skill_power="4606" data-hp_max="40000" data-reality="11250" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4728,7 +4753,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=STORM_RHINO#STORM_RHINO" class="rarity-red">Storm Rhino</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b5" data-hp_regen="61925" data-armor="22658" data-normal_crit="2" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4747,7 +4772,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=YOU_EARNED_IT#YOU_EARNED_IT" class="rarity-red">You Earned It</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b6" data-basic_damage="8595" data-hp_max="156270" data-r_ctl="28.40" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4777,7 +4802,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=MODIFIED_PLAN#MODIFIED_PLAN" class="rarity-red">Modified plan</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b1" data-hp_max="134458" data-hp_regen="107813" data-armor="12625" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4796,7 +4821,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=FROLLO_PUPPET#FROLLO_PUPPET" class="rarity-orange">Frollo Puppet</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b2" data-basic_damage="5000" data-skill_power="8833" data-hp_max="133125" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4815,7 +4840,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=IMAGINARY_BOYFRIEND#IMAGINARY_BOYFRIEND" class="rarity-orange">Imaginary Boyfriend</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b3" data-basic_damage="1412.5" data-hp_max="73750" data-reality="17250" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4834,7 +4859,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=SURPRISE_ME#SURPRISE_ME" class="rarity-orange">Surprise Me</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b4" data-skill_power="3788" data-hp_regen="84375" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4852,7 +4877,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=SHADOW_DEMONS#SHADOW_DEMONS" class="rarity-red">Shadow Demons</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b5" data-basic_damage="3470" data-hp_max="62500" data-armor="6333" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4871,7 +4896,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=BAGHEERAS_DISGUISE#BAGHEERAS_DISGUISE" class="rarity-red">Bagheera&#39;s Disguise</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b6" data-basic_damage="8783" data-skill_power="14875" data-hp_max="221875" data-hp_regen="187500" data-r_ctl="31.24" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4903,7 +4928,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=HERCULES_STATUE#HERCULES_STATUE" class="rarity-red">Hercules Statue</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b1" data-basic_damage="1387.5" data-hp_max="25000" data-armor="2532.5" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4922,7 +4947,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=CHECK_ME_OUT#CHECK_ME_OUT" class="rarity-orange">Check Me Out</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b2" data-hp_max="140708" data-hp_regen="239063" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4940,7 +4965,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=DRIVEN_BY_THOUGHT#DRIVEN_BY_THOUGHT" class="rarity-yellow">Driven by Thought</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b3" data-hp_max="250000" data-armor="70313" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4958,7 +4983,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=MISS_FRITTER#MISS_FRITTER" class="rarity-orange">Miss Fritter</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b4" data-skill_power="7063" data-hp_regen="13313" data-normal_crit="2" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4977,7 +5002,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=MODIFIED_PLAN#MODIFIED_PLAN" class="rarity-red">Modified plan</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b5" data-hp_max="134458" data-hp_regen="107813" data-armor="12625" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -4996,7 +5021,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=THE_ZONE#THE_ZONE" class="rarity-red">The Zone</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b6" data-hp_max="310563" data-reality="65625" data-r_ctl="34.37" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5026,7 +5051,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=MISS_FRITTER#MISS_FRITTER" class="rarity-orange">Miss Fritter</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b1" data-skill_power="7063" data-hp_regen="13313" data-normal_crit="2" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5045,7 +5070,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=MODIFIED_PLAN#MODIFIED_PLAN" class="rarity-red">Modified plan</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b2" data-hp_max="134458" data-hp_regen="107813" data-armor="12625" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5064,7 +5089,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=PRACTICAL_VOODOO#PRACTICAL_VOODOO" class="rarity-orange">Practical Voodoo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b3" data-basic_damage="5938" data-skill_power="10158" data-hp_max="343750" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5083,7 +5108,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=OWLS_FAMILY_HISTORY#OWLS_FAMILY_HISTORY" class="rarity-yellow">Owl&#39;s Family History</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b4" data-skill_power="16500" data-hp_max="539125" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5101,7 +5126,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=UNPLEASANT_UNICORN#UNPLEASANT_UNICORN" class="rarity-orange">Unpleasant Unicorn</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b5" data-basic_damage="4725" data-skill_power="6395" data-reality="17500" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5120,7 +5145,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=BARBERSHOP_TREAT#BARBERSHOP_TREAT" class="rarity-red">Barbershop Treat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b6" data-hp_max="406250" data-armor="101563" data-reality="101563" data-r_ctl="37.80" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5151,7 +5176,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HEART_THINGAMABOB#HEART_THINGAMABOB" class="rarity-yellow">Heart Thingamabob</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b1" data-hp_max="250000" data-normal_crit="8" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5169,7 +5194,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=FLASH_THE_WONDERDOG#FLASH_THE_WONDERDOG" class="rarity-yellow">Flash the Wonderdog</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b2" data-basic_damage="8675" data-hp_max="156250" data-armor="11083" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5188,7 +5213,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=CHECK_ME_OUT#CHECK_ME_OUT" class="rarity-orange">Check Me Out</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b3" data-hp_max="140708" data-hp_regen="239063" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5206,7 +5231,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=LETTUCE#LETTUCE" class="rarity-red">Lettuce</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b4" data-skill_power="17783" data-hp_regen="164063" data-reality="60760" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5225,7 +5250,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=CINNAMON_ROLL#CINNAMON_ROLL" class="rarity-red">Cinnamon Roll</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b5" data-skill_power="3875" data-hp_max="63750" data-reality="6875" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5244,7 +5269,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HOPPS_FAMILY_FARM#HOPPS_FAMILY_FARM" class="rarity-red">Hopps Family Farm</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b6" data-hp_max="404845" data-normal_crit="7" data-r_ctl="41.58" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5274,7 +5299,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=PRACTICAL_VOODOO#PRACTICAL_VOODOO" class="rarity-orange">Practical Voodoo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b1" data-basic_damage="5938" data-skill_power="10158" data-hp_max="343750" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5293,7 +5318,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=FLASH_THE_WONDERDOG#FLASH_THE_WONDERDOG" class="rarity-yellow">Flash the Wonderdog</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b2" data-basic_damage="8675" data-hp_max="156250" data-armor="11083" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5312,7 +5337,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=BADGE_OF_PRIDE#BADGE_OF_PRIDE" class="rarity-orange">Badge of Pride</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b3" data-hp_max="56283" data-hp_regen="95625" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5330,7 +5355,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=DOMINO_2#DOMINO_2" class="rarity-yellow">Domino 2</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b4" data-hp_regen="154813" data-armor="45316" data-normal_crit="6" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5349,7 +5374,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=BEHIND_THE_LOOK#BEHIND_THE_LOOK" class="rarity-red">Behind the Look</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b5" data-basic_damage="29533" data-skill_power="39970" data-reality="87500" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5368,7 +5393,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=COVER_MATERIAL#COVER_MATERIAL" class="rarity-red">Cover Material</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b6" data-basic_damage="21488" data-hp_max="390675" data-r_ctl="45.74" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5398,7 +5423,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=TARANS_MAGIC_SWORD#TARANS_MAGIC_SWORD" class="rarity-red">Taran&#39;s Magic Sword</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b1" data-basic_damage="5558" data-hp_max="213133" data-armor="13750" data-reality="21250" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5418,7 +5443,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=DAREDEVIL_DAD#DAREDEVIL_DAD" class="rarity-red">Daredevil Dad</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b2" data-basic_damage="12500" data-skill_power="22083" data-hp_max="332813" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5437,7 +5462,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=PRACTICAL_VOODOO#PRACTICAL_VOODOO" class="rarity-orange">Practical Voodoo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b3" data-basic_damage="5938" data-skill_power="10158" data-hp_max="343750" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5456,7 +5481,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=PURPOSES_NOT_ASSIGNED#PURPOSES_NOT_ASSIGNED" class="rarity-yellow">Purposes Not Defined</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b4" data-hp_max="336145" data-hp_regen="269533" data-armor="25250" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5475,7 +5500,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=FLASH_THE_WONDERDOG#FLASH_THE_WONDERDOG" class="rarity-yellow">Flash the Wonderdog</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b5" data-basic_damage="8675" data-hp_max="156250" data-armor="11083" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5494,7 +5519,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=COVERT#COVERT" class="rarity-red">Covert</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b6" data-basic_damage="21958" data-skill_power="37188" data-hp_max="554688" data-hp_regen="468750" data-r_ctl="50.32" disabled>
             <option value="-1">無</option>
             <option value="0" selected>配備</option>
@@ -5607,7 +5632,7 @@ function init()
     <p><span>主動：樂樂幫隊友治療 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="240k+1sp" data-checkbox="eval">240k+1sp</output></span><span> 生命值並獲得 </span><span class="unit-expr-misc">3</span><span> 層「快樂」堆疊！</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
         <dt>blackouttime</dt><dd>2</dd>
         <dt>duration</dt><dd>3.5</dd>
@@ -5620,7 +5645,6 @@ function init()
         <dt>healamt</dt><dd>240k+1sp</dd>
         <dt>joystackamt</dt><dd>3</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">歡呼</a></label></h2>
     <p><span>樂樂興奮地跳來跳去，獲得 </span><span class="unit-expr-misc">2</span><span> 層「快樂」堆疊與 </span><span class="unit-expr-misc">200</span><span> 能量！</span></p>
@@ -5630,7 +5654,7 @@ function init()
         <dt>initcooldown</dt><dd>2.5</dd>
         <dt>cooldown</dt><dd>10</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>3.5</dd>
         <dt>energygain</dt><dd>90</dd>
@@ -5640,7 +5664,6 @@ function init()
         <dt>joystackamt</dt><dd>2</dd>
         <dt>energyamt</dt><dd>200</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">幸福泡泡</a></label></h2>
     <p><span>每當有盟友的生命值掉到低於最大生命值的 </span><span class="unit-expr-misc">50%</span><span> 時，樂樂會移除自己的一層「快樂」堆疊，為盟友上一道生命值為 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="320k + 1.2sp" data-checkbox="eval">320k + 1.2sp</output></span><span> 且持續 </span><span class="unit-expr-misc">10</span><span> 秒的護盾！</span></p>
@@ -5650,7 +5673,7 @@ function init()
         <dt>initcooldown</dt><dd>2</dd>
         <dt>cooldown</dt><dd>5</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>3.5</dd>
         <dt>energygain</dt><dd>90</dd>
@@ -5663,17 +5686,15 @@ function init()
         <dt>shieldhp</dt><dd>320k + 1.2sp</dd>
         <dt>shieldduration</dt><dd>10</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">容光煥發</a></label></h2>
     <p><span>樂樂每累積一層「快樂」堆疊，她的盟友可獲得 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="100k" data-checkbox="eval">100k</output></span><span> 現實！</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>realityamt</dt><dd>100k</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Positive Thinking</a></label></h2>
     <p><span>Joy and her allies can&#39;t have their buffs removed or stolen by enemies for the first </span><span class="unit-expr-misc">7</span><span> seconds of each wave!</span></p>
@@ -5687,13 +5708,12 @@ function init()
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>buffsafetyseconds</dt><dd>7</dd>
         <dt>extrahppercent</dt><dd>0.4[%]</dd>
         <dt>statshieldhp</dt><dd>270k</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     </form>
   </div>

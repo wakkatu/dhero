@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1580904044">
-<link rel="stylesheet" href="../../star.css?1580904044">
-<link rel="stylesheet" href="../../unit.css?1580904044">
+<link rel="stylesheet" href="../../main.css?1627216201">
+<link rel="stylesheet" href="../../star.css?1627216201">
+<link rel="stylesheet" href="../../unit.css?1627216201">
 <title>Tigrou - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Avec sa queue à ressort, Tigrou rebondit partout sur le champ de bataille, repoussant et étourdissant ses ennemis.">
-<script src="../../util.js?1580904044"></script>
-<script src="../../unit.js?1580904044"></script>
+<script src="../../util.js?1627216201"></script>
+<script src="../../unit.js?1627216201"></script>
 <script>
 var calculator= null;
 
@@ -76,22 +76,20 @@ function init()
   </a>
   <label class="section dropdown" for="lang-menu">
     Choix de la langue / Choose Language
-    <span class="input-btn">
-      <input id="lang-menu" type="checkbox">
-      <span class="dropdown-content">
-        <a href="../../de/hero/TIGGER.htm">Deutsche</a>
-        <a href="../../en/hero/TIGGER.htm">English</a>
-        <a href="../../es/hero/TIGGER.htm">Español</a>
-        <a href="../../fr/hero/TIGGER.htm">Français</a>
-        <a href="../../it/hero/TIGGER.htm">Italiano</a>
-        <a href="../../ja/hero/TIGGER.htm">日本語</a>
-        <a href="../../ko/hero/TIGGER.htm">한국어</a>
-        <a href="../../pt/hero/TIGGER.htm">Português</a>
-        <a href="../../ru/hero/TIGGER.htm">русский</a>
-        <a href="../../zh-Hans/hero/TIGGER.htm">简体中文</a>
-        <a href="../../zh-Hant/hero/TIGGER.htm">繁體中文</a>
-      </span>
-    </span>
+    <input class="toggle-btn" id="lang-menu" type="checkbox">
+    <div class="dropdown-content">
+      <a href="../../de/hero/TIGGER.htm">Deutsche</a>
+      <a href="../../en/hero/TIGGER.htm">English</a>
+      <a href="../../es/hero/TIGGER.htm">Español</a>
+      <a href="../../fr/hero/TIGGER.htm">Français</a>
+      <a href="../../it/hero/TIGGER.htm">Italiano</a>
+      <a href="../../ja/hero/TIGGER.htm">日本語</a>
+      <a href="../../ko/hero/TIGGER.htm">한국어</a>
+      <a href="../../pt/hero/TIGGER.htm">Português</a>
+      <a href="../../ru/hero/TIGGER.htm">русский</a>
+      <a href="../../zh-Hans/hero/TIGGER.htm">简体中文</a>
+      <a href="../../zh-Hant/hero/TIGGER.htm">繁體中文</a>
+    </div>
   </label>
   <!--
   <span style="white-space: nowrap;">Release date: 07/06/2021</span>
@@ -110,14 +108,53 @@ function init()
     <blockquote>&#34;Bondir, c&#39;est que les tigres font le mieux!&#34;</blockquote>
     <div class="unit-pair-list">
       <span class="unit-pair-name">Rôle</span>
-      <a class="unit-pair-val" href="../hero_list.htm?role=damage">Ravageur</a>
+      <a class="unit-pair-val" href="../hero_list.htm?DPS_ROLE=on">Ravageur</a>
       <span class="unit-pair-name">Position</span>
-      <a class="unit-pair-val" href="../hero_list.htm?position=front">Devant</a>
+      <a class="unit-pair-val" href="../hero_list.htm?POSITION_FRONT=on">Devant</a>
       <span class="unit-pair-name">Équipe de défi:</span>
-      <a class="unit-pair-val" href="../hero_list.htm?team=red">Rouge</a>
+      <a class="unit-pair-val" href="../hero_list.htm?RED_TEAM=on">Rouge</a>
     </div>
   </div>
   <!-- Intro } -->
+
+  <!-- Filter { -->
+  <div class="section">
+    <h1>Filtre</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name unit-fltr-grp-name">type de dégâts</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Ces héros peuvent infliger des dégâts fantastiques avec leurs compétences."><a href="../hero_list.htm?FANTASTIC_DAMAGE=on">Dégâts fantastiques</a></li>
+          <li title="Ces héros peuvent infliger des dégâts normaux avec leurs compétences."><a href="../hero_list.htm?NORMAL_DAMAGE=on">Dégâts normaux</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">effets -</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Repousse la cible à une certaine distance."><a href="../hero_list.htm?KNOCKBACK=on">Repoussement</a></li>
+          <li title="Les unités étourdies ne peuvent pas bouger, attaquer ou utiliser de compétences."><a href="../hero_list.htm?STUN=on">Étourdissement</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">effets +</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="L&#39;unité s&#39;octroie de l&#39;énergie."><a href="../hero_list.htm?ENERGY_SELF=on">Autoénergie</a></li>
+          <li title="L&#39;unité se soigne."><a href="../hero_list.htm?HEAL_SELF=on">Autoguérison</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">stats +</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Les dégâts de base sont augmentés."><a href="../hero_list.htm?DAMAGE_INCREASE=on">Augmentation des dégâts de base</a></li>
+          <li title="La réalité est augmentée."><a href="../hero_list.htm?REALITY_INCREASE=on">Augmentation de réalité</a></li>
+          <li title="La puissance de compétence est augmentée."><a href="../hero_list.htm?SKILL_POWER_INCREASE=on">Augmentation de puissance de compétence</a></li>
+          <li title="La vitesse d&#39;attaque est augmentée."><a href="../hero_list.htm?ATTACK_SPEED_INCREASE=on">Augmentation de vitesse d&#39;attaque</a></li>
+          <li title="L&#39;armure est augmentée."><a href="../hero_list.htm?ARMOR_INCREASE=on">Augmentation d&#39;armure</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <!-- Filter } -->
 
   <!-- Core Stats { -->
   <div class="section">
@@ -223,7 +260,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=ACE_OF_SPADES#ACE_OF_SPADES" class="rarity-white">As de pique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b1" data-basic_damage="10" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -235,7 +272,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">Sugar Rush</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b2" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -248,7 +285,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">Renard rusé</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b3" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -261,7 +298,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=BADGE_OF_FRIENDSHIP#BADGE_OF_FRIENDSHIP" class="rarity-white">Badge d&#39;amitié</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b4" data-energy_regen="25" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -273,7 +310,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">Épée émoussée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b5" data-skill_power="20" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -285,7 +322,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=PAPER_AIRPLANE#PAPER_AIRPLANE" class="rarity-white">Avion en papier</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b6" data-basic_damage="5" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -306,7 +343,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=MOON_ANCHOR#MOON_ANCHOR" class="rarity-green">Ancre lunaire</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b1" data-basic_damage="7" data-energy_regen="7" data-normal_crit="10" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -321,7 +358,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">Rex fêtard</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b2" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -334,7 +371,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Gluant, mais appétissant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b3" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -348,7 +385,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=GLASS_SLIPPERS#GLASS_SLIPPERS" class="rarity-green">Pantoufles de verre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b4" data-hp_regen="27" data-armor="27" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -362,7 +399,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">A-mino-ménome</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b5" data-hp_max="128" data-armor="96" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -375,7 +412,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Gluant, mais appétissant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.1" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -398,7 +435,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Bocal de Mars</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b1" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -414,7 +451,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">Pizza de San Francisco</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b2" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -429,7 +466,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=SUNNY_SIDE#SUNNY_SIDE" class="rarity-white">Œuf au plat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b3" data-armor="45" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -441,7 +478,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">Pizza de San Francisco</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b4" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -456,7 +493,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=COOKBOOK#COOKBOOK" class="rarity-green">Livre de cuisine</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b5" data-hp_regen="50" data-reality="30" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -470,7 +507,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Gluant, mais appétissant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -494,7 +531,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">Jeton de sauvegarde</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b1" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -510,7 +547,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=MOON_ANCHOR#MOON_ANCHOR" class="rarity-green">Ancre lunaire</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b2" data-basic_damage="7" data-energy_regen="7" data-normal_crit="10" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -525,7 +562,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Menottes inconfortables</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b3" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -539,7 +576,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">Rex fêtard</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b4" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -552,7 +589,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=IMAGINATION_SHIP#IMAGINATION_SHIP" class="rarity-blue">Navire imaginaire</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b5" data-hp_max="400" data-hp_regen="200" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -568,7 +605,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Flaque de lait</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b6" data-armor="156" data-r_ctl="1.3" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -593,7 +630,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=GLOW_BUG#GLOW_BUG" class="rarity-blue">Bestiole scintillante</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b1" data-skill_power="100" data-reality="300" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -609,7 +646,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=HOMEOPATHIC_CURE#HOMEOPATHIC_CURE" class="rarity-green">Remède homéopathique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b2" data-skill_power="40" data-hp_max="300" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -623,7 +660,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=MYSTERIOUS_SEEDLING#MYSTERIOUS_SEEDLING" class="rarity-green">Pousse mystérieuse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b3" data-skill_power="40" data-normal_crit="12" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -637,7 +674,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=TREASURE_MAP#TREASURE_MAP" class="rarity-green">Carte au trésor</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b4" data-skill_power="40" data-energy_regen="50" data-normal_crit="12" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -652,7 +689,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Gazouillis harmonieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b5" data-hp_max="450" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -667,7 +704,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">Jeton de sauvegarde</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b6" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -693,7 +730,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Amour de coccinelle</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b1" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -711,7 +748,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">Kakomora à la noix</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b2" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -726,7 +763,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">Xylophone osseux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b3" data-skill_power="150" data-hp_max="250" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -742,7 +779,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=BLUEBIRD_OF_HAPPINESS#BLUEBIRD_OF_HAPPINESS" class="rarity-white">Merlebleu du bonheur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b4" data-basic_damage="45" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -754,7 +791,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">Pêche miraculeuse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b5" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -768,7 +805,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=PIGGY_BANK#PIGGY_BANK" class="rarity-green">Tirelire cochon</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b6" data-skill_power="40" data-hp_regen="100" data-energy_regen="50" data-r_ctl="1.5" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -793,7 +830,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Rouge à lèvres d&#39;Enfer</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b1" data-basic_damage="190" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -810,7 +847,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Diadème abandonné</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b2" data-skill_power="100" data-armor="300" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -826,7 +863,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">Sac de Mary Poppins</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b3" data-basic_damage="28" data-armor="36" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -840,7 +877,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=FAIRY_LANTERN#FAIRY_LANTERN" class="rarity-purple">Lanterne de fée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b4" data-skill_power="50" data-hp_max="400" data-energy_regen="120" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -859,7 +896,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=ESCAPE_PLAN#ESCAPE_PLAN" class="rarity-purple">Évasion gonflée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b5" data-basic_damage="200" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -876,7 +913,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Gazouillis harmonieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b6" data-hp_max="450" data-r_ctl="1.6" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -901,7 +938,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=BRUCES_BADGES#BRUCES_BADGES" class="rarity-purple">Badges de Bruce</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b1" data-basic_damage="150" data-skill_power="150" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -919,7 +956,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=CALAMARI#CALAMARI" class="rarity-purple">Calamar</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b2" data-hp_max="999" data-normal_crit="9" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -937,7 +974,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Rouge à lèvres d&#39;Enfer</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b3" data-basic_damage="190" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -954,7 +991,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Amour de coccinelle</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b4" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -972,7 +1009,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=TIME_SINK#TIME_SINK" class="rarity-green">Chronolavabo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b5" data-hp_max="300" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -985,7 +1022,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Gazouillis harmonieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1010,7 +1047,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">Gardien de pierre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b1" data-basic_damage="225" data-hp_max="525" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1028,7 +1065,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=REINDEER_FUEL#REINDEER_FUEL" class="rarity-green">Motivation du renne</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b2" data-hp_max="300" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1041,7 +1078,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Diadème abandonné</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b3" data-skill_power="100" data-armor="300" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1057,7 +1094,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=SAN_FRANCISCO_PIZZA#SAN_FRANCISCO_PIZZA" class="rarity-green">Pizza de San Francisco</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b4" data-basic_damage="40" data-skill_power="40" data-hp_max="200" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1072,7 +1109,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=FAMILY_HEIRLOOM#FAMILY_HEIRLOOM" class="rarity-purple">Ruée vers l&#39;or</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b5" data-basic_damage="225" data-reality="325" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1090,7 +1127,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Gazouillis harmonieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1115,7 +1152,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=DEUS_EX_CALIBUR#DEUS_EX_CALIBUR" class="rarity-purple">Deus Excalibur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b1" data-basic_damage="300" data-hp_max="300" data-armor="300" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1134,7 +1171,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=BREAKFAST_OF_CHAMPIONS#BREAKFAST_OF_CHAMPIONS" class="rarity-purple">Petit-déjeuner des champions</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b2" data-basic_damage="404" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1151,7 +1188,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">Queue égarée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b3" data-hp_max="400" data-reality="225" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1167,7 +1204,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">Xylophone osseux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b4" data-skill_power="150" data-hp_max="250" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1183,7 +1220,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=STRANGE_MUSHROOM#STRANGE_MUSHROOM" class="rarity-green">Champignon étrange</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b5" data-hp_max="300" data-hp_regen="100" data-armor="90" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1198,7 +1235,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Gazouillis harmonieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1223,7 +1260,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=JAR_OF_HUNNY#JAR_OF_HUNNY" class="rarity-orange">Pot de miel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b1" data-hp_max="3000" data-armor="1000" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1241,7 +1278,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=DEUS_EX_CALIBUR#DEUS_EX_CALIBUR" class="rarity-purple">Deus Excalibur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b2" data-basic_damage="300" data-hp_max="300" data-armor="300" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1260,7 +1297,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">Explorateur de contrées sauvages</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b3" data-skill_power="120" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1275,7 +1312,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=CUTEING_STAR#CUTEING_STAR" class="rarity-purple">Étoile fringante</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b4" data-basic_damage="150" data-skill_power="150" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1293,7 +1330,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=ESCAPE_PLAN#ESCAPE_PLAN" class="rarity-purple">Évasion gonflée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b5" data-basic_damage="200" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1310,7 +1347,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">Badge du club exclusif</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1339,7 +1376,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=VITAL_INFORMATION#VITAL_INFORMATION" class="rarity-orange">Informations V.I.TA.L.E.S.</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b1" data-armor="1200" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1356,7 +1393,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=BREAKFAST_OF_CHAMPIONS#BREAKFAST_OF_CHAMPIONS" class="rarity-purple">Petit-déjeuner des champions</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b2" data-basic_damage="404" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1373,7 +1410,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=SNARFFBLATT#SNARFFBLATT" class="rarity-purple">Bigette</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b3" data-basic_damage="125" data-skill_power="125" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1391,7 +1428,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Amour de coccinelle</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b4" data-basic_damage="180" data-normal_crit="12" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1409,7 +1446,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=LIGHTSPEED#LIGHTSPEED" class="rarity-purple">Vitesse de la lumière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b5" data-hp_max="400" data-armor="500" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1427,7 +1464,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">Beau prince</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1455,7 +1492,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">Diablo Piedra</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b1" data-hp_max="600" data-normal_crit="10" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1473,7 +1510,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=MERLINS_BAG#MERLINS_BAG" class="rarity-orange">Sac de Merlin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b2" data-hp_max="1000" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1490,7 +1527,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CROQUET_BALL#CROQUET_BALL" class="rarity-purple">Boule de croquet</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b3" data-armor="1000" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1507,7 +1544,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=LIQUID_BREAKFAST#LIQUID_BREAKFAST" class="rarity-orange">Petit-déjeuner liquide</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b4" data-hp_max="1000" data-reality="2000" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1525,7 +1562,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=KIMMUNICATOR#KIMMUNICATOR" class="rarity-purple">Kimmunicateur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b5" data-basic_damage="160" data-hp_max="1600" data-normal_crit="5" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1544,7 +1581,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">Gardien de pierre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b6" data-basic_damage="225" data-hp_max="525" data-r_ctl="2.4" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1572,7 +1609,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">Plan de Chèque en blanc</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b1" data-basic_damage="125" data-hp_regen="650" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1590,7 +1627,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">Mathématiquement délicieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b2" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1608,7 +1645,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=CUSTOMER_OF_THE_YEAR#CUSTOMER_OF_THE_YEAR" class="rarity-purple">Client de l&#39;année</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b3" data-basic_damage="125" data-hp_max="1000" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1626,7 +1663,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=THUMBSUCKERS_CROWN#THUMBSUCKERS_CROWN" class="rarity-purple">Couronne de bébé cadum</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b4" data-hp_regen="650" data-reality="750" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1644,7 +1681,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=PIXIE_DUST#PIXIE_DUST" class="rarity-purple">Poussière de fée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b5" data-basic_damage="550" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1661,7 +1698,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=STONE_GUARDIAN#STONE_GUARDIAN" class="rarity-purple">Gardien de pierre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b6" data-basic_damage="225" data-hp_max="525" data-r_ctl="2.65" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1689,7 +1726,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">Gym tonique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b1" data-basic_damage="150" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1706,7 +1743,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=SNARFFBLATT#SNARFFBLATT" class="rarity-purple">Bigette</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b2" data-basic_damage="125" data-skill_power="125" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1724,7 +1761,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=POWER_UP#POWER_UP" class="rarity-purple">Pleins gaz</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b3" data-basic_damage="120" data-skill_power="150" data-hp_regen="750" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1743,7 +1780,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=CARROT_PEN#CARROT_PEN" class="rarity-purple">Stylo carotte</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b4" data-basic_damage="100" data-armor="400" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1761,7 +1798,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=DRUM_LINE#DRUM_LINE" class="rarity-orange">Ligne de batterie</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b5" data-skill_power="125" data-hp_max="1000" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1779,7 +1816,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">Pensées positives</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1807,7 +1844,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">L&#39;indémodable</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b1" data-basic_damage="499" data-normal_crit="7" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1825,7 +1862,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">Mathématiquement délicieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b2" data-basic_damage="125" data-hp_max="1000" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1843,7 +1880,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=RETURN_TO_THE_FOLD#RETURN_TO_THE_FOLD" class="rarity-orange">Pli discret</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b3" data-basic_damage="314" data-hp_max="799" data-reality="715" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1862,7 +1899,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=POTENTIAL_CARRIAGE#POTENTIAL_CARRIAGE" class="rarity-purple">Pseudo carrosse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b4" data-hp_max="3300" data-hp_regen="2200" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1880,7 +1917,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=SHEPHERDS_JOURNAL#SHEPHERDS_JOURNAL" class="rarity-orange">Manuscrit du berger</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b5" data-armor="1000" data-reality="1000" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1898,7 +1935,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">Rayons d&#39;or</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1926,7 +1963,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=GOLDEN_HARP#GOLDEN_HARP" class="rarity-orange">Harpe dorée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b1" data-hp_max="3456" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1943,7 +1980,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">L&#39;indémodable</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b2" data-basic_damage="499" data-normal_crit="7" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1961,7 +1998,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=MOUSERCIZE#MOUSERCIZE" class="rarity-orange">Gym tonique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b3" data-basic_damage="150" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1978,7 +2015,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=SAFARI_HAT#SAFARI_HAT" class="rarity-purple">Chapeau de safari</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b4" data-basic_damage="250" data-skill_power="250" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -1996,7 +2033,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=CHEESE_WHEEL#CHEESE_WHEEL" class="rarity-purple">Roue du fromage</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b5" data-hp_max="888" data-hp_regen="350" data-normal_crit="6" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2015,7 +2052,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">Jouet à mâcher</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2043,7 +2080,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=BABY_BRIBE#BABY_BRIBE" class="rarity-orange">Appât à bébé</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b1" data-basic_damage="225" data-skill_power="450" data-hp_max="750" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2062,7 +2099,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=MERLINS_BAG#MERLINS_BAG" class="rarity-orange">Sac de Merlin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b2" data-hp_max="1000" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2079,7 +2116,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=PIT_STOP#PIT_STOP" class="rarity-orange">Arrêt minute</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b3" data-skill_power="444" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2096,7 +2133,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SPINACH_PUFFS#SPINACH_PUFFS" class="rarity-purple">Feuilletés aux épinards</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b4" data-basic_damage="269" data-hp_max="1530" data-hp_regen="555" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2115,7 +2152,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=TICK_TOCK#TICK_TOCK" class="rarity-purple">Tic-Toc</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b5" data-basic_damage="245" data-hp_max="800" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2133,7 +2170,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">Pirates du ciel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2161,7 +2198,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=HOUSE_OF_CARDS#HOUSE_OF_CARDS" class="rarity-orange">Château de cartes</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b1" data-skill_power="650" data-hp_max="2350" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2179,7 +2216,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">Ombre de Magica</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b2" data-hp_regen="650" data-armor="750" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2197,7 +2234,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=STAR_CASE#STAR_CASE" class="rarity-purple">Boîte étoilée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b3" data-basic_damage="250" data-hp_max="1200" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2215,7 +2252,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=DARING_DISGUISE#DARING_DISGUISE" class="rarity-purple">Costume audacieux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b4" data-basic_damage="280" data-reality="890" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2233,7 +2270,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=SWEETER_TOOTH#SWEETER_TOOTH" class="rarity-purple">Dent hyper sucrée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b5" data-basic_damage="202" data-hp_max="1111" data-armor="316" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2252,7 +2289,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">Sucette fusée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2280,7 +2317,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BEIGNETS#BEIGNETS" class="rarity-orange">Beignets</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b1" data-hp_max="789" data-hp_regen="1221" data-reality="444" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2299,7 +2336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=PEPPER_SHAKER#PEPPER_SHAKER" class="rarity-orange">Moulin de Pepper</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b2" data-skill_power="200" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2316,7 +2353,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=TICK_TOCK#TICK_TOCK" class="rarity-purple">Tic-Toc</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b3" data-basic_damage="245" data-hp_max="800" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2334,7 +2371,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">Luge d&#39;entraînement</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b4" data-armor="1300" data-normal_crit="10" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2352,7 +2389,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=LOST_PETS#LOST_PETS" class="rarity-orange">Compagnons égarés</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b5" data-hp_max="1700" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2369,7 +2406,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">Badge de délice</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2397,7 +2434,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=GRAND_FINALE#GRAND_FINALE" class="rarity-red">Grand final</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b1" data-basic_damage="370" data-skill_power="610" data-hp_max="4450" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2416,7 +2453,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=ANIMAL_AURORA#ANIMAL_AURORA" class="rarity-purple">Aurore animale</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b2" data-basic_damage="190" data-skill_power="460" data-normal_crit="8" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2435,7 +2472,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=LOCKED_AWAY_MEMORIES#LOCKED_AWAY_MEMORIES" class="rarity-orange">Souvenirs sous clé</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b3" data-basic_damage="750" data-hp_max="8999" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2453,7 +2490,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=POOH_STICKS#POOH_STICKS" class="rarity-purple">Jeu du bâton</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b4" data-reality="500" data-normal_crit="10" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2471,7 +2508,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=BROKEN_NECKLACE#BROKEN_NECKLACE" class="rarity-orange">Collier cassé</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b5" data-basic_damage="749" data-hp_max="8555" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2489,7 +2526,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">Fuseau</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2517,7 +2554,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Chance princière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2535,7 +2572,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">Dé aux faces infinies</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b2" data-skill_power="599" data-hp_max="3653" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2553,7 +2590,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Pois en cosse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b3" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2572,7 +2609,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=TRIPLEDENT_GUN#TRIPLEDENT_GUN" class="rarity-orange">Chewing gum tripledent</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b4" data-basic_damage="303" data-skill_power="608" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2590,7 +2627,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">Plan de Chèque en blanc</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b5" data-basic_damage="125" data-hp_regen="650" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2608,7 +2645,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">Menu fretin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2636,7 +2673,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=MONSTER_MAIL#MONSTER_MAIL" class="rarity-red">Courrier monstrueux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b1" data-skill_power="720" data-hp_max="7000" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2654,7 +2691,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=EXPLORE#EXPLORE" class="rarity-orange">Exploration</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b2" data-hp_max="2105" data-armor="1400" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2672,7 +2709,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=AUTO#AUTO" class="rarity-purple">AUTO</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b3" data-basic_damage="150" data-hp_max="389" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2690,7 +2727,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=PHOENIX_GATE#PHOENIX_GATE" class="rarity-orange">Porte du Phénix</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b4" data-basic_damage="450" data-hp_max="9000" data-hp_regen="3600" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2709,7 +2746,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=CLOUD_KICKER#CLOUD_KICKER" class="rarity-orange">Frappe-nuage</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b5" data-basic_damage="419" data-hp_regen="1999" data-normal_crit="7" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2728,7 +2765,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">Perfection pure</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2756,7 +2793,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Puissance du singe mystique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b1" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2774,7 +2811,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=LOST_NANNY#LOST_NANNY" class="rarity-orange">Nounou fidèle</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b2" data-basic_damage="423" data-hp_max="13226" data-armor="1252" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2793,7 +2830,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=TEMPTING_SWITCH#TEMPTING_SWITCH" class="rarity-orange">Interrupteur tentant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b3" data-basic_damage="120" data-armor="325" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2811,7 +2848,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=PEAS_IN_A_POD#PEAS_IN_A_POD" class="rarity-orange">Pois en cosse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b4" data-basic_damage="421" data-hp_max="4120" data-hp_regen="1420" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2830,7 +2867,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=MONSTER_MAIL#MONSTER_MAIL" class="rarity-red">Courrier monstrueux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b5" data-skill_power="720" data-hp_max="7000" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2848,7 +2885,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SNAKE_BALLOON#SNAKE_BALLOON" class="rarity-orange">Zeppelin reptilien</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b6" data-basic_damage="550" data-hp_max="10001" data-r_ctl="6.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2876,7 +2913,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Fieffé rat de cale</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b1" data-basic_damage="530" data-armor="1865" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2894,7 +2931,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=HISSY_FIT#HISSY_FIT" class="rarity-orange">Crise de cra-chat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b2" data-basic_damage="809" data-skill_power="1645" data-reality="2300" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2913,7 +2950,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=HYPNOTIC_MELODY#HYPNOTIC_MELODY" class="rarity-purple">Mélodie hypnotique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b3" data-hp_max="2065" data-armor="1550" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2931,7 +2968,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Puissance du singe mystique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b4" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2949,7 +2986,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=BOTTOMLESS_BAG#BOTTOMLESS_BAG" class="rarity-orange">Bagage émotionnel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b5" data-basic_damage="320" data-skill_power="565" data-hp_max="8520" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2968,7 +3005,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MOVEABLE_COAT_RACK#MOVEABLE_COAT_RACK" class="rarity-orange">Porte-manteau ambulant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b6" data-basic_damage="562" data-skill_power="952" data-hp_max="14200" data-hp_regen="12000" data-r_ctl="7.51" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -2998,7 +3035,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=HOPPERS_FROG_LEGS#HOPPERS_FROG_LEGS" class="rarity-red">Cuisses de grenouilles de Hopper</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b1" data-hp_max="16000" data-reality="4500" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3016,7 +3053,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=BABY_PROOF#BABY_PROOF" class="rarity-orange">À l&#39;épreuve des bébés</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b2" data-basic_damage="1050" data-hp_max="20335" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3034,7 +3071,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SPOONFUL_OF_SUGAR#SPOONFUL_OF_SUGAR" class="rarity-orange">Morceau de sucre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b3" data-skill_power="452" data-hp_regen="852" data-normal_crit="6" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3053,7 +3090,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=HAPPY_PANCAKE#HAPPY_PANCAKE" class="rarity-orange">Crêpe heureuse</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b4" data-basic_damage="100" data-skill_power="222" data-hp_max="250" data-hp_regen="648" data-reality="455" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3074,7 +3111,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Fieffé rat de cale</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b5" data-basic_damage="530" data-armor="1865" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3092,7 +3129,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=ESCAPE#ESCAPE" class="rarity-red">La fuite</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b6" data-hp_max="19876" data-reality="4200" data-normal_crit="5" data-r_ctl="8.23" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3121,7 +3158,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=TREASURE_PARROT#TREASURE_PARROT" class="rarity-red">Perroquet au trésor</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b1" data-basic_damage="450" data-hp_max="24500" data-hp_regen="12333" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3140,7 +3177,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=GODDESS_OF_ADVENTURE#GODDESS_OF_ADVENTURE" class="rarity-orange">Déesse de l&#39;aventure</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b2" data-basic_damage="380" data-skill_power="650" data-hp_max="22000" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3159,7 +3196,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">Dé aux faces infinies</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b3" data-skill_power="599" data-hp_max="3653" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3177,7 +3214,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Fieffé rat de cale</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b4" data-basic_damage="530" data-armor="1865" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3195,7 +3232,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=PROGRAM_SCANNER#PROGRAM_SCANNER" class="rarity-orange">Scanner logiciel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b5" data-basic_damage="756" data-skill_power="1023" data-reality="2800" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3214,7 +3251,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CALAMITY_BOX#CALAMITY_BOX" class="rarity-red">Boîte de calamité</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b6" data-hp_max="26000" data-armor="6500" data-reality="6500" data-r_ctl="9.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3243,7 +3280,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=BEARS_NATURAL_HABITAT#BEARS_NATURAL_HABITAT" class="rarity-red">Habitat naturel de l&#39;ours</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b1" data-hp_regen="16200" data-reality="2200" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3261,7 +3298,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=BOTTOMLESS_BAG#BOTTOMLESS_BAG" class="rarity-orange">Bagage émotionnel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b2" data-basic_damage="320" data-skill_power="565" data-hp_max="8520" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3280,7 +3317,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=CHRISTMAS_TREE#CHRISTMAS_TREE" class="rarity-red">Arbre de Noël</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b3" data-basic_damage="225" data-hp_max="2711" data-hp_regen="900" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3299,7 +3336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER_HANDBOOK#WILDERNESS_EXPLORER_HANDBOOK" class="rarity-orange">Guide d&#39;explorateur de contrées sauvages</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b4" data-basic_damage="1125" data-hp_max="22500" data-hp_regen="9000" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3318,7 +3355,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=PIANO_KITTIES#PIANO_KITTIES" class="rarity-red">Chatons pianistes</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b5" data-skill_power="1800" data-hp_max="17500" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3336,7 +3373,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=THAT_DARN_CAT#THAT_DARN_CAT" class="rarity-red">Sale chat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b6" data-hp_max="25910" data-normal_crit="6" data-r_ctl="9.96" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3364,7 +3401,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Poisson en bol</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b1" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3382,7 +3419,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=VOLCANOES#VOLCANOES" class="rarity-orange">Volcans</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b2" data-basic_damage="1057.5" data-hp_max="33065" data-armor="3130" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3401,7 +3438,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=SAILOR_STRIPES#SAILOR_STRIPES" class="rarity-red">Marinière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b3" data-hp_max="16000" data-normal_crit="8" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3419,7 +3456,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=MONSTER_MAIL#MONSTER_MAIL" class="rarity-red">Courrier monstrueux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b4" data-skill_power="720" data-hp_max="7000" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3437,7 +3474,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=UNLIKELY_PALS#UNLIKELY_PALS" class="rarity-red">Amis improbables</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b5" data-basic_damage="2500" data-hp_max="55555" data-hp_regen="8888" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3456,7 +3493,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=INSTANT_MAKEOVER#INSTANT_MAKEOVER" class="rarity-red">Relooking instantané</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b6" data-basic_damage="1375" data-hp_max="25002.5" data-r_ctl="10.95" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3484,7 +3521,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PERRY#PERRY" class="rarity-orange">L&#39;ornithorynque mystérieux international</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b1" data-basic_damage="800" data-skill_power="1412.5" data-hp_max="21300" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3503,7 +3540,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=BE_MY_PAL#BE_MY_PAL" class="rarity-orange">Sois mon pote</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b2" data-skill_power="1137.5" data-hp_regen="10500" data-reality="5555" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3522,7 +3559,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=THE_BETTYS#THE_BETTYS" class="rarity-red">Les Betty</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b3" data-basic_damage="1325" data-armor="4662.5" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3540,7 +3577,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Chance princière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b4" data-skill_power="999" data-armor="1450" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3558,7 +3595,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=NOTRE_DAME_GARGOYLES#NOTRE_DAME_GARGOYLES" class="rarity-red">La Rocaille, la Muraille et la Volière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b5" data-hp_regen="9907.5" data-armor="3625" data-normal_crit="8" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3577,7 +3614,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PUA#PUA" class="rarity-red">Cochon rameur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b6" data-basic_damage="1405" data-skill_power="2380" data-hp_max="35500" data-hp_regen="30000" data-r_ctl="12.05" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3607,7 +3644,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=FOREST_SPIRIT#FOREST_SPIRIT" class="rarity-red">Esprit de la forêt</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b1" data-basic_damage="222" data-hp_max="4000" data-armor="405" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3626,7 +3663,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=SEA_URCHIN#SEA_URCHIN" class="rarity-orange">Oursin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b2" data-skill_power="1130" data-hp_regen="2130" data-normal_crit="6" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3645,7 +3682,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=CONSCIENCE#CONSCIENCE" class="rarity-red">Conscience</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b3" data-hp_max="21512.5" data-hp_regen="17250" data-armor="2020" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3664,7 +3701,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=JOANNAS_EGG#JOANNAS_EGG" class="rarity-orange">Œuf de Joanna</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b4" data-basic_damage="2625" data-hp_max="50837.5" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3682,7 +3719,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=FAIR_FOLK#FAIR_FOLK" class="rarity-red">Êtres splendides</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b5" data-skill_power="4606" data-hp_max="40000" data-reality="11250" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3701,7 +3738,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=RIVERBEND#RIVERBEND" class="rarity-red">Au détour de la rivière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b6" data-hp_max="49690" data-reality="10500" data-r_ctl="13.25" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3729,7 +3766,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=CONSCIENCE#CONSCIENCE" class="rarity-red">Conscience</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b1" data-hp_max="21512.5" data-hp_regen="17250" data-armor="2020" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3748,7 +3785,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=EYE_OF_FATES#EYE_OF_FATES" class="rarity-orange">Œil des Moires</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b2" data-basic_damage="950" data-skill_power="1625" data-hp_max="55000" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3767,7 +3804,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Puissance du singe mystique</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b3" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3785,7 +3822,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=SEA_URCHIN#SEA_URCHIN" class="rarity-orange">Oursin</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b4" data-skill_power="1130" data-hp_regen="2130" data-normal_crit="6" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3804,7 +3841,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=WOODEN_BEAR#WOODEN_BEAR" class="rarity-red">Ours en bois</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b5" data-basic_damage="1125" data-hp_max="61250" data-hp_regen="30832.5" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3823,7 +3860,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=HOCKEY_ISLAND#HOCKEY_ISLAND" class="rarity-red">Île de la passion</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b6" data-hp_max="65000" data-armor="16250" data-reality="16250" data-r_ctl="14.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3852,7 +3889,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=PET_COLLECTOR#PET_COLLECTOR" class="rarity-red">Collectionneuse d&#39;animaux</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b1" data-hp_regen="40500" data-reality="5500" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3870,7 +3907,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=PERRY#PERRY" class="rarity-orange">L&#39;ornithorynque mystérieux international</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b2" data-basic_damage="800" data-skill_power="1412.5" data-hp_max="21300" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3889,7 +3926,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=WARDROBE#WARDROBE" class="rarity-orange">Garde-robe de l&#39;autre monde</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b3" data-basic_damage="2812.5" data-hp_max="56250" data-hp_regen="22500" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3908,7 +3945,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=GARGOYLE_DRAWINGS#GARGOYLE_DRAWINGS" class="rarity-red">Dessins de gargouille</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b4" data-skill_power="4500" data-hp_max="43750" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3926,7 +3963,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=BOTTOMLESS_BAG#BOTTOMLESS_BAG" class="rarity-orange">Bagage émotionnel</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b5" data-basic_damage="320" data-skill_power="565" data-hp_max="8520" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3945,7 +3982,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=MOON_OVER_LONDON#MOON_OVER_LONDON" class="rarity-red">Lune londonienne</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b6" data-hp_max="64775" data-normal_crit="1" data-r_ctl="16.03" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3973,7 +4010,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=HIT_THE_LIGHTS#HIT_THE_LIGHTS" class="rarity-red">Et la lumière fut</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b1" data-basic_damage="6250" data-hp_max="138888" data-hp_regen="22220" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -3992,7 +4029,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=GUMMISCOPE#GUMMISCOPE" class="rarity-orange">Gummiscope</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b2" data-basic_damage="2645" data-hp_max="82663" data-armor="7825" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4011,7 +4048,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=FISH_IN_A_BOWL#FISH_IN_A_BOWL" class="rarity-orange">Poisson en bol</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b3" data-hp_max="9005" data-hp_regen="15300" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4029,7 +4066,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=BEADS_OF_JADE#BEADS_OF_JADE" class="rarity-orange">Perles de jade</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b4" data-skill_power="1515" data-hp_regen="33750" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4047,7 +4084,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=HERCULES_STATUE#HERCULES_STATUE" class="rarity-red">Statue de Hercule</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b5" data-basic_damage="1387.5" data-hp_max="25000" data-armor="2532.5" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4066,7 +4103,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=MR_BIMBO#MR_BIMBO" class="rarity-red">M. Bimbo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b6" data-basic_damage="3438" data-hp_max="62508" data-r_ctl="17.64" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4094,7 +4131,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=BEADS_OF_JADE#BEADS_OF_JADE" class="rarity-orange">Perles de jade</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b1" data-skill_power="1515" data-hp_regen="33750" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4112,7 +4149,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=HERCULES_STATUE#HERCULES_STATUE" class="rarity-red">Statue de Hercule</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b2" data-basic_damage="1387.5" data-hp_max="25000" data-armor="2532.5" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4131,7 +4168,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=POOR_OLIVER#POOR_OLIVER" class="rarity-orange">Pauvre Oliver</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b3" data-basic_damage="2000" data-skill_power="3533" data-hp_max="53250" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4150,7 +4187,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=HIT_THE_GONG#HIT_THE_GONG" class="rarity-red">Frappe le gong</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b4" data-basic_damage="3313" data-armor="11658" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4168,7 +4205,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=ITTY_BIDDY#ITTY_BIDDY" class="rarity-orange">Verdoyante</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b5" data-skill_power="3000" data-normal_crit="15" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4186,7 +4223,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GOOD_BAD_GUY#GOOD_BAD_GUY" class="rarity-red">Un méchant gentil</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b6" data-basic_damage="3513" data-skill_power="5950" data-hp_max="88750" data-hp_regen="75000" data-r_ctl="19.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4216,7 +4253,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=PIANO_KITTIES#PIANO_KITTIES" class="rarity-red">Chatons pianistes</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b1" data-skill_power="1800" data-hp_max="17500" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4234,7 +4271,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=GNOME_RAINBOW#GNOME_RAINBOW" class="rarity-orange">Arc-en-ciel de gnome</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b2" data-skill_power="2845" data-hp_regen="26250" data-reality="13887.5" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4253,7 +4290,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=CLOAKED_FIGURE#CLOAKED_FIGURE" class="rarity-red">Personnage à cape</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b3" data-skill_power="11515" data-hp_max="100000" data-reality="28125" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4272,7 +4309,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=SAILING_INTO_THE_SUNSET#SAILING_INTO_THE_SUNSET" class="rarity-orange">Virée au soleil couchant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b4" data-basic_damage="6563" data-hp_max="127095" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4290,7 +4327,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=OLD_RUSTY#OLD_RUSTY" class="rarity-red">Old Rusty</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b5" data-hp_regen="24770" data-armor="9063" data-normal_crit="3" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4309,7 +4346,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BIG_SNOWFLAKE#BIG_SNOWFLAKE" class="rarity-red">Gros flocon de neige</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b6" data-hp_max="124225" data-reality="26250" data-r_ctl="21.34" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4337,7 +4374,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=UGLY_DUCKLING#UGLY_DUCKLING" class="rarity-red">Vilain petit canard</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b1" data-hp_regen="101250" data-reality="13750" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4355,7 +4392,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=NOTRE_DAME_GARGOYLES#NOTRE_DAME_GARGOYLES" class="rarity-red">La Rocaille, la Muraille et la Volière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b2" data-hp_regen="9907.5" data-armor="3625" data-normal_crit="8" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4374,7 +4411,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=YOUNG_ANTON#YOUNG_ANTON" class="rarity-orange">Souvenirs d&#39;enfance</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b3" data-basic_damage="2375" data-skill_power="4063" data-hp_max="137500" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4393,7 +4430,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=POOR_OLIVER#POOR_OLIVER" class="rarity-orange">Pauvre Oliver</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b4" data-basic_damage="2000" data-skill_power="3533" data-hp_max="53250" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4412,7 +4449,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=JAKE_DOWN_UNDER#JAKE_DOWN_UNDER" class="rarity-red">Jake au pays des kangourous</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b5" data-basic_damage="2813" data-hp_max="153125" data-hp_regen="77083" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4431,7 +4468,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=HONEST_JOHN#HONEST_JOHN" class="rarity-red">John honnête</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b6" data-hp_max="162500" data-armor="40625" data-reality="40625" data-r_ctl="23.47" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4460,7 +4497,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=DEAL_GONE_WRONG#DEAL_GONE_WRONG" class="rarity-red">Une affaire qui tourne mal</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b1" data-skill_power="11250" data-hp_max="109375" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4478,7 +4515,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=BADGE_OF_PRIDE#BADGE_OF_PRIDE" class="rarity-orange">Badge de fierté</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b2" data-hp_max="56283" data-hp_regen="95625" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4496,7 +4533,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=STONE_BIRDS_CLUE#STONE_BIRDS_CLUE" class="rarity-orange">L&#39;indice de l&#39;oiseau de pierre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b3" data-basic_damage="12645" data-skill_power="25708" data-reality="35938" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4515,7 +4552,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=PUFFY_MARAHUTE#PUFFY_MARAHUTE" class="rarity-red">Marahute ébouriffée</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b4" data-hp_max="100000" data-normal_crit="3" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4533,7 +4570,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=THE_BETTYS#THE_BETTYS" class="rarity-red">Les Betty</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b5" data-basic_damage="1325" data-armor="4662.5" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4551,7 +4588,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=DRAGON_HIGH#DRAGON_HIGH" class="rarity-red">Lycée du dragon</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b6" data-hp_max="161938" data-normal_crit="2" data-r_ctl="25.82" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4579,7 +4616,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=SURPRISE_ME#SURPRISE_ME" class="rarity-orange">Surprenez-moi</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b1" data-skill_power="3788" data-hp_regen="84375" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4597,7 +4634,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=ROSES_DREAM_CHARM#ROSES_DREAM_CHARM" class="rarity-red">Charme de Rose</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b2" data-basic_damage="15625" data-hp_max="347220" data-hp_regen="55550" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4616,7 +4653,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=WILDCAT_HOUSEBOAT#WILDCAT_HOUSEBOAT" class="rarity-orange">Péniche à chat</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b3" data-hp_max="22512.5" data-hp_regen="38250" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4634,7 +4671,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=FANCY_CARWASH#FANCY_CARWASH" class="rarity-orange">Lavage auto chic</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b4" data-basic_damage="6613" data-hp_max="206658" data-armor="19563" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4653,7 +4690,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=SHADOW_DEMONS#SHADOW_DEMONS" class="rarity-red">Démons de l&#39;ombre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b5" data-basic_damage="3470" data-hp_max="62500" data-armor="6333" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4672,7 +4709,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=YOU_EARNED_IT#YOU_EARNED_IT" class="rarity-red">Bien mérité</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b6" data-basic_damage="8595" data-hp_max="156270" data-r_ctl="28.40" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4700,7 +4737,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=MISS_BUNNY#MISS_BUNNY" class="rarity-red">Miss Bunny</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b1" data-basic_damage="8283" data-armor="29145" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4718,7 +4755,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=FROLLO_PUPPET#FROLLO_PUPPET" class="rarity-orange">Marionnette de Frollo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b2" data-basic_damage="5000" data-skill_power="8833" data-hp_max="133125" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4737,7 +4774,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=FRIENDSHIP_ISLAND#FRIENDSHIP_ISLAND" class="rarity-orange">Île de l&#39;amitié</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b3" data-basic_damage="3125" data-skill_power="4375" data-hp_max="83332.5" data-reality="22000" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4757,7 +4794,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=SURPRISE_ME#SURPRISE_ME" class="rarity-orange">Surprenez-moi</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b4" data-skill_power="3788" data-hp_regen="84375" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4775,7 +4812,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=SHADOW_DEMONS#SHADOW_DEMONS" class="rarity-red">Démons de l&#39;ombre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b5" data-basic_damage="3470" data-hp_max="62500" data-armor="6333" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4794,7 +4831,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=BAGHEERAS_DISGUISE#BAGHEERAS_DISGUISE" class="rarity-red">Déguisement de Bagheera</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b6" data-basic_damage="8783" data-skill_power="14875" data-hp_max="221875" data-hp_regen="187500" data-r_ctl="31.24" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4824,7 +4861,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=FABULOUS_PAIR#FABULOUS_PAIR" class="rarity-orange">Fabuleux duo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b1" data-basic_damage="16408" data-hp_max="317738" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4842,7 +4879,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=MAP#MAP" class="rarity-orange">Trésor en bouteille</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b2" data-basic_damage="4995" data-skill_power="8450" data-hp_max="89307.5" data-armor="13750" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4862,7 +4899,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=STORM_RHINO#STORM_RHINO" class="rarity-red">Rhinocéros du tonnerre</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b3" data-hp_regen="61925" data-armor="22658" data-normal_crit="2" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4881,7 +4918,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=LEFT_HANGING#LEFT_HANGING" class="rarity-orange">Laissé en suspens</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b4" data-skill_power="7113" data-hp_regen="65625" data-reality="34720" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4900,7 +4937,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=TIRE_SWING#TIRE_SWING" class="rarity-yellow">Balançoire pneu</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b5" data-skill_power="28788" data-hp_max="250000" data-reality="70313" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4919,7 +4956,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=THE_ZONE#THE_ZONE" class="rarity-red">La Zone</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b6" data-hp_max="310563" data-reality="65625" data-r_ctl="34.37" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4947,7 +4984,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=MAXIMUM_SWEETNESS#MAXIMUM_SWEETNESS" class="rarity-yellow">Sucrerie maximale</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b1" data-basic_damage="7033" data-hp_max="382813" data-hp_regen="192708" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4966,7 +5003,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=UNLIKELY_TRIO#UNLIKELY_TRIO" class="rarity-yellow">Trio improbable</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b2" data-hp_regen="253125" data-reality="34375" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -4984,7 +5021,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=PRACTICAL_VOODOO#PRACTICAL_VOODOO" class="rarity-orange">Guide de vaudou</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b3" data-basic_damage="5938" data-skill_power="10158" data-hp_max="343750" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5003,7 +5040,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=HIT_THE_LIGHTS#HIT_THE_LIGHTS" class="rarity-red">Et la lumière fut</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b4" data-basic_damage="6250" data-hp_max="138888" data-hp_regen="22220" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5022,7 +5059,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=FROLLO_PUPPET#FROLLO_PUPPET" class="rarity-orange">Marionnette de Frollo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b5" data-basic_damage="5000" data-skill_power="8833" data-hp_max="133125" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5041,7 +5078,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=BARBERSHOP_TREAT#BARBERSHOP_TREAT" class="rarity-red">Bonbon de barbier</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b6" data-hp_max="406250" data-armor="101563" data-reality="101563" data-r_ctl="37.80" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5070,7 +5107,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=WELL_BE_PREPARED#WELL_BE_PREPARED" class="rarity-red">Nous serons prêts</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b1" data-basic_damage="31613" data-skill_power="64270" data-reality="62892" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5089,7 +5126,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=GYPSY#GYPSY" class="rarity-red">Gypsy</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b2" data-armor="18750" data-reality="18750" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5107,7 +5144,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=RUBBER_BANDO#RUBBER_BANDO" class="rarity-yellow">Rubber Bando</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b3" data-skill_power="28125" data-hp_max="273438" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5125,7 +5162,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=CHECK_ME_OUT#CHECK_ME_OUT" class="rarity-orange">Grande classe</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b4" data-hp_max="140708" data-hp_regen="239063" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5143,7 +5180,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HEART_THINGAMABOB#HEART_THINGAMABOB" class="rarity-yellow">Cœur de tire-baba</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b5" data-hp_max="250000" data-normal_crit="8" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5161,7 +5198,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HOPPS_FAMILY_FARM#HOPPS_FAMILY_FARM" class="rarity-red">Ferme Hopps</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b6" data-hp_max="404845" data-normal_crit="7" data-r_ctl="41.58" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5189,7 +5226,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=CHECK_ME_OUT#CHECK_ME_OUT" class="rarity-orange">Grande classe</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b1" data-hp_max="140708" data-hp_regen="239063" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5207,7 +5244,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=SAILING_INTO_THE_SUNSET#SAILING_INTO_THE_SUNSET" class="rarity-orange">Virée au soleil couchant</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b2" data-basic_damage="6563" data-hp_max="127095" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5225,7 +5262,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=BONFAMILLES_RESIDENCE#BONFAMILLES_RESIDENCE" class="rarity-yellow">Résidence Bonnefamille</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b3" data-basic_damage="39063" data-hp_max="868050" data-hp_regen="138875" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5244,7 +5281,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=KNOWSMORE#KNOWSMORE" class="rarity-red">Monsieur Je-sais-tout</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b4" data-basic_damage="16533" data-hp_max="516645" data-armor="39126" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5263,7 +5300,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=HEART_THINGAMABOB#HEART_THINGAMABOB" class="rarity-yellow">Cœur de tire-baba</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b5" data-hp_max="250000" data-normal_crit="8" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5281,7 +5318,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=COVER_MATERIAL#COVER_MATERIAL" class="rarity-red">Couverture de magazine</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b6" data-basic_damage="21488" data-hp_max="390675" data-r_ctl="45.74" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5309,7 +5346,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=NURSE_MOUSE#NURSE_MOUSE" class="rarity-red">Souris infirmière</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b1" data-skill_power="6600" data-hp_max="215650" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5327,7 +5364,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=ALL_QUANTIZED_FORMS#ALL_QUANTIZED_FORMS" class="rarity-yellow">Toutes les formes quantifiées</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b2" data-basic_damage="20708" data-armor="58290" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5345,7 +5382,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=HOPPS_FAMILY_FARM#HOPPS_FAMILY_FARM" class="rarity-red">Ferme Hopps</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b3" data-hp_max="404845" data-normal_crit="7" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5363,7 +5400,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=DAREDEVIL_DAD#DAREDEVIL_DAD" class="rarity-red">Papa cascadeur</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b4" data-basic_damage="12500" data-skill_power="22083" data-hp_max="332813" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5382,7 +5419,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=FLASH_THE_WONDERDOG#FLASH_THE_WONDERDOG" class="rarity-yellow">Flash le super chien</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b5" data-basic_damage="8675" data-hp_max="156250" data-armor="11083" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5401,7 +5438,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=COVERT#COVERT" class="rarity-red">Couverture</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b6" data-basic_damage="21958" data-skill_power="37188" data-hp_max="554688" data-hp_regen="468750" data-r_ctl="50.32" disabled>
             <option value="-1">N/A</option>
             <option value="0" selected>Équiper</option>
@@ -5508,7 +5545,7 @@ function init()
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>knockbackdistance</dt><dd>200</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
         <dt>blackouttime</dt><dd>2</dd>
         <dt>duration</dt><dd>3.5</dd>
@@ -5521,7 +5558,6 @@ function init()
         <dt>bouncecount</dt><dd>5</dd>
         <dt>knockbackdistance</dt><dd>200</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Attaque bondissante</a></label></h2>
     <p><span>Quand Tigrou n&#39;est pas à portée de corps à corps avec un ennemi, il bondit sur l&#39;ennemi le plus proche, lui infligeant </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="175k + 2sp" data-checkbox="eval">175k + 2sp</output></span><span> pts de dégâts et l&#39;étourdissant pendant </span><span class="unit-expr-misc">7</span><span>s.</span></p>
@@ -5531,7 +5567,7 @@ function init()
         <dt>initcooldown</dt><dd>0.1</dd>
         <dt>cooldown</dt><dd>0.1</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>1</dd>
         <dt>damagetype</dt><dd>Fantastic</dd>
@@ -5545,7 +5581,6 @@ function init()
         <dt>stunduration</dt><dd>7</dd>
         <dt>jumpthreshold</dt><dd>400</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Action-réaction</a></label></h2>
     <p><span>Tigrou absorbe une attaque au corps à corps avec sa queue et contre-attaque, infligeant </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="197.5k + 4.5bd" data-checkbox="eval">197.5k + 4.5bd</output></span><span> pts de dégâts et repoussant les ennemis proches. Tigrou ne peut contrer une attaque qu&#39;une fois toutes les </span><span class="unit-expr-misc">5</span><span>s.</span></p>
@@ -5557,7 +5592,7 @@ function init()
         <dt>knockbackdistance</dt><dd>250</dd>
         <dt>splash</dt><dd>default+50</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2</dd>
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5570,7 +5605,6 @@ function init()
         <dt>knockbackdistance</dt><dd>250</dd>
         <dt>meleefilter</dt><dd>enemy | within(default)</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Rebond naturel</a></label></h2>
     <p><span>Tigrou effectue un super boing boing toutes les </span><span class="unit-expr-misc">3</span><span> attaques de base, infligeant </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="280k+4bd" data-checkbox="eval">280k+4bd</output></span><span> pts de dégâts supplémentaires et repoussant les ennemis proches.</span></p>
@@ -5581,7 +5615,7 @@ function init()
         <dt>knockbackdistance</dt><dd>250</dd>
         <dt>splash</dt><dd>default+50</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>cooldown</dt><dd>3</dd>
@@ -5590,7 +5624,6 @@ function init()
         <dt>dmg</dt><dd>280k+4bd</dd>
         <dt>knockbackdistance</dt><dd>250</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Le seul et unique</a></label></h2>
     <p><span>Tigrou gagne un cumul de &#34;Bondissant&#34; chaque </span><span class="unit-expr-misc">7</span><span> fois qu&#39;il rebondit. Pour chaque cumul, </span><a href="../hero/TIGGER.htm#WHITE" class="rarity-white">Super boing-boing</a><span> touche un ennemi en plus et le temps de recharge de </span><a href="../hero/TIGGER.htm#BLUE" class="rarity-blue">Action-réaction</a><span> est réduit de </span><span class="unit-expr-misc">1</span><span>s jusqu&#39;à un minimum de </span><span class="unit-expr-misc">4</span><span>s.</span></p>
@@ -5603,14 +5636,13 @@ function init()
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>stackamt</dt><dd>7</dd>
         <dt>reducedduration</dt><dd>1</dd>
         <dt>minsec</dt><dd>4</dd>
         <dt>dmgbuff</dt><dd>103k</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     </form>
   </div>

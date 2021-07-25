@@ -80,11 +80,7 @@ blockquote {
     2px 2px 10px 4px rgba(0,0,0,0.8);
 }
 
-.input-btn {
-  display: contents;
-}
-
-.input-btn input {
+.toggle-btn {
   display: none;
 }
 
@@ -114,12 +110,11 @@ blockquote {
   text-decoration: underline; 
 }
 
-.dropdown input[type=checkbox]:checked + .dropdown-content {
-  display: block;
+.dropdown .toggle-btn:not(:checked) + .dropdown-content {
+  display: none;
 }
 
 .dropdown-content {
-  display: none;
   position: absolute;
   background-color: rgb(112,15,112);
   box-shadow:
@@ -138,10 +133,6 @@ blockquote {
   position: fixed;
   background-color: rgba(112,15,112,0.9);
   z-index: 2;
-}
-
-details input[type=checkbox]:checked + * {
-  display: block;
 }
 
 th, td {
@@ -166,10 +157,16 @@ td {
   display: inline;
 }
 
+ol.inline-list,
+ul.inline-list {
+  padding-left: 0;
+}
+
 .inline-list dt,
 .inline-list dd,
 .inline-list li {
   display: inline;
+  white-space: nowrap;
 }
 
 .inline-list dd {
@@ -208,12 +205,8 @@ td {
   content: ": ";
 }
 
-.details-tag input[type=checkbox] + * {
+.details-tag .toggle-btn:not(:checked) + * {
   display: none;
-}
-
-.details-tag input[type=checkbox]:checked + * {
-  display: block;
 }
 
 .undertest::after {

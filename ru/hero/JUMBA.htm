@@ -3,13 +3,13 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../../main.css?1580904044">
-<link rel="stylesheet" href="../../star.css?1580904044">
-<link rel="stylesheet" href="../../unit.css?1580904044">
+<link rel="stylesheet" href="../../main.css?1627216201">
+<link rel="stylesheet" href="../../star.css?1627216201">
+<link rel="stylesheet" href="../../unit.css?1627216201">
 <title>Джамба - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Маниакально смеясь, злой гений Джамба выходит на поле боя с лазерным бластером и своим последним научным экспериментом в руках.">
-<script src="../../util.js?1580904044"></script>
-<script src="../../unit.js?1580904044"></script>
+<script src="../../util.js?1627216201"></script>
+<script src="../../unit.js?1627216201"></script>
 <script>
 var calculator= null;
 
@@ -76,22 +76,20 @@ function init()
   </a>
   <label class="section dropdown" for="lang-menu">
     Выбрать язык / Choose Language
-    <span class="input-btn">
-      <input id="lang-menu" type="checkbox">
-      <span class="dropdown-content">
-        <a href="../../de/hero/JUMBA.htm">Deutsche</a>
-        <a href="../../en/hero/JUMBA.htm">English</a>
-        <a href="../../es/hero/JUMBA.htm">Español</a>
-        <a href="../../fr/hero/JUMBA.htm">Français</a>
-        <a href="../../it/hero/JUMBA.htm">Italiano</a>
-        <a href="../../ja/hero/JUMBA.htm">日本語</a>
-        <a href="../../ko/hero/JUMBA.htm">한국어</a>
-        <a href="../../pt/hero/JUMBA.htm">Português</a>
-        <a href="../../ru/hero/JUMBA.htm">русский</a>
-        <a href="../../zh-Hans/hero/JUMBA.htm">简体中文</a>
-        <a href="../../zh-Hant/hero/JUMBA.htm">繁體中文</a>
-      </span>
-    </span>
+    <input class="toggle-btn" id="lang-menu" type="checkbox">
+    <div class="dropdown-content">
+      <a href="../../de/hero/JUMBA.htm">Deutsche</a>
+      <a href="../../en/hero/JUMBA.htm">English</a>
+      <a href="../../es/hero/JUMBA.htm">Español</a>
+      <a href="../../fr/hero/JUMBA.htm">Français</a>
+      <a href="../../it/hero/JUMBA.htm">Italiano</a>
+      <a href="../../ja/hero/JUMBA.htm">日本語</a>
+      <a href="../../ko/hero/JUMBA.htm">한국어</a>
+      <a href="../../pt/hero/JUMBA.htm">Português</a>
+      <a href="../../ru/hero/JUMBA.htm">русский</a>
+      <a href="../../zh-Hans/hero/JUMBA.htm">简体中文</a>
+      <a href="../../zh-Hant/hero/JUMBA.htm">繁體中文</a>
+    </div>
   </label>
   <!--
   <span style="white-space: nowrap;">Release date: 07/06/2021</span>
@@ -110,14 +108,54 @@ function init()
     <blockquote>«Мои эксперименты сугубо теоретические и полностью в рамках закона».</blockquote>
     <div class="unit-pair-list">
       <span class="unit-pair-name">Роль</span>
-      <a class="unit-pair-val" href="../hero_list.htm?role=control">Контроль</a>
+      <a class="unit-pair-val" href="../hero_list.htm?CONTROL_ROLE=on">Контроль</a>
       <span class="unit-pair-name">Позиция</span>
-      <a class="unit-pair-val" href="../hero_list.htm?position=central">По центру</a>
+      <a class="unit-pair-val" href="../hero_list.htm?POSITION_CENTRAL=on">По центру</a>
       <span class="unit-pair-name">Команда в испытаниях:</span>
-      <a class="unit-pair-val" href="../hero_list.htm?team=blue">Синий</a>
+      <a class="unit-pair-val" href="../hero_list.htm?BLUE_TEAM=on">Синий</a>
     </div>
   </div>
   <!-- Intro } -->
+
+  <!-- Filter { -->
+  <div class="section">
+    <h1>Фильтр</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name unit-fltr-grp-name">тип урона</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Эти герои могут наносить нормальный урон при помощи навыков."><a href="../hero_list.htm?NORMAL_DAMAGE=on">Нормальный урон</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">отриц. эффекты</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Оглушенные бойцы не могут двигаться, атаковать или использовать навыки."><a href="../hero_list.htm?STUN=on">Оглушение</a></li>
+          <li title="Отнимает у цели определенное количество усилений."><a href="../hero_list.htm?REMOVE_BUFF=on">Снятие усиления</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">полож. эффекты</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Можно вылечить по крайней мере одного союзника."><a href="../hero_list.htm?HEAL_TEAM=on">Лечение команды</a></li>
+          <li title="Может дать энергию по крайней мере одному союзнику."><a href="../hero_list.htm?ENERGY_TEAM=on">Энергия команде</a></li>
+          <li title="Бойцы с «Точностью» могут целиться в невидимых врагов. От их атак нельзя уклониться и избежать их."><a href="../hero_list.htm?PRECISE=on">Точность</a></li>
+          <li title="Дает энергию себе."><a href="../hero_list.htm?ENERGY_SELF=on">Энергия себе</a></li>
+          <li title="Энергичные бойцы получают больше энергии за каждую базовую атаку."><a href="../hero_list.htm?ENERGIZE=on">Активация</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">полож. параметры</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Максимум HP увеличен."><a href="../hero_list.htm?MAX_HP_INCREASE=on">Увеличение макс. HP</a></li>
+          <li title="Базовый урон повышен."><a href="../hero_list.htm?DAMAGE_INCREASE=on">Повышение базового урона</a></li>
+          <li title="Значение реальности повышено."><a href="../hero_list.htm?REALITY_INCREASE=on">Повышение реальности</a></li>
+          <li title="Значение брони повышено."><a href="../hero_list.htm?ARMOR_INCREASE=on">Повышение брони</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <!-- Filter } -->
 
   <!-- Core Stats { -->
   <div class="section">
@@ -223,7 +261,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">Сладкий Форсаж</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b1" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -236,7 +274,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=SUGAR_RUSH#SUGAR_RUSH" class="rarity-white">Сладкий Форсаж</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b2" data-hp_max="125" data-normal_crit="8" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -249,7 +287,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=BELLA_NOTTE#BELLA_NOTTE" class="rarity-white">Bella Notte</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b3" data-skill_power="10" data-hp_max="100" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -262,7 +300,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=ACE_OF_SPADES#ACE_OF_SPADES" class="rarity-white">Туз пик</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b4" data-basic_damage="10" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -274,7 +312,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=CLEVER_FOX#CLEVER_FOX" class="rarity-white">Умный лис</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b5" data-hp_max="100" data-hp_regen="100" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -287,7 +325,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1">
           <a href="../item_list.htm?item=DULL_SWORD#DULL_SWORD" class="rarity-white">Тупой меч</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1">
+        <span class="unit-pair-val nowrap" data-r_blk="1">
           <select name="b6" data-skill_power="20" data-r_ctl="1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -306,7 +344,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=FISHING_POLE#FISHING_POLE" class="rarity-green">Отличный бросок</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b1" data-basic_damage="20" data-hp_regen="50" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -320,7 +358,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=NUMBER_ONE_DIME#NUMBER_ONE_DIME" class="rarity-white">Первые 10 центов</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b2" data-normal_crit="15" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -332,7 +370,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=INCONSPICUOUS_APPLE#INCONSPICUOUS_APPLE" class="rarity-white">Испорченное яблоко</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b3" data-skill_power="55" data-energy_regen="20" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -345,7 +383,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">Букет фейерверков</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b4" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -358,7 +396,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">Вечеринка у Рекса</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b5" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -371,7 +409,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.1">
           <a href="../item_list.htm?item=BUNDLE_OF_FIREWORKS#BUNDLE_OF_FIREWORKS" class="rarity-white">Букет фейерверков</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.1">
+        <span class="unit-pair-val nowrap" data-r_blk="1.1">
           <select name="b6" data-basic_damage="20" data-skill_power="20" data-r_ctl="1.1" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -392,7 +430,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=JAR_OF_MARS#JAR_OF_MARS" class="rarity-blue">Банка с Марсом</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b1" data-basic_damage="60" data-hp_max="400" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -408,7 +446,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">Ковровая сумка Поппинс</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b2" data-basic_damage="28" data-armor="36" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -422,7 +460,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=ANEMONEMONE#ANEMONEMONE" class="rarity-white">А-немо-немона</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b3" data-hp_max="128" data-armor="96" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -435,7 +473,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=PARTY_REX#PARTY_REX" class="rarity-white">Вечеринка у Рекса</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b4" data-basic_damage="25" data-normal_crit="11" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -448,7 +486,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=GOLDEN_FLOWER#GOLDEN_FLOWER" class="rarity-green">Золотой цветок</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b5" data-basic_damage="40" data-skill_power="25" data-normal_crit="7" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -463,7 +501,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.2">
           <a href="../item_list.htm?item=GRUB#GRUB" class="rarity-white">Скользкий, но приятный</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.2">
+        <span class="unit-pair-val nowrap" data-r_blk="1.2">
           <select name="b6" data-basic_damage="8" data-skill_power="8" data-hp_max="50" data-r_ctl="1.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -486,7 +524,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b1" data-hp_max="450" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -501,7 +539,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">Золотой чайник</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b2" data-hp_regen="65" data-reality="155" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -515,7 +553,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=GLASS_SLIPPERS#GLASS_SLIPPERS" class="rarity-green">Хрустальные тапочки</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b3" data-hp_regen="27" data-armor="27" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -529,7 +567,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=BADGE_OF_STEALTH#BADGE_OF_STEALTH" class="rarity-green">Значок невидимости</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b4" data-energy_regen="15" data-normal_crit="8" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -543,7 +581,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=PRICKLY_PEAR#PRICKLY_PEAR" class="rarity-green">Колючая груша</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b5" data-hp_max="300" data-hp_regen="50" data-energy_regen="50" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -558,7 +596,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.3">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Пролитое молоко</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.3">
+        <span class="unit-pair-val nowrap" data-r_blk="1.3">
           <select name="b6" data-armor="156" data-r_ctl="1.3" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -583,7 +621,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SEA_WITCHS_CONTRACT#SEA_WITCHS_CONTRACT" class="rarity-blue">Договор морской ведьмы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b1" data-hp_regen="750" data-reality="300" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -599,7 +637,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SAVE_TOKEN#SAVE_TOKEN" class="rarity-blue">Спасительный жетон</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b2" data-skill_power="60" data-energy_regen="60" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -615,7 +653,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=IMPRACTICAL_CUFFLINKS#IMPRACTICAL_CUFFLINKS" class="rarity-green">Непрактичные наручники</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b3" data-basic_damage="50" data-hp_max="100" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -629,7 +667,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SUPER_DUPER_GLUE#SUPER_DUPER_GLUE" class="rarity-green">Супер-пупер клей</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b4" data-hp_max="220" data-hp_regen="50" data-energy_regen="12" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -644,7 +682,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Пролитое молоко</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b5" data-armor="156" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -659,7 +697,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.4">
           <a href="../item_list.htm?item=PIRATE_HAT#PIRATE_HAT" class="rarity-green">Пиратская шляпа</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.4">
+        <span class="unit-pair-val nowrap" data-r_blk="1.4">
           <select name="b6" data-hp_max="300" data-energy_regen="50" data-r_ctl="1.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -683,7 +721,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=FLUBBER#FLUBBER" class="rarity-purple">Флаббер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b1" data-armor="150" data-reality="150" data-tenacity="30" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -702,7 +740,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">Золотой чайник</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b2" data-hp_regen="65" data-reality="155" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -716,7 +754,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Жук любви</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b3" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -734,7 +772,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Брошенная тиара</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b4" data-skill_power="100" data-armor="300" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -750,7 +788,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=TOUGH_COOKIE#TOUGH_COOKIE" class="rarity-green">Крепкий коржик</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b5" data-armor="30" data-normal_crit="8" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -764,7 +802,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.5">
           <a href="../item_list.htm?item=SPILT_MILK#SPILT_MILK" class="rarity-blue">Пролитое молоко</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.5">
+        <span class="unit-pair-val nowrap" data-r_blk="1.5">
           <select name="b6" data-armor="156" data-r_ctl="1.5" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -790,7 +828,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=JAFARS_CUFFLINKS#JAFARS_CUFFLINKS" class="rarity-purple">Браслеты Джафара</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b1" data-hp_max="2000" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -807,7 +845,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=LOVELY_BUNCH_OF_COCONUTS#LOVELY_BUNCH_OF_COCONUTS" class="rarity-green">Юный Какамора</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b2" data-skill_power="27" data-hp_max="272" data-normal_crit="12" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -822,7 +860,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b3" data-hp_max="450" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -837,7 +875,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=WILDERNESS_EXPLORER#WILDERNESS_EXPLORER" class="rarity-blue">Исследование диких земель</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b4" data-skill_power="120" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -852,7 +890,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">Печенье Мико</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b5" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -866,7 +904,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.6">
           <a href="../item_list.htm?item=LAWNMOWER_REMOTE#LAWNMOWER_REMOTE" class="rarity-purple">Пульт от газонокосилки</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.6">
+        <span class="unit-pair-val nowrap" data-r_blk="1.6">
           <select name="b6" data-hp_max="800" data-tenacity="30" data-r_ctl="1.6" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -895,7 +933,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=PINEAPPLE_CRATE#PINEAPPLE_CRATE" class="rarity-purple">Ящик из-под ананасов</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b1" data-hp_max="750" data-tenacity="15" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -913,7 +951,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=MISPLACED_TAIL#MISPLACED_TAIL" class="rarity-blue">Потерянный хвост</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b2" data-hp_max="400" data-reality="225" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -929,7 +967,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=FLUBBER#FLUBBER" class="rarity-purple">Флаббер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b3" data-armor="150" data-reality="150" data-tenacity="30" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -948,7 +986,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">Свежая мята</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b4" data-basic_damage="230" data-hp_max="230" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -966,7 +1004,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=GOLDEN_TEAPOT#GOLDEN_TEAPOT" class="rarity-green">Золотой чайник</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b5" data-hp_regen="65" data-reality="155" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -980,7 +1018,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.7">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.7">
+        <span class="unit-pair-val nowrap" data-r_blk="1.7">
           <select name="b6" data-hp_max="450" data-r_ctl="1.7" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1006,7 +1044,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=FREDS_RECYCLED_BOXERS#FREDS_RECYCLED_BOXERS" class="rarity-purple">Шорты Фреда</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b1" data-basic_damage="150" data-normal_crit="15" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1024,7 +1062,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=PINEAPPLE_CRATE#PINEAPPLE_CRATE" class="rarity-purple">Ящик из-под ананасов</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b2" data-hp_max="750" data-tenacity="15" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1042,7 +1080,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=POPPIN_CARPET_BAG#POPPIN_CARPET_BAG" class="rarity-green">Ковровая сумка Поппинс</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b3" data-basic_damage="28" data-armor="36" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1056,7 +1094,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=MEEKOS_BISCUITS#MEEKOS_BISCUITS" class="rarity-green">Печенье Мико</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b4" data-skill_power="30" data-hp_regen="50" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1070,7 +1108,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=PIGASUS#PIGASUS" class="rarity-blue">Свинопегас</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b5" data-basic_damage="175" data-hp_max="500" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1086,7 +1124,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.8">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.8">
+        <span class="unit-pair-val nowrap" data-r_blk="1.8">
           <select name="b6" data-hp_max="450" data-r_ctl="1.8" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1112,7 +1150,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=DEUS_EX_CALIBUR#DEUS_EX_CALIBUR" class="rarity-purple">Эскалибур</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b1" data-basic_damage="300" data-hp_max="300" data-armor="300" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1131,7 +1169,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=DISCARDED_TIARA#DISCARDED_TIARA" class="rarity-blue">Брошенная тиара</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b2" data-skill_power="100" data-armor="300" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1147,7 +1185,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=LOVE_BUG#LOVE_BUG" class="rarity-purple">Жук любви</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b3" data-basic_damage="180" data-normal_crit="12" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1165,7 +1203,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=LAWNMOWER_REMOTE#LAWNMOWER_REMOTE" class="rarity-purple">Пульт от газонокосилки</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b4" data-hp_max="800" data-tenacity="30" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1183,7 +1221,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Помада Круэллы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b5" data-basic_damage="190" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1200,7 +1238,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="1.9">
           <a href="../item_list.htm?item=ROUSING_MUSICAL_NUMBER#ROUSING_MUSICAL_NUMBER" class="rarity-blue">Бодрящий музыкальный номер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="1.9">
+        <span class="unit-pair-val nowrap" data-r_blk="1.9">
           <select name="b6" data-hp_max="450" data-r_ctl="1.9" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1226,7 +1264,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=GUMMIBEARY_JUICE#GUMMIBEARY_JUICE" class="rarity-orange">Сок желейных мишек</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b1" data-basic_damage="800" data-hp_max="8000" data-hp_regen="8000" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1245,7 +1283,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=DUCKY_MOMO#DUCKY_MOMO" class="rarity-purple">Это Утя Момо!</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b2" data-armor="250" data-reality="250" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1263,7 +1301,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=AQUARIUM_TAG#AQUARIUM_TAG" class="rarity-purple">Аквариумная бирка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b3" data-hp_max="1700" data-hp_regen="1700" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1281,7 +1319,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=DE_VILS_LIPSTICK#DE_VILS_LIPSTICK" class="rarity-purple">Помада Круэллы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b4" data-basic_damage="190" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1298,7 +1336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=SNUGGLY_DUCKLING#SNUGGLY_DUCKLING" class="rarity-green">Сладкий утенок</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b5" data-skill_power="40" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1311,7 +1349,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.05">
           <a href="../item_list.htm?item=EXCLUSIVE_CLUB_BADGE#EXCLUSIVE_CLUB_BADGE" class="rarity-purple">Уникальный значок клуба</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.05">
+        <span class="unit-pair-val nowrap" data-r_blk="2.05">
           <select name="b6" data-basic_damage="250" data-skill_power="250" data-hp_max="3500" data-r_ctl="2.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1341,7 +1379,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=SALLYS_SPICES#SALLYS_SPICES" class="rarity-orange">Пряности Салли</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b1" data-reality="1200" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1358,7 +1396,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=MYSTERIOUS_JOURNAL#MYSTERIOUS_JOURNAL" class="rarity-orange">Таинственный журнал</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b2" data-hp_max="3000" data-reality="1000" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1376,7 +1414,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=PIED_SANDPIPER#PIED_SANDPIPER" class="rarity-purple">Пестрый кулик</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b3" data-hp_regen="500" data-reality="650" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1394,7 +1432,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=BONE_XYLOPHONE#BONE_XYLOPHONE" class="rarity-blue">Ксилофон из костей</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b4" data-skill_power="150" data-hp_max="250" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1410,7 +1448,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=SPEAR_MINT#SPEAR_MINT" class="rarity-purple">Свежая мята</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b5" data-basic_damage="230" data-hp_max="230" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1428,7 +1466,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.2">
           <a href="../item_list.htm?item=HANDSOME_PRINCE#HANDSOME_PRINCE" class="rarity-purple">Красавчик-принц</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.2">
+        <span class="unit-pair-val nowrap" data-r_blk="2.2">
           <select name="b6" data-skill_power="555" data-armor="777" data-r_ctl="2.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1457,7 +1495,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=WHALE_OF_A_TALE#WHALE_OF_A_TALE" class="rarity-orange">Невероятная история</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b1" data-hp_max="1000" data-tenacity="10" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1475,7 +1513,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CIRCLE_OF_LIFE#CIRCLE_OF_LIFE" class="rarity-purple">Жизни вечный круг</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b2" data-hp_regen="500" data-armor="650" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1493,7 +1531,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=CROQUET_BALL#CROQUET_BALL" class="rarity-purple">Мяч для крокета</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b3" data-armor="1000" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1510,7 +1548,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">Сластена</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b4" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1529,7 +1567,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=SAFETY_HELMET#SAFETY_HELMET" class="rarity-purple">Шлем безопасности</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b5" data-skill_power="277" data-hp_max="577" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1547,7 +1585,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.4">
           <a href="../item_list.htm?item=PINEAPPLE_CRATE#PINEAPPLE_CRATE" class="rarity-purple">Ящик из-под ананасов</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.4">
+        <span class="unit-pair-val nowrap" data-r_blk="2.4">
           <select name="b6" data-hp_max="750" data-tenacity="15" data-r_ctl="2.4" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1576,7 +1614,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">Чек без суммы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b1" data-basic_damage="125" data-hp_regen="650" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1594,7 +1632,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=WHALE_OF_A_TALE#WHALE_OF_A_TALE" class="rarity-orange">Невероятная история</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b2" data-hp_max="1000" data-tenacity="10" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1612,7 +1650,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=THUMBSUCKERS_CROWN#THUMBSUCKERS_CROWN" class="rarity-purple">Корона молокососов</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b3" data-hp_regen="650" data-reality="750" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1630,7 +1668,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=MAGICA_SHADOW#MAGICA_SHADOW" class="rarity-purple">Тень Магики</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b4" data-hp_regen="650" data-armor="750" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1648,7 +1686,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=PIXIE_DUST#PIXIE_DUST" class="rarity-purple">Пыльца феи</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b5" data-basic_damage="550" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1665,7 +1703,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.65">
           <a href="../item_list.htm?item=BAYMAX_PATCH_KIT#BAYMAX_PATCH_KIT" class="rarity-purple">Пластырь Бэймакса</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.65">
+        <span class="unit-pair-val nowrap" data-r_blk="2.65">
           <select name="b6" data-hp_max="200" data-energy_regen="100" data-r_ctl="2.65" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1694,7 +1732,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HEROES_NIGHT_OUT#HEROES_NIGHT_OUT" class="rarity-orange">Герои выходят в свет</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b1" data-hp_max="1000" data-tenacity="10" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1712,7 +1750,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=DIABLO_PIEDRA#DIABLO_PIEDRA" class="rarity-orange">Дьявольский камень</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b2" data-hp_max="600" data-normal_crit="10" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1730,7 +1768,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=STAR_CASE#STAR_CASE" class="rarity-purple">Звездный ларец</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b3" data-basic_damage="250" data-hp_max="1200" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1748,7 +1786,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=BADGE_OF_SWEETNESS#BADGE_OF_SWEETNESS" class="rarity-purple">Значок умильности</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b4" data-armor="775" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1765,7 +1803,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=PIXIE_DUST#PIXIE_DUST" class="rarity-purple">Пыльца феи</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b5" data-basic_damage="550" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1782,7 +1820,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="2.91">
           <a href="../item_list.htm?item=HAPPY_THOUGHTS#HAPPY_THOUGHTS" class="rarity-purple">Хорошие мысли</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="2.91">
+        <span class="unit-pair-val nowrap" data-r_blk="2.91">
           <select name="b6" data-armor="906" data-reality="906" data-r_ctl="2.91" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1811,7 +1849,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=MARVELOUS_TOY#MARVELOUS_TOY" class="rarity-purple">Дивная игрушка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b1" data-basic_damage="500" data-skill_power="500" data-tenacity="8" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1830,7 +1868,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=ILL_WISHING_WELL#ILL_WISHING_WELL" class="rarity-orange">Колодец злых желаний</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b2" data-reality="1200" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1847,7 +1885,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=BLANK_CHECK#BLANK_CHECK" class="rarity-orange">Чек без суммы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b3" data-basic_damage="125" data-hp_regen="650" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1865,7 +1903,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=SUPER_FAN#SUPER_FAN" class="rarity-orange">Суперфанат</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b4" data-basic_damage="275" data-hp_max="1200" data-hp_regen="500" data-armor="654" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1885,7 +1923,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=LUCKY_EARS#LUCKY_EARS" class="rarity-purple">Уши удачи</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b5" data-armor="1337" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1902,7 +1940,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.2">
           <a href="../item_list.htm?item=GOLDEN_SUN#GOLDEN_SUN" class="rarity-orange">Золотое солнышко</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.2">
+        <span class="unit-pair-val nowrap" data-r_blk="3.2">
           <select name="b6" data-hp_max="1000" data-armor="1000" data-r_ctl="3.2" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1931,7 +1969,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=TEDDY_BEAR#TEDDY_BEAR" class="rarity-orange">Плюшевый мишка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b1" data-hp_max="1305" data-tenacity="6" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1949,7 +1987,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=SPINACH_PUFFS#SPINACH_PUFFS" class="rarity-purple">Слойки со шпинатом</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b2" data-basic_damage="269" data-hp_max="1530" data-hp_regen="555" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1968,7 +2006,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=STAR_CASE#STAR_CASE" class="rarity-purple">Звездный ларец</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b3" data-basic_damage="250" data-hp_max="1200" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -1986,7 +2024,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=CROWN_OF_THE_WILD_FRONTIER#CROWN_OF_THE_WILD_FRONTIER" class="rarity-purple">Корона Диких Границ</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b4" data-armor="707" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2003,7 +2041,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=NEST_EGG#NEST_EGG" class="rarity-orange">Отложенное про запас</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b5" data-skill_power="355" data-hp_max="1000" data-reality="703" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2022,7 +2060,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.52">
           <a href="../item_list.htm?item=LEAGUE_CHEW_TOY#LEAGUE_CHEW_TOY" class="rarity-orange">Жевательная игрушка лиги</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.52">
+        <span class="unit-pair-val nowrap" data-r_blk="3.52">
           <select name="b6" data-basic_damage="365" data-reality="1001" data-r_ctl="3.52" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2051,7 +2089,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=RED_BALLOON#RED_BALLOON" class="rarity-orange">Красный воздушный шар</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b1" data-skill_power="576" data-armor="300" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2069,7 +2107,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=DUCKY_MOMO#DUCKY_MOMO" class="rarity-purple">Это Утя Момо!</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b2" data-armor="250" data-reality="250" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2087,7 +2125,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=BREAD_AND_BUTTERFLIES#BREAD_AND_BUTTERFLIES" class="rarity-purple">Хлебобабочные изделия</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b3" data-hp_regen="333" data-armor="322" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2105,7 +2143,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">Вечная классика</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b4" data-basic_damage="499" data-normal_crit="7" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2123,7 +2161,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=WIND_UP_MOUSE#WIND_UP_MOUSE" class="rarity-orange">Заводная мышь</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b5" data-skill_power="450" data-reality="1700" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2141,7 +2179,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="3.87">
           <a href="../item_list.htm?item=SKY_PIRATES#SKY_PIRATES" class="rarity-orange">Небесные пираты</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="3.87">
+        <span class="unit-pair-val nowrap" data-r_blk="3.87">
           <select name="b6" data-skill_power="699" data-reality="1297" data-r_ctl="3.87" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2170,7 +2208,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=THE_GREY_STUFF#THE_GREY_STUFF" class="rarity-orange">Серая штуковина</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b1" data-basic_damage="275" data-reality="850" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2188,7 +2226,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=CONFUZZLE_BALLOON#CONFUZZLE_BALLOON" class="rarity-orange">Странный шар</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b2" data-armor="800" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2205,7 +2243,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=SWEET_TOOTH#SWEET_TOOTH" class="rarity-orange">Сластена</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b3" data-hp_max="1000" data-armor="1000" data-reality="1000" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2224,7 +2262,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=FOUR_POSTER_BED#FOUR_POSTER_BED" class="rarity-orange">Кровать с пологом</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b4" data-armor="1300" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2241,7 +2279,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=DARING_DISGUISE#DARING_DISGUISE" class="rarity-purple">Прекрасная маскировка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b5" data-basic_damage="280" data-reality="890" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2259,7 +2297,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.25">
           <a href="../item_list.htm?item=ROCKET_POP#ROCKET_POP" class="rarity-orange">Ракета-шипучка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.25">
+        <span class="unit-pair-val nowrap" data-r_blk="4.25">
           <select name="b6" data-skill_power="650" data-armor="1200" data-r_ctl="4.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2288,7 +2326,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BEIGNETS#BEIGNETS" class="rarity-orange">Французский пончик</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b1" data-hp_max="789" data-hp_regen="1221" data-reality="444" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2307,7 +2345,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=SUPER_FAN#SUPER_FAN" class="rarity-orange">Суперфанат</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b2" data-basic_damage="275" data-hp_max="1200" data-hp_regen="500" data-armor="654" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2327,7 +2365,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=TSUMDERE#TSUMDERE" class="rarity-purple">Цумдере</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b3" data-basic_damage="350" data-skill_power="260" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2345,7 +2383,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=PAY_THROUGH_THE_TEETH#PAY_THROUGH_THE_TEETH" class="rarity-orange">Скрепя сердце</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b4" data-hp_max="1000" data-hp_regen="650" data-tenacity="10" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2364,7 +2402,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=FRIENDLY_SURVIVOR#FRIENDLY_SURVIVOR" class="rarity-purple">Друг, который выжил</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b5" data-hp_max="1150" data-reality="750" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2382,7 +2420,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="4.67">
           <a href="../item_list.htm?item=BADGE_OF_DELIGHT#BADGE_OF_DELIGHT" class="rarity-orange">Значок восторга</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="4.67">
+        <span class="unit-pair-val nowrap" data-r_blk="4.67">
           <select name="b6" data-skill_power="700" data-hp_max="4500" data-r_ctl="4.67" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2411,7 +2449,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=PRESTO#PRESTO" class="rarity-red">Престо</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b1" data-basic_damage="535" data-hp_max="4555" data-tenacity="12" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2430,7 +2468,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=MATHEMATICALLY_DELICIOUS#MATHEMATICALLY_DELICIOUS" class="rarity-orange">Услада математиков</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b2" data-basic_damage="125" data-hp_max="1000" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2448,7 +2486,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=INFINITY_SIDED_DIE#INFINITY_SIDED_DIE" class="rarity-orange">Кость с бесконечными гранями</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b3" data-skill_power="599" data-hp_max="3653" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2466,7 +2504,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=DARING_DISGUISE#DARING_DISGUISE" class="rarity-purple">Прекрасная маскировка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b4" data-basic_damage="280" data-reality="890" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2484,7 +2522,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=POM_POM_SHOES#POM_POM_SHOES" class="rarity-orange">Туфли с помпонами</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b5" data-skill_power="326" data-armor="999" data-reality="855" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2503,7 +2541,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.13">
           <a href="../item_list.htm?item=SPINNING_WHEEL#SPINNING_WHEEL" class="rarity-orange">Вращающееся колесо</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.13">
+        <span class="unit-pair-val nowrap" data-r_blk="5.13">
           <select name="b6" data-hp_max="2800" data-armor="1500" data-r_ctl="5.13" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2532,7 +2570,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=PRINCELY_FORTUNE#PRINCELY_FORTUNE" class="rarity-red">Королевские богатства</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b1" data-skill_power="999" data-armor="1450" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2550,7 +2588,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SAIL_THE_STARS#SAIL_THE_STARS" class="rarity-orange">Иди по звездам</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b2" data-basic_damage="652" data-hp_max="6052" data-tenacity="8" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2569,7 +2607,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=RED_BALLOON#RED_BALLOON" class="rarity-orange">Красный воздушный шар</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b3" data-skill_power="576" data-armor="300" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2587,7 +2625,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=POLKA_DOTS#POLKA_DOTS" class="rarity-orange">Ткань в горошек</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b4" data-basic_damage="399" data-normal_crit="13" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2605,7 +2643,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SUPER_FAN#SUPER_FAN" class="rarity-orange">Суперфанат</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b5" data-basic_damage="275" data-hp_max="1200" data-hp_regen="500" data-armor="654" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2625,7 +2663,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="5.64">
           <a href="../item_list.htm?item=SMALL_FRY#SMALL_FRY" class="rarity-orange">Малек</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="5.64">
+        <span class="unit-pair-val nowrap" data-r_blk="5.64">
           <select name="b6" data-basic_damage="650" data-skill_power="840" data-r_ctl="5.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2654,7 +2692,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=HUNDRED_ACRE_MAP#HUNDRED_ACRE_MAP" class="rarity-red">Стоакровая карта</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b1" data-hp_max="9000" data-hp_regen="3333" data-armor="1600" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2673,7 +2711,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=CLOUD_KICKER#CLOUD_KICKER" class="rarity-orange">Атака на облака</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b2" data-basic_damage="419" data-hp_regen="1999" data-normal_crit="7" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2692,7 +2730,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=ANDYS_GAME#ANDYS_GAME" class="rarity-orange">Игра Энди</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b3" data-basic_damage="265" data-armor="1600" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2710,7 +2748,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=AUTO#AUTO" class="rarity-purple">АВТО</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b4" data-basic_damage="150" data-hp_max="389" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2728,7 +2766,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=FORGOTTEN_SPELLBOOK#FORGOTTEN_SPELLBOOK" class="rarity-orange">Забытые заклинания</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b5" data-reality="3200" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2745,7 +2783,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.19">
           <a href="../item_list.htm?item=SHEER_PERFECTION#SHEER_PERFECTION" class="rarity-orange">Просто идеально</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.19">
+        <span class="unit-pair-val nowrap" data-r_blk="6.19">
           <select name="b6" data-hp_max="10364" data-normal_crit="6" data-r_ctl="6.19" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2774,7 +2812,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=ROYAL_DOULTON_BOWL#ROYAL_DOULTON_BOWL" class="rarity-red">Фарфоровая чаша Royal Doulton</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b1" data-basic_damage="825" data-skill_power="1325" data-hp_max="19002" data-crit_damage="10" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2794,7 +2832,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=CLOUD_KICKER#CLOUD_KICKER" class="rarity-orange">Атака на облака</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b2" data-basic_damage="419" data-hp_regen="1999" data-normal_crit="7" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2813,7 +2851,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=TIMELESS_CLASSIC#TIMELESS_CLASSIC" class="rarity-purple">Вечная классика</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b3" data-basic_damage="499" data-normal_crit="7" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2831,7 +2869,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=HUNDRED_ACRE_MAP#HUNDRED_ACRE_MAP" class="rarity-red">Стоакровая карта</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b4" data-hp_max="9000" data-hp_regen="3333" data-armor="1600" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2850,7 +2888,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=PROGRAM_SCANNER#PROGRAM_SCANNER" class="rarity-orange">Распознаватель</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b5" data-basic_damage="756" data-skill_power="1023" data-reality="2800" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2869,7 +2907,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="6.82">
           <a href="../item_list.htm?item=SNAKE_BALLOON#SNAKE_BALLOON" class="rarity-orange">Дирижабль рептилии</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="6.82">
+        <span class="unit-pair-val nowrap" data-r_blk="6.82">
           <select name="b6" data-basic_damage="550" data-hp_max="10001" data-r_ctl="6.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2899,7 +2937,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=AZTEC_SKULL#AZTEC_SKULL" class="rarity-red">Череп ацтеков</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b1" data-basic_damage="920" data-skill_power="1520" data-hp_max="15606" data-armor="2605" data-reality="2905" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2920,7 +2958,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=CAT_FAMILY_PORTRAIT#CAT_FAMILY_PORTRAIT" class="rarity-orange">Портрет кошачьего семейства</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b2" data-basic_damage="960" data-skill_power="1450" data-crit_damage="5" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2939,7 +2977,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=HORSE_WITH_TWO_REAR_ENDS#HORSE_WITH_TWO_REAR_ENDS" class="rarity-orange">Лошадь о двух концах</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b3" data-basic_damage="332" data-hp_max="15236" data-tenacity="9" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2958,7 +2996,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=GRAND_FINALE#GRAND_FINALE" class="rarity-red">Торжественное завершение</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b4" data-basic_damage="370" data-skill_power="610" data-hp_max="4450" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2977,7 +3015,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=ANIMAL_AURORA#ANIMAL_AURORA" class="rarity-purple">Звериное сияние</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b5" data-basic_damage="190" data-skill_power="460" data-normal_crit="8" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -2996,7 +3034,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="7.51">
           <a href="../item_list.htm?item=MOVEABLE_COAT_RACK#MOVEABLE_COAT_RACK" class="rarity-orange">Передвижная вешалка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="7.51">
+        <span class="unit-pair-val nowrap" data-r_blk="7.51">
           <select name="b6" data-basic_damage="562" data-skill_power="952" data-hp_max="14200" data-hp_regen="12000" data-r_ctl="7.51" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3028,7 +3066,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=BIRTHDAY_CAKE#BIRTHDAY_CAKE" class="rarity-red">Тортик на день рождения</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b1" data-skill_power="1365" data-hp_max="19600" data-tenacity="10" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3047,7 +3085,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=HISSY_FIT#HISSY_FIT" class="rarity-orange">Вспышка гнева</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b2" data-basic_damage="809" data-skill_power="1645" data-reality="2300" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3066,7 +3104,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=ARLOS_ROCK#ARLOS_ROCK" class="rarity-orange">Скала Арло</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b3" data-basic_damage="755" data-skill_power="1952" data-hp_max="23255" data-crit_damage="10" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3086,7 +3124,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Мистическая сила обезьяны</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b4" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3104,7 +3142,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=SUN_CROWN#SUN_CROWN" class="rarity-purple">Солнечная корона</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b5" data-hp_max="11222" data-crit_damage="165" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3122,7 +3160,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="8.23">
           <a href="../item_list.htm?item=ESCAPE#ESCAPE" class="rarity-red">Побег</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="8.23">
+        <span class="unit-pair-val nowrap" data-r_blk="8.23">
           <select name="b6" data-hp_max="19876" data-reality="4200" data-normal_crit="5" data-r_ctl="8.23" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3153,7 +3191,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=FLOATING_BABY_HEAD#FLOATING_BABY_HEAD" class="rarity-red">Парящая голова</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b1" data-basic_damage="889" data-hp_max="34101" data-armor="2200" data-reality="3400" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3173,7 +3211,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=SMELL_THE_CORK#SMELL_THE_CORK" class="rarity-red">Запах пробки</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b2" data-hp_max="16000" data-armor="4500" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3191,7 +3229,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=PRACTICE_SLED#PRACTICE_SLED" class="rarity-purple">Тренировочные сани</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b3" data-armor="1300" data-normal_crit="10" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3209,7 +3247,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=DONT_BAT_AN_EYE#DONT_BAT_AN_EYE" class="rarity-orange">Глазом не моргнуть</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b4" data-skill_power="808" data-armor="1500" data-reality="1500" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3228,7 +3266,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=OWL_LADY#OWL_LADY" class="rarity-orange">Сова-леди</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b5" data-hp_max="31250" data-armor="7500" data-crit_damage="3" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3247,7 +3285,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.05">
           <a href="../item_list.htm?item=CALAMITY_BOX#CALAMITY_BOX" class="rarity-red">Роковой сундук</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.05">
+        <span class="unit-pair-val nowrap" data-r_blk="9.05">
           <select name="b6" data-hp_max="26000" data-armor="6500" data-reality="6500" data-r_ctl="9.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3278,7 +3316,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=ARLOS_ROCK#ARLOS_ROCK" class="rarity-orange">Скала Арло</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b1" data-basic_damage="755" data-skill_power="1952" data-hp_max="23255" data-crit_damage="10" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3298,7 +3336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=BE_MY_PAL#BE_MY_PAL" class="rarity-orange">Будь мне другом</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b2" data-skill_power="1137.5" data-hp_regen="10500" data-reality="5555" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3317,7 +3355,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=POLKA_DOTS#POLKA_DOTS" class="rarity-orange">Ткань в горошек</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b3" data-basic_damage="399" data-normal_crit="13" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3335,7 +3373,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=PURPLE_PEACOCKS#PURPLE_PEACOCKS" class="rarity-red">Фиолетовые павлины</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b4" data-hp_max="22500" data-hp_regen="8332.5" data-armor="4000" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3354,7 +3392,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=FAIRY_FENCERS#FAIRY_FENCERS" class="rarity-red">Феи-фехтовальщицы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b5" data-basic_damage="689" data-hp_max="34504" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3372,7 +3410,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="9.96">
           <a href="../item_list.htm?item=THAT_DARN_CAT#THAT_DARN_CAT" class="rarity-red">Драная кошка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="9.96">
+        <span class="unit-pair-val nowrap" data-r_blk="9.96">
           <select name="b6" data-hp_max="25910" data-normal_crit="6" data-r_ctl="9.96" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3402,7 +3440,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=WEEBO#WEEBO" class="rarity-red">Weebo</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b1" data-basic_damage="2062.5" data-skill_power="3312.5" data-hp_max="47505" data-crit_damage="10" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3422,7 +3460,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=VOLCANOES#VOLCANOES" class="rarity-orange">Вулканы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b2" data-basic_damage="1057.5" data-hp_max="33065" data-armor="3130" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3441,7 +3479,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=TREEHOUSE#TREEHOUSE" class="rarity-red">Дом на дереве</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b3" data-skill_power="1056" data-hp_max="34504" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3459,7 +3497,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=ARLOS_ROCK#ARLOS_ROCK" class="rarity-orange">Скала Арло</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b4" data-basic_damage="755" data-skill_power="1952" data-hp_max="23255" data-crit_damage="10" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3479,7 +3517,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=DISNEY_ON_ICE#DISNEY_ON_ICE" class="rarity-orange">Disney на льду</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b5" data-basic_damage="799" data-skill_power="1352" data-hp_max="14289" data-armor="2200" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3499,7 +3537,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="10.95">
           <a href="../item_list.htm?item=INSTANT_MAKEOVER#INSTANT_MAKEOVER" class="rarity-red">Мгновенное преображение</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="10.95">
+        <span class="unit-pair-val nowrap" data-r_blk="10.95">
           <select name="b6" data-basic_damage="1375" data-hp_max="25002.5" data-r_ctl="10.95" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3529,7 +3567,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=STAINED_GLASS_ROSE#STAINED_GLASS_ROSE" class="rarity-orange">Стеклянная роза</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b1" data-reality="8000" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3546,7 +3584,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=STORYBOOK#STORYBOOK" class="rarity-red">Сборник сказок</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b2" data-basic_damage="1500" data-hp_max="30000" data-normal_crit="10" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3565,7 +3603,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=HORSE_WITH_TWO_REAR_ENDS#HORSE_WITH_TWO_REAR_ENDS" class="rarity-orange">Лошадь о двух концах</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b3" data-basic_damage="332" data-hp_max="15236" data-tenacity="9" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3584,7 +3622,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=KING_OWL#KING_OWL" class="rarity-orange">Совиный король</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b4" data-basic_damage="1980" data-hp_max="30500" data-reality="8000" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3603,7 +3641,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=NOTRE_DAME_GARGOYLES#NOTRE_DAME_GARGOYLES" class="rarity-red">Виктор, Гюго и Лаверн</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b5" data-hp_regen="9907.5" data-armor="3625" data-normal_crit="8" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3622,7 +3660,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="12.05">
           <a href="../item_list.htm?item=PUA#PUA" class="rarity-red">Поросенок с веслом</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="12.05">
+        <span class="unit-pair-val nowrap" data-r_blk="12.05">
           <select name="b6" data-basic_damage="1405" data-skill_power="2380" data-hp_max="35500" data-hp_regen="30000" data-r_ctl="12.05" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3654,7 +3692,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=MONKEY_SEE#MONKEY_SEE" class="rarity-red">Обезьянка видит</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b1" data-skill_power="3412.5" data-hp_max="49000" data-tenacity="5" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3673,7 +3711,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=FISH_SCHOOL#FISH_SCHOOL" class="rarity-orange">Рыбья школа</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b2" data-basic_damage="1887.5" data-skill_power="4880" data-hp_max="58137.5" data-crit_damage="10" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3693,7 +3731,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=OLD_SCALIWAG#OLD_SCALIWAG" class="rarity-red">Грозная крыса</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b3" data-basic_damage="530" data-armor="1865" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3711,7 +3749,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=VOLCANOES#VOLCANOES" class="rarity-orange">Вулканы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b4" data-basic_damage="1057.5" data-hp_max="33065" data-armor="3130" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3730,7 +3768,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=BAD_HAIR_DAY#BAD_HAIR_DAY" class="rarity-red">Из рук вон</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b5" data-armor="7500" data-reality="7500" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3748,7 +3786,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="13.25">
           <a href="../item_list.htm?item=RIVERBEND#RIVERBEND" class="rarity-red">Излучина реки</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="13.25">
+        <span class="unit-pair-val nowrap" data-r_blk="13.25">
           <select name="b6" data-hp_max="49690" data-reality="10500" data-r_ctl="13.25" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3778,7 +3816,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=HONESTY_ISLAND#HONESTY_ISLAND" class="rarity-orange">Остров Честности</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b1" data-hp_max="78125" data-armor="18750" data-crit_damage="7" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3797,7 +3835,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=THE_CLAW#THE_CLAW" class="rarity-red">Клешня</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b2" data-basic_damage="2222.5" data-hp_max="85252.5" data-armor="5500" data-reality="8500" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3817,7 +3855,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=VOLCANOES#VOLCANOES" class="rarity-orange">Вулканы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b3" data-basic_damage="1057.5" data-hp_max="33065" data-armor="3130" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3836,7 +3874,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=EVIL_KERMIT#EVIL_KERMIT" class="rarity-red">Кваквокер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b4" data-basic_damage="2300" data-skill_power="3800" data-hp_max="39015" data-armor="6512.5" data-reality="7262.5" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3857,7 +3895,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=MYSTICAL_MONKEY_POWER#MYSTICAL_MONKEY_POWER" class="rarity-red">Мистическая сила обезьяны</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b5" data-basic_damage="1000" data-hp_max="22222" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3875,7 +3913,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="14.58">
           <a href="../item_list.htm?item=HOCKEY_ISLAND#HOCKEY_ISLAND" class="rarity-red">Остров Хоккея</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="14.58">
+        <span class="unit-pair-val nowrap" data-r_blk="14.58">
           <select name="b6" data-hp_max="65000" data-armor="16250" data-reality="16250" data-r_ctl="14.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3906,7 +3944,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=MONKEY_SEE#MONKEY_SEE" class="rarity-red">Обезьянка видит</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b1" data-skill_power="3412.5" data-hp_max="49000" data-tenacity="5" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3925,7 +3963,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=FREE_RIDE#FREE_RIDE" class="rarity-orange">Бесплатный проезд</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b2" data-skill_power="2300" data-armor="6752.5" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3943,7 +3981,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=COWSMOOPOLITAN#COWSMOOPOLITAN" class="rarity-red">Космуполитан</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b3" data-hp_max="56250" data-hp_regen="20832.5" data-armor="10000" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3962,7 +4000,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=GNOME_RAINBOW#GNOME_RAINBOW" class="rarity-orange">Гномья радуга</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b4" data-skill_power="2845" data-hp_regen="26250" data-reality="13887.5" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -3981,7 +4019,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=WIND_CAN_DO_IT#WIND_CAN_DO_IT" class="rarity-red">Ветер справится</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b5" data-hp_max="8605" data-hp_regen="6900" data-armor="808" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4000,7 +4038,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="16.03">
           <a href="../item_list.htm?item=MOON_OVER_LONDON#MOON_OVER_LONDON" class="rarity-red">Луна над Лондоном</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="16.03">
+        <span class="unit-pair-val nowrap" data-r_blk="16.03">
           <select name="b6" data-hp_max="64775" data-normal_crit="1" data-r_ctl="16.03" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4030,7 +4068,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=NEWS_FLASH#NEWS_FLASH" class="rarity-red">Экстренное сообщение</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b1" data-basic_damage="5158" data-skill_power="8283" data-hp_max="118763" data-crit_damage="7" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4050,7 +4088,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=GUMMISCOPE#GUMMISCOPE" class="rarity-orange">Гаммископ</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b2" data-basic_damage="2645" data-hp_max="82663" data-armor="7825" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4069,7 +4107,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=TREEHOUSE#TREEHOUSE" class="rarity-red">Дом на дереве</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b3" data-skill_power="1056" data-hp_max="34504" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4087,7 +4125,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=FAMILY_ISLAND#FAMILY_ISLAND" class="rarity-orange">Остров Семьи</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b4" data-skill_power="7500" data-normal_crit="2" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4105,7 +4143,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=COWSMOOPOLITAN#COWSMOOPOLITAN" class="rarity-red">Космуполитан</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b5" data-hp_max="56250" data-hp_regen="20832.5" data-armor="10000" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4124,7 +4162,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="17.64">
           <a href="../item_list.htm?item=MR_BIMBO#MR_BIMBO" class="rarity-red">Мистер Бимбо</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="17.64">
+        <span class="unit-pair-val nowrap" data-r_blk="17.64">
           <select name="b6" data-basic_damage="3438" data-hp_max="62508" data-r_ctl="17.64" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4154,7 +4192,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=TOBY#TOBY" class="rarity-red">Тоби</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b1" data-basic_damage="3750" data-hp_max="75000" data-normal_crit="10" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4173,7 +4211,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=FAMILY_ISLAND#FAMILY_ISLAND" class="rarity-orange">Остров Семьи</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b2" data-skill_power="7500" data-normal_crit="2" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4191,7 +4229,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=JOLLY_ROGER_FLAG#JOLLY_ROGER_FLAG" class="rarity-orange">Веселый Роджер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b3" data-basic_damage="4950" data-hp_max="76250" data-reality="20000" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4210,7 +4248,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=COWSMOOPOLITAN#COWSMOOPOLITAN" class="rarity-red">Космуполитан</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b4" data-hp_max="56250" data-hp_regen="20832.5" data-armor="10000" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4229,7 +4267,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=SUNKEN_CITY#SUNKEN_CITY" class="rarity-red">Затонувший город</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b5" data-basic_damage="555" data-hp_max="10000" data-armor="1012.5" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4248,7 +4286,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="19.40">
           <a href="../item_list.htm?item=GOOD_BAD_GUY#GOOD_BAD_GUY" class="rarity-red">Добрый плохиш</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="19.40">
+        <span class="unit-pair-val nowrap" data-r_blk="19.40">
           <select name="b6" data-basic_damage="3513" data-skill_power="5950" data-hp_max="88750" data-hp_regen="75000" data-r_ctl="19.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4280,7 +4318,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=GUMMISCOPE#GUMMISCOPE" class="rarity-orange">Гаммископ</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b1" data-basic_damage="2645" data-hp_max="82663" data-armor="7825" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4299,7 +4337,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=CLOCK_TOWER#CLOCK_TOWER" class="rarity-red">Часовая башня</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b2" data-skill_power="1550" data-hp_max="25500" data-reality="2750" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4318,7 +4356,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=HIT_THE_GONG#HIT_THE_GONG" class="rarity-red">Бейте в гонг</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b3" data-basic_damage="3313" data-armor="11658" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4336,7 +4374,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=OPEN_ROAD#OPEN_ROAD" class="rarity-orange">Открытая дорога</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b4" data-basic_damage="4720" data-skill_power="12200" data-hp_max="145345" data-crit_damage="9" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4356,7 +4394,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=OSWALD#OSWALD" class="rarity-red">Освальд</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b5" data-skill_power="8533" data-hp_max="122500" data-tenacity="12" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4375,7 +4413,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="21.34">
           <a href="../item_list.htm?item=BIG_SNOWFLAKE#BIG_SNOWFLAKE" class="rarity-red">Большая снежинка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="21.34">
+        <span class="unit-pair-val nowrap" data-r_blk="21.34">
           <select name="b6" data-hp_max="124225" data-reality="26250" data-r_ctl="21.34" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4405,7 +4443,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=TARANS_MAGIC_SWORD#TARANS_MAGIC_SWORD" class="rarity-red">Волшебный меч Тарана</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b1" data-basic_damage="5558" data-hp_max="213133" data-armor="13750" data-reality="21250" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4425,7 +4463,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=OUTER_SPACE_CAT#OUTER_SPACE_CAT" class="rarity-red">КосмоКот</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b2" data-hp_max="53783" data-hp_regen="43125" data-armor="5050" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4444,7 +4482,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=UNPLEASANT_UNICORN#UNPLEASANT_UNICORN" class="rarity-orange">Неприятный единорог</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b3" data-basic_damage="4725" data-skill_power="6395" data-reality="17500" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4463,7 +4501,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=REFLECTION#REFLECTION" class="rarity-orange">Отражение</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b4" data-hp_max="195313" data-armor="46875" data-crit_damage="4" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4482,7 +4520,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=EVIL_KERMIT#EVIL_KERMIT" class="rarity-red">Кваквокер</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b5" data-basic_damage="2300" data-skill_power="3800" data-hp_max="39015" data-armor="6512.5" data-reality="7262.5" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4503,7 +4541,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="23.47">
           <a href="../item_list.htm?item=HONEST_JOHN#HONEST_JOHN" class="rarity-red">Честный Джон</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="23.47">
+        <span class="unit-pair-val nowrap" data-r_blk="23.47">
           <select name="b6" data-hp_max="162500" data-armor="40625" data-reality="40625" data-r_ctl="23.47" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4534,7 +4572,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=HEN_WEN#HEN_WEN" class="rarity-red">Хен Вен</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b1" data-basic_damage="4308" data-hp_max="215650" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4552,7 +4590,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=OPEN_ROAD#OPEN_ROAD" class="rarity-orange">Открытая дорога</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b2" data-basic_damage="4720" data-skill_power="12200" data-hp_max="145345" data-crit_damage="9" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4572,7 +4610,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=LEFT_HANGING#LEFT_HANGING" class="rarity-orange">В подвешенном состоянии</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b3" data-skill_power="7113" data-hp_regen="65625" data-reality="34720" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4591,7 +4629,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=QUITE_A_JUNGLE#QUITE_A_JUNGLE" class="rarity-red">Дебри джунглей</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b4" data-hp_max="50000" data-armor="10500" data-reality="10502.5" data-crit_damage="8" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4611,7 +4649,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=NEPTUNE_INN#NEPTUNE_INN" class="rarity-red">Таверна Нептуна</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b5" data-hp_max="140625" data-hp_regen="52083" data-armor="25000" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4630,7 +4668,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="25.82">
           <a href="../item_list.htm?item=DRAGON_HIGH#DRAGON_HIGH" class="rarity-red">Школа дракона</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="25.82">
+        <span class="unit-pair-val nowrap" data-r_blk="25.82">
           <select name="b6" data-hp_max="161938" data-normal_crit="2" data-r_ctl="25.82" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4660,7 +4698,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=NEPTUNE_INN#NEPTUNE_INN" class="rarity-red">Таверна Нептуна</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b1" data-hp_max="140625" data-hp_regen="52083" data-armor="25000" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4679,7 +4717,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=BEAGLE_BOYS#BEAGLE_BOYS" class="rarity-red">Братья Гавс</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b2" data-hp_max="40000" data-normal_crit="4" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4697,7 +4735,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=GREAT_STONE_DRAGON#GREAT_STONE_DRAGON" class="rarity-orange">Великий каменный дракон</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b3" data-basic_damage="3533" data-hp_max="184375" data-reality="43125" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4716,7 +4754,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=FANCY_CARWASH#FANCY_CARWASH" class="rarity-orange">Изысканная автомойка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b4" data-basic_damage="6613" data-hp_max="206658" data-armor="19563" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4735,7 +4773,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=MARK_OF_THE_HUNTSCLAN#MARK_OF_THE_HUNTSCLAN" class="rarity-red">Метка Хантсклана</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b5" data-basic_damage="12895" data-skill_power="20708" data-hp_max="296908" data-crit_damage="9" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4755,7 +4793,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="28.40">
           <a href="../item_list.htm?item=YOU_EARNED_IT#YOU_EARNED_IT" class="rarity-red">Заслужили</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="28.40">
+        <span class="unit-pair-val nowrap" data-r_blk="28.40">
           <select name="b6" data-basic_damage="8595" data-hp_max="156270" data-r_ctl="28.40" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4785,7 +4823,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=MISS_BUNNY#MISS_BUNNY" class="rarity-red">Мисс Зая</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b1" data-basic_damage="8283" data-armor="29145" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4803,7 +4841,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=CUTTING_EDGE#CUTTING_EDGE" class="rarity-orange">Прорывная технология</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b2" data-basic_damage="12375" data-hp_max="190625" data-reality="50000" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4822,7 +4860,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=COWSMOOPOLITAN#COWSMOOPOLITAN" class="rarity-red">Космуполитан</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b3" data-hp_max="56250" data-hp_regen="20832.5" data-armor="10000" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4841,7 +4879,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=CHEAT_ARROW#CHEAT_ARROW" class="rarity-orange">Обманная стрела</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b4" data-skill_power="18750" data-normal_crit="3" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4859,7 +4897,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=DEAL_GONE_WRONG#DEAL_GONE_WRONG" class="rarity-red">Неудачная сделка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b5" data-skill_power="11250" data-hp_max="109375" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4877,7 +4915,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="31.24">
           <a href="../item_list.htm?item=BAGHEERAS_DISGUISE#BAGHEERAS_DISGUISE" class="rarity-red">Личина Багиры</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="31.24">
+        <span class="unit-pair-val nowrap" data-r_blk="31.24">
           <select name="b6" data-basic_damage="8783" data-skill_power="14875" data-hp_max="221875" data-hp_regen="187500" data-r_ctl="31.24" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4909,7 +4947,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=MRS_LADYBUG#MRS_LADYBUG" class="rarity-red">Божья Коровка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b1" data-armor="25000" data-reality="34533" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4927,7 +4965,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=CINNAMON_ROLL#CINNAMON_ROLL" class="rarity-red">Булочка с корицей</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b2" data-skill_power="3875" data-hp_max="63750" data-reality="6875" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4946,7 +4984,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=GELATINOUS_CUBE#GELATINOUS_CUBE" class="rarity-orange">Желатиновый куб</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b3" data-reality="50000" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4963,7 +5001,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=FABULOUS_PAIR#FABULOUS_PAIR" class="rarity-orange">Великолепная парочка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b4" data-basic_damage="16408" data-hp_max="317738" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -4981,7 +5019,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=HANDCRAFTED_BY_LEPRECHAUNS#HANDCRAFTED_BY_LEPRECHAUNS" class="rarity-yellow">Сделано лепреконами</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b5" data-skill_power="21333" data-hp_max="306250" data-tenacity="12" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5000,7 +5038,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="34.37">
           <a href="../item_list.htm?item=THE_ZONE#THE_ZONE" class="rarity-red">Зона</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="34.37">
+        <span class="unit-pair-val nowrap" data-r_blk="34.37">
           <select name="b6" data-hp_max="310563" data-reality="65625" data-r_ctl="34.37" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5030,7 +5068,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=HIT_THE_GONG#HIT_THE_GONG" class="rarity-red">Бейте в гонг</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b1" data-basic_damage="3313" data-armor="11658" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5048,7 +5086,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=LOSING_TO_A_BIRD#LOSING_TO_A_BIRD" class="rarity-red">Уступая птичке</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b2" data-armor="46875" data-reality="46875" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5066,7 +5104,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=KNICK_THE_KNACK#KNICK_THE_KNACK" class="rarity-yellow">Пустячок</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b3" data-basic_damage="13895" data-hp_max="532833" data-armor="34375" data-reality="53125" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5086,7 +5124,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=FANCY_CARWASH#FANCY_CARWASH" class="rarity-orange">Изысканная автомойка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b4" data-basic_damage="6613" data-hp_max="206658" data-armor="19563" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5105,7 +5143,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=GO_4#GO_4" class="rarity-orange">Go-4</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b5" data-hp_max="488283" data-armor="117188" data-crit_damage="11" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5124,7 +5162,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="37.80">
           <a href="../item_list.htm?item=BARBERSHOP_TREAT#BARBERSHOP_TREAT" class="rarity-red">Угощение в парикмахерской</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="37.80">
+        <span class="unit-pair-val nowrap" data-r_blk="37.80">
           <select name="b6" data-hp_max="406250" data-armor="101563" data-reality="101563" data-r_ctl="37.80" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5155,7 +5193,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=LETTUCE#LETTUCE" class="rarity-red">Капуста</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b1" data-skill_power="17783" data-hp_regen="164063" data-reality="60760" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5174,7 +5212,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=CLOAKED_FIGURE#CLOAKED_FIGURE" class="rarity-red">Фигура в балахоне</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b2" data-skill_power="11515" data-hp_max="100000" data-reality="28125" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5193,7 +5231,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=OWLS_FAMILY_HISTORY#OWLS_FAMILY_HISTORY" class="rarity-yellow">Семейная история Совы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b3" data-skill_power="16500" data-hp_max="539125" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5211,7 +5249,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=FABULOUS_PAIR#FABULOUS_PAIR" class="rarity-orange">Великолепная парочка</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b4" data-basic_damage="16408" data-hp_max="317738" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5229,7 +5267,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=DJINNIS_RUSE#DJINNIS_RUSE" class="rarity-yellow">Замаскированный джинн</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b5" data-hp_max="351563" data-hp_regen="130208" data-armor="43750" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5248,7 +5286,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="41.58">
           <a href="../item_list.htm?item=HOPPS_FAMILY_FARM#HOPPS_FAMILY_FARM" class="rarity-red">Семейная ферма Хопс</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="41.58">
+        <span class="unit-pair-val nowrap" data-r_blk="41.58">
           <select name="b6" data-hp_max="404845" data-normal_crit="7" data-r_ctl="41.58" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5278,7 +5316,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=PORTRAIT_OF_A_BUTLER#PORTRAIT_OF_A_BUTLER" class="rarity-yellow">Портрет дворецкого</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b1" data-basic_damage="32238" data-skill_power="51770" data-hp_max="742270" data-crit_damage="11" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5298,7 +5336,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=STONE_GIANT#STONE_GIANT" class="rarity-yellow">Каменный гигант</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b2" data-hp_max="737813" data-armor="98438" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5316,7 +5354,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=RACE_TO_THE_DEATH#RACE_TO_THE_DEATH" class="rarity-red">Гонки со смертью</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b3" data-basic_damage="12970" data-hp_max="595158" data-tenacity="14" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5335,7 +5373,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=HEN_WEN#HEN_WEN" class="rarity-red">Хен Вен</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b4" data-basic_damage="4308" data-hp_max="215650" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5353,7 +5391,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=EMOTIONALLY_DRIVEN#EMOTIONALLY_DRIVEN" class="rarity-orange">На эмоциях</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b5" data-basic_damage="8833" data-hp_max="460938" data-reality="107813" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5372,7 +5410,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="45.74">
           <a href="../item_list.htm?item=COVER_MATERIAL#COVER_MATERIAL" class="rarity-red">Все на поверхности</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="45.74">
+        <span class="unit-pair-val nowrap" data-r_blk="45.74">
           <select name="b6" data-basic_damage="21488" data-hp_max="390675" data-r_ctl="45.74" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5402,7 +5440,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=ALL_QUANTIZED_FORMS#ALL_QUANTIZED_FORMS" class="rarity-yellow">Все квантованные формы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b1" data-basic_damage="20708" data-armor="58290" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5420,7 +5458,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=FLASH_THE_WONDERDOG#FLASH_THE_WONDERDOG" class="rarity-yellow">Удивительная собака Флэш</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b2" data-basic_damage="8675" data-hp_max="156250" data-armor="11083" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5439,7 +5477,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=FINNED_TRIO#FINNED_TRIO" class="rarity-red">Плавучая троица</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b3" data-basic_damage="37500" data-skill_power="56645" data-crit_damage="7" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5458,7 +5496,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=STONE_BIRDS_CLUE#STONE_BIRDS_CLUE" class="rarity-orange">Подсказка Каменной птицы</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b4" data-basic_damage="12645" data-skill_power="25708" data-reality="35938" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5477,7 +5515,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=SECUR_T#SECUR_T" class="rarity-orange">Secur-T</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b5" data-skill_power="46875" data-normal_crit="9" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5495,7 +5533,7 @@ function init()
         <span class="unit-pair-name" data-r_blk="50.32">
           <a href="../item_list.htm?item=COVERT#COVERT" class="rarity-red">Убежище</a>
         </span>
-        <span class="unit-pair-val" data-r_blk="50.32">
+        <span class="unit-pair-val nowrap" data-r_blk="50.32">
           <select name="b6" data-basic_damage="21958" data-skill_power="37188" data-hp_max="554688" data-hp_regen="468750" data-r_ctl="50.32" disabled>
             <option value="-1">Н/Д</option>
             <option value="0" selected>Надеть</option>
@@ -5609,7 +5647,7 @@ function init()
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-white"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
         <dt>blackouttime</dt><dd>0.7</dd>
         <dt>duration</dt><dd>1</dd>
@@ -5622,7 +5660,6 @@ function init()
         <dt>amt</dt><dd>3</dd>
         <dt>stunduration</dt><dd>9</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Теоретический эксперимент</a></label></h2>
     <p><span>Один раз за волну, выждав </span><span class="unit-expr-misc">11</span><span> сек., Джамба бросает в самого переднего союзника экспериментальное вещество, которое полностью излечивает, увеличивает максимум HP на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="1100k + 10.95sp" data-checkbox="eval">1100k + 10.95sp</output></span><span>, дает </span><span class="unit-expr-misc">250</span><span> ед. энергии и увеличивает базовый урон на </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="269k + 4.75bd" data-checkbox="eval">269k + 4.75bd</output></span><span> ед. на </span><span class="unit-expr-misc">20</span><span> сек.</span></p>
@@ -5632,7 +5669,7 @@ function init()
         <dt>initcooldown</dt><dd>11</dd>
         <dt>cooldown</dt><dd>11</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-green"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>energygain</dt><dd>90</dd>
@@ -5646,7 +5683,6 @@ function init()
         <dt>energyamt</dt><dd>250</dd>
         <dt>basicdmgbuff</dt><dd>269k + 4.75bd</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Тепловизор</a></label></h2>
     <p><span>Джамба использует тепловизионный бинокль и обнаруживает всех врагов, при этом обретая «Точность» на </span><span class="unit-expr-misc">15</span><span> сек. и увеличивая свой базовый урон на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="145k + 1.55sp" data-checkbox="eval">145k + 1.55sp</output></span><span> ед. на </span><span class="unit-expr-misc">10</span><span> сек.</span></p>
@@ -5656,7 +5692,7 @@ function init()
         <dt>initcooldown</dt><dd>2</dd>
         <dt>cooldown</dt><dd>16</dd>
       </dl></label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-blue"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>energygain</dt><dd>90</dd>
@@ -5667,18 +5703,16 @@ function init()
         <dt>basicdmgamt</dt><dd>145k + 1.55sp</dd>
         <dt>buffduration</dt><dd>10</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Все по плану</a></label></h2>
     <p><span>Пока Джамба владеет «Точностью», он наносит на </span><span class="unit-expr-misc">300%</span><span> ед. больше урона навыком «</span><a href="../hero/JUMBA.htm#WHITE" class="rarity-white">Плазменная пушка</a><span>» и базовыми атаками.</span></p>
     <p><span>Увеличение урона менее эффективно в схватке с врагами выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>-го уровня.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-purple"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>dmgpercent</dt><dd>3 [%]</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Злой ученый</a></label></h2>
     <p><span>В начале каждой волны самый передний союзник, включая Джамбу, получает «Точность» на </span><span class="unit-expr-misc">11</span><span> сек.</span></p>
@@ -5692,14 +5726,13 @@ function init()
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
-      <div class="input-btn"><input type="checkbox" id="details-btn-red"><div>
+      <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>primary</dt><dd>frontMost &lt; ally</dd>
         <dt>preciseduration</dt><dd>11</dd>
         <dt>energyamt</dt><dd>250</dd>
         <dt>dmgbuff</dt><dd>265k</dd>
       </dl>
-      </div></div>
     </div><!-- unit-note } -->
     </form>
   </div>
