@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../../main.css?1627216201">
+<link rel="stylesheet" href="../../star.css?1627216201">
+<link rel="stylesheet" href="../../unit.css?1627216201">
+<title> - Disney Heroes: Battle Mode Database</title>
+<meta name="description" content="Rescue Rangers, away! Chip and Dale may be small, but these pint-sized heroes are more than the enemy bargained for. Watch out villains! Chip and Dale are on the scene!">
+<script src="../../util.js?1627216201"></script>
+<script src="../../unit.js?1627216201"></script>
+<script>
+var calculator= null;
+
+function updateBadge(r_val)
+{
+  if (r_val == null)
+  {
+    return;
+  }
+
+  for (let o of document.querySelectorAll("[data-r_blk]"))
+  {
+    o.style.display = (o.dataset.r_blk != r_val) ? "none" : "";
+  }
+
+  for (let o of document.querySelectorAll("[data-r_ctl]"))
+  {
+    o.disabled = (o.dataset.r_ctl != r_val);
+  }
+}
+
+function paramsWrapper(params)
+{
+  updateBadge(params.get("r"));
+  return params;
+}
+
+function calculateBy(params)
+{
+  updateBadge((new FormWrapper(this.objForm)).get("r"));
+  calcForm(this.objForm);
+  return new FormWrapper(this.objForm);
+}
+
+function init()
+{
+  updateBadge(
+    (new FormWrapper(document.getElementById("unit-stat"))).get("r"));
+  calculator = new UrlForm(
+    document.getElementById("unit-stat"),
+    calculateBy,
+    null,
+    paramsWrapper);
+  calculator.init();
+  document.getElementById('unit-disk-eval').form.onchange();
+  document.getElementById('unit-collect-eval').form.onchange();
+}
+</script>
+</head>
+
+<body onload="init()">
+<div class="menu"><!-- container { -->
+  <a href="../hero_list.htm">
+    <div class="section">Heróis</div>
+  </a>
+  <a href="../disk_list.htm">
+    <div class="section">Amigos</div>
+  </a>
+  <a href="../collect_list.htm">
+    <div class="section undertest">Coleções</div>
+  </a>
+  <a href="../item_list.htm">
+    <div class="section">Itens</div>
+  </a>
+  <label class="section dropdown" for="lang-menu">
+    Escolher idioma / Choose Language
+    <input class="toggle-btn" id="lang-menu" type="checkbox">
+    <div class="dropdown-content">
+      <a href="../../de/hero/CHIP_AND_DALE.htm">Deutsche</a>
+      <a href="../../en/hero/CHIP_AND_DALE.htm">English</a>
+      <a href="../../es/hero/CHIP_AND_DALE.htm">Español</a>
+      <a href="../../fr/hero/CHIP_AND_DALE.htm">Français</a>
+      <a href="../../it/hero/CHIP_AND_DALE.htm">Italiano</a>
+      <a href="../../ja/hero/CHIP_AND_DALE.htm">日本語</a>
+      <a href="../../ko/hero/CHIP_AND_DALE.htm">한국어</a>
+      <a href="../../pt/hero/CHIP_AND_DALE.htm">Português</a>
+      <a href="../../ru/hero/CHIP_AND_DALE.htm">русский</a>
+      <a href="../../zh-Hans/hero/CHIP_AND_DALE.htm">简体中文</a>
+      <a href="../../zh-Hant/hero/CHIP_AND_DALE.htm">繁體中文</a>
+    </div>
+  </label>
+  <!--
+  <span style="white-space: nowrap;">Release date: 06/22/2021</span>
+  -->
+</div><!--  container } -->
+
+<div class="unit-detail-list"><!-- container { -->
+
+  <!-- Intro { -->
+  <div class="section">
+    <div class="unit-avatar"><!--
+      <img alt="" src="CHIP_AND_DALE.png">
+    --></div>
+    <h1 class="undertest">???</h1>
+    <p>Rescue Rangers, away! Chip and Dale may be small, but these pint-sized heroes are more than the enemy bargained for. Watch out villains! Chip and Dale are on the scene!</p>
+    <blockquote>Chip: &#34;That was a close one. Are you okay Dale?&#34;\nDale: &#34;Yeah. Luckily it landed on my head.&#34;</blockquote>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Função</span>
+      <a class="unit-pair-val" href="../hero_list.htm?SUPPORT_ROLE=on">Suporte</a>
+      <span class="unit-pair-name">Posição</span>
+      <a class="unit-pair-val" href="../hero_list.htm?POSITION_CENTRAL=on">Meio</a>
+      <span class="unit-pair-name">Prova de Equipe:</span>
+      <a class="unit-pair-val" href="../hero_list.htm?YELLOW_TEAM=on">Amarela</a>
+    </div>
+  </div>
+  <!-- Intro } -->
+
+  <!-- Filter { -->
+  <div class="section">
+    <h1>Filtrar</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name unit-fltr-grp-name">tipo de dano</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Esses heróis têm a habilidade de causar Dano normal com suas habilidades."><a href="../hero_list.htm?NORMAL_DAMAGE=on">Dano normal</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">- efeitos</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Unidades atordoadas não podem se mover, atacar ou usar habilidades."><a href="../hero_list.htm?STUN=on">Atordoamento</a></li>
+          <li title="Toda energia ganha por unidades esgotadas é reduzida pela metade."><a href="../hero_list.htm?SAP=on">Esgotamento</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">+ efeitos</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="Unidades energizadas recebem mais energia toda vez que realizam um ataque básico."><a href="../hero_list.htm?ENERGIZE=on">Energizando</a></li>
+          <li title="Concede energia a si mesmo."><a href="../hero_list.htm?ENERGY_SELF=on">Energizar-se</a></li>
+          <li title="Pode curar ao menos um aliado."><a href="../hero_list.htm?HEAL_TEAM=on">Curar equipe</a></li>
+          <li title="Cada acumulação de Resistente em uma unidade impede que um ônus seja aplicado a ela."><a href="../hero_list.htm?HARDY=on">Resistente</a></li>
+          <li title="Pode curar ao menos um aliado durante um período."><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">Cura continuada da equipe</a></li>
+        </ul>
+      </span>
+      <span class="unit-pair-name unit-fltr-grp-name">+ atributos</span>
+      <span class="unit-pair-val">
+        <ul class="inline-list">
+          <li title="A velocidade de ataque é aumentada."><a href="../hero_list.htm?ATTACK_SPEED_INCREASE=on">Aumento de velocidade de ataque</a></li>
+          <li title="A velocidade de movimento é aumentada."><a href="../hero_list.htm?MOVE_SPEED_INCREASE=on">Aumento de velocidade de movimento</a></li>
+          <li title="O poder de habilidade é aumentado."><a href="../hero_list.htm?SKILL_POWER_INCREASE=on">Aumento de poder de habilidade</a></li>
+          <li title="O PV máximo é aumentado."><a href="../hero_list.htm?MAX_HP_INCREASE=on">Aumento de PV máx.</a></li>
+          <li title="O dano básico é aumentado."><a href="../hero_list.htm?DAMAGE_INCREASE=on">Aumento de dano básico</a></li>
+        </ul>
+      </span>
+    </div>
+  </div>
+  <!-- Filter } -->
+
+  <!-- Core Stats { -->
+  <div class="section">
+    <h1>Atributos Principais</h1>
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">PV máx.</span>
+      <span class="unit-pair-val unit-expr-g">
+        720.7 + 750.82g
+      </span>
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val unit-expr-g">
+        111.7 + 17.36g
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val unit-expr-g">
+        82.7 + 24.5g
+      </span>
+    </div>
+  </div>
+  <!-- Core Stats } -->
+
+  <!-- Detailed Stats { -->
+  <div class="section">
+    <h1>Atributos detalhados</h1>
+
+    <form id="unit-stat" onchange="calculator.update()">
+    <div class="unit-pair-list">
+
+      <!-- Level { -->
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="v" type="number" pattern="\d*" min="1" max="250" value="250">
+      </span>
+      <span class="unit-pair-name">Classificação</span>
+      <span class="unit-pair-val">
+        <select name="r">
+          <option value="55.35" selected>YELLOW+5</option>
+          <option value="50.32">YELLOW+4</option>
+          <option value="45.74">YELLOW+3</option>
+          <option value="41.58">YELLOW+2</option>
+          <option value="37.80">YELLOW+1</option>
+          <option value="34.37">YELLOW</option>
+          <option value="31.24">RED+19</option>
+          <option value="28.40">RED+18</option>
+          <option value="25.82">RED+17</option>
+          <option value="23.47">RED+16</option>
+          <option value="21.34">RED+15</option>
+          <option value="19.40">RED+14</option>
+          <option value="17.64">RED+13</option>
+          <option value="16.03">RED+12</option>
+          <option value="14.58">RED+11</option>
+          <option value="13.25">RED+10</option>
+          <option value="12.05">RED+9</option>
+          <option value="10.95">RED+8</option>
+          <option value="9.96">RED+7</option>
+          <option value="9.05">RED+6</option>
+          <option value="8.23">RED+5</option>
+          <option value="7.51">RED+4</option>
+          <option value="6.82">RED+3</option>
+          <option value="6.19">RED+2</option>
+          <option value="5.64">RED+1</option>
+          <option value="5.13">RED</option>
+          <option value="4.67">ORANGE+8</option>
+          <option value="4.25">ORANGE+7</option>
+          <option value="3.87">ORANGE+6</option>
+          <option value="3.52">ORANGE+5</option>
+          <option value="3.2">ORANGE+4</option>
+          <option value="2.91">ORANGE+3</option>
+          <option value="2.65">ORANGE+2</option>
+          <option value="2.4">ORANGE+1</option>
+          <option value="2.2">ORANGE</option>
+          <option value="2.05">PURPLE+4</option>
+          <option value="1.9">PURPLE+3</option>
+          <option value="1.8">PURPLE+2</option>
+          <option value="1.7">PURPLE+1</option>
+          <option value="1.6">PURPLE</option>
+          <option value="1.5">BLUE+2</option>
+          <option value="1.4">BLUE+1</option>
+          <option value="1.3">BLUE</option>
+          <option value="1.2">GREEN+1</option>
+          <option value="1.1">GREEN</option>
+          <option value="1">WHITE</option>
+        </select>
+      </span>
+      <span class="unit-pair-name">Estrelas</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="6" id="unit-stat-s-6" checked>
+        <label for="unit-stat-s-6" style="--star-lvl: 6;">&#x2605;</label>
+        <input name="s" type="radio" value="5" id="unit-stat-s-5">
+        <label for="unit-stat-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-stat-s-4">
+        <label for="unit-stat-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-stat-s-3">
+        <label for="unit-stat-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-stat-s-2">
+        <label for="unit-stat-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-stat-s-1">
+        <label for="unit-stat-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+      <!-- Level } -->
+
+      <!-- Badge { -->
+      <!-- <fieldset data-r_ctl="1"> -->
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.1"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.1"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.3"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.3"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.4"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.4"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.5"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.5"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.6"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.6"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.7"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.7"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.8"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.8"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="1.9"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="1.9"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.4"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.4"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.65"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.65"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="2.91"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="2.91"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.2"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.2"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.52"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.52"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="3.87"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="3.87"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.25"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="4.25"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="4.67"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="4.67"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.13"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="5.13"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="5.64"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="5.64"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.19"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="6.19"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="6.82"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="6.82"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="7.51"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="7.51"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="8.23"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="8.23"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="9.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="9.96"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="9.96"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="10.95"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="10.95"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="12.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="12.05"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="13.25"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="13.25"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="14.58"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="14.58"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="16.03"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="16.03"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="17.64"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="17.64"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="19.40"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="19.40"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="21.34"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="21.34"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="23.47"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="23.47"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="23.47"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="23.47"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="25.82"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="25.82"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="25.82"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="25.82"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="28.40"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="28.40"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="28.40"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="28.40"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="31.24"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="31.24"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="31.24"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="31.24"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="34.37"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="34.37"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="34.37"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="34.37"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="37.80"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="37.80"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="37.80"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="37.80"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="41.58"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="41.58"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="41.58"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="41.58"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="45.74"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="45.74"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="45.74"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="45.74"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="50.32"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="50.32"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="50.32"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="50.32"></output>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="55.35"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="0" data-r_ctl="55.35"></output>
+        <output name="b_skill_power" class="hidden" data-formula="0" data-r_ctl="55.35"></output>
+        <output name="b_hp_max" class="hidden" data-formula="0" data-r_ctl="55.35"></output>
+      <!-- </fieldset> -->
+      <!-- Badge } -->
+
+      <span class="unit-pair-line hr"></span>
+      <span class="unit-pair-line hidden">
+        <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="720.7 + 750.82g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="111.7 + 17.36g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="82.7 + 24.5g"></output>
+      </span>
+
+      <!-- Stats { -->
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="basic_damage" for="core_basic_damage b_basic_damage func:badge_inc,calcBadge,badge_param" data-formula="core_basic_damage + b_basic_damage + badge_inc" data-badge_param="basic_damage|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="skill_power" for="core_skill_power b_skill_power func:badge_inc,calcBadge,badge_param" data-formula="core_skill_power + b_skill_power + badge_inc" data-badge_param="skill_power|ceil(B*0.35)*S"></output>
+      </span>
+      <span class="unit-pair-name">PV máx.</span>
+      <span class="unit-pair-val unit-expr-g">
+        <output name="hp_max" for="core_hp_max b_hp_max func:badge_inc,calcBadge,badge_param" data-formula="core_hp_max + b_hp_max + badge_inc" data-badge_param="hp_max|ceil(B*0.35)*S"></output>
+      </span>
+      <!-- Stats } -->
+
+    </div>
+    </form>
+  </div>
+  <!-- Detailed Stats } -->
+
+  <!-- Skills { -->
+  <div class="section">
+    <h1><label for="unit-skill-eval">Habilidades</label></h1>
+
+    <form data-for="unit-stat" onchange="calcForm(this)">
+    <input name="eval" id="unit-skill-eval" type="checkbox" class="hidden" checked>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+    <output name="level" class="hidden" for="v" data-formula="v" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="formula_v" value="x" placeholder="x">
+        = <output name="v" class="unit-expr-level" for="ref:x,unit-stat,v" data-formula-ref="formula_v" data-text="1"></output>
+      </span>
+      <span class="unit-pair-name">Dano básico</span>
+      <span class="unit-pair-val">
+        <input name="formula_bd" value="x" placeholder="x">
+        = <output name="bd" class="unit-expr-bd" for="ref:x,unit-stat,basic_damage" data-formula-ref="formula_bd" data-text="0" data-raw="1"></output>
+      </span>
+      <span class="unit-pair-name">Poder de habilidade</span>
+      <span class="unit-pair-val">
+        <input name="formula_sp" value="x" placeholder="x">
+        = <output name="sp" class="unit-expr-sp" for="ref:x,unit-stat,skill_power" data-formula-ref="formula_sp" data-text="0" data-raw="1"></output>
+      </span>
+    </div>
+    <blockquote>Specify number or math expression, e.g. <code>x*1.2</code></blockquote>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Chipmunk Cheer</a></label></h2>
+    <p><span>Chip &amp; Dale cheer on their allies, granting them </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="40k+3.75sp" data-checkbox="eval">40k+3.75sp</output></span><span> bonus Damage on their Basic Attacks for </span><span class="unit-expr-misc">3</span><span> seconds.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-white">...</label>
+      <input class="toggle-btn" type="checkbox" id="details-btn-white">
+      <dl class="attr-list">
+        <dt>blackouttime</dt><dd>1.4</dd>
+        <dt>duration</dt><dd>3</dd>
+        <dt>priority</dt><dd>100</dd>
+        <dt>trigger</dt><dd>closest &lt; ally</dd>
+        <dt>primary</dt><dd>closest &lt; ally</dd>
+        <dt>splash</dt><dd>ally</dd>
+        <dt>dmgamt</dt><dd>40k+3.75sp</dd>
+        <dt>buffduration</dt><dd>3</dd>
+      </dl>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Fast Fly</a></label></h2>
+    <p><span>Chip &amp; Dale slingshot Zipper at the closest enemy, dealing </span><span class="unit-expr-misc">&lt;dmgAmt&gt;</span><span> Normal Damage and Stunning them for </span><span class="unit-expr-misc">4</span><span> seconds.</span></p>
+    <p><span>The Stun has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-green"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>initcooldown</dt><dd>1</dd>
+        <dt>cooldown</dt><dd>7</dd>
+      </dl></label>
+      <input class="toggle-btn" type="checkbox" id="details-btn-green">
+      <dl class="attr-list">
+        <dt>duration</dt><dd>3.2</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
+        <dt>cooldown</dt><dd>7</dd>
+        <dt>initcooldown</dt><dd>1</dd>
+        <dt>priority</dt><dd>1</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>dmg</dt><dd>410k+3.75sp</dd>
+        <dt>stunduration</dt><dd>4</dd>
+      </dl>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Ranger Plane</a></label></h2>
+    <p><span>At the beginning of each wave, Chip &amp; Dale dive bomb their enemies with their plane, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="410k+3.75sp" data-checkbox="eval">410k+3.75sp</output></span><span> Normal Damage to all enemies. While flying by, they drop a supply crate that Energizes them and their allies for </span><span class="unit-expr-misc">5</span><span> seconds.</span></p>
+    <p><span>Units Energized by this Skill gain </span><span class="unit-expr-misc">50</span><span> bonus Energy per Basic Attack.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-blue"><dl class="inline-list">
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>initcooldown</dt><dd>0</dd>
+        <dt>cooldown</dt><dd>0</dd>
+      </dl></label>
+      <input class="toggle-btn" type="checkbox" id="details-btn-blue">
+      <dl class="attr-list">
+        <dt>duration</dt><dd>5</dd>
+        <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>0</dd>
+        <dt>cooldown</dt><dd>0</dd>
+        <dt>initcooldown</dt><dd>0</dd>
+        <dt>priority</dt><dd>999</dd>
+        <dt>trigger</dt><dd>closest &lt; enemy</dd>
+        <dt>primary</dt><dd>closest &lt; enemy</dd>
+        <dt>splash</dt><dd>enemy</dd>
+        <dt>dmgamt</dt><dd>410k+3.75sp</dd>
+        <dt>energyamt</dt><dd>50</dd>
+      </dl>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">On The Case</a></label></h2>
+    <p><span>At the beginning of each wave, Chip &amp; Dale gain </span><span class="unit-expr-misc">90</span><span> Energy. Allies affected by &#34;</span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a><span>&#34; Heal </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="410k+3.75sp" data-checkbox="eval">410k+3.75sp</output></span><span> HP per Basic Attack for the duration of the skill.</span></p>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-purple">...</label>
+      <input class="toggle-btn" type="checkbox" id="details-btn-purple">
+      <dl class="attr-list">
+        <dt>energyamt</dt><dd>90</dd>
+        <dt>healamt</dt><dd>410k+3.75sp</dd>
+      </dl>
+    </div><!-- unit-note } -->
+    <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Ready To Rescue</a></label></h2>
+    <p><span>&#34;</span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a><span>&#34; now grants </span><span class="unit-expr-misc">65%</span><span> increased Attack Speed and </span><span class="unit-expr-misc">25%</span><span> increased Movement Speed for </span><span class="unit-expr-misc">9</span><span> seconds.</span></p>
+    <p><span>Allies affected by &#34;</span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a><span>&#34; also have a chance to gain </span><span class="unit-expr-misc">4</span><span> stacks of Hardy.</span></p>
+    <p><span>Hardy application has a chance to fail on allies above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
+    <p>Bônus de Atributo Adicionais:<p>
+    <ul>
+      <li><span>+</span><span class="unit-expr-misc">&lt;sp&gt;</span><span> Skill Power</span></li>
+      <li><span>+</span><span class="unit-expr-misc">&lt;hpAmt&gt;</span><span> Max HP</span></li>
+      <li><span>+</span><span class="unit-expr-misc">41000</span><span> bonus Damage to &#34;</span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-misc">3350</span><span> </span><span class="unit-expr-misc">PV máx.</span></li>
+      <li><span>+</span><span class="unit-expr-misc">1200</span><span> </span><span class="unit-expr-misc">Poder de habilidade</span></li>
+    </ul>
+    <div class="details-tag unit-note"><!-- unit-note { -->
+      <label for="details-btn-red">...</label>
+      <input class="toggle-btn" type="checkbox" id="details-btn-red">
+      <dl class="attr-list">
+        <dt>aspercent</dt><dd>.65[%]</dd>
+        <dt>mspercent</dt><dd>.25[%]</dd>
+        <dt>duration</dt><dd>9</dd>
+        <dt>hardyamt</dt><dd>4</dd>
+        <dt>dmgamt</dt><dd>41000</dd>
+      </dl>
+    </div><!-- unit-note } -->
+    </form>
+  </div>
+  <!-- Skills } -->
+
+  <!-- Friends { -->
+  <div class="section">
+    <h1><label for="unit-disk-eval">Amigos</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-disk-eval" type="checkbox" class="hidden" checked>
+    <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
+    <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
+
+    <!-- Level { -->
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="level" type="number" pattern="\d*" min="1" max="210" value="210">
+      </span>
+      <span class="unit-pair-name">Estrelas</span>
+      <span class="unit-pair-val star-group">
+        <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
+        <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
+        <input name="s" type="radio" value="4" id="unit-disk-s-4">
+        <label for="unit-disk-s-4" style="--star-lvl: 4;">&#x2605;</label>
+        <input name="s" type="radio" value="3" id="unit-disk-s-3">
+        <label for="unit-disk-s-3" style="--star-lvl: 3;">&#x2605;</label>
+        <input name="s" type="radio" value="2" id="unit-disk-s-2">
+        <label for="unit-disk-s-2" style="--star-lvl: 2;">&#x2605;</label>
+        <input name="s" type="radio" value="1" id="unit-disk-s-1">
+        <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
+      </span>
+    </div>
+    <!-- Level } -->
+
+    <p class="hr"></p>
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/KRONK.htm">Kronk</a> <small>(260)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#CHIP_AND_DALE_SKILL1">The Chipmunk Squeaker</a>
+    </p>
+    <blockquote><span>Extra Bonus Damage to Allies Boosted by </span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a></blockquote>
+    <ul>
+      <li><span>Allies affected by &#34;</span><a href="../hero/CHIP_AND_DALE.htm#WHITE" class="rarity-white">Chipmunk Cheer</a><span>&#34; deal </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="110k" data-checkbox="eval">110k</output></span><span> more bonus Damage with their Basic Attacks.</span></li>
+      <li><span>Chip &amp; Dale gain </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="90s" data-checkbox="eval">90s</output></span><span> Energy when an ally KO&#39;s an enemy; Chip &amp; Dale can gain Energy this way once every </span><span class="unit-expr-misc">2</span><span> seconds.</span>
+        <div><dl class="unit-note inline-list">
+          <dt>cooldown</dt><dd>2</dd>
+        </dl></div>
+      </li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="735k" data-checkbox="eval">735k</output></span><span> </span><span class="unit-expr-misc">PV máx.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="735k" data-checkbox="eval">735k</output></span><span> </span><span class="unit-expr-misc">Dano básico</span></li>
+    </ul>
+    <!-- Disk } -->
+    <!-- Disk { -->
+    <h2>
+      <a href="../hero/BASIL.htm">Basil da Rua Baker</a> <small>(260)</small>
+    </h2>
+    <p>
+      <a href="../disk_list.htm#CHIP_AND_DALE_SKILL3">Insect Confection</a>
+    </p>
+    <blockquote><a href="../hero/CHIP_AND_DALE.htm#BLUE" class="rarity-blue">Ranger Plane</a><span> Stuns and Saps Enemies</span></blockquote>
+    <ul>
+      <li><span>&#34;</span><a href="../hero/CHIP_AND_DALE.htm#BLUE" class="rarity-blue">Ranger Plane</a><span>&#34; deals </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="410k" data-checkbox="eval">410k</output></span><span> more Normal Damage</span></li>
+      <li><span>&#34;</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34; has a </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s%" data-format="%" data-checkbox="eval">25s%</output></span><span> chance to Stun and Sap enemies hit for </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> seconds.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="735k" data-checkbox="eval">735k</output></span><span> </span><span class="unit-expr-misc">PV máx.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="190k" data-checkbox="eval">190k</output></span><span> </span><span class="unit-expr-misc">Poder de habilidade</span></li>
+    </ul>
+    <!-- Disk } -->
+    </form>
+  </div>
+  <!-- Friends } -->
+
+  <!-- Friends 2 { -->
+  <div class="section">
+    <h1>Amigos</h1>
+  </div>
+  <!-- Friends 2 } -->
+
+  <!-- Collections { -->
+  <div class="section">
+    <h1 class="undertest"><label for="unit-collect-eval">Coleções</label></h1>
+
+    <form onchange="calcForm(this)">
+    <input name="eval" id="unit-collect-eval" type="checkbox" class="hidden" checked>
+
+    <div class="unit-pair-list">
+      <span class="unit-pair-name">Nível</span>
+      <span class="unit-pair-val">
+        <input name="k" type="number" pattern="\d*" min="1" value="1">
+      </span>
+    </div>
+
+    <p class="hr"></p>
+    <!-- Collection { -->
+    <h2>
+      <a href="../collect_list.htm#SUPPORT">Suporte</a>
+      <small>(<output for="k" data-formula="k"></output> / 12)</small>
+    </h2>
+    <blockquote>Iniciando a energia</blockquote>
+    <ul>
+      <li><span>A equipe começa com </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="4k" data-format=".3" data-checkbox="eval">4k</output></span><span> energia adicional para cada Suporte na sua equipe.</span></li>
+    </ul>
+    <!-- Collection } -->
+    </form>
+  </div>
+  <!-- Collections } -->
+
+</div><!--  container } -->
+</body>
+</html>
