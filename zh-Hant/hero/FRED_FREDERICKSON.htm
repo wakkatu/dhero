@@ -13,7 +13,7 @@
   background-repeat: no-repeat;
   background-position: right top;
   background-size: contain, cover;
-  background-image: url('../../img_s/hero_list_fred.png');
+  background-image: url('../../img_s/hero_list_fred.jpg');
 }
 </style>
 <script src="../../util.js?1627921219"></script>
@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/22/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
   -->
 </div><!--  container } -->
 
@@ -108,7 +108,7 @@ function init()
 
   <!-- Intro { -->
   <div class="section">
-    <h1 class="undertest">Fred</h1>
+    <h1>Fred</h1>
     <p>Always ready for action, Fred is a force to be reckoned with. Thanks to his fire breath and sign spinning prowess, he is a formidable opponent to any foe!</p>
     <blockquote>&#34;The name&#39;s Fred. School mascot by day, but by night... I&#39;m also the school mascot.&#34;</blockquote>
     <div class="unit-pair-list">
@@ -174,11 +174,11 @@ function init()
       </span>
       <span class="unit-pair-name">基本傷害</span>
       <span class="unit-pair-val unit-expr-g">
-        95 + 50g
+        95 + 65g
       </span>
       <span class="unit-pair-name">技能威力</span>
       <span class="unit-pair-val unit-expr-g">
-        115 + 24g
+        115 + 35g
       </span>
     </div>
   </div>
@@ -194,7 +194,7 @@ function init()
       <!-- Level { -->
       <span class="unit-pair-name">等級</span>
       <span class="unit-pair-val">
-        <input name="v" type="number" pattern="\d*" min="1" max="250" value="250">
+        <input name="v" type="number" pattern="\d*" min="1" max="255" value="255">
       </span>
       <span class="unit-pair-name">排名</span>
       <span class="unit-pair-val">
@@ -5596,8 +5596,8 @@ function init()
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
         <output name="core_hp_max" for="g" data-raw="1" data-formula="1100 + 1300g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="95 + 50g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="115 + 24g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="95 + 65g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="115 + 35g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5683,7 +5683,7 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Fire-Breathing Lizard</a></label></h2>
-    <p><span>Fred shoots a burst of flame at all nearby enemies, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="250k+2sp" data-checkbox="eval">250k+2sp</output></span><span> True Damage initially, then </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="20k+.5sp" data-checkbox="eval">20k+.5sp</output></span><span> True Damage per second for </span><span class="unit-expr-misc">5</span><span> seconds.</span></p>
+    <p><span>Fred shoots a burst of flame at all nearby enemies, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="600k + 6sp" data-checkbox="eval">600k + 6sp</output></span><span> True Damage initially, then </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k + 3sp" data-checkbox="eval">300k + 3sp</output></span><span> True Damage per second for </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>True</dd>
@@ -5698,93 +5698,92 @@ function init()
         <dt>trigger</dt><dd>closestPrefFacing &lt; enemy | within(default)</dd>
         <dt>primary</dt><dd>closestPrefFacing &lt; enemy | within(default)</dd>
         <dt>splash</dt><dd>enemy | sourceFacingTarget | within(default)</dd>
-        <dt>dmgamt</dt><dd>250k+2sp</dd>
-        <dt>dotdmg</dt><dd>20k+.5sp</dd>
-        <dt>dotduration</dt><dd>5</dd>
+        <dt>dmgamt</dt><dd>600k + 6sp</dd>
+        <dt>dotdmg</dt><dd>300k + 3sp</dd>
+        <dt>dotduration</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Smokescreen</a></label></h2>
-    <p><span>Fred lets out a burst of smoke, removing any Freeze effects on all allies. This grants Fred and his allies </span><span class="unit-expr-misc">3</span><span> stacks of Hardy, and Blinds all enemies for </span><span class="unit-expr-misc">5</span><span> seconds.</span></p>
+    <p><span>Fred lets out a burst of smoke, removing any Freeze effects on all allies. This grants Fred and his allies </span><span class="unit-expr-misc">5</span><span> stacks of Hardy, and Blinds all enemies for </span><span class="unit-expr-misc">10</span><span> seconds.</span></p>
     <p><span>The Freeze removal and Blind have a chance to fail against units above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
-        <dt>initcooldown</dt><dd>2.5</dd>
-        <dt>cooldown</dt><dd>10</dd>
+        <dt>initcooldown</dt><dd>4</dd>
+        <dt>cooldown</dt><dd>12</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>3.5</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>10</dd>
-        <dt>initcooldown</dt><dd>2.5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>4</dd>
         <dt>priority</dt><dd>1</dd>
         <dt>trigger</dt><dd>closestPrefFacing &lt; enemy</dd>
         <dt>primary</dt><dd>closestPrefFacing &lt; enemy</dd>
-        <dt>stackamt</dt><dd>3</dd>
-        <dt>blindduration</dt><dd>5</dd>
+        <dt>stackamt</dt><dd>5</dd>
+        <dt>blindduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Sign Off</a></label></h2>
-    <p><span>Fred lifts up his sign, Counters the next Basic Attack and deals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2.5sp" data-checkbox="eval">300k+2.5sp</output></span><span> Normal Damage to the closest enemy. After he Counters, Fred gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> Reality and </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="325k" data-checkbox="eval">325k</output></span><span> Armor for </span><span class="unit-expr-misc">5</span><span> seconds.</span></p>
-    <p><span>Fred can Counter with this skill once every </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
+    <p><span>Fred lifts up his sign, Counters the next Basic Attack and deals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="500k + 5sp" data-checkbox="eval">500k + 5sp</output></span><span> Normal Damage to the closest enemy. After he Counters, Fred gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> Reality and </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> Armor for </span><span class="unit-expr-misc"> 8</span><span> seconds.</span></p>
+    <p><span>Fred can Counter with this skill once every </span><span class="unit-expr-misc">8</span><span> seconds.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>0</dd>
-        <dt>cooldown</dt><dd>7</dd>
+        <dt>cooldown</dt><dd>8</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>3.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>7</dd>
+        <dt>cooldown</dt><dd>8</dd>
         <dt>initcooldown</dt><dd>0</dd>
         <dt>priority</dt><dd>2</dd>
         <dt>trigger</dt><dd>closestPrefFacing &lt; enemy | within(default)</dd>
         <dt>primary</dt><dd>closestPrefFacing &lt; enemy | within(default)</dd>
-        <dt>dmgamt</dt><dd>300k+2.5sp</dd>
-        <dt>realamt</dt><dd>300k</dd>
-        <dt>armamt</dt><dd>325k</dd>
-        <dt>buffduration</dt><dd>5</dd>
+        <dt>dmgamt</dt><dd>500k + 5sp</dd>
+        <dt>realamt</dt><dd>500k</dd>
+        <dt>armamt</dt><dd>450k</dd>
+        <dt>buffduration</dt><dd> 8</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Sign On Fire</a></label></h2>
-    <p><span>Once per wave, when Fred reaches </span><span class="unit-expr-misc">50%</span><span> of his Max HP, he lights his sign on fire and removes all Disables from himself.</span></p>
-    <p><span>For the rest of the wave, Fred cannot be Frozen and he Heals for </span><span class="unit-expr-misc">20%</span><span> of all True Damage dealt by himself and allies, up to a max of </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="310k" data-checkbox="eval">310k</output></span><span> HP per instance of True Damage dealt.</span></p>
+    <p><span>Once per wave, when Fred reaches </span><span class="unit-expr-misc">75%</span><span> of his Max HP, he lights his sign on fire and removes all Disables from himself.</span></p>
+    <p><span>For the rest of the wave, Fred cannot be Frozen and he Heals for </span><span class="unit-expr-misc">200%</span><span> of all True Damage dealt by himself and allies, up to a max of </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1300k" data-checkbox="eval">1300k</output></span><span> HP per instance of True Damage dealt.</span></p>
     <p><span>The Heal from this skill is less effective when the True Damage is being dealt by units above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>duration</dt><dd>2</dd>
-        <dt>priority</dt><dd>3</dd>
-        <dt>healthpercent</dt><dd>0.5[%]</dd>
-        <dt>buffduration</dt><dd>15</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
-        <dt>healcap</dt><dd>310k</dd>
+        <dt>priority</dt><dd>4</dd>
+        <dt>healthpercent</dt><dd>0.75[%]</dd>
+        <dt>healpercent</dt><dd>2[%]</dd>
+        <dt>healcap</dt><dd>1300k</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Fred Time</a></label></h2>
-    <p><span>The initial damage for &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#WHITE" class="rarity-white">Fire-Breathing Lizard</a><span>&#34; is increased by </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="20k+2sp" data-checkbox="eval">20k+2sp</output></span><span> True Damage.</span></p>
-    <p><span>Once per wave when Fred reaches </span><span class="unit-expr-misc">25%</span><span> of his Max HP, he Cleanses himself and gains </span><span class="unit-expr-misc">120</span><span> Energy.</span></p>
+    <p><span>The initial damage for &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#WHITE" class="rarity-white">Fire-Breathing Lizard</a><span>&#34; is increased by </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="600k" data-checkbox="eval">600k</output></span><span> True Damage.</span></p>
+    <p><span>Once per wave when Fred reaches </span><span class="unit-expr-misc">50%</span><span> of his Max HP, he Cleanses himself and gains </span><span class="unit-expr-misc">1000</span><span> Energy.</span></p>
     <p><span>When Fred uses &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#PURPLE" class="rarity-purple">Sign On Fire</a><span>&#34; he also removes all Freeze effects from his allies. After this happens, Fred&#39;s allies cannot be Frozen for the rest of the wave.</span></p>
     <p>額外屬性提升：<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> damage to &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#BLUE" class="rarity-blue">Sign Off</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval">150k</output></span><span> </span><span class="unit-expr-misc">現實</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="659k" data-checkbox="eval">659k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> damage to &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#BLUE" class="rarity-blue">Sign Off</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span><span class="unit-expr-misc">現實</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1600k" data-checkbox="eval">1600k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>duration</dt><dd>1</dd>
-        <dt>priority</dt><dd>4</dd>
-        <dt>dmgamt</dt><dd>20k+2sp</dd>
-        <dt>healthpercent</dt><dd>.25[%]</dd>
-        <dt>energyamt</dt><dd>120</dd>
-        <dt>skill3dmgamt</dt><dd>10k</dd>
+        <dt>priority</dt><dd>3</dd>
+        <dt>dmgamt</dt><dd>600k</dd>
+        <dt>healthpercent</dt><dd>.5[%]</dd>
+        <dt>energyamt</dt><dd>1000</dd>
+        <dt>skill3dmgamt</dt><dd>500k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5804,7 +5803,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">等級</span>
       <span class="unit-pair-val">
-        <input name="level" type="number" pattern="\d*" min="1" max="210" value="210">
+        <input name="level" type="number" pattern="\d*" min="1" max="215" value="215">
       </span>
       <span class="unit-pair-name">星等</span>
       <span class="unit-pair-val star-group">
@@ -5832,8 +5831,8 @@ function init()
     </p>
     <blockquote><span>Reduce Cooldown for </span><a href="../hero/FRED_FREDERICKSON.htm#GREEN" class="rarity-green">Smokescreen</a></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="173k" data-checkbox="eval">173k</output></span><span> </span><span class="unit-expr-misc">護甲</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="222k" data-checkbox="eval">222k</output></span><span> </span><span class="unit-expr-misc">現實</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="225k" data-checkbox="eval">225k</output></span><span> </span><span class="unit-expr-misc">護甲</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="275k" data-checkbox="eval">275k</output></span><span> </span><span class="unit-expr-misc">現實</span></li>
       <li><span>When an ally is Frozen, the remaining cooldown for &#34;</span><a href="../hero/FRED_FREDERICKSON.htm#GREEN" class="rarity-green">Smokescreen</a><span>&#34; is reduced by </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> seconds</span></li>
     </ul>
     <!-- Disk } -->
@@ -5846,9 +5845,9 @@ function init()
     </p>
     <blockquote><span>Remove Energy from Blinded Enemies</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1100k" data-checkbox="eval">1100k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="115k" data-checkbox="eval">115k</output></span><span> </span><span class="unit-expr-misc">基本傷害</span></li>
-      <li><span>When an enemy is Blinded by any source, they lose </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s" data-checkbox="eval">25s</output></span><span> Energy. Enemies can have Energy removed in this way once every </span><span class="unit-expr-misc">5</span><span> seconds.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1600k" data-checkbox="eval">1600k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span><span class="unit-expr-misc">基本傷害</span></li>
+      <li><span>When an enemy is Blinded by any source, they lose </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="100s" data-checkbox="eval">100s</output></span><span> Energy. Enemies can have Energy removed in this way once every </span><span class="unit-expr-misc">3</span><span> seconds.</span></li>
     </ul>
     <!-- Disk } -->
     </form>
