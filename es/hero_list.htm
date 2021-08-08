@@ -3,12 +3,20 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../main.css?1627921219">
-<link rel="stylesheet" href="../star.css?1627921219">
-<link rel="stylesheet" href="../unit.css?1627921219">
+<link rel="stylesheet" href="../main.css?1628417297">
+<link rel="stylesheet" href="../star.css?1628417297">
+<link rel="stylesheet" href="../unit.css?1628417297">
 <title>Héroes - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="¡Bienvenido a Disney Heroes: Modo Batalla!">
 <style>
+li[data-tag] {
+  display: none;
+}
+
+li[data-tag=""] {
+  display: inline;
+}
+
 .unit-brief-list .section {
   background-repeat: no-repeat;
   background-position: right top;
@@ -22,6 +30,10 @@
   height: 160px;
   overflow-y: hidden;
   resize: vertical;
+}
+
+.unit-filter-nav {
+  margin: 0 0 5px 0;
 }
 
 .unit-filter-content {
@@ -40,7 +52,7 @@
   text-shadow: 0px 0px 2px yellow;
 }
 </style>
-<script src="../util.js?1627921219"></script>
+<script src="../util.js?1628417297"></script>
 <script>
 var filter_group_map = {
   'POSITION_FRONT': 'position',
@@ -59,10 +71,33 @@ var filter_group_map = {
 };
 
 var filter = null;
+var cssRuleLi = null;
+
+for (const styleSheet of document.styleSheets) {
+  if (null !== styleSheet.href) {
+    continue;
+  }
+  for (const cssRule of styleSheet.cssRules) {
+    if (cssRule.selectorText == 'li[data-tag=""]') {
+      cssRuleLi = cssRule;
+    }
+  }
+}
 
 function filterBy(params)
 {
-  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+  let attrSelectorsLi = 'li[data-tag=""]';
+
+  for (const p of params) {
+    if (p[1] === "") {
+      continue;
+    }
+    attrSelectorsLi += ',li[data-tag="' + p[0] + '"]';
+  }
+
+  cssRuleLi.selectorText = attrSelectorsLi;
+
+  let heroObjs = document.getElementsByClassName("unit-brief-list")[0]
       .getElementsByClassName("section");
 
   for (const heroObj of heroObjs)
@@ -169,8 +204,87 @@ function init()
 <div class="section unit-filter-panel">
   <form id="unit-filter">
   <div class="unit-filter-nav">
-    Filtro
     <input type="button" value="Reset" onclick="this.form.reset(); filter.update()">
+    Filtro:
+    <ul class="inline-list">
+      <li data-tag="POSITION_FRONT"><label for="unit-tag-POSITION_FRONT">Frente</label></li>
+      <li data-tag="POSITION_CENTRAL"><label for="unit-tag-POSITION_CENTRAL">Medio</label></li>
+      <li data-tag="POSITION_BACK"><label for="unit-tag-POSITION_BACK">Fondo</label></li>
+      <li data-tag="RED_TEAM"><label for="unit-tag-RED_TEAM">Equipo rojo</label></li>
+      <li data-tag="YELLOW_TEAM"><label for="unit-tag-YELLOW_TEAM">Equipo amarillo</label></li>
+      <li data-tag="BLUE_TEAM"><label for="unit-tag-BLUE_TEAM">Equipo azul</label></li>
+      <li data-tag="TANK_ROLE"><label for="unit-tag-TANK_ROLE">Tanque</label></li>
+      <li data-tag="DPS_ROLE"><label for="unit-tag-DPS_ROLE">Daño</label></li>
+      <li data-tag="SUPPORT_ROLE"><label for="unit-tag-SUPPORT_ROLE">Apoyo</label></li>
+      <li data-tag="CONTROL_ROLE"><label for="unit-tag-CONTROL_ROLE">Control</label></li>
+      <li data-tag="NORMAL_DAMAGE"><label for="unit-tag-NORMAL_DAMAGE">Daño normal</label></li>
+      <li data-tag="FANTASTIC_DAMAGE"><label for="unit-tag-FANTASTIC_DAMAGE">Daño fantástico</label></li>
+      <li data-tag="TRUE_DAMAGE"><label for="unit-tag-TRUE_DAMAGE">Daño real</label></li>
+      <li data-tag="STUN"><label for="unit-tag-STUN">Aturdimiento</label></li>
+      <li data-tag="FREEZE"><label for="unit-tag-FREEZE">Congélate</label></li>
+      <li data-tag="BLIND"><label for="unit-tag-BLIND">Cegar</label></li>
+      <li data-tag="SILENCE"><label for="unit-tag-SILENCE">Silenciar</label></li>
+      <li data-tag="CHARM"><label for="unit-tag-CHARM">Hechizo</label></li>
+      <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">Distracción</label></li>
+      <li data-tag="CURSE"><label for="unit-tag-CURSE">Maldición</label></li>
+      <li data-tag="HEX"><label for="unit-tag-HEX">Hechizo</label></li>
+      <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">Extracción de energía</label></li>
+      <li data-tag="SAP"><label for="unit-tag-SAP">Debilitar</label></li>
+      <li data-tag="STUDY"><label for="unit-tag-STUDY">Analizar</label></li>
+      <li data-tag="SCARE"><label for="unit-tag-SCARE">Atemorizar</label></li>
+      <li data-tag="SHATTER"><label for="unit-tag-SHATTER">Destrozar</label></li>
+      <li data-tag="FATIGUE"><label for="unit-tag-FATIGUE">Fatiga</label></li>
+      <li data-tag="WEAKNESS"><label for="unit-tag-WEAKNESS">Debilidad</label></li>
+      <li data-tag="KNOCKBACK"><label for="unit-tag-KNOCKBACK">Revés</label></li>
+      <li data-tag="SNARE"><label for="unit-tag-SNARE">Trampa</label></li>
+      <li data-tag="DAMAGE_OVER_TIME"><label for="unit-tag-DAMAGE_OVER_TIME">Daño con el tiempo</label></li>
+      <li data-tag="REMOVE_BUFF"><label for="unit-tag-REMOVE_BUFF">Eliminación de mejora</label></li>
+      <li data-tag="REDUCED_DAMAGE_DEALT"><label for="unit-tag-REDUCED_DAMAGE_DEALT">Daño causado reducido</label></li>
+      <li data-tag="HEAL_SELF"><label for="unit-tag-HEAL_SELF">Curar al personaje</label></li>
+      <li data-tag="HEAL_TEAM"><label for="unit-tag-HEAL_TEAM">Curar al equipo</label></li>
+      <li data-tag="HEAL_OVER_TIME_SELF"><label for="unit-tag-HEAL_OVER_TIME_SELF">Curación con el tiempo al personaje</label></li>
+      <li data-tag="HEAL_OVER_TIME_TEAM"><label for="unit-tag-HEAL_OVER_TIME_TEAM">Curación con el tiempo al equipo</label></li>
+      <li data-tag="SHIELD_SELF"><label for="unit-tag-SHIELD_SELF">Proteger al personaje</label></li>
+      <li data-tag="SHIELD_TEAM"><label for="unit-tag-SHIELD_TEAM">Proteger al equipo</label></li>
+      <li data-tag="REVIVE_SELF"><label for="unit-tag-REVIVE_SELF">Reanimación del personaje</label></li>
+      <li data-tag="ENERGY_SELF"><label for="unit-tag-ENERGY_SELF">Energizar al personaje</label></li>
+      <li data-tag="ENERGY_TEAM"><label for="unit-tag-ENERGY_TEAM">Energizar al equipo</label></li>
+      <li data-tag="ENERGIZE"><label for="unit-tag-ENERGIZE">Energizar</label></li>
+      <li data-tag="HARDY"><label for="unit-tag-HARDY">Resistente</label></li>
+      <li data-tag="CLEANSE"><label for="unit-tag-CLEANSE">Depurar</label></li>
+      <li data-tag="COPY_BUFF"><label for="unit-tag-COPY_BUFF">Copia de mejora</label></li>
+      <li data-tag="REFLECT"><label for="unit-tag-REFLECT">Reflejo</label></li>
+      <li data-tag="BERSERK"><label for="unit-tag-BERSERK">Furioso</label></li>
+      <li data-tag="REDUCED_DAMAGE_TAKEN"><label for="unit-tag-REDUCED_DAMAGE_TAKEN">Daño recibido reducido</label></li>
+      <li data-tag="INVINCIBLE"><label for="unit-tag-INVINCIBLE">Invencible</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">Esquivar</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">Invisible</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">Esquivar</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">Invisible</label></li>
+      <li data-tag="PRECISE"><label for="unit-tag-PRECISE">Preciso</label></li>
+      <li data-tag="ARMOR_DECREASE"><label for="unit-tag-ARMOR_DECREASE">Reducción de armadura</label></li>
+      <li data-tag="REALITY_DECREASE"><label for="unit-tag-REALITY_DECREASE">Reducción de realidad</label></li>
+      <li data-tag="DAMAGE_DECREASE"><label for="unit-tag-DAMAGE_DECREASE">Reducción de daño básico</label></li>
+      <li data-tag="SKILL_POWER_DECREASE"><label for="unit-tag-SKILL_POWER_DECREASE">Reducción de poder de habilidad</label></li>
+      <li data-tag="NORMAL_CRIT_DECREASE"><label for="unit-tag-NORMAL_CRIT_DECREASE">Reducción de daño crítico normal</label></li>
+      <li data-tag="ATTACK_SPEED_DECREASE"><label for="unit-tag-ATTACK_SPEED_DECREASE">Reducción de velocidad de ataque</label></li>
+      <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">Reducción de velocidad de movimiento</label></li>
+      <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">Reducción de evasión</label></li>
+      <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">Reducción de tenacidad</label></li>
+      <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">Reducción de PV máx.</label></li>
+      <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">Aumento de armadura</label></li>
+      <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">Aumento de realidad</label></li>
+      <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">Aumento de daño básico</label></li>
+      <li data-tag="SKILL_POWER_INCREASE"><label for="unit-tag-SKILL_POWER_INCREASE">Aumento de poder de habilidad</label></li>
+      <li data-tag="NORMAL_CRIT_INCREASE"><label for="unit-tag-NORMAL_CRIT_INCREASE">Aumento de daño crítico normal</label></li>
+      <li data-tag="FANTASTIC_CRIT_INCREASE"><label for="unit-tag-FANTASTIC_CRIT_INCREASE">Aumento de daño crítico fantástico</label></li>
+      <li data-tag="ATTACK_SPEED_INCREASE"><label for="unit-tag-ATTACK_SPEED_INCREASE">Aumento de velocidad de ataque</label></li>
+      <li data-tag="MOVE_SPEED_INCREASE"><label for="unit-tag-MOVE_SPEED_INCREASE">Aumento de velocidad de movimiento</label></li>
+      <li data-tag="EVASION_INCREASE"><label for="unit-tag-EVASION_INCREASE">Aumento de evasión</label></li>
+      <li data-tag="TENACITY_INCREASE"><label for="unit-tag-TENACITY_INCREASE">Aumento de tenacidad</label></li>
+      <li data-tag="MAX_HP_INCREASE"><label for="unit-tag-MAX_HP_INCREASE">Aumento de PV máx.</label></li>
+      <li data-tag="CRIT_DAMAGE_INCREASE"><label for="unit-tag-CRIT_DAMAGE_INCREASE">Aumento de daño crítico</label></li>
+    </ul>
   </div>
   <div class="unit-filter-content">
     <fieldset>
@@ -211,11 +325,11 @@ function init()
       <span><input type="checkbox" name="SAP" id="unit-tag-SAP"  onchange="filter.update()"><label for="unit-tag-SAP" title="Toda la energía que obtienen las unidades debilitadas se reduce a la mitad.">Debilitar</label></span>
       <span><input type="checkbox" name="STUDY" id="unit-tag-STUDY"  onchange="filter.update()"><label for="unit-tag-STUDY" title="El daño normal se vuelve crítico en las unidades analizadas.">Analizar</label></span>
       <span><input type="checkbox" name="SCARE" id="unit-tag-SCARE"  onchange="filter.update()"><label for="unit-tag-SCARE" title="El daño fantástico se vuelve crítico en las unidades atemorizadas.">Atemorizar</label></span>
-      <span><input type="checkbox" name="PIERCE" id="unit-tag-PIERCE"  onchange="filter.update()"><label for="unit-tag-PIERCE" title="Las unidades perforadas toman un porcentaje de sus PV máximos como daño real cada vez que reciben daño normal.">Perforar</label></span>
       <span><input type="checkbox" name="SHATTER" id="unit-tag-SHATTER"  onchange="filter.update()"><label for="unit-tag-SHATTER" title="Las unidades destrozadas toman un porcentaje de sus PV máximos como daño real cada vez que reciben daño fantástico.">Destrozar</label></span>
       <span><input type="checkbox" name="FATIGUE" id="unit-tag-FATIGUE"  onchange="filter.update()"><label for="unit-tag-FATIGUE" title="Cada acumulación de fatiga en una unidad impedirá que se le aplique una mejora.">Fatiga</label></span>
       <span><input type="checkbox" name="WEAKNESS" id="unit-tag-WEAKNESS"  onchange="filter.update()"><label for="unit-tag-WEAKNESS" title="Cada acumulación de debilidad en una unidad le causará más daño.">Debilidad</label></span>
       <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK"  onchange="filter.update()"><label for="unit-tag-KNOCKBACK" title="Hace retroceder un tramo al objetivo.">Revés</label></span>
+      <span><input type="checkbox" name="SNARE" id="unit-tag-SNARE"  onchange="filter.update()"><label for="unit-tag-SNARE" title="La velocidad de movimiento de los enemigos atrapados se reduce al 0 %. Pueden seguir utilizando los ataques básicos y las habilidades que están al alcance.">Trampa</label></span>
       <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME"  onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME" title="Causa daño al objetivo durante un tiempo.">Daño con el tiempo</label></span>
       <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="Elimina una cantidad de mejoras en el objetivo.">Eliminación de mejora</label></span>
       <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT" title="La unidad causa daño reducido por un tiempo.">Daño causado reducido</label></span>
@@ -229,7 +343,6 @@ function init()
       <span><input type="checkbox" name="SHIELD_SELF" id="unit-tag-SHIELD_SELF"  onchange="filter.update()"><label for="unit-tag-SHIELD_SELF" title="Protege al personaje.">Proteger al personaje</label></span>
       <span><input type="checkbox" name="SHIELD_TEAM" id="unit-tag-SHIELD_TEAM"  onchange="filter.update()"><label for="unit-tag-SHIELD_TEAM" title="Puede proteger al menos a un aliado.">Proteger al equipo</label></span>
       <span><input type="checkbox" name="REVIVE_SELF" id="unit-tag-REVIVE_SELF"  onchange="filter.update()"><label for="unit-tag-REVIVE_SELF" title="Puede reanimar al personaje luego de quedar inconsciente.">Reanimación del personaje</label></span>
-      <span><input type="checkbox" name="REVIVE_TEAM" id="unit-tag-REVIVE_TEAM"  onchange="filter.update()"><label for="unit-tag-REVIVE_TEAM" title="Puede revivir al menos a un aliado luego de quedar inconsciente.">Reanimación del equipo</label></span>
       <span><input type="checkbox" name="ENERGY_SELF" id="unit-tag-ENERGY_SELF"  onchange="filter.update()"><label for="unit-tag-ENERGY_SELF" title="Otorga energía al personaje.">Energizar al personaje</label></span>
       <span><input type="checkbox" name="ENERGY_TEAM" id="unit-tag-ENERGY_TEAM"  onchange="filter.update()"><label for="unit-tag-ENERGY_TEAM" title="Puede otorgarle energía al menos a un aliado.">Energizar al equipo</label></span>
       <span><input type="checkbox" name="ENERGIZE" id="unit-tag-ENERGIZE"  onchange="filter.update()"><label for="unit-tag-ENERGIZE" title="Estas unidades obtienen más energía cada vez que realizan un ataque básico.">Energizar</label></span>
@@ -253,13 +366,11 @@ function init()
       <span><input type="checkbox" name="DAMAGE_DECREASE" id="unit-tag-DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-DAMAGE_DECREASE" title="El daño básico se reduce.">Reducción de daño básico</label></span>
       <span><input type="checkbox" name="SKILL_POWER_DECREASE" id="unit-tag-SKILL_POWER_DECREASE"  onchange="filter.update()"><label for="unit-tag-SKILL_POWER_DECREASE" title="El poder de habilidad se reduce.">Reducción de poder de habilidad</label></span>
       <span><input type="checkbox" name="NORMAL_CRIT_DECREASE" id="unit-tag-NORMAL_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_DECREASE" title="La probabilidad de daño crítico normal se reduce.">Reducción de daño crítico normal</label></span>
-      <span><input type="checkbox" name="FANTASTIC_CRIT_DECREASE" id="unit-tag-FANTASTIC_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_DECREASE" title="La probabilidad de daño crítico fantástico se reduce.">Reducción de daño crítico fantástico</label></span>
       <span><input type="checkbox" name="ATTACK_SPEED_DECREASE" id="unit-tag-ATTACK_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_DECREASE" title="La velocidad de ataque se reduce.">Reducción de velocidad de ataque</label></span>
       <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="La velocidad de movimiento se reduce.">Reducción de velocidad de movimiento</label></span>
       <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="El poder de evasión se reduce.">Reducción de evasión</label></span>
       <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="La tenacidad se reduce.">Reducción de tenacidad</label></span>
       <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="Los PV máximos se reducen.">Reducción de PV máx.</label></span>
-      <span><input type="checkbox" name="CRIT_DAMAGE_DECREASE" id="unit-tag-CRIT_DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-CRIT_DAMAGE_DECREASE" title="Los efectos del daño crítico se reducen.">Reducción de daño crítico</label></span>
     </fieldset>
     <fieldset>
       <legend class="unit-fltr-grp-name">+ estadísticas</legend>

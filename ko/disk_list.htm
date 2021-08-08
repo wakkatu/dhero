@@ -3,12 +3,25 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../main.css?1627921219">
-<link rel="stylesheet" href="../star.css?1627921219">
-<link rel="stylesheet" href="../unit.css?1627921219">
+<link rel="stylesheet" href="../main.css?1628417297">
+<link rel="stylesheet" href="../star.css?1628417297">
+<link rel="stylesheet" href="../unit.css?1628417297">
 <title>친구들 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content=" ">
 <style>
+tr[data-tag],
+li[data-tag] {
+  display: none;
+}
+
+tr[data-tag] {
+  display: table-row;
+}
+
+li[data-tag=""] {
+  display: inline;
+}
+
 .container .section:nth-child(2) td:first-child,
 .container .section:nth-child(2) td:nth-child(2) {
   width: 90px;
@@ -16,15 +29,81 @@
   background-position: center;
   background-size: contain;
 }
+
+.unit-disk-panel {
+  display: grid;
+  grid-template-raws: max-content auto;
+  min-height: 70px;
+  height: 190px;
+  overflow-y: hidden;
+  resize: vertical;
+}
+
+.unit-filter-nav {
+  margin: 0 0 5px 0;
+}
+
+.unit-filter-content {
+  overflow-y: scroll;
+}
+
+.unit-filter-content span {
+  white-space: nowrap;
+}
+
+.unit-filter-content legend {
+  font-weight: bold;
+}
+
+.unit-filter-content input:checked + label {
+  text-shadow: 0px 0px 2px yellow;
+}
 </style>
-<script src="../util.js?1627921219"></script>
-<script src="../unit.js?1627921219"></script>
+<script src="../util.js?1628417297"></script>
+<script src="../unit.js?1628417297"></script>
 <script>
 var calculator= null;
+var filter = null;
+var cssRuleTr = null;
+var cssRuleLi = null;
 
-function calculateBy(params)
+for (const styleSheet of document.styleSheets) {
+  if (null !== styleSheet.href) {
+    continue;
+  }
+  for (const cssRule of styleSheet.cssRules) {
+    if (cssRule.selectorText == "tr[data-tag]") {
+      cssRuleTr = cssRule;
+    }
+    if (cssRule.selectorText == 'li[data-tag=""]') {
+      cssRuleLi = cssRule;
+    }
+  }
+}
+
+function filterBy(params)
 {
-  calcForm(this.objForm);
+  let attrSelectorsTr = "";
+  let attrSelectorsLi = 'li[data-tag=""]';
+
+  for (const p of params) {
+    if (-1 !== ["eval", "level", "s"].indexOf(p[0])) {
+      continue;
+    }
+    if (p[1] === "") {
+      continue;
+    }
+    attrSelectorsTr += '[data-tag~="' + p[0] + '"]';
+    attrSelectorsLi += ',li[data-tag="' + p[0] + '"]';
+  }
+
+  if ("" !== attrSelectorsTr) {
+    cssRuleTr.selectorText = "tr" + attrSelectorsTr;
+  } else {
+    cssRuleTr.selectorText = "tr[data-tag]";
+  }
+  cssRuleLi.selectorText = attrSelectorsLi;
+
   return params;
 }
 
@@ -36,8 +115,14 @@ function init()
 
   calculator = new UrlForm(
     document.getElementById("unit-disk"),
-    calculateBy);
+    function (params) {
+      (async () => calcForm(this.objForm))();
+      filterBy(params);
+      return params;
+    },
+  );
   calculator.init();
+  filter = calculator;
 }
 </script>
 
@@ -80,22 +165,24 @@ function init()
 </div><!--  container } -->
 
 <div class="container"><!-- container { -->
-  <div class="section">
+  <div class="section unit-disk-panel">
     <form id="unit-disk" onchange="calculator.update()">
     <output name="v" class="hidden" for="level" data-formula="level + 40" data-raw="1"></output>
     <output name="k" class="hidden" for="v" data-formula="exp(v*0.036)" data-raw="1"></output>
 
-    <div class="unit-pair-list">
-      <span class="unit-pair-name"><label for="unit-disk-eval">사용<label></span>
-      <span class="unit-pair-val">
+    <div>
+      <span><label for="unit-disk-eval">사용<label></span>
+      <span>
         <input name="eval" id="unit-disk-eval" type="checkbox" checked>
       </span>
-      <span class="unit-pair-name">레벨</span>
-      <span class="unit-pair-val">
+      <span class="vr"></span>
+      <span>레벨:</span>
+      <span>
         <input name="level" type="number" pattern="\d*" min="1" max="215" value="215">
       </span>
-      <span class="unit-pair-name">별</span>
-      <span class="unit-pair-val star-group">
+      <span class="vr"></span>
+      <span>별:</span>
+      <span class="star-group">
         <input name="s" type="radio" value="5" id="unit-disk-s-5" checked>
         <label for="unit-disk-s-5" style="--star-lvl: 5;">&#x2605;</label>
         <input name="s" type="radio" value="4" id="unit-disk-s-4">
@@ -108,6 +195,151 @@ function init()
         <label for="unit-disk-s-1" style="--star-lvl: 1;">&#x2605;</label>
       </span>
     </div>
+    <div class="unit-filter-nav">
+      <input type="button" value="Reset" onclick="this.form.reset(); filter.update()">
+      필터:
+      <ul class="inline-list">
+        <li data-tag="NORMAL_DAMAGE"><label for="unit-tag-NORMAL_DAMAGE">일반 데미지</label></li>
+        <li data-tag="FANTASTIC_DAMAGE"><label for="unit-tag-FANTASTIC_DAMAGE">판타스틱 데미지</label></li>
+        <li data-tag="TRUE_DAMAGE"><label for="unit-tag-TRUE_DAMAGE">트루 데미지</label></li>
+        <li data-tag="STUN"><label for="unit-tag-STUN">기절</label></li>
+        <li data-tag="FREEZE"><label for="unit-tag-FREEZE">냉동</label></li>
+        <li data-tag="BLIND"><label for="unit-tag-BLIND">블라인드</label></li>
+        <li data-tag="SILENCE"><label for="unit-tag-SILENCE">침묵</label></li>
+        <li data-tag="CHARM"><label for="unit-tag-CHARM">현혹</label></li>
+        <li data-tag="CURSE"><label for="unit-tag-CURSE">저주</label></li>
+        <li data-tag="HEX"><label for="unit-tag-HEX">마법</label></li>
+        <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">에너지 제거</label></li>
+        <li data-tag="SAP"><label for="unit-tag-SAP">기진맥진</label></li>
+        <li data-tag="STUDY"><label for="unit-tag-STUDY">연구</label></li>
+        <li data-tag="SCARE"><label for="unit-tag-SCARE">겁주기</label></li>
+        <li data-tag="FATIGUE"><label for="unit-tag-FATIGUE">피로</label></li>
+        <li data-tag="WEAKNESS"><label for="unit-tag-WEAKNESS">약점</label></li>
+        <li data-tag="KNOCKBACK"><label for="unit-tag-KNOCKBACK">밀쳐내기</label></li>
+        <li data-tag="SNARE"><label for="unit-tag-SNARE">덫</label></li>
+        <li data-tag="DAMAGE_OVER_TIME"><label for="unit-tag-DAMAGE_OVER_TIME">지속 데미지</label></li>
+        <li data-tag="REMOVE_BUFF"><label for="unit-tag-REMOVE_BUFF">보너스 제거</label></li>
+        <li data-tag="REDUCED_DAMAGE_DEALT"><label for="unit-tag-REDUCED_DAMAGE_DEALT">주는 데미지 감소</label></li>
+        <li data-tag="HEAL_SELF"><label for="unit-tag-HEAL_SELF">자신 치유</label></li>
+        <li data-tag="HEAL_TEAM"><label for="unit-tag-HEAL_TEAM">팀 치유</label></li>
+        <li data-tag="HEAL_OVER_TIME_SELF"><label for="unit-tag-HEAL_OVER_TIME_SELF">자신 지속 치유</label></li>
+        <li data-tag="HEAL_OVER_TIME_TEAM"><label for="unit-tag-HEAL_OVER_TIME_TEAM">팀 지속 치유</label></li>
+        <li data-tag="SHIELD_SELF"><label for="unit-tag-SHIELD_SELF">자신 쉴드</label></li>
+        <li data-tag="SHIELD_TEAM"><label for="unit-tag-SHIELD_TEAM">팀 쉴드</label></li>
+        <li data-tag="REVIVE_SELF"><label for="unit-tag-REVIVE_SELF">자신 부활</label></li>
+        <li data-tag="ENERGY_SELF"><label for="unit-tag-ENERGY_SELF">자신 에너지</label></li>
+        <li data-tag="ENERGY_TEAM"><label for="unit-tag-ENERGY_TEAM">팀 에너지</label></li>
+        <li data-tag="ENERGIZE"><label for="unit-tag-ENERGIZE">활기 충전</label></li>
+        <li data-tag="HARDY"><label for="unit-tag-HARDY">견고</label></li>
+        <li data-tag="CLEANSE"><label for="unit-tag-CLEANSE">정화</label></li>
+        <li data-tag="REFLECT"><label for="unit-tag-REFLECT">반사</label></li>
+        <li data-tag="BERSERK"><label for="unit-tag-BERSERK">광폭화</label></li>
+        <li data-tag="REDUCED_DAMAGE_TAKEN"><label for="unit-tag-REDUCED_DAMAGE_TAKEN">받는 데미지 감소</label></li>
+        <li data-tag="INVINCIBLE"><label for="unit-tag-INVINCIBLE">무적</label></li>
+        <li data-tag="DODGE"><label for="unit-tag-DODGE">회피</label></li>
+        <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">투명</label></li>
+        <li data-tag="DODGE"><label for="unit-tag-DODGE">회피</label></li>
+        <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">투명</label></li>
+        <li data-tag="PRECISE"><label for="unit-tag-PRECISE">정밀</label></li>
+        <li data-tag="ARMOR_DECREASE"><label for="unit-tag-ARMOR_DECREASE">방어 감소</label></li>
+        <li data-tag="REALITY_DECREASE"><label for="unit-tag-REALITY_DECREASE">현실 감소</label></li>
+        <li data-tag="DAMAGE_DECREASE"><label for="unit-tag-DAMAGE_DECREASE">기본 데미지 감소</label></li>
+        <li data-tag="SKILL_POWER_DECREASE"><label for="unit-tag-SKILL_POWER_DECREASE">스킬 파워 감소</label></li>
+        <li data-tag="NORMAL_CRIT_DECREASE"><label for="unit-tag-NORMAL_CRIT_DECREASE">일반 크리티컬 감소</label></li>
+        <li data-tag="ATTACK_SPEED_DECREASE"><label for="unit-tag-ATTACK_SPEED_DECREASE">공격 스피드 감소</label></li>
+        <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">이동 스피드 감소</label></li>
+        <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">회피 감소</label></li>
+        <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">끈기 감소</label></li>
+        <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">방어 증가</label></li>
+        <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">현실 증가</label></li>
+        <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">기본 데미지 증가</label></li>
+        <li data-tag="SKILL_POWER_INCREASE"><label for="unit-tag-SKILL_POWER_INCREASE">스킬 파워 증가</label></li>
+        <li data-tag="NORMAL_CRIT_INCREASE"><label for="unit-tag-NORMAL_CRIT_INCREASE">일반 크리티컬 증가</label></li>
+        <li data-tag="FANTASTIC_CRIT_INCREASE"><label for="unit-tag-FANTASTIC_CRIT_INCREASE">판타스틱 크리티컬 증가</label></li>
+        <li data-tag="ATTACK_SPEED_INCREASE"><label for="unit-tag-ATTACK_SPEED_INCREASE">공격 스피드 증가</label></li>
+        <li data-tag="MOVE_SPEED_INCREASE"><label for="unit-tag-MOVE_SPEED_INCREASE">이동 스피드 증가</label></li>
+        <li data-tag="EVASION_INCREASE"><label for="unit-tag-EVASION_INCREASE">회피 증가</label></li>
+        <li data-tag="MAX_HP_INCREASE"><label for="unit-tag-MAX_HP_INCREASE">최대 HP 증가</label></li>
+      </ul>
+    </div>
+    <div class="unit-filter-content">
+      <fieldset>
+        <legend class="unit-fltr-grp-name">데미지 종류</legend>
+        <span><input type="checkbox" name="NORMAL_DAMAGE" id="unit-tag-NORMAL_DAMAGE"  onchange="filter.update()"><label for="unit-tag-NORMAL_DAMAGE" title="이 히어로는 스킬로 일반 데미지를 줍니다.">일반 데미지</label></span>
+        <span><input type="checkbox" name="FANTASTIC_DAMAGE" id="unit-tag-FANTASTIC_DAMAGE"  onchange="filter.update()"><label for="unit-tag-FANTASTIC_DAMAGE" title="이 히어로는 스킬로 판타스틱 데미지를 줍니다.">판타스틱 데미지</label></span>
+        <span><input type="checkbox" name="TRUE_DAMAGE" id="unit-tag-TRUE_DAMAGE"  onchange="filter.update()"><label for="unit-tag-TRUE_DAMAGE" title="이 히어로는 스킬로 트루 데미지를 줍니다.">트루 데미지</label></span>
+      </fieldset>
+      <fieldset>
+        <legend class="unit-fltr-grp-name">- 효과</legend>
+        <span><input type="checkbox" name="STUN" id="unit-tag-STUN"  onchange="filter.update()"><label for="unit-tag-STUN" title="기절한 유닛은 이동하거나, 공격하거나, 스킬을 사용할 수 없습니다.">기절</label></span>
+        <span><input type="checkbox" name="FREEZE" id="unit-tag-FREEZE"  onchange="filter.update()"><label for="unit-tag-FREEZE" title="냉동 효과에 걸린 적은 일정 기간 동안 서서히 이동, 공격, 스킬 사용이 불가능한 상태가 됩니다.">냉동</label></span>
+        <span><input type="checkbox" name="BLIND" id="unit-tag-BLIND"  onchange="filter.update()"><label for="unit-tag-BLIND" title="블라인드 상태의 유닛이 하는 기본 공격은 항상 빗나갑니다.">블라인드</label></span>
+        <span><input type="checkbox" name="SILENCE" id="unit-tag-SILENCE"  onchange="filter.update()"><label for="unit-tag-SILENCE" title="침묵 상태의 유닛은 스킬을 사용할 수 없습니다.">침묵</label></span>
+        <span><input type="checkbox" name="CHARM" id="unit-tag-CHARM"  onchange="filter.update()"><label for="unit-tag-CHARM" title="현혹 상태의 유닛은 동료를 공격하며, 계속 적의 공격 대상이 될 수 있습니다. 현혹 상태의 유닛은 화이트 스킬을 사용할 수 없습니다.">현혹</label></span>
+        <span><input type="checkbox" name="CURSE" id="unit-tag-CURSE"  onchange="filter.update()"><label for="unit-tag-CURSE" title="저주받은 유닛은 받는 모든 치유 효과가 절반으로 감소합니다.">저주</label></span>
+        <span><input type="checkbox" name="HEX" id="unit-tag-HEX"  onchange="filter.update()"><label for="unit-tag-HEX" title="마법에 걸린 유닛은 화이트 스킬을 사용하면 기절합니다. 이 경우에도 에너지는 소모됩니다.">마법</label></span>
+        <span><input type="checkbox" name="ENERGY_REMOVAL" id="unit-tag-ENERGY_REMOVAL"  onchange="filter.update()"><label for="unit-tag-ENERGY_REMOVAL" title="대상에게서 즉시 일정량의 에너지를 제거합니다.">에너지 제거</label></span>
+        <span><input type="checkbox" name="SAP" id="unit-tag-SAP"  onchange="filter.update()"><label for="unit-tag-SAP" title="기진맥진 상태의 유닛은 획득하는 모든 에너지가 절반으로 감소합니다.">기진맥진</label></span>
+        <span><input type="checkbox" name="STUDY" id="unit-tag-STUDY"  onchange="filter.update()"><label for="unit-tag-STUDY" title="연구한 적을 상대로 하는 일반 데미지는 항상 크리티컬로 적중합니다.">연구</label></span>
+        <span><input type="checkbox" name="SCARE" id="unit-tag-SCARE"  onchange="filter.update()"><label for="unit-tag-SCARE" title="겁먹은 유닛을 상대로 하는 판타스틱 데미지는 항상 크리티컬로 적중합니다.">겁주기</label></span>
+        <span><input type="checkbox" name="FATIGUE" id="unit-tag-FATIGUE"  onchange="filter.update()"><label for="unit-tag-FATIGUE" title="유닛에게 걸린 피로 중첩 하나당 받는 보너스 하나가 차단됩니다.">피로</label></span>
+        <span><input type="checkbox" name="WEAKNESS" id="unit-tag-WEAKNESS"  onchange="filter.update()"><label for="unit-tag-WEAKNESS" title="유닛에게 걸린 약점 중첩 하나당 받는 데미지가 증가합니다.">약점</label></span>
+        <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK"  onchange="filter.update()"><label for="unit-tag-KNOCKBACK" title="대상을 일정 거리만큼 밀쳐냅니다.">밀쳐내기</label></span>
+        <span><input type="checkbox" name="SNARE" id="unit-tag-SNARE"  onchange="filter.update()"><label for="unit-tag-SNARE" title="덫에 걸린 적은 이동 스피드가 0%로 감소합니다. 사거리 내에서 기본 공격과 스킬은 계속 사용할 수 있습니다.">덫</label></span>
+        <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME"  onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME" title="대상에게 일정 기간에 걸쳐 데미지를 줍니다.">지속 데미지</label></span>
+        <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="대상에게서 일정 수량을 보너스를 제거합니다.">보너스 제거</label></span>
+        <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT" title="일정 시간 동안 유닛이 주는 데미지가 감소합니다.">주는 데미지 감소</label></span>
+      </fieldset>
+      <fieldset>
+        <legend class="unit-fltr-grp-name">+ 효과</legend>
+        <span><input type="checkbox" name="HEAL_SELF" id="unit-tag-HEAL_SELF"  onchange="filter.update()"><label for="unit-tag-HEAL_SELF" title="자신을 치유합니다.">자신 치유</label></span>
+        <span><input type="checkbox" name="HEAL_TEAM" id="unit-tag-HEAL_TEAM"  onchange="filter.update()"><label for="unit-tag-HEAL_TEAM" title="최소 한 명의 동료를 치유할 수 있습니다.">팀 치유</label></span>
+        <span><input type="checkbox" name="HEAL_OVER_TIME_SELF" id="unit-tag-HEAL_OVER_TIME_SELF"  onchange="filter.update()"><label for="unit-tag-HEAL_OVER_TIME_SELF" title="일정 시간에 걸쳐 자신을 치유합니다.">자신 지속 치유</label></span>
+        <span><input type="checkbox" name="HEAL_OVER_TIME_TEAM" id="unit-tag-HEAL_OVER_TIME_TEAM"  onchange="filter.update()"><label for="unit-tag-HEAL_OVER_TIME_TEAM" title="일정 시간에 걸쳐 최소 한 명의 동료를 치유할 수 있습니다.">팀 지속 치유</label></span>
+        <span><input type="checkbox" name="SHIELD_SELF" id="unit-tag-SHIELD_SELF"  onchange="filter.update()"><label for="unit-tag-SHIELD_SELF" title="자신에게 쉴드를 부여합니다.">자신 쉴드</label></span>
+        <span><input type="checkbox" name="SHIELD_TEAM" id="unit-tag-SHIELD_TEAM"  onchange="filter.update()"><label for="unit-tag-SHIELD_TEAM" title="최소 한 명의 동료에게 쉴드를 부여합니다.">팀 쉴드</label></span>
+        <span><input type="checkbox" name="REVIVE_SELF" id="unit-tag-REVIVE_SELF"  onchange="filter.update()"><label for="unit-tag-REVIVE_SELF" title="KO된 자신을 부활시킬 수 있습니다.">자신 부활</label></span>
+        <span><input type="checkbox" name="ENERGY_SELF" id="unit-tag-ENERGY_SELF"  onchange="filter.update()"><label for="unit-tag-ENERGY_SELF" title="자신에게 에너지를 부여합니다.">자신 에너지</label></span>
+        <span><input type="checkbox" name="ENERGY_TEAM" id="unit-tag-ENERGY_TEAM"  onchange="filter.update()"><label for="unit-tag-ENERGY_TEAM" title="최소 한 명의 동료에게 에너지를 부여할 수 있습니다.">팀 에너지</label></span>
+        <span><input type="checkbox" name="ENERGIZE" id="unit-tag-ENERGIZE"  onchange="filter.update()"><label for="unit-tag-ENERGIZE" title="활력 상태의 유닛은 기본 공격을 할 때마다 추가 에너지를 얻습니다.">활기 충전</label></span>
+        <span><input type="checkbox" name="HARDY" id="unit-tag-HARDY"  onchange="filter.update()"><label for="unit-tag-HARDY" title="유닛에게 걸린 견고 중첩 하나당 적용되는 디버프 하나가 차단됩니다.">견고</label></span>
+        <span><input type="checkbox" name="CLEANSE" id="unit-tag-CLEANSE"  onchange="filter.update()"><label for="unit-tag-CLEANSE" title="유닛에게서 모든 디버프를 제거합니다.">정화</label></span>
+        <span><input type="checkbox" name="REFLECT" id="unit-tag-REFLECT"  onchange="filter.update()"><label for="unit-tag-REFLECT" title="받은 데미지의 일정 비율이 공격자에게 반사됩니다. 반사된 데미지는 회피할 수 없습니다.">반사</label></span>
+        <span><input type="checkbox" name="BERSERK" id="unit-tag-BERSERK"  onchange="filter.update()"><label for="unit-tag-BERSERK" title="광폭화 상태의 유닛은 HP가 1 미만으로 떨어지지 않습니다.">광폭화</label></span>
+        <span><input type="checkbox" name="REDUCED_DAMAGE_TAKEN" id="unit-tag-REDUCED_DAMAGE_TAKEN"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_TAKEN" title="일정 시간 동안 유닛이 받는 데미지가 감소합니다.">받는 데미지 감소</label></span>
+        <span><input type="checkbox" name="INVINCIBLE" id="unit-tag-INVINCIBLE"  onchange="filter.update()"><label for="unit-tag-INVINCIBLE" title="무적 상태의 유닛은 받는 모든 데미지에 면역이 됩니다.">무적</label></span>
+        <span><input type="checkbox" name="DODGE" id="unit-tag-DODGE"  onchange="filter.update()"><label for="unit-tag-DODGE" title="회피를 사용한 유닛은 일정 확률로 스킬과 공격에 적중되지 않습니다.">회피</label></span>
+        <span><input type="checkbox" name="INVISIBLE" id="unit-tag-INVISIBLE"  onchange="filter.update()"><label for="unit-tag-INVISIBLE" title="투명 상태의 유닛은 적이 대상으로 지정할 수 없습니다.">투명</label></span>
+        <span><input type="checkbox" name="DODGE" id="unit-tag-DODGE"  onchange="filter.update()"><label for="unit-tag-DODGE" title="회피를 사용한 유닛은 일정 확률로 스킬과 공격에 적중되지 않습니다.">회피</label></span>
+        <span><input type="checkbox" name="INVISIBLE" id="unit-tag-INVISIBLE"  onchange="filter.update()"><label for="unit-tag-INVISIBLE" title="투명 상태의 유닛은 적이 대상으로 지정할 수 없습니다.">투명</label></span>
+        <span><input type="checkbox" name="PRECISE" id="unit-tag-PRECISE"  onchange="filter.update()"><label for="unit-tag-PRECISE" title="정밀 효과가 부여된 유닛은 투명 적을 대상으로 지정할 수 있으며, 이들의 공격은 회피 또는 도피할 수 없습니다.">정밀</label></span>
+      </fieldset>
+      <fieldset>
+        <legend class="unit-fltr-grp-name">- 능력치</legend>
+        <span><input type="checkbox" name="ARMOR_DECREASE" id="unit-tag-ARMOR_DECREASE"  onchange="filter.update()"><label for="unit-tag-ARMOR_DECREASE" title="방어가 감소합니다.">방어 감소</label></span>
+        <span><input type="checkbox" name="REALITY_DECREASE" id="unit-tag-REALITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-REALITY_DECREASE" title="현실이 감소합니다.">현실 감소</label></span>
+        <span><input type="checkbox" name="DAMAGE_DECREASE" id="unit-tag-DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-DAMAGE_DECREASE" title="기본 데미지가 감소합니다.">기본 데미지 감소</label></span>
+        <span><input type="checkbox" name="SKILL_POWER_DECREASE" id="unit-tag-SKILL_POWER_DECREASE"  onchange="filter.update()"><label for="unit-tag-SKILL_POWER_DECREASE" title="스킬 파워가 감소합니다.">스킬 파워 감소</label></span>
+        <span><input type="checkbox" name="NORMAL_CRIT_DECREASE" id="unit-tag-NORMAL_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_DECREASE" title="일반 크리티컬 확률이 감소합니다.">일반 크리티컬 감소</label></span>
+        <span><input type="checkbox" name="ATTACK_SPEED_DECREASE" id="unit-tag-ATTACK_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_DECREASE" title="공격 스피드가 감소합니다.">공격 스피드 감소</label></span>
+        <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="이동 스피드가 감소합니다.">이동 스피드 감소</label></span>
+        <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="회피가 감소합니다.">회피 감소</label></span>
+        <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="끈기가 감소합니다.">끈기 감소</label></span>
+      </fieldset>
+      <fieldset>
+        <legend class="unit-fltr-grp-name">+ 능력치</legend>
+        <span><input type="checkbox" name="ARMOR_INCREASE" id="unit-tag-ARMOR_INCREASE"  onchange="filter.update()"><label for="unit-tag-ARMOR_INCREASE" title="방어가 증가합니다.">방어 증가</label></span>
+        <span><input type="checkbox" name="REALITY_INCREASE" id="unit-tag-REALITY_INCREASE"  onchange="filter.update()"><label for="unit-tag-REALITY_INCREASE" title="현실이 증가합니다.">현실 증가</label></span>
+        <span><input type="checkbox" name="DAMAGE_INCREASE" id="unit-tag-DAMAGE_INCREASE"  onchange="filter.update()"><label for="unit-tag-DAMAGE_INCREASE" title="기본 데미지가 증가합니다.">기본 데미지 증가</label></span>
+        <span><input type="checkbox" name="SKILL_POWER_INCREASE" id="unit-tag-SKILL_POWER_INCREASE"  onchange="filter.update()"><label for="unit-tag-SKILL_POWER_INCREASE" title="스킬 파워가 증가합니다.">스킬 파워 증가</label></span>
+        <span><input type="checkbox" name="NORMAL_CRIT_INCREASE" id="unit-tag-NORMAL_CRIT_INCREASE"  onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_INCREASE" title="일반 크리티컬 확률이 증가합니다.">일반 크리티컬 증가</label></span>
+        <span><input type="checkbox" name="FANTASTIC_CRIT_INCREASE" id="unit-tag-FANTASTIC_CRIT_INCREASE"  onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_INCREASE" title="판타스틱 크리티컬 확률이 증가합니다.">판타스틱 크리티컬 증가</label></span>
+        <span><input type="checkbox" name="ATTACK_SPEED_INCREASE" id="unit-tag-ATTACK_SPEED_INCREASE"  onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_INCREASE" title="공격 스피드가 증가합니다.">공격 스피드 증가</label></span>
+        <span><input type="checkbox" name="MOVE_SPEED_INCREASE" id="unit-tag-MOVE_SPEED_INCREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_INCREASE" title="이동 스피드가 증가합니다.">이동 스피드 증가</label></span>
+        <span><input type="checkbox" name="EVASION_INCREASE" id="unit-tag-EVASION_INCREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_INCREASE" title="회피가 증가합니다.">회피 증가</label></span>
+        <span><input type="checkbox" name="MAX_HP_INCREASE" id="unit-tag-MAX_HP_INCREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_INCREASE" title="최대 HP가 증가합니다.">최대 HP 증가</label></span>
+      </fieldset>
+    </div>
     </form>
   </div>
 
@@ -119,7 +351,7 @@ function init()
       <th>디스크</th>
     </tr>
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_ralf.jpg');">
         <a href="./hero/RALPH.htm">랄프</a>
       </td>
@@ -138,7 +370,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_elastigirl.jpg');">
         <a href="./hero/ELASTIGIRL.htm">일라스티걸</a>
       </td>
@@ -159,7 +391,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_yax.jpg');">
         <a href="./hero/YAX.htm">약스</a>
       </td>
@@ -178,7 +410,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_vanellope.jpg');">
         <a href="./hero/VANELLOPE.htm">바넬로피</a>
       </td>
@@ -197,7 +429,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE">
       <td style="background-image: url('../img_s/hero_list_elastigirl.jpg');">
         <a href="./hero/ELASTIGIRL.htm">일라스티걸</a>
       </td>
@@ -216,7 +448,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_yax.jpg');">
         <a href="./hero/YAX.htm">약스</a>
       </td>
@@ -235,7 +467,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_violet.jpg');">
         <a href="./hero/VIOLET.htm">바이올렛</a>
       </td>
@@ -258,7 +490,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_frozone.jpg');">
         <a href="./hero/FROZONE.htm">프로존</a>
       </td>
@@ -277,7 +509,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_felix.jpg');">
         <a href="./hero/FELIX.htm">펠릭스</a>
       </td>
@@ -296,7 +528,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE CHARM">
       <td style="background-image: url('../img_s/hero_list_wilde.jpg');">
         <a href="./hero/NICK_WILDE.htm">닉 와일드</a>
       </td>
@@ -316,7 +548,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_felix.jpg');">
         <a href="./hero/FELIX.htm">펠릭스</a>
       </td>
@@ -339,7 +571,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_DECREASE">
       <td style="background-image: url('../img_s/hero_list_incredible.jpg');">
         <a href="./hero/MR_INCREDIBLE.htm">미스터 인크레더블</a>
       </td>
@@ -359,7 +591,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_calhoun.jpg');">
         <a href="./hero/CALHOUN.htm">칼훈</a>
       </td>
@@ -378,7 +610,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_REMOVAL">
       <td style="background-image: url('../img_s/hero_list_dash.jpg');">
         <a href="./hero/DASH.htm">대쉬</a>
       </td>
@@ -397,7 +629,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_jack_jack.jpg');">
         <a href="./hero/JACK_JACK.htm">잭잭</a>
       </td>
@@ -416,7 +648,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_REMOVAL">
       <td style="background-image: url('../img_s/hero_list_finnick.jpg');">
         <a href="./hero/FINNICK.htm">핀닉</a>
       </td>
@@ -436,7 +668,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_dash.jpg');">
         <a href="./hero/DASH.htm">대쉬</a>
       </td>
@@ -455,7 +687,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_judy.jpg');">
         <a href="./hero/JUDY_HOPPS.htm">주디 홉스</a>
       </td>
@@ -474,7 +706,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_wilde.jpg');">
         <a href="./hero/NICK_WILDE.htm">닉 와일드</a>
       </td>
@@ -494,7 +726,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_calhoun.jpg');">
         <a href="./hero/CALHOUN.htm">칼훈</a>
       </td>
@@ -513,7 +745,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE NORMAL_DAMAGE KNOCKBACK">
       <td style="background-image: url('../img_s/hero_list_cheif_bogo.jpg');">
         <a href="./hero/CHIEF_BOGO.htm">보고 서장</a>
       </td>
@@ -537,7 +769,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="NORMAL_DAMAGE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_finnick.jpg');">
         <a href="./hero/FINNICK.htm">핀닉</a>
       </td>
@@ -557,7 +789,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FANTASTIC_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_jack_jack.jpg');">
         <a href="./hero/JACK_JACK.htm">잭잭</a>
       </td>
@@ -580,7 +812,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN">
       <td style="background-image: url('../img_s/hero_list_incredible.jpg');">
         <a href="./hero/MR_INCREDIBLE.htm">미스터 인크레더블</a>
       </td>
@@ -599,7 +831,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE REVIVE_SELF ATTACK_SPEED_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_judy.jpg');">
         <a href="./hero/JUDY_HOPPS.htm">주디 홉스</a>
       </td>
@@ -621,7 +853,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE SHIELD_SELF HEAL_SELF">
       <td style="background-image: url('../img_s/hero_list_cheif_bogo.jpg');">
         <a href="./hero/CHIEF_BOGO.htm">보고 서장</a>
       </td>
@@ -642,7 +874,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_woody.jpg');">
         <a href="./hero/WOODY.htm">우디</a>
       </td>
@@ -661,7 +893,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DODGE">
       <td style="background-image: url('../img_s/hero_list_jessie.jpg');">
         <a href="./hero/JESSIE.htm">제시</a>
       </td>
@@ -680,7 +912,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_buzz.jpg');">
         <a href="./hero/BUZZ.htm">버즈 라이트이어</a>
       </td>
@@ -700,7 +932,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE HEAL_SELF DODGE">
       <td style="background-image: url('../img_s/hero_list_sully.jpg');">
         <a href="./hero/SULLEY.htm">설리 &amp; 부</a>
       </td>
@@ -720,7 +952,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_jack.jpg');">
         <a href="./hero/JACK_SPARROW.htm">잭 스패로우</a>
       </td>
@@ -740,7 +972,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_OVER_TIME_TEAM SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_eve.jpg');">
         <a href="./hero/EVE.htm">이브</a>
       </td>
@@ -760,7 +992,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_rex.jpg');">
         <a href="./hero/REX.htm">렉스</a>
       </td>
@@ -779,7 +1011,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_walle.jpg');">
         <a href="./hero/WALL_E.htm">월-E</a>
       </td>
@@ -799,7 +1031,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_emperor_zurg.jpg');">
         <a href="./hero/EMPEROR_ZURG.htm">저그 황제</a>
       </td>
@@ -818,7 +1050,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF STUN">
       <td style="background-image: url('../img_s/hero_list_mike.jpg');">
         <a href="./hero/MIKE.htm">마이크 와조스키</a>
       </td>
@@ -838,7 +1070,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF HEAL_OVER_TIME_SELF">
       <td style="background-image: url('../img_s/hero_list_ralf.jpg');">
         <a href="./hero/RALPH.htm">랄프</a>
       </td>
@@ -857,7 +1089,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_woody.jpg');">
         <a href="./hero/WOODY.htm">우디</a>
       </td>
@@ -877,7 +1109,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_jessie.jpg');">
         <a href="./hero/JESSIE.htm">제시</a>
       </td>
@@ -896,7 +1128,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN">
       <td style="background-image: url('../img_s/hero_list_rex.jpg');">
         <a href="./hero/REX.htm">렉스</a>
       </td>
@@ -915,7 +1147,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_sully.jpg');">
         <a href="./hero/SULLEY.htm">설리 &amp; 부</a>
       </td>
@@ -934,7 +1166,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_eve.jpg');">
         <a href="./hero/EVE.htm">이브</a>
       </td>
@@ -953,7 +1185,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mike.jpg');">
         <a href="./hero/MIKE.htm">마이크 와조스키</a>
       </td>
@@ -972,7 +1204,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_frozone.jpg');">
         <a href="./hero/FROZONE.htm">프로존</a>
       </td>
@@ -991,7 +1223,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME SILENCE">
       <td style="background-image: url('../img_s/hero_list_tia_dalma.jpg');">
         <a href="./hero/TIA_DALMA.htm">티아 달마</a>
       </td>
@@ -1014,7 +1246,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_merida.jpg');">
         <a href="./hero/MERIDA.htm">메리다</a>
       </td>
@@ -1033,7 +1265,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE HEAL_SELF">
       <td style="background-image: url('../img_s/hero_list_jack.jpg');">
         <a href="./hero/JACK_SPARROW.htm">잭 스패로우</a>
       </td>
@@ -1053,7 +1285,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF NORMAL_CRIT_INCREASE FANTASTIC_CRIT_INCREASE">
       <td style="background-image: url('../img_s/hero_list_quorra.jpg');">
         <a href="./hero/QUORRA.htm">쿠오라</a>
       </td>
@@ -1073,7 +1305,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_walle.jpg');">
         <a href="./hero/WALL_E.htm">월-E</a>
       </td>
@@ -1093,7 +1325,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME CHARM">
       <td style="background-image: url('../img_s/hero_list_tia_dalma.jpg');">
         <a href="./hero/TIA_DALMA.htm">티아 달마</a>
       </td>
@@ -1117,7 +1349,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_buzz.jpg');">
         <a href="./hero/BUZZ.htm">버즈 라이트이어</a>
       </td>
@@ -1137,7 +1369,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE STUDY">
       <td style="background-image: url('../img_s/hero_list_hector.jpg');">
         <a href="./hero/HECTOR_BARBOSSA.htm">헥터 바르보사</a>
       </td>
@@ -1156,7 +1388,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE SHIELD_SELF">
       <td style="background-image: url('../img_s/hero_list_quorra.jpg');">
         <a href="./hero/QUORRA.htm">쿠오라</a>
       </td>
@@ -1175,7 +1407,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE SHIELD_TEAM DODGE">
       <td style="background-image: url('../img_s/hero_list_kevin_flynn.jpg');">
         <a href="./hero/KEVIN_FLYNN.htm">케빈 플린</a>
       </td>
@@ -1195,7 +1427,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_vanellope.jpg');">
         <a href="./hero/VANELLOPE.htm">바넬로피</a>
       </td>
@@ -1215,7 +1447,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE SHIELD_SELF SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_violet.jpg');">
         <a href="./hero/VIOLET.htm">바이올렛</a>
       </td>
@@ -1235,7 +1467,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="NORMAL_DAMAGE DAMAGE_OVER_TIME NORMAL_CRIT_INCREASE">
       <td style="background-image: url('../img_s/hero_list_merida.jpg');">
         <a href="./hero/MERIDA.htm">메리다</a>
       </td>
@@ -1258,7 +1490,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_hector.jpg');">
         <a href="./hero/HECTOR_BARBOSSA.htm">헥터 바르보사</a>
       </td>
@@ -1277,7 +1509,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_maui.jpg');">
         <a href="./hero/MAUI.htm">마우이</a>
       </td>
@@ -1296,7 +1528,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_stitch.jpg');">
         <a href="./hero/STITCH.htm">스티치</a>
       </td>
@@ -1315,7 +1547,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_moana.jpg');">
         <a href="./hero/MOANA.htm">모아나</a>
       </td>
@@ -1334,7 +1566,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_OVER_TIME_SELF INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_aladdin.jpg');">
         <a href="./hero/ALADDIN.htm">알라딘</a>
       </td>
@@ -1353,7 +1585,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE SHIELD_SELF SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_baymax.jpg');">
         <a href="./hero/BAYMAX.htm">베이맥스</a>
       </td>
@@ -1373,7 +1605,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_emperor_zurg.jpg');">
         <a href="./hero/EMPEROR_ZURG.htm">저그 황제</a>
       </td>
@@ -1392,7 +1624,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_genie.jpg');">
         <a href="./hero/GENIE.htm">지니</a>
       </td>
@@ -1412,7 +1644,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_kevin_flynn.jpg');">
         <a href="./hero/KEVIN_FLYNN.htm">케빈 플린</a>
       </td>
@@ -1431,7 +1663,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SHIELD_TEAM ENERGY_SELF ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_hiro.jpg');">
         <a href="./hero/HIRO.htm">히로 아르마다</a>
       </td>
@@ -1451,7 +1683,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGY_REMOVAL ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_maui.jpg');">
         <a href="./hero/MAUI.htm">마우이</a>
       </td>
@@ -1471,7 +1703,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_miguel.jpg');">
         <a href="./hero/MIGUEL.htm">미겔 리베라</a>
       </td>
@@ -1490,7 +1722,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_hades.jpg');">
         <a href="./hero/HADES.htm">하이데스</a>
       </td>
@@ -1509,7 +1741,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mickey.jpg');">
         <a href="./hero/MICKEY_MOUSE.htm">미키 마우스</a>
       </td>
@@ -1528,7 +1760,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_moana.jpg');">
         <a href="./hero/MOANA.htm">모아나</a>
       </td>
@@ -1547,7 +1779,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_REMOVAL">
       <td style="background-image: url('../img_s/hero_list_maleficant.jpg');">
         <a href="./hero/MALEFICENT.htm">마녀</a>
       </td>
@@ -1566,7 +1798,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_mickey.jpg');">
         <a href="./hero/MICKEY_MOUSE.htm">미키 마우스</a>
       </td>
@@ -1586,7 +1818,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE INVISIBLE">
       <td style="background-image: url('../img_s/hero_list_scar.jpg');">
         <a href="./hero/SCAR.htm">스카</a>
       </td>
@@ -1605,7 +1837,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_ursula.jpg');">
         <a href="./hero/URSULA.htm">울슐라</a>
       </td>
@@ -1624,7 +1856,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_aladdin.jpg');">
         <a href="./hero/ALADDIN.htm">알라딘</a>
       </td>
@@ -1643,7 +1875,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_ursula.jpg');">
         <a href="./hero/URSULA.htm">울슐라</a>
       </td>
@@ -1662,7 +1894,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REDUCED_DAMAGE_TAKEN ENERGY_SELF STUN">
       <td style="background-image: url('../img_s/hero_list_shank.jpg');">
         <a href="./hero/SHANK.htm">섕크</a>
       </td>
@@ -1682,7 +1914,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE SKILL_POWER_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_miguel.jpg');">
         <a href="./hero/MIGUEL.htm">미겔 리베라</a>
       </td>
@@ -1702,7 +1934,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_shank.jpg');">
         <a href="./hero/SHANK.htm">섕크</a>
       </td>
@@ -1722,7 +1954,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DODGE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_olaf.jpg');">
         <a href="./hero/OLAF.htm">올라프</a>
       </td>
@@ -1741,7 +1973,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_elsa.jpg');">
         <a href="./hero/ELSA.htm">엘사</a>
       </td>
@@ -1760,7 +1992,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_baymax.jpg');">
         <a href="./hero/BAYMAX.htm">베이맥스</a>
       </td>
@@ -1779,7 +2011,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME CURSE STUN">
       <td style="background-image: url('../img_s/hero_list_maleficant.jpg');">
         <a href="./hero/MALEFICENT.htm">마녀</a>
       </td>
@@ -1802,7 +2034,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME">
       <td style="background-image: url('../img_s/hero_list_jack_skellington.jpg');">
         <a href="./hero/JACK_SKELLINGTON.htm">잭 스켈링턴</a>
       </td>
@@ -1821,7 +2053,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_elsa.jpg');">
         <a href="./hero/ELSA.htm">엘사</a>
       </td>
@@ -1841,7 +2073,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_sally.jpg');">
         <a href="./hero/SALLY.htm">샐리</a>
       </td>
@@ -1860,7 +2092,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE FREEZE">
       <td style="background-image: url('../img_s/hero_list_genie.jpg');">
         <a href="./hero/GENIE.htm">지니</a>
       </td>
@@ -1879,7 +2111,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME">
       <td style="background-image: url('../img_s/hero_list_sally.jpg');">
         <a href="./hero/SALLY.htm">샐리</a>
       </td>
@@ -1898,7 +2130,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_olaf.jpg');">
         <a href="./hero/OLAF.htm">올라프</a>
       </td>
@@ -1918,7 +2150,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_hiro.jpg');">
         <a href="./hero/HIRO.htm">히로 아르마다</a>
       </td>
@@ -1941,7 +2173,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_alice.jpg');">
         <a href="./hero/ALICE.htm">앨리스</a>
       </td>
@@ -1960,7 +2192,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_darkwing_duck.jpg');">
         <a href="./hero/DARKWING_DUCK.htm">오리 형사 다크</a>
       </td>
@@ -1985,7 +2217,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_DECREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_mad_hatter.jpg');">
         <a href="./hero/MAD_HATTER.htm">매드 해터</a>
       </td>
@@ -2006,7 +2238,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ARMOR_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_alice.jpg');">
         <a href="./hero/ALICE.htm">앨리스</a>
       </td>
@@ -2026,7 +2258,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE TRUE_DAMAGE STUN HEAL_SELF ARMOR_DECREASE">
       <td style="background-image: url('../img_s/hero_list_stitch.jpg');">
         <a href="./hero/STITCH.htm">스티치</a>
       </td>
@@ -2050,7 +2282,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE REALITY_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_darkwing_duck.jpg');">
         <a href="./hero/DARKWING_DUCK.htm">오리 형사 다크</a>
       </td>
@@ -2070,7 +2302,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_gaston.jpg');">
         <a href="./hero/GASTON.htm">개스톤</a>
       </td>
@@ -2089,7 +2321,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE HARDY">
       <td style="background-image: url('../img_s/hero_list_queen_of_hearts.jpg');">
         <a href="./hero/QUEEN_OF_HEARTS.htm">하트의 여왕</a>
       </td>
@@ -2108,7 +2340,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_scar.jpg');">
         <a href="./hero/SCAR.htm">스카</a>
       </td>
@@ -2127,7 +2359,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FANTASTIC_DAMAGE SCARE">
       <td style="background-image: url('../img_s/hero_list_jack_skellington.jpg');">
         <a href="./hero/JACK_SKELLINGTON.htm">잭 스켈링턴</a>
       </td>
@@ -2146,7 +2378,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE TRUE_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_queen_of_hearts.jpg');">
         <a href="./hero/QUEEN_OF_HEARTS.htm">하트의 여왕</a>
       </td>
@@ -2166,7 +2398,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_hades.jpg');">
         <a href="./hero/HADES.htm">하이데스</a>
       </td>
@@ -2185,7 +2417,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE STUN KNOCKBACK">
       <td style="background-image: url('../img_s/hero_list_hercules.jpg');">
         <a href="./hero/HERCULES.htm">헤라클레스</a>
       </td>
@@ -2205,7 +2437,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_megara.jpg');">
         <a href="./hero/MEGARA.htm">메가라</a>
       </td>
@@ -2225,7 +2457,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_megara.jpg');">
         <a href="./hero/MEGARA.htm">메가라</a>
       </td>
@@ -2245,7 +2477,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_hercules.jpg');">
         <a href="./hero/HERCULES.htm">헤라클레스</a>
       </td>
@@ -2264,7 +2496,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SHIELD_TEAM HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_goofy.jpg');">
         <a href="./hero/GOOFY.htm">구피</a>
       </td>
@@ -2283,7 +2515,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE KNOCKBACK STUN">
       <td style="background-image: url('../img_s/hero_list_robin_hood.jpg');">
         <a href="./hero/ROBIN_HOOD.htm">로빈 후드</a>
       </td>
@@ -2302,7 +2534,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE KNOCKBACK">
       <td style="background-image: url('../img_s/hero_list_merlin.jpg');">
         <a href="./hero/MERLIN.htm">멀린</a>
       </td>
@@ -2322,7 +2554,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_robin_hood.jpg');">
         <a href="./hero/ROBIN_HOOD.htm">로빈 후드</a>
       </td>
@@ -2341,7 +2573,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ARMOR_INCREASE HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_duke_caboom.jpg');">
         <a href="./hero/DUKE_CABOOM.htm">듀크 카붐</a>
       </td>
@@ -2361,7 +2593,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_goofy.jpg');">
         <a href="./hero/GOOFY.htm">구피</a>
       </td>
@@ -2381,7 +2613,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_ducky_and_bunny.jpg');">
         <a href="./hero/DUCKY_AND_BUNNY.htm">덕키와 버니</a>
       </td>
@@ -2403,7 +2635,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF">
       <td style="background-image: url('../img_s/hero_list_bo_peep.jpg');">
         <a href="./hero/BO_PEEP.htm">보핍</a>
       </td>
@@ -2422,7 +2654,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_joy.jpg');">
         <a href="./hero/JOY.htm">기쁨이</a>
       </td>
@@ -2441,7 +2673,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_anger.jpg');">
         <a href="./hero/ANGER.htm">버럭이</a>
       </td>
@@ -2460,7 +2692,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="NORMAL_DAMAGE DAMAGE_OVER_TIME ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_anger.jpg');">
         <a href="./hero/ANGER.htm">버럭이</a>
       </td>
@@ -2483,7 +2715,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE">
       <td style="background-image: url('../img_s/hero_list_bo_peep.jpg');">
         <a href="./hero/BO_PEEP.htm">보핍</a>
       </td>
@@ -2502,7 +2734,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_joy.jpg');">
         <a href="./hero/JOY.htm">기쁨이</a>
       </td>
@@ -2521,7 +2753,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE FANTASTIC_DAMAGE DODGE">
       <td style="background-image: url('../img_s/hero_list_peter_pan.jpg');">
         <a href="./hero/PETER_PAN.htm">피터팬</a>
       </td>
@@ -2540,7 +2772,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_TEAM DAMAGE_INCREASE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_peter_pan.jpg');">
         <a href="./hero/PETER_PAN.htm">피터팬</a>
       </td>
@@ -2559,7 +2791,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_rafiki.jpg');">
         <a href="./hero/RAFIKI.htm">라피키</a>
       </td>
@@ -2578,7 +2810,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME STUN EVASION_INCREASE">
       <td style="background-image: url('../img_s/hero_list_ducky_and_bunny.jpg');">
         <a href="./hero/DUCKY_AND_BUNNY.htm">덕키와 버니</a>
       </td>
@@ -2602,7 +2834,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE NORMAL_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_beast.jpg');">
         <a href="./hero/BEAST.htm">야수</a>
       </td>
@@ -2626,7 +2858,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME HEAL_OVER_TIME_SELF ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_jafar.jpg');">
         <a href="./hero/JAFAR.htm">자파</a>
       </td>
@@ -2649,7 +2881,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_merlin.jpg');">
         <a href="./hero/MERLIN.htm">멀린</a>
       </td>
@@ -2669,7 +2901,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE STUN">
       <td style="background-image: url('../img_s/hero_list_timon_pumbaa.jpg');">
         <a href="./hero/TIMON_AND_PUMBAA.htm">티몬과 품바</a>
       </td>
@@ -2688,7 +2920,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MOVE_SPEED_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mad_hatter.jpg');">
         <a href="./hero/MAD_HATTER.htm">매드 해터</a>
       </td>
@@ -2707,7 +2939,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE HEAL_TEAM HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_rafiki.jpg');">
         <a href="./hero/RAFIKI.htm">라피키</a>
       </td>
@@ -2727,7 +2959,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_jasmine.jpg');">
         <a href="./hero/JASMINE.htm">자스민</a>
       </td>
@@ -2746,7 +2978,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND">
       <td style="background-image: url('../img_s/hero_list_jafar.jpg');">
         <a href="./hero/JAFAR.htm">자파</a>
       </td>
@@ -2767,7 +2999,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_jasmine.jpg');">
         <a href="./hero/JASMINE.htm">자스민</a>
       </td>
@@ -2788,7 +3020,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_timon_pumbaa.jpg');">
         <a href="./hero/TIMON_AND_PUMBAA.htm">티몬과 품바</a>
       </td>
@@ -2807,7 +3039,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE FANTASTIC_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_huey_dewey_louie.jpg');">
         <a href="./hero/HUEY_DEWEY_LOUIE.htm">휴이, 듀이, 루이</a>
       </td>
@@ -2831,7 +3063,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_miss_piggy.jpg');">
         <a href="./hero/MISS_PIGGY.htm">미스 피기</a>
       </td>
@@ -2854,7 +3086,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_simba_nala.jpg');">
         <a href="./hero/SIMBA_AND_NALA.htm">심바와 날라</a>
       </td>
@@ -2874,7 +3106,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF DODGE ATTACK_SPEED_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_miss_piggy.jpg');">
         <a href="./hero/MISS_PIGGY.htm">미스 피기</a>
       </td>
@@ -2893,7 +3125,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF HEAL_TEAM ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_animal.jpg');">
         <a href="./hero/ANIMAL.htm">애니멀</a>
       </td>
@@ -2912,7 +3144,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE ARMOR_INCREASE CURSE">
       <td style="background-image: url('../img_s/hero_list_yzma.jpg');">
         <a href="./hero/YZMA.htm">이즈마</a>
       </td>
@@ -2932,7 +3164,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_gonzo.jpg');">
         <a href="./hero/GONZO.htm">곤조</a>
       </td>
@@ -2952,7 +3184,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE BLIND CURSE STUN">
       <td style="background-image: url('../img_s/hero_list_yzma.jpg');">
         <a href="./hero/YZMA.htm">이즈마</a>
       </td>
@@ -2972,7 +3204,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SHIELD_TEAM ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_animal.jpg');">
         <a href="./hero/ANIMAL.htm">애니멀</a>
       </td>
@@ -2995,7 +3227,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_scrooge_mcduck.jpg');">
         <a href="./hero/SCROOGE_MCDUCK.htm">스크루지 맥덕</a>
       </td>
@@ -3014,7 +3246,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_megavolt.jpg');">
         <a href="./hero/MEGAVOLT.htm">메가볼트</a>
       </td>
@@ -3037,7 +3269,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE FANTASTIC_DAMAGE SILENCE">
       <td style="background-image: url('../img_s/hero_list_simba_nala.jpg');">
         <a href="./hero/SIMBA_AND_NALA.htm">심바와 날라</a>
       </td>
@@ -3057,7 +3289,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="TRUE_DAMAGE REMOVE_BUFF">
       <td style="background-image: url('../img_s/hero_list_randall_boggs.jpg');">
         <a href="./hero/RANDALL_BOGGS.htm">랜달 보그스</a>
       </td>
@@ -3080,7 +3312,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE SAP">
       <td style="background-image: url('../img_s/hero_list_captain_hook.jpg');">
         <a href="./hero/CAPTAIN_HOOK.htm">후크 선장</a>
       </td>
@@ -3100,7 +3332,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE DODGE">
       <td style="background-image: url('../img_s/hero_list_randall_boggs.jpg');">
         <a href="./hero/RANDALL_BOGGS.htm">랜달 보그스</a>
       </td>
@@ -3120,7 +3352,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_DECREASE">
       <td style="background-image: url('../img_s/hero_list_megavolt.jpg');">
         <a href="./hero/MEGAVOLT.htm">메가볼트</a>
       </td>
@@ -3139,7 +3371,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="NORMAL_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_scrooge_mcduck.jpg');">
         <a href="./hero/SCROOGE_MCDUCK.htm">스크루지 맥덕</a>
       </td>
@@ -3162,7 +3394,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE TRUE_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_donald_duck.jpg');">
         <a href="./hero/DONALD_DUCK.htm">도날드 덕</a>
       </td>
@@ -3181,7 +3413,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_gonzo.jpg');">
         <a href="./hero/GONZO.htm">곤조</a>
       </td>
@@ -3201,7 +3433,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_launchpad_mcquack.jpg');">
         <a href="./hero/LAUNCHPAD_MCQUACK.htm">론치패드 맥쾍</a>
       </td>
@@ -3221,7 +3453,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_captain_hook.jpg');">
         <a href="./hero/CAPTAIN_HOOK.htm">후크 선장</a>
       </td>
@@ -3241,7 +3473,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_oogie_boogie.jpg');">
         <a href="./hero/OOGIE_BOOGIE.htm">우기부기</a>
       </td>
@@ -3261,7 +3493,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF CLEANSE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_huey_dewey_louie.jpg');">
         <a href="./hero/HUEY_DEWEY_LOUIE.htm">휴이, 듀이, 루이</a>
       </td>
@@ -3280,7 +3512,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE HEAL_TEAM ARMOR_INCREASE ENERGY_SELF ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_gizmo_duck.jpg');">
         <a href="./hero/GIZMODUCK.htm">기즈모덕</a>
       </td>
@@ -3300,7 +3532,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE ARMOR_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_madam_mim.jpg');">
         <a href="./hero/MADAM_MIM.htm">마담 밈</a>
       </td>
@@ -3322,7 +3554,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_donald_duck.jpg');">
         <a href="./hero/DONALD_DUCK.htm">도날드 덕</a>
       </td>
@@ -3345,7 +3577,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_launchpad_mcquack.jpg');">
         <a href="./hero/LAUNCHPAD_MCQUACK.htm">론치패드 맥쾍</a>
       </td>
@@ -3365,7 +3597,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_oogie_boogie.jpg');">
         <a href="./hero/OOGIE_BOOGIE.htm">우기부기</a>
       </td>
@@ -3386,7 +3618,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE REDUCED_DAMAGE_DEALT">
       <td style="background-image: url('../img_s/hero_list_magica_de_spell.jpg');">
         <a href="./hero/MAGICA_DE_SPELL.htm">매지카 드 스펠</a>
       </td>
@@ -3407,7 +3639,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_magica_de_spell.jpg');">
         <a href="./hero/MAGICA_DE_SPELL.htm">매지카 드 스펠</a>
       </td>
@@ -3427,7 +3659,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_DECREASE SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_DECREASE HEX REMOVE_BUFF">
       <td style="background-image: url('../img_s/hero_list_madam_mim.jpg');">
         <a href="./hero/MADAM_MIM.htm">마담 밈</a>
       </td>
@@ -3449,7 +3681,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_INCREASE CHARM">
       <td style="background-image: url('../img_s/hero_list_flynn_rider.jpg');">
         <a href="./hero/FLYNN_RIDER.htm">플린 라이더</a>
       </td>
@@ -3469,7 +3701,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_flynn_rider.jpg');">
         <a href="./hero/FLYNN_RIDER.htm">플린 라이더</a>
       </td>
@@ -3489,7 +3721,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE DAMAGE_DECREASE">
       <td style="background-image: url('../img_s/hero_list_rapunzel.jpg');">
         <a href="./hero/RAPUNZEL.htm">라푼젤</a>
       </td>
@@ -3510,7 +3742,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_rapunzel.jpg');">
         <a href="./hero/RAPUNZEL.htm">라푼젤</a>
       </td>
@@ -3533,7 +3765,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME BLIND ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_colette.jpg');">
         <a href="./hero/COLETTE.htm">콜레트</a>
       </td>
@@ -3553,7 +3785,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_colette.jpg');">
         <a href="./hero/COLETTE.htm">콜레트</a>
       </td>
@@ -3573,7 +3805,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_linguini_and_remy.jpg');">
         <a href="./hero/LINGUINI_AND_REMY.htm">링귀니와 레미</a>
       </td>
@@ -3593,7 +3825,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_linguini_and_remy.jpg');">
         <a href="./hero/LINGUINI_AND_REMY.htm">링귀니와 레미</a>
       </td>
@@ -3614,7 +3846,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE SHIELD_SELF">
       <td style="background-image: url('../img_s/hero_list_dr_facilier.jpg');">
         <a href="./hero/DR_FACILIER.htm">파실리에 박사</a>
       </td>
@@ -3639,7 +3871,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_kida.jpg');">
         <a href="./hero/KIDA.htm">키다</a>
       </td>
@@ -3660,7 +3892,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_powerline.jpg');">
         <a href="./hero/POWERLINE.htm">파워라인</a>
       </td>
@@ -3680,7 +3912,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_INCREASE ARMOR_DECREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_gizmo_duck.jpg');">
         <a href="./hero/GIZMODUCK.htm">기즈모덕</a>
       </td>
@@ -3700,7 +3932,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_tron.jpg');">
         <a href="./hero/TRON.htm">트론</a>
       </td>
@@ -3720,7 +3952,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_gerald_marlin_nemo.jpg');">
         <a href="./hero/GERALD_MARLIN_NEMO.htm">제럴드, 말린, 니모</a>
       </td>
@@ -3740,7 +3972,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_hank_and_dory.jpg');">
         <a href="./hero/HANK_AND_DORY.htm">행크와 도리</a>
       </td>
@@ -3759,7 +3991,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE HARDY">
       <td style="background-image: url('../img_s/hero_list_tron.jpg');">
         <a href="./hero/TRON.htm">트론</a>
       </td>
@@ -3783,7 +4015,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_kristoff.jpg');">
         <a href="./hero/KRISTOFF_AND_SVEN.htm">크리스토프와 스벤</a>
       </td>
@@ -3803,7 +4035,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kida.jpg');">
         <a href="./hero/KIDA.htm">키다</a>
       </td>
@@ -3824,7 +4056,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_kristoff.jpg');">
         <a href="./hero/KRISTOFF_AND_SVEN.htm">크리스토프와 스벤</a>
       </td>
@@ -3844,7 +4076,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_gerald_marlin_nemo.jpg');">
         <a href="./hero/GERALD_MARLIN_NEMO.htm">제럴드, 말린, 니모</a>
       </td>
@@ -3863,7 +4095,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE CLEANSE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_powerline.jpg');">
         <a href="./hero/POWERLINE.htm">파워라인</a>
       </td>
@@ -3882,7 +4114,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_DECREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_dr_facilier.jpg');">
         <a href="./hero/DR_FACILIER.htm">파실리에 박사</a>
       </td>
@@ -3907,7 +4139,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE HARDY">
       <td style="background-image: url('../img_s/hero_list_hank_and_dory.jpg');">
         <a href="./hero/HANK_AND_DORY.htm">행크와 도리</a>
       </td>
@@ -3927,7 +4159,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF DAMAGE_INCREASE ARMOR_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_tigger.jpg');">
         <a href="./hero/TIGGER.htm">티거</a>
       </td>
@@ -3948,7 +4180,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_pooh.jpg');">
         <a href="./hero/WINNIE_THE_POOH.htm">위니 더 푸</a>
       </td>
@@ -3968,7 +4200,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE SKILL_POWER_INCREASE HEAL_OVER_TIME_SELF ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_goliath.jpg');">
         <a href="./hero/GOLIATH.htm">골리앗</a>
       </td>
@@ -3989,7 +4221,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE STUN">
       <td style="background-image: url('../img_s/hero_list_eeyore.jpg');">
         <a href="./hero/EEYORE.htm">이요</a>
       </td>
@@ -4014,7 +4246,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE KNOCKBACK STUN">
       <td style="background-image: url('../img_s/hero_list_duke_caboom.jpg');">
         <a href="./hero/DUKE_CABOOM.htm">듀크 카붐</a>
       </td>
@@ -4037,7 +4269,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE REALITY_INCREASE KNOCKBACK STUN ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_tigger.jpg');">
         <a href="./hero/TIGGER.htm">티거</a>
       </td>
@@ -4058,7 +4290,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_pooh.jpg');">
         <a href="./hero/WINNIE_THE_POOH.htm">위니 더 푸</a>
       </td>
@@ -4078,7 +4310,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE STUDY">
       <td style="background-image: url('../img_s/hero_list_shan_yu.jpg');">
         <a href="./hero/SHAN_YU.htm">샨 유</a>
       </td>
@@ -4103,7 +4335,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF SILENCE">
       <td style="background-image: url('../img_s/hero_list_shan_yu.jpg');">
         <a href="./hero/SHAN_YU.htm">샨 유</a>
       </td>
@@ -4123,7 +4355,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mushu.jpg');">
         <a href="./hero/MUSHU.htm">무슈</a>
       </td>
@@ -4143,7 +4375,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mushu.jpg');">
         <a href="./hero/MUSHU.htm">무슈</a>
       </td>
@@ -4163,7 +4395,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF SHIELD_SELF">
       <td style="background-image: url('../img_s/hero_list_mulan.jpg');">
         <a href="./hero/MULAN.htm">뮬란</a>
       </td>
@@ -4182,7 +4414,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE KNOCKBACK NORMAL_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_mulan.jpg');">
         <a href="./hero/MULAN.htm">뮬란</a>
       </td>
@@ -4206,7 +4438,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE MAX_HP_INCREASE DODGE SAP">
       <td style="background-image: url('../img_s/hero_list_belle.jpg');">
         <a href="./hero/BELLE.htm">벨</a>
       </td>
@@ -4226,7 +4458,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_evil_queen2.jpg');">
         <a href="./hero/EVIL_QUEEN.htm">사악한 여왕</a>
       </td>
@@ -4246,7 +4478,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE DAMAGE_INCREASE MAX_HP_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_goliath.jpg');">
         <a href="./hero/GOLIATH.htm">골리앗</a>
       </td>
@@ -4268,7 +4500,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_gaston.jpg');">
         <a href="./hero/GASTON.htm">개스톤</a>
       </td>
@@ -4288,7 +4520,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE MAX_HP_INCREASE DODGE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_beast.jpg');">
         <a href="./hero/BEAST.htm">야수</a>
       </td>
@@ -4312,7 +4544,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_syndrome.jpg');">
         <a href="./hero/SYNDROME.htm">신드롬</a>
       </td>
@@ -4332,7 +4564,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_belle.jpg');">
         <a href="./hero/BELLE.htm">벨</a>
       </td>
@@ -4352,7 +4584,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_DECREASE STUN">
       <td style="background-image: url('../img_s/hero_list_syndrome.jpg');">
         <a href="./hero/SYNDROME.htm">신드롬</a>
       </td>
@@ -4372,7 +4604,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_evil_queen2.jpg');">
         <a href="./hero/EVIL_QUEEN.htm">사악한 여왕</a>
       </td>
@@ -4392,7 +4624,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE DAMAGE_INCREASE SILENCE">
       <td style="background-image: url('../img_s/hero_list_li_shang.jpg');">
         <a href="./hero/LI_SHANG.htm">리 샹</a>
       </td>
@@ -4412,7 +4644,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DODGE">
       <td style="background-image: url('../img_s/hero_list_li_shang.jpg');">
         <a href="./hero/LI_SHANG.htm">리 샹</a>
       </td>
@@ -4432,7 +4664,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_minnie.jpg');">
         <a href="./hero/MINNIE_MOUSE.htm">미니 마우스</a>
       </td>
@@ -4452,7 +4684,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE CURSE">
       <td style="background-image: url('../img_s/hero_list_davy_jones.jpg');">
         <a href="./hero/DAVY_JONES.htm">데비 존스</a>
       </td>
@@ -4472,7 +4704,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE MAX_HP_INCREASE REDUCED_DAMAGE_DEALT">
       <td style="background-image: url('../img_s/hero_list_davy_jones.jpg');">
         <a href="./hero/DAVY_JONES.htm">데비 존스</a>
       </td>
@@ -4492,7 +4724,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ARMOR_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_eeyore.jpg');">
         <a href="./hero/EEYORE.htm">이요</a>
       </td>
@@ -4516,7 +4748,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE CHARM SAP">
       <td style="background-image: url('../img_s/hero_list_minnie.jpg');">
         <a href="./hero/MINNIE_MOUSE.htm">미니 마우스</a>
       </td>
@@ -4536,7 +4768,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE SKILL_POWER_INCREASE MAX_HP_INCREASE REDUCED_DAMAGE_TAKEN">
       <td style="background-image: url('../img_s/hero_list_baloo.jpg');">
         <a href="./hero/BALOO.htm">발루</a>
       </td>
@@ -4557,7 +4789,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE FANTASTIC_DAMAGE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_king_louie.jpg');">
         <a href="./hero/KING_LOUIE.htm">루이 왕</a>
       </td>
@@ -4577,7 +4809,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ARMOR_INCREASE HEAL_OVER_TIME_SELF HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_baloo.jpg');">
         <a href="./hero/BALOO.htm">발루</a>
       </td>
@@ -4601,7 +4833,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE PRECISE">
       <td style="background-image: url('../img_s/hero_list_jumba.jpg');">
         <a href="./hero/JUMBA.htm">점바</a>
       </td>
@@ -4621,7 +4853,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_king_louie.jpg');">
         <a href="./hero/KING_LOUIE.htm">루이 왕</a>
       </td>
@@ -4640,7 +4872,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_pleakley.jpg');">
         <a href="./hero/PLEAKLEY.htm">플리클리</a>
       </td>
@@ -4660,7 +4892,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_cheshire_cat.jpg');">
         <a href="./hero/CHESHIRE_CAT.htm">체셔 고양이</a>
       </td>
@@ -4680,7 +4912,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE HEAL_OVER_TIME_TEAM">
       <td style="background-image: url('../img_s/hero_list_basil.jpg');">
         <a href="./hero/BASIL.htm">베이커가의 바실</a>
       </td>
@@ -4700,7 +4932,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REMOVE_BUFF ARMOR_INCREASE DAMAGE_INCREASE STUN">
       <td style="background-image: url('../img_s/hero_list_jumba.jpg');">
         <a href="./hero/JUMBA.htm">점바</a>
       </td>
@@ -4721,7 +4953,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_cheshire_cat.jpg');">
         <a href="./hero/CHESHIRE_CAT.htm">체셔 고양이</a>
       </td>
@@ -4741,7 +4973,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_pleakley.jpg');">
         <a href="./hero/PLEAKLEY.htm">플리클리</a>
       </td>
@@ -4762,7 +4994,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_slinky_dog.jpg');">
         <a href="./hero/SLINKY_DOG.htm">슬링키 도그</a>
       </td>
@@ -4786,7 +5018,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_DECREASE DAMAGE_INCREASE REDUCED_DAMAGE_DEALT">
       <td style="background-image: url('../img_s/hero_list_basil.jpg');">
         <a href="./hero/BASIL.htm">베이커가의 바실</a>
       </td>
@@ -4806,7 +5038,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE SKILL_POWER_INCREASE REMOVE_BUFF">
       <td style="background-image: url('../img_s/hero_list_maximus.jpg');">
         <a href="./hero/MAXIMUS.htm">막시무스</a>
       </td>
@@ -4826,7 +5058,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE REALITY_DECREASE">
       <td style="background-image: url('../img_s/hero_list_angel.jpg');">
         <a href="./hero/ANGEL.htm">엔젤</a>
       </td>
@@ -4846,7 +5078,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE SKILL_POWER_INCREASE">
       <td style="background-image: url('../img_s/hero_list_slinky_dog.jpg');">
         <a href="./hero/SLINKY_DOG.htm">슬링키 도그</a>
       </td>
@@ -4866,7 +5098,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE BLIND">
       <td style="background-image: url('../img_s/hero_list_angel.jpg');">
         <a href="./hero/ANGEL.htm">엔젤</a>
       </td>
@@ -4886,7 +5118,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_maximus.jpg');">
         <a href="./hero/MAXIMUS.htm">막시무스</a>
       </td>
@@ -4906,7 +5138,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_ian_lightfoot.jpg');">
         <a href="./hero/IAN_LIGHTFOOT.htm">이안 라이트풋</a>
       </td>
@@ -4925,7 +5157,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_captain_amelia.jpg');">
         <a href="./hero/CAPTAIN_AMELIA.htm">아멜리아 선장</a>
       </td>
@@ -4945,7 +5177,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_sadness.jpg');">
         <a href="./hero/SADNESS.htm">슬픔</a>
       </td>
@@ -4964,7 +5196,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_DECREASE SKILL_POWER_INCREASE FATIGUE">
       <td style="background-image: url('../img_s/hero_list_lock_shock_barrel.jpg');">
         <a href="./hero/LOCK_SHOCK_BARREL.htm">록, 쇼크, 배럴</a>
       </td>
@@ -4984,7 +5216,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE REFLECT">
       <td style="background-image: url('../img_s/hero_list_ian_lightfoot.jpg');">
         <a href="./hero/IAN_LIGHTFOOT.htm">이안 라이트풋</a>
       </td>
@@ -5004,7 +5236,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE DAMAGE_INCREASE SCARE EVASION_DECREASE">
       <td style="background-image: url('../img_s/hero_list_lock_shock_barrel.jpg');">
         <a href="./hero/LOCK_SHOCK_BARREL.htm">록, 쇼크, 배럴</a>
       </td>
@@ -5025,7 +5257,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_disgust.jpg');">
         <a href="./hero/DISGUST.htm">까칠</a>
       </td>
@@ -5045,7 +5277,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE ARMOR_INCREASE NORMAL_CRIT_DECREASE">
       <td style="background-image: url('../img_s/hero_list_sadness.jpg');">
         <a href="./hero/SADNESS.htm">슬픔</a>
       </td>
@@ -5065,7 +5297,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_OVER_TIME">
       <td style="background-image: url('../img_s/hero_list_manticore.jpg');">
         <a href="./hero/MANTICORE.htm">맨티코아</a>
       </td>
@@ -5088,7 +5320,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
         <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
       </td>
@@ -5108,7 +5340,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_beaker_and_bunsen.jpg');">
         <a href="./hero/BUNSEN_AND_BEAKER.htm">분젠 허니듀 박사와 비커</a>
       </td>
@@ -5128,7 +5360,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_DECREASE FANTASTIC_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_disgust.jpg');">
         <a href="./hero/DISGUST.htm">까칠</a>
       </td>
@@ -5148,7 +5380,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
         <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
       </td>
@@ -5173,7 +5405,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_beaker_and_bunsen.jpg');">
         <a href="./hero/BUNSEN_AND_BEAKER.htm">분젠 허니듀 박사와 비커</a>
       </td>
@@ -5197,7 +5429,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE HEAL_SELF HEAL_TEAM ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_manticore.jpg');">
         <a href="./hero/MANTICORE.htm">맨티코아</a>
       </td>
@@ -5217,7 +5449,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE">
       <td style="background-image: url('../img_s/hero_list_fear.jpg');">
         <a href="./hero/FEAR.htm">소심</a>
       </td>
@@ -5237,7 +5469,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE MAX_HP_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_kronk.jpg');">
         <a href="./hero/KRONK.htm">크롱크</a>
       </td>
@@ -5257,7 +5489,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_TEAM ARMOR_INCREASE HARDY REFLECT">
       <td style="background-image: url('../img_s/hero_list_fear.jpg');">
         <a href="./hero/FEAR.htm">소심</a>
       </td>
@@ -5277,7 +5509,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ENERGY_TEAM">
       <td style="background-image: url('../img_s/hero_list_jim_hawkins.jpg');">
         <a href="./hero/JIM_HAWKINS.htm">짐 호킨스</a>
       </td>
@@ -5297,7 +5529,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME">
       <td style="background-image: url('../img_s/hero_list_clawhauser.jpg');">
         <a href="./hero/CLAWHAUSER.htm">클로하우저</a>
       </td>
@@ -5321,7 +5553,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE SKILL_POWER_INCREASE EVASION_DECREASE TENACITY_DECREASE">
       <td style="background-image: url('../img_s/hero_list_honey_lemon.jpg');">
         <a href="./hero/HONEY_LEMON.htm">허니 레몬</a>
       </td>
@@ -5341,7 +5573,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE MAX_HP_INCREASE NORMAL_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_clawhauser.jpg');">
         <a href="./hero/CLAWHAUSER.htm">클로하우저</a>
       </td>
@@ -5361,7 +5593,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ARMOR_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_captain_amelia.jpg');">
         <a href="./hero/CAPTAIN_AMELIA.htm">아멜리아 선장</a>
       </td>
@@ -5382,7 +5614,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_DECREASE STUDY">
       <td style="background-image: url('../img_s/hero_list_john_silver.jpg');">
         <a href="./hero/JOHN_SILVER.htm">존 실버</a>
       </td>
@@ -5402,7 +5634,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE REMOVE_BUFF">
       <td style="background-image: url('../img_s/hero_list_swedish_chef.jpg');">
         <a href="./hero/SWEDISH_CHEF.htm">스웨디시 셰프</a>
       </td>
@@ -5422,7 +5654,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_DECREASE ARMOR_DECREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_jim_hawkins.jpg');">
         <a href="./hero/JIM_HAWKINS.htm">짐 호킨스</a>
       </td>
@@ -5443,7 +5675,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE NORMAL_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_honey_lemon.jpg');">
         <a href="./hero/HONEY_LEMON.htm">허니 레몬</a>
       </td>
@@ -5463,7 +5695,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE SKILL_POWER_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_kermit.jpg');">
         <a href="./hero/KERMIT.htm">커밋</a>
       </td>
@@ -5483,7 +5715,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE ARMOR_INCREASE FANTASTIC_DAMAGE DAMAGE_OVER_TIME FATIGUE">
       <td style="background-image: url('../img_s/hero_list_swedish_chef.jpg');">
         <a href="./hero/SWEDISH_CHEF.htm">스웨디시 셰프</a>
       </td>
@@ -5507,7 +5739,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE REALITY_INCREASE BERSERK">
       <td style="background-image: url('../img_s/hero_list_john_silver.jpg');">
         <a href="./hero/JOHN_SILVER.htm">존 실버</a>
       </td>
@@ -5527,7 +5759,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE ARMOR_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kermit.jpg');">
         <a href="./hero/KERMIT.htm">커밋</a>
       </td>
@@ -5548,7 +5780,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE HEAL_TEAM">
       <td style="background-image: url('../img_s/hero_list_hamm.jpg');">
         <a href="./hero/HAMM.htm">햄</a>
       </td>
@@ -5568,7 +5800,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_DECREASE MAX_HP_INCREASE TENACITY_DECREASE EVASION_DECREASE">
       <td style="background-image: url('../img_s/hero_list_hamm.jpg');">
         <a href="./hero/HAMM.htm">햄</a>
       </td>
@@ -5591,7 +5823,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="TRUE_DAMAGE SKILL_POWER_INCREASE ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_wasabi.jpg');">
         <a href="./hero/WASABI.htm">와사비</a>
       </td>
@@ -5612,7 +5844,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE REALITY_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_wasabi.jpg');">
         <a href="./hero/WASABI.htm">와사비</a>
       </td>
@@ -5632,7 +5864,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="TRUE_DAMAGE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_rocketeer.jpg');">
         <a href="./hero/ROCKETEER.htm">로케티어</a>
       </td>
@@ -5657,7 +5889,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE REALITY_INCREASE SKILL_POWER_INCREASE SILENCE">
       <td style="background-image: url('../img_s/hero_list_rocketeer.jpg');">
         <a href="./hero/ROCKETEER.htm">로케티어</a>
       </td>
@@ -5678,7 +5910,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE SKILL_POWER_INCREASE INVINCIBLE">
       <td style="background-image: url('../img_s/hero_list_kronk.jpg');">
         <a href="./hero/KRONK.htm">크롱크</a>
       </td>
@@ -5698,7 +5930,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_mrbig_koslov.jpg');">
         <a href="./hero/MR_BIG_AND_KOSLOV.htm">미스터 빅과 코슬로프</a>
       </td>
@@ -5719,7 +5951,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE DAMAGE_INCREASE WEAKNESS">
       <td style="background-image: url('../img_s/hero_list_demona.jpg');">
         <a href="./hero/DEMONA.htm">데모나</a>
       </td>
@@ -5739,7 +5971,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_demona.jpg');">
         <a href="./hero/DEMONA.htm">데모나</a>
       </td>
@@ -5758,7 +5990,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_DECREASE REALITY_DECREASE SILENCE">
       <td style="background-image: url('../img_s/hero_list_dr_drakken.jpg');">
         <a href="./hero/DR_DRAKKEN.htm">드라켄 박사</a>
       </td>
@@ -5779,7 +6011,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_mrbig_koslov.jpg');">
         <a href="./hero/MR_BIG_AND_KOSLOV.htm">미스터 빅과 코슬로프</a>
       </td>
@@ -5799,7 +6031,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_DECREASE REALITY_INCREASE REFLECT">
       <td style="background-image: url('../img_s/hero_list_dr_drakken.jpg');">
         <a href="./hero/DR_DRAKKEN.htm">드라켄 박사</a>
       </td>
@@ -5819,7 +6051,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE ENERGIZE">
       <td style="background-image: url('../img_s/hero_list_barley_lightfoot.jpg');">
         <a href="./hero/BARLEY_LIGHTFOOT.htm">발리 라이트풋</a>
       </td>
@@ -5839,7 +6071,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE MOVE_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_fairy_godmother.jpg');">
         <a href="./hero/FAIRY_GODMOTHER.htm">요정 대모</a>
       </td>
@@ -5859,7 +6091,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE REALITY_INCREASE ENERGY_REMOVAL ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_pocahontas.jpg');">
         <a href="./hero/POCAHONTAS.htm">포카혼타스</a>
       </td>
@@ -5880,7 +6112,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE ARMOR_DECREASE">
       <td style="background-image: url('../img_s/hero_list_barley_lightfoot.jpg');">
         <a href="./hero/BARLEY_LIGHTFOOT.htm">발리 라이트풋</a>
       </td>
@@ -5900,7 +6132,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE SKILL_POWER_DECREASE REDUCED_DAMAGE_TAKEN">
       <td style="background-image: url('../img_s/hero_list_fairy_godmother.jpg');">
         <a href="./hero/FAIRY_GODMOTHER.htm">요정 대모</a>
       </td>
@@ -5921,7 +6153,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE DAMAGE_INCREASE ARMOR_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_pocahontas.jpg');">
         <a href="./hero/POCAHONTAS.htm">포카혼타스</a>
       </td>
@@ -5942,7 +6174,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE MAX_HP_INCREASE SILENCE">
       <td style="background-image: url('../img_s/hero_list_carl.jpg');">
         <a href="./hero/CARL.htm">칼</a>
       </td>
@@ -5963,7 +6195,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE REALITY_DECREASE ENERGY_REMOVAL">
       <td style="background-image: url('../img_s/hero_list_fozzie.jpg');">
         <a href="./hero/FOZZIE.htm">포지 베어</a>
       </td>
@@ -5983,7 +6215,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_russell_and_kevin.jpg');">
         <a href="./hero/RUSSELL_AND_KEVIN.htm">러셀과 케빈</a>
       </td>
@@ -6007,7 +6239,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE REALITY_INCREASE HEAL_SELF">
       <td style="background-image: url('../img_s/hero_list_carl.jpg');">
         <a href="./hero/CARL.htm">칼</a>
       </td>
@@ -6027,7 +6259,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="REALITY_INCREASE ARMOR_INCREASE SHIELD_SELF SHIELD_TEAM">
       <td style="background-image: url('../img_s/hero_list_russell_and_kevin.jpg');">
         <a href="./hero/RUSSELL_AND_KEVIN.htm">러셀과 케빈</a>
       </td>
@@ -6047,7 +6279,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_fozzie.jpg');">
         <a href="./hero/FOZZIE.htm">포지 베어</a>
       </td>
@@ -6067,7 +6299,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE ARMOR_INCREASE BLIND">
       <td style="background-image: url('../img_s/hero_list_esmeralda.jpg');">
         <a href="./hero/ESMERALDA.htm">에스메랄다</a>
       </td>
@@ -6087,7 +6319,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_esmeralda.jpg');">
         <a href="./hero/ESMERALDA.htm">에스메랄다</a>
       </td>
@@ -6107,7 +6339,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_DECREASE DAMAGE_DECREASE TRUE_DAMAGE">
       <td style="background-image: url('../img_s/hero_list_sheriff_of_nottingham.jpg');">
         <a href="./hero/SHERIFF_OF_NOTTINGHAM.htm">노팅햄의 지방관</a>
       </td>
@@ -6129,7 +6361,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE ARMOR_INCREASE">
       <td style="background-image: url('../img_s/hero_list_sheriff_of_nottingham.jpg');">
         <a href="./hero/SHERIFF_OF_NOTTINGHAM.htm">노팅햄의 지방관</a>
       </td>
@@ -6149,7 +6381,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="FANTASTIC_DAMAGE DAMAGE_INCREASE ATTACK_SPEED_INCREASE FANTASTIC_CRIT_INCREASE">
       <td style="background-image: url('../img_s/hero_list_shego.jpg');">
         <a href="./hero/SHEGO.htm">쉬고</a>
       </td>
@@ -6174,7 +6406,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE REMOVE_BUFF">
       <td style="background-image: url('../img_s/hero_list_shego.jpg');">
         <a href="./hero/SHEGO.htm">쉬고</a>
       </td>
@@ -6194,7 +6426,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_ron_stoppable.jpg');">
         <a href="./hero/RON_STOPPABLE.htm">론 스타퍼블</a>
       </td>
@@ -6215,7 +6447,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE HEAL_SELF ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_ron_stoppable.jpg');">
         <a href="./hero/RON_STOPPABLE.htm">론 스타퍼블</a>
       </td>
@@ -6235,7 +6467,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE">
       <td style="background-image: url('../img_s/hero_list_quackerjack.jpg');">
         <a href="./hero/QUACKERJACK.htm">떠버리 잭</a>
       </td>
@@ -6256,7 +6488,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE SKILL_POWER_INCREASE DAMAGE_DECREASE SAP">
       <td style="background-image: url('../img_s/hero_list_quackerjack.jpg');">
         <a href="./hero/QUACKERJACK.htm">떠버리 잭</a>
       </td>
@@ -6277,7 +6509,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="HEAL_SELF DAMAGE_INCREASE HARDY">
       <td style="background-image: url('../img_s/hero_list_gogo.jpg');">
         <a href="./hero/GO_GO.htm">고고</a>
       </td>
@@ -6301,7 +6533,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_gogo.jpg');">
         <a href="./hero/GO_GO.htm">고고</a>
       </td>
@@ -6321,7 +6553,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="NORMAL_DAMAGE DAMAGE_OVER_TIME REALITY_INCREASE BLIND">
       <td style="background-image: url('../img_s/hero_list_vinny_santorini.jpg');">
         <a href="./hero/VINNY_SANTORINI.htm">비니 산토리니</a>
       </td>
@@ -6341,7 +6573,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_vinny_santorini.jpg');">
         <a href="./hero/VINNY_SANTORINI.htm">비니 산토리니</a>
       </td>
@@ -6362,7 +6594,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE NORMAL_DAMAGE KNOCKBACK SNARE">
       <td style="background-image: url('../img_s/hero_list_gadget.jpg');">
         <a href="./hero/GADGET_HACKWRENCH.htm">가제트</a>
       </td>
@@ -6382,7 +6614,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE SNARE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_gadget.jpg');">
         <a href="./hero/GADGET_HACKWRENCH.htm">가제트</a>
       </td>
@@ -6402,7 +6634,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="ARMOR_INCREASE REALITY_INCREASE">
       <td style="background-image: url('../img_s/hero_list_fred.jpg');">
         <a href="./hero/FRED_FREDERICKSON.htm">프레드</a>
       </td>
@@ -6422,7 +6654,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="MAX_HP_INCREASE DAMAGE_INCREASE ENERGY_REMOVAL">
       <td style="background-image: url('../img_s/hero_list_fred.jpg');">
         <a href="./hero/FRED_FREDERICKSON.htm">프레드</a>
       </td>
@@ -6442,7 +6674,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="SKILL_POWER_INCREASE MAX_HP_INCREASE NORMAL_DAMAGE STUN SAP">
       <td style="background-image: url('../img_s/hero_list_chip_and_dale.jpg');">
         <a href="./hero/CHIP_AND_DALE.htm">칩과 데일</a>
       </td>
@@ -6467,7 +6699,7 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
-    <tr>
+    <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ENERGY_SELF">
       <td style="background-image: url('../img_s/hero_list_chip_and_dale.jpg');">
         <a href="./hero/CHIP_AND_DALE.htm">칩과 데일</a>
       </td>

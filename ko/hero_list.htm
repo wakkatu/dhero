@@ -3,12 +3,20 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../main.css?1627921219">
-<link rel="stylesheet" href="../star.css?1627921219">
-<link rel="stylesheet" href="../unit.css?1627921219">
+<link rel="stylesheet" href="../main.css?1628417297">
+<link rel="stylesheet" href="../star.css?1628417297">
+<link rel="stylesheet" href="../unit.css?1628417297">
 <title>영웅 - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Disney Heroes 배틀 모드에에 오신 것을 환영합니다!">
 <style>
+li[data-tag] {
+  display: none;
+}
+
+li[data-tag=""] {
+  display: inline;
+}
+
 .unit-brief-list .section {
   background-repeat: no-repeat;
   background-position: right top;
@@ -22,6 +30,10 @@
   height: 160px;
   overflow-y: hidden;
   resize: vertical;
+}
+
+.unit-filter-nav {
+  margin: 0 0 5px 0;
 }
 
 .unit-filter-content {
@@ -40,7 +52,7 @@
   text-shadow: 0px 0px 2px yellow;
 }
 </style>
-<script src="../util.js?1627921219"></script>
+<script src="../util.js?1628417297"></script>
 <script>
 var filter_group_map = {
   'POSITION_FRONT': 'position',
@@ -59,10 +71,33 @@ var filter_group_map = {
 };
 
 var filter = null;
+var cssRuleLi = null;
+
+for (const styleSheet of document.styleSheets) {
+  if (null !== styleSheet.href) {
+    continue;
+  }
+  for (const cssRule of styleSheet.cssRules) {
+    if (cssRule.selectorText == 'li[data-tag=""]') {
+      cssRuleLi = cssRule;
+    }
+  }
+}
 
 function filterBy(params)
 {
-  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+  let attrSelectorsLi = 'li[data-tag=""]';
+
+  for (const p of params) {
+    if (p[1] === "") {
+      continue;
+    }
+    attrSelectorsLi += ',li[data-tag="' + p[0] + '"]';
+  }
+
+  cssRuleLi.selectorText = attrSelectorsLi;
+
+  let heroObjs = document.getElementsByClassName("unit-brief-list")[0]
       .getElementsByClassName("section");
 
   for (const heroObj of heroObjs)
@@ -169,8 +204,87 @@ function init()
 <div class="section unit-filter-panel">
   <form id="unit-filter">
   <div class="unit-filter-nav">
-    필터
     <input type="button" value="Reset" onclick="this.form.reset(); filter.update()">
+    필터:
+    <ul class="inline-list">
+      <li data-tag="POSITION_FRONT"><label for="unit-tag-POSITION_FRONT">전방</label></li>
+      <li data-tag="POSITION_CENTRAL"><label for="unit-tag-POSITION_CENTRAL">중간</label></li>
+      <li data-tag="POSITION_BACK"><label for="unit-tag-POSITION_BACK">후방</label></li>
+      <li data-tag="RED_TEAM"><label for="unit-tag-RED_TEAM">레드 팀</label></li>
+      <li data-tag="YELLOW_TEAM"><label for="unit-tag-YELLOW_TEAM">옐로우 팀</label></li>
+      <li data-tag="BLUE_TEAM"><label for="unit-tag-BLUE_TEAM">블루 팀</label></li>
+      <li data-tag="TANK_ROLE"><label for="unit-tag-TANK_ROLE">탱커</label></li>
+      <li data-tag="DPS_ROLE"><label for="unit-tag-DPS_ROLE">데미지</label></li>
+      <li data-tag="SUPPORT_ROLE"><label for="unit-tag-SUPPORT_ROLE">서포터</label></li>
+      <li data-tag="CONTROL_ROLE"><label for="unit-tag-CONTROL_ROLE">컨트롤</label></li>
+      <li data-tag="NORMAL_DAMAGE"><label for="unit-tag-NORMAL_DAMAGE">일반 데미지</label></li>
+      <li data-tag="FANTASTIC_DAMAGE"><label for="unit-tag-FANTASTIC_DAMAGE">판타스틱 데미지</label></li>
+      <li data-tag="TRUE_DAMAGE"><label for="unit-tag-TRUE_DAMAGE">트루 데미지</label></li>
+      <li data-tag="STUN"><label for="unit-tag-STUN">기절</label></li>
+      <li data-tag="FREEZE"><label for="unit-tag-FREEZE">냉동</label></li>
+      <li data-tag="BLIND"><label for="unit-tag-BLIND">블라인드</label></li>
+      <li data-tag="SILENCE"><label for="unit-tag-SILENCE">침묵</label></li>
+      <li data-tag="CHARM"><label for="unit-tag-CHARM">현혹</label></li>
+      <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">주의 분산</label></li>
+      <li data-tag="CURSE"><label for="unit-tag-CURSE">저주</label></li>
+      <li data-tag="HEX"><label for="unit-tag-HEX">마법</label></li>
+      <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">에너지 제거</label></li>
+      <li data-tag="SAP"><label for="unit-tag-SAP">기진맥진</label></li>
+      <li data-tag="STUDY"><label for="unit-tag-STUDY">연구</label></li>
+      <li data-tag="SCARE"><label for="unit-tag-SCARE">겁주기</label></li>
+      <li data-tag="SHATTER"><label for="unit-tag-SHATTER">산산조각</label></li>
+      <li data-tag="FATIGUE"><label for="unit-tag-FATIGUE">피로</label></li>
+      <li data-tag="WEAKNESS"><label for="unit-tag-WEAKNESS">약점</label></li>
+      <li data-tag="KNOCKBACK"><label for="unit-tag-KNOCKBACK">밀쳐내기</label></li>
+      <li data-tag="SNARE"><label for="unit-tag-SNARE">덫</label></li>
+      <li data-tag="DAMAGE_OVER_TIME"><label for="unit-tag-DAMAGE_OVER_TIME">지속 데미지</label></li>
+      <li data-tag="REMOVE_BUFF"><label for="unit-tag-REMOVE_BUFF">보너스 제거</label></li>
+      <li data-tag="REDUCED_DAMAGE_DEALT"><label for="unit-tag-REDUCED_DAMAGE_DEALT">주는 데미지 감소</label></li>
+      <li data-tag="HEAL_SELF"><label for="unit-tag-HEAL_SELF">자신 치유</label></li>
+      <li data-tag="HEAL_TEAM"><label for="unit-tag-HEAL_TEAM">팀 치유</label></li>
+      <li data-tag="HEAL_OVER_TIME_SELF"><label for="unit-tag-HEAL_OVER_TIME_SELF">자신 지속 치유</label></li>
+      <li data-tag="HEAL_OVER_TIME_TEAM"><label for="unit-tag-HEAL_OVER_TIME_TEAM">팀 지속 치유</label></li>
+      <li data-tag="SHIELD_SELF"><label for="unit-tag-SHIELD_SELF">자신 쉴드</label></li>
+      <li data-tag="SHIELD_TEAM"><label for="unit-tag-SHIELD_TEAM">팀 쉴드</label></li>
+      <li data-tag="REVIVE_SELF"><label for="unit-tag-REVIVE_SELF">자신 부활</label></li>
+      <li data-tag="ENERGY_SELF"><label for="unit-tag-ENERGY_SELF">자신 에너지</label></li>
+      <li data-tag="ENERGY_TEAM"><label for="unit-tag-ENERGY_TEAM">팀 에너지</label></li>
+      <li data-tag="ENERGIZE"><label for="unit-tag-ENERGIZE">활기 충전</label></li>
+      <li data-tag="HARDY"><label for="unit-tag-HARDY">견고</label></li>
+      <li data-tag="CLEANSE"><label for="unit-tag-CLEANSE">정화</label></li>
+      <li data-tag="COPY_BUFF"><label for="unit-tag-COPY_BUFF">보너스 복사</label></li>
+      <li data-tag="REFLECT"><label for="unit-tag-REFLECT">반사</label></li>
+      <li data-tag="BERSERK"><label for="unit-tag-BERSERK">광폭화</label></li>
+      <li data-tag="REDUCED_DAMAGE_TAKEN"><label for="unit-tag-REDUCED_DAMAGE_TAKEN">받는 데미지 감소</label></li>
+      <li data-tag="INVINCIBLE"><label for="unit-tag-INVINCIBLE">무적</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">회피</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">투명</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">회피</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">투명</label></li>
+      <li data-tag="PRECISE"><label for="unit-tag-PRECISE">정밀</label></li>
+      <li data-tag="ARMOR_DECREASE"><label for="unit-tag-ARMOR_DECREASE">방어 감소</label></li>
+      <li data-tag="REALITY_DECREASE"><label for="unit-tag-REALITY_DECREASE">현실 감소</label></li>
+      <li data-tag="DAMAGE_DECREASE"><label for="unit-tag-DAMAGE_DECREASE">기본 데미지 감소</label></li>
+      <li data-tag="SKILL_POWER_DECREASE"><label for="unit-tag-SKILL_POWER_DECREASE">스킬 파워 감소</label></li>
+      <li data-tag="NORMAL_CRIT_DECREASE"><label for="unit-tag-NORMAL_CRIT_DECREASE">일반 크리티컬 감소</label></li>
+      <li data-tag="ATTACK_SPEED_DECREASE"><label for="unit-tag-ATTACK_SPEED_DECREASE">공격 스피드 감소</label></li>
+      <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">이동 스피드 감소</label></li>
+      <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">회피 감소</label></li>
+      <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">끈기 감소</label></li>
+      <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">최대 HP 감소</label></li>
+      <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">방어 증가</label></li>
+      <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">현실 증가</label></li>
+      <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">기본 데미지 증가</label></li>
+      <li data-tag="SKILL_POWER_INCREASE"><label for="unit-tag-SKILL_POWER_INCREASE">스킬 파워 증가</label></li>
+      <li data-tag="NORMAL_CRIT_INCREASE"><label for="unit-tag-NORMAL_CRIT_INCREASE">일반 크리티컬 증가</label></li>
+      <li data-tag="FANTASTIC_CRIT_INCREASE"><label for="unit-tag-FANTASTIC_CRIT_INCREASE">판타스틱 크리티컬 증가</label></li>
+      <li data-tag="ATTACK_SPEED_INCREASE"><label for="unit-tag-ATTACK_SPEED_INCREASE">공격 스피드 증가</label></li>
+      <li data-tag="MOVE_SPEED_INCREASE"><label for="unit-tag-MOVE_SPEED_INCREASE">이동 스피드 증가</label></li>
+      <li data-tag="EVASION_INCREASE"><label for="unit-tag-EVASION_INCREASE">회피 증가</label></li>
+      <li data-tag="TENACITY_INCREASE"><label for="unit-tag-TENACITY_INCREASE">끈기 증가</label></li>
+      <li data-tag="MAX_HP_INCREASE"><label for="unit-tag-MAX_HP_INCREASE">최대 HP 증가</label></li>
+      <li data-tag="CRIT_DAMAGE_INCREASE"><label for="unit-tag-CRIT_DAMAGE_INCREASE">크리티컬 데미지 증가</label></li>
+    </ul>
   </div>
   <div class="unit-filter-content">
     <fieldset>
@@ -211,11 +325,11 @@ function init()
       <span><input type="checkbox" name="SAP" id="unit-tag-SAP"  onchange="filter.update()"><label for="unit-tag-SAP" title="기진맥진 상태의 유닛은 획득하는 모든 에너지가 절반으로 감소합니다.">기진맥진</label></span>
       <span><input type="checkbox" name="STUDY" id="unit-tag-STUDY"  onchange="filter.update()"><label for="unit-tag-STUDY" title="연구한 적을 상대로 하는 일반 데미지는 항상 크리티컬로 적중합니다.">연구</label></span>
       <span><input type="checkbox" name="SCARE" id="unit-tag-SCARE"  onchange="filter.update()"><label for="unit-tag-SCARE" title="겁먹은 유닛을 상대로 하는 판타스틱 데미지는 항상 크리티컬로 적중합니다.">겁주기</label></span>
-      <span><input type="checkbox" name="PIERCE" id="unit-tag-PIERCE"  onchange="filter.update()"><label for="unit-tag-PIERCE" title="관통된 유닛은 일반 데미지를 받을 때마다 최대 HP의 일정 비율을 트루 데미지로 받습니다.">관통</label></span>
       <span><input type="checkbox" name="SHATTER" id="unit-tag-SHATTER"  onchange="filter.update()"><label for="unit-tag-SHATTER" title="산산조각 상태의 유닛은 판타스틱 데미지를 받을 때마다 최대 HP의 일정 비율을 트루 데미지로 받습니다.">산산조각</label></span>
       <span><input type="checkbox" name="FATIGUE" id="unit-tag-FATIGUE"  onchange="filter.update()"><label for="unit-tag-FATIGUE" title="유닛에게 걸린 피로 중첩 하나당 받는 보너스 하나가 차단됩니다.">피로</label></span>
       <span><input type="checkbox" name="WEAKNESS" id="unit-tag-WEAKNESS"  onchange="filter.update()"><label for="unit-tag-WEAKNESS" title="유닛에게 걸린 약점 중첩 하나당 받는 데미지가 증가합니다.">약점</label></span>
       <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK"  onchange="filter.update()"><label for="unit-tag-KNOCKBACK" title="대상을 일정 거리만큼 밀쳐냅니다.">밀쳐내기</label></span>
+      <span><input type="checkbox" name="SNARE" id="unit-tag-SNARE"  onchange="filter.update()"><label for="unit-tag-SNARE" title="덫에 걸린 적은 이동 스피드가 0%로 감소합니다. 사거리 내에서 기본 공격과 스킬은 계속 사용할 수 있습니다.">덫</label></span>
       <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME"  onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME" title="대상에게 일정 기간에 걸쳐 데미지를 줍니다.">지속 데미지</label></span>
       <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="대상에게서 일정 수량을 보너스를 제거합니다.">보너스 제거</label></span>
       <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT" title="일정 시간 동안 유닛이 주는 데미지가 감소합니다.">주는 데미지 감소</label></span>
@@ -229,7 +343,6 @@ function init()
       <span><input type="checkbox" name="SHIELD_SELF" id="unit-tag-SHIELD_SELF"  onchange="filter.update()"><label for="unit-tag-SHIELD_SELF" title="자신에게 쉴드를 부여합니다.">자신 쉴드</label></span>
       <span><input type="checkbox" name="SHIELD_TEAM" id="unit-tag-SHIELD_TEAM"  onchange="filter.update()"><label for="unit-tag-SHIELD_TEAM" title="최소 한 명의 동료에게 쉴드를 부여합니다.">팀 쉴드</label></span>
       <span><input type="checkbox" name="REVIVE_SELF" id="unit-tag-REVIVE_SELF"  onchange="filter.update()"><label for="unit-tag-REVIVE_SELF" title="KO된 자신을 부활시킬 수 있습니다.">자신 부활</label></span>
-      <span><input type="checkbox" name="REVIVE_TEAM" id="unit-tag-REVIVE_TEAM"  onchange="filter.update()"><label for="unit-tag-REVIVE_TEAM" title="KO된 최소 한 명의 동료를 부활시킬 수 있습니다.">팀 부활</label></span>
       <span><input type="checkbox" name="ENERGY_SELF" id="unit-tag-ENERGY_SELF"  onchange="filter.update()"><label for="unit-tag-ENERGY_SELF" title="자신에게 에너지를 부여합니다.">자신 에너지</label></span>
       <span><input type="checkbox" name="ENERGY_TEAM" id="unit-tag-ENERGY_TEAM"  onchange="filter.update()"><label for="unit-tag-ENERGY_TEAM" title="최소 한 명의 동료에게 에너지를 부여할 수 있습니다.">팀 에너지</label></span>
       <span><input type="checkbox" name="ENERGIZE" id="unit-tag-ENERGIZE"  onchange="filter.update()"><label for="unit-tag-ENERGIZE" title="활력 상태의 유닛은 기본 공격을 할 때마다 추가 에너지를 얻습니다.">활기 충전</label></span>
@@ -253,13 +366,11 @@ function init()
       <span><input type="checkbox" name="DAMAGE_DECREASE" id="unit-tag-DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-DAMAGE_DECREASE" title="기본 데미지가 감소합니다.">기본 데미지 감소</label></span>
       <span><input type="checkbox" name="SKILL_POWER_DECREASE" id="unit-tag-SKILL_POWER_DECREASE"  onchange="filter.update()"><label for="unit-tag-SKILL_POWER_DECREASE" title="스킬 파워가 감소합니다.">스킬 파워 감소</label></span>
       <span><input type="checkbox" name="NORMAL_CRIT_DECREASE" id="unit-tag-NORMAL_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_DECREASE" title="일반 크리티컬 확률이 감소합니다.">일반 크리티컬 감소</label></span>
-      <span><input type="checkbox" name="FANTASTIC_CRIT_DECREASE" id="unit-tag-FANTASTIC_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_DECREASE" title="판타스틱 크리티컬 확률이 감소합니다.">판타스틱 크리티컬 감소</label></span>
       <span><input type="checkbox" name="ATTACK_SPEED_DECREASE" id="unit-tag-ATTACK_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_DECREASE" title="공격 스피드가 감소합니다.">공격 스피드 감소</label></span>
       <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="이동 스피드가 감소합니다.">이동 스피드 감소</label></span>
       <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="회피가 감소합니다.">회피 감소</label></span>
       <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="끈기가 감소합니다.">끈기 감소</label></span>
       <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="최대 HP가 감소합니다.">최대 HP 감소</label></span>
-      <span><input type="checkbox" name="CRIT_DAMAGE_DECREASE" id="unit-tag-CRIT_DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-CRIT_DAMAGE_DECREASE" title="크리티컬로 주는 데미지가 감소합니다.">크리티컬 데미지 감소</label></span>
     </fieldset>
     <fieldset>
       <legend class="unit-fltr-grp-name">+ 능력치</legend>

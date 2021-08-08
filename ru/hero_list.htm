@@ -3,12 +3,20 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../main.css?1627921219">
-<link rel="stylesheet" href="../star.css?1627921219">
-<link rel="stylesheet" href="../unit.css?1627921219">
+<link rel="stylesheet" href="../main.css?1628417297">
+<link rel="stylesheet" href="../star.css?1628417297">
+<link rel="stylesheet" href="../unit.css?1628417297">
 <title>Герои - Disney Heroes: Battle Mode Database</title>
 <meta name="description" content="Добро пожаловать в «Disney Heroes: боевой режим»!">
 <style>
+li[data-tag] {
+  display: none;
+}
+
+li[data-tag=""] {
+  display: inline;
+}
+
 .unit-brief-list .section {
   background-repeat: no-repeat;
   background-position: right top;
@@ -22,6 +30,10 @@
   height: 160px;
   overflow-y: hidden;
   resize: vertical;
+}
+
+.unit-filter-nav {
+  margin: 0 0 5px 0;
 }
 
 .unit-filter-content {
@@ -40,7 +52,7 @@
   text-shadow: 0px 0px 2px yellow;
 }
 </style>
-<script src="../util.js?1627921219"></script>
+<script src="../util.js?1628417297"></script>
 <script>
 var filter_group_map = {
   'POSITION_FRONT': 'position',
@@ -59,10 +71,33 @@ var filter_group_map = {
 };
 
 var filter = null;
+var cssRuleLi = null;
+
+for (const styleSheet of document.styleSheets) {
+  if (null !== styleSheet.href) {
+    continue;
+  }
+  for (const cssRule of styleSheet.cssRules) {
+    if (cssRule.selectorText == 'li[data-tag=""]') {
+      cssRuleLi = cssRule;
+    }
+  }
+}
 
 function filterBy(params)
 {
-  var heroObjs = document.getElementsByClassName("unit-brief-list")[0]
+  let attrSelectorsLi = 'li[data-tag=""]';
+
+  for (const p of params) {
+    if (p[1] === "") {
+      continue;
+    }
+    attrSelectorsLi += ',li[data-tag="' + p[0] + '"]';
+  }
+
+  cssRuleLi.selectorText = attrSelectorsLi;
+
+  let heroObjs = document.getElementsByClassName("unit-brief-list")[0]
       .getElementsByClassName("section");
 
   for (const heroObj of heroObjs)
@@ -169,8 +204,87 @@ function init()
 <div class="section unit-filter-panel">
   <form id="unit-filter">
   <div class="unit-filter-nav">
-    Фильтр
     <input type="button" value="Reset" onclick="this.form.reset(); filter.update()">
+    Фильтр:
+    <ul class="inline-list">
+      <li data-tag="POSITION_FRONT"><label for="unit-tag-POSITION_FRONT">Впереди</label></li>
+      <li data-tag="POSITION_CENTRAL"><label for="unit-tag-POSITION_CENTRAL">По центру</label></li>
+      <li data-tag="POSITION_BACK"><label for="unit-tag-POSITION_BACK">Сзади</label></li>
+      <li data-tag="RED_TEAM"><label for="unit-tag-RED_TEAM">Красная команда</label></li>
+      <li data-tag="YELLOW_TEAM"><label for="unit-tag-YELLOW_TEAM">Желтая команда</label></li>
+      <li data-tag="BLUE_TEAM"><label for="unit-tag-BLUE_TEAM">Синяя команда</label></li>
+      <li data-tag="TANK_ROLE"><label for="unit-tag-TANK_ROLE">Танк</label></li>
+      <li data-tag="DPS_ROLE"><label for="unit-tag-DPS_ROLE">Урон</label></li>
+      <li data-tag="SUPPORT_ROLE"><label for="unit-tag-SUPPORT_ROLE">Поддержка</label></li>
+      <li data-tag="CONTROL_ROLE"><label for="unit-tag-CONTROL_ROLE">Контроль</label></li>
+      <li data-tag="NORMAL_DAMAGE"><label for="unit-tag-NORMAL_DAMAGE">Нормальный урон</label></li>
+      <li data-tag="FANTASTIC_DAMAGE"><label for="unit-tag-FANTASTIC_DAMAGE">Фантастический урон</label></li>
+      <li data-tag="TRUE_DAMAGE"><label for="unit-tag-TRUE_DAMAGE">Истинный урон</label></li>
+      <li data-tag="STUN"><label for="unit-tag-STUN">Оглушение</label></li>
+      <li data-tag="FREEZE"><label for="unit-tag-FREEZE">Заморозка</label></li>
+      <li data-tag="BLIND"><label for="unit-tag-BLIND">Слепота</label></li>
+      <li data-tag="SILENCE"><label for="unit-tag-SILENCE">Молчание</label></li>
+      <li data-tag="CHARM"><label for="unit-tag-CHARM">Очарование</label></li>
+      <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">Отвлечение</label></li>
+      <li data-tag="CURSE"><label for="unit-tag-CURSE">Проклятие</label></li>
+      <li data-tag="HEX"><label for="unit-tag-HEX">Чары</label></li>
+      <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">Потеря энергии</label></li>
+      <li data-tag="SAP"><label for="unit-tag-SAP">Иссушение</label></li>
+      <li data-tag="STUDY"><label for="unit-tag-STUDY">Изучение</label></li>
+      <li data-tag="SCARE"><label for="unit-tag-SCARE">Страх</label></li>
+      <li data-tag="SHATTER"><label for="unit-tag-SHATTER">Надлом</label></li>
+      <li data-tag="FATIGUE"><label for="unit-tag-FATIGUE">Усталость</label></li>
+      <li data-tag="WEAKNESS"><label for="unit-tag-WEAKNESS">Слабость</label></li>
+      <li data-tag="KNOCKBACK"><label for="unit-tag-KNOCKBACK">Отбрасывание</label></li>
+      <li data-tag="SNARE"><label for="unit-tag-SNARE">Ловушка</label></li>
+      <li data-tag="DAMAGE_OVER_TIME"><label for="unit-tag-DAMAGE_OVER_TIME">Постепенный урон</label></li>
+      <li data-tag="REMOVE_BUFF"><label for="unit-tag-REMOVE_BUFF">Снятие усиления</label></li>
+      <li data-tag="REDUCED_DAMAGE_DEALT"><label for="unit-tag-REDUCED_DAMAGE_DEALT">Уменьшение нанесенного урона</label></li>
+      <li data-tag="HEAL_SELF"><label for="unit-tag-HEAL_SELF">Лечение себя</label></li>
+      <li data-tag="HEAL_TEAM"><label for="unit-tag-HEAL_TEAM">Лечение команды</label></li>
+      <li data-tag="HEAL_OVER_TIME_SELF"><label for="unit-tag-HEAL_OVER_TIME_SELF">Длительное исцеление себя</label></li>
+      <li data-tag="HEAL_OVER_TIME_TEAM"><label for="unit-tag-HEAL_OVER_TIME_TEAM">Длительное исцеление команды</label></li>
+      <li data-tag="SHIELD_SELF"><label for="unit-tag-SHIELD_SELF">Защита себя</label></li>
+      <li data-tag="SHIELD_TEAM"><label for="unit-tag-SHIELD_TEAM">Защита команды</label></li>
+      <li data-tag="REVIVE_SELF"><label for="unit-tag-REVIVE_SELF">Возрождение себя</label></li>
+      <li data-tag="ENERGY_SELF"><label for="unit-tag-ENERGY_SELF">Энергия себе</label></li>
+      <li data-tag="ENERGY_TEAM"><label for="unit-tag-ENERGY_TEAM">Энергия команде</label></li>
+      <li data-tag="ENERGIZE"><label for="unit-tag-ENERGIZE">Активация</label></li>
+      <li data-tag="HARDY"><label for="unit-tag-HARDY">Двужильный</label></li>
+      <li data-tag="CLEANSE"><label for="unit-tag-CLEANSE">Очищение</label></li>
+      <li data-tag="COPY_BUFF"><label for="unit-tag-COPY_BUFF">Копирование усиления</label></li>
+      <li data-tag="REFLECT"><label for="unit-tag-REFLECT">Отражение</label></li>
+      <li data-tag="BERSERK"><label for="unit-tag-BERSERK">Берсерк</label></li>
+      <li data-tag="REDUCED_DAMAGE_TAKEN"><label for="unit-tag-REDUCED_DAMAGE_TAKEN">Уменьшение полученного урона</label></li>
+      <li data-tag="INVINCIBLE"><label for="unit-tag-INVINCIBLE">Неуязвимость</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">Уклонение</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">Невидимость</label></li>
+      <li data-tag="DODGE"><label for="unit-tag-DODGE">Уклонение</label></li>
+      <li data-tag="INVISIBLE"><label for="unit-tag-INVISIBLE">Невидимость</label></li>
+      <li data-tag="PRECISE"><label for="unit-tag-PRECISE">Точность</label></li>
+      <li data-tag="ARMOR_DECREASE"><label for="unit-tag-ARMOR_DECREASE">Понижение брони</label></li>
+      <li data-tag="REALITY_DECREASE"><label for="unit-tag-REALITY_DECREASE">Понижение реальности</label></li>
+      <li data-tag="DAMAGE_DECREASE"><label for="unit-tag-DAMAGE_DECREASE">Понижение базового урона</label></li>
+      <li data-tag="SKILL_POWER_DECREASE"><label for="unit-tag-SKILL_POWER_DECREASE">Понижение силы навыка</label></li>
+      <li data-tag="NORMAL_CRIT_DECREASE"><label for="unit-tag-NORMAL_CRIT_DECREASE">Понижение нормального крит. удара</label></li>
+      <li data-tag="ATTACK_SPEED_DECREASE"><label for="unit-tag-ATTACK_SPEED_DECREASE">Понижение скорости атаки</label></li>
+      <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">Понижение скорости движения</label></li>
+      <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">Понижение избежания</label></li>
+      <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">Понижение стойкости</label></li>
+      <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">Снижение макс. HP</label></li>
+      <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">Повышение брони</label></li>
+      <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">Повышение реальности</label></li>
+      <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">Повышение базового урона</label></li>
+      <li data-tag="SKILL_POWER_INCREASE"><label for="unit-tag-SKILL_POWER_INCREASE">Повышение силы навыка</label></li>
+      <li data-tag="NORMAL_CRIT_INCREASE"><label for="unit-tag-NORMAL_CRIT_INCREASE">Повышение нормального крит. удара</label></li>
+      <li data-tag="FANTASTIC_CRIT_INCREASE"><label for="unit-tag-FANTASTIC_CRIT_INCREASE">Повышение фантастического крит. удара</label></li>
+      <li data-tag="ATTACK_SPEED_INCREASE"><label for="unit-tag-ATTACK_SPEED_INCREASE">Повышение скорости атаки</label></li>
+      <li data-tag="MOVE_SPEED_INCREASE"><label for="unit-tag-MOVE_SPEED_INCREASE">Скорость движения повышена</label></li>
+      <li data-tag="EVASION_INCREASE"><label for="unit-tag-EVASION_INCREASE">Повышение избежания</label></li>
+      <li data-tag="TENACITY_INCREASE"><label for="unit-tag-TENACITY_INCREASE">Повышение стойкости</label></li>
+      <li data-tag="MAX_HP_INCREASE"><label for="unit-tag-MAX_HP_INCREASE">Увеличение макс. HP</label></li>
+      <li data-tag="CRIT_DAMAGE_INCREASE"><label for="unit-tag-CRIT_DAMAGE_INCREASE">Повышение критического урона</label></li>
+    </ul>
   </div>
   <div class="unit-filter-content">
     <fieldset>
@@ -211,11 +325,11 @@ function init()
       <span><input type="checkbox" name="SAP" id="unit-tag-SAP"  onchange="filter.update()"><label for="unit-tag-SAP" title="Количество энергии, получаемой иссушенными бойцами, снижается наполовину.">Иссушение</label></span>
       <span><input type="checkbox" name="STUDY" id="unit-tag-STUDY"  onchange="filter.update()"><label for="unit-tag-STUDY" title="Атаки, которые наносят нормальный урон, всегда наносят критический удар изученным врагам.">Изучение</label></span>
       <span><input type="checkbox" name="SCARE" id="unit-tag-SCARE"  onchange="filter.update()"><label for="unit-tag-SCARE" title="Атаки, которые наносят фантастический урон, всегда наносят критический удар испуганным врагам.">Страх</label></span>
-      <span><input type="checkbox" name="PIERCE" id="unit-tag-PIERCE"  onchange="filter.update()"><label for="unit-tag-PIERCE" title="Каждый раз, когда пробитые бойцы получают нормальный урон, определенный процент их максимума HP применяется к ним как истинный урон.">Пробивание</label></span>
       <span><input type="checkbox" name="SHATTER" id="unit-tag-SHATTER"  onchange="filter.update()"><label for="unit-tag-SHATTER" title="Каждый раз, когда надломленные бойцы получают фантастический урон, определенный процент их максимума HP применяется к ним как истинный урон.">Надлом</label></span>
       <span><input type="checkbox" name="FATIGUE" id="unit-tag-FATIGUE"  onchange="filter.update()"><label for="unit-tag-FATIGUE" title="Каждый уровень «Усталости» на бойце блокирует одно накладываемое усиление.">Усталость</label></span>
       <span><input type="checkbox" name="WEAKNESS" id="unit-tag-WEAKNESS"  onchange="filter.update()"><label for="unit-tag-WEAKNESS" title="Боец получает больше урона за каждый уровень «Слабости».">Слабость</label></span>
       <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK"  onchange="filter.update()"><label for="unit-tag-KNOCKBACK" title="Отбрасывает цель назад на определенное расстояние.">Отбрасывание</label></span>
+      <span><input type="checkbox" name="SNARE" id="unit-tag-SNARE"  onchange="filter.update()"><label for="unit-tag-SNARE" title="Скорость передвижения пойманных в ловушку врагов сокращается до 0%. Они все еще могут использовать базовые атаки и навыки в зоне их действия.">Ловушка</label></span>
       <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME"  onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME" title="Урон наносится цели в течение какого-то времени.">Постепенный урон</label></span>
       <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="Отнимает у цели определенное количество усилений.">Снятие усиления</label></span>
       <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT" title="В течение определенного времени боец наносит уменьшенный урон.">Уменьшение нанесенного урона</label></span>
@@ -229,7 +343,6 @@ function init()
       <span><input type="checkbox" name="SHIELD_SELF" id="unit-tag-SHIELD_SELF"  onchange="filter.update()"><label for="unit-tag-SHIELD_SELF" title="Защищает себя.">Защита себя</label></span>
       <span><input type="checkbox" name="SHIELD_TEAM" id="unit-tag-SHIELD_TEAM"  onchange="filter.update()"><label for="unit-tag-SHIELD_TEAM" title="Закрывает щитом по крайней мере одного союзника.">Защита команды</label></span>
       <span><input type="checkbox" name="REVIVE_SELF" id="unit-tag-REVIVE_SELF"  onchange="filter.update()"><label for="unit-tag-REVIVE_SELF" title="Может вернуться к жизни после нокаута.">Возрождение себя</label></span>
-      <span><input type="checkbox" name="REVIVE_TEAM" id="unit-tag-REVIVE_TEAM"  onchange="filter.update()"><label for="unit-tag-REVIVE_TEAM" title="Может вернуть к жизни после нокаута по крайней мере одного союзника.">Возрождение команды</label></span>
       <span><input type="checkbox" name="ENERGY_SELF" id="unit-tag-ENERGY_SELF"  onchange="filter.update()"><label for="unit-tag-ENERGY_SELF" title="Дает энергию себе.">Энергия себе</label></span>
       <span><input type="checkbox" name="ENERGY_TEAM" id="unit-tag-ENERGY_TEAM"  onchange="filter.update()"><label for="unit-tag-ENERGY_TEAM" title="Может дать энергию по крайней мере одному союзнику.">Энергия команде</label></span>
       <span><input type="checkbox" name="ENERGIZE" id="unit-tag-ENERGIZE"  onchange="filter.update()"><label for="unit-tag-ENERGIZE" title="Энергичные бойцы получают больше энергии за каждую базовую атаку.">Активация</label></span>
@@ -253,13 +366,11 @@ function init()
       <span><input type="checkbox" name="DAMAGE_DECREASE" id="unit-tag-DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-DAMAGE_DECREASE" title="Базовый урон понижен.">Понижение базового урона</label></span>
       <span><input type="checkbox" name="SKILL_POWER_DECREASE" id="unit-tag-SKILL_POWER_DECREASE"  onchange="filter.update()"><label for="unit-tag-SKILL_POWER_DECREASE" title="Сила навыка понижена.">Понижение силы навыка</label></span>
       <span><input type="checkbox" name="NORMAL_CRIT_DECREASE" id="unit-tag-NORMAL_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-NORMAL_CRIT_DECREASE" title="Шанс на нормальный критический удар понижен.">Понижение нормального крит. удара</label></span>
-      <span><input type="checkbox" name="FANTASTIC_CRIT_DECREASE" id="unit-tag-FANTASTIC_CRIT_DECREASE"  onchange="filter.update()"><label for="unit-tag-FANTASTIC_CRIT_DECREASE" title="Шанс на фантастический критический удар понижен.">Понижение фантастического крит. удара</label></span>
       <span><input type="checkbox" name="ATTACK_SPEED_DECREASE" id="unit-tag-ATTACK_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-ATTACK_SPEED_DECREASE" title="Скорость атаки снижена.">Понижение скорости атаки</label></span>
       <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="Скорость движения снижена.">Понижение скорости движения</label></span>
       <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="Значение избежания снижено.">Понижение избежания</label></span>
       <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="Значение стойкости снижено.">Понижение стойкости</label></span>
       <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="Максимум HP снижен.">Снижение макс. HP</label></span>
-      <span><input type="checkbox" name="CRIT_DAMAGE_DECREASE" id="unit-tag-CRIT_DAMAGE_DECREASE"  onchange="filter.update()"><label for="unit-tag-CRIT_DAMAGE_DECREASE" title="Урон от критических ударов снижен.">Снижение критического урона</label></span>
     </fieldset>
     <fieldset>
       <legend class="unit-fltr-grp-name">полож. параметры</legend>
