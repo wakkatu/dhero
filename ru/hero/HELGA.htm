@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Отбрасывает цель назад на определенное расстояние."><a href="../hero_list.htm?KNOCKBACK=on">Отбрасывание</a></li>
           <li title="Боец получает больше урона за каждый уровень «Слабости»."><a href="../hero_list.htm?WEAKNESS=on">Слабость</a></li>
           <li title="Скорость передвижения пойманных в ловушку врагов сокращается до 0%. Они все еще могут использовать базовые атаки и навыки в зоне их действия."><a href="../hero_list.htm?SNARE=on">Ловушка</a></li>
+          <li title="Оглушенные бойцы не могут двигаться, атаковать или использовать навыки."><a href="../hero_list.htm?STUN=on">Оглушение</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">полож. эффекты</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Макс. HP</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">Базовый урон</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">Сила навыка</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Мощный пинок</a></label></h2>
-    <p><span>Хельга встает в защитную стойку, уменьшая получаемый урон на </span><span class="unit-expr-misc">50%</span><span> ед. на </span><span class="unit-expr-misc">3</span><span> сек. или пока она не получит </span><span class="unit-expr-misc">20</span><span> удара(-ов).</span></p>
-    <p><span>При выходе из защитной стойки она пинает ближайшего врага, отталкивая его и нанося </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span> ед. нормального урона и еще </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span> ед. нормального урона за каждый полученный удар.</span></p>
-    <p><span>Если при выходе из стойки рядом с Хельгой нет врагов, она исцеляет себя на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span> HP за каждый полученный удар.</span></p>
+    <p><span>Хельга встает в защитную стойку, уменьшая получаемый урон на </span><span class="unit-expr-misc">100%</span><span> ед. на </span><span class="unit-expr-misc">4</span><span> сек. или пока она не получит </span><span class="unit-expr-misc">5</span><span> удара(-ов).</span></p>
+    <p><span>При выходе из защитной стойки она пинает ближайшего врага, отталкивая его и нанося </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span> ед. нормального урона и еще </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span> ед. нормального урона за каждый полученный удар.</span></p>
+    <p><span>Если при выходе из стойки рядом с Хельгой нет врагов, она исцеляет себя на </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span> HP за каждый полученный удар.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Отталкивание</a></label></h2>
-    <p><span>Хельга бьет врага апперкотом каждые </span><span class="unit-expr-misc">3</span><span> баз. атак(и). При этом враг получает </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span> ед. дополнительного нормального урона, отбрасывается назад и получает </span><span class="unit-expr-misc">5</span><span> ур. «Слабости» на </span><span class="unit-expr-misc">7</span><span> сек.</span></p>
+    <p><span>Хельга бьет врага апперкотом каждые </span><span class="unit-expr-misc">2</span><span> баз. атак(и). При этом враг получает </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span> ед. дополнительного нормального урона, отбрасывается назад и получает </span><span class="unit-expr-misc">5</span><span> ур. «Слабости» на </span><span class="unit-expr-misc">10</span><span> сек.</span></p>
     <p><span>Накладывание уровня «Слабости» может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Острая шпилька</a></label></h2>
-    <p><span>Оттолкнув врага, Хельга наносит </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span> ед. нормального урона и захватывает его в ловушку на </span><span class="unit-expr-misc">7</span><span> сек. своим метательным ножом. Хельга может поймать врага таким способом каждые </span><span class="unit-expr-misc">9</span><span> сек.</span></p>
+    <p><span>Оттолкнув врага, Хельга наносит </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span> ед. нормального урона и захватывает его в ловушку на </span><span class="unit-expr-misc">5</span><span> сек. своим метательным ножом. Хельга может поймать врага таким способом каждые </span><span class="unit-expr-misc">7</span><span> сек.</span></p>
     <p><span>Скорость передвижения пойманных врагов сокращается до 0%. Они все еще могут использовать базовые атаки и навыки в зоне их действия.</span></p>
     <p><span>Ловушка может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Камнепад</a></label></h2>
-    <p><span>Когда Хельга в нокауте, она стреляет вверх сигнальной ракетой, обрушивая на всех врагов камни, которые оглушают их на </span><span class="unit-expr-misc">7</span><span> сек.</span></p>
+    <p><span>Когда Хельга в нокауте, она стреляет вверх сигнальной ракетой, обрушивая на всех врагов камни, которые оглушают их на </span><span class="unit-expr-misc">10</span><span> сек.</span></p>
     <p><span>Оглушение может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Чистая тактика</a></label></h2>
-    <p><span>Когда Хельга использует навык «</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>», теперь она бросает два ножа в цель, нанося урон дважды и захватывая ее в ловушку на </span><span class="unit-expr-misc">2</span><span> сек. дольше.</span></p>
-    <p><span>Скорость передвижения врагов, пойманных в ловушку навыком «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>», снижается на </span><span class="unit-expr-misc">30%</span><span> на </span><span class="unit-expr-misc">3</span><span> сек. после выхода из ловушки.</span></p>
+    <p><span>Когда Хельга использует навык «</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>», теперь она бросает два ножа в цель, нанося урон дважды и захватывая ее в ловушку на </span><span class="unit-expr-misc">5</span><span> сек. дольше.</span></p>
+    <p><span>Скорость передвижения врагов, пойманных в ловушку навыком «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>», снижается на </span><span class="unit-expr-misc">90%</span><span> на </span><span class="unit-expr-misc">8</span><span> сек. после выхода из ловушки.</span></p>
     <p><span>Сокращение скорости передвижения может не подействовать на врагов выше </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> уровня.</span></p>
     <p>Дополнительные усилители параметров:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> ед. нормального урона от навыка «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>»</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> ед. нормального урона от навыка «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>»</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><span>Сократите перезарядку навыка «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>» после использования навыка «</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Отталкивание</a><span>»</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
-      <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span> </span><span class="unit-expr-misc">Броня</span><span>, пока они в ловушке</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+      <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Броня</span><span>, пока они в ловушке</span></li>
       <li></li>
       <li><span>После использования навыка «</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Отталкивание</a><span>» оставшееся время перезарядки навыка «</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Острая шпилька</a><span>» сокращается на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> сек.</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>Берсерк в нокауте</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
-      <li><span>Хельга получает </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span> ед. базового урона, когда становится берсерком.</span></li>
-      <li><span>Один раз за волну, когда Хельга должна отправиться в нокаут, она очищает себя и становится берсерком на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> сек. В состоянии берсерка скорость атаки и передвижения Хельги увеличивается на </span><span class="unit-expr-misc">70%</span><span>. Если Хельга-берсерк отправляет врага в нокаут, она исцеляет себя на </span><span class="unit-expr-misc">50%</span><span> от своего максимума HP и выходит из состояния берсерка.</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
+      <li><span>Хельга получает </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> ед. базового урона, когда становится берсерком.</span></li>
+      <li><span>Один раз за волну, когда Хельга должна отправиться в нокаут, она очищает себя и становится берсерком на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> сек. В состоянии берсерка скорость атаки и передвижения Хельги увеличивается на </span><span class="unit-expr-misc">300%</span><span>. Если Хельга-берсерк отправляет врага в нокаут, она исцеляет себя на </span><span class="unit-expr-misc">100%</span><span> от своего максимума HP и выходит из состояния берсерка.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

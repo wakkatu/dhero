@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Respinge il bersaglio lontano."><a href="../hero_list.htm?KNOCKBACK=on">Respingimento</a></li>
           <li title="Quando un&#39;unità ha un cumulo di Debolezza subirà più danni del normale."><a href="../hero_list.htm?WEAKNESS=on">Debolezza</a></li>
           <li title="I nemici vincolati subiscono una riduzione della velocità di movimento pari a un 0%. Possono ancora usare gli attacchi base e le attività entro il loro raggio d&#39;azione."><a href="../hero_list.htm?SNARE=on">Vincolo</a></li>
+          <li title="Le unità stordite non possono muoversi, attaccare e usare abilità."><a href="../hero_list.htm?STUN=on">Stordimento</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ effetti</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">PS massimi</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">Danni base</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">Potenza abilità</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Calcio potente</a></label></h2>
-    <p><span>Helga assume una posizione di difesa, riducendo i danni che potrebbe subire di un </span><span class="unit-expr-misc">50%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi o finché non viene colpita </span><span class="unit-expr-misc">20</span><span> volte.</span></p>
-    <p><span>Quando cambia posizione, sferra un calcio al nemico più vicino, respingendolo e infliggendogli </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span> danni normali e </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span> danni normali aggiuntivi per ogni colpo che ha ricevuto prima.</span></p>
-    <p><span>Se Helga non ha nemici nelle vicinanze quando cambia posizione, allora si guarisce di </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span> PS per ogni colpo subito.</span></p>
+    <p><span>Helga assume una posizione di difesa, riducendo i danni che potrebbe subire di un </span><span class="unit-expr-misc">100%</span><span> per </span><span class="unit-expr-misc">4</span><span> secondi o finché non viene colpita </span><span class="unit-expr-misc">5</span><span> volte.</span></p>
+    <p><span>Quando cambia posizione, sferra un calcio al nemico più vicino, respingendolo e infliggendogli </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span> danni normali e </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span> danni normali aggiuntivi per ogni colpo che ha ricevuto prima.</span></p>
+    <p><span>Se Helga non ha nemici nelle vicinanze quando cambia posizione, allora si guarisce di </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span> PS per ogni colpo subito.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Pugno di contrattacco</a></label></h2>
-    <p><span>Helga tira un montante al suo bersaglio ogni </span><span class="unit-expr-misc">3</span><span> attacchi base. Quando sferra questo attacco, il nemico subisce </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span> danni normali bonus, viene respinto e si ritrova con </span><span class="unit-expr-misc">5</span><span> cumuli di Debolezza per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <p><span>Helga tira un montante al suo bersaglio ogni </span><span class="unit-expr-misc">2</span><span> attacchi base. Quando sferra questo attacco, il nemico subisce </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span> danni normali bonus, viene respinto e si ritrova con </span><span class="unit-expr-misc">5</span><span> cumuli di Debolezza per </span><span class="unit-expr-misc">10</span><span> secondi.</span></p>
     <p><span>L&#39;applicazione di cumuli di Debolezza può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Lancio del coltello</a></label></h2>
-    <p><span>Quando un nemico viene respinto, Helga gli infligge </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span> danni normali e lo vincola per </span><span class="unit-expr-misc">7</span><span> secondi lanciando il suo coltello. Helga può vincolare un nemico con questo attacco ogni </span><span class="unit-expr-misc">9</span><span> secondi.</span></p>
+    <p><span>Quando un nemico viene respinto, Helga gli infligge </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span> danni normali e lo vincola per </span><span class="unit-expr-misc">5</span><span> secondi lanciando il suo coltello. Helga può vincolare un nemico con questo attacco ogni </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
     <p><span>I nemici vincolati subiscono una riduzione della velocità di movimento pari a un 0%. Possono ancora usare gli attacchi base e le attività entro il loro raggio d&#39;azione.</span></p>
     <p><span>Il vincolo può mancare i bersagli di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Caduta massi</a></label></h2>
-    <p><span>Quando Helga è messa KO, lancia un fuoco di segnalazione in aria che fa cadere dei massi su tutti i nemici, stordendoli per </span><span class="unit-expr-misc">7</span><span> secondi.</span></p>
+    <p><span>Quando Helga è messa KO, lancia un fuoco di segnalazione in aria che fa cadere dei massi su tutti i nemici, stordendoli per </span><span class="unit-expr-misc">10</span><span> secondi.</span></p>
     <p><span>Lo stordimento può non avere effetto sui nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Tattica pura</a></label></h2>
-    <p><span>Quando Helga usa &#34;</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34;, scaglia due pugnali contro il suo bersaglio, infliggendo il doppio dei danni e vincolandolo per </span><span class="unit-expr-misc">2</span><span> secondi in più.</span></p>
-    <p><span>I nemici vincolati da &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span>&#34; subiscono una riduzione della velocità di movimento pari a un </span><span class="unit-expr-misc">30%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi dopo la fine del vincolo.</span></p>
+    <p><span>Quando Helga usa &#34;</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34;, scaglia due pugnali contro il suo bersaglio, infliggendo il doppio dei danni e vincolandolo per </span><span class="unit-expr-misc">5</span><span> secondi in più.</span></p>
+    <p><span>I nemici vincolati da &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span>&#34; subiscono una riduzione della velocità di movimento pari a un </span><span class="unit-expr-misc">90%</span><span> per </span><span class="unit-expr-misc">8</span><span> secondi dopo la fine del vincolo.</span></p>
     <p><span>La riduzione della velocità di movimento può fallire contro nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <p>Incrementi statistiche aggiuntivi:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> danni normali a &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span><span> </span><span class="unit-expr-misc">Danni base</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> danni normali a &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Danni base</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><span>Riduce il tempo di ricarica di </span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span> dopo aver usato </span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Pugno di contrattacco</a></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
-      <li><span>I nemici perdono </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span> </span><span class="unit-expr-misc">Armatura</span><span> mentre sono vincolati</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
+      <li><span>I nemici perdono </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Armatura</span><span> mentre sono vincolati</span></li>
       <li></li>
       <li><span>Dopo aver usato &#34;</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Pugno di contrattacco</a><span>&#34;, il tempo di ricarica di &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Lancio del coltello</a><span>&#34; diminuisce di </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> secondi</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>Fuori di testa quando KO</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">PS massimi</span></li>
-      <li><span>Helga ottiene </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span> danni base mentre è fuori di testa</span></li>
-      <li><span>Una volta a ondata, quando dovrebbe essere KO, Helga esegue un reset su se stessa e va fuori di testa per </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> secondi; Helga ottiene un </span><span class="unit-expr-misc">70%</span><span> in più alla velocità di attacco e di movimento mentre è fuori di testa; se Helga mette KO un nemico mentre è fuori di testa, guarisce di un </span><span class="unit-expr-misc">50%</span><span> dei suoi PS massimi e gli effetti dello stato fuori di testa finiscono</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span><span class="unit-expr-misc">PS massimi</span></li>
+      <li><span>Helga ottiene </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> danni base mentre è fuori di testa</span></li>
+      <li><span>Una volta a ondata, quando dovrebbe essere KO, Helga esegue un reset su se stessa e va fuori di testa per </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> secondi; Helga ottiene un </span><span class="unit-expr-misc">300%</span><span> in più alla velocità di attacco e di movimento mentre è fuori di testa; se Helga mette KO un nemico mentre è fuori di testa, guarisce di un </span><span class="unit-expr-misc">100%</span><span> dei suoi PS massimi e gli effetti dello stato fuori di testa finiscono</span></li>
     </ul>
     <!-- Disk } -->
     </form>

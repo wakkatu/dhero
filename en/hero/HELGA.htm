@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Pushes the target back a distance."><a href="../hero_list.htm?KNOCKBACK=on">Knock Back</a></li>
           <li title="Each stack of Weakness on a unit will cause it to take more damage."><a href="../hero_list.htm?WEAKNESS=on">Weakness</a></li>
           <li title="Snared enemies have their Movement Speed reduced to 0%. They can still use Basic Attacks and Skills that are within range."><a href="../hero_list.htm?SNARE=on">Snare</a></li>
+          <li title="Stunned units are unable to move, attack, or use skills."><a href="../hero_list.htm?STUN=on">Stun</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ effects</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Max HP</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">Basic Damage</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">Skill Power</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Power Kick</a></label></h2>
-    <p><span>Helga enters a defensive stance, reducing incoming damage by </span><span class="unit-expr-misc">50%</span><span> for </span><span class="unit-expr-misc">3</span><span> seconds or until she has been hit </span><span class="unit-expr-misc">20</span><span> times.</span></p>
-    <p><span>When she leaves her defensive stance she delivers a kick to the nearest enemy, Knocking them back and dealing </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span> Normal Damage plus </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span> bonus Normal Damage for each time she was hit.</span></p>
-    <p><span>If there are no enemies near Helga when she leaves her defensive stance, she instead Heals herself </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span> HP for each time she was hit.</span></p>
+    <p><span>Helga enters a defensive stance, reducing incoming damage by </span><span class="unit-expr-misc">100%</span><span> for </span><span class="unit-expr-misc">4</span><span> seconds or until she has been hit </span><span class="unit-expr-misc">5</span><span> times.</span></p>
+    <p><span>When she leaves her defensive stance she delivers a kick to the nearest enemy, Knocking them back and dealing </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span> Normal Damage plus </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span> bonus Normal Damage for each time she was hit.</span></p>
+    <p><span>If there are no enemies near Helga when she leaves her defensive stance, she instead Heals herself </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span> HP for each time she was hit.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Punch Back</a></label></h2>
-    <p><span>Helga uppercuts her target every </span><span class="unit-expr-misc">3</span><span> Basic Attacks. When this happens the enemy takes </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span> bonus Normal Damage, is Knocked back, and has </span><span class="unit-expr-misc">5</span><span> stacks of Weakness applied to them for </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
+    <p><span>Helga uppercuts her target every </span><span class="unit-expr-misc">2</span><span> Basic Attacks. When this happens the enemy takes </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span> bonus Normal Damage, is Knocked back, and has </span><span class="unit-expr-misc">5</span><span> stacks of Weakness applied to them for </span><span class="unit-expr-misc">10</span><span> seconds.</span></p>
     <p><span>Applying a stack of Weakness has a chance to fail against enemies above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Knife Pin</a></label></h2>
-    <p><span>After an enemy is Knocked back, Helga deals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span> Normal Damage and Snares them for </span><span class="unit-expr-misc">7</span><span> seconds with her throwing knife. Helga can Snare an enemy this way every </span><span class="unit-expr-misc">9</span><span> seconds.</span></p>
+    <p><span>After an enemy is Knocked back, Helga deals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span> Normal Damage and Snares them for </span><span class="unit-expr-misc">5</span><span> seconds with her throwing knife. Helga can Snare an enemy this way every </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
     <p><span>Snared enemies have their Movement Speed reduced to 0%. They can still use Basic Attacks and Skills that are within range.</span></p>
     <p><span>The Snare has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Rock Fall</a></label></h2>
-    <p><span>When Helga is KO&#39;d she fires a flare into the air, sending rocks down on all enemies that Stun them for </span><span class="unit-expr-misc">7</span><span> seconds.</span></p>
+    <p><span>When Helga is KO&#39;d she fires a flare into the air, sending rocks down on all enemies that Stun them for </span><span class="unit-expr-misc">10</span><span> seconds.</span></p>
     <p><span>The Stun has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Purely Tactical</a></label></h2>
-    <p><span>When Helga uses &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34; she now throws two daggers at her target, dealing damage twice and Snaring them for </span><span class="unit-expr-misc">2</span><span> seconds longer.</span></p>
-    <p><span>Enemies Snared by &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34; have their Movement Speed reduced by </span><span class="unit-expr-misc">30%</span><span> for </span><span class="unit-expr-misc">3</span><span> seconds after the Snare ends.</span></p>
+    <p><span>When Helga uses &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34; she now throws two daggers at her target, dealing damage twice and Snaring them for </span><span class="unit-expr-misc">5</span><span> seconds longer.</span></p>
+    <p><span>Enemies Snared by &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34; have their Movement Speed reduced by </span><span class="unit-expr-misc">90%</span><span> for </span><span class="unit-expr-misc">8</span><span> seconds after the Snare ends.</span></p>
     <p><span>The Movement Speed reduction has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <p>Additional Stat Boosts:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> Normal Damage to &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> Normal Damage to &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Basic Damage</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><span>Reduce Cooldown of </span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span> After Using </span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Punch Back</a></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
-      <li><span>Enemies lose </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span> </span><span class="unit-expr-misc">Armor</span><span> while they are Snared</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Skill Power</span></li>
+      <li><span>Enemies lose </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Armor</span><span> while they are Snared</span></li>
       <li></li>
       <li><span>After using &#34;</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Punch Back</a><span>&#34;, the remaining Cooldown of &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Knife Pin</a><span>&#34; is reduced by </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> seconds</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>Berserk When KO&#39;d</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
-      <li><span>Helga gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span> Basic Damage while she is Berserk</span></li>
-      <li><span>Once per wave, when Helga would be KO&#39;d she Cleanses herself and goes Berserk for </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> seconds;Helga gains </span><span class="unit-expr-misc">70%</span><span> Attack Speed and Movement Speed while Berserk;If Helga KOs an enemy while Berserking, she Heals for </span><span class="unit-expr-misc">50%</span><span> of her Max HP and the Berserk effect ends</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span><span class="unit-expr-misc">Max HP</span></li>
+      <li><span>Helga gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> Basic Damage while she is Berserk</span></li>
+      <li><span>Once per wave, when Helga would be KO&#39;d she Cleanses herself and goes Berserk for </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> seconds;Helga gains </span><span class="unit-expr-misc">300%</span><span> Attack Speed and Movement Speed while Berserk;If Helga KOs an enemy while Berserking, she Heals for </span><span class="unit-expr-misc">100%</span><span> of her Max HP and the Berserk effect ends</span></li>
     </ul>
     <!-- Disk } -->
     </form>

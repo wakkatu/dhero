@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="標的を遠くに押しやる。"><a href="../hero_list.htm?KNOCKBACK=on">ノックバック</a></li>
           <li title="ユニットの「弱み」の累積分だけダメージを多く受ける。"><a href="../hero_list.htm?WEAKNESS=on">弱み</a></li>
           <li title="罠にかかった敵は移動速度が0%に減速する。通常攻撃とスキルは範囲内で使用できる。"><a href="../hero_list.htm?SNARE=on">罠</a></li>
+          <li title="スタンしたユニットは、移動、攻撃、スキルの使用ができない。"><a href="../hero_list.htm?STUN=on">スタン</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ 効果</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">最大HP</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">通常ダメージ</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">スキルパワー</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">パワーキック</a></label></h2>
-    <p><span>ヘルガが防御態勢に入り、</span><span class="unit-expr-misc">3</span><span>秒間または</span><span class="unit-expr-misc">20</span><span>回攻撃されるまで、与えられるダメージを</span><span class="unit-expr-misc">50%</span><span>軽減する。</span></p>
-    <p><span>ヘルガが防御態勢をやめると、一番近くにいる敵をキックして後ろに押しやり、通常ダメージを</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span>与える。また、攻撃を受けるごとに攻撃ダメージをさらに</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span>与える。 </span></p>
-    <p><span> ヘルガが防御態勢をやめた時に近くに敵がいない場合は、攻撃を受けるごとに代わりに自分を</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span>HP回復する。</span></p>
+    <p><span>ヘルガが防御態勢に入り、</span><span class="unit-expr-misc">4</span><span>秒間または</span><span class="unit-expr-misc">5</span><span>回攻撃されるまで、与えられるダメージを</span><span class="unit-expr-misc">100%</span><span>軽減する。</span></p>
+    <p><span>ヘルガが防御態勢をやめると、一番近くにいる敵をキックして後ろに押しやり、通常ダメージを</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span>与える。また、攻撃を受けるごとに攻撃ダメージをさらに</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span>与える。 </span></p>
+    <p><span> ヘルガが防御態勢をやめた時に近くに敵がいない場合は、攻撃を受けるごとに代わりに自分を</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span>HP回復する。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">パンチバック</a></label></h2>
-    <p><span>ヘルガが通常攻撃を</span><span class="unit-expr-misc">3</span><span>回行うごとに標的の敵にアッパーカットを与える。その場合、敵は通常ダメージをさらに</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span>受け、後ろに押しやられ、</span><span class="unit-expr-misc">7</span><span>秒間、「弱み」の累積を</span><span class="unit-expr-misc">5</span><span>回分受ける。</span></p>
+    <p><span>ヘルガが通常攻撃を</span><span class="unit-expr-misc">2</span><span>回行うごとに標的の敵にアッパーカットを与える。その場合、敵は通常ダメージをさらに</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span>受け、後ろに押しやられ、</span><span class="unit-expr-misc">10</span><span>秒間、「弱み」の累積を</span><span class="unit-expr-misc">5</span><span>回分受ける。</span></p>
     <p><span>「弱み」の累積の適用は、Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>より上の敵の場合は失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">ナイフピン</a></label></h2>
-    <p><span>敵が後ろに押しやられた後、ヘルガはナイフを投げて通常ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span>与え、</span><span class="unit-expr-misc">7</span><span>秒間罠にかける。ヘルガはこの方法で敵を</span><span class="unit-expr-misc">9</span><span>秒ごとに罠にかけられる。 </span></p>
+    <p><span>敵が後ろに押しやられた後、ヘルガはナイフを投げて通常ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span>与え、</span><span class="unit-expr-misc">5</span><span>秒間罠にかける。ヘルガはこの方法で敵を</span><span class="unit-expr-misc">7</span><span>秒ごとに罠にかけられる。 </span></p>
     <p><span> 罠にかかった敵は移動速度が0%に減速する。通常攻撃とスキルは範囲内で使用できる。</span></p>
     <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>より上の敵の場合は、罠にかけるのに失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">落石</a></label></h2>
-    <p><span>ヘルガが倒されると空中に閃光を放ち、全ての敵に石を落とし、</span><span class="unit-expr-misc">7</span><span>秒間敵をスタンさせる。</span></p>
+    <p><span>ヘルガが倒されると空中に閃光を放ち、全ての敵に石を落とし、</span><span class="unit-expr-misc">10</span><span>秒間敵をスタンさせる。</span></p>
     <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> 以上の敵の場合は、スタンに失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">真の戦術</a></label></h2>
-    <p><span>ヘルガが「</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>」を使うとき標的に短剣を2つ投げ、2倍のダメージを与えて</span><span class="unit-expr-misc">2</span><span>秒間長く罠にかける。 </span></p>
-    <p><span> 「</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>」によって罠にかかった敵は罠が終わった後</span><span class="unit-expr-misc">3</span><span>秒間、移動速度が</span><span class="unit-expr-misc">30%</span><span>減少する。 </span></p>
+    <p><span>ヘルガが「</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>」を使うとき標的に短剣を2つ投げ、2倍のダメージを与えて</span><span class="unit-expr-misc">5</span><span>秒間長く罠にかける。 </span></p>
+    <p><span> 「</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>」によって罠にかかった敵は罠が終わった後</span><span class="unit-expr-misc">8</span><span>秒間、移動速度が</span><span class="unit-expr-misc">90%</span><span>減少する。 </span></p>
     <p><span> Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>より上の敵の場合は移動速度の減少に失敗する可能性がある。</span></p>
     <p>追加のステータスブースト：<p>
     <ul>
-      <li><span>「</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>」への通常ダメージ +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> </span></li>
-      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span></li>
-      <li><span class="unit-expr-misc">通常ダメージ</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span></li>
+      <li><span>「</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>」への通常ダメージ +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> </span></li>
+      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span></li>
+      <li><span class="unit-expr-misc">通常ダメージ</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><a href="../hero/HELGA.htm#GREEN" class="rarity-green">パンチバック</a><span>を使用後</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>のクールダウンを短縮する</span></blockquote>
     <ul>
-      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span></li>
-      <li><span>敵は罠にかかっている間、</span><span class="unit-expr-misc">アーマー</span><span>を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span>失う</span></li>
+      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span></li>
+      <li><span>敵は罠にかかっている間、</span><span class="unit-expr-misc">アーマー</span><span>を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span>失う</span></li>
       <li></li>
       <li><span> 「</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">パンチバック</a><span>」の使用後、「</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">ナイフピン</a><span>」の残りのクールダウンが</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span>秒短縮される</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>倒されるとバーサーク状態になる</span></blockquote>
     <ul>
-      <li><span class="unit-expr-misc">最大HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span></li>
-      <li><span>ヘルガはバーサーク状態になると通常ダメージを</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span>獲得する </span></li>
-      <li><span> ウェーブごとにヘルガが倒されると、自分を浄化して</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span>秒間バーサーク状態になる。バーサーク状態になると、ヘルガは攻撃速度と移動速度を</span><span class="unit-expr-misc">70%</span><span>増加する。ヘルガはバーサーク状態で敵を倒すと、最大HPの</span><span class="unit-expr-misc">50%</span><span>分を回復しバーサーク状態が終了する。</span></li>
+      <li><span class="unit-expr-misc">最大HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span></li>
+      <li><span>ヘルガはバーサーク状態になると通常ダメージを</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span>獲得する </span></li>
+      <li><span> ウェーブごとにヘルガが倒されると、自分を浄化して</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span>秒間バーサーク状態になる。バーサーク状態になると、ヘルガは攻撃速度と移動速度を</span><span class="unit-expr-misc">300%</span><span>増加する。ヘルガはバーサーク状態で敵を倒すと、最大HPの</span><span class="unit-expr-misc">100%</span><span>分を回復しバーサーク状態が終了する。</span></li>
     </ul>
     <!-- Disk } -->
     </form>

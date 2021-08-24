@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Stößt das Ziel etwas zurück."><a href="../hero_list.htm?KNOCKBACK=on">Zurückstoßen</a></li>
           <li title="Pro Stapel Schwäche auf einer Einheit nimmt sie mehr Schaden."><a href="../hero_list.htm?WEAKNESS=on">Schwäche</a></li>
           <li title="Die Bewegungsgeschwindigkeit gefangener Gegner wird auf 0 % reduziert. Sie können immer noch normale Angriffe und Fähigkeiten einsetzen, die innerhalb der Reichweite sind."><a href="../hero_list.htm?SNARE=on">Fangen</a></li>
+          <li title="Betäubte Einheiten können sich weder bewegen noch angreifen oder Fähigkeiten verwenden."><a href="../hero_list.htm?STUN=on">Betäuben</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ effekte</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Max. LP</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">Grundschaden</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">Fähigkeitsstärke</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Powertritt</a></label></h2>
-    <p><span>Helga begibt sich in eine Verteidigungshaltung und reduziert Schaden um </span><span class="unit-expr-misc">50%</span><span> für </span><span class="unit-expr-misc">3</span><span> Sekunden oder bis sie </span><span class="unit-expr-misc">20</span><span> Mal getroffen wurde.</span></p>
-    <p><span>Wenn sie ihre Verteidigungshaltung verlässt, tritt sie den nächsten Gegner, stößt ihn dadurch zurück und verursacht ihm </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span> normalen Schaden plus </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span> normalen Bonusschaden für jeden Treffer, den sie erlitten hat.</span></p>
-    <p><span>Sind keine Gegner in Helgas Nähe, wenn sie ihre Verteidigungshaltung verlässt, heilt sie sich stattdessen für jeden Treffer, den sie erlitten hat, um </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span> LP.</span></p>
+    <p><span>Helga begibt sich in eine Verteidigungshaltung und reduziert Schaden um </span><span class="unit-expr-misc">100%</span><span> für </span><span class="unit-expr-misc">4</span><span> Sekunden oder bis sie </span><span class="unit-expr-misc">5</span><span> Mal getroffen wurde.</span></p>
+    <p><span>Wenn sie ihre Verteidigungshaltung verlässt, tritt sie den nächsten Gegner, stößt ihn dadurch zurück und verursacht ihm </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span> normalen Schaden plus </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span> normalen Bonusschaden für jeden Treffer, den sie erlitten hat.</span></p>
+    <p><span>Sind keine Gegner in Helgas Nähe, wenn sie ihre Verteidigungshaltung verlässt, heilt sie sich stattdessen für jeden Treffer, den sie erlitten hat, um </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span> LP.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Kräftige Aufwärtshaken</a></label></h2>
-    <p><span>Helga verpasst ihrem Ziel mit jedem </span><span class="unit-expr-misc">3</span><span>. normalen Angriff einen Aufwärtshaken. Wenn das passiert, erleidet der Gegner </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span> normalen Bonusschaden, wird zurückgestoßen und bekommt für </span><span class="unit-expr-misc">7</span><span> Sekunden </span><span class="unit-expr-misc">5</span><span> Schwäche-Stapel.</span></p>
+    <p><span>Helga verpasst ihrem Ziel mit jedem </span><span class="unit-expr-misc">2</span><span>. normalen Angriff einen Aufwärtshaken. Wenn das passiert, erleidet der Gegner </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span> normalen Bonusschaden, wird zurückgestoßen und bekommt für </span><span class="unit-expr-misc">10</span><span> Sekunden </span><span class="unit-expr-misc">5</span><span> Schwäche-Stapel.</span></p>
     <p><span>Die Anwendung eines Schwäche-Stapels kann bei Gegnern mit einer Stufe höher als </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Wurfmesserattacke</a></label></h2>
-    <p><span>Nachdem ein Gegner zurückgestoßen wurde, verursacht Helga </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span> normalen Schaden und nimmt ihn für </span><span class="unit-expr-misc">7</span><span> Sekunden mit ihrem Wurfmesser gefangen. Helga kann Gegner auf diese Weise alle </span><span class="unit-expr-misc">9</span><span> Sekunden fangen.</span></p>
+    <p><span>Nachdem ein Gegner zurückgestoßen wurde, verursacht Helga </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span> normalen Schaden und nimmt ihn für </span><span class="unit-expr-misc">5</span><span> Sekunden mit ihrem Wurfmesser gefangen. Helga kann Gegner auf diese Weise alle </span><span class="unit-expr-misc">7</span><span> Sekunden fangen.</span></p>
     <p><span>Die Bewegungsgeschwindigkeit gefangener Gegner wird auf 0 % reduziert. Sie können immer noch normale Angriffe und Fähigkeiten einsetzen, die innerhalb der Reichweite sind.</span></p>
     <p><span>Das Fangen kann bei Gegnern mit einer Stufe höher als </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Felsensturz</a></label></h2>
-    <p><span>Wenn Helga außer Gefecht gesetzt wird, feuert sie eine Leuchtrakete in die Luft, was Felsen auf alle Gegner fallen lässt und sie für </span><span class="unit-expr-misc">7</span><span> Sekunden betäubt.</span></p>
+    <p><span>Wenn Helga außer Gefecht gesetzt wird, feuert sie eine Leuchtrakete in die Luft, was Felsen auf alle Gegner fallen lässt und sie für </span><span class="unit-expr-misc">10</span><span> Sekunden betäubt.</span></p>
     <p><span>Die Betäubung kann bei Gegnern einer Stufe höher als </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Reine Taktik</a></label></h2>
-    <p><span>Wenn Helga „</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34; verwendet, wirft sie jetzt zwei Dolche auf ihr Ziel, verursacht doppelten Schaden und hält ihr Ziel </span><span class="unit-expr-misc">2</span><span> Sekunden länger gefangen.</span></p>
-    <p><span>Die Bewegungsgeschwindigkeit von Gegnern, die durch „</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span>&#34; gefangen sind, wird für </span><span class="unit-expr-misc">3</span><span> Sekunden um </span><span class="unit-expr-misc">30%</span><span> reduziert, nachdem sie nicht mehr gefangen sind.</span></p>
+    <p><span>Wenn Helga „</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34; verwendet, wirft sie jetzt zwei Dolche auf ihr Ziel, verursacht doppelten Schaden und hält ihr Ziel </span><span class="unit-expr-misc">5</span><span> Sekunden länger gefangen.</span></p>
+    <p><span>Die Bewegungsgeschwindigkeit von Gegnern, die durch „</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span>&#34; gefangen sind, wird für </span><span class="unit-expr-misc">8</span><span> Sekunden um </span><span class="unit-expr-misc">90%</span><span> reduziert, nachdem sie nicht mehr gefangen sind.</span></p>
     <p><span>Die Reduzierung der Bewegungsgeschwindigkeit kann bei Gegnern mit einer Stufe höher als </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <p>Zusätzliche Werterhöhungen:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> Normaler Schaden für „</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> Normaler Schaden für „</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><span>Verringerte Abklingzeit von </span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span> nach Einsatz von </span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Kräftige Aufwärtshaken</a></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
-      <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span><span>, während sie gefangen sind</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
+      <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span><span>, während sie gefangen sind</span></li>
       <li></li>
       <li><span>Nach dem Einsatz von „</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Kräftige Aufwärtshaken</a><span>&#34; wird die verbleibende Abklingzeit von „</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Wurfmesserattacke</a><span>&#34; um </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> Sekunden reduziert</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>Durchgedreht, wenn außer Gefecht gesetzt</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span></li>
-      <li><span>Helga erhält </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span> Grundschaden, während sie durchgedreht ist</span></li>
-      <li><span>Einmal pro Welle, wenn Helga normalerweise außer Gefecht gesetzt wäre, säubert sie sich und dreht </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span> Sekunden durch; Helga erhält </span><span class="unit-expr-misc">70%</span><span> Angriffsgeschwindigkeit und Bewegungsgeschwindigkeit, wenn sie durchgedreht ist; Wenn Helga einen Gegner außer Gefecht setzt, während sie durchgedreht ist, heilt sie sich um </span><span class="unit-expr-misc">50%</span><span> ihrer max. LP und der Durchgedreht-Effekt endet</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span></li>
+      <li><span>Helga erhält </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> Grundschaden, während sie durchgedreht ist</span></li>
+      <li><span>Einmal pro Welle, wenn Helga normalerweise außer Gefecht gesetzt wäre, säubert sie sich und dreht </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span> Sekunden durch; Helga erhält </span><span class="unit-expr-misc">300%</span><span> Angriffsgeschwindigkeit und Bewegungsgeschwindigkeit, wenn sie durchgedreht ist; Wenn Helga einen Gegner außer Gefecht setzt, während sie durchgedreht ist, heilt sie sich um </span><span class="unit-expr-misc">100%</span><span> ihrer max. LP und der Durchgedreht-Effekt endet</span></li>
     </ul>
     <!-- Disk } -->
     </form>

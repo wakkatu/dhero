@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 08/01/2021</span>
+  <span style="white-space: nowrap;">Release date: 08/17/2021</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Repousse la cible à une certaine distance."><a href="../hero_list.htm?KNOCKBACK=on">Repoussement</a></li>
           <li title="Une unité subit plus de dégâts pour chaque cumul de Faiblesse."><a href="../hero_list.htm?WEAKNESS=on">Faiblesse</a></li>
           <li title="Les ennemis piégés voient leur vitesse de déplacement réduite à 0%. Ils peuvent toujours utiliser leurs attaques de base et leurs compétences qui sont à portée."><a href="../hero_list.htm?SNARE=on">Piège</a></li>
+          <li title="Les unités étourdies ne peuvent pas bouger, attaquer ou utiliser de compétences."><a href="../hero_list.htm?STUN=on">Étourdissement</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">effets +</span>
@@ -176,15 +177,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">PV max</span>
       <span class="unit-pair-val unit-expr-g">
-        450 + 400g
+        725 + 800g
       </span>
       <span class="unit-pair-name">Dégâts de base</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 25g
+        100 + 45g
       </span>
       <span class="unit-pair-name">Puissance de compétence</span>
       <span class="unit-pair-val unit-expr-g">
-        70 + 15g
+        80 + 30g
       </span>
     </div>
   </div>
@@ -5752,9 +5753,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="450 + 400g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="70 + 25g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="70 + 15g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="725 + 800g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 45g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="80 + 30g"></output>
       </span>
 
       <!-- Stats { -->
@@ -5848,9 +5849,9 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Coup puissant</a></label></h2>
-    <p><span>Helga adopte une posture défensive et réduit les dégâts qu&#39;on lui inflige de </span><span class="unit-expr-misc">50%</span><span> pendant </span><span class="unit-expr-misc">3</span><span>s, ou jusqu&#39;à ce qu&#39;on la touche </span><span class="unit-expr-misc">20</span><span> fois.</span></p>
-    <p><span>Lorsqu&#39;elle quitte sa posture défensive, elle donne un coup à l&#39;ennemi le plus proche, le repoussant et lui infligeant </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="500k + 1bd" data-checkbox="eval">500k + 1bd</output></span><span> pts de dégâts normaux et </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + .2bd" data-checkbox="eval">100k + .2bd</output></span><span> pts de dégâts supplémentaires pour chaque coup qu&#39;elle a subi.</span></p>
-    <p><span>S&#39;il n&#39;y a pas d&#39;ennemis à proximité de Helga, elle récupère </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="300k+2sp" data-checkbox="eval">300k+2sp</output></span><span> PV pour chaque coup qu&#39;elle a subi.</span></p>
+    <p><span>Helga adopte une posture défensive et réduit les dégâts qu&#39;on lui inflige de </span><span class="unit-expr-misc">100%</span><span> pendant </span><span class="unit-expr-misc">4</span><span>s, ou jusqu&#39;à ce qu&#39;on la touche </span><span class="unit-expr-misc">5</span><span> fois.</span></p>
+    <p><span>Lorsqu&#39;elle quitte sa posture défensive, elle donne un coup à l&#39;ennemi le plus proche, le repoussant et lui infligeant </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="550k + 5.5bd" data-checkbox="eval">550k + 5.5bd</output></span><span> pts de dégâts normaux et </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="55k + .55bd" data-checkbox="eval">55k + .55bd</output></span><span> pts de dégâts supplémentaires pour chaque coup qu&#39;elle a subi.</span></p>
+    <p><span>S&#39;il n&#39;y a pas d&#39;ennemis à proximité de Helga, elle récupère </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="150k+1.5sp" data-checkbox="eval">150k+1.5sp</output></span><span> PV pour chaque coup qu&#39;elle a subi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
@@ -5858,23 +5859,23 @@ function init()
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-white">
       <dl class="attr-list">
-        <dt>blackouttime</dt><dd>0.8</dd>
+        <dt>blackouttime</dt><dd>0.5</dd>
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
-        <dt>reduceddmgpercent</dt><dd>0.5[%]</dd>
-        <dt>blockduration</dt><dd>3</dd>
-        <dt>blockmax</dt><dd>20</dd>
-        <dt>basedmg</dt><dd>500k + 1bd</dd>
-        <dt>bonusdmg</dt><dd>100k + .2bd</dd>
-        <dt>healamt</dt><dd>300k+2sp</dd>
+        <dt>reduceddmgpercent</dt><dd>1.0[%]</dd>
+        <dt>blockduration</dt><dd>4</dd>
+        <dt>blockmax</dt><dd>5</dd>
+        <dt>basedmg</dt><dd>550k + 5.5bd</dd>
+        <dt>bonusdmg</dt><dd>55k + .55bd</dd>
+        <dt>healamt</dt><dd>150k+1.5sp</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Riposte</a></label></h2>
-    <p><span>Helga donne un uppercut à sa cible toutes les </span><span class="unit-expr-misc">3</span><span> attaques de base. L&#39;ennemi subit alors </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="200k+3bd" data-checkbox="eval">200k+3bd</output></span><span> pts de dégâts supplémentaires, est repoussé et reçoit </span><span class="unit-expr-misc">5</span><span> cumuls de Faiblesse pendant </span><span class="unit-expr-misc">7</span><span>s.</span></p>
+    <p><span>Helga donne un uppercut à sa cible toutes les </span><span class="unit-expr-misc">2</span><span> attaques de base. L&#39;ennemi subit alors </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="350k+3.5bd" data-checkbox="eval">350k+3.5bd</output></span><span> pts de dégâts supplémentaires, est repoussé et reçoit </span><span class="unit-expr-misc">5</span><span> cumuls de Faiblesse pendant </span><span class="unit-expr-misc">10</span><span>s.</span></p>
     <p><span>Appliquer un cumul de Faiblesse peut échouer face aux ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -5885,66 +5886,67 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>1.5</dd>
         <dt>damagetype</dt><dd>Normal</dd>
+        <dt>energygain</dt><dd>90</dd>
         <dt>priority</dt><dd>1</dd>
-        <dt>attackamt</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k+3bd</dd>
+        <dt>attackamt</dt><dd>2</dd>
+        <dt>dmgamt</dt><dd>350k+3.5bd</dd>
         <dt>stackamt</dt><dd>5</dd>
-        <dt>weaknessduration</dt><dd>7</dd>
+        <dt>weaknessduration</dt><dd>10</dd>
         <dt>knockbackamt</dt><dd>550</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Poignard poignant</a></label></h2>
-    <p><span>Après avoir repoussé un ennemi, Helga lui inflige </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k+2sp" data-checkbox="eval">350k+2sp</output></span><span> pts de dégâts normaux et le piège pendant </span><span class="unit-expr-misc">7</span><span>s avec son couteau de lancer. Helga peut piéger un ennemi de cette façon toutes les </span><span class="unit-expr-misc">9</span><span>s.</span></p>
+    <p><span>Après avoir repoussé un ennemi, Helga lui inflige </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="200k+2sp" data-checkbox="eval">200k+2sp</output></span><span> pts de dégâts normaux et le piège pendant </span><span class="unit-expr-misc">5</span><span>s avec son couteau de lancer. Helga peut piéger un ennemi de cette façon toutes les </span><span class="unit-expr-misc">7</span><span>s.</span></p>
     <p><span>Les ennemis piégés voient leur vitesse de déplacement réduite à 0%. Ils peuvent toujours utiliser leurs attaques de base et leurs compétences qui sont à portée.</span></p>
     <p><span>Le piège peut échouer face aux ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Normal</dd>
         <dt>initcooldown</dt><dd>3</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>cooldown</dt><dd>7</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>damagetype</dt><dd>Normal</dd>
-        <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>9</dd>
+        <dt>energygain</dt><dd>150</dd>
+        <dt>cooldown</dt><dd>7</dd>
         <dt>initcooldown</dt><dd>3</dd>
         <dt>priority</dt><dd>2</dd>
-        <dt>dmgamt</dt><dd>350k+2sp</dd>
-        <dt>snareduration</dt><dd>7</dd>
-        <dt>snarecooldown</dt><dd>9</dd>
+        <dt>dmgamt</dt><dd>200k+2sp</dd>
+        <dt>snareduration</dt><dd>5</dd>
+        <dt>snarecooldown</dt><dd>7</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Chute de pierres</a></label></h2>
-    <p><span>Lorsque Helga est mise KO, elle tire une fusée de détresse dans les airs, ce qui fait tomber des pierres sur tous les ennemis pour les étourdir pendant </span><span class="unit-expr-misc">7</span><span>s.</span></p>
+    <p><span>Lorsque Helga est mise KO, elle tire une fusée de détresse dans les airs, ce qui fait tomber des pierres sur tous les ennemis pour les étourdir pendant </span><span class="unit-expr-misc">10</span><span>s.</span></p>
     <p><span>L&#39;étourdissement peut échouer face aux ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
         <dt>hpamount</dt><dd>0</dd>
-        <dt>stunduration</dt><dd>7</dd>
+        <dt>stunduration</dt><dd>10</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Technique tactique</a></label></h2>
-    <p><span>Quand Helga utilise &#34;</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34;, elle lance maintenant deux poignards sur sa cible, infligeant deux fois plus de dégâts et le piégeant </span><span class="unit-expr-misc">2</span><span>s de plus.</span></p>
-    <p><span>Les ennemis piégés avec &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span>&#34; voient leur vitesse de déplacement réduite de </span><span class="unit-expr-misc">30%</span><span> pendant </span><span class="unit-expr-misc">3</span><span>s à la fin du piège.</span></p>
+    <p><span>Quand Helga utilise &#34;</span><span class="unit-expr-misc">&lt;skill 3&gt;</span><span>&#34;, elle lance maintenant deux poignards sur sa cible, infligeant deux fois plus de dégâts et le piégeant </span><span class="unit-expr-misc">5</span><span>s de plus.</span></p>
+    <p><span>Les ennemis piégés avec &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span>&#34; voient leur vitesse de déplacement réduite de </span><span class="unit-expr-misc">90%</span><span> pendant </span><span class="unit-expr-misc">8</span><span>s à la fin du piège.</span></p>
     <p><span>La réduction de vitesse de déplacement peut échouer face aux ennemis de niveau supérieur à </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <p>Bonus de stats en plus:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> pts de dégâts normaux avec &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="151k" data-checkbox="eval">151k</output></span><span> </span><span class="unit-expr-misc">Dégâts de base</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="35k" data-checkbox="eval">35k</output></span><span> pts de dégâts normaux avec &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Dégâts de base</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
-        <dt>bonussnareduration</dt><dd>2</dd>
-        <dt>msreductionpercent</dt><dd>0.3[%]</dd>
-        <dt>msreductionduration</dt><dd>3</dd>
-        <dt>daggerdmg</dt><dd>10k</dd>
+        <dt>bonussnareduration</dt><dd>5</dd>
+        <dt>msreductionpercent</dt><dd>0.9[%]</dd>
+        <dt>msreductionduration</dt><dd>8</dd>
+        <dt>daggerdmg</dt><dd>35k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -5992,8 +5994,8 @@ function init()
     </p>
     <blockquote><span>Temps d&#39;attente réduit pour </span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span> après utilisation de </span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Riposte</a></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="347k" data-checkbox="eval">347k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
-      <li><span>Les ennemis perdent </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="20k" data-checkbox="eval">20k</output></span><span> de </span><span class="unit-expr-misc">Armure</span><span> pendant qu&#39;ils sont piégés</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Puissance de compétence</span></li>
+      <li><span>Les ennemis perdent </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> de </span><span class="unit-expr-misc">Armure</span><span> pendant qu&#39;ils sont piégés</span></li>
       <li></li>
       <li><span>Après avoir utilisé &#34;</span><a href="../hero/HELGA.htm#GREEN" class="rarity-green">Riposte</a><span>&#34;, le temps d&#39;attente restant pour &#34;</span><a href="../hero/HELGA.htm#BLUE" class="rarity-blue">Poignard poignant</a><span>&#34; est réduit de </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span>s</span></li>
     </ul>
@@ -6007,9 +6009,9 @@ function init()
     </p>
     <blockquote><span>Folle furieuse si mise KO</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="120k" data-checkbox="eval">120k</output></span><span> </span><span class="unit-expr-misc">PV max</span></li>
-      <li><span>Helga gagne </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="5k" data-checkbox="eval">5k</output></span><span> pts de dégâts de base lorsqu&#39;elle est folle furieuse</span></li>
-      <li><span>Une fois par vague, lorsque Helga est mise KO, elle fait disparaître tous ses malus, devient folle furieuse pendant </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval">1s</output></span><span>s et gagne </span><span class="unit-expr-misc">70%</span><span> de vitesse d&#39;attaque et de déplacement. Si Helga met un ennemi chaos dans cet état, elle récupère </span><span class="unit-expr-misc">50%</span><span> de ses PV max et l&#39;effet prend fin</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span><span class="unit-expr-misc">PV max</span></li>
+      <li><span>Helga gagne </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> pts de dégâts de base lorsqu&#39;elle est folle furieuse</span></li>
+      <li><span>Une fois par vague, lorsque Helga est mise KO, elle fait disparaître tous ses malus, devient folle furieuse pendant </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval">2s</output></span><span>s et gagne </span><span class="unit-expr-misc">300%</span><span> de vitesse d&#39;attaque et de déplacement. Si Helga met un ennemi chaos dans cet état, elle récupère </span><span class="unit-expr-misc">100%</span><span> de ses PV max et l&#39;effet prend fin</span></li>
     </ul>
     <!-- Disk } -->
     </form>
