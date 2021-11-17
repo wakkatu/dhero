@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 11/09/2021</span>
+  <span style="white-space: nowrap;">Release date: 11/11/2021</span>
   -->
 </div><!--  container } -->
 
@@ -108,7 +108,7 @@ function init()
 
   <!-- Intro { -->
   <div class="section">
-    <h1 class="undertest">Winifred Sanderson</h1>
+    <h1>Winifred Sanderson</h1>
     <p>Winifred Sanderson is not to be trifled with. This witchy woman is sure to suck the life right out of the enemy, and have a grand time while doing it!</p>
     <blockquote>&#34;Oh, look. Another glorious morning. Makes me sick!&#34;</blockquote>
     <div class="unit-pair-list">
@@ -147,6 +147,7 @@ function init()
         <ul class="inline-list">
           <li title="Heals self."><a href="../hero_list.htm?HEAL_SELF=on">Heal Self</a></li>
           <li title="Each stack of Hardy on a unit will block one Debuff from being applied to them."><a href="../hero_list.htm?HARDY=on">Hardy</a></li>
+          <li title="Heals self over a period of time"><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">Heal Over Time Self</a></li>
           <li title="Grants energy to self."><a href="../hero_list.htm?ENERGY_SELF=on">Energy Self</a></li>
           <li title="Berserking units cannot fall below 1 HP."><a href="../hero_list.htm?BERSERK=on">Berserk</a></li>
           <li title="Can grant energy to at least one ally."><a href="../hero_list.htm?ENERGY_TEAM=on">Energy Team</a></li>
@@ -172,15 +173,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">最大生命值</span>
       <span class="unit-pair-val unit-expr-g">
-        300.7 + 24.82g
+        500 + 450g
       </span>
       <span class="unit-pair-name">基本伤害</span>
       <span class="unit-pair-val unit-expr-g">
-        30.8 + 2.54g
+        100 + 20g
       </span>
       <span class="unit-pair-name">技能力量</span>
       <span class="unit-pair-val unit-expr-g">
-        34.1 + 2.81g
+        125 + 25g
       </span>
     </div>
   </div>
@@ -6163,9 +6164,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="300.7 + 24.82g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="30.8 + 2.54g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="34.1 + 2.81g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="500 + 450g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="100 + 20g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="125 + 25g"></output>
       </span>
 
       <!-- Stats { -->
@@ -6271,7 +6272,7 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Witchy Zap</a></label></h2>
-    <p><span>Winifred zaps the nearest enemy with her lightning and focuses a spell on them, Stunning and lifting them into the air for </span><span class="unit-expr-misc">3</span><span> seconds. The enemy takes </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="33k+2sp" data-checkbox="eval">33k+2sp</output></span><span> Fantastic Damage over this time and Winifred Heals for </span><span class="unit-expr-misc">20%</span><span> of the damage dealt.</span></p>
+    <p><span>Winifred zaps the nearest enemy with her lightning and focuses a spell on them, Stunning and lifting them into the air for </span><span class="unit-expr-misc">6</span><span> seconds. The enemy takes </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="800k+8sp" data-checkbox="eval">800k+8sp</output></span><span> Fantastic Damage over this time and Winifred Heals for </span><span class="unit-expr-misc">25%</span><span> of the damage dealt.</span></p>
     <p><span>Winifred is immune to Disables while focusing her spell on the enemy.</span></p>
     <p><span>The Stun from this skill cannot be Cleansed, avoided by Evasion, reduced by Tenacity, or Dodged. Enemies that are immune to Stuns will still take damage but will not be lifted into the air.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
@@ -6286,13 +6287,13 @@ function init()
         <dt>priority</dt><dd>100</dd>
         <dt>trigger</dt><dd>closestprefFacing &lt; enemy</dd>
         <dt>primary</dt><dd>closestprefFacing &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>33k+2sp</dd>
-        <dt>stunduration</dt><dd>3</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
+        <dt>dmgamt</dt><dd>800k+8sp</dd>
+        <dt>stunduration</dt><dd>6</dd>
+        <dt>healpercent</dt><dd>0.25[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Spellbound</a></label></h2>
-    <p><span>Winifred sings and dances, Distracting nearby enemies for </span><span class="unit-expr-misc">5</span><span> seconds. The first time Distracted enemies hit Winifred, the Distract is replaced by a Charm that lasts for </span><span class="unit-expr-misc">5</span><span> seconds. Charmed enemies gain </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="10k+5bd" data-checkbox="eval">10k+5bd</output></span><span> Basic Damage for the duration of the Charm. Winifred gains </span><span class="unit-expr-misc">2</span><span> stacks of Hardy for each enemy Distracted.</span></p>
+    <p><span>Winifred sings and dances, Distracting nearby enemies for </span><span class="unit-expr-misc">5</span><span> seconds. The first time Distracted enemies hit Winifred, the Distract is replaced by a Charm that lasts for </span><span class="unit-expr-misc">6</span><span> seconds. Charmed enemies gain </span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="300k+3bd" data-checkbox="eval">300k+3bd</output></span><span> Basic Damage for the duration of the Charm. Winifred gains </span><span class="unit-expr-misc">2</span><span> stacks of Hardy for each enemy Distracted.</span></p>
     <p><span>The Distract has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
@@ -6311,13 +6312,13 @@ function init()
         <dt>primary</dt><dd>closest &lt; enemy | within(default)</dd>
         <dt>splash</dt><dd>enemy | within(default)</dd>
         <dt>distractduration</dt><dd>5</dd>
-        <dt>bdamt</dt><dd>10k+5bd</dd>
+        <dt>bdamt</dt><dd>300k+3bd</dd>
         <dt>stackamt</dt><dd>2</dd>
-        <dt>charmduration</dt><dd>5</dd>
+        <dt>charmduration</dt><dd>6</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Soul Suck</a></label></h2>
-    <p><span>Winifred throws a potion at the enemy with the highest Energy, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="15k+3sp" data-checkbox="eval">15k+3sp</output></span><span> Fantastic Damage to enemies in an area over </span><span class="unit-expr-misc">4</span><span> seconds. Winifred also steals </span><span class="unit-expr-misc">45</span><span> Energy and Heals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="5k+2sp" data-checkbox="eval">5k+2sp</output></span><span> HP for each enemy hit.</span></p>
+    <p><span>Winifred throws a potion at the enemy with the highest Energy, dealing </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="1000k+10sp" data-checkbox="eval">1000k+10sp</output></span><span> Fantastic Damage to enemies in an area over </span><span class="unit-expr-misc">4</span><span> seconds. Winifred also steals </span><span class="unit-expr-misc">200</span><span> Energy and Heals </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="400k+4sp" data-checkbox="eval">400k+4sp</output></span><span> HP for each enemy hit.</span></p>
     <p><span>The Energy steal has a chance to fail against enemies higher than Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
@@ -6337,14 +6338,14 @@ function init()
         <dt>trigger</dt><dd>mostEnergy &lt; enemy</dd>
         <dt>primary</dt><dd>mostEnergy &lt; enemy</dd>
         <dt>splash</dt><dd>enemy | within(10)</dd>
-        <dt>dmgamt</dt><dd>15k+3sp</dd>
-        <dt>energyamt</dt><dd>45</dd>
-        <dt>hpamt</dt><dd>5k+2sp</dd>
+        <dt>dmgamt</dt><dd>1000k+10sp</dd>
+        <dt>energyamt</dt><dd>200</dd>
+        <dt>hpamt</dt><dd>400k+4sp</dd>
         <dt>skill3duration</dt><dd>4</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Unbreakable Curse</a></label></h2>
-    <p><span>When Winifred&#39;s HP goes below </span><span class="unit-expr-misc">31%</span><span>, she goes Berserk for </span><span class="unit-expr-misc">10</span><span> seconds. While Berserk, Winifred deals </span><span class="unit-expr-misc">50%</span><span> more Fantastic Damage and gains </span><span class="unit-expr-misc">25%</span><span> Improved Healing. Winifred can only become Berserk in this way once per wave.</span></p>
+    <p><span>When Winifred&#39;s HP goes below </span><span class="unit-expr-misc">25%</span><span>, she goes Berserk for </span><span class="unit-expr-misc">8</span><span> seconds. While Berserk, Winifred deals </span><span class="unit-expr-misc">40%</span><span> more Fantastic Damage and gains </span><span class="unit-expr-misc">25%</span><span> Improved Healing. Winifred can only become Berserk in this way once per wave.</span></p>
     <p><span>The Damage increase is less effective against enemies above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
@@ -6352,21 +6353,21 @@ function init()
       <dl class="attr-list">
         <dt>duration</dt><dd>0</dd>
         <dt>priority</dt><dd>3</dd>
-        <dt>hppercent</dt><dd>0.31[%]</dd>
-        <dt>berserkduration</dt><dd>10</dd>
-        <dt>dmgpercent</dt><dd>0.5[%]</dd>
+        <dt>hppercent</dt><dd>0.25[%]</dd>
+        <dt>berserkduration</dt><dd>8</dd>
+        <dt>dmgpercent</dt><dd>0.40[%]</dd>
         <dt>imphealpercent</dt><dd>0.25[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Twist The Bones</a></label></h2>
-    <p><span>Winifred&#39;s &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#WHITE" class="rarity-white">Witchy Zap</a><span>&#34; now targets </span><span class="unit-expr-misc">3</span><span> enemies and steals </span><span class="unit-expr-misc">50</span><span> Energy from them over the duration of the skill.</span></p>
-    <p><span>The splash area of &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#BLUE" class="rarity-blue">Soul Suck</a><span>&#34; is now larger and </span><span class="unit-expr-misc">21%</span><span> of Energy gained by Winifred through her own skills gets split among her allies as well.</span></p>
+    <p><span>Winifred&#39;s &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#WHITE" class="rarity-white">Witchy Zap</a><span>&#34; now targets </span><span class="unit-expr-misc">2</span><span> enemies and steals </span><span class="unit-expr-misc">400</span><span> Energy from them over the duration of the skill.</span></p>
+    <p><span>The splash area of &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#BLUE" class="rarity-blue">Soul Suck</a><span>&#34; is now larger and </span><span class="unit-expr-misc">25%</span><span> of Energy gained by Winifred through her own skills gets split among her allies as well.</span></p>
     <p><span>Energy share is less effective with allies above Level </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <p>额外属性提升：<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="13k" data-checkbox="eval">13k</output></span><span> Fantastic Damage to &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#WHITE" class="rarity-white">Witchy Zap</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="368k" data-checkbox="eval">368k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="223k" data-checkbox="eval">223k</output></span><span> </span><span class="unit-expr-misc">基本伤害</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> Fantastic Damage to &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#WHITE" class="rarity-white">Witchy Zap</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">基本伤害</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red"><dl class="inline-list">
@@ -6375,10 +6376,10 @@ function init()
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>splash</dt><dd>enemy | within(250)</dd>
-        <dt>energyamt</dt><dd>50</dd>
-        <dt>enemyamt</dt><dd>3</dd>
-        <dt>energypercent</dt><dd>0.21[%]</dd>
-        <dt>dmgamt</dt><dd>13k</dd>
+        <dt>energyamt</dt><dd>400</dd>
+        <dt>enemyamt</dt><dd>2</dd>
+        <dt>energypercent</dt><dd>0.25[%]</dd>
+        <dt>dmgamt</dt><dd>200k</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -6426,14 +6427,14 @@ function init()
     </p>
     <blockquote><span>Bonus Fantastic Damage While Berserk</span></blockquote>
     <ul>
-      <li><span>While Berserk, Winifred&#39;s Basic Attacks deal </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="22k" data-checkbox="eval">22k</output></span><span> bonus Fantastic Damage</span></li>
-      <li><span>Winifred gains </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s%" data-format="%" data-checkbox="eval">15s%</output></span><span> Skill Power for every </span><span class="unit-expr-misc">25%</span><span> missing HP</span>
+      <li><span>While Berserk, Winifred&#39;s Basic Attacks deal </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> bonus Fantastic Damage</span></li>
+      <li><span>Winifred gains </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="30s%" data-format="%" data-checkbox="eval">30s%</output></span><span> Skill Power for every </span><span class="unit-expr-misc">25%</span><span> missing HP</span>
         <div><dl class="unit-note inline-list">
           <dt>damagetype</dt><dd>Fantastic</dd>
         </dl></div>
       </li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval">400k</output></span><span> </span><span class="unit-expr-misc">最大生命值</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="112k" data-checkbox="eval">112k</output></span><span> </span><span class="unit-expr-misc">基本伤害</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="110k" data-checkbox="eval">110k</output></span><span> </span><span class="unit-expr-misc">基本伤害</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -6445,8 +6446,8 @@ function init()
     </p>
     <blockquote><span>Heal When Charmed Enemies Deal Damage</span></blockquote>
     <ul>
-      <li><span>Winifred gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="19k" data-checkbox="eval">19k</output></span><span> Basic Damage for each enemy Distracted by &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#GREEN" class="rarity-green">Spellbound</a><span>&#34; for the rest of the wave, up to a max of </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="190k" data-checkbox="eval">190k</output></span><span> Basic Damage. Winifred keeps </span><span class="unit-expr-misc">30%</span><span> of this bonus Basic Damage per wave</span></li>
-      <li><span>Winifred Heals for </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> of the damage dealt by Charmed enemies</span></li>
+      <li><span>Winifred gains </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="75k" data-checkbox="eval">75k</output></span><span> Basic Damage for each enemy Distracted by &#34;</span><a href="../hero/WINIFRED_SANDERSON.htm#GREEN" class="rarity-green">Spellbound</a><span>&#34; for the rest of the wave, up to a max of </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> Basic Damage. Winifred keeps </span><span class="unit-expr-misc">33%</span><span> of this bonus Basic Damage per wave</span></li>
+      <li><span>Winifred Heals for </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="20s%" data-format="%" data-checkbox="eval">20s%</output></span><span> of the damage dealt by Charmed enemies</span></li>
       <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span><span class="unit-expr-misc">现实度</span></li>
     </ul>
     <!-- Disk } -->
