@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 01/04/2022</span>
+  <span style="white-space: nowrap;">Release date: 02/08/2022</span>
   -->
 </div><!--  container } -->
 
@@ -138,6 +138,7 @@ function init()
           <li title="Causa daño al objetivo durante un tiempo."><a href="../hero_list.htm?DAMAGE_OVER_TIME=on">Daño con el tiempo</a></li>
           <li title="Hace retroceder un tramo al objetivo."><a href="../hero_list.htm?KNOCKBACK=on">Revés</a></li>
           <li title="Las unidades aturdidas no se pueden mover, atacar ni usar sus habilidades."><a href="../hero_list.htm?STUN=on">Aturdimiento</a></li>
+          <li title="Cada acumulación de fatiga en una unidad impedirá que se le aplique una mejora."><a href="../hero_list.htm?FATIGUE=on">Fatiga</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ efectos</span>
@@ -146,6 +147,8 @@ function init()
           <li title="Cura al personaje."><a href="../hero_list.htm?HEAL_SELF=on">Curar al personaje</a></li>
           <li title="Puede curar al menos a un aliado."><a href="../hero_list.htm?HEAL_TEAM=on">Curar al equipo</a></li>
           <li title="Las unidades con el poder de precisión pueden apuntar a los enemigos invisibles y sus ataques no se pueden esquivar ni evadir."><a href="../hero_list.htm?PRECISE=on">Preciso</a></li>
+          <li title="Puede curar al menos a un aliado durante un tiempo."><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">Curación con el tiempo al equipo</a></li>
+          <li title="Cura al personaje durante un tiempo"><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">Curación con el tiempo al personaje</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">- estadísticas</span>
@@ -153,6 +156,8 @@ function init()
         <ul class="inline-list">
           <li title="La velocidad de ataque se reduce."><a href="../hero_list.htm?ATTACK_SPEED_DECREASE=on">Reducción de velocidad de ataque</a></li>
           <li title="La velocidad de movimiento se reduce."><a href="../hero_list.htm?MOVE_SPEED_DECREASE=on">Reducción de velocidad de movimiento</a></li>
+          <li title="La armadura se reduce."><a href="../hero_list.htm?ARMOR_DECREASE=on">Reducción de armadura</a></li>
+          <li title="La realidad se reduce."><a href="../hero_list.htm?REALITY_DECREASE=on">Reducción de realidad</a></li>
         </ul>
       </span>
       <span class="unit-pair-name unit-fltr-grp-name">+ estadísticas</span>
@@ -196,12 +201,14 @@ function init()
       <!-- Level { -->
       <span class="unit-pair-name">Nivel</span>
       <span class="unit-pair-val">
-        <input name="v" type="number" pattern="\d*" min="1" max="285" value="285">
+        <input name="v" type="number" pattern="\d*" min="1" max="290" value="290">
       </span>
       <span class="unit-pair-name">Rango</span>
       <span class="unit-pair-val">
         <select name="r">
-          <option value="89.14" selected>YELLOW+10</option>
+          <option value="107.86" selected>YELLOW+12</option>
+          <option value="98.05">YELLOW+11</option>
+          <option value="89.14">YELLOW+10</option>
           <option value="81.04">YELLOW+9</option>
           <option value="73.67">YELLOW+8</option>
           <option value="66.97">YELLOW+7</option>
@@ -6383,6 +6390,152 @@ function init()
           </dl>
         </span>
       <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="98.05"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="1192264.00" data-r_ctl="98.05"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2119037.00" data-r_ctl="98.05"></output>
+        <output name="b_hp_max" class="hidden" data-formula="37495751.00" data-r_ctl="98.05"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="296" data-r_ctl="98.05"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7312843.00" data-r_ctl="98.05"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="310" data-r_ctl="98.05"></output>
+        <output name="b_armor" class="hidden" data-formula="1258130.00" data-r_ctl="98.05"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="128" data-r_ctl="98.05"></output>
+        <output name="b_reality" class="hidden" data-formula="3707330" data-r_ctl="98.05"></output>
+        <output name="b_tenacity" class="hidden" data-formula="142" data-r_ctl="98.05"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="138" data-r_ctl="98.05"></output>
+        <output name="b_improved_healing" class="hidden" data-formula="0.15" data-r_ctl="98.05"></output>
+        <output name="b_evasion" class="hidden" data-formula="12" data-r_ctl="98.05"></output>
+        <output name="b_crit_damage" class="hidden" data-formula="35" data-r_ctl="98.05"></output>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=MACHIOVELLI#MACHIOVELLI" class="rarity-yellow">Machiavelli</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b1" data-basic_damage="67313" data-hp_max="3369533" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Daño básico</dt><dd>67313</dd>
+            <dt>Puntos de vida máximos</dt><dd>3369533</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=MY_BALLOON_FRIEND#MY_BALLOON_FRIEND" class="rarity-yellow">Mi amigo el globo</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b2" data-basic_damage="122083" data-skill_power="170908" data-hp_max="3255208" data-reality="550000" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Daño básico</dt><dd>122083</dd>
+            <dt>Poder de habilidad</dt><dd>170908</dd>
+            <dt>Puntos de vida máximos</dt><dd>3255208</dd>
+            <dt>Realidad</dt><dd>550000</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=YOURE_A_STAR#YOURE_A_STAR" class="rarity-yellow">Eres una estrella</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b3" data-hp_max="625000" data-armor="140626" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Puntos de vida máximos</dt><dd>625000</dd>
+            <dt>Armadura</dt><dd>140626</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=SQUISHYS_MOM#SQUISHYS_MOM" class="rarity-yellow">La mamá de Esponjoso</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b4" data-basic_damage="107425" data-skill_power="126958" data-armor_negation="15" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Daño básico</dt><dd>107425</dd>
+            <dt>Poder de habilidad</dt><dd>126958</dd>
+            <dt>Anulación de armadura</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=HI_DAD_SOUP#HI_DAD_SOUP" class="rarity-yellow">Sopa de letras</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b5" data-hp_max="1953125" data-armor="262500" data-reality="262580" data-crit_damage="15" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Puntos de vida máximos</dt><dd>1953125</dd>
+            <dt>Armadura</dt><dd>262500</dd>
+            <dt>Realidad</dt><dd>262580</dd>
+            <dt>Daño crítico</dt><dd>15</dd>
+          </dl>
+        </span>
+        <span class="unit-pair-name" style="display: none;" data-r_blk="98.05">
+          <a href="../item_list.htm?item=YOURE_WELCOME#YOURE_WELCOME" class="rarity-yellow">De nada</a>
+        </span>
+        <span class="unit-pair-val nowrap" style="display: none;" data-r_blk="98.05">
+          <select name="b6" data-hp_max="2539063" data-armor="406252" data-reality="406252" data-r_ctl="98.05" disabled>
+            <option value="-1" selected>N/C</option>
+            <option value="0">Equipar</option>
+            <option value="1">&#x2605;</option>
+            <option value="2">&#x2605;&#x2605;</option>
+            <option value="3">&#x2605;&#x2605;&#x2605;</option>
+            <option value="4">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="5">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+          </select>
+          <dl class="inline-list unit-note">
+            <dt>Puntos de vida máximos</dt><dd>2539063</dd>
+            <dt>Armadura</dt><dd>406252</dd>
+            <dt>Realidad</dt><dd>406252</dd>
+          </dl>
+        </span>
+      <!-- </fieldset> -->
+      <!-- <fieldset data-r_ctl="107.86"> -->
+        <output name="b_basic_damage" class="hidden" data-formula="1489085.00" data-r_ctl="107.86"></output>
+        <output name="b_skill_power" class="hidden" data-formula="2416903.00" data-r_ctl="107.86"></output>
+        <output name="b_hp_max" class="hidden" data-formula="49237680.00" data-r_ctl="107.86"></output>
+        <output name="b_normal_crit" class="hidden" data-formula="296" data-r_ctl="107.86"></output>
+        <output name="b_hp_regen" class="hidden" data-formula="7312843.00" data-r_ctl="107.86"></output>
+        <output name="b_energy_regen" class="hidden" data-formula="310" data-r_ctl="107.86"></output>
+        <output name="b_armor" class="hidden" data-formula="2067508.00" data-r_ctl="107.86"></output>
+        <output name="b_armor_negation" class="hidden" data-formula="143" data-r_ctl="107.86"></output>
+        <output name="b_reality" class="hidden" data-formula="4926162" data-r_ctl="107.86"></output>
+        <output name="b_tenacity" class="hidden" data-formula="142" data-r_ctl="107.86"></output>
+        <output name="b_fantastic_crit" class="hidden" data-formula="138" data-r_ctl="107.86"></output>
+        <output name="b_improved_healing" class="hidden" data-formula="0.15" data-r_ctl="107.86"></output>
+        <output name="b_evasion" class="hidden" data-formula="12" data-r_ctl="107.86"></output>
+        <output name="b_crit_damage" class="hidden" data-formula="50" data-r_ctl="107.86"></output>
+      <!-- </fieldset> -->
       <!-- Badge } -->
 
       <span class="unit-pair-line hr"></span>
@@ -6557,7 +6710,7 @@ function init()
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">El rey de los siete mares</a></label></h2>
-    <p><span>Los enemigos alcanzados por &#34;</span><a href="../hero/KING_TRITON.htm#WHITE" class="rarity-white">Torbellino</a><span>&#34; y &#34;</span><a href="../hero/KING_TRITON.htm#GREEN" class="rarity-green">Tridente lanzarayos</a><span>&#34; ahora tienen todos los escudos destruidos. Los ataques básicos del Rey Tritón destruyen el escudo del enemigo con la mayor cantidad de PV.</span></p>
+    <p><span>Los enemigos alcanzados por &#34;</span><a href="../hero/KING_TRITON.htm#WHITE" class="rarity-white">Torbellino</a><span>&#34; y &#34;</span><a href="../hero/KING_TRITON.htm#GREEN" class="rarity-green">Tridente lanzarayos</a><span>&#34; ahora tienen todos los escudos destruidos. El escudo con la mayor cantidad de PV de los enemigos alcanzados por los ataques básicos del Rey Tritón se destruye.</span></p>
     <p><span>La destrucción de escudos puede fallar contra enemigos que superan el nivel </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Desprotegidos</a></label></h2>
     <p><span>&#34;</span><a href="../hero/KING_TRITON.htm#GREEN" class="rarity-green">Tridente lanzarayos</a><span>&#34; ahora favorece al enemigo con la mayor cantidad de PV como escudo y su tiempo de recuperación se reduce </span><span class="unit-expr-misc">6</span><span> segundos cada vez que destruye un escudo.</span></p>
@@ -6601,7 +6754,7 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Nivel</span>
       <span class="unit-pair-val">
-        <input name="level" type="number" pattern="\d*" min="1" max="245" value="245">
+        <input name="level" type="number" pattern="\d*" min="1" max="250" value="250">
       </span>
       <span class="unit-pair-name">Estrellas</span>
       <span class="unit-pair-val star-group">
