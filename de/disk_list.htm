@@ -160,7 +160,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 03/15/2022</span>
+  <span style="white-space: nowrap;">Release date: 04/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -178,7 +178,7 @@ function init()
       <span class="vr"></span>
       <span>Stufe:</span>
       <span>
-        <input name="level" type="number" pattern="\d*" min="1" max="255" value="255">
+        <input name="level" type="number" pattern="\d*" min="1" max="260" value="260">
       </span>
       <span class="vr"></span>
       <span>Sterne:</span>
@@ -207,6 +207,7 @@ function init()
         <li data-tag="BLIND"><label for="unit-tag-BLIND">Blenden</label></li>
         <li data-tag="SILENCE"><label for="unit-tag-SILENCE">Verstummen</label></li>
         <li data-tag="CHARM"><label for="unit-tag-CHARM">Verzaubern</label></li>
+        <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">Ablenken</label></li>
         <li data-tag="CURSE"><label for="unit-tag-CURSE">Verfluchen</label></li>
         <li data-tag="HEX"><label for="unit-tag-HEX">Verhexen</label></li>
         <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">Energieentzug</label></li>
@@ -250,6 +251,7 @@ function init()
         <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">Bewegungsgeschwindigkeits-Verringerung</label></li>
         <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">Ausweichen-Verringerung</label></li>
         <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">Hartnäckigkeits-Verringerung</label></li>
+        <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">Max.-LP-Verringerung</label></li>
         <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">Panzerungs-Erhöhung</label></li>
         <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">Realitäts-Erhöhung</label></li>
         <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">Grundschaden-Erhöhung</label></li>
@@ -278,6 +280,7 @@ function init()
         <span><input type="checkbox" name="BLIND" id="unit-tag-BLIND"  onchange="filter.update()"><label for="unit-tag-BLIND" title="Normale Angriffe von geblendeten Gegnern schlagen immer fehl.">Blenden</label></span>
         <span><input type="checkbox" name="SILENCE" id="unit-tag-SILENCE"  onchange="filter.update()"><label for="unit-tag-SILENCE" title="Verstummte Einheiten können keine Fähigkeiten einsetzen.">Verstummen</label></span>
         <span><input type="checkbox" name="CHARM" id="unit-tag-CHARM"  onchange="filter.update()"><label for="unit-tag-CHARM" title="Verzauberte Einheiten greifen ihre Verbündeten an, werden aber selbst weiterhin von ihren Gegnern angegriffen. Verzauberte Einheiten können ihre weißen Fähigkeiten nicht verwenden.">Verzaubern</label></span>
+        <span><input type="checkbox" name="DISTRACT" id="unit-tag-DISTRACT"  onchange="filter.update()"><label for="unit-tag-DISTRACT" title="Abgelenkte Einheiten nutzen all ihre Fähigkeiten und Angriffe gegen den Gegner, der für die Ablenkung verantwortlich ist.">Ablenken</label></span>
         <span><input type="checkbox" name="CURSE" id="unit-tag-CURSE"  onchange="filter.update()"><label for="unit-tag-CURSE" title="Die Heilung, die verfluchte Einheiten erhalten, ist um die Hälfte reduziert.">Verfluchen</label></span>
         <span><input type="checkbox" name="HEX" id="unit-tag-HEX"  onchange="filter.update()"><label for="unit-tag-HEX" title="Verhexte Einheiten werden betäubt, wenn sie ihre weiße Fähigkeit verwenden. Sie verbrauchen weiterhin Energie, wenn dies passiert.">Verhexen</label></span>
         <span><input type="checkbox" name="ENERGY_REMOVAL" id="unit-tag-ENERGY_REMOVAL"  onchange="filter.update()"><label for="unit-tag-ENERGY_REMOVAL" title="Entzieht dem Ziel sofort eine bestimmte Menge an Energie.">Energieentzug</label></span>
@@ -327,6 +330,7 @@ function init()
         <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="Bewegungsgeschwindigkeit wird verringert.">Bewegungsgeschwindigkeits-Verringerung</label></span>
         <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="Ausweichen wird verringert.">Ausweichen-Verringerung</label></span>
         <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="Hartnäckigkeit wird verringert.">Hartnäckigkeits-Verringerung</label></span>
+        <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="Max. LP werden verringert.">Max.-LP-Verringerung</label></span>
       </fieldset>
       <fieldset>
         <legend class="unit-fltr-grp-name">+ statistiken</legend>
@@ -5327,18 +5331,18 @@ function init()
   <!-- Disk { -->
     <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_joy.jpg');">
         <a href="./hero/JOY.htm">Freude</a>
       </td>
       <td>200</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p>Situationssucher</p></a>
-        <blockquote><span>Studierte Gegner sind langsamer</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p></p></a>
+        <blockquote></blockquote>
         <ul>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span><span> für </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">Kim Possible</a><span> und Verbündete</span></li>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span><span> für </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">Kim Possible</a><span> und Verbündete</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span><span> für </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span> und Verbündete</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span><span> für </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span> und Verbündete</span></li>
           <li><span>Die Angriffsgeschwindigkeit studierter Gegner wird um </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> verringert; Wenn Kim Possible einen studierten Gegner außer Gefecht setzt, wird ihr Grundschaden </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval" form="unit-disk">1s</output></span><span> normale Angriffe lang um </span><span class="unit-expr-misc">50%</span><span> erhöht</span></li>
         </ul>
       </td>
@@ -5387,15 +5391,15 @@ function init()
   <!-- Disk { -->
     <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_darkwing_duck.jpg');">
         <a href="./hero/DARKWING_DUCK.htm">Darkwing Duck</a>
       </td>
       <td>203</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p>Entenanruf</p></a>
-        <blockquote><span>Schwächung der Blockierung von Verängstigungen</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p></p></a>
+        <blockquote></blockquote>
         <ul>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="133k" data-checkbox="eval" form="unit-disk">133k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
           <li><a href="./hero_list.htm?TANK_ROLE=on" class="unit-expr-misc">Tank</a><span> Helden im Team gewinnen </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="191k" data-checkbox="eval" form="unit-disk">191k</output></span><span> </span><span class="unit-expr-misc">Realität</span></li>
@@ -6000,7 +6004,7 @@ function init()
         <a href="./hero/DR_DRAKKEN.htm">Dr. Drakken</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>233</td>
       <td>
@@ -6416,7 +6420,7 @@ function init()
         <a href="./hero/SHEGO.htm">Shego</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -6436,7 +6440,7 @@ function init()
         <a href="./hero/RON_STOPPABLE.htm">Ron Stoppable</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Kim Possible</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -7488,6 +7492,91 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE INVINCIBLE HEAL_SELF">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">Namaari</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_raya.jpg');">
+        <a href="./hero/RAYA.htm">Raya</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_INVINCIBLE"><p>Haustier-Verfolgung</p></a>
+        <blockquote><span>Erhalte Unbesiegbarkeit zum Start der Welle</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Zu Beginn jeder Welle erhält Namaari </span><span class="unit-expr-misc">4</span><span> Sekunden Unbesiegbarkeit.;Jedes Mal, wenn Namaari oder ihre Verbündeten Schwäche anwenden, heilt sich Namaari um </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s%" data-format="%" data-checkbox="eval" form="unit-disk">25s%</output></span><span> ihrer max. LP.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span></li>
+          <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span><span>, während sie geschwächt sind</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_REMOVAL FATIGUE">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">Namaari</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_maleficant.jpg');">
+        <a href="./hero/MALEFICENT.htm">Malefiz</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_FATIGUE"><p>Drachenjagd</p></a>
+        <blockquote><span>Wende Erschöpfung auf geschwächte Gegner an</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Wenn Namaari oder Verbündete Schwäche auf einen Gegner mit </span><span class="unit-expr-misc">5</span><span> Schwäche-Stapel anwenden, entfernen sie ebenfalls </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="120s" data-checkbox="eval" form="unit-disk">120s</output></span><span> Energie und wenden </span><span class="unit-expr-misc">3</span><span> Erschöpfung-Stapel an. Namaari und ihre Verbündeten können diesen Effekt einmal pro Sekunde auslösen.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Grundschaden</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
+          <li><span>Pro Stapel Erschöpfung, die sie haben, verlieren Gegner </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="MAX_HP_DECREASE HEAL_SELF DISTRACT">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">Der gehörnte König</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_shan_yu.jpg');">
+        <a href="./hero/SHAN_YU.htm">Shan Yu</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SOLDIER"><p>Erweckt die Toten</p></a>
+        <blockquote><span>Soldaten, die aus dem Zauberkessel wiedergeboren wurden, lenken Gegner ab</span></blockquote>
+        <ul>
+          <li><span>„</span><a href="./hero/THE_HORNED_KING.htm#BLUE" class="rarity-blue">Erhebt euch!</a><span>&#34; heilt </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> mehr LP.</span></li>
+          <li><span>Mit jedem </span><span class="unit-expr-misc">5</span><span>. normalen Angriff lenken Soldaten Gegner in der Nähe für </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval" form="unit-disk">2s</output></span><span> Sekunden ab.</span></li>
+          <li><span>Pro Stapel Erschöpfung, die sie haben, verlieren Gegner </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="600k" data-checkbox="eval" form="unit-disk">600k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE ENERGY_SELF">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">Der gehörnte König</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_disgust.jpg');">
+        <a href="./hero/DISGUST.htm">Ekel</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SCARE"><p>Angebotsmissachtung</p></a>
+        <blockquote><span>Erhalte Energie, wenn ein Gegner oder Verbündeter außer Gefecht gesetzt wird</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Wenn ein Verbündeter oder Gegner außer Gefecht gesetzt wird, erhält der gehörnte König </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s" data-checkbox="eval" form="unit-disk">15s</output></span><span> Energie. Der gehörnte König kann auf diese Weise alle </span><span class="unit-expr-misc">5</span><span> Sekunden Energie erhalten.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
+          <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">Realität</span><span>, während sie verängstigt sind</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
     <tr data-tag="FANTASTIC_DAMAGE MAX_HP_INCREASE SKILL_POWER_INCREASE NORMAL_CRIT_INCREASE CRIT_DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_the_underminer.jpg');">
         <a href="./hero/THE_UNDERMINER.htm">Der Tunnelgräber</a>
@@ -7501,7 +7590,7 @@ function init()
         <blockquote><span>Erhöhung der Chance des normalen kritischen Treffers und des Schadens des kritischen Treffers</span></blockquote>
         <ul>
           <li><span>„</span><a href="./hero/THE_UNDERMINER.htm#BLUE" class="rarity-blue">Explosiver Angriff</a><span>&#34; verursacht umliegenden Gegnern zusätzlich </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="50k" data-checkbox="eval" form="unit-disk">50k</output></span><span> fantastischen Schaden.</span></li>
-          <li><span>Der Tunnelgräber erhält eine Chance von </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> auf normale kritische Treffer und </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> Schaden durch kritischen Treffer.</span></li>
+          <li><span>Der Tunnelgräber erhält eine Chance von </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> auf normale kritische Treffer und </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> Schaden durch kritischen Treffer.; Diese Werte erhöhen sich auch mit der Stufe dieser Erinnerungsscheibe.</span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="skill_power" data-checkbox="eval" form="unit-disk">skill_power</output></span><span> für </span><a href="./hero/THE_UNDERMINER.htm" class="unit-expr-misc">Der Tunnelgräber</a><span> und Verbündete für die ersten </span><span class="unit-expr-misc">10</span><span> Sekunden jeder Welle</span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval" form="unit-disk">400k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span></li>
         </ul>

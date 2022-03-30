@@ -160,7 +160,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 03/15/2022</span>
+  <span style="white-space: nowrap;">Release date: 04/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -178,7 +178,7 @@ function init()
       <span class="vr"></span>
       <span>레벨:</span>
       <span>
-        <input name="level" type="number" pattern="\d*" min="1" max="255" value="255">
+        <input name="level" type="number" pattern="\d*" min="1" max="260" value="260">
       </span>
       <span class="vr"></span>
       <span>별:</span>
@@ -207,6 +207,7 @@ function init()
         <li data-tag="BLIND"><label for="unit-tag-BLIND">블라인드</label></li>
         <li data-tag="SILENCE"><label for="unit-tag-SILENCE">침묵</label></li>
         <li data-tag="CHARM"><label for="unit-tag-CHARM">현혹</label></li>
+        <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">주의 분산</label></li>
         <li data-tag="CURSE"><label for="unit-tag-CURSE">저주</label></li>
         <li data-tag="HEX"><label for="unit-tag-HEX">마법</label></li>
         <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">에너지 제거</label></li>
@@ -250,6 +251,7 @@ function init()
         <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">이동 스피드 감소</label></li>
         <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">회피 감소</label></li>
         <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">끈기 감소</label></li>
+        <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">최대 HP 감소</label></li>
         <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">방어 증가</label></li>
         <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">현실 증가</label></li>
         <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">기본 데미지 증가</label></li>
@@ -278,6 +280,7 @@ function init()
         <span><input type="checkbox" name="BLIND" id="unit-tag-BLIND"  onchange="filter.update()"><label for="unit-tag-BLIND" title="블라인드 상태의 유닛이 하는 기본 공격은 항상 빗나갑니다.">블라인드</label></span>
         <span><input type="checkbox" name="SILENCE" id="unit-tag-SILENCE"  onchange="filter.update()"><label for="unit-tag-SILENCE" title="침묵 상태의 유닛은 스킬을 사용할 수 없습니다.">침묵</label></span>
         <span><input type="checkbox" name="CHARM" id="unit-tag-CHARM"  onchange="filter.update()"><label for="unit-tag-CHARM" title="현혹 상태의 유닛은 동료를 공격하며, 계속 적의 공격 대상이 될 수 있습니다. 현혹 상태의 유닛은 화이트 스킬을 사용할 수 없습니다.">현혹</label></span>
+        <span><input type="checkbox" name="DISTRACT" id="unit-tag-DISTRACT"  onchange="filter.update()"><label for="unit-tag-DISTRACT" title="주의 분산 상태의 유닛은 모든 스킬과 공격을 주의 분산을 유발한 적에게 사용합니다.">주의 분산</label></span>
         <span><input type="checkbox" name="CURSE" id="unit-tag-CURSE"  onchange="filter.update()"><label for="unit-tag-CURSE" title="저주받은 유닛은 받는 모든 치유 효과가 절반으로 감소합니다.">저주</label></span>
         <span><input type="checkbox" name="HEX" id="unit-tag-HEX"  onchange="filter.update()"><label for="unit-tag-HEX" title="마법에 걸린 유닛은 화이트 스킬을 사용하면 기절합니다. 이 경우에도 에너지는 소모됩니다.">마법</label></span>
         <span><input type="checkbox" name="ENERGY_REMOVAL" id="unit-tag-ENERGY_REMOVAL"  onchange="filter.update()"><label for="unit-tag-ENERGY_REMOVAL" title="대상에게서 즉시 일정량의 에너지를 제거합니다.">에너지 제거</label></span>
@@ -327,6 +330,7 @@ function init()
         <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="이동 스피드가 감소합니다.">이동 스피드 감소</label></span>
         <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="회피가 감소합니다.">회피 감소</label></span>
         <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="끈기가 감소합니다.">끈기 감소</label></span>
+        <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="최대 HP가 감소합니다.">최대 HP 감소</label></span>
       </fieldset>
       <fieldset>
         <legend class="unit-fltr-grp-name">+ 능력치</legend>
@@ -5327,18 +5331,18 @@ function init()
   <!-- Disk { -->
     <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_joy.jpg');">
         <a href="./hero/JOY.htm">기쁨이</a>
       </td>
       <td>200</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p>문제 탐지기</p></a>
-        <blockquote><span>연구한 적 감속</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p></p></a>
+        <blockquote></blockquote>
         <ul>
-          <li><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">킴 파서블</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">기본 데미지</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span></li>
-          <li><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">킴 파서블</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">최대 HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span></li>
+          <li><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span>와(과) 동료에게 </span><span class="unit-expr-misc">기본 데미지</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span></li>
+          <li><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span>와(과) 동료에게 </span><span class="unit-expr-misc">최대 HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span></li>
           <li><span>연구한 적의 공격 스피드가 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> 감소합니다. 킴 파서블이 연구한 적을 KO시키면, 기본 공격을 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval" form="unit-disk">1s</output></span><span>번 할 동안 기본 데미지가 </span><span class="unit-expr-misc">50%</span><span> 증가합니다.</span></li>
         </ul>
       </td>
@@ -5387,15 +5391,15 @@ function init()
   <!-- Disk { -->
     <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_darkwing_duck.jpg');">
         <a href="./hero/DARKWING_DUCK.htm">오리 형사 다크</a>
       </td>
       <td>203</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p>오리 다이얼</p></a>
-        <blockquote><span>겁주기 디버프 막기</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p></p></a>
+        <blockquote></blockquote>
         <ul>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="133k" data-checkbox="eval" form="unit-disk">133k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
           <li><span>팀의 </span><a href="./hero_list.htm?TANK_ROLE=on" class="unit-expr-misc">탱커</a><span> 히어로들이 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="191k" data-checkbox="eval" form="unit-disk">191k</output></span><span> </span><span class="unit-expr-misc">현실</span><span>(을)를 획득합니다</span></li>
@@ -6000,7 +6004,7 @@ function init()
         <a href="./hero/DR_DRAKKEN.htm">드라켄 박사</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>233</td>
       <td>
@@ -6416,7 +6420,7 @@ function init()
         <a href="./hero/SHEGO.htm">쉬고</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -6436,7 +6440,7 @@ function init()
         <a href="./hero/RON_STOPPABLE.htm">론 스타퍼블</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">킴 파서블</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -7488,6 +7492,91 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE INVINCIBLE HEAL_SELF">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">나마리</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_raya.jpg');">
+        <a href="./hero/RAYA.htm">라야</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_INVINCIBLE"><p>애완동물 추적</p></a>
+        <blockquote><span>웨이브 시작 시 무적 효과 얻기</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>각 웨이브가 시작될 때마다 나마리는 </span><span class="unit-expr-misc">4</span><span>초 동안 무적 효과를 얻습니다. 나마리 또는 아군이 약점을 적용할 때마다, 나마리는 최대 HP의 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s%" data-format="%" data-checkbox="eval" form="unit-disk">25s%</output></span><span>를 회복합니다.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">최대 HP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">방어</span></li>
+          <li><span>약화 상태의 적이 </span><span class="unit-expr-misc">기본 데미지</span><span>을(를) </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> 잃습니다.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_REMOVAL FATIGUE">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">나마리</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_maleficant.jpg');">
+        <a href="./hero/MALEFICENT.htm">마녀</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_FATIGUE"><p>용 사냥</p></a>
+        <blockquote><span>약화된 적에게 피로 적용</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>나마리 또는 동료가 약점이 </span><span class="unit-expr-misc">5</span><span>중첩 부여된 적에게 약점을 적용하면, 대상의 에너지가 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="120s" data-checkbox="eval" form="unit-disk">120s</output></span><span> 제거되고 피로 </span><span class="unit-expr-misc">3</span><span>중첩이 적용됩니다. 나마리와 동료는 1초마다 이 효과를 발동할 수 있습니다.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">기본 데미지</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
+          <li><span>적들이 보유한 피로 중첩 하나당 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span>의 </span><span class="unit-expr-misc">방어</span><span>을(를) 잃습니다.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="MAX_HP_DECREASE HEAL_SELF DISTRACT">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">뿔 달린 왕</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_shan_yu.jpg');">
+        <a href="./hero/SHAN_YU.htm">샨 유</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SOLDIER"><p>망자 깨우기</p></a>
+        <blockquote><span>가마솥에서 태어난 병사들이 적의 주의 분산</span></blockquote>
+        <ul>
+          <li><span>&#34;</span><a href="./hero/THE_HORNED_KING.htm#BLUE" class="rarity-blue">일어나라!</a><span>&#34; 스킬의 HP 치유량이 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> 증가합니다.</span></li>
+          <li><span>기본 공격을 </span><span class="unit-expr-misc">5</span><span>번 할 때마다 병사가 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval" form="unit-disk">2s</output></span><span>초 동안 주위의 적의 주의를 분산시킵니다.</span></li>
+          <li><span>적들이 보유한 피로 중첩 하나당 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="600k" data-checkbox="eval" form="unit-disk">600k</output></span><span>의 </span><span class="unit-expr-misc">최대 HP</span><span>을(를) 잃습니다.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE ENERGY_SELF">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">뿔 달린 왕</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_disgust.jpg');">
+        <a href="./hero/DISGUST.htm">까칠</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SCARE"><p>도전적인 저항</p></a>
+        <blockquote><span>적 또는 동료 KO 시 에너지 획득</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>동료 또는 적이 KO되면, 뿔 달린 왕이 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s" data-checkbox="eval" form="unit-disk">15s</output></span><span>의 에너지를 얻습니다. 뿔 달린 왕은 </span><span class="unit-expr-misc">5</span><span>초에 한 번씩만 이 방식으로 에너지를 얻을 수 있습니다.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
+          <li><span>겁먹은 적이 </span><span class="unit-expr-misc">현실</span><span>을(를) </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> 잃습니다.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
     <tr data-tag="FANTASTIC_DAMAGE MAX_HP_INCREASE SKILL_POWER_INCREASE NORMAL_CRIT_INCREASE CRIT_DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_the_underminer.jpg');">
         <a href="./hero/THE_UNDERMINER.htm">언더마이너</a>
@@ -7501,7 +7590,7 @@ function init()
         <blockquote><span>일반 크리티컬 및 크리티컬 데미지 증가</span></blockquote>
         <ul>
           <li><span>&#34;</span><a href="./hero/THE_UNDERMINER.htm#BLUE" class="rarity-blue">광부 폭발</a><span>&#34; 스킬이 주위의 적에게 추가로 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="50k" data-checkbox="eval" form="unit-disk">50k</output></span><span>의 판타스틱 데미지를 줍니다.</span></li>
-          <li><span>언더마이너의 일반 크리티컬은 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span>, 크리티컬 데미지는 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> 증가합니다.</span></li>
+          <li><span>언더마이너의 일반 크리티컬은 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span>, 크리티컬 데미지는 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> 증가합니다. 이 능력치는 메모리 디스크 레벨에 따라서도 증가합니다.</span></li>
           <li><span>각 웨이브의 처음 </span><span class="unit-expr-misc">10</span><span>초 동안 </span><a href="./hero/THE_UNDERMINER.htm" class="unit-expr-misc">언더마이너</a><span> 및 동료의 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="skill_power" data-checkbox="eval" form="unit-disk">skill_power</output></span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval" form="unit-disk">400k</output></span><span> </span><span class="unit-expr-misc">최대 HP</span></li>
         </ul>

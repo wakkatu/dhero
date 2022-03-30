@@ -160,7 +160,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 03/15/2022</span>
+  <span style="white-space: nowrap;">Release date: 04/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -178,7 +178,7 @@ function init()
       <span class="vr"></span>
       <span>Уровень:</span>
       <span>
-        <input name="level" type="number" pattern="\d*" min="1" max="255" value="255">
+        <input name="level" type="number" pattern="\d*" min="1" max="260" value="260">
       </span>
       <span class="vr"></span>
       <span>Звезды:</span>
@@ -207,6 +207,7 @@ function init()
         <li data-tag="BLIND"><label for="unit-tag-BLIND">Слепота</label></li>
         <li data-tag="SILENCE"><label for="unit-tag-SILENCE">Молчание</label></li>
         <li data-tag="CHARM"><label for="unit-tag-CHARM">Очарование</label></li>
+        <li data-tag="DISTRACT"><label for="unit-tag-DISTRACT">Отвлечение</label></li>
         <li data-tag="CURSE"><label for="unit-tag-CURSE">Проклятие</label></li>
         <li data-tag="HEX"><label for="unit-tag-HEX">Чары</label></li>
         <li data-tag="ENERGY_REMOVAL"><label for="unit-tag-ENERGY_REMOVAL">Потеря энергии</label></li>
@@ -250,6 +251,7 @@ function init()
         <li data-tag="MOVE_SPEED_DECREASE"><label for="unit-tag-MOVE_SPEED_DECREASE">Понижение скорости движения</label></li>
         <li data-tag="EVASION_DECREASE"><label for="unit-tag-EVASION_DECREASE">Понижение избежания</label></li>
         <li data-tag="TENACITY_DECREASE"><label for="unit-tag-TENACITY_DECREASE">Понижение стойкости</label></li>
+        <li data-tag="MAX_HP_DECREASE"><label for="unit-tag-MAX_HP_DECREASE">Снижение макс. HP</label></li>
         <li data-tag="ARMOR_INCREASE"><label for="unit-tag-ARMOR_INCREASE">Повышение брони</label></li>
         <li data-tag="REALITY_INCREASE"><label for="unit-tag-REALITY_INCREASE">Повышение реальности</label></li>
         <li data-tag="DAMAGE_INCREASE"><label for="unit-tag-DAMAGE_INCREASE">Повышение базового урона</label></li>
@@ -278,6 +280,7 @@ function init()
         <span><input type="checkbox" name="BLIND" id="unit-tag-BLIND"  onchange="filter.update()"><label for="unit-tag-BLIND" title="Базовые атаки ослепленных бойцов всегда проходят мимо цели.">Слепота</label></span>
         <span><input type="checkbox" name="SILENCE" id="unit-tag-SILENCE"  onchange="filter.update()"><label for="unit-tag-SILENCE" title="Замолчавшие бойцы не могут использовать навыки.">Молчание</label></span>
         <span><input type="checkbox" name="CHARM" id="unit-tag-CHARM"  onchange="filter.update()"><label for="unit-tag-CHARM" title="Очарованные бойцы атакуют своих союзников, но враги все еще могут атаковать их. Очарованные бойцы не могут использовать белые навыки.">Очарование</label></span>
+        <span><input type="checkbox" name="DISTRACT" id="unit-tag-DISTRACT"  onchange="filter.update()"><label for="unit-tag-DISTRACT" title="Отвлеченные бойцы направляют все навыки и атаки на врага, которых их отвлек.">Отвлечение</label></span>
         <span><input type="checkbox" name="CURSE" id="unit-tag-CURSE"  onchange="filter.update()"><label for="unit-tag-CURSE" title="Эффективность лечения проклятых бойцов снижена наполовину.">Проклятие</label></span>
         <span><input type="checkbox" name="HEX" id="unit-tag-HEX"  onchange="filter.update()"><label for="unit-tag-HEX" title="Зачарованные бойцы получают оглушение, используя белые навыки. Они все равно расходуют энергию, когда это случается.">Чары</label></span>
         <span><input type="checkbox" name="ENERGY_REMOVAL" id="unit-tag-ENERGY_REMOVAL"  onchange="filter.update()"><label for="unit-tag-ENERGY_REMOVAL" title="Немедленно отнимает у цели определенное количество энергии.">Потеря энергии</label></span>
@@ -327,6 +330,7 @@ function init()
         <span><input type="checkbox" name="MOVE_SPEED_DECREASE" id="unit-tag-MOVE_SPEED_DECREASE"  onchange="filter.update()"><label for="unit-tag-MOVE_SPEED_DECREASE" title="Скорость движения снижена.">Понижение скорости движения</label></span>
         <span><input type="checkbox" name="EVASION_DECREASE" id="unit-tag-EVASION_DECREASE"  onchange="filter.update()"><label for="unit-tag-EVASION_DECREASE" title="Значение избежания снижено.">Понижение избежания</label></span>
         <span><input type="checkbox" name="TENACITY_DECREASE" id="unit-tag-TENACITY_DECREASE"  onchange="filter.update()"><label for="unit-tag-TENACITY_DECREASE" title="Значение стойкости снижено.">Понижение стойкости</label></span>
+        <span><input type="checkbox" name="MAX_HP_DECREASE" id="unit-tag-MAX_HP_DECREASE"  onchange="filter.update()"><label for="unit-tag-MAX_HP_DECREASE" title="Максимум HP снижен.">Снижение макс. HP</label></span>
       </fieldset>
       <fieldset>
         <legend class="unit-fltr-grp-name">полож. параметры</legend>
@@ -3931,7 +3935,7 @@ function init()
         <ul>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="213k" data-checkbox="eval" form="unit-disk">213k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="246k" data-checkbox="eval" form="unit-disk">246k</output></span><span> </span><span class="unit-expr-misc">Броня</span></li>
-          <li><span>Навык «</span><a href="./hero/GIZMODUCK.htm#GREEN" class="rarity-green">Сканирование костюма</a><span>» также крадет </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> брони союзников цели; +</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="50s%" data-format="%" data-checkbox="eval" form="unit-disk">50s%</output></span><span> к максимуму кражи брони каждого врага. Навык «</span><a href="./hero/GIZMODUCK.htm#GREEN" class="rarity-green">Сканирование костюма</a><span>» делает Уткоробота невидимым на </span><span class="unit-expr-misc">7</span><span> сек., если он крадет броню у врага, у которого брони больше, чем у него.</span></li>
+          <li><span>Навык «</span><a href="./hero/GIZMODUCK.htm#GREEN" class="rarity-green">Сканирование костюма</a><span>» также крадет </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> брони союзников цели; +</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="50s%" data-format="%" data-checkbox="eval" form="unit-disk">50s%</output></span><span> к максимуму кражи брони каждого врага. Навык «</span><a href="./hero/GIZMODUCK.htm#GREEN" class="rarity-green">Сканирование костюма</a><span>» делает Уткоробота неуязвимым на </span><span class="unit-expr-misc">7</span><span> сек., если он крадет броню у врага, у которого брони больше, чем у него.</span></li>
         </ul>
       </td>
     </tr>
@@ -5327,18 +5331,18 @@ function init()
   <!-- Disk { -->
     <tr data-tag="DAMAGE_INCREASE MAX_HP_INCREASE ATTACK_SPEED_DECREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_joy.jpg');">
         <a href="./hero/JOY.htm">Радость</a>
       </td>
       <td>200</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p>Обстановка такова</p></a>
-        <blockquote><span>Изученные враги становятся медленнее</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_STUDY"><p></p></a>
+        <blockquote></blockquote>
         <ul>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span> к </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">Ким Пять-с-плюсом</a><span> и союзникам</span></li>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span> к </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc">Ким Пять-с-плюсом</a><span> и союзникам</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="77k" data-checkbox="eval" form="unit-disk">77k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span> к </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span> и союзникам</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="585k" data-checkbox="eval" form="unit-disk">585k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span> к </span><a href="./hero/KIM_POSSIBLE.htm" class="unit-expr-misc"></a><span> и союзникам</span></li>
           <li><span>Скорость атаки изученных врагов снижается на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span>. Если Ким отправляет врага в нокаут, ее базовый урон растет на </span><span class="unit-expr-misc">50%</span><span> на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="1s" data-checkbox="eval" form="unit-disk">1s</output></span><span> баз. атаки.</span></li>
         </ul>
       </td>
@@ -5387,15 +5391,15 @@ function init()
   <!-- Disk { -->
     <tr data-tag="SKILL_POWER_INCREASE REALITY_INCREASE DAMAGE_INCREASE ATTACK_SPEED_INCREASE">
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_darkwing_duck.jpg');">
         <a href="./hero/DARKWING_DUCK.htm">Черный Плащ</a>
       </td>
       <td>203</td>
       <td>
-        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p>Утиный звонок</p></a>
-        <blockquote><span>Блокировка запугивания</span></blockquote>
+        <a class="nowrap" id="KIM_POSSIBLE_SCARE"><p></p></a>
+        <blockquote></blockquote>
         <ul>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="133k" data-checkbox="eval" form="unit-disk">133k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
           <li><span>Герои типа «</span><a href="./hero_list.htm?TANK_ROLE=on" class="unit-expr-misc">Танк</a><span>» в команде получают </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="191k" data-checkbox="eval" form="unit-disk">191k</output></span><span> </span><span class="unit-expr-misc">Реальность</span></li>
@@ -6000,7 +6004,7 @@ function init()
         <a href="./hero/DR_DRAKKEN.htm">Доктор Драккен</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>233</td>
       <td>
@@ -6416,7 +6420,7 @@ function init()
         <a href="./hero/SHEGO.htm">Шиго</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -6436,7 +6440,7 @@ function init()
         <a href="./hero/RON_STOPPABLE.htm">Рон Так-Себе</a>
       </td>
       <td style="background-image: url('../img_s/hero_list_kim_possible.jpg');">
-        <a href="./hero/KIM_POSSIBLE.htm">Ким Пять-с-плюсом</a>
+        <a href="./hero/KIM_POSSIBLE.htm">???</a>
       </td>
       <td>250</td>
       <td>
@@ -7488,6 +7492,91 @@ function init()
     </tr>
   <!-- Disk } -->
   <!-- Disk { -->
+    <tr data-tag="ARMOR_INCREASE MAX_HP_INCREASE DAMAGE_DECREASE INVINCIBLE HEAL_SELF">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">Намаари</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_raya.jpg');">
+        <a href="./hero/RAYA.htm">Райя</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_INVINCIBLE"><p>Погоня за питомцами</p></a>
+        <blockquote><span>Получает «Неуязвимость» в начале волны</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>В начале каждой волны Намаари получает </span><span class="unit-expr-misc">4</span><span> сек. «Непобедимости». Каждый раз, когда Намаари или союзники накладывают «Слабость», Намаари исцеляется на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="25s%" data-format="%" data-checkbox="eval" form="unit-disk">25s%</output></span><span> от своих макс. HP.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">Броня</span></li>
+          <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span>, пока они ослаблены</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ARMOR_DECREASE ENERGY_REMOVAL FATIGUE">
+      <td style="background-image: url('../img_s/hero_list_namaari.jpg');">
+        <a href="./hero/NAMAARI.htm">Намаари</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_maleficant.jpg');">
+        <a href="./hero/MALEFICENT.htm">Малефисента</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="NAMAARI_FATIGUE"><p>Драконья охота</p></a>
+        <blockquote><span>Применяет «Усталость» к ослабевшим врагам</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Если Намаари или союзники накладывают «Слабость» на врага с </span><span class="unit-expr-misc">5</span><span> ур. «Слабости», они также отнимают </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="120s" data-checkbox="eval" form="unit-disk">120s</output></span><span> энергии и добавляют </span><span class="unit-expr-misc">3</span><span> ур. «Усталости». Намаари и союзники могут вызывать этот эффект раз в секунду.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="142k" data-checkbox="eval" form="unit-disk">142k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+          <li><span>Каждый уровень «Усталости» отнимает у врага: </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="143k" data-checkbox="eval" form="unit-disk">143k</output></span><span> </span><span class="unit-expr-misc">Броня</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="MAX_HP_DECREASE HEAL_SELF DISTRACT">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">Рогатый король</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_shan_yu.jpg');">
+        <a href="./hero/SHAN_YU.htm">Шань-Ю</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SOLDIER"><p>Пробуждение мертвых</p></a>
+        <blockquote><span>Рожденные в котле солдаты отвлекают врагов</span></blockquote>
+        <ul>
+          <li><span>«</span><a href="./hero/THE_HORNED_KING.htm#BLUE" class="rarity-blue">Подъем!</a><span>» исцеляет на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> больше HP.</span></li>
+          <li><span>После </span><span class="unit-expr-misc">5</span><span> базовых атак, солдаты отвлекают врагов поблизости в течение </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="2s" data-checkbox="eval" form="unit-disk">2s</output></span><span> сек.</span></li>
+          <li><span>Каждый уровень «Усталости» отнимает у врага: </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="600k" data-checkbox="eval" form="unit-disk">600k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span>.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="SKILL_POWER_INCREASE REALITY_DECREASE ENERGY_SELF">
+      <td style="background-image: url('../img_s/hero_list_horned_king.jpg');">
+        <a href="./hero/THE_HORNED_KING.htm">Рогатый король</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_disgust.jpg');">
+        <a href="./hero/DISGUST.htm">Брезгливость</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="THE_HORNED_KING_SCARE"><p>Не в счет</p></a>
+        <blockquote><span>Получает энергию от нокаута врагов или союзников</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Когда союзник или враг в нокауте, Рогатый король получает </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s" data-checkbox="eval" form="unit-disk">15s</output></span><span> энергии. Рогатый король может получить энергию таким образом раз в </span><span class="unit-expr-misc">5</span><span> сек.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
+          <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval" form="unit-disk">200k</output></span><span> </span><span class="unit-expr-misc">Реальность</span><span>, пока испуганы.</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
     <tr data-tag="FANTASTIC_DAMAGE MAX_HP_INCREASE SKILL_POWER_INCREASE NORMAL_CRIT_INCREASE CRIT_DAMAGE_INCREASE">
       <td style="background-image: url('../img_s/hero_list_the_underminer.jpg');">
         <a href="./hero/THE_UNDERMINER.htm">Подрывашкер</a>
@@ -7501,7 +7590,7 @@ function init()
         <blockquote><span>Увеличение нормального крит. удара и крит. урона</span></blockquote>
         <ul>
           <li><span>«</span><a href="./hero/THE_UNDERMINER.htm#BLUE" class="rarity-blue">Шахтерский взрыв</a><span>» наносит дополнительно </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="50k" data-checkbox="eval" form="unit-disk">50k</output></span><span> фантастического урона окружающим врагам.</span></li>
-          <li><span>Подрывашкер получает </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> к нормальному критическому удару и </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> к критическому урону.</span></li>
+          <li><span>Подрывашкер получает </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> к нормальному критическому удару и </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="13s+v" data-checkbox="eval" form="unit-disk">13s+v</output></span><span> к критическому урону.; Эти параметры растут с уровнем диска памяти.</span></li>
           <li><a href="./hero/THE_UNDERMINER.htm" class="unit-expr-misc">Подрывашкер</a><span> и союзники получают +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="skill_power" data-checkbox="eval" form="unit-disk">skill_power</output></span><span> на первые </span><span class="unit-expr-misc">10</span><span> сек. каждой волны.</span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval" form="unit-disk">400k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
         </ul>
