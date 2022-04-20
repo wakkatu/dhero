@@ -178,7 +178,7 @@ function init()
       <span class="vr"></span>
       <span>Уровень:</span>
       <span>
-        <input name="level" type="number" pattern="\d*" min="1" max="260" value="260">
+        <input name="level" type="number" pattern="\d*" min="1" max="265" value="265">
       </span>
       <span class="vr"></span>
       <span>Звезды:</span>
@@ -292,7 +292,7 @@ function init()
         <span><input type="checkbox" name="KNOCKBACK" id="unit-tag-KNOCKBACK"  onchange="filter.update()"><label for="unit-tag-KNOCKBACK" title="Отбрасывает цель назад на определенное расстояние.">Отбрасывание</label></span>
         <span><input type="checkbox" name="SNARE" id="unit-tag-SNARE"  onchange="filter.update()"><label for="unit-tag-SNARE" title="Скорость передвижения пойманных в ловушку врагов сокращается до 0%. Они все еще могут использовать базовые атаки и навыки в зоне их действия.">Ловушка</label></span>
         <span><input type="checkbox" name="DAMAGE_OVER_TIME" id="unit-tag-DAMAGE_OVER_TIME"  onchange="filter.update()"><label for="unit-tag-DAMAGE_OVER_TIME" title="Урон наносится цели в течение какого-то времени.">Постепенный урон</label></span>
-        <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="Отнимает у цели определенное количество усилений.">Снятие усиления</label></span>
+        <span><input type="checkbox" name="REMOVE_BUFF" id="unit-tag-REMOVE_BUFF"  onchange="filter.update()"><label for="unit-tag-REMOVE_BUFF" title="Отнимает у цели определенные усиления или количество усилений.">Снятие усиления</label></span>
         <span><input type="checkbox" name="REDUCED_DAMAGE_DEALT" id="unit-tag-REDUCED_DAMAGE_DEALT"  onchange="filter.update()"><label for="unit-tag-REDUCED_DAMAGE_DEALT" title="В течение определенного времени боец наносит уменьшенный урон.">Уменьшение нанесенного урона</label></span>
       </fieldset>
       <fieldset>
@@ -4567,7 +4567,7 @@ function init()
         <ul>
           <li><span>Синдром невосприимчив к любым замедлениям, а эффективность замедлений, наложенных на его союзников, снижается на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s%" data-format="%" data-checkbox="eval" form="unit-disk">15s%</output></span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="160k" data-checkbox="eval" form="unit-disk">160k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span></li>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="152k" data-checkbox="eval" form="unit-disk">152k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span> к </span><a href="./hero/SYNDROME.htm" class="unit-expr-misc">Синдром</a><span> и союзникам</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="800k" data-checkbox="eval" form="unit-disk">800k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span> к </span><a href="./hero/SYNDROME.htm" class="unit-expr-misc">Синдром</a><span> и союзникам</span></li>
         </ul>
       </td>
     </tr>
@@ -4605,9 +4605,9 @@ function init()
         <a class="nowrap" id="SYNDROME_STUDY"><p>Техномагия</p></a>
         <blockquote><span>Ослабление изученных врагов</span></blockquote>
         <ul>
-          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="108k" data-checkbox="eval" form="unit-disk">108k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span><span> к </span><a href="./hero/SYNDROME.htm" class="unit-expr-misc">Синдром</a><span> и союзникам</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval" form="unit-disk">300k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span><span> к </span><a href="./hero/SYNDROME.htm" class="unit-expr-misc">Синдром</a><span> и союзникам</span></li>
           <li><span>Когда Синдром оглушает изученного врага, тот остается оглушенным на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="22s%" data-format="%" data-checkbox="eval" form="unit-disk">22s%</output></span><span> дольше</span></li>
-          <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="245k" data-checkbox="eval" form="unit-disk">245k</output></span><span> </span><span class="unit-expr-misc">Броня</span><span>, пока остаются изученными</span></li>
+          <li><span>Враги теряют </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval" form="unit-disk">400k</output></span><span> </span><span class="unit-expr-misc">Броня</span><span>, пока остаются изученными</span></li>
         </ul>
       </td>
     </tr>
@@ -7614,6 +7614,90 @@ function init()
           <li><span>Враги, отброшенные Подрывашкером, теряют </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="30s" data-checkbox="eval" form="unit-disk">30s</output></span><span> энергии. Это может происходить раз в </span><span class="unit-expr-misc">6</span><span> сек.</span></li>
           <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="150k" data-checkbox="eval" form="unit-disk">150k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span> к союзникам по команде (</span><a href="./hero_list.htm?RED_TEAM=on" class="unit-expr-misc">Красный</a><span>)</span></li>
           <li><span>Герои типа «</span><a href="./hero_list.htm?DPS_ROLE=on" class="unit-expr-misc">Урон</a><span>» в команде получают </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval" form="unit-disk">350k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="FANTASTIC_DAMAGE ARMOR_INCREASE MAX_HP_INCREASE ARMOR_DECREASE REALITY_DECREASE">
+      <td style="background-image: url('../img_s/hero_list_voyd.jpg');">
+        <a href="./hero/VOYD.htm">Пустота</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_elastigirl.jpg');">
+        <a href="./hero/ELASTIGIRL.htm">Эластика</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="VOYD_ENEMY"><p>Зов сирены</p></a>
+        <blockquote><span>Уменьшение брони и реальности врага</span></blockquote>
+        <ul>
+          <li><span>Навык «</span><a href="./hero/VOYD.htm#BLUE" class="rarity-blue">Толчок из портала</a><span>» наносит на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.1k" data-checkbox="eval" form="unit-disk">0.1k</output></span><span> ед. больше фантастического урона.</span></li>
+          <li><span>Если у врагов есть «</span><a href="./hero/VOYD.htm#BLUE" class="rarity-blue">Толчок из портала</a><span>», они теряют </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="15s%" data-format="%" data-checkbox="eval" form="unit-disk">15s%</output></span><span> ед. брони и реальности на </span><span class="unit-expr-misc">5</span><span> сек.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval" form="unit-disk">300k</output></span><span> </span><span class="unit-expr-misc">Броня</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval" form="unit-disk">500k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="DAMAGE_INCREASE SKILL_POWER_INCREASE ATTACK_SPEED_DECREASE MOVE_SPEED_DECREASE">
+      <td style="background-image: url('../img_s/hero_list_voyd.jpg');">
+        <a href="./hero/VOYD.htm">Пустота</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_wasabi.jpg');">
+        <a href="./hero/WASABI.htm">Васаби</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="VOYD_ALLY"><p>Физика</p></a>
+        <blockquote><span>Замедление скорости вражеской атаки и передвижения</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Когда союзники теряют «Непобедимость» от навыка «</span><a href="./hero/VOYD.htm#GREEN" class="rarity-green">Але-оп</a><span>», они замедляют скорость атаки и передвижения врагов поблизости на </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> на </span><span class="unit-expr-misc">3</span><span> сек.</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval" form="unit-disk">250k</output></span><span> </span><span class="unit-expr-misc">Базовый урон</span><span> союзникам, когда они неуязвимы</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval" form="unit-disk">350k</output></span><span> </span><span class="unit-expr-misc">Сила навыка</span><span> к </span><a href="./hero/VOYD.htm" class="unit-expr-misc">Пустота</a><span> и союзникам</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="MAX_HP_INCREASE TENACITY_INCREASE HEAL_OVER_TIME_TEAM">
+      <td style="background-image: url('../img_s/hero_list_pacha.jpg');">
+        <a href="./hero/PACHA.htm">Пача</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_kronk.jpg');">
+        <a href="./hero/KRONK.htm">Кронк</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="PACHA_SUPPORT"><p>Танцевальный дуэт</p></a>
+        <blockquote><span>Союзники восстанавливают здоровье со временем</span></blockquote>
+        <ul>
+          <li></li>
+          <li><span>Если у союзников есть «</span><a href="./hero/PACHA.htm#BLUE" class="rarity-blue">Дружеское подбадривание</a><span>», они также восстанавливают </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> своих макс. HP в течение </span><span class="unit-expr-misc">5</span><span> сек.</span></li>
+          <li><span>Получает </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="10v" data-checkbox="eval" form="unit-disk">10v</output></span><span> </span><span class="unit-expr-misc">Стойкость</span><span> за каждые недостающие 10% HP</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="650k" data-checkbox="eval" form="unit-disk">650k</output></span><span> </span><span class="unit-expr-misc">Макс. HP</span><span> к </span><a href="./hero/PACHA.htm" class="unit-expr-misc">Пача</a><span> и союзникам</span></li>
+        </ul>
+      </td>
+    </tr>
+  <!-- Disk } -->
+  <!-- Disk { -->
+    <tr data-tag="NORMAL_DAMAGE ARMOR_INCREASE REALITY_INCREASE">
+      <td style="background-image: url('../img_s/hero_list_pacha.jpg');">
+        <a href="./hero/PACHA.htm">Пача</a>
+      </td>
+      <td style="background-image: url('../img_s/hero_list_bo_peep.jpg');">
+        <a href="./hero/BO_PEEP.htm">Бо Пип</a>
+      </td>
+      <td>275</td>
+      <td>
+        <a class="nowrap" id="PACHA_TANK"><p>Носимая шерсть</p></a>
+        <blockquote><span>«</span><a href="./hero/PACHA.htm#GREEN" class="rarity-green">Плуг на колесах</a><span>» дает дополнительную броню и реальность</span></blockquote>
+        <ul>
+          <li><span>Навык «</span><a href="./hero/PACHA.htm#GREEN" class="rarity-green">Плуг на колесах</a><span>» наносит на </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="0.1k" data-checkbox="eval" form="unit-disk">0.1k</output></span><span> ед. больше нормального урона.</span></li>
+          <li><span>Пача получает бонус в виде </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval" form="unit-disk">10s%</output></span><span> ед. брони и реальности на </span><span class="unit-expr-misc">3</span><span> сек., когда использует навык «</span><a href="./hero/PACHA.htm#GREEN" class="rarity-green">Плуг на колесах</a><span>».</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval" form="unit-disk">300k</output></span><span> </span><span class="unit-expr-misc">Броня</span></li>
+          <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="400k" data-checkbox="eval" form="unit-disk">400k</output></span><span> </span><span class="unit-expr-misc">Реальность</span></li>
         </ul>
       </td>
     </tr>
