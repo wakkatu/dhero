@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2022</span>
+  <span style="white-space: nowrap;">Release date: 07/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -152,6 +152,8 @@ function init()
           <li title="자신에게 쉴드를 부여합니다."><a href="../hero_list.htm?SHIELD_SELF=on">자신 쉴드</a></li>
           <li title="자신에게 에너지를 부여합니다."><a href="../hero_list.htm?ENERGY_SELF=on">자신 에너지</a></li>
           <li title="최소 한 명의 동료를 치유할 수 있습니다."><a href="../hero_list.htm?HEAL_TEAM=on">팀 치유</a></li>
+          <li title="일정 시간에 걸쳐 자신을 치유합니다."><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">자신 지속 치유</a></li>
+          <li title="일정 시간에 걸쳐 최소 한 명의 동료를 치유할 수 있습니다."><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">팀 지속 치유</a></li>
           <li title="자신을 치유합니다."><a href="../hero_list.htm?HEAL_SELF=on">자신 치유</a></li>
         </ul>
       </span>
@@ -182,15 +184,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">최대 HP</span>
       <span class="unit-pair-val unit-expr-g">
-        1030.7 + 424.82g
+        650 + 650g
       </span>
       <span class="unit-pair-name">기본 데미지</span>
       <span class="unit-pair-val unit-expr-g">
-        62.64 + 5.03g
+        130 + 25g
       </span>
       <span class="unit-pair-name">스킬 파워</span>
       <span class="unit-pair-val unit-expr-g">
-        130.5 + 10.63g
+        175 + 38g
       </span>
     </div>
   </div>
@@ -7403,9 +7405,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="1030.7 + 424.82g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="62.64 + 5.03g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="130.5 + 10.63g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="650 + 650g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="130 + 25g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="175 + 38g"></output>
       </span>
 
       <!-- Stats { -->
@@ -7511,8 +7513,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">요정의 유용함</a></label></h2>
-    <p><span>패시브: 포나는 오로라의 기본 공격을 수행하며 판타스틱 데미지를 주고 적중한 적을 </span><span class="unit-expr-misc">3</span><span>초 동안 침묵시킵니다.</span></p>
-    <p><span>액티브: 플로라, 포나, 메리웨더가 전장 위를 날아가며 모든 적에게서 보너스를 제거하고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span>의 판타스틱 데미지를 줍니다. 이후 요정들은 각각 적에게 자신의 디버프인 침묵, 약점 </span><span class="unit-expr-misc">4</span><span>중첩, </span><span class="unit-expr-misc">40%</span><span>의 현실 감소를 부여합니다. 이들 디버프는 각각 </span><span class="unit-expr-misc">3</span><span>초 동안 지속됩니다.</span></p>
+    <p><span>패시브: 포나는 오로라의 기본 공격을 수행하며 판타스틱 데미지를 주고 적중한 적을 </span><span class="unit-expr-misc">4</span><span>초 동안 침묵시킵니다.</span></p>
+    <p><span>액티브: 플로라, 포나, 메리웨더가 전장 위를 날아가며 모든 적에게서 보너스를 제거하고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k + 3.5sp" data-checkbox="eval">350k + 3.5sp</output></span><span>의 판타스틱 데미지를 줍니다. 이후 요정들은 각각 적에게 자신의 디버프인 침묵, 약점 </span><span class="unit-expr-misc">3</span><span>중첩, </span><span class="unit-expr-misc">35%</span><span>의 현실 감소를 부여합니다. 이들 디버프는 각각 </span><span class="unit-expr-misc">10</span><span>초 동안 지속됩니다.</span></p>
     <p><span>버프 제거와 약점 적용은 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>레벨을 초과하는 적에게는 실패할 가능성이 있습니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -7527,79 +7529,79 @@ function init()
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>any &lt; enemy</dd>
         <dt>splash</dt><dd>enemy</dd>
-        <dt>dmgamt</dt><dd>100k + 0.7sp</dd>
-        <dt>stackamt</dt><dd>4</dd>
-        <dt>realitydecreasepercent</dt><dd>0.4[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>silenceduration</dt><dd>3</dd>
+        <dt>dmgamt</dt><dd>350k + 3.5sp</dd>
+        <dt>stackamt</dt><dd>3</dd>
+        <dt>realitydecreasepercent</dt><dd>0.35[%]</dd>
+        <dt>debuffduration</dt><dd>10</dd>
+        <dt>silenceduration</dt><dd>4</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">플로라의 장벽</a></label></h2>
-    <p><span>플로라가 오로라를 정화하고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="15k+5sp" data-checkbox="eval">15k+5sp</output></span><span>의 HP를 보유한 쉴드를 </span><span class="unit-expr-misc">5</span><span>초 동안 부여합니다. 쉴드가 활성화되어 있는 동안 오로라는 자신을 조준하고 발사된 모든 투사체를 막고, 투사체를 막을 때마다 발사한 적의 에너지를 </span><span class="unit-expr-misc">22</span><span> 훔칩니다.</span></p>
+    <p><span>플로라가 오로라를 정화하고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="500k + 5sp" data-checkbox="eval">500k + 5sp</output></span><span>의 HP를 보유한 쉴드를 </span><span class="unit-expr-misc">8</span><span>초 동안 부여합니다. 쉴드가 활성화되어 있는 동안 오로라는 자신을 조준하고 발사된 모든 투사체를 막고, 투사체를 막을 때마다 발사한 적의 에너지를 </span><span class="unit-expr-misc">50</span><span> 훔칩니다.</span></p>
     <p><span>투사체 막기는 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>레벨을 초과하는 적에게는 실패할 가능성이 있습니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
+        <dt>initcooldown</dt><dd>6</dd>
+        <dt>cooldown</dt><dd>12</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>6</dd>
         <dt>priority</dt><dd>4</dd>
-        <dt>shieldhpamt</dt><dd>15k+5sp</dd>
-        <dt>shieldduration</dt><dd>5</dd>
-        <dt>energyamt</dt><dd>22</dd>
+        <dt>shieldhpamt</dt><dd>500k + 5sp</dd>
+        <dt>shieldduration</dt><dd>8</dd>
+        <dt>energyamt</dt><dd>50</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">메리웨더의 볼트</a></label></h2>
-    <p><span>메리웨더가 가장 가까이에 있는 적에게 마법 볼트를 발사하여 적을 뒤로 밀쳐내고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="5k+.7sp" data-checkbox="eval">5k+.7sp</output></span><span>의 판타스틱 데미지를 줍니다. 적은 덫에 걸리고 공격 스피드가 </span><span class="unit-expr-misc">3</span><span>초 동안 </span><span class="unit-expr-misc">30%</span><span> 감소합니다.</span></p>
+    <p><span>메리웨더가 가장 가까이에 있는 적에게 마법 볼트를 발사하여 적을 뒤로 밀쳐내고 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="400k + 4sp" data-checkbox="eval">400k + 4sp</output></span><span>의 판타스틱 데미지를 줍니다. 적은 덫에 걸리고 공격 스피드가 </span><span class="unit-expr-misc">8</span><span>초 동안 </span><span class="unit-expr-misc">75%</span><span> 감소합니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>initcooldown</dt><dd>4</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>initcooldown</dt><dd>4</dd>
         <dt>priority</dt><dd>3</dd>
         <dt>trigger</dt><dd>closest &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>5k+.7sp</dd>
-        <dt>asdecreasepercent</dt><dd>0.3[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>dmgamt</dt><dd>400k + 4sp</dd>
+        <dt>asdecreasepercent</dt><dd>0.75[%]</dd>
+        <dt>debuffduration</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">포나의 마법</a></label></h2>
-    <p><span>오로라의 기본 공격이 이제 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="10k+2sp" data-checkbox="eval">10k+2sp</output></span><span>의 보너스 판타스틱 데미지를 주고 적중한 적의 보너스를 </span><span class="unit-expr-misc">2</span><span>개 제거합니다.</span></p>
-    <p><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">메리웨더의 볼트</a><span>&#34; 스킬이 메리웨더의 마법 볼트에 적중한 적에게 </span><span class="unit-expr-misc">3</span><span>초 동안 </span><span class="unit-expr-misc">20%</span><span>의 현실 감소를 적용합니다.</span></p>
+    <p><span>오로라의 기본 공격이 이제 </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k+1sp" data-checkbox="eval">100k+1sp</output></span><span>의 보너스 판타스틱 데미지를 주고 적중한 적의 보너스를 </span><span class="unit-expr-misc">2</span><span>개 제거합니다.</span></p>
+    <p><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">메리웨더의 볼트</a><span>&#34; 스킬이 메리웨더의 마법 볼트에 적중한 적에게 </span><span class="unit-expr-misc">5</span><span>초 동안 </span><span class="unit-expr-misc">20%</span><span>의 현실 감소를 적용합니다.</span></p>
     <p><span>보너스 제거 효과는 </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>레벨을 초과하는 적에게는 실패할 가능성이 있습니다.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
-        <dt>bonusfantasticdamage</dt><dd>10k+2sp</dd>
+        <dt>bonusfantasticdamage</dt><dd>100k+1sp</dd>
         <dt>buffamt</dt><dd>2</dd>
         <dt>realitydecreasepercent</dt><dd>0.2[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
+        <dt>debuffduration</dt><dd>5</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">달콤한 몽상가</a></label></h2>
-    <p><span>오로라의 기본 공격이 이제 보너스가 가장 많은 적을 대상으로 지정합니다. &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬이 이제 </span><span class="unit-expr-misc">3</span><span>초에 걸쳐 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span>의 판타스틱 데미지를 줍니다. 오로라가 보너스를 </span><span class="unit-expr-misc">3</span><span>개 제거할 때마다 가장 HP를 많이 잃은 동료가 최대 HP의 </span><span class="unit-expr-misc">20%</span><span>를 회복합니다.</span></p>
+    <p><span>오로라의 기본 공격이 이제 보너스가 가장 많은 적을 대상으로 지정합니다. &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬이 이제 </span><span class="unit-expr-misc">10</span><span>초에 걸쳐 </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1000k" data-checkbox="eval">1000k</output></span><span>의 판타스틱 데미지를 줍니다. 오로라가 보너스를 </span><span class="unit-expr-misc">4</span><span>개 제거할 때마다 가장 HP를 많이 잃은 동료가 최대 HP의 </span><span class="unit-expr-misc">40%</span><span>를 회복합니다.</span></p>
     <p>추가 능력치 부스트:<p>
     <ul>
-      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">플로라의 장벽</a><span>&#34; 스킬로 얻는 쉴드의 쉴드 HP +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span></li>
-      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬의 보너스 일반 데미지 +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="bd+100k" data-checkbox="eval">bd+100k</output></span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
+      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">플로라의 장벽</a><span>&#34; 스킬로 얻는 쉴드의 쉴드 HP +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span></li>
+      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬의 보너스 일반 데미지 +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + 1bd" data-checkbox="eval">100k + 1bd</output></span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">스킬 파워</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red"><dl class="inline-list">
@@ -7608,12 +7610,12 @@ function init()
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>bonusnormaldamage</dt><dd>bd+100k</dd>
-        <dt>dotduration</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k</dd>
-        <dt>buffremoveamt</dt><dd>3</dd>
-        <dt>bonusskill2shieldamt</dt><dd>300k</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
+        <dt>bonusnormaldamage</dt><dd>100k + 1bd</dd>
+        <dt>dotduration</dt><dd>10</dd>
+        <dt>dmgamt</dt><dd>1000k</dd>
+        <dt>buffremoveamt</dt><dd>4</dd>
+        <dt>bonusskill2shieldamt</dt><dd>500k</dd>
+        <dt>healpercent</dt><dd>0.4[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -7661,10 +7663,10 @@ function init()
     </p>
     <blockquote><span>오로라가 보너스를 제거할 때 치유</span></blockquote>
     <ul>
-      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">오로라 공주</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">현실</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span></li>
-      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">오로라 공주</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">최대 HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span></li>
+      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">오로라 공주</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">현실</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span></li>
+      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">오로라 공주</a><span>와(과) 동료에게 </span><span class="unit-expr-misc">최대 HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span></li>
       <li></li>
-      <li><span>오로라가 적 팀에서 보너스를 </span><span class="unit-expr-misc">2</span><span>개 제거하면, 자신의 최대 HP의 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>를 회복합니다.</span></li>
+      <li><span>오로라가 적 팀에서 보너스를 </span><span class="unit-expr-misc">6</span><span>개 제거하면, 자신의 최대 HP의 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="8s%" data-format="%" data-checkbox="eval">8s%</output></span><span>를 회복합니다.</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -7676,10 +7678,10 @@ function init()
     </p>
     <blockquote><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>의 추가 현실 감소</span></blockquote>
     <ul>
-      <li><span>기진맥진 상태의 적이 </span><span class="unit-expr-misc">방어</span><span>을(를) </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> 잃습니다.</span></li>
-      <li><span>적이 </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="v" data-checkbox="eval">v</output></span><span>의 </span><span class="unit-expr-misc">끈기</span><span>을(를) 잃습니다.</span></li>
+      <li><span>기진맥진 상태의 적이 </span><span class="unit-expr-misc">방어</span><span>을(를) </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> 잃습니다.</span></li>
+      <li><span>적이 </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="1.5v" data-checkbox="eval">1.5v</output></span><span>의 </span><span class="unit-expr-misc">끈기</span><span>을(를) 잃습니다.</span></li>
       <li></li>
-      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬이 현실을 추가로 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> 감소시킵니다.</span></li>
+      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">요정의 유용함</a><span>&#34; 스킬이 현실을 추가로 </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="7s%" data-format="%" data-checkbox="eval">7s%</output></span><span> 감소시킵니다.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

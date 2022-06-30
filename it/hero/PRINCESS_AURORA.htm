@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2022</span>
+  <span style="white-space: nowrap;">Release date: 07/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -152,6 +152,8 @@ function init()
           <li title="L&#39;eroe dona uno scudo a se stesso."><a href="../hero_list.htm?SHIELD_SELF=on">Scudo a sé</a></li>
           <li title="L&#39;eroe dona energia a se stesso."><a href="../hero_list.htm?ENERGY_SELF=on">Energia a sé</a></li>
           <li title="L&#39;eroe può guarire almeno un alleato."><a href="../hero_list.htm?HEAL_TEAM=on">Guarigione nel team</a></li>
+          <li title="L&#39;eroe si guarisce per un periodo di tempo."><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">Guarigione nel tempo personale</a></li>
+          <li title="L&#39;eroe può guarire almeno un alleato per un periodo di tempo."><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">Guarigione nel tempo del team</a></li>
           <li title="L&#39;eroe guarisce se stesso."><a href="../hero_list.htm?HEAL_SELF=on">Guarigione personale</a></li>
         </ul>
       </span>
@@ -182,15 +184,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">PS massimi</span>
       <span class="unit-pair-val unit-expr-g">
-        1030.7 + 424.82g
+        650 + 650g
       </span>
       <span class="unit-pair-name">Danni base</span>
       <span class="unit-pair-val unit-expr-g">
-        62.64 + 5.03g
+        130 + 25g
       </span>
       <span class="unit-pair-name">Potenza abilità</span>
       <span class="unit-pair-val unit-expr-g">
-        130.5 + 10.63g
+        175 + 38g
       </span>
     </div>
   </div>
@@ -7403,9 +7405,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="1030.7 + 424.82g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="62.64 + 5.03g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="130.5 + 10.63g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="650 + 650g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="130 + 25g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="175 + 38g"></output>
       </span>
 
       <!-- Stats { -->
@@ -7511,8 +7513,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Aiuto fatato</a></label></h2>
-    <p><span>Passiva: Fauna esegue gli attacchi base di Aurora infliggendo danni fantastici e silenziando tutti i nemici colpiti per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
-    <p><span>Attiva: Flora, Fauna e Serena volano sul campo di battaglia, rimuovendo tutti i potenziamenti e infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> danni fantastici ai nemici. In seguito, le fate assegnano un depotenziamento agli avversari: silenziamento, </span><span class="unit-expr-misc">4</span><span> cumuli di Debolezza e una diminuzione di realtà pari a </span><span class="unit-expr-misc">40%</span><span>. Ognuno di questi depotenziamenti dura </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
+    <p><span>Passiva: Fauna esegue gli attacchi base di Aurora infliggendo danni fantastici e silenziando tutti i nemici colpiti per </span><span class="unit-expr-misc">4</span><span> secondi.</span></p>
+    <p><span>Attiva: Flora, Fauna e Serena volano sul campo di battaglia, rimuovendo tutti i potenziamenti e infliggendo </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k + 3.5sp" data-checkbox="eval">350k + 3.5sp</output></span><span> danni fantastici ai nemici. In seguito, le fate assegnano un depotenziamento agli avversari: silenziamento, </span><span class="unit-expr-misc">3</span><span> cumuli di Debolezza e una diminuzione di realtà pari a </span><span class="unit-expr-misc">35%</span><span>. Ognuno di questi depotenziamenti dura </span><span class="unit-expr-misc">10</span><span> secondi.</span></p>
     <p><span>La rimozione dei potenziamenti e l&#39;assegnazione della debolezza possono mancare i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -7527,79 +7529,79 @@ function init()
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>any &lt; enemy</dd>
         <dt>splash</dt><dd>enemy</dd>
-        <dt>dmgamt</dt><dd>100k + 0.7sp</dd>
-        <dt>stackamt</dt><dd>4</dd>
-        <dt>realitydecreasepercent</dt><dd>0.4[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>silenceduration</dt><dd>3</dd>
+        <dt>dmgamt</dt><dd>350k + 3.5sp</dd>
+        <dt>stackamt</dt><dd>3</dd>
+        <dt>realitydecreasepercent</dt><dd>0.35[%]</dd>
+        <dt>debuffduration</dt><dd>10</dd>
+        <dt>silenceduration</dt><dd>4</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Barriera di Flora</a></label></h2>
-    <p><span>Flora effettua un reset su Aurora e le dona uno scudo di </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="15k+5sp" data-checkbox="eval">15k+5sp</output></span><span> PS per </span><span class="unit-expr-misc">5</span><span> secondi. Mentre lo scudo è attivo, Aurora para tutti i proiettili rivolti a lei e sottrae </span><span class="unit-expr-misc">22</span><span> di energia ad ogni nemico a cui ha bloccato i proiettili.</span></p>
+    <p><span>Flora effettua un reset su Aurora e le dona uno scudo di </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="500k + 5sp" data-checkbox="eval">500k + 5sp</output></span><span> PS per </span><span class="unit-expr-misc">8</span><span> secondi. Mentre lo scudo è attivo, Aurora para tutti i proiettili rivolti a lei e sottrae </span><span class="unit-expr-misc">50</span><span> di energia ad ogni nemico a cui ha bloccato i proiettili.</span></p>
     <p><span>La parata dei proiettili può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
+        <dt>initcooldown</dt><dd>6</dd>
+        <dt>cooldown</dt><dd>12</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>6</dd>
         <dt>priority</dt><dd>4</dd>
-        <dt>shieldhpamt</dt><dd>15k+5sp</dd>
-        <dt>shieldduration</dt><dd>5</dd>
-        <dt>energyamt</dt><dd>22</dd>
+        <dt>shieldhpamt</dt><dd>500k + 5sp</dd>
+        <dt>shieldduration</dt><dd>8</dd>
+        <dt>energyamt</dt><dd>50</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Fulmine di Serena</a></label></h2>
-    <p><span>Serena lancia un fulmine magico contro il nemico più vicino, respingendolo e infliggendogli </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="5k+.7sp" data-checkbox="eval">5k+.7sp</output></span><span> danni fantastici. Il nemico viene anche vincolato e la sua velocità di attacco diminuisce di un </span><span class="unit-expr-misc">30%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
+    <p><span>Serena lancia un fulmine magico contro il nemico più vicino, respingendolo e infliggendogli </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="400k + 4sp" data-checkbox="eval">400k + 4sp</output></span><span> danni fantastici. Il nemico viene anche vincolato e la sua velocità di attacco diminuisce di un </span><span class="unit-expr-misc">75%</span><span> per </span><span class="unit-expr-misc">8</span><span> secondi.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>initcooldown</dt><dd>4</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>initcooldown</dt><dd>4</dd>
         <dt>priority</dt><dd>3</dd>
         <dt>trigger</dt><dd>closest &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>5k+.7sp</dd>
-        <dt>asdecreasepercent</dt><dd>0.3[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>dmgamt</dt><dd>400k + 4sp</dd>
+        <dt>asdecreasepercent</dt><dd>0.75[%]</dd>
+        <dt>debuffduration</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Magia di Fauna</a></label></h2>
-    <p><span>Ora gli attacchi base di Aurora infliggono </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="10k+2sp" data-checkbox="eval">10k+2sp</output></span><span> danni fantastici aggiuntivi e rimuovono </span><span class="unit-expr-misc">2</span><span> potenziamenti ai nemici colpiti.</span></p>
-    <p><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">Fulmine di Serena</a><span>&#34; riduce la realtà dei nemici colpiti dal fulmine di Serena di un </span><span class="unit-expr-misc">20%</span><span> per </span><span class="unit-expr-misc">3</span><span> secondi.</span></p>
+    <p><span>Ora gli attacchi base di Aurora infliggono </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k+1sp" data-checkbox="eval">100k+1sp</output></span><span> danni fantastici aggiuntivi e rimuovono </span><span class="unit-expr-misc">2</span><span> potenziamenti ai nemici colpiti.</span></p>
+    <p><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">Fulmine di Serena</a><span>&#34; riduce la realtà dei nemici colpiti dal fulmine di Serena di un </span><span class="unit-expr-misc">20%</span><span> per </span><span class="unit-expr-misc">5</span><span> secondi.</span></p>
     <p><span>La rimozione del potenziamento può fallire contro i nemici di livello superiore a </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
-        <dt>bonusfantasticdamage</dt><dd>10k+2sp</dd>
+        <dt>bonusfantasticdamage</dt><dd>100k+1sp</dd>
         <dt>buffamt</dt><dd>2</dd>
         <dt>realitydecreasepercent</dt><dd>0.2[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
+        <dt>debuffduration</dt><dd>5</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Dolce sognatrice</a></label></h2>
-    <p><span>Ora gli attacchi base di Aurora prendono di mira il nemico con più potenziamenti. &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34; infligge </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> danni fantastici per </span><span class="unit-expr-misc">3</span><span> secondi. Ogni </span><span class="unit-expr-misc">3</span><span> potenziamenti rimossi da Aurora, la principessa fa recuperare un </span><span class="unit-expr-misc">20%</span><span> dei PS massimi all&#39;alleato che ha meno salute.</span></p>
+    <p><span>Ora gli attacchi base di Aurora prendono di mira il nemico con più potenziamenti. &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34; infligge </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1000k" data-checkbox="eval">1000k</output></span><span> danni fantastici per </span><span class="unit-expr-misc">10</span><span> secondi. Ogni </span><span class="unit-expr-misc">4</span><span> potenziamenti rimossi da Aurora, la principessa fa recuperare un </span><span class="unit-expr-misc">40%</span><span> dei PS massimi all&#39;alleato che ha meno salute.</span></p>
     <p>Incrementi statistiche aggiuntivi:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> scudo PS a scudi da &#34;</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">Barriera di Flora</a><span>&#34;</span></li>
-      <li><span> +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="bd+100k" data-checkbox="eval">bd+100k</output></span><span> danni normali bonus a &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> scudo PS a scudi da &#34;</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">Barriera di Flora</a><span>&#34;</span></li>
+      <li><span> +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + 1bd" data-checkbox="eval">100k + 1bd</output></span><span> danni normali bonus a &#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">Potenza abilità</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red"><dl class="inline-list">
@@ -7608,12 +7610,12 @@ function init()
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>bonusnormaldamage</dt><dd>bd+100k</dd>
-        <dt>dotduration</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k</dd>
-        <dt>buffremoveamt</dt><dd>3</dd>
-        <dt>bonusskill2shieldamt</dt><dd>300k</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
+        <dt>bonusnormaldamage</dt><dd>100k + 1bd</dd>
+        <dt>dotduration</dt><dd>10</dd>
+        <dt>dmgamt</dt><dd>1000k</dd>
+        <dt>buffremoveamt</dt><dd>4</dd>
+        <dt>bonusskill2shieldamt</dt><dd>500k</dd>
+        <dt>healpercent</dt><dd>0.4[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -7661,10 +7663,10 @@ function init()
     </p>
     <blockquote><span>Aurora recupera PS quando rimuove i potenziamenti</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> </span><span class="unit-expr-misc">Realtà</span><span> agli alleati </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Principessa Aurora</a></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">PS massimi</span><span> agli alleati </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Principessa Aurora</a></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Realtà</span><span> agli alleati </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Principessa Aurora</a></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">PS massimi</span><span> agli alleati </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Principessa Aurora</a></li>
       <li></li>
-      <li><span>Quando Aurora rimuove </span><span class="unit-expr-misc">2</span><span> potenziamenti dalla squadra avversaria, recupera un </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> dei suoi PS massimi.</span></li>
+      <li><span>Quando Aurora rimuove </span><span class="unit-expr-misc">6</span><span> potenziamenti dalla squadra avversaria, recupera un </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="8s%" data-format="%" data-checkbox="eval">8s%</output></span><span> dei suoi PS massimi.</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -7676,10 +7678,10 @@ function init()
     </p>
     <blockquote><span>Riduzione realtà aggiuntiva per </span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a></blockquote>
     <ul>
-      <li><span>I nemici perdono </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Armatura</span><span> mentre sono vincolati</span></li>
-      <li><span>I nemici perdono </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="v" data-checkbox="eval">v</output></span><span> </span><span class="unit-expr-misc">Tenacia</span></li>
+      <li><span>I nemici perdono </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span><span class="unit-expr-misc">Armatura</span><span> mentre sono vincolati</span></li>
+      <li><span>I nemici perdono </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="1.5v" data-checkbox="eval">1.5v</output></span><span> </span><span class="unit-expr-misc">Tenacia</span></li>
       <li></li>
-      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34; riduce la realtà di un </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> aggiuntivo.</span></li>
+      <li><span>&#34;</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Aiuto fatato</a><span>&#34; riduce la realtà di un </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="7s%" data-format="%" data-checkbox="eval">7s%</output></span><span> aggiuntivo.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

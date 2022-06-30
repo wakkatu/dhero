@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2022</span>
+  <span style="white-space: nowrap;">Release date: 07/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -152,6 +152,8 @@ function init()
           <li title="Einheit schützt sich selbst."><a href="../hero_list.htm?SHIELD_SELF=on">Sich selbst schützen</a></li>
           <li title="Einheit gibt sich selbst Energie."><a href="../hero_list.htm?ENERGY_SELF=on">Sich selbst Energie geben</a></li>
           <li title="Einheit kann mindestens einen Verbündeten heilen."><a href="../hero_list.htm?HEAL_TEAM=on">Team heilen</a></li>
+          <li title="Einheit heilt sich selbst über einen bestimmten Zeitraum."><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">Selbstheilung über Zeit</a></li>
+          <li title="Einheit kann mindestens einen Verbündeten über einen bestimmten Zeitraum heilen."><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">Team-Heilung über Zeit</a></li>
           <li title="Einheit heilt sich selbst."><a href="../hero_list.htm?HEAL_SELF=on">Sich selbst heilen</a></li>
         </ul>
       </span>
@@ -182,15 +184,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">Max. LP</span>
       <span class="unit-pair-val unit-expr-g">
-        1030.7 + 424.82g
+        650 + 650g
       </span>
       <span class="unit-pair-name">Grundschaden</span>
       <span class="unit-pair-val unit-expr-g">
-        62.64 + 5.03g
+        130 + 25g
       </span>
       <span class="unit-pair-name">Fähigkeitsstärke</span>
       <span class="unit-pair-val unit-expr-g">
-        130.5 + 10.63g
+        175 + 38g
       </span>
     </div>
   </div>
@@ -7403,9 +7405,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="1030.7 + 424.82g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="62.64 + 5.03g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="130.5 + 10.63g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="650 + 650g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="130 + 25g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="175 + 38g"></output>
       </span>
 
       <!-- Stats { -->
@@ -7511,8 +7513,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">Fee-nomenale Hilfe</a></label></h2>
-    <p><span>Passiv: Fauna setzt Auroras normale Angriffe ein, die fantastischen Schaden verursachen und alle getroffenen Gegner für </span><span class="unit-expr-misc">3</span><span> Sekunden verstummen lassen.</span></p>
-    <p><span>Aktiv: Flora, Fauna und Sonnenschein überfliegen das Schlachtfeld, entfernen alle Verstärkungen und fügen allen Gegnern </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span> fantastischen Schaden zu. Die Feen verleihen den Gegnern anschließend jeweils eine eigene Schwächung: Verstummen, </span><span class="unit-expr-misc">4</span><span> Schwäche-Stapel und </span><span class="unit-expr-misc">40%</span><span> Realitäts-Verringerung. Jede dieser Schwächungen hält </span><span class="unit-expr-misc">3</span><span> Sekunden lang an.</span></p>
+    <p><span>Passiv: Fauna setzt Auroras normale Angriffe ein, die fantastischen Schaden verursachen und alle getroffenen Gegner für </span><span class="unit-expr-misc">4</span><span> Sekunden verstummen lassen.</span></p>
+    <p><span>Aktiv: Flora, Fauna und Sonnenschein überfliegen das Schlachtfeld, entfernen alle Verstärkungen und fügen allen Gegnern </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k + 3.5sp" data-checkbox="eval">350k + 3.5sp</output></span><span> fantastischen Schaden zu. Die Feen verleihen den Gegnern anschließend jeweils eine eigene Schwächung: Verstummen, </span><span class="unit-expr-misc">3</span><span> Schwäche-Stapel und </span><span class="unit-expr-misc">35%</span><span> Realitäts-Verringerung. Jede dieser Schwächungen hält </span><span class="unit-expr-misc">10</span><span> Sekunden lang an.</span></p>
     <p><span>Die Entfernung der Verstärkung und die Anwendung der Schwäche kann bei Gegnern über Stufe </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -7527,79 +7529,79 @@ function init()
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>any &lt; enemy</dd>
         <dt>splash</dt><dd>enemy</dd>
-        <dt>dmgamt</dt><dd>100k + 0.7sp</dd>
-        <dt>stackamt</dt><dd>4</dd>
-        <dt>realitydecreasepercent</dt><dd>0.4[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>silenceduration</dt><dd>3</dd>
+        <dt>dmgamt</dt><dd>350k + 3.5sp</dd>
+        <dt>stackamt</dt><dd>3</dd>
+        <dt>realitydecreasepercent</dt><dd>0.35[%]</dd>
+        <dt>debuffduration</dt><dd>10</dd>
+        <dt>silenceduration</dt><dd>4</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">Floras Barriere</a></label></h2>
-    <p><span>Flora reinigt Aurora und gewährt ihr einen Schild für </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="15k+5sp" data-checkbox="eval">15k+5sp</output></span><span> LP, der </span><span class="unit-expr-misc">5</span><span> Sekunden anhält. Während dieser Schild aktiv ist, blockt Aurora alle auf sie gerichteten Projektile und stiehlt </span><span class="unit-expr-misc">22</span><span> Energie von jedem Gegner, dessen Projektil geblockt wird.</span></p>
+    <p><span>Flora reinigt Aurora und gewährt ihr einen Schild für </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="500k + 5sp" data-checkbox="eval">500k + 5sp</output></span><span> LP, der </span><span class="unit-expr-misc">8</span><span> Sekunden anhält. Während dieser Schild aktiv ist, blockt Aurora alle auf sie gerichteten Projektile und stiehlt </span><span class="unit-expr-misc">50</span><span> Energie von jedem Gegner, dessen Projektil geblockt wird.</span></p>
     <p><span>Die Projektil-Abwehr kann bei Gegnern mit einer Stufe höher als </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
+        <dt>initcooldown</dt><dd>6</dd>
+        <dt>cooldown</dt><dd>12</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>6</dd>
         <dt>priority</dt><dd>4</dd>
-        <dt>shieldhpamt</dt><dd>15k+5sp</dd>
-        <dt>shieldduration</dt><dd>5</dd>
-        <dt>energyamt</dt><dd>22</dd>
+        <dt>shieldhpamt</dt><dd>500k + 5sp</dd>
+        <dt>shieldduration</dt><dd>8</dd>
+        <dt>energyamt</dt><dd>50</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">Sonnenscheins Blitz</a></label></h2>
-    <p><span>Sonnenschein feuert einen magischen Blitz auf den nächstgelegenen Gegner ab, der ihn zurückstößt und </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="5k+.7sp" data-checkbox="eval">5k+.7sp</output></span><span> fantastischen Schaden verursacht. Der Gegner wird außerdem gefangen und seine Angriffsgeschwindigkeit wird für </span><span class="unit-expr-misc">3</span><span> Sekunden um </span><span class="unit-expr-misc">30%</span><span> verringert.</span></p>
+    <p><span>Sonnenschein feuert einen magischen Blitz auf den nächstgelegenen Gegner ab, der ihn zurückstößt und </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="400k + 4sp" data-checkbox="eval">400k + 4sp</output></span><span> fantastischen Schaden verursacht. Der Gegner wird außerdem gefangen und seine Angriffsgeschwindigkeit wird für </span><span class="unit-expr-misc">8</span><span> Sekunden um </span><span class="unit-expr-misc">75%</span><span> verringert.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>initcooldown</dt><dd>4</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>initcooldown</dt><dd>4</dd>
         <dt>priority</dt><dd>3</dd>
         <dt>trigger</dt><dd>closest &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>5k+.7sp</dd>
-        <dt>asdecreasepercent</dt><dd>0.3[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>dmgamt</dt><dd>400k + 4sp</dd>
+        <dt>asdecreasepercent</dt><dd>0.75[%]</dd>
+        <dt>debuffduration</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">Faunas Magie</a></label></h2>
-    <p><span>Auroras normale Angriffe verursachen nun zusätzlich </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="10k+2sp" data-checkbox="eval">10k+2sp</output></span><span> fantastischen Schaden und entfernen </span><span class="unit-expr-misc">2</span><span> Verstärkungen von getroffenen Gegnern.</span></p>
-    <p><span>„</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">Sonnenscheins Blitz</a><span>&#34; wendet außerdem auf Gegner, die von Sonnenscheins magischem Blitz getroffen werden, eine Realitäts-Verringerung von </span><span class="unit-expr-misc">20%</span><span> für </span><span class="unit-expr-misc">3</span><span> Sekunden an.</span></p>
+    <p><span>Auroras normale Angriffe verursachen nun zusätzlich </span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k+1sp" data-checkbox="eval">100k+1sp</output></span><span> fantastischen Schaden und entfernen </span><span class="unit-expr-misc">2</span><span> Verstärkungen von getroffenen Gegnern.</span></p>
+    <p><span>„</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">Sonnenscheins Blitz</a><span>&#34; wendet außerdem auf Gegner, die von Sonnenscheins magischem Blitz getroffen werden, eine Realitäts-Verringerung von </span><span class="unit-expr-misc">20%</span><span> für </span><span class="unit-expr-misc">5</span><span> Sekunden an.</span></p>
     <p><span>Die Entfernung der Verstärkung kann bei Feinden über Stufe </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> fehlschlagen.</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
-        <dt>bonusfantasticdamage</dt><dd>10k+2sp</dd>
+        <dt>bonusfantasticdamage</dt><dd>100k+1sp</dd>
         <dt>buffamt</dt><dd>2</dd>
         <dt>realitydecreasepercent</dt><dd>0.2[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
+        <dt>debuffduration</dt><dd>5</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">Süße Träumerin</a></label></h2>
-    <p><span>Auroras Grundangriffe zielen nun auf den Gegner mit den meisten Verstärkungen. „</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34; verursacht nun auch </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> fantastischen Schaden über </span><span class="unit-expr-misc">3</span><span> Sekunden. Für alle </span><span class="unit-expr-misc">3</span><span> Verstärkungen, die Aurora entfernt, heilt sie den Verbündeten, dem die meisten LP fehlen, um </span><span class="unit-expr-misc">20%</span><span> seiner max. LP.</span></p>
+    <p><span>Auroras Grundangriffe zielen nun auf den Gegner mit den meisten Verstärkungen. „</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34; verursacht nun auch </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1000k" data-checkbox="eval">1000k</output></span><span> fantastischen Schaden über </span><span class="unit-expr-misc">10</span><span> Sekunden. Für alle </span><span class="unit-expr-misc">4</span><span> Verstärkungen, die Aurora entfernt, heilt sie den Verbündeten, dem die meisten LP fehlen, um </span><span class="unit-expr-misc">40%</span><span> seiner max. LP.</span></p>
     <p>Zusätzliche Werterhöhungen:<p>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> Schild-LP zu Schilden von „</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">Floras Barriere</a><span>&#34; </span></li>
-      <li><span> +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="bd+100k" data-checkbox="eval">bd+100k</output></span><span> normaler Bonusschaden auf „</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34;</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> Schild-LP zu Schilden von „</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">Floras Barriere</a><span>&#34; </span></li>
+      <li><span> +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + 1bd" data-checkbox="eval">100k + 1bd</output></span><span> normaler Bonusschaden auf „</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34;</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">Fähigkeitsstärke</span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red"><dl class="inline-list">
@@ -7608,12 +7610,12 @@ function init()
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>bonusnormaldamage</dt><dd>bd+100k</dd>
-        <dt>dotduration</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k</dd>
-        <dt>buffremoveamt</dt><dd>3</dd>
-        <dt>bonusskill2shieldamt</dt><dd>300k</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
+        <dt>bonusnormaldamage</dt><dd>100k + 1bd</dd>
+        <dt>dotduration</dt><dd>10</dd>
+        <dt>dmgamt</dt><dd>1000k</dd>
+        <dt>buffremoveamt</dt><dd>4</dd>
+        <dt>bonusskill2shieldamt</dt><dd>500k</dd>
+        <dt>healpercent</dt><dd>0.4[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -7661,10 +7663,10 @@ function init()
     </p>
     <blockquote><span>Aurora heilt beim Entfernen von Stärkungen</span></blockquote>
     <ul>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span><span> </span><span class="unit-expr-misc">Realität</span><span> für </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Prinzessin Aurora</a><span> und Verbündete</span></li>
-      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span><span> für </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Prinzessin Aurora</a><span> und Verbündete</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span><span> </span><span class="unit-expr-misc">Realität</span><span> für </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Prinzessin Aurora</a><span> und Verbündete</span></li>
+      <li><span>+</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span><span> </span><span class="unit-expr-misc">Max. LP</span><span> für </span><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">Prinzessin Aurora</a><span> und Verbündete</span></li>
       <li></li>
-      <li><span>Wenn Aurora </span><span class="unit-expr-misc">2</span><span> Stärkungen vom gegnerischen Team entfernt, heilt sie sich um </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span> ihrer max. LP.</span></li>
+      <li><span>Wenn Aurora </span><span class="unit-expr-misc">6</span><span> Stärkungen vom gegnerischen Team entfernt, heilt sie sich um </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="8s%" data-format="%" data-checkbox="eval">8s%</output></span><span> ihrer max. LP.</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -7676,10 +7678,10 @@ function init()
     </p>
     <blockquote><span>Zusätzliche Realitäts-Verringerung für </span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a></blockquote>
     <ul>
-      <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span><span>, während sie gefangen sind</span></li>
-      <li><span>Gegner verlieren </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="v" data-checkbox="eval">v</output></span><span> </span><span class="unit-expr-misc">Hartnäckigkeit</span></li>
+      <li><span>Gegner verlieren </span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span><span class="unit-expr-misc">Panzerung</span><span>, während sie gefangen sind</span></li>
+      <li><span>Gegner verlieren </span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="1.5v" data-checkbox="eval">1.5v</output></span><span> </span><span class="unit-expr-misc">Hartnäckigkeit</span></li>
       <li></li>
-      <li><span>„</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34; verringert Realität um zusätzliche </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>.</span></li>
+      <li><span>„</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">Fee-nomenale Hilfe</a><span>&#34; verringert Realität um zusätzliche </span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="7s%" data-format="%" data-checkbox="eval">7s%</output></span><span>.</span></li>
     </ul>
     <!-- Disk } -->
     </form>

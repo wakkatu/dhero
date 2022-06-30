@@ -100,7 +100,7 @@ function init()
     </div>
   </label>
   <!--
-  <span style="white-space: nowrap;">Release date: 06/01/2022</span>
+  <span style="white-space: nowrap;">Release date: 07/01/2022</span>
   -->
 </div><!--  container } -->
 
@@ -152,6 +152,8 @@ function init()
           <li title="自分をシールドで守る。"><a href="../hero_list.htm?SHIELD_SELF=on">自分にシールド</a></li>
           <li title="自分にエネルギーを付与する。"><a href="../hero_list.htm?ENERGY_SELF=on">自分にエネルギー</a></li>
           <li title="少なくとも味方1人を回復できる。"><a href="../hero_list.htm?HEAL_TEAM=on">チームを回復</a></li>
+          <li title="一定期間にわたって自分を回復する。"><a href="../hero_list.htm?HEAL_OVER_TIME_SELF=on">自分を時間経過と共に回復</a></li>
+          <li title="一定期間にわたって少なくとも味方1人を回復できる。"><a href="../hero_list.htm?HEAL_OVER_TIME_TEAM=on">チームを時間経過と共に回復</a></li>
           <li title="自分を回復する。"><a href="../hero_list.htm?HEAL_SELF=on">自分を回復</a></li>
         </ul>
       </span>
@@ -182,15 +184,15 @@ function init()
     <div class="unit-pair-list">
       <span class="unit-pair-name">最大HP</span>
       <span class="unit-pair-val unit-expr-g">
-        1030.7 + 424.82g
+        650 + 650g
       </span>
       <span class="unit-pair-name">通常ダメージ</span>
       <span class="unit-pair-val unit-expr-g">
-        62.64 + 5.03g
+        130 + 25g
       </span>
       <span class="unit-pair-name">スキルパワー</span>
       <span class="unit-pair-val unit-expr-g">
-        130.5 + 10.63g
+        175 + 38g
       </span>
     </div>
   </div>
@@ -7403,9 +7405,9 @@ function init()
       <span class="unit-pair-line hr"></span>
       <span class="unit-pair-line hidden">
         <output name="g" for="v r s" data-raw="1" data-formula="v*r*(1+s)/2"></output>
-        <output name="core_hp_max" for="g" data-raw="1" data-formula="1030.7 + 424.82g"></output>
-        <output name="core_basic_damage" for="g" data-raw="1" data-formula="62.64 + 5.03g"></output>
-        <output name="core_skill_power" for="g" data-raw="1" data-formula="130.5 + 10.63g"></output>
+        <output name="core_hp_max" for="g" data-raw="1" data-formula="650 + 650g"></output>
+        <output name="core_basic_damage" for="g" data-raw="1" data-formula="130 + 25g"></output>
+        <output name="core_skill_power" for="g" data-raw="1" data-formula="175 + 38g"></output>
       </span>
 
       <!-- Stats { -->
@@ -7511,8 +7513,8 @@ function init()
 
     <p class="hr"></p>
     <h2 class="rarity-white"><label for="unit-skill-eval"><a id="WHITE">妖精の助け</a></label></h2>
-    <p><span>パッシブ：フォーナがオーロラ姫の通常攻撃を行い、いずれかの敵に特殊ダメージを与え、</span><span class="unit-expr-misc">3</span><span>秒間沈黙させる。 </span></p>
-    <p><span> アクティブ：フローラ、フォーナ、メリーウェザーが戦場を飛び回り、全ての敵からバフを取り除いて特殊ダメメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k + 0.7sp" data-checkbox="eval">100k + 0.7sp</output></span><span>与える。その後、それぞれの妖精は沈黙、</span><span class="unit-expr-misc">4</span><span>回分の「弱み」の累積、</span><span class="unit-expr-misc">40%</span><span>分のリアリティの減少を敵に適用する。それぞれのデバフは</span><span class="unit-expr-misc">3</span><span>秒間持続する。</span></p>
+    <p><span>パッシブ：フォーナがオーロラ姫の通常攻撃を行い、いずれかの敵に特殊ダメージを与え、</span><span class="unit-expr-misc">4</span><span>秒間沈黙させる。 </span></p>
+    <p><span> アクティブ：フローラ、フォーナ、メリーウェザーが戦場を飛び回り、全ての敵からバフを取り除いて特殊ダメメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="350k + 3.5sp" data-checkbox="eval">350k + 3.5sp</output></span><span>与える。その後、それぞれの妖精は沈黙、</span><span class="unit-expr-misc">3</span><span>回分の「弱み」の累積、</span><span class="unit-expr-misc">35%</span><span>分のリアリティの減少を敵に適用する。それぞれのデバフは</span><span class="unit-expr-misc">10</span><span>秒間持続する。</span></p>
     <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>より上の敵の場合は、バフの除去と「弱み」の適用に失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-white"><dl class="inline-list">
@@ -7527,79 +7529,79 @@ function init()
         <dt>trigger</dt><dd>any &lt; enemy</dd>
         <dt>primary</dt><dd>any &lt; enemy</dd>
         <dt>splash</dt><dd>enemy</dd>
-        <dt>dmgamt</dt><dd>100k + 0.7sp</dd>
-        <dt>stackamt</dt><dd>4</dd>
-        <dt>realitydecreasepercent</dt><dd>0.4[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>silenceduration</dt><dd>3</dd>
+        <dt>dmgamt</dt><dd>350k + 3.5sp</dd>
+        <dt>stackamt</dt><dd>3</dd>
+        <dt>realitydecreasepercent</dt><dd>0.35[%]</dd>
+        <dt>debuffduration</dt><dd>10</dd>
+        <dt>silenceduration</dt><dd>4</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-green"><label for="unit-skill-eval"><a id="GREEN">フローラのバリア</a></label></h2>
-    <p><span>フローラがオーロラ姫を浄化し、</span><span class="unit-expr-misc">5</span><span>秒間持続する</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="15k+5sp" data-checkbox="eval">15k+5sp</output></span><span>HPのシールドを与える。シールドが持続している間、オーロラ姫は自分に向けた投射物を全てブロックし、投射物がブロックされた敵から</span><span class="unit-expr-misc">22</span><span>エネルギーを奪う。</span></p>
+    <p><span>フローラがオーロラ姫を浄化し、</span><span class="unit-expr-misc">8</span><span>秒間持続する</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="500k + 5sp" data-checkbox="eval">500k + 5sp</output></span><span>HPのシールドを与える。シールドが持続している間、オーロラ姫は自分に向けた投射物を全てブロックし、投射物がブロックされた敵から</span><span class="unit-expr-misc">50</span><span>エネルギーを奪う。</span></p>
     <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span> より上の敵の場合は投射物のブロックに失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-green"><dl class="inline-list">
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
+        <dt>initcooldown</dt><dd>6</dd>
+        <dt>cooldown</dt><dd>12</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-green">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.2</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>12</dd>
+        <dt>initcooldown</dt><dd>6</dd>
         <dt>priority</dt><dd>4</dd>
-        <dt>shieldhpamt</dt><dd>15k+5sp</dd>
-        <dt>shieldduration</dt><dd>5</dd>
-        <dt>energyamt</dt><dd>22</dd>
+        <dt>shieldhpamt</dt><dd>500k + 5sp</dd>
+        <dt>shieldduration</dt><dd>8</dd>
+        <dt>energyamt</dt><dd>50</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-blue"><label for="unit-skill-eval"><a id="BLUE">メリーウェザーの稲妻</a></label></h2>
-    <p><span>メリーウェザーが一番近い敵に魔法の稲妻を放ち、後ろに追いやって特殊ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="5k+.7sp" data-checkbox="eval">5k+.7sp</output></span><span>与える。さらに敵は罠にかかり、</span><span class="unit-expr-misc">3</span><span>秒間、攻撃速度が</span><span class="unit-expr-misc">30%</span><span>減速する。</span></p>
+    <p><span>メリーウェザーが一番近い敵に魔法の稲妻を放ち、後ろに追いやって特殊ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="400k + 4sp" data-checkbox="eval">400k + 4sp</output></span><span>与える。さらに敵は罠にかかり、</span><span class="unit-expr-misc">8</span><span>秒間、攻撃速度が</span><span class="unit-expr-misc">75%</span><span>減速する。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-blue"><dl class="inline-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>initcooldown</dt><dd>5</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>initcooldown</dt><dd>4</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl></label>
       <input class="toggle-btn" type="checkbox" id="details-btn-blue">
       <dl class="attr-list">
         <dt>duration</dt><dd>2.5</dd>
         <dt>damagetype</dt><dd>Fantastic</dd>
         <dt>energygain</dt><dd>90</dd>
-        <dt>cooldown</dt><dd>14</dd>
-        <dt>initcooldown</dt><dd>5</dd>
+        <dt>cooldown</dt><dd>8</dd>
+        <dt>initcooldown</dt><dd>4</dd>
         <dt>priority</dt><dd>3</dd>
         <dt>trigger</dt><dd>closest &lt; enemy</dd>
         <dt>primary</dt><dd>closest &lt; enemy</dd>
-        <dt>dmgamt</dt><dd>5k+.7sp</dd>
-        <dt>asdecreasepercent</dt><dd>0.3[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
-        <dt>knockbackdistance</dt><dd>300</dd>
+        <dt>dmgamt</dt><dd>400k + 4sp</dd>
+        <dt>asdecreasepercent</dt><dd>0.75[%]</dd>
+        <dt>debuffduration</dt><dd>8</dd>
+        <dt>knockbackdistance</dt><dd>500</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-purple"><label for="unit-skill-eval"><a id="PURPLE">フォーナの魔法</a></label></h2>
-    <p><span>オーロラ姫の通常攻撃がさらにボーナスの特殊ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="10k+2sp" data-checkbox="eval">10k+2sp</output></span><span>与え、命中した敵からバフを</span><span class="unit-expr-misc">2</span><span>個分取り除く。 </span></p>
-    <p><span> また「</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">メリーウェザーの稲妻</a><span>」がメリーウェザーの魔法の稲妻が命中した敵に、</span><span class="unit-expr-misc">3</span><span>秒間</span><span class="unit-expr-misc">20%</span><span>分のリアリティの減少を適用する。</span></p>
+    <p><span>オーロラ姫の通常攻撃がさらにボーナスの特殊ダメージを</span><span class="unit-expr-sp"><output for="s k bd sp v" data-formula="100k+1sp" data-checkbox="eval">100k+1sp</output></span><span>与え、命中した敵からバフを</span><span class="unit-expr-misc">2</span><span>個分取り除く。 </span></p>
+    <p><span> また「</span><a href="../hero/PRINCESS_AURORA.htm#BLUE" class="rarity-blue">メリーウェザーの稲妻</a><span>」がメリーウェザーの魔法の稲妻が命中した敵に、</span><span class="unit-expr-misc">5</span><span>秒間</span><span class="unit-expr-misc">20%</span><span>分のリアリティの減少を適用する。</span></p>
     <p><span>Lv. </span><span class="unit-expr-level"><output for="level" data-formula="level" data-text="&lt;level&gt;" data-checkbox="eval">&lt;level&gt;</output></span><span>より上の敵の場合はバフの除去に失敗する可能性がある。</span></p>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-purple">...</label>
       <input class="toggle-btn" type="checkbox" id="details-btn-purple">
       <dl class="attr-list">
-        <dt>bonusfantasticdamage</dt><dd>10k+2sp</dd>
+        <dt>bonusfantasticdamage</dt><dd>100k+1sp</dd>
         <dt>buffamt</dt><dd>2</dd>
         <dt>realitydecreasepercent</dt><dd>0.2[%]</dd>
-        <dt>debuffduration</dt><dd>3</dd>
+        <dt>debuffduration</dt><dd>5</dd>
       </dl>
     </div><!-- unit-note } -->
     <h2 class="rarity-red"><label for="unit-skill-eval"><a id="RED">善意の夢想家</a></label></h2>
-    <p><span>オーロラ姫の通常攻撃がバフの最も多い敵を標的にする。さらに「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」も</span><span class="unit-expr-misc">3</span><span>秒間、特殊攻撃を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span><span>与える。オーロラ姫がバフを</span><span class="unit-expr-misc">3</span><span>個取り除くごとに、残りのHPが最も少ない味方の最大HPの</span><span class="unit-expr-misc">20%</span><span>分を回復する。</span></p>
+    <p><span>オーロラ姫の通常攻撃がバフの最も多い敵を標的にする。さらに「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」も</span><span class="unit-expr-misc">10</span><span>秒間、特殊攻撃を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="1000k" data-checkbox="eval">1000k</output></span><span>与える。オーロラ姫がバフを</span><span class="unit-expr-misc">4</span><span>個取り除くごとに、残りのHPが最も少ない味方の最大HPの</span><span class="unit-expr-misc">40%</span><span>分を回復する。</span></p>
     <p>追加のステータスブースト：<p>
     <ul>
-      <li><span>「</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">フローラのバリア</a><span>」からのシールドに対してシールドのHP +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span> </span></li>
-      <li><span> 「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」へのボーナスの通常ダメージ +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="bd+100k" data-checkbox="eval">bd+100k</output></span></li>
-      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span></li>
+      <li><span>「</span><a href="../hero/PRINCESS_AURORA.htm#GREEN" class="rarity-green">フローラのバリア</a><span>」からのシールドに対してシールドのHP +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="500k" data-checkbox="eval">500k</output></span><span> </span></li>
+      <li><span> 「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」へのボーナスの通常ダメージ +</span><span class="unit-expr-bd"><output for="s k bd sp v" data-formula="100k + 1bd" data-checkbox="eval">100k + 1bd</output></span></li>
+      <li><span class="unit-expr-misc">スキルパワー</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span></li>
     </ul>
     <div class="details-tag unit-note"><!-- unit-note { -->
       <label for="details-btn-red"><dl class="inline-list">
@@ -7608,12 +7610,12 @@ function init()
       <input class="toggle-btn" type="checkbox" id="details-btn-red">
       <dl class="attr-list">
         <dt>damagetype</dt><dd>Fantastic</dd>
-        <dt>bonusnormaldamage</dt><dd>bd+100k</dd>
-        <dt>dotduration</dt><dd>3</dd>
-        <dt>dmgamt</dt><dd>200k</dd>
-        <dt>buffremoveamt</dt><dd>3</dd>
-        <dt>bonusskill2shieldamt</dt><dd>300k</dd>
-        <dt>healpercent</dt><dd>0.2[%]</dd>
+        <dt>bonusnormaldamage</dt><dd>100k + 1bd</dd>
+        <dt>dotduration</dt><dd>10</dd>
+        <dt>dmgamt</dt><dd>1000k</dd>
+        <dt>buffremoveamt</dt><dd>4</dd>
+        <dt>bonusskill2shieldamt</dt><dd>500k</dd>
+        <dt>healpercent</dt><dd>0.4[%]</dd>
       </dl>
     </div><!-- unit-note } -->
     </form>
@@ -7661,10 +7663,10 @@ function init()
     </p>
     <blockquote><span>オーロラ姫がバフを取り除く時に回復する</span></blockquote>
     <ul>
-      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">オーロラ姫</a><span>と味方に</span><span class="unit-expr-misc">リアリティ</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="10k" data-checkbox="eval">10k</output></span></li>
-      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">オーロラ姫</a><span>と味方に</span><span class="unit-expr-misc">最大HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="200k" data-checkbox="eval">200k</output></span></li>
+      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">オーロラ姫</a><span>と味方に</span><span class="unit-expr-misc">リアリティ</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="350k" data-checkbox="eval">350k</output></span></li>
+      <li><a href="../hero/PRINCESS_AURORA.htm" class="unit-expr-misc">オーロラ姫</a><span>と味方に</span><span class="unit-expr-misc">最大HP</span><span> +</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="250k" data-checkbox="eval">250k</output></span></li>
       <li></li>
-      <li><span> オーロラ姫が敵のチームからバフを</span><span class="unit-expr-misc">2</span><span>個取り除くと、彼女は最大HPの</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>分を回復する。</span></li>
+      <li><span> オーロラ姫が敵のチームからバフを</span><span class="unit-expr-misc">6</span><span>個取り除くと、彼女は最大HPの</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="8s%" data-format="%" data-checkbox="eval">8s%</output></span><span>分を回復する。</span></li>
     </ul>
     <!-- Disk } -->
     <!-- Disk { -->
@@ -7676,10 +7678,10 @@ function init()
     </p>
     <blockquote><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>の追加リアリティの減少</span></blockquote>
     <ul>
-      <li><span>敵は罠にかかっている間、</span><span class="unit-expr-misc">アーマー</span><span>を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="450k" data-checkbox="eval">450k</output></span><span>失う</span></li>
-      <li><span>敵が</span><span class="unit-expr-misc">粘り強さ</span><span>を</span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="v" data-checkbox="eval">v</output></span><span>失う</span></li>
+      <li><span>敵は罠にかかっている間、</span><span class="unit-expr-misc">アーマー</span><span>を</span><span class="unit-expr-k"><output for="s k bd sp v" data-formula="300k" data-checkbox="eval">300k</output></span><span>失う</span></li>
+      <li><span>敵が</span><span class="unit-expr-misc">粘り強さ</span><span>を</span><span class="unit-expr-v"><output for="s k bd sp v" data-formula="1.5v" data-checkbox="eval">1.5v</output></span><span>失う</span></li>
       <li></li>
-      <li><span> 「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」がリアリティをさらに</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="10s%" data-format="%" data-checkbox="eval">10s%</output></span><span>下げる。</span></li>
+      <li><span> 「</span><a href="../hero/PRINCESS_AURORA.htm#WHITE" class="rarity-white">妖精の助け</a><span>」がリアリティをさらに</span><span class="unit-expr-s"><output for="s k bd sp v" data-formula="7s%" data-format="%" data-checkbox="eval">7s%</output></span><span>下げる。</span></li>
     </ul>
     <!-- Disk } -->
     </form>
